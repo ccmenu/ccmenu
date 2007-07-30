@@ -1,0 +1,35 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {checkStatus = id; }; 
+            CLASS = CCMAppController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                projectWindowController = CCMProjectWindowController; 
+                statusMenuController = CCMStatusMenuController; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {forceBuild = id; showWindow = id; }; 
+            CLASS = CCMProjectWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                projectController = NSArrayController; 
+                tableView = NSTableView; 
+                window = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = CCMServerMonitor; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {openProject = id; }; 
+            CLASS = CCMStatusBarMenuController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {statusMenu = NSMenu; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

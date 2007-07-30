@@ -1,0 +1,10 @@
+
+* multi server/column for server
+* exclude project from aggregration for menu icon colour
+* absolute build time
+* selectable columns
+* icon for build status in project window
+* growl notifications
+* new-style cce icons, i.e. colour for build status, symbol for activity
+* show estimated time left in menu (negative), longer than last (positive)
+* publish notification if current build time exceeds last build time by x
