@@ -5,11 +5,13 @@
             CLASS = CCMAppController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
+                imageFactory = CCMImageFactory; 
                 projectWindowController = CCMProjectWindowController; 
-                statusMenuController = CCMStatusMenuController; 
+                statusBarMenuController = CCMStatusBarMenuController; 
             }; 
             SUPERCLASS = NSObject; 
         }, 
+        {CLASS = CCMImageFactory; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {forceBuild = id; showWindow = id; }; 
             CLASS = CCMProjectWindowController; 
@@ -26,7 +28,7 @@
             ACTIONS = {openProject = id; }; 
             CLASS = CCMStatusBarMenuController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {statusMenu = NSMenu; }; 
+            OUTLETS = {imageFactory = CCMImageFactory; statusMenu = NSMenu; }; 
             SUPERCLASS = NSObject; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }

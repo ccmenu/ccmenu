@@ -9,9 +9,10 @@
 	IBOutlet NSArrayController	*projectController;
 }
 
+- (NSToolbar *)createToolbar;
+- (void)displayProjectInfos:(NSArray *)projectInfos;
+
 - (IBAction)showWindow:(id)sender;
 - (IBAction)forceBuild:(id)sender;
-
-- (void)displayProjectInfos:(NSArray *)projectInfos;
 
 @end

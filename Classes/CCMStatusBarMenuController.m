@@ -1,5 +1,6 @@
 
 #import "CCMStatusBarMenuController.h"
+#import "CCMImageFactory.h"
 #import "CCMServerMonitor.h"
 #import "CCMProjectInfo.h"
 
@@ -12,6 +13,12 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 	statusMenu = aMenu;
 }
 
+- (void)setImageFactory:(CCMImageFactory *)anImageFactory
+{
+	[imageFactory autorelease];
+	imageFactory = [anImageFactory retain];
+}
+
 - (void)awakeFromNib
 {
 	[self createStatusItem];
@@ -22,7 +29,7 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 - (NSStatusItem *)createStatusItem
 {
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];	
-	[statusItem setImage:[self getImageForStatus:@"Inactive"]];
+	[statusItem setImage:[imageFactory getImageForStatus:@"Inactive"]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
 	return statusItem;
@@ -41,28 +48,19 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 	CCMProjectInfo *info;
 	while((info = [infoEnum nextObject]) != nil)
 	{
-		NSString *title = [NSString stringWithFormat:@"%@ (%@)", [info projectName], [info timeSinceLastBuild]];
+		NSString *title = [NSString stringWithFormat:@"%@", [info projectName]];
 		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		[menuItem setImage:[self getImageForStatus:[info buildStatus]]];
+		[menuItem setImage:[imageFactory getImageForStatus:[info buildStatus]]];
 		if([info isFailed])
 			failCount += 1;
 		[menuItem setTarget:self];
 	}
-	NSImage *image = [self getImageForStatus:(failCount == 0) ? CCMPassedStatus : CCMFailedStatus];
+	NSImage *image = [imageFactory getImageForStatus:(failCount == 0) ? CCMPassedStatus : CCMFailedStatus];
 	[statusItem setImage:image];
 	if(failCount > 0)
 		[statusItem setTitle:[NSString stringWithFormat:@"%u", failCount]];
 	else
 		[statusItem setTitle:@"-0:12:39"];
-}
-
-- (NSImage *)getImageForStatus:(NSString *)status
-{
-	NSString *name = [NSString stringWithFormat:@"icon-%@.gif", [status lowercaseString]];
-	NSImage *image = [NSImage imageNamed:name];
-	[image setScalesWhenResized:YES];
-	[image setSize:NSMakeSize(13, 13)];
-	return image;
 }
 
 - (void)statusUpdate:(NSNotification *)notification

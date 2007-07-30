@@ -5,6 +5,8 @@
 
 @implementation CCMStatusBarMenuControllerTest
 
+static NSImage *testImage;
+
 - (void)setUp
 {
     menu = [[[NSMenu alloc] initWithTitle:@"Test"] autorelease];
@@ -26,17 +28,28 @@
 	
 	CCMStatusBarMenuController *controller = [[[CCMStatusBarMenuController alloc] init] autorelease];
 	[controller setMenu:menu];
+	[controller setImageFactory:(id)self];
+	testImage = [[[NSImage alloc] init] autorelease];
 	NSStatusItem *statusItem = [controller createStatusItem];
 	[controller displayProjectInfos:infoList];
 	
-	STAssertEqualObjects([controller getImageForStatus:CCMFailedStatus], [statusItem image], @"Should have set right image.");
+	STAssertNotNil([statusItem image], @"Should have set an image.");
+	STAssertEqualObjects(testImage, [statusItem image], @"Should have set right image.");
 	STAssertEqualObjects(@"1", [statusItem title], @"Should have added title with number of failed projects.");
 	
 	NSArray *items = [[statusItem menu] itemArray];
-	STAssertEqualObjects(@"connectfour (less than a minute ago)", [[items objectAtIndex:1] title], @"Should have set right project name with build interval.");
+	STAssertEqualObjects(@"connectfour", [[items objectAtIndex:1] title], @"Should have set right project name.");
 	STAssertEquals(controller, [[items objectAtIndex:1] target], @"Should have set right target.");
 	STAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
 	STAssertEquals(4u, [items count], @"Should have created right number of items.");
+}
+
+
+// stub image factory
+
+- (NSImage *)getImageForStatus:(NSString *)name
+{
+	return testImage;
 }
 
 @end

@@ -1,17 +1,19 @@
 
 #import <Cocoa/Cocoa.h>
+#import "CCMImageFactory.h"
 
 @interface CCMStatusBarMenuController : NSObject 
 {
-	IBOutlet NSMenu	*statusMenu;
-	NSStatusItem	*statusItem;
+	IBOutlet NSMenu				*statusMenu;
+	IBOutlet CCMImageFactory	*imageFactory;
+	NSStatusItem				*statusItem;
 }
 
 - (void)setMenu:(NSMenu *)aMenu;
+- (void)setImageFactory:(CCMImageFactory *)anImageFactory;
 
 - (NSStatusItem *)createStatusItem;
 - (void)displayProjectInfos:(NSArray *)projectInfos;
-- (NSImage *)getImageForStatus:(NSString *)status;
 
 - (IBAction)openProject:(id)sender;
 
