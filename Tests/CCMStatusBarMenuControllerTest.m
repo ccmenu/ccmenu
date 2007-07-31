@@ -5,8 +5,6 @@
 
 @implementation CCMStatusBarMenuControllerTest
 
-static NSImage *testImage;
-
 - (void)setUp
 {
     menu = [[[NSMenu alloc] initWithTitle:@"Test"] autorelease];
@@ -34,7 +32,7 @@ static NSImage *testImage;
 	[controller setImageFactory:(id)self];
 	testImage = [[[NSImage alloc] init] autorelease];
 	NSStatusItem *statusItem = [controller createStatusItem];
-	[controller displayProjectInfos:infoList];
+	[controller displayProjects:infoList];
 	
 	STAssertNotNil([statusItem image], @"Should have set an image.");
 	STAssertEqualObjects(testImage, [statusItem image], @"Should have set right image.");

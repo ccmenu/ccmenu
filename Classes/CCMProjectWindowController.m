@@ -59,12 +59,12 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 
 - (void)statusUpdate:(NSNotification *)notification
 {	
-	[self displayProjectInfos:[[notification object] projects]];
+	[self displayProjects:[[notification object] projects]];
 }
 
-- (void)displayProjectInfos:(NSArray *)projectInfos
+- (void)displayProjects:(NSArray *)projects
 {
-	[projectController setContent:projectInfos];
+	[projectController setContent:projects];
 }
 
 - (void)showWindow:(id)sender
@@ -74,7 +74,6 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 		[NSBundle loadNibNamed:@"ProjectWindow" owner:self];
 		[window setToolbar:[self createToolbar]];
 	}
-	
 	[window makeKeyAndOrderFront:self];
 	
 	[[NSNotificationCenter defaultCenter] 
@@ -84,7 +83,5 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 - (void)forceBuild:(id)sender
 {
 }
-
-
 
 @end

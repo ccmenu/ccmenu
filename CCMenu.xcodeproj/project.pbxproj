@@ -70,10 +70,6 @@
 		035C6DA60C5E4AA100906910 /* CCMBuildStatusTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildStatusTransformer.m; sourceTree = "<group>"; };
 		035C6DDC0C5E4D5700906910 /* CCMBuildStatusTransformerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildStatusTransformerTest.h; sourceTree = "<group>"; };
 		035C6DDD0C5E4D5700906910 /* CCMBuildStatusTransformerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildStatusTransformerTest.m; sourceTree = "<group>"; };
-		035C6FA20C5F5B8900906910 /* CCMProjectInfo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CCMProjectInfo.h; sourceTree = "<group>"; };
-		035C6FA60C5F5BCD00906910 /* CCMProjectInfo.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CCMProjectInfo.m; sourceTree = "<group>"; };
-		035C6FD90C5F5F1200906910 /* CCMProjectInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CCMProjectInfoTest.h; sourceTree = "<group>"; };
-		035C6FDC0C5F5F7000906910 /* CCMProjectInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CCMProjectInfoTest.m; sourceTree = "<group>"; };
 		035C70B00C5F707F00906910 /* CCMServerMonitorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerMonitorTest.h; sourceTree = "<group>"; };
 		035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerMonitorTest.m; sourceTree = "<group>"; };
 		03B5A4590C5E2DFD0096247E /* User Stories.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "User Stories.txt"; sourceTree = "<group>"; };
@@ -141,9 +137,7 @@
 				035C6DDD0C5E4D5700906910 /* CCMBuildStatusTransformerTest.m */,
 				03F374640C47324E003240C4 /* CCMConnectionTest.h */,
 				03F374650C47324E003240C4 /* CCMConnectionTest.m */,
-				035C6FD90C5F5F1200906910 /* CCMProjectInfoTest.h */,
 				03F374680C47324E003240C4 /* CCMProjectTest.h */,
-				035C6FDC0C5F5F7000906910 /* CCMProjectInfoTest.m */,
 				03F374690C47324E003240C4 /* CCMProjectTest.m */,
 				035C70B00C5F707F00906910 /* CCMServerMonitorTest.h */,
 				035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */,
@@ -187,9 +181,7 @@
 		03F374750C473282003240C4 /* Domain Model */ = {
 			isa = PBXGroup;
 			children = (
-				035C6FA20C5F5B8900906910 /* CCMProjectInfo.h */,
 				03F374540C47323D003240C4 /* CCMProject.h */,
-				035C6FA60C5F5BCD00906910 /* CCMProjectInfo.m */,
 				03F374550C47323D003240C4 /* CCMProject.m */,
 			);
 			name = "Domain Model";

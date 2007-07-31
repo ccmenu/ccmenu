@@ -5,9 +5,6 @@
 
 @implementation CCMBuildStatusTransformerTest
 
-static NSImage *testImage;
-static NSString *statusName;
-
 - (void)testResolvesImage
 {
 	CCMBuildStatusTransformer *transformer = [[[CCMBuildStatusTransformer alloc] init] autorelease];

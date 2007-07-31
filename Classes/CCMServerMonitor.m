@@ -41,11 +41,12 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	NSDictionary *info;
 	while((info = [infoEnum nextObject]) != nil)
 	{
-		CCMProject *project = [projects objectForKey:[info objectForKey:@"name"]];
+		NSString *projectName = [info objectForKey:@"name"];
+		CCMProject *project = [projects objectForKey:projectName];
 		if(project == nil)
 		{
-			project = [[[CCMProject alloc] initWithName:[info objectForKey:@"name"]] autorelease];
-			[projects setObject:project forKey:[project name]];
+			project = [[[CCMProject alloc] initWithName:projectName] autorelease];
+			[projects setObject:project forKey:projectName];
 		}
 		[project updateWithInfo:info];
 	}

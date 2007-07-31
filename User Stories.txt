@@ -1,12 +1,14 @@
 
 Stories
 
-* absolute build time
+* server settings
+* display build activity
+* setting for absolute build time format
 * new-style cce icons, i.e. colour for build status, symbol for activity
 * show estimated time left in menu (negative), longer than last (positive)
 * growl notifications
 * publish notification if current build time exceeds last build time by x
-* selectable columns
+* selectable columns, i.e. show/hide columns in window
 * exclude project from aggregration for menu icon colour
 * multi server/column for server
 
@@ -14,3 +16,4 @@ Bugs
 
 * multiple registration for notifications
 * window has to wait for first notification to show content
+* sorting on last build interval is alphabetical

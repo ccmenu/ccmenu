@@ -5,6 +5,7 @@
 @interface CCMStatusBarMenuControllerTest : SenTestCase 
 {
 	NSMenu *menu;
+	NSImage *testImage;
 }
 
 @end

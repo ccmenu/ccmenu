@@ -50,7 +50,7 @@ NSString *CCMFailedStatus = @"Failure";
 
 - (NSString *)timeSinceLastBuild
 {
-	NSCalendarDate *lastBuildDate = [self valueForKey:@"lastBuildDate"];
+	NSCalendarDate *lastBuildDate = [self valueForKey:@"lastBuildTime"];
 	if(lastBuildDate == nil)
 		return @"";
 	return [[NSCalendarDate calendarDate] descriptionOfIntervalSinceDate:lastBuildDate];

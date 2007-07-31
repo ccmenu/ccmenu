@@ -10,7 +10,7 @@
 }
 
 - (NSToolbar *)createToolbar;
-- (void)displayProjectInfos:(NSArray *)projectInfos;
+- (void)displayProjects:(NSArray *)projects;
 
 - (IBAction)showWindow:(id)sender;
 - (IBAction)forceBuild:(id)sender;

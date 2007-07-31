@@ -35,7 +35,7 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 	return statusItem;
 }
 
-- (void)displayProjectInfos:(NSArray *)projectList
+- (void)displayProjects:(NSArray *)projectList
 {
 	NSMenu *menu = [statusItem menu];
 	
@@ -44,16 +44,17 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 		[menu removeItemAtIndex:index];
 	
 	unsigned failCount = 0;
-	NSEnumerator *infoEnum = [projectList objectEnumerator];
-	CCMProject *info;
-	while((info = [infoEnum nextObject]) != nil)
+	NSEnumerator *projectEnum = [projectList objectEnumerator];
+	CCMProject *project;
+	while((project = [projectEnum nextObject]) != nil)
 	{
-		NSString *title = [NSString stringWithFormat:@"%@", [info name]];
+		NSString *title = [NSString stringWithFormat:@"%@", [project name]];
 		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		[menuItem setImage:[imageFactory getImageForStatus:[info valueForKey:@"lastBuildStatus"]]];
-		if([info isFailed])
+		[menuItem setImage:[imageFactory getImageForStatus:[project valueForKey:@"lastBuildStatus"]]];
+		if([project isFailed])
 			failCount += 1;
 		[menuItem setTarget:self];
+		[menuItem setRepresentedObject:[project valueForKey:@"webUrl"]];
 	}
 	NSImage *image = [imageFactory getImageForStatus:(failCount == 0) ? CCMPassedStatus : CCMFailedStatus];
 	[statusItem setImage:image];
@@ -65,13 +66,12 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 
 - (void)statusUpdate:(NSNotification *)notification
 {	
-	NSArray *projects = [[notification object] projects];
-	[self displayProjectInfos:projects];
+	[self displayProjects:[[notification object] projects]];
 }
 
 - (IBAction)openProject:(id)sender
 {
-	NSURL *url = [NSURL URLWithString:@"http://localhost:8080/dashboard"];
+	NSURL *url = [NSURL URLWithString:[sender representedObject]];
 	[[NSWorkspace sharedWorkspace] openURL:url];
 }
 

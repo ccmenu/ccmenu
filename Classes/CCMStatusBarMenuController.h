@@ -13,7 +13,7 @@
 - (void)setImageFactory:(CCMImageFactory *)anImageFactory;
 
 - (NSStatusItem *)createStatusItem;
-- (void)displayProjectInfos:(NSArray *)projectInfos;
+- (void)displayProjects:(NSArray *)projects;
 
 - (IBAction)openProject:(id)sender;
 
