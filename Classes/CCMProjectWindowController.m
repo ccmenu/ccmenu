@@ -59,7 +59,7 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 
 - (void)statusUpdate:(NSNotification *)notification
 {	
-	[self displayProjectInfos:[[notification object] getProjectInfos]];
+	[self displayProjectInfos:[[notification object] projects]];
 }
 
 - (void)displayProjectInfos:(NSArray *)projectInfos

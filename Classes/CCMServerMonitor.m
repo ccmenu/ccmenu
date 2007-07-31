@@ -1,5 +1,6 @@
 
 #import "CCMServerMonitor.h"
+#import "CCMProject.h"
 
 NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotification";
 
@@ -10,6 +11,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 {
 	[super init];
 	connection = [aConnection retain];
+	projects = [[NSMutableDictionary alloc] init];
 	return self;
 }
 
@@ -17,14 +19,14 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 {
 	[self stop];
 	[connection release];
-	[projectInfos release];
+	[projects release];
 	[super dealloc];	
 }
 
 - (void)start
 {
 	[self pollServer:nil];
-	timer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(pollServer:) userInfo:nil repeats:YES];
+	timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(pollServer:) userInfo:nil repeats:YES];
 }
 
 - (void)stop
@@ -35,15 +37,24 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (void)pollServer:(id)sender
 {
-	NSArray *newProjectInfos = [connection getProjectInfos];
-	[projectInfos autorelease];
-	projectInfos = [newProjectInfos retain];
+	NSEnumerator *infoEnum = [[connection getProjectInfos] objectEnumerator];
+	NSDictionary *info;
+	while((info = [infoEnum nextObject]) != nil)
+	{
+		CCMProject *project = [projects objectForKey:[info objectForKey:@"name"]];
+		if(project == nil)
+		{
+			project = [[[CCMProject alloc] initWithName:[info objectForKey:@"name"]] autorelease];
+			[projects setObject:project forKey:[project name]];
+		}
+		[project updateWithInfo:info];
+	}
 	[[NSNotificationCenter defaultCenter] postNotificationName:CCMProjectStatusUpdateNotification object:self];
 }
 
-- (NSArray *)getProjectInfos
+- (NSArray *)projects
 {
-	return projectInfos;
+	return [projects allValues];
 }
 
 @end

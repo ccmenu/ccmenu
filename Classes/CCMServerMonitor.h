@@ -5,9 +5,9 @@
 
 @interface CCMServerMonitor : NSObject 
 {
-	CCMConnection	*connection;
-	NSTimer			*timer;
-	NSArray			*projectInfos;
+	CCMConnection		*connection;
+	NSTimer				*timer;
+	NSMutableDictionary	*projects;
 }
 
 - (id)initWithConnection:(CCMConnection *)aConnection;
@@ -17,7 +17,7 @@
 
 - (void)pollServer:(id)sender;
 
-- (NSArray *)getProjectInfos;
+- (NSArray *)projects;
 
 @end
 

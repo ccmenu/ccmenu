@@ -19,6 +19,8 @@ static NSString *statusName;
 }
 
 
+// stub image factory
+
 - (NSImage *)getImageForStatus:(NSString *)name
 {
 	statusName = name;

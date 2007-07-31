@@ -1,10 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Projects>
-<Project name="cclive-contrib-distributed-jdk1.5" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.76" lastBuildTime="2007-06-29T16:45:24" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cclive-contrib-distributed-jdk1.5" />
-<Project name="cclive-release-jdk1.4" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2007-06-29T16:23:05" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cclive-release-jdk1.4" />
-<Project name="cclive-release-jdk1.5" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2007-06-29T16:38:13" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cclive-release-jdk1.5" />
-<Project name="cozmos" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2007-06-14T10:40:11" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cozmos" />
-<Project name="profit" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.4" lastBuildTime="2007-06-29T14:22:30" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/profit" />
-<Project name="protest" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2007-06-14T10:40:43" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/protest" />
-<Project name="website-validation" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.24" lastBuildTime="2007-06-26T11:34:44" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/website-validation" />
+<Project name="connectfour" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.1" lastBuildTime="2007-07-18T18:44:48" webUrl="http://localhost:8080/dashboard/build/detail/connectfour"/>
 </Projects>

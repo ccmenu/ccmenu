@@ -1,5 +1,6 @@
 {
     IBClasses = (
+        {CLASS = CCMProject; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {CLASS = CCMProjectInfo; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {forceBuild = id; showWindow = id; }; 

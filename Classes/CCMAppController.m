@@ -1,7 +1,6 @@
 
 #import "CCMAppController.h"
 #import "CCMConnection.h"
-#import "CCMProjectInfo.h"
 #import "CCMServerMonitor.h"
 #import "CCMBuildStatusTransformer.h"
 

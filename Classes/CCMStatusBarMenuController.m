@@ -2,7 +2,7 @@
 #import "CCMStatusBarMenuController.h"
 #import "CCMImageFactory.h"
 #import "CCMServerMonitor.h"
-#import "CCMProjectInfo.h"
+#import "CCMProject.h"
 
 @implementation CCMStatusBarMenuController
 
@@ -35,7 +35,7 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 	return statusItem;
 }
 
-- (void)displayProjectInfos:(NSArray *)projectInfos
+- (void)displayProjectInfos:(NSArray *)projectList
 {
 	NSMenu *menu = [statusItem menu];
 	
@@ -44,13 +44,13 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 		[menu removeItemAtIndex:index];
 	
 	unsigned failCount = 0;
-	NSEnumerator *infoEnum = [projectInfos objectEnumerator];
-	CCMProjectInfo *info;
+	NSEnumerator *infoEnum = [projectList objectEnumerator];
+	CCMProject *info;
 	while((info = [infoEnum nextObject]) != nil)
 	{
-		NSString *title = [NSString stringWithFormat:@"%@", [info projectName]];
+		NSString *title = [NSString stringWithFormat:@"%@", [info name]];
 		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		[menuItem setImage:[imageFactory getImageForStatus:[info buildStatus]]];
+		[menuItem setImage:[imageFactory getImageForStatus:[info valueForKey:@"lastBuildStatus"]]];
 		if([info isFailed])
 			failCount += 1;
 		[menuItem setTarget:self];
@@ -60,13 +60,13 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 	if(failCount > 0)
 		[statusItem setTitle:[NSString stringWithFormat:@"%u", failCount]];
 	else
-		[statusItem setTitle:@"-0:12:39"];
+		[statusItem setTitle:@""];
 }
 
 - (void)statusUpdate:(NSNotification *)notification
 {	
-	NSArray *infos = [[notification object] getProjectInfos];
-	[self displayProjectInfos:infos];
+	NSArray *projects = [[notification object] projects];
+	[self displayProjectInfos:projects];
 }
 
 - (IBAction)openProject:(id)sender

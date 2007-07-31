@@ -1,7 +1,7 @@
 
 #import "CCMStatusBarMenuControllerTest.h"
 #import "CCMStatusBarMenuController.h"
-#import "CCMProjectInfo.h"
+#import "CCMProject.h"
 
 @implementation CCMStatusBarMenuControllerTest
 
@@ -22,9 +22,12 @@ static NSImage *testImage;
 
 - (void)testAddsProjects
 {
-	CCMProjectInfo *info1 = [[[CCMProjectInfo alloc] initWithProjectName:@"connectfour" buildStatus:CCMFailedStatus 
-														   lastBuildDate:[NSCalendarDate calendarDate]] autorelease];
-	NSArray *infoList = [NSArray arrayWithObjects:info1, nil];
+	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+	NSMutableDictionary *info = [NSMutableDictionary dictionary];
+	[info setObject:CCMFailedStatus forKey:@"lastBuildStatus"];
+	[info setObject:[NSCalendarDate calendarDate] forKey:@"lastBuildDate"];
+	[project updateWithInfo:info];
+	NSArray *infoList = [NSArray arrayWithObject:project];
 	
 	CCMStatusBarMenuController *controller = [[[CCMStatusBarMenuController alloc] init] autorelease];
 	[controller setMenu:menu];
