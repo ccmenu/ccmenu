@@ -18,7 +18,7 @@
 
 // stub image factory
 
-- (NSImage *)getImageForStatus:(NSString *)name
+- (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)name
 {
 	statusName = name;
 	return testImage;
