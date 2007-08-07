@@ -39,3 +39,4 @@ Bugs
 - many strings not localizable
 * force build button does nothing
 * icons in project window do not show activities
+* does not recover from 'no server connection on startup' state

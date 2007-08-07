@@ -16,9 +16,9 @@
 	return [NSString stringWithFormat:@"icon-%@%@.png", [status lowercaseString], activityPart];
 }
 
-- (NSImage *)pausedImage
+- (NSImage *)imageForUnavailableServer
 {
-	return [NSImage imageNamed:@"icon-pause.png"];
+	return [NSImage imageNamed:@"icon-inactive.png"];
 }
 
 - (NSImage *)convertForMenuUse:(NSImage *)image

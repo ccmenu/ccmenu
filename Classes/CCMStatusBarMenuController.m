@@ -29,7 +29,7 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 - (NSStatusItem *)createStatusItem
 {
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];	
-	[statusItem setImage:[imageFactory pausedImage]];
+	[statusItem setImage:[imageFactory imageForUnavailableServer]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
 	return statusItem;
