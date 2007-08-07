@@ -23,14 +23,13 @@
 	STAssertTrue([project isFailed], @"Should return YES.");
 }
 
-- (void)testReturnsEmptyStringForIntervalWhenProjectHasNeverBeenBuilt
+- (void)testParsesBuildingActivityString
 {
 	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-	NSDictionary *info = [NSDictionary dictionaryWithObject:CCMFailedStatus forKey:@"lastBuildStatus"];
+	NSDictionary *info = [NSDictionary dictionaryWithObject:CCMBuildingActivity forKey:@"activity"];
 	[project updateWithInfo:info];
-
-	STAssertEqualObjects([project timeSinceLastBuild], @"", @"Should have returned empty string.");
+	
+	STAssertTrue([project isBuilding], @"Should return YES.");
 }
-
 
 @end

@@ -1,25 +1,32 @@
 
 #import "CCMImageFactory.h"
+#import "CCMProject.h"
 
 
 @implementation CCMImageFactory
 
-static CCMImageFactory *instance;
-
-+ (id)imageFactory
+- (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)status
 {
-	if(instance == nil)
-		instance = [[CCMImageFactory alloc] init];
-	return instance;
+	return [NSImage imageNamed:[self imageNameForActivity:activity lastBuildStatus:status]];
 }
 
-- (NSImage *)getImageForStatus:(NSString *)status
+- (NSString *)imageNameForActivity:(NSString *)activity lastBuildStatus:(NSString *)status
 {
-	NSString *name = [NSString stringWithFormat:@"icon-%@.gif", [status lowercaseString]];
-	NSImage *image = [NSImage imageNamed:name];
-	[image setScalesWhenResized:YES];
-	[image setSize:NSMakeSize(13, 13)];
-	return image;
+	NSString *activityPart = [activity isEqualToString:CCMBuildingActivity] ? @"-building" : @"";
+	return [NSString stringWithFormat:@"icon-%@%@.png", [status lowercaseString], activityPart];
+}
+
+- (NSImage *)pausedImage
+{
+	return [NSImage imageNamed:@"icon-pause.png"];
+}
+
+- (NSImage *)convertForMenuUse:(NSImage *)image
+{
+	NSImage *copy = [image copy];
+	[copy setScalesWhenResized:NO];
+	[copy setSize:NSMakeSize(15, 17)];
+	return copy;
 }
 
 @end

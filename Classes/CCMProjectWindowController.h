@@ -14,5 +14,6 @@
 
 - (IBAction)showWindow:(id)sender;
 - (IBAction)forceBuild:(id)sender;
+- (IBAction)editSettings:(id)sender;
 
 @end

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ActivePerspectiveName</key>
-	<string>Project</string>
+	<string>Build</string>
 	<key>AllowedModules</key>
 	<array>
 		<dict>
@@ -240,8 +240,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -296,14 +294,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>6</integer>
-									<integer>3</integer>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {309, 855}}</string>
+							<string>{{0, 0}, {309, 871}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -313,7 +309,7 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {326, 873}}</string>
+						<string>{{0, 0}, {326, 889}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
@@ -323,8 +319,6 @@
 							<string>TargetStatusColumn</string>
 							<real>22</real>
 						</array>
-						<key>RubberWindowFrame</key>
-						<string>0 114 1680 914 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -340,7 +334,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>03F3757D0C4868FB003240C4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CCMProjectWindowController.h</string>
+								<string>CCMProjectWindowController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -348,38 +342,37 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>03F3757E0C4868FB003240C4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CCMProjectWindowController.h</string>
+										<string>CCMProjectWindowController.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>03987CA40C5F92570046DEBE</string>
+										<string>036957AA0C69300600F89365</string>
 										<key>history</key>
 										<array>
-											<string>035C5A8D0C5F8F020078B65C</string>
-											<string>03987C8E0C5F92240046DEBE</string>
-											<string>03987C8F0C5F92240046DEBE</string>
-											<string>03987C970C5F92570046DEBE</string>
-											<string>03987C980C5F92570046DEBE</string>
-											<string>03987C990C5F92570046DEBE</string>
-											<string>03987C9A0C5F92570046DEBE</string>
-											<string>03987C9B0C5F92570046DEBE</string>
-											<string>03987C9C0C5F92570046DEBE</string>
-											<string>03987C9D0C5F92570046DEBE</string>
+											<string>0318CA340C68858D00D005EE</string>
+											<string>0318C9DC0C68807600D005EE</string>
+											<string>0318CA3F0C68876B00D005EE</string>
+											<string>036957270C69168800F89365</string>
+											<string>036957280C69168800F89365</string>
+											<string>036957920C692F9900F89365</string>
+											<string>036957930C692F9900F89365</string>
+											<string>0369579E0C692FA700F89365</string>
+											<string>036957A70C69300100F89365</string>
+											<string>036957940C692F9900F89365</string>
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>035C5A940C5F8F020078B65C</string>
-											<string>035C5A950C5F8F020078B65C</string>
-											<string>035C5A960C5F8F020078B65C</string>
-											<string>03987C920C5F92240046DEBE</string>
-											<string>03987C930C5F92240046DEBE</string>
-											<string>03987C940C5F92240046DEBE</string>
-											<string>03987C9E0C5F92570046DEBE</string>
-											<string>03987C9F0C5F92570046DEBE</string>
-											<string>03987CA00C5F92570046DEBE</string>
-											<string>03987CA10C5F92570046DEBE</string>
-											<string>03987CA20C5F92570046DEBE</string>
-											<string>03987CA30C5F92570046DEBE</string>
+											<string>0318C91A0C6878ED00D005EE</string>
+											<string>0318CA010C68841000D005EE</string>
+											<string>0318C8C30C68751D00D005EE</string>
+											<string>0369572A0C69168800F89365</string>
+											<string>0369572B0C69168800F89365</string>
+											<string>0369572C0C69168800F89365</string>
+											<string>036957970C692F9900F89365</string>
+											<string>036957980C692F9900F89365</string>
+											<string>036957990C692F9900F89365</string>
+											<string>0369579B0C692F9900F89365</string>
+											<string>036957A80C69300100F89365</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -393,14 +386,12 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1349, 868}}</string>
-								<key>RubberWindowFrame</key>
-								<string>0 114 1680 914 0 0 1680 1028 </string>
+								<string>{{0, 0}, {1349, 884}}</string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>868pt</string>
+							<string>884pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
@@ -419,8 +410,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1349, -27}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 114 1680 914 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -436,7 +425,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1349, 233}}</string>
+										<string>{{10, 27}, {995, -27}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -479,11 +468,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>03987CA50C5F92570046DEBE</string>
+				<string>036957160C69132300F89365</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>03987CA60C5F92570046DEBE</string>
+				<string>036957170C69132300F89365</string>
 				<string>03F3757D0C4868FB003240C4</string>
-				<string>03987CA70C5F92570046DEBE</string>
+				<string>036957180C69132300F89365</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -558,14 +547,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>21</integer>
-									<integer>19</integer>
-									<integer>2</integer>
+									<integer>43</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {346, 855}}</string>
+							<string>{{0, 115}, {346, 871}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -575,7 +562,7 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {363, 873}}</string>
+						<string>{{0, 0}, {363, 889}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
@@ -583,6 +570,8 @@
 							<string>TargetStatusColumn</string>
 							<real>22</real>
 						</array>
+						<key>RubberWindowFrame</key>
+						<string>0 98 1680 930 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -598,7 +587,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>03F3757D0C4868FB003240C4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CCMStatusBarMenuControllerTest.m</string>
+								<string>CCMProjectWindowController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -606,36 +595,39 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>03F3757E0C4868FB003240C4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CCMStatusBarMenuControllerTest.m</string>
+										<string>CCMProjectWindowController.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>03987CA80C5F92570046DEBE</string>
+										<string>036957AC0C69300600F89365</string>
 										<key>history</key>
 										<array>
-											<string>035C5A8B0C5F8F020078B65C</string>
-											<string>035C5A8C0C5F8F020078B65C</string>
-											<string>035C5A8D0C5F8F020078B65C</string>
-											<string>035C5A8E0C5F8F020078B65C</string>
-											<string>035C5A990C5F8F060078B65C</string>
-											<string>03987C8C0C5F92240046DEBE</string>
-											<string>03987C8D0C5F92240046DEBE</string>
-											<string>03987C8E0C5F92240046DEBE</string>
-											<string>03987C8F0C5F92240046DEBE</string>
-											<string>03987C900C5F92240046DEBE</string>
+											<string>0318C9D30C68806500D005EE</string>
+											<string>036957270C69168800F89365</string>
+											<string>036957280C69168800F89365</string>
+											<string>036957910C692F9900F89365</string>
+											<string>036957920C692F9900F89365</string>
+											<string>036957930C692F9900F89365</string>
+											<string>0318CA340C68858D00D005EE</string>
+											<string>0318C9DC0C68807600D005EE</string>
+											<string>036957AB0C69300600F89365</string>
+											<string>036957A90C69300100F89365</string>
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>035C71F50C5F84EE00906910</string>
-											<string>035C5A920C5F8F020078B65C</string>
-											<string>035C5A930C5F8F020078B65C</string>
-											<string>035C5A940C5F8F020078B65C</string>
-											<string>035C5A950C5F8F020078B65C</string>
-											<string>035C5A960C5F8F020078B65C</string>
-											<string>03987C910C5F92240046DEBE</string>
-											<string>03987C920C5F92240046DEBE</string>
-											<string>03987C930C5F92240046DEBE</string>
-											<string>03987C940C5F92240046DEBE</string>
+											<string>0318C9D50C68806500D005EE</string>
+											<string>0369572A0C69168800F89365</string>
+											<string>0369572B0C69168800F89365</string>
+											<string>0369572C0C69168800F89365</string>
+											<string>036957960C692F9900F89365</string>
+											<string>036957970C692F9900F89365</string>
+											<string>036957980C692F9900F89365</string>
+											<string>036957990C692F9900F89365</string>
+											<string>0369579A0C692F9900F89365</string>
+											<string>0369579B0C692F9900F89365</string>
+											<string>0369579C0C692F9900F89365</string>
+											<string>0318C91A0C6878ED00D005EE</string>
+											<string>0318C8C30C68751D00D005EE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -649,16 +641,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1312, 868}}</string>
+								<string>{{0, 0}, {1312, 593}}</string>
+								<key>RubberWindowFrame</key>
+								<string>0 98 1680 930 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>868pt</string>
+							<string>593pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>0pt</string>
+							<string>291pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -676,7 +670,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1312, -27}}</string>
+										<string>{{10, 27}, {1312, 264}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -729,7 +723,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1312, -27}}</string>
+										<string>{{10, 27}, {1312, 264}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 98 1680 930 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXRunSessionModule</string>
@@ -756,14 +752,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>03987C790C5F901C0046DEBE</string>
+				<string>0369571A0C69132300F89365</string>
 				<string>1CA23EE50692099D00951B8B</string>
-				<string>03987C7A0C5F901C0046DEBE</string>
+				<string>0369571B0C69132300F89365</string>
 				<string>03F3757D0C4868FB003240C4</string>
-				<string>03987C7B0C5F901C0046DEBE</string>
+				<string>0369571C0C69132300F89365</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 				<string>1CA23EE80692099D00951B8B</string>
-				<string>03987C7C0C5F901C0046DEBE</string>
+				<string>0369571D0C69132300F89365</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildAndRun</string>
@@ -917,9 +913,9 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>207589975.22847801</real>
+	<real>208220166.94224599</real>
 	<key>ToolbarDisplayMode</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
 	<true/>
 	<key>ToolbarSizeMode</key>
@@ -935,7 +931,7 @@
 		<string>/Users/erik/Projects/CCMenu/Source/trunk/CCMenu.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 114 1680 914 0 0 1680 1028 </string>
+	<string>0 98 1680 930 0 0 1680 1028 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>

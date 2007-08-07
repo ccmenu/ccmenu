@@ -1,19 +1,43 @@
 
 Stories
+=======
 
-* server settings
-* display build activity
-* setting for absolute build time format
-* new-style cce icons, i.e. colour for build status, symbol for activity
-* show estimated time left in menu (negative), longer than last (positive)
-* growl notifications
-* publish notification if current build time exceeds last build time by x
-* selectable columns, i.e. show/hide columns in window
-* exclude project from aggregration for menu icon colour
-* multi server/column for server
+Server Settings: As a developer I want to set which server CCMenu monitors so that I can see information relevant to me.
+
+Display build activity: As a developer I want to see in the menu when a project is building so that I know not to check 
+in.
+
+Display build activity in status bar: As a developer I want to see in the status bar if any project is building so that 
+I know to check whether the project I want to check in is currently building
+
+Absolute build time format: As a developer I want to set the format in which the last build times are displayed so that 
+I can see relevant information in the format that suits me best.
+
+Build timing in menu: As a developer I want to see build timing, that is remaining time for this build (as a negative 
+number) or time by which current build exceeds last build (as a positive number), in the menu so that I know how long I
+have to wait before checking in or that the build might be stuck.
+
+Growl notifications: As a developer I want CCMenu to notify me of relevant events via Growl so that I am aware of all 
+relevant status changes without having to switch applications.
+
+Publish notification if current build time exceeds last build time by x: As a developer I want CCMenu to notify me (via 
+Growl) if the current build time exceeds the last build time by a margin that I can configure so that I am alerted as 
+soon as possible about a build that might be stuck.
+
+Selectable columns: As a developer I want to configure which columns are visible in the project window so that I can see 
+the information that is most relevant to me.
+
+Exclude project from menu: As a developer I want to specify which projects should be excluded from the display in the 
+menu.
+
+Multi server/column for server: As a developer I want CCMenu to monitor multiple CC servers, and show CC server name 
+alongside project name, so that I can see all projects that I am working on in one CCMenu instance.
+
 
 Bugs
+====
 
 * multiple registration for notifications
 * window has to wait for first notification to show content
-* sorting on last build interval is alphabetical
+* many strings not localisable
+* image relaed unit tests useless

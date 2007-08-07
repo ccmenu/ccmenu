@@ -33,7 +33,7 @@ NSString *CCMBuildStatusTransformerName = @"CCMBuildStatusTransformer";
 {
 	if(value == nil)
 		return nil;
-	return [imageFactory getImageForStatus:value];
+	return [imageFactory imageForActivity:nil lastBuildStatus:value];
 }
 
 @end

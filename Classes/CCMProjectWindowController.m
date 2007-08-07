@@ -4,6 +4,7 @@
 
 NSString *CCMProjectWindowToolBar = @"CCMProjectWindowToolBar";
 NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
+NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 
 
 @implementation CCMProjectWindowController
@@ -11,9 +12,9 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 - (NSToolbar *)createToolbar
 {
     NSToolbar *toolbar = [[[NSToolbar alloc] initWithIdentifier: CCMProjectWindowToolBar] autorelease];
-    [toolbar setAllowsUserCustomization: YES];
-    [toolbar setAutosavesConfiguration: YES];
-    [toolbar setDisplayMode: NSToolbarDisplayModeIconAndLabel];
+    [toolbar setAllowsUserCustomization:YES];
+    [toolbar setAutosavesConfiguration:YES];
+    [toolbar setDisplayMode:NSToolbarDisplayModeIconAndLabel];
     [toolbar setDelegate:self];
 	return toolbar;
 }
@@ -22,16 +23,26 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 {
     NSToolbarItem *toolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier:identifier] autorelease];
     
+	// TODO: Maybe we should use something like EDToolbarDefinition here
     if([identifier isEqual:CCMForceBuildToolBarIdentifier])
 	{
 		[toolbarItem setLabel:@"Force Build"];
 		[toolbarItem setPaletteLabel:@"Force Build"];
 		[toolbarItem setToolTip: @"Force build of selected projects"];
-		[toolbarItem setImage: [NSImage imageNamed:@"icon-force-build"]];
+		[toolbarItem setImage: [NSImage imageNamed:@"Placeholder"]];
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction: @selector(forceBuild:)];
 	} 
-	else 
+	else if([identifier isEqual:CCMSettingsToolBarIdentifier])
+	{
+		[toolbarItem setLabel:@"Settings"];
+		[toolbarItem setPaletteLabel:@"Settings"];
+		[toolbarItem setToolTip: @"Edit settings"];
+		[toolbarItem setImage: [NSImage imageNamed:@"Placeholder"]];
+		[toolbarItem setTarget:self];
+		[toolbarItem setAction: @selector(editSettings:)];
+	}
+	else
 	{
 		toolbarItem = nil;
     }
@@ -40,12 +51,13 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar 
 {
-    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier, nil];
+    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier, NSToolbarFlexibleSpaceItemIdentifier, 
+		CCMSettingsToolBarIdentifier, nil];
 }
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar 
 {
-    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier, 
+    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier, CCMSettingsToolBarIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier, 
 		NSToolbarSpaceItemIdentifier, NSToolbarSeparatorItemIdentifier, nil];
 }
@@ -81,6 +93,10 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 }
 
 - (void)forceBuild:(id)sender
+{
+}
+
+- (void)editSettings:(id)sender
 {
 }
 

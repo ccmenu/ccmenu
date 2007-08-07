@@ -26,7 +26,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)start
 {
 	[self pollServer:nil];
-	timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(pollServer:) userInfo:nil repeats:YES];
+	timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(pollServer:) userInfo:nil repeats:YES];
 }
 
 - (void)stop

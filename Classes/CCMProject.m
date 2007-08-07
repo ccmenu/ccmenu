@@ -3,8 +3,12 @@
 #import "NSCalendarDate+CCMAdditions.h"
 
 
-NSString *CCMPassedStatus = @"Success";
+NSString *CCMSuccessStatus = @"Success";
 NSString *CCMFailedStatus = @"Failure";
+
+NSString *CCMSleepingActivity = @"Sleeping";
+NSString *CCMBuildingActivity = @"Building";
+
 
 @implementation CCMProject
 
@@ -48,12 +52,10 @@ NSString *CCMFailedStatus = @"Failure";
 	return [[self valueForKey:@"lastBuildStatus"] isEqualToString:CCMFailedStatus];
 }
 
-- (NSString *)timeSinceLastBuild
+- (BOOL)isBuilding
 {
-	NSCalendarDate *lastBuildDate = [self valueForKey:@"lastBuildTime"];
-	if(lastBuildDate == nil)
-		return @"";
-	return [[NSCalendarDate calendarDate] descriptionOfIntervalSinceDate:lastBuildDate];
+	return [[self valueForKey:@"activity"] isEqualToString:CCMBuildingActivity];
 }
+
 
 @end

@@ -1,11 +1,12 @@
 
 #import <SenTestingKit/SenTestingKit.h>
-
+#import "CCMStatusBarMenuController.h"
 
 @interface CCMStatusBarMenuControllerTest : SenTestCase 
 {
-	NSMenu *menu;
-	NSImage *testImage;
+	CCMStatusBarMenuController	*controller;
+	NSStatusItem				*statusItem;
+	NSImage						*testImage;
 }
 
 @end

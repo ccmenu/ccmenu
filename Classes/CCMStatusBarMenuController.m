@@ -29,7 +29,7 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 - (NSStatusItem *)createStatusItem
 {
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];	
-	[statusItem setImage:[imageFactory getImageForStatus:@"Inactive"]];
+	[statusItem setImage:[imageFactory pausedImage]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
 	return statusItem;
@@ -44,24 +44,43 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 		[menu removeItemAtIndex:index];
 	
 	unsigned failCount = 0;
+	unsigned buildCount = 0;
+	bool isFixing = NO;
 	NSEnumerator *projectEnum = [projectList objectEnumerator];
 	CCMProject *project;
 	while((project = [projectEnum nextObject]) != nil)
 	{
 		NSString *title = [NSString stringWithFormat:@"%@", [project name]];
 		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		[menuItem setImage:[imageFactory getImageForStatus:[project valueForKey:@"lastBuildStatus"]]];
+		NSImage *image = [imageFactory imageForActivity:[project valueForKey:@"activity"] 
+										lastBuildStatus:[project valueForKey:@"lastBuildStatus"]];
+		image = [imageFactory convertForMenuUse:image];
+		[menuItem setImage:image];
 		if([project isFailed])
 			failCount += 1;
+		if([project isBuilding])
+			buildCount += 1;
+		if([project isBuilding] && [project isFailed])
+			isFixing = YES;
 		[menuItem setTarget:self];
-		[menuItem setRepresentedObject:[project valueForKey:@"webUrl"]];
+		[menuItem setRepresentedObject:project];
 	}
-	NSImage *image = [imageFactory getImageForStatus:(failCount == 0) ? CCMPassedStatus : CCMFailedStatus];
-	[statusItem setImage:image];
-	if(failCount > 0)
-		[statusItem setTitle:[NSString stringWithFormat:@"%u", failCount]];
-	else
+	if(buildCount > 0)
+	{
+		NSString *status = isFixing ? CCMFailedStatus : CCMSuccessStatus;
+		[statusItem setImage:[imageFactory imageForActivity:CCMBuildingActivity lastBuildStatus:status]];
 		[statusItem setTitle:@""];
+	}
+	else if(failCount > 0)
+	{
+		[statusItem setImage:[imageFactory imageForActivity:nil lastBuildStatus:CCMFailedStatus]];
+		[statusItem setTitle:[NSString stringWithFormat:@"%u", failCount]];
+	}
+	else
+	{
+		[statusItem setImage:[imageFactory imageForActivity:nil lastBuildStatus:CCMSuccessStatus]];
+		[statusItem setTitle:@""];
+	}
 }
 
 - (void)statusUpdate:(NSNotification *)notification
@@ -71,8 +90,8 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 
 - (IBAction)openProject:(id)sender
 {
-	NSURL *url = [NSURL URLWithString:[sender representedObject]];
-	[[NSWorkspace sharedWorkspace] openURL:url];
+	NSString *urlString = [[sender representedObject] valueForKey:@"webUrl"];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
 }
 
 @end

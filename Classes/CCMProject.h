@@ -15,9 +15,12 @@
 - (NSString *)name;
 
 - (BOOL)isFailed;
-- (NSString *)timeSinceLastBuild;
+- (BOOL)isBuilding;
 
 @end
 
-extern NSString *CCMPassedStatus;
+extern NSString *CCMSuccessStatus;
 extern NSString *CCMFailedStatus;
+
+extern NSString *CCMSleepingActivity;
+extern NSString *CCMBuildingActivity;

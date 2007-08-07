@@ -2,6 +2,7 @@
 #import <Cocoa/Cocoa.h>
 #import "CCMImageFactory.h"
 
+
 @interface CCMBuildStatusTransformer : NSValueTransformer 
 {
 	CCMImageFactory *imageFactory;

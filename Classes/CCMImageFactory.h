@@ -4,11 +4,13 @@
 
 @interface CCMImageFactory : NSObject 
 {
-
 }
 
-+ (id)imageFactory;
+- (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)status;
+- (NSString *)imageNameForActivity:(NSString *)activity lastBuildStatus:(NSString *)status;
 
-- (NSImage *)getImageForStatus:(NSString *)status;
+- (NSImage *)pausedImage;
+
+- (NSImage *)convertForMenuUse:(NSImage *)image;
 
 @end
