@@ -17,8 +17,8 @@
 	CCMTimeSinceDateTransformer *dateTransformer = [[[CCMTimeSinceDateTransformer alloc] init] autorelease];
 	[NSValueTransformer setValueTransformer:dateTransformer forName:CCMTimeSinceDateTransformerName];
 	
-//	NSURL *url = [NSURL URLWithString:@"http://cclive.thoughtworks.com/dashboard/cctray.xml"];
-	NSURL *url = [NSURL URLWithString:@"http://localhost:8080/dashboard/cctray.xml"];
+	NSURL *url = [NSURL URLWithString:@"http://cclive.thoughtworks.com/dashboard/cctray.xml"];
+//	NSURL *url = [NSURL URLWithString:@"http://localhost:8080/dashboard/cctray.xml"];
 	CCMConnection *connection = [[[CCMConnection alloc] initWithURL:url] autorelease];
 	monitor = [[CCMServerMonitor alloc] initWithConnection:connection];
 	[monitor start];
