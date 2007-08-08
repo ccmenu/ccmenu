@@ -71,6 +71,9 @@
 		037F79E30C6A1A3E00D4C646 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
 		037F79EC0C6A1A9C00D4C646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		037F7BFF0C6A3BF100D4C646 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
+		037F7C1C0C6A3ED000D4C646 /* CC.icns in Resources */ = {isa = PBXBuildFile; fileRef = 037F7C1B0C6A3ED000D4C646 /* CC.icns */; };
+		037F7C1D0C6A3ED000D4C646 /* CC.icns in Resources */ = {isa = PBXBuildFile; fileRef = 037F7C1B0C6A3ED000D4C646 /* CC.icns */; };
 		03D5D24A0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D24B0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D2690C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2670C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m */; };
@@ -125,6 +128,7 @@
 		037F79A30C6A195900D4C646 /* CCMenu with tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCMenu with tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CCMenu with tests-Info.plist"; sourceTree = "<group>"; };
 		037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
+		037F7C1B0C6A3ED000D4C646 /* CC.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CC.icns; path = Images/CC.icns; sourceTree = "<group>"; };
 		03B5A4590C5E2DFD0096247E /* User Stories.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "User Stories.txt"; sourceTree = "<group>"; };
 		03D5D2480C5A18FD0083AA94 /* CCMStatusBarMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusBarMenuController.h; sourceTree = "<group>"; };
 		03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusBarMenuController.m; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				037F7C1B0C6A3ED000D4C646 /* CC.icns */,
 				036958460C693C3A00F89365 /* icon-inactive.png */,
 				0369573B0C692C0900F89365 /* Placeholder.tiff */,
 				037C07820C621266006CF886 /* icon-building-failed.png */,
@@ -454,6 +459,7 @@
 				037F79C40C6A19B200D4C646 /* MainMenu.nib in Resources */,
 				037F79C50C6A19B300D4C646 /* ProjectWindow.nib in Resources */,
 				037F79CD0C6A19CC00D4C646 /* CCMenu with tests-Info.plist in Resources */,
+				037F7C1C0C6A3ED000D4C646 /* CC.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +478,8 @@
 				037C078D0C621266006CF886 /* icon-success.png in Resources */,
 				0369573C0C692C0900F89365 /* Placeholder.tiff in Resources */,
 				036958470C693C3A00F89365 /* icon-inactive.png in Resources */,
+				037F7BFF0C6A3BF100D4C646 /* Info.plist in Resources */,
+				037F7C1D0C6A3ED000D4C646 /* CC.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
