@@ -73,12 +73,12 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 	}
 	else if(failCount > 0)
 	{
-		[statusItem setImage:[imageFactory imageForActivity:nil lastBuildStatus:CCMFailedStatus]];
+		[statusItem setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus]];
 		[statusItem setTitle:[NSString stringWithFormat:@"%u", failCount]];
 	}
 	else
 	{
-		[statusItem setImage:[imageFactory imageForActivity:nil lastBuildStatus:CCMSuccessStatus]];
+		[statusItem setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus]];
 		[statusItem setTitle:@""];
 	}
 }

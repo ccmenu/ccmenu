@@ -2,6 +2,8 @@
 #import "CCMTimeSinceDateTransformer.h"
 #import "NSCalendarDate+CCMAdditions.h"
 
+NSString *CCMTimeSinceDateTransformerName = @"CCMTimeSinceDateTransformer";
+
 
 @implementation CCMTimeSinceDateTransformer
 

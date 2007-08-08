@@ -40,7 +40,6 @@
 	CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	NSArray *infoList = [NSArray arrayWithObject:project];
 	
-	testImage = [[[NSImage alloc] init] autorelease];
 	[controller displayProjects:infoList];
 	
 	NSArray *items = [[statusItem menu] itemArray];
@@ -55,11 +54,10 @@
 	CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	NSArray *infoList = [NSArray arrayWithObject:project];
 	
-	testImage = [[[NSImage alloc] init] autorelease];
 	[controller displayProjects:infoList];
 	
-	// TODO: All these are useless. Need to solve image setName: problem
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have set right image.");
+	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMSleepingActivity, CCMSuccessStatus];
+	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
 }
 
 - (void)testDisplaysFailureWhenNotAllProjectsSuccessful
@@ -69,10 +67,10 @@
 	CCMProject *project3 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
 	
-	testImage = [[[NSImage alloc] init] autorelease];
 	[controller displayProjects:infoList];
 	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have set right image.");
+	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMSleepingActivity, CCMFailedStatus];
+	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
 	STAssertEqualObjects(@"2", [statusItem title], @"Should have added title with number of failed projects.");
 }
 
@@ -83,10 +81,10 @@
 	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
 	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
 	
-	testImage = [[[NSImage alloc] init] autorelease];
 	[controller displayProjects:infoList];
 	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have set right image.");
+	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMBuildingActivity, CCMSuccessStatus];
+	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
 	STAssertEqualObjects(@"", [statusItem title], @"Should not have set title.");
 }
 
@@ -97,24 +95,31 @@
 	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
 	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
 	
-	testImage = [[[NSImage alloc] init] autorelease];
 	[controller displayProjects:infoList];
 	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have set right image.");
+	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMBuildingActivity, CCMFailedStatus];
+	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
 	STAssertEqualObjects(@"", [statusItem title], @"Should not have set title.");
 }
 
 
 // stub image factory
 
-- (NSImage *)pausedImage
+- (NSImage *)imageForUnavailableServer
 {
-	return testImage;
+	return [[[NSImage alloc] init] autorelease];
 }
 
 - (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)lastBuildStatus
 {
-	return testImage;
+	NSString *name = [NSString stringWithFormat:@"%@-%@", activity, lastBuildStatus];
+	NSImage *image = [NSImage imageNamed:name];
+	if(image == nil)
+	{
+		image = [[[NSImage alloc] init] autorelease];
+		[image setName:name];
+	}
+	return image;
 }
 
 - (NSImage *)convertForMenuUse:(NSImage *)image

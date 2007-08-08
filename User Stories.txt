@@ -29,6 +29,13 @@ soon as possible about a build that might be stuck.
 Multi server/column for server: As a developer I want CCMenu to monitor multiple CC servers, and show CC server name 
 alongside project name, so that I can see all projects that I am working on in one CCMenu instance.
 
+Exclude projects from aggregation to status bar item: As a developer I want to exclude projects that are visible in the
+menu from the aggregation to the status bar item so that the status bar item provides information about the project I 
+care about most but I can still keep an eye on other projects in the menu.
+
+Display project status heatmap in status item: As a developer I wangt to see the status of multiple projects in the 
+status bar item so that I can have a detailed view without opening the menu or window.
+
 
 Bugs
 ====

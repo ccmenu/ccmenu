@@ -6,7 +6,6 @@
 {
 	CCMStatusBarMenuController	*controller;
 	NSStatusItem				*statusItem;
-	NSImage						*testImage;
 }
 
 @end

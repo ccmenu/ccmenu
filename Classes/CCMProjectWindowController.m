@@ -94,6 +94,7 @@ NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 
 - (void)forceBuild:(id)sender
 {
+	NSRunAlertPanel(nil, @"Force build does not work yet", @"OK", nil, nil);
 }
 
 - (void)editSettings:(id)sender

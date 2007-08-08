@@ -37,6 +37,40 @@
 		037C08400C6245DD006CF886 /* icon-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07860C621266006CF886 /* icon-pause.png */; };
 		037C08410C6245DE006CF886 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07870C621266006CF886 /* icon-success.png */; };
 		037CFD0F0C56B83D0021D2DA /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */; };
+		037F799E0C6A192B00D4C646 /* Placeholder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0369573B0C692C0900F89365 /* Placeholder.tiff */; };
+		037F79A90C6A199900D4C646 /* CCMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */; };
+		037F79AA0C6A199A00D4C646 /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */; };
+		037F79AB0C6A199B00D4C646 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
+		037F79AC0C6A199B00D4C646 /* CCMImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C6D790C5E48F300906910 /* CCMImageFactory.m */; };
+		037F79AD0C6A199C00D4C646 /* CCMBuildStatusTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C6DA60C5E4AA100906910 /* CCMBuildStatusTransformer.m */; };
+		037F79AE0C6A199D00D4C646 /* CCMTimeSinceDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 037C07C20C6241F4006CF886 /* CCMTimeSinceDateTransformer.m */; };
+		037F79AF0C6A199E00D4C646 /* CCMConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */; };
+		037F79B00C6A199F00D4C646 /* CCMServerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */; };
+		037F79B10C6A19A000D4C646 /* CCMProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374550C47323D003240C4 /* CCMProject.m */; };
+		037F79B20C6A19A100D4C646 /* NSCalendarDate+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097A120C48B268002F04B5 /* NSCalendarDate+CCMAdditions.m */; };
+		037F79B30C6A19A100D4C646 /* CCMBuildStatusTransformerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C6DDD0C5E4D5700906910 /* CCMBuildStatusTransformerTest.m */; };
+		037F79B40C6A19A200D4C646 /* CCMConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374650C47324E003240C4 /* CCMConnectionTest.m */; };
+		037F79B50C6A19A300D4C646 /* CCMImageFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */; };
+		037F79B60C6A19A300D4C646 /* CCMProjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374690C47324E003240C4 /* CCMProjectTest.m */; };
+		037F79B70C6A19A400D4C646 /* CCMServerMonitorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */; };
+		037F79B80C6A19A500D4C646 /* CCMStatusBarMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2670C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m */; };
+		037F79B90C6A19A700D4C646 /* NSCalendarDate+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097A1F0C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m */; };
+		037F79BA0C6A19A800D4C646 /* cctray.xml in Resources */ = {isa = PBXBuildFile; fileRef = 03F3746A0C47324E003240C4 /* cctray.xml */; };
+		037F79BB0C6A19AA00D4C646 /* icon-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 036958460C693C3A00F89365 /* icon-inactive.png */; };
+		037F79BC0C6A19AB00D4C646 /* Placeholder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0369573B0C692C0900F89365 /* Placeholder.tiff */; };
+		037F79BD0C6A19AC00D4C646 /* icon-building-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07820C621266006CF886 /* icon-building-failed.png */; };
+		037F79BE0C6A19AD00D4C646 /* icon-failure-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07830C621266006CF886 /* icon-failure-building.png */; };
+		037F79BF0C6A19AE00D4C646 /* icon-success-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07840C621266006CF886 /* icon-success-building.png */; };
+		037F79C00C6A19AE00D4C646 /* icon-failure.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07850C621266006CF886 /* icon-failure.png */; };
+		037F79C10C6A19AF00D4C646 /* icon-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07860C621266006CF886 /* icon-pause.png */; };
+		037F79C20C6A19B000D4C646 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07870C621266006CF886 /* icon-success.png */; };
+		037F79C30C6A19B100D4C646 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
+		037F79C40C6A19B200D4C646 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
+		037F79C50C6A19B300D4C646 /* ProjectWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03097CC80C4CD926002F04B5 /* ProjectWindow.nib */; };
+		037F79CD0C6A19CC00D4C646 /* CCMenu with tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */; };
+		037F79E30C6A1A3E00D4C646 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
+		037F79EC0C6A1A9C00D4C646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		03D5D24A0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D24B0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D2690C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2670C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m */; };
@@ -88,6 +122,9 @@
 		037C07C20C6241F4006CF886 /* CCMTimeSinceDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeSinceDateTransformer.m; sourceTree = "<group>"; };
 		037C080F0C6244C1006CF886 /* CCMImageFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactoryTest.h; sourceTree = "<group>"; };
 		037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMImageFactoryTest.m; sourceTree = "<group>"; };
+		037F79A30C6A195900D4C646 /* CCMenu with tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCMenu with tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CCMenu with tests-Info.plist"; sourceTree = "<group>"; };
+		037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
 		03B5A4590C5E2DFD0096247E /* User Stories.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "User Stories.txt"; sourceTree = "<group>"; };
 		03D5D2480C5A18FD0083AA94 /* CCMStatusBarMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusBarMenuController.h; sourceTree = "<group>"; };
 		03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusBarMenuController.m; sourceTree = "<group>"; };
@@ -123,6 +160,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		037F79A10C6A195900D4C646 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				037F79E30C6A1A3E00D4C646 /* Cocoa.framework in Frameworks */,
+				037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +267,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -241,6 +288,7 @@
 			children = (
 				8D1107320486CEB800E47090 /* CCMenu.app */,
 				03474D510C44F44B00BABD10 /* UnitTests.octest */,
+				037F79A30C6A195900D4C646 /* CCMenu with tests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +331,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				03474D520C44F44B00BABD10 /* UnitTests-Info.plist */,
+				037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 				03097CC80C4CD926002F04B5 /* ProjectWindow.nib */,
 			);
@@ -319,6 +368,23 @@
 			productReference = 03474D510C44F44B00BABD10 /* UnitTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		037F79A20C6A195900D4C646 /* CCMenu with tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 037F79A60C6A195A00D4C646 /* Build configuration list for PBXNativeTarget "CCMenu with tests" */;
+			buildPhases = (
+				037F799F0C6A195900D4C646 /* Resources */,
+				037F79A00C6A195900D4C646 /* Sources */,
+				037F79A10C6A195900D4C646 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CCMenu with tests";
+			productName = "CCMenu with tests";
+			productReference = 037F79A30C6A195900D4C646 /* CCMenu with tests.app */;
+			productType = "com.apple.product-type.application";
+		};
 		8D1107260486CEB800E47090 /* CCMenu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CCMenu" */;
@@ -348,6 +414,7 @@
 			projectDirPath = "";
 			targets = (
 				8D1107260486CEB800E47090 /* CCMenu */,
+				037F79A20C6A195900D4C646 /* CCMenu with tests */,
 				03474D500C44F44B00BABD10 /* UnitTests */,
 			);
 		};
@@ -366,6 +433,27 @@
 				037C08400C6245DD006CF886 /* icon-pause.png in Resources */,
 				037C08410C6245DE006CF886 /* icon-success.png in Resources */,
 				036958480C693C3A00F89365 /* icon-inactive.png in Resources */,
+				037F799E0C6A192B00D4C646 /* Placeholder.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		037F799F0C6A195900D4C646 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				037F79BA0C6A19A800D4C646 /* cctray.xml in Resources */,
+				037F79BB0C6A19AA00D4C646 /* icon-inactive.png in Resources */,
+				037F79BC0C6A19AB00D4C646 /* Placeholder.tiff in Resources */,
+				037F79BD0C6A19AC00D4C646 /* icon-building-failed.png in Resources */,
+				037F79BE0C6A19AD00D4C646 /* icon-failure-building.png in Resources */,
+				037F79BF0C6A19AE00D4C646 /* icon-success-building.png in Resources */,
+				037F79C00C6A19AE00D4C646 /* icon-failure.png in Resources */,
+				037F79C10C6A19AF00D4C646 /* icon-pause.png in Resources */,
+				037F79C20C6A19B000D4C646 /* icon-success.png in Resources */,
+				037F79C30C6A19B100D4C646 /* Info.plist in Resources */,
+				037F79C40C6A19B200D4C646 /* MainMenu.nib in Resources */,
+				037F79C50C6A19B300D4C646 /* ProjectWindow.nib in Resources */,
+				037F79CD0C6A19CC00D4C646 /* CCMenu with tests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +515,31 @@
 				035C70B20C5F707F00906910 /* CCMServerMonitorTest.m in Sources */,
 				037C07C40C6241F4006CF886 /* CCMTimeSinceDateTransformer.m in Sources */,
 				037C08110C6244C1006CF886 /* CCMImageFactoryTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		037F79A00C6A195900D4C646 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				037F79A90C6A199900D4C646 /* CCMAppController.m in Sources */,
+				037F79AA0C6A199A00D4C646 /* CCMProjectWindowController.m in Sources */,
+				037F79AB0C6A199B00D4C646 /* CCMStatusBarMenuController.m in Sources */,
+				037F79AC0C6A199B00D4C646 /* CCMImageFactory.m in Sources */,
+				037F79AD0C6A199C00D4C646 /* CCMBuildStatusTransformer.m in Sources */,
+				037F79AE0C6A199D00D4C646 /* CCMTimeSinceDateTransformer.m in Sources */,
+				037F79AF0C6A199E00D4C646 /* CCMConnection.m in Sources */,
+				037F79B00C6A199F00D4C646 /* CCMServerMonitor.m in Sources */,
+				037F79B10C6A19A000D4C646 /* CCMProject.m in Sources */,
+				037F79B20C6A19A100D4C646 /* NSCalendarDate+CCMAdditions.m in Sources */,
+				037F79B30C6A19A100D4C646 /* CCMBuildStatusTransformerTest.m in Sources */,
+				037F79B40C6A19A200D4C646 /* CCMConnectionTest.m in Sources */,
+				037F79B50C6A19A300D4C646 /* CCMImageFactoryTest.m in Sources */,
+				037F79B60C6A19A300D4C646 /* CCMProjectTest.m in Sources */,
+				037F79B70C6A19A400D4C646 /* CCMServerMonitorTest.m in Sources */,
+				037F79B80C6A19A500D4C646 /* CCMStatusBarMenuControllerTest.m in Sources */,
+				037F79B90C6A19A700D4C646 /* NSCalendarDate+CCMAdditionsTest.m in Sources */,
+				037F79EC0C6A1A9C00D4C646 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +643,68 @@
 			};
 			name = Release;
 		};
+		037F79A70C6A195A00D4C646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "CCMenu with tests-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "CCMenu with tests";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		037F79A80C6A195A00D4C646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "CCMenu with tests-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "CCMenu with tests";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -590,6 +765,15 @@
 			buildConfigurations = (
 				03474D540C44F44B00BABD10 /* Debug */,
 				03474D550C44F44B00BABD10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		037F79A60C6A195A00D4C646 /* Build configuration list for PBXNativeTarget "CCMenu with tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				037F79A70C6A195A00D4C646 /* Debug */,
+				037F79A80C6A195A00D4C646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

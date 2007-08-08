@@ -10,41 +10,44 @@
 	factory = [[[CCMImageFactory alloc] init] autorelease];
 }
 
-- (void)testReturnsLastBuildSuccessfulSleepingImage
+- (void)testLastBuildSuccessfulSleepingImage
 {
-//	TODO: I would have preferred tests like this but for some reason I can't seem to set the image names
-//	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-//	STAssertEqualObjects(@"icon-success-menu", [image name], @"Should have loaded correct image.");
+	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	STAssertEqualObjects(@"icon-success.png", [image name], @"Should have loaded correct image.");
 }
 
-- (void)testNameForLastBuildSuccessfulSleepingImage
+- (void)testLastBuildFailedSleepingImage
 {
-	NSString *name = [factory imageNameForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	STAssertEqualObjects(@"icon-success.png", name, @"Should have loaded correct image.");
+	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	STAssertEqualObjects(@"icon-failure.png", [image name], @"Should have loaded correct image.");
 }
 
-- (void)testNameForLastBuildFailedSleepingImage
+- (void)testLastBuildSuccessfulOtherActivityImage
 {
-	NSString *name = [factory imageNameForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	STAssertEqualObjects(@"icon-failure.png", name, @"Should have loaded correct image.");
+	NSImage *image = [factory imageForActivity:@"some random activity" lastBuildStatus:CCMSuccessStatus];
+	STAssertEqualObjects(@"icon-success.png", [image name], @"Should have loaded correct image.");
 }
 
-- (void)testNameForLastBuildSuccessfulOtherActivityImage
+- (void)testLastBuildSuccessfulBuildingImage
 {
-	NSString *name = [factory imageNameForActivity:@"foo" lastBuildStatus:CCMSuccessStatus];
-	STAssertEqualObjects(@"icon-success.png", name, @"Should have loaded correct image.");
-}
-
-- (void)testNameForLastBuildSuccessfulBuildingImage
-{
-	NSString *name = [factory imageNameForActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-	STAssertEqualObjects(@"icon-success-building.png", name, @"Should have loaded correct image.");
+	NSImage *image = [factory imageForActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+	STAssertEqualObjects(@"icon-success-building.png", [image name], @"Should have loaded correct image.");
 }
 
 - (void)testNameForLastBuildFailedBuildingImage
 {
-	NSString *name = [factory imageNameForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-	STAssertEqualObjects(@"icon-failure-building.png", name, @"Should have loaded correct image.");
+	NSImage *image = [factory imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+	STAssertEqualObjects(@"icon-failure-building.png", [image name], @"Should have loaded correct image.");
+}
+
+- (void)testCachesMenuImages
+{
+	NSImage *original = [[NSImage alloc] init];
+	STAssertTrue([original setName:@"testCachesMenuImages"], @"Should have been able to set image name.");
+	NSImage *menu1 = [factory convertForMenuUse:original];
+	STAssertEqualObjects(@"testCachesMenuImages-menu", [menu1 name], @"Should have been able to set image name.");
+	NSImage *menu2 = [factory convertForMenuUse:original];
+	STAssertTrue(menu1 == menu2, @"Should have reused same image object.");
 }
 
 @end

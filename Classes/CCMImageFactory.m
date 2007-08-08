@@ -5,28 +5,44 @@
 
 @implementation CCMImageFactory
 
-- (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)status
+- (NSImage *)imageNamed:(NSString *)name
 {
-	return [NSImage imageNamed:[self imageNameForActivity:activity lastBuildStatus:status]];
+	NSImage *image = [NSImage imageNamed:name];
+	if(image == nil)
+	{
+		// This is a hack to make the unit tests work, in which imageNamed: doesn't work
+		NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"Images/%@", name]];
+		image = [[NSImage alloc] initWithContentsOfURL:url];
+		[image setName:name];
+	}
+	return image;	
 }
 
-- (NSString *)imageNameForActivity:(NSString *)activity lastBuildStatus:(NSString *)status
+- (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)status
 {
-	NSString *activityPart = [activity isEqualToString:CCMBuildingActivity] ? @"-building" : @"";
-	return [NSString stringWithFormat:@"icon-%@%@.png", [status lowercaseString], activityPart];
+	activity = [activity isEqualToString:CCMBuildingActivity] ? @"-building" : @"";
+	status = [status lowercaseString];
+	NSString *name = [NSString stringWithFormat:@"icon-%@%@.png", status, activity];
+	return [self imageNamed:name];
 }
 
 - (NSImage *)imageForUnavailableServer
 {
-	return [NSImage imageNamed:@"icon-inactive.png"];
+	return [self imageNamed:@"icon-inactive.png"];
 }
 
-- (NSImage *)convertForMenuUse:(NSImage *)image
+- (NSImage *)convertForMenuUse:(NSImage *)originalImage
 {
-	NSImage *copy = [image copy];
-	[copy setScalesWhenResized:NO];
-	[copy setSize:NSMakeSize(15, 17)];
-	return copy;
+	NSString *name = [NSString stringWithFormat:@"%@-menu", [originalImage name]];
+	NSImage *menuImage = [NSImage imageNamed:name];
+	if(menuImage == nil)
+	{
+		menuImage = [[originalImage copy] autorelease];
+		[menuImage setScalesWhenResized:NO];
+		[menuImage setSize:NSMakeSize(15, 17)];
+		[menuImage setName:name];
+	}
+	return menuImage;
 }
 
 @end
