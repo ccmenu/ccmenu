@@ -12,10 +12,6 @@
 		03097A200C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097A1F0C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m */; };
 		03097CCA0C4CD926002F04B5 /* ProjectWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03097CC80C4CD926002F04B5 /* ProjectWindow.nib */; };
 		03097CCD0C4CD93A002F04B5 /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */; };
-		0357DD200C6B90FC00523845 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357DD180C6B90FC00523845 /* Growl.framework */; };
-		0357DD210C6B90FC00523845 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357DD180C6B90FC00523845 /* Growl.framework */; };
-		0357DD220C6B90FC00523845 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357DD180C6B90FC00523845 /* Growl.framework */; };
-		0357DD2D0C6B918200523845 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0357DD180C6B90FC00523845 /* Growl.framework */; };
 		0357DD960C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD980C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD990C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
@@ -27,7 +23,6 @@
 		035C70B20C5F707F00906910 /* CCMServerMonitorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */; };
 		0369573C0C692C0900F89365 /* Placeholder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0369573B0C692C0900F89365 /* Placeholder.tiff */; };
 		036958470C693C3A00F89365 /* icon-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 036958460C693C3A00F89365 /* icon-inactive.png */; };
-		036958480C693C3A00F89365 /* icon-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 036958460C693C3A00F89365 /* icon-inactive.png */; };
 		037C07880C621266006CF886 /* icon-building-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07820C621266006CF886 /* icon-building-failed.png */; };
 		037C07890C621266006CF886 /* icon-failure-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07830C621266006CF886 /* icon-failure-building.png */; };
 		037C078A0C621266006CF886 /* icon-success-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07840C621266006CF886 /* icon-success-building.png */; };
@@ -37,14 +32,7 @@
 		037C07C30C6241F4006CF886 /* CCMTimeSinceDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 037C07C20C6241F4006CF886 /* CCMTimeSinceDateTransformer.m */; };
 		037C07C40C6241F4006CF886 /* CCMTimeSinceDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 037C07C20C6241F4006CF886 /* CCMTimeSinceDateTransformer.m */; };
 		037C08110C6244C1006CF886 /* CCMImageFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */; };
-		037C083C0C6245DA006CF886 /* icon-building-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07820C621266006CF886 /* icon-building-failed.png */; };
-		037C083D0C6245DB006CF886 /* icon-failure-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07830C621266006CF886 /* icon-failure-building.png */; };
-		037C083E0C6245DC006CF886 /* icon-success-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07840C621266006CF886 /* icon-success-building.png */; };
-		037C083F0C6245DC006CF886 /* icon-failure.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07850C621266006CF886 /* icon-failure.png */; };
-		037C08400C6245DD006CF886 /* icon-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07860C621266006CF886 /* icon-pause.png */; };
-		037C08410C6245DE006CF886 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C07870C621266006CF886 /* icon-success.png */; };
 		037CFD0F0C56B83D0021D2DA /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */; };
-		037F799E0C6A192B00D4C646 /* Placeholder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0369573B0C692C0900F89365 /* Placeholder.tiff */; };
 		037F79A90C6A199900D4C646 /* CCMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */; };
 		037F79AA0C6A199A00D4C646 /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */; };
 		037F79AB0C6A199B00D4C646 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
@@ -78,12 +66,18 @@
 		037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
 		037F79EC0C6A1A9C00D4C646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		037F7BFF0C6A3BF100D4C646 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
-		037F7C1C0C6A3ED000D4C646 /* CC.icns in Resources */ = {isa = PBXBuildFile; fileRef = 037F7C1B0C6A3ED000D4C646 /* CC.icns */; };
-		037F7C1D0C6A3ED000D4C646 /* CC.icns in Resources */ = {isa = PBXBuildFile; fileRef = 037F7C1B0C6A3ED000D4C646 /* CC.icns */; };
-		038EC2560C6C9A2800597BA0 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0357DD180C6B90FC00523845 /* Growl.framework */; };
 		038EC6510C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
 		038EC6520C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
-		038EC6530C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
+		038EC67E0C6D14BE00597BA0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		038EC6810C6D14C600597BA0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
+		038EC7340C6D1E1000597BA0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
+		038EC7350C6D1E1000597BA0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
+		038EC7360C6D1E1000597BA0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
+		038EC7380C6D1E1900597BA0 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
+		038EC7390C6D1E1E00597BA0 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
+		038EC7500C6D1F3000597BA0 /* COPYING.txt in Resources */ = {isa = PBXBuildFile; fileRef = 038EC74F0C6D1F3000597BA0 /* COPYING.txt */; };
+		038EC7510C6D1F4500597BA0 /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03474D520C44F44B00BABD10 /* UnitTests-Info.plist */; };
+		038EC76C0C6D2E1300597BA0 /* CCMenu.icns in Resources */ = {isa = PBXBuildFile; fileRef = 038EC76B0C6D2E1300597BA0 /* CCMenu.icns */; };
 		03D5D24A0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D24B0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D2690C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2670C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m */; };
@@ -97,7 +91,6 @@
 		03F374630C47323D003240C4 /* CCMServerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */; };
 		03F3746F0C47324E003240C4 /* CCMConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374650C47324E003240C4 /* CCMConnectionTest.m */; };
 		03F374710C47324E003240C4 /* CCMProjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374690C47324E003240C4 /* CCMProjectTest.m */; };
-		03F374720C47324E003240C4 /* cctray.xml in Resources */ = {isa = PBXBuildFile; fileRef = 03F3746A0C47324E003240C4 /* cctray.xml */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -111,7 +104,7 @@
 			dstPath = Contents/Frameworks;
 			dstSubfolderSpec = 1;
 			files = (
-				0357DD2D0C6B918200523845 /* Growl.framework in CopyFiles */,
+				038EC7380C6D1E1900597BA0 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +114,7 @@
 			dstPath = Contents/Frameworks;
 			dstSubfolderSpec = 1;
 			files = (
-				038EC2560C6C9A2800597BA0 /* Growl.framework in CopyFiles */,
+				038EC7390C6D1E1E00597BA0 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +131,6 @@
 		0318C85B0C6870F400D005EE /* RELEASENOTES.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = RELEASENOTES.txt; sourceTree = "<group>"; };
 		03474D510C44F44B00BABD10 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03474D520C44F44B00BABD10 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		0357DD180C6B90FC00523845 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = build/Growl.framework; sourceTree = "<group>"; };
 		0357DD940C6B982600523845 /* CCMGrowlAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMGrowlAdaptor.h; sourceTree = "<group>"; };
 		0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMGrowlAdaptor.m; sourceTree = "<group>"; };
 		035C6D780C5E48F300906910 /* CCMImageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactory.h; sourceTree = "<group>"; };
@@ -164,8 +156,10 @@
 		037F79A30C6A195900D4C646 /* CCMenu with tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCMenu with tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CCMenu with tests-Info.plist"; sourceTree = "<group>"; };
 		037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
-		037F7C1B0C6A3ED000D4C646 /* CC.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CC.icns; path = Images/CC.icns; sourceTree = "<group>"; };
 		038EC64A0C6D0F9E00597BA0 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		038EC72C0C6D1E1000597BA0 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = build/Frameworks/Growl.framework; sourceTree = "<group>"; };
+		038EC74F0C6D1F3000597BA0 /* COPYING.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = COPYING.txt; sourceTree = "<group>"; };
+		038EC76B0C6D2E1300597BA0 /* CCMenu.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CCMenu.icns; path = Images/CCMenu.icns; sourceTree = "<group>"; };
 		03B5A4590C5E2DFD0096247E /* User Stories.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "User Stories.txt"; sourceTree = "<group>"; };
 		03D5D2480C5A18FD0083AA94 /* CCMStatusBarMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusBarMenuController.h; sourceTree = "<group>"; };
 		03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusBarMenuController.m; sourceTree = "<group>"; };
@@ -201,7 +195,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0357DD220C6B90FC00523845 /* Growl.framework in Frameworks */,
+				038EC67E0C6D14BE00597BA0 /* Cocoa.framework in Frameworks */,
+				038EC6810C6D14C600597BA0 /* SenTestingKit.framework in Frameworks */,
+				038EC7360C6D1E1000597BA0 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +207,7 @@
 			files = (
 				037F79E30C6A1A3E00D4C646 /* Cocoa.framework in Frameworks */,
 				037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */,
-				0357DD200C6B90FC00523845 /* Growl.framework in Frameworks */,
+				038EC7340C6D1E1000597BA0 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				0357DD210C6B90FC00523845 /* Growl.framework in Frameworks */,
+				038EC7350C6D1E1000597BA0 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +309,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0357DD180C6B90FC00523845 /* Growl.framework */,
+				038EC72C0C6D1E1000597BA0 /* Growl.framework */,
 				037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -334,8 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* CCMenu.app */,
-				03474D510C44F44B00BABD10 /* UnitTests.octest */,
 				037F79A30C6A195900D4C646 /* CCMenu with tests.app */,
+				03474D510C44F44B00BABD10 /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				0318C85B0C6870F400D005EE /* RELEASENOTES.txt */,
+				038EC74F0C6D1F3000597BA0 /* COPYING.txt */,
 				03B5A4590C5E2DFD0096247E /* User Stories.txt */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				03474D330C44F37200BABD10 /* Tests */,
@@ -367,22 +364,22 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+				03097CC80C4CD926002F04B5 /* ProjectWindow.nib */,
 				038EC6500C6D0FB200597BA0 /* Localizable.strings */,
+				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				037F7C1B0C6A3ED000D4C646 /* CC.icns */,
-				036958460C693C3A00F89365 /* icon-inactive.png */,
+				038EC76B0C6D2E1300597BA0 /* CCMenu.icns */,
 				0369573B0C692C0900F89365 /* Placeholder.tiff */,
+				036958460C693C3A00F89365 /* icon-inactive.png */,
 				037C07820C621266006CF886 /* icon-building-failed.png */,
 				037C07830C621266006CF886 /* icon-failure-building.png */,
 				037C07840C621266006CF886 /* icon-success-building.png */,
 				037C07850C621266006CF886 /* icon-failure.png */,
 				037C07860C621266006CF886 /* icon-pause.png */,
 				037C07870C621266006CF886 /* icon-success.png */,
-				8D1107310486CEB800E47090 /* Info.plist */,
 				03474D520C44F44B00BABD10 /* UnitTests-Info.plist */,
 				037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */,
-				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
-				03097CC80C4CD926002F04B5 /* ProjectWindow.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -403,6 +400,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03474D530C44F44B00BABD10 /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
+				038EC7410C6D1E4A00597BA0 /* ShellScript */,
 				03474D4C0C44F44B00BABD10 /* Resources */,
 				03474D4D0C44F44B00BABD10 /* Sources */,
 				03474D4E0C44F44B00BABD10 /* Frameworks */,
@@ -421,6 +419,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 037F79A60C6A195A00D4C646 /* Build configuration list for PBXNativeTarget "CCMenu with tests" */;
 			buildPhases = (
+				038EC73A0C6D1E2C00597BA0 /* ShellScript */,
 				037F799F0C6A195900D4C646 /* Resources */,
 				037F79A00C6A195900D4C646 /* Sources */,
 				037F79A10C6A195900D4C646 /* Frameworks */,
@@ -477,16 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03F374720C47324E003240C4 /* cctray.xml in Resources */,
-				037C083C0C6245DA006CF886 /* icon-building-failed.png in Resources */,
-				037C083D0C6245DB006CF886 /* icon-failure-building.png in Resources */,
-				037C083E0C6245DC006CF886 /* icon-success-building.png in Resources */,
-				037C083F0C6245DC006CF886 /* icon-failure.png in Resources */,
-				037C08400C6245DD006CF886 /* icon-pause.png in Resources */,
-				037C08410C6245DE006CF886 /* icon-success.png in Resources */,
-				036958480C693C3A00F89365 /* icon-inactive.png in Resources */,
-				037F799E0C6A192B00D4C646 /* Placeholder.tiff in Resources */,
-				038EC6530C6D0FB200597BA0 /* Localizable.strings in Resources */,
+				038EC7510C6D1F4500597BA0 /* UnitTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +496,6 @@
 				037F79C40C6A19B200D4C646 /* MainMenu.nib in Resources */,
 				037F79C50C6A19B300D4C646 /* ProjectWindow.nib in Resources */,
 				037F79CD0C6A19CC00D4C646 /* CCMenu with tests-Info.plist in Resources */,
-				037F7C1C0C6A3ED000D4C646 /* CC.icns in Resources */,
 				038EC6520C6D0FB200597BA0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,8 +516,9 @@
 				0369573C0C692C0900F89365 /* Placeholder.tiff in Resources */,
 				036958470C693C3A00F89365 /* icon-inactive.png in Resources */,
 				037F7BFF0C6A3BF100D4C646 /* Info.plist in Resources */,
-				037F7C1D0C6A3ED000D4C646 /* CC.icns in Resources */,
 				038EC6510C6D0FB200597BA0 /* Localizable.strings in Resources */,
+				038EC7500C6D1F3000597BA0 /* COPYING.txt in Resources */,
+				038EC76C0C6D2E1300597BA0 /* CCMenu.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\nexport DYLD_FRAMEWORK_PATH=\"${TEMP_ROOT}/Frameworks\"\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		0357DCF50C6B902D00523845 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -559,7 +549,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pushd build\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf ../Frameworks/Growl.tar.gz\nfi\npopd\n\n";
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\npopd\n\n";
+		};
+		038EC73A0C6D1E2C00597BA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\npopd\n\n";
+		};
+		038EC7410C6D1E4A00597BA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\npopd\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -679,8 +695,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -712,8 +732,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -744,9 +768,11 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -779,9 +805,11 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -811,8 +839,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -836,8 +866,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;

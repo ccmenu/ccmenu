@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>CC.icns</string>
+	<string>CCMenu.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sourceforge.cruisecontrol.ccmenu</string>
 	<key>CFBundleInfoDictionaryVersion</key>

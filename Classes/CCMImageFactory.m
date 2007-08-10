@@ -13,10 +13,7 @@
 		// This is a hack to make the unit tests work when run from otool, in which case imageNamed: doesn't work
 		NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"Images/%@", name]];
 		image = [[NSImage alloc] initWithContentsOfURL:url];
-		NSString *ext = [name pathExtension];
-		if(ext != nil)
-			name = [name substringToIndex:[name length] - [ext length]];
-		[image setName:name];
+		[image setName:[name substringToIndex:[name length] - [[name pathExtension] length] - 1]];
 	}
 	return image;	
 }
