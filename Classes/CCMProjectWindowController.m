@@ -85,11 +85,11 @@ NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 	{
 		[NSBundle loadNibNamed:@"ProjectWindow" owner:self];
 		[window setToolbar:[self createToolbar]];
+
+		[[NSNotificationCenter defaultCenter] 
+			addObserver:self selector:@selector(statusUpdate:) name:CCMProjectStatusUpdateNotification object:nil];
 	}
-	[window makeKeyAndOrderFront:self];
-	
-	[[NSNotificationCenter defaultCenter] 
-		addObserver:self selector:@selector(statusUpdate:) name:CCMProjectStatusUpdateNotification object:nil];
+	[window makeKeyAndOrderFront:self];	
 }
 
 - (void)forceBuild:(id)sender

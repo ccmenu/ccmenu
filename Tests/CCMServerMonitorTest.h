@@ -1,10 +1,13 @@
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "CCMServerMonitor.h"
 
 
 @interface CCMServerMonitorTest : SenTestCase 
 {
-	NSMutableDictionary *info;
+	CCMServerMonitor *monitor;
+	NSDictionary *projectInfo;
+	NSMutableArray *postedNotifications;
 }
 
 @end

@@ -5,7 +5,8 @@
 #import "CCMProjectWindowController.h"
 #import "CCMImageFactory.h"
 
-@interface CCMAppController : NSObject 
+
+@interface CCMAppController : NSObject
 {
 	IBOutlet CCMProjectWindowController	*projectWindowController;
 	IBOutlet CCMStatusBarMenuController	*statusBarMenuController;

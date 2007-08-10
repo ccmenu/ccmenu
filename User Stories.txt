@@ -1,16 +1,16 @@
 
-Stories
-=======
+Outstanding Stories
+===================
 
 Server Settings: As a developer I want to set which server CCMenu monitors so that I can see information relevant to me.
 
 Exclude project from menu: As a developer I want to specify which projects should be excluded from the display in the 
 menu.
 
-Growl notifications: As a developer I want CCMenu to notify me of relevant events via Growl so that I am aware of all 
-relevant status changes without having to switch applications.
-
 -- release 1 ?
+
+Audible notifications: As a developer I want CCMenu to notify me of relevant events by playing configurable sounds so
+that I am aware of status changes without having to switch applications.
 
 Force build: As a developer I want to e able to force a build from the project window so that I do not have to go to
 the dashboard for this operation. 
@@ -43,7 +43,6 @@ status bar item so that I can have a detailed view without opening the menu or w
 Bugs
 ====
 
-* multiple registration for notifications
 * does not recover from 'no server connection on startup' state
 - window has to wait for first notification to show content
 - many strings not localizable

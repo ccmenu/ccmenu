@@ -3,6 +3,12 @@
 #import "CCMProject.h"
 
 NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotification";
+NSString *CCMBuildCompleteNotification = @"CCMBuildCompleteNotification";
+
+NSString *CCMSuccessfulBuild = @"Successful";
+NSString *CCMFixedBuild = @"Fixed";
+NSString *CCMBrokenBuild = @"Broken";
+NSString *CCMStillFailingBuild = @"Still failing";
 
 
 @implementation CCMServerMonitor
@@ -23,6 +29,11 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	[super dealloc];	
 }
 
+- (void)setNotificationCenter:(NSNotificationCenter *)center
+{
+	notificationCenter = center;
+}
+
 - (void)start
 {
 	[self pollServer:nil];
@@ -33,6 +44,30 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 {
 	[timer invalidate];
 	timer = nil;
+}
+
+- (NSString *)buildResultForLastStatus:(NSString *)lastStatus newStatus:(NSString *)newStatus
+{
+	if([lastStatus isEqualToString:CCMSuccessStatus] && [newStatus isEqualToString:CCMSuccessStatus])
+		return CCMSuccessfulBuild;
+	if([lastStatus isEqualToString:CCMSuccessStatus] && [newStatus isEqualToString:CCMFailedStatus])
+		return CCMBrokenBuild;
+	if([lastStatus isEqualToString:CCMFailedStatus] && [newStatus isEqualToString:CCMSuccessStatus])
+		return CCMFixedBuild;
+	if([lastStatus isEqualToString:CCMFailedStatus] && [newStatus isEqualToString:CCMFailedStatus])
+		return CCMStillFailingBuild;
+	return @"";
+}
+
+- (NSDictionary *)buildCompleteInfoForProject:(CCMProject *)project andNewProjectInfo:(NSDictionary *)projectInfo
+{
+	NSMutableDictionary *notificationInfo = [NSMutableDictionary dictionary];
+	[notificationInfo setObject:[project valueForKey:@"name"] forKey:@"projectName"];
+	NSString *lastStatus = [project valueForKey:@"lastBuildStatus"];
+	NSString *newStatus = [projectInfo objectForKey:@"lastBuildStatus"];
+	NSString *result = [self buildResultForLastStatus:lastStatus newStatus:newStatus];
+	[notificationInfo setObject:result forKey:@"buildResult"];
+	return notificationInfo;
 }
 
 - (void)pollServer:(id)sender
@@ -48,9 +83,23 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 			project = [[[CCMProject alloc] initWithName:projectName] autorelease];
 			[projects setObject:project forKey:projectName];
 		}
+		else 
+		{
+			if([[project valueForKey:@"activity"] isEqualToString:CCMBuildingActivity] &&
+				![[info objectForKey:@"activity"] isEqualToString:CCMBuildingActivity])
+			{
+				NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
+				[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
+			} 
+			else if(![[project valueForKey:@"lastBuildStatus"] isEqualToString:[info valueForKey:@"lastBuildStatus"]])
+			{
+				NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
+				[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
+			}
+		}
 		[project updateWithInfo:info];
 	}
-	[[NSNotificationCenter defaultCenter] postNotificationName:CCMProjectStatusUpdateNotification object:self];
+	[notificationCenter postNotificationName:CCMProjectStatusUpdateNotification object:self userInfo:nil];
 }
 
 - (NSArray *)projects

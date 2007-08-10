@@ -2,6 +2,7 @@
 #import "CCMAppController.h"
 #import "CCMConnection.h"
 #import "CCMServerMonitor.h"
+#import "CCMGrowlAdaptor.h"
 #import "CCMBuildStatusTransformer.h"
 #import "CCMTimeSinceDateTransformer.h"
 
@@ -17,12 +18,17 @@
 	CCMTimeSinceDateTransformer *dateTransformer = [[[CCMTimeSinceDateTransformer alloc] init] autorelease];
 	[NSValueTransformer setValueTransformer:dateTransformer forName:CCMTimeSinceDateTransformerName];
 	
-	NSURL *url = [NSURL URLWithString:@"http://cclive.thoughtworks.com/dashboard/cctray.xml"];
-//	NSURL *url = [NSURL URLWithString:@"http://localhost:8080/dashboard/cctray.xml"];
+	CCMGrowlAdaptor *growlAdaptor = [[CCMGrowlAdaptor alloc] init]; // intentional 'leak'
+	[growlAdaptor start]; 
+	
+//	NSURL *url = [NSURL URLWithString:@"http://cclive.thoughtworks.com/dashboard/cctray.xml"];
+	NSURL *url = [NSURL URLWithString:@"http://localhost:8080/dashboard/cctray.xml"];
 	CCMConnection *connection = [[[CCMConnection alloc] initWithURL:url] autorelease];
 	monitor = [[CCMServerMonitor alloc] initWithConnection:connection];
+	[monitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
 	[monitor start];
 }
+
 
 - (IBAction)checkStatus:(id)sender
 {

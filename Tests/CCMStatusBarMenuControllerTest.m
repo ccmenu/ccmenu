@@ -13,7 +13,6 @@
 	[menu addItem:sepItem];
 	[menu addItem:[NSMenuItem separatorItem]];
 	NSMenuItem *openItem = [[[NSMenuItem alloc] initWithTitle:@"Open..." action:NULL keyEquivalent:@""] autorelease];
-	[openItem setTag:8];
 	[openItem setTarget:self];
 	[menu addItem:openItem];
 

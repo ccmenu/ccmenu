@@ -5,12 +5,16 @@
 
 @interface CCMServerMonitor : NSObject 
 {
-	CCMConnection		*connection;
-	NSTimer				*timer;
-	NSMutableDictionary	*projects;
+	CCMConnection			*connection;
+	NSNotificationCenter	*notificationCenter;
+
+	NSTimer					*timer;
+	NSMutableDictionary		*projects;
 }
 
 - (id)initWithConnection:(CCMConnection *)aConnection;
+
+- (void)setNotificationCenter:(NSNotificationCenter *)center;
 
 - (void)start;
 - (void)stop;
@@ -22,3 +26,9 @@
 @end
 
 extern NSString *CCMProjectStatusUpdateNotification;
+extern NSString *CCMBuildCompleteNotification;
+
+extern NSString *CCMSuccessfulBuild;
+extern NSString *CCMFixedBuild;
+extern NSString *CCMBrokenBuild;
+extern NSString *CCMStillFailingBuild;
