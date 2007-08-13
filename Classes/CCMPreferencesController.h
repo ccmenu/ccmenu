@@ -5,22 +5,19 @@
 @interface CCMPreferencesController : NSObject 
 {
 	IBOutlet NSPanel				*preferencesWindow;
-	IBOutlet NSOutlineView			*serverAndProjectView;
 	
-	IBOutlet NSPanel				*addServerSheet;
+	IBOutlet NSPanel				*addProjectsSheet;
+	IBOutlet NSTabView				*sheetTabView;
 	IBOutlet NSComboBox				*serverUrlComboBox;
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
-	
-	IBOutlet NSTreeController		*serverAndProjectViewController;
+	IBOutlet NSArrayController		*chooseProjectsViewController;	
 }
 
 - (IBAction)showWindow:(id)sender;
 
-- (IBAction)addServer:(id)sender;
-- (IBAction)removeServer:(id)sender;
-
-- (IBAction)testServerConnection:(id)sender;
-- (IBAction)closeAddServerSheet:(id)sender;
+- (IBAction)addProjects:(id)sender;
+- (IBAction)chooseProjects:(id)sender;
+- (IBAction)closeAddProjectsSheet:(id)sender;
 
 @end

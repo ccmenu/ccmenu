@@ -391,8 +391,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -411,8 +411,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -421,8 +421,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -441,8 +441,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -451,8 +451,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -461,8 +461,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -481,8 +481,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -521,8 +521,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -552,7 +552,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 31";
 		rLen = 0;
-		rLoc = 1455;
+		rLoc = 1443;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 0;
@@ -582,7 +582,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 31";
 		rLen = 0;
-		rLoc = 1455;
+		rLoc = 1443;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 0;
@@ -650,7 +650,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 24";
 		rLen = 0;
-		rLoc = 1453;
+		rLoc = 1441;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 0;
@@ -659,8 +659,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -670,7 +670,7 @@
 		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
 		name = "CCMPreferencesController.m: 70";
 		rLen = 0;
-		rLoc = 2302;
+		rLoc = 2127;
 		rType = 0;
 		vrLen = 1578;
 		vrLoc = 0;
@@ -730,7 +730,7 @@
 		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
 		name = "CCMPreferencesController.m: 70";
 		rLen = 0;
-		rLoc = 2302;
+		rLoc = 2127;
 		rType = 0;
 		vrLen = 1987;
 		vrLoc = 1154;
@@ -750,7 +750,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 24";
 		rLen = 0;
-		rLoc = 1453;
+		rLoc = 1441;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 0;
@@ -759,8 +759,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -770,7 +770,7 @@
 		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
 		name = "CCMPreferencesController.m: 70";
 		rLen = 0;
-		rLoc = 2302;
+		rLoc = 2127;
 		rType = 0;
 		vrLen = 1578;
 		vrLoc = 0;
@@ -867,7 +867,7 @@
 		hitCount = 1;
 		lineNumber = 43;
 		location = CCMAppController.ob;
-		modificationTime = 208704099.176739;
+		modificationTime = 208711434.158075;
 		state = 1;
 	};
 	033A6FA60C70925B004669D7 /* PBXTextBookmark */ = {
@@ -895,7 +895,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 31";
 		rLen = 0;
-		rLoc = 1455;
+		rLoc = 1443;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -965,7 +965,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 27";
 		rLen = 0;
-		rLoc = 1453;
+		rLoc = 1441;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 761;
@@ -1002,7 +1002,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 27";
 		rLen = 0;
-		rLoc = 1453;
+		rLoc = 1441;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 761;
@@ -1122,7 +1122,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 24";
 		rLen = 0;
-		rLoc = 1453;
+		rLoc = 1441;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 0;
@@ -1162,7 +1162,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 37";
 		rLen = 0;
-		rLoc = 1351;
+		rLoc = 1339;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 0;
@@ -1172,7 +1172,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 37";
 		rLen = 0;
-		rLoc = 1351;
+		rLoc = 1339;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 0;
@@ -1192,7 +1192,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 37";
 		rLen = 0;
-		rLoc = 1351;
+		rLoc = 1339;
 		rType = 0;
 		vrLen = 964;
 		vrLoc = 497;
@@ -1212,7 +1212,7 @@
 		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
 		name = "CCMAppController.m: 37";
 		rLen = 0;
-		rLoc = 1351;
+		rLoc = 1339;
 		rType = 0;
 		vrLen = 964;
 		vrLoc = 497;
@@ -1226,6 +1226,1120 @@
 		rType = 0;
 		vrLen = 1629;
 		vrLoc = 818;
+	};
+	033A6FE40C70970F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 37";
+		rLen = 0;
+		rLoc = 1339;
+		rType = 0;
+		vrLen = 1461;
+		vrLoc = 0;
+	};
+	033A6FE50C70970F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03B5A4590C5E2DFD0096247E /* User Stories.txt */;
+		name = "User Stories.txt: 46";
+		rLen = 0;
+		rLoc = 2356;
+		rType = 0;
+		vrLen = 1823;
+		vrLoc = 0;
+	};
+	033A6FE60C70970F004669D7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 038EC76B0C6D2E1300597BA0 /* CCMenu.icns */;
+	};
+	033A6FE70C70970F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03B5A4590C5E2DFD0096247E /* User Stories.txt */;
+		name = "User Stories.txt: 46";
+		rLen = 0;
+		rLoc = 2356;
+		rType = 0;
+		vrLen = 1823;
+		vrLoc = 0;
+	};
+	033A6FE80C70970F004669D7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 038EC76B0C6D2E1300597BA0 /* CCMenu.icns */;
+	};
+	033A6FEE0C7098BA004669D7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 038EC76B0C6D2E1300597BA0 /* CCMenu.icns */;
+	};
+	033A6FEF0C7098BA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 37";
+		rLen = 0;
+		rLoc = 1339;
+		rType = 0;
+		vrLen = 1220;
+		vrLoc = 241;
+	};
+	033A6FF00C7098BA004669D7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 038EC76B0C6D2E1300597BA0 /* CCMenu.icns */;
+	};
+	033A6FF10C7098BA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 25";
+		rLen = 0;
+		rLoc = 913;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 241;
+	};
+	033A6FF40C7098C6004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 21";
+		rLen = 0;
+		rLoc = 792;
+		rType = 0;
+		vrLen = 1449;
+		vrLoc = 0;
+	};
+	033A6FF50C7098C6004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 25";
+		rLen = 0;
+		rLoc = 913;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 192;
+	};
+	033A6FF80C709C3B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 21";
+		rLen = 0;
+		rLoc = 792;
+		rType = 0;
+		vrLen = 1449;
+		vrLoc = 0;
+	};
+	033A6FF90C709C3B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 10";
+		rLen = 0;
+		rLoc = 118;
+		rType = 0;
+		vrLen = 727;
+		vrLoc = 0;
+	};
+	033A6FFA0C709C3B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 21";
+		rLen = 0;
+		rLoc = 792;
+		rType = 0;
+		vrLen = 1449;
+		vrLoc = 0;
+	};
+	033A6FFB0C709C3B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 10";
+		rLen = 0;
+		rLoc = 118;
+		rType = 0;
+		vrLen = 727;
+		vrLoc = 0;
+	};
+	033A6FFC0C709C3B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 25";
+		rLen = 0;
+		rLoc = 913;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 192;
+	};
+	033A6FFF0C709C96004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: removeProjects:";
+		rLen = 0;
+		rLoc = 478;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 0;
+	};
+	033A70000C709C96004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 25";
+		rLen = 0;
+		rLoc = 913;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 192;
+	};
+	033A70050C709DD2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 107";
+		rLen = 0;
+		rLoc = 2832;
+		rType = 0;
+		vrLen = 1960;
+		vrLoc = 1958;
+	};
+	033A70060C709DD2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: addProjects:";
+		rLen = 120;
+		rLoc = 443;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 0;
+	};
+	033A70070C709DD2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: addProjects:";
+		rLen = 120;
+		rLoc = 443;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 0;
+	};
+	033A70080C709DD2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 107";
+		rLen = 0;
+		rLoc = 2832;
+		rType = 0;
+		vrLen = 1960;
+		vrLoc = 1958;
+	};
+	033A70090C709DD2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 8";
+		rLen = 0;
+		rLoc = 118;
+		rType = 0;
+		vrLen = 674;
+		vrLoc = 0;
+	};
+	033A700A0C709DD2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 25";
+		rLen = 0;
+		rLoc = 913;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 192;
+	};
+	033A700E0C709E64004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 8";
+		rLen = 0;
+		rLoc = 118;
+		rType = 0;
+		vrLen = 674;
+		vrLoc = 0;
+	};
+	033A700F0C709E64004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 8";
+		rLen = 0;
+		rLoc = 118;
+		rType = 0;
+		vrLen = 674;
+		vrLoc = 0;
+	};
+	033A70100C709E64004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 80";
+		rLen = 0;
+		rLoc = 2196;
+		rType = 0;
+		vrLen = 1547;
+		vrLoc = 1552;
+	};
+	033A70140C709E83004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 80";
+		rLen = 0;
+		rLoc = 2196;
+		rType = 0;
+		vrLen = 1615;
+		vrLoc = 1552;
+	};
+	033A70150C709E83004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 25";
+		rLen = 0;
+		rLoc = 913;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 192;
+	};
+	033A70160C709E83004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'addServerSheet' undeclared (first use in this function)";
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		rLen = 1;
+		rLoc = 67;
+		rType = 1;
+	};
+	033A70170C709E83004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 90";
+		rLen = 0;
+		rLoc = 2196;
+		rType = 0;
+		vrLen = 938;
+		vrLoc = 2227;
+	};
+	033A70180C70A0FC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 90";
+		rLen = 0;
+		rLoc = 2196;
+		rType = 0;
+		vrLen = 938;
+		vrLoc = 2227;
+	};
+	033A701B0C70A190004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 90";
+		rLen = 0;
+		rLoc = 2196;
+		rType = 0;
+		vrLen = 1737;
+		vrLoc = 669;
+	};
+	033A701C0C70A190004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: endAddProjectsSheet:";
+		rLen = 0;
+		rLoc = 564;
+		rType = 0;
+		vrLen = 662;
+		vrLoc = 0;
+	};
+	033A701D0C70A190004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 90";
+		rLen = 0;
+		rLoc = 2196;
+		rType = 0;
+		vrLen = 1737;
+		vrLoc = 669;
+	};
+	033A701E0C70A190004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: endAddProjectsSheet:";
+		rLen = 0;
+		rLoc = 564;
+		rType = 0;
+		vrLen = 662;
+		vrLoc = 0;
+	};
+	033A701F0C70A190004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 90";
+		rLen = 0;
+		rLoc = 2196;
+		rType = 0;
+		vrLen = 767;
+		vrLoc = 2406;
+	};
+	033A70210C70A208004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: endAddProjectsSheet:";
+		rLen = 0;
+		rLoc = 564;
+		rType = 0;
+		vrLen = 662;
+		vrLoc = 0;
+	};
+	033A70240C70A21F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = addProjectsSheet;
+		rLen = 16;
+		rLoc = 142;
+		rType = 0;
+		vrLen = 662;
+		vrLoc = 0;
+	};
+	033A70250C70A21F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'chooseServerSheet' undeclared (first use in this function)";
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		rLen = 1;
+		rLoc = 67;
+		rType = 1;
+	};
+	033A70260C70A21F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: endAddProjectsSheet:";
+		rLen = 0;
+		rLoc = 564;
+		rType = 0;
+		vrLen = 662;
+		vrLoc = 0;
+	};
+	033A70270C70A21F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "[NSApp beginSheet:chooseServerSheet modalForWindow:preferencesWindow modalDelegate:self";
+		rLen = 89;
+		rLoc = 1079;
+		rType = 0;
+		vrLen = 1141;
+		vrLoc = 1005;
+	};
+	033A70280C70A21F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = addProjectsSheet;
+		rLen = 16;
+		rLoc = 142;
+		rType = 0;
+		vrLen = 662;
+		vrLoc = 0;
+	};
+	033A70290C70A21F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 71";
+		rLen = 0;
+		rLoc = 2146;
+		rType = 0;
+		vrLen = 1216;
+		vrLoc = 1548;
+	};
+	033A702E0C70A256004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 48";
+		rLen = 0;
+		rLoc = 1078;
+		rType = 0;
+		vrLen = 1369;
+		vrLoc = 1184;
+	};
+	033A702F0C70A256004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: sheetTabView";
+		rLen = 0;
+		rLoc = 197;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 0;
+	};
+	033A70300C70A256004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 62";
+		rLen = 0;
+		rLoc = 2017;
+		rType = 0;
+		vrLen = 1884;
+		vrLoc = 1184;
+	};
+	033A70310C70A256004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: chooseProjects:";
+		rLen = 85;
+		rLoc = 479;
+		rType = 0;
+		vrLen = 662;
+		vrLoc = 0;
+	};
+	033A70320C70A256004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 48";
+		rLen = 0;
+		rLoc = 1078;
+		rType = 0;
+		vrLen = 1369;
+		vrLoc = 1184;
+	};
+	033A70330C70A256004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: sheetTabView";
+		rLen = 0;
+		rLoc = 197;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 0;
+	};
+	033A70340C70A256004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 88";
+		rLen = 0;
+		rLoc = 2146;
+		rType = 0;
+		vrLen = 838;
+		vrLoc = 1649;
+	};
+	033A70370C70A293004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: sheetTabView";
+		rLen = 0;
+		rLoc = 197;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 0;
+	};
+	033A70380C70A293004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: sheetTabView";
+		rLen = 0;
+		rLoc = 197;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 0;
+	};
+	033A70390C70A293004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: showWindow:";
+		rLen = 0;
+		rLoc = 1031;
+		rType = 0;
+		vrLen = 1403;
+		vrLoc = 1184;
+	};
+	033A703A0C70A293004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 89";
+		rLen = 0;
+		rLoc = 2146;
+		rType = 0;
+		vrLen = 888;
+		vrLoc = 1641;
+	};
+	033A70430C70A32B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 033A70440C70A32B004669D7 /* NSPanel.h */;
+		name = "NSCancelButton\t\t\t= 0";
+		rLen = 25;
+		rLoc = 3728;
+		rType = 0;
+		vrLen = 1432;
+		vrLoc = 2895;
+	};
+	033A70440C70A32B004669D7 /* NSPanel.h */ = {
+		isa = PBXFileReference;
+		name = NSPanel.h;
+		path = /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Versions/C/Headers/NSPanel.h;
+		sourceTree = "<absolute>";
+	};
+	033A70450C70A32B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = closeAddProjectsSheet;
+		rLen = 21;
+		rLoc = 1919;
+		rType = 0;
+		vrLen = 1533;
+		vrLoc = 1769;
+	};
+	033A70460C70A32B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: sheetTabView";
+		rLen = 0;
+		rLoc = 197;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 0;
+	};
+	033A70470C70A32B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: sheetTabView";
+		rLen = 0;
+		rLoc = 197;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 0;
+	};
+	033A70480C70A32B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = closeAddProjectsSheet;
+		rLen = 21;
+		rLoc = 1919;
+		rType = 0;
+		vrLen = 1533;
+		vrLoc = 1769;
+	};
+	033A70490C70A32B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 25";
+		rLen = 0;
+		rLoc = 564;
+		rType = 0;
+		vrLen = 655;
+		vrLoc = 0;
+	};
+	033A704A0C70A32B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 92";
+		rLen = 0;
+		rLoc = 2146;
+		rType = 0;
+		vrLen = 979;
+		vrLoc = 1641;
+	};
+	033A704E0C70A3D8004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 25";
+		rLen = 0;
+		rLoc = 564;
+		rType = 0;
+		vrLen = 655;
+		vrLoc = 0;
+	};
+	033A704F0C70A3D8004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 25";
+		rLen = 0;
+		rLoc = 564;
+		rType = 0;
+		vrLen = 655;
+		vrLoc = 0;
+	};
+	033A70500C70A3D8004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 84";
+		rLen = 0;
+		rLoc = 2830;
+		rType = 0;
+		vrLen = 1518;
+		vrLoc = 1327;
+	};
+	033A70540C70A3E4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 84";
+		rLen = 0;
+		rLoc = 2830;
+		rType = 0;
+		vrLen = 1519;
+		vrLoc = 1327;
+	};
+	033A70550C70A3E4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: parse error before ';' token";
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		rLen = 1;
+		rLoc = 62;
+		rType = 1;
+	};
+	033A70560C70A3E4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 75";
+		rLen = 0;
+		rLoc = 2012;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 2141;
+	};
+	033A70570C70A570004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 75";
+		rLen = 0;
+		rLoc = 2012;
+		rType = 0;
+		vrLen = 700;
+		vrLoc = 2141;
+	};
+	033A705B0C70A774004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 51";
+		rLen = 0;
+		rLoc = 1770;
+		rType = 0;
+		vrLen = 1350;
+		vrLoc = 839;
+	};
+	033A705C0C70A787004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'url' undeclared (first use in this function)";
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		rLen = 1;
+		rLoc = 47;
+		rType = 1;
+	};
+	033A705D0C70A787004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMConnection *connection = [[[CCMConnection alloc] initWithURL:url] autorelease];";
+		rLen = 101;
+		rLoc = 1367;
+		rType = 0;
+		vrLen = 924;
+		vrLoc = 0;
+	};
+	033A70600C70A79C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 43";
+		rLen = 0;
+		rLoc = 1452;
+		rType = 0;
+		vrLen = 1794;
+		vrLoc = 65;
+	};
+	033A70610C70A79C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 43";
+		rLen = 0;
+		rLoc = 1452;
+		rType = 0;
+		vrLen = 924;
+		vrLoc = 0;
+	};
+	033A70630C70A7CC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 30";
+		rLen = 0;
+		rLoc = 996;
+		rType = 0;
+		vrLen = 1465;
+		vrLoc = 734;
+	};
+	033A70680C70A7DC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 30";
+		rLen = 0;
+		rLoc = 996;
+		rType = 0;
+		vrLen = 1733;
+		vrLoc = 64;
+	};
+	033A70690C70A7DC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 30";
+		rLen = 0;
+		rLoc = 996;
+		rType = 0;
+		vrLen = 1125;
+		vrLoc = 734;
+	};
+	033A706A0C70A7DC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 30";
+		rLen = 0;
+		rLoc = 996;
+		rType = 0;
+		vrLen = 1125;
+		vrLoc = 734;
+	};
+	033A706B0C70A7DC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: chooseProjects:";
+		rLen = 0;
+		rLoc = 479;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A706D0C70A8B9004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: chooseProjects:";
+		rLen = 0;
+		rLoc = 479;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A70710C70A955004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: chooseProjects:";
+		rLen = 0;
+		rLoc = 479;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A70720C70A955004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 30";
+		rLen = 0;
+		rLoc = 996;
+		rType = 0;
+		vrLen = 1733;
+		vrLoc = 64;
+	};
+	033A70730C70A955004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: chooseProjects:";
+		rLen = 0;
+		rLoc = 479;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A70740C70A955004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 1682;
+		vrLoc = 0;
+	};
+	033A70750C70A958004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 1682;
+		vrLoc = 0;
+	};
+	033A70760C70A958004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: chooseProjects:";
+		rLen = 0;
+		rLoc = 479;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A70770C70A958004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 994;
+		vrLoc = 0;
+	};
+	033A70780C70A99D004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 994;
+		vrLoc = 0;
+	};
+	033A70790C70A99E004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 1682;
+		vrLoc = 0;
+	};
+	033A707A0C70A99E004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 994;
+		vrLoc = 0;
+	};
+	033A707D0C70A9C9004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 1682;
+		vrLoc = 0;
+	};
+	033A707E0C70A9C9004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: chooseProjects:";
+		rLen = 0;
+		rLoc = 479;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A707F0C70A9C9004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 1682;
+		vrLoc = 0;
+	};
+	033A70800C70A9C9004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 8";
+		rLen = 0;
+		rLoc = 118;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A70810C70A9C9004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 11";
+		rLen = 0;
+		rLoc = 190;
+		rType = 0;
+		vrLen = 994;
+		vrLoc = 0;
+	};
+	033A70890C70ACEA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: addProjects:";
+		rLen = 0;
+		rLoc = 478;
+		rType = 0;
+		vrLen = 570;
+		vrLoc = 0;
+	};
+	033A708A0C70ACEA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1842;
+		vrLoc = 997;
+	};
+	033A708B0C70ACEA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: 8";
+		rLen = 0;
+		rLoc = 118;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 0;
+	};
+	033A708C0C70ACEA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1842;
+		vrLoc = 997;
+	};
+	033A708D0C70ACEA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
+		name = "CCMPreferencesController.h: addProjects:";
+		rLen = 0;
+		rLoc = 478;
+		rType = 0;
+		vrLen = 570;
+		vrLoc = 0;
+	};
+	033A708E0C70ACEA004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1843;
+		vrLoc = 996;
+	};
+	033A70900C70ACF0004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1842;
+		vrLoc = 997;
+	};
+	033A70910C70ACF0004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1132;
+		vrLoc = 996;
+	};
+	033A70960C70AF07004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1123;
+		vrLoc = 1716;
+	};
+	033A70970C70AF0A004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 43";
+		rLen = 0;
+		rLoc = 943;
+		rType = 0;
+		vrLen = 390;
+		vrLoc = 787;
+	};
+	033A70980C70AF0A004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 512;
+		vrLoc = 2327;
+	};
+	033A70990C70AF0B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1842;
+		vrLoc = 997;
+	};
+	033A709A0C70AF0B004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 1719;
+	};
+	033A709B0C70AF1C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 1719;
+	};
+	033A709C0C70AF33004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1842;
+		vrLoc = 997;
+	};
+	033A709D0C70AF33004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 46";
+		rLen = 0;
+		rLoc = 980;
+		rType = 0;
+		vrLen = 1715;
+		vrLoc = 493;
+	};
+	033A709E0C70AF33004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1842;
+		vrLoc = 997;
+	};
+	033A709F0C70AF33004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 46";
+		rLen = 0;
+		rLoc = 980;
+		rType = 0;
+		vrLen = 1715;
+		vrLoc = 493;
+	};
+	033A70A00C70AF33004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */;
+		name = "CCMPreferencesController.m: 86";
+		rLen = 0;
+		rLoc = 2833;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 1719;
 	};
 	03474D500C44F44B00BABD10 /* UnitTests */ = {
 		activeExec = 0;
@@ -1241,8 +2355,8 @@
 		isa = PBXTextBookmark;
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "- (IBAction)removeServer:(id)sender;";
-		rLen = 37;
-		rLoc = 488;
+		rLen = 0;
+		rLoc = 478;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 0;
@@ -1502,16 +2616,16 @@
 	038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1004, 836}}";
-			sepNavSelRange = "{488, 37}";
+			sepNavSelRange = "{478, 0}";
 			sepNavVisRect = "{{0, 0}, {1004, 836}}";
 			sepNavWindowFrame = "{{107, 247}, {846, 692}}";
 		};
 	};
 	038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1004, 1680}}";
-			sepNavSelRange = "{2302, 0}";
-			sepNavVisRect = "{{0, 0}, {1004, 836}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1004, 1408}}";
+			sepNavSelRange = "{2833, 0}";
+			sepNavVisRect = "{{0, 572}, {1004, 836}}";
 			sepNavWindowFrame = "{{84, 268}, {846, 692}}";
 		};
 	};
@@ -1520,7 +2634,7 @@
 		fRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */;
 		name = "CCMPreferencesWindowController.h: 12";
 		rLen = 0;
-		rLoc = 615;
+		rLoc = 564;
 		rType = 0;
 		vrLen = 182;
 		vrLoc = 0;
@@ -1630,9 +2744,9 @@
 	};
 	03F3744D0C47323D003240C4 /* CCMAppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1004, 836}}";
-			sepNavSelRange = "{1351, 0}";
-			sepNavVisRect = "{{0, 0}, {1004, 836}}";
+			sepNavIntBoundsRect = "{{0, 0}, {989, 736}}";
+			sepNavSelRange = "{913, 0}";
+			sepNavVisRect = "{{0, 134}, {989, 516}}";
 		};
 	};
 	03F3744E0C47323D003240C4 /* CCMConnection.h */ = {
@@ -1672,9 +2786,9 @@
 	};
 	03F374570C47323D003240C4 /* CCMServerMonitor.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {989, 1760}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1004, 1760}}";
 			sepNavSelRange = "{980, 0}";
-			sepNavVisRect = "{{0, 500}, {989, 457}}";
+			sepNavVisRect = "{{0, 302}, {1004, 836}}";
 		};
 	};
 	03F374650C47324E003240C4 /* CCMConnectionTest.m */ = {
@@ -1701,7 +2815,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 037F79710C69C83800D4C646 /* CCMenu */;
-		activeTarget = 03474D500C44F44B00BABD10 /* UnitTests */;
+		activeTarget = 8D1107260486CEB800E47090 /* CCMenu */;
 		addToTargets = (
 			037F79A20C6A195900D4C646 /* CCMenu with tests */,
 			8D1107260486CEB800E47090 /* CCMenu */,
@@ -1972,6 +3086,120 @@
 			033A6FE00C7093E1004669D7 /* PBXTextBookmark */ = 033A6FE00C7093E1004669D7 /* PBXTextBookmark */;
 			033A6FE10C7093E1004669D7 /* PBXTextBookmark */ = 033A6FE10C7093E1004669D7 /* PBXTextBookmark */;
 			033A6FE20C7093E1004669D7 /* PBXTextBookmark */ = 033A6FE20C7093E1004669D7 /* PBXTextBookmark */;
+			033A6FE40C70970F004669D7 /* PBXTextBookmark */ = 033A6FE40C70970F004669D7 /* PBXTextBookmark */;
+			033A6FE50C70970F004669D7 /* PBXTextBookmark */ = 033A6FE50C70970F004669D7 /* PBXTextBookmark */;
+			033A6FE60C70970F004669D7 /* PBXBookmark */ = 033A6FE60C70970F004669D7 /* PBXBookmark */;
+			033A6FE70C70970F004669D7 /* PBXTextBookmark */ = 033A6FE70C70970F004669D7 /* PBXTextBookmark */;
+			033A6FE80C70970F004669D7 /* PBXBookmark */ = 033A6FE80C70970F004669D7 /* PBXBookmark */;
+			033A6FEE0C7098BA004669D7 /* PBXBookmark */ = 033A6FEE0C7098BA004669D7 /* PBXBookmark */;
+			033A6FEF0C7098BA004669D7 /* PBXTextBookmark */ = 033A6FEF0C7098BA004669D7 /* PBXTextBookmark */;
+			033A6FF00C7098BA004669D7 /* PBXBookmark */ = 033A6FF00C7098BA004669D7 /* PBXBookmark */;
+			033A6FF10C7098BA004669D7 /* PBXTextBookmark */ = 033A6FF10C7098BA004669D7 /* PBXTextBookmark */;
+			033A6FF40C7098C6004669D7 /* PBXTextBookmark */ = 033A6FF40C7098C6004669D7 /* PBXTextBookmark */;
+			033A6FF50C7098C6004669D7 /* PBXTextBookmark */ = 033A6FF50C7098C6004669D7 /* PBXTextBookmark */;
+			033A6FF80C709C3B004669D7 /* PBXTextBookmark */ = 033A6FF80C709C3B004669D7 /* PBXTextBookmark */;
+			033A6FF90C709C3B004669D7 /* PBXTextBookmark */ = 033A6FF90C709C3B004669D7 /* PBXTextBookmark */;
+			033A6FFA0C709C3B004669D7 /* PBXTextBookmark */ = 033A6FFA0C709C3B004669D7 /* PBXTextBookmark */;
+			033A6FFB0C709C3B004669D7 /* PBXTextBookmark */ = 033A6FFB0C709C3B004669D7 /* PBXTextBookmark */;
+			033A6FFC0C709C3B004669D7 /* PBXTextBookmark */ = 033A6FFC0C709C3B004669D7 /* PBXTextBookmark */;
+			033A6FFF0C709C96004669D7 /* PBXTextBookmark */ = 033A6FFF0C709C96004669D7 /* PBXTextBookmark */;
+			033A70000C709C96004669D7 /* PBXTextBookmark */ = 033A70000C709C96004669D7 /* PBXTextBookmark */;
+			033A70050C709DD2004669D7 /* PBXTextBookmark */ = 033A70050C709DD2004669D7 /* PBXTextBookmark */;
+			033A70060C709DD2004669D7 /* PBXTextBookmark */ = 033A70060C709DD2004669D7 /* PBXTextBookmark */;
+			033A70070C709DD2004669D7 /* PBXTextBookmark */ = 033A70070C709DD2004669D7 /* PBXTextBookmark */;
+			033A70080C709DD2004669D7 /* PBXTextBookmark */ = 033A70080C709DD2004669D7 /* PBXTextBookmark */;
+			033A70090C709DD2004669D7 /* PBXTextBookmark */ = 033A70090C709DD2004669D7 /* PBXTextBookmark */;
+			033A700A0C709DD2004669D7 /* PBXTextBookmark */ = 033A700A0C709DD2004669D7 /* PBXTextBookmark */;
+			033A700E0C709E64004669D7 /* PBXTextBookmark */ = 033A700E0C709E64004669D7 /* PBXTextBookmark */;
+			033A700F0C709E64004669D7 /* PBXTextBookmark */ = 033A700F0C709E64004669D7 /* PBXTextBookmark */;
+			033A70100C709E64004669D7 /* PBXTextBookmark */ = 033A70100C709E64004669D7 /* PBXTextBookmark */;
+			033A70140C709E83004669D7 /* PBXTextBookmark */ = 033A70140C709E83004669D7 /* PBXTextBookmark */;
+			033A70150C709E83004669D7 /* PBXTextBookmark */ = 033A70150C709E83004669D7 /* PBXTextBookmark */;
+			033A70160C709E83004669D7 /* PBXTextBookmark */ = 033A70160C709E83004669D7 /* PBXTextBookmark */;
+			033A70170C709E83004669D7 /* PBXTextBookmark */ = 033A70170C709E83004669D7 /* PBXTextBookmark */;
+			033A70180C70A0FC004669D7 /* PBXTextBookmark */ = 033A70180C70A0FC004669D7 /* PBXTextBookmark */;
+			033A701B0C70A190004669D7 /* PBXTextBookmark */ = 033A701B0C70A190004669D7 /* PBXTextBookmark */;
+			033A701C0C70A190004669D7 /* PBXTextBookmark */ = 033A701C0C70A190004669D7 /* PBXTextBookmark */;
+			033A701D0C70A190004669D7 /* PBXTextBookmark */ = 033A701D0C70A190004669D7 /* PBXTextBookmark */;
+			033A701E0C70A190004669D7 /* PBXTextBookmark */ = 033A701E0C70A190004669D7 /* PBXTextBookmark */;
+			033A701F0C70A190004669D7 /* PBXTextBookmark */ = 033A701F0C70A190004669D7 /* PBXTextBookmark */;
+			033A70210C70A208004669D7 /* PBXTextBookmark */ = 033A70210C70A208004669D7 /* PBXTextBookmark */;
+			033A70240C70A21F004669D7 /* PBXTextBookmark */ = 033A70240C70A21F004669D7 /* PBXTextBookmark */;
+			033A70250C70A21F004669D7 /* PBXTextBookmark */ = 033A70250C70A21F004669D7 /* PBXTextBookmark */;
+			033A70260C70A21F004669D7 /* PBXTextBookmark */ = 033A70260C70A21F004669D7 /* PBXTextBookmark */;
+			033A70270C70A21F004669D7 /* PBXTextBookmark */ = 033A70270C70A21F004669D7 /* PBXTextBookmark */;
+			033A70280C70A21F004669D7 /* PBXTextBookmark */ = 033A70280C70A21F004669D7 /* PBXTextBookmark */;
+			033A70290C70A21F004669D7 /* PBXTextBookmark */ = 033A70290C70A21F004669D7 /* PBXTextBookmark */;
+			033A702E0C70A256004669D7 /* PBXTextBookmark */ = 033A702E0C70A256004669D7 /* PBXTextBookmark */;
+			033A702F0C70A256004669D7 /* PBXTextBookmark */ = 033A702F0C70A256004669D7 /* PBXTextBookmark */;
+			033A70300C70A256004669D7 /* PBXTextBookmark */ = 033A70300C70A256004669D7 /* PBXTextBookmark */;
+			033A70310C70A256004669D7 /* PBXTextBookmark */ = 033A70310C70A256004669D7 /* PBXTextBookmark */;
+			033A70320C70A256004669D7 /* PBXTextBookmark */ = 033A70320C70A256004669D7 /* PBXTextBookmark */;
+			033A70330C70A256004669D7 /* PBXTextBookmark */ = 033A70330C70A256004669D7 /* PBXTextBookmark */;
+			033A70340C70A256004669D7 /* PBXTextBookmark */ = 033A70340C70A256004669D7 /* PBXTextBookmark */;
+			033A70370C70A293004669D7 /* PBXTextBookmark */ = 033A70370C70A293004669D7 /* PBXTextBookmark */;
+			033A70380C70A293004669D7 /* PBXTextBookmark */ = 033A70380C70A293004669D7 /* PBXTextBookmark */;
+			033A70390C70A293004669D7 /* PBXTextBookmark */ = 033A70390C70A293004669D7 /* PBXTextBookmark */;
+			033A703A0C70A293004669D7 /* PBXTextBookmark */ = 033A703A0C70A293004669D7 /* PBXTextBookmark */;
+			033A70430C70A32B004669D7 /* PBXTextBookmark */ = 033A70430C70A32B004669D7 /* PBXTextBookmark */;
+			033A70450C70A32B004669D7 /* PBXTextBookmark */ = 033A70450C70A32B004669D7 /* PBXTextBookmark */;
+			033A70460C70A32B004669D7 /* PBXTextBookmark */ = 033A70460C70A32B004669D7 /* PBXTextBookmark */;
+			033A70470C70A32B004669D7 /* PBXTextBookmark */ = 033A70470C70A32B004669D7 /* PBXTextBookmark */;
+			033A70480C70A32B004669D7 /* PBXTextBookmark */ = 033A70480C70A32B004669D7 /* PBXTextBookmark */;
+			033A70490C70A32B004669D7 /* PBXTextBookmark */ = 033A70490C70A32B004669D7 /* PBXTextBookmark */;
+			033A704A0C70A32B004669D7 /* PBXTextBookmark */ = 033A704A0C70A32B004669D7 /* PBXTextBookmark */;
+			033A704E0C70A3D8004669D7 /* PBXTextBookmark */ = 033A704E0C70A3D8004669D7 /* PBXTextBookmark */;
+			033A704F0C70A3D8004669D7 /* PBXTextBookmark */ = 033A704F0C70A3D8004669D7 /* PBXTextBookmark */;
+			033A70500C70A3D8004669D7 /* PBXTextBookmark */ = 033A70500C70A3D8004669D7 /* PBXTextBookmark */;
+			033A70540C70A3E4004669D7 /* PBXTextBookmark */ = 033A70540C70A3E4004669D7 /* PBXTextBookmark */;
+			033A70550C70A3E4004669D7 /* PBXTextBookmark */ = 033A70550C70A3E4004669D7 /* PBXTextBookmark */;
+			033A70560C70A3E4004669D7 /* PBXTextBookmark */ = 033A70560C70A3E4004669D7 /* PBXTextBookmark */;
+			033A70570C70A570004669D7 /* PBXTextBookmark */ = 033A70570C70A570004669D7 /* PBXTextBookmark */;
+			033A705B0C70A774004669D7 /* PBXTextBookmark */ = 033A705B0C70A774004669D7 /* PBXTextBookmark */;
+			033A705C0C70A787004669D7 /* PBXTextBookmark */ = 033A705C0C70A787004669D7 /* PBXTextBookmark */;
+			033A705D0C70A787004669D7 /* PBXTextBookmark */ = 033A705D0C70A787004669D7 /* PBXTextBookmark */;
+			033A70600C70A79C004669D7 /* PBXTextBookmark */ = 033A70600C70A79C004669D7 /* PBXTextBookmark */;
+			033A70610C70A79C004669D7 /* PBXTextBookmark */ = 033A70610C70A79C004669D7 /* PBXTextBookmark */;
+			033A70630C70A7CC004669D7 /* PBXTextBookmark */ = 033A70630C70A7CC004669D7 /* PBXTextBookmark */;
+			033A70680C70A7DC004669D7 /* PBXTextBookmark */ = 033A70680C70A7DC004669D7 /* PBXTextBookmark */;
+			033A70690C70A7DC004669D7 /* PBXTextBookmark */ = 033A70690C70A7DC004669D7 /* PBXTextBookmark */;
+			033A706A0C70A7DC004669D7 /* PBXTextBookmark */ = 033A706A0C70A7DC004669D7 /* PBXTextBookmark */;
+			033A706B0C70A7DC004669D7 /* PBXTextBookmark */ = 033A706B0C70A7DC004669D7 /* PBXTextBookmark */;
+			033A706D0C70A8B9004669D7 /* PBXTextBookmark */ = 033A706D0C70A8B9004669D7 /* PBXTextBookmark */;
+			033A70710C70A955004669D7 /* PBXTextBookmark */ = 033A70710C70A955004669D7 /* PBXTextBookmark */;
+			033A70720C70A955004669D7 /* PBXTextBookmark */ = 033A70720C70A955004669D7 /* PBXTextBookmark */;
+			033A70730C70A955004669D7 /* PBXTextBookmark */ = 033A70730C70A955004669D7 /* PBXTextBookmark */;
+			033A70740C70A955004669D7 /* PBXTextBookmark */ = 033A70740C70A955004669D7 /* PBXTextBookmark */;
+			033A70750C70A958004669D7 /* PBXTextBookmark */ = 033A70750C70A958004669D7 /* PBXTextBookmark */;
+			033A70760C70A958004669D7 /* PBXTextBookmark */ = 033A70760C70A958004669D7 /* PBXTextBookmark */;
+			033A70770C70A958004669D7 /* PBXTextBookmark */ = 033A70770C70A958004669D7 /* PBXTextBookmark */;
+			033A70780C70A99D004669D7 /* PBXTextBookmark */ = 033A70780C70A99D004669D7 /* PBXTextBookmark */;
+			033A70790C70A99E004669D7 /* PBXTextBookmark */ = 033A70790C70A99E004669D7 /* PBXTextBookmark */;
+			033A707A0C70A99E004669D7 /* PBXTextBookmark */ = 033A707A0C70A99E004669D7 /* PBXTextBookmark */;
+			033A707D0C70A9C9004669D7 /* PBXTextBookmark */ = 033A707D0C70A9C9004669D7 /* PBXTextBookmark */;
+			033A707E0C70A9C9004669D7 /* PBXTextBookmark */ = 033A707E0C70A9C9004669D7 /* PBXTextBookmark */;
+			033A707F0C70A9C9004669D7 /* PBXTextBookmark */ = 033A707F0C70A9C9004669D7 /* PBXTextBookmark */;
+			033A70800C70A9C9004669D7 /* PBXTextBookmark */ = 033A70800C70A9C9004669D7 /* PBXTextBookmark */;
+			033A70810C70A9C9004669D7 /* PBXTextBookmark */ = 033A70810C70A9C9004669D7 /* PBXTextBookmark */;
+			033A70890C70ACEA004669D7 /* PBXTextBookmark */ = 033A70890C70ACEA004669D7 /* PBXTextBookmark */;
+			033A708A0C70ACEA004669D7 /* PBXTextBookmark */ = 033A708A0C70ACEA004669D7 /* PBXTextBookmark */;
+			033A708B0C70ACEA004669D7 /* PBXTextBookmark */ = 033A708B0C70ACEA004669D7 /* PBXTextBookmark */;
+			033A708C0C70ACEA004669D7 /* PBXTextBookmark */ = 033A708C0C70ACEA004669D7 /* PBXTextBookmark */;
+			033A708D0C70ACEA004669D7 /* PBXTextBookmark */ = 033A708D0C70ACEA004669D7 /* PBXTextBookmark */;
+			033A708E0C70ACEA004669D7 /* PBXTextBookmark */ = 033A708E0C70ACEA004669D7 /* PBXTextBookmark */;
+			033A70900C70ACF0004669D7 /* PBXTextBookmark */ = 033A70900C70ACF0004669D7 /* PBXTextBookmark */;
+			033A70910C70ACF0004669D7 /* PBXTextBookmark */ = 033A70910C70ACF0004669D7 /* PBXTextBookmark */;
+			033A70960C70AF07004669D7 /* PBXTextBookmark */ = 033A70960C70AF07004669D7 /* PBXTextBookmark */;
+			033A70970C70AF0A004669D7 /* PBXTextBookmark */ = 033A70970C70AF0A004669D7 /* PBXTextBookmark */;
+			033A70980C70AF0A004669D7 /* PBXTextBookmark */ = 033A70980C70AF0A004669D7 /* PBXTextBookmark */;
+			033A70990C70AF0B004669D7 /* PBXTextBookmark */ = 033A70990C70AF0B004669D7 /* PBXTextBookmark */;
+			033A709A0C70AF0B004669D7 /* PBXTextBookmark */ = 033A709A0C70AF0B004669D7 /* PBXTextBookmark */;
+			033A709B0C70AF1C004669D7 /* PBXTextBookmark */ = 033A709B0C70AF1C004669D7 /* PBXTextBookmark */;
+			033A709C0C70AF33004669D7 /* PBXTextBookmark */ = 033A709C0C70AF33004669D7 /* PBXTextBookmark */;
+			033A709D0C70AF33004669D7 /* PBXTextBookmark */ = 033A709D0C70AF33004669D7 /* PBXTextBookmark */;
+			033A709E0C70AF33004669D7 /* PBXTextBookmark */ = 033A709E0C70AF33004669D7 /* PBXTextBookmark */;
+			033A709F0C70AF33004669D7 /* PBXTextBookmark */ = 033A709F0C70AF33004669D7 /* PBXTextBookmark */;
+			033A70A00C70AF33004669D7 /* PBXTextBookmark */ = 033A70A00C70AF33004669D7 /* PBXTextBookmark */;
 			0356F6390C6E2C4500D0836C = 0356F6390C6E2C4500D0836C /* PBXTextBookmark */;
 			0356F6940C6E359100D0836C = 0356F6940C6E359100D0836C /* PBXTextBookmark */;
 			0356F8EB0C6F87A000D0836C = 0356F8EB0C6F87A000D0836C /* PBXTextBookmark */;

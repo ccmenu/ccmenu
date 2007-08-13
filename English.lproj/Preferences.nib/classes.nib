@@ -2,21 +2,22 @@
     IBClasses = (
         {
             ACTIONS = {
-                addServer = id; 
-                closeAddServerSheet = id; 
-                removeServer = id; 
+                addProjects = id; 
+                chooseProjects = id; 
+                closeAddProjectsSheet = id; 
+                removeProjects = id; 
                 showWindow = id; 
                 testServerConnection = id; 
             }; 
             CLASS = CCMPreferencesController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
-                addServerSheet = NSPanel; 
+                addProjectsSheet = NSPanel; 
+                chooseProjectsViewController = NSArrayController; 
                 preferencesWindow = NSPanel; 
-                serverAndProjectView = NSOutlineView; 
-                serverAndProjectViewController = NSTreeController; 
                 serverTypeMatrix = NSMatrix; 
                 serverUrlComboBox = NSComboBox; 
+                sheetTabView = NSTabView; 
                 testServerProgressIndicator = NSProgressIndicator; 
             }; 
             SUPERCLASS = NSObject; 
