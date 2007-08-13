@@ -12,6 +12,11 @@
 		03097A200C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097A1F0C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m */; };
 		03097CCA0C4CD926002F04B5 /* ProjectWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03097CC80C4CD926002F04B5 /* ProjectWindow.nib */; };
 		03097CCD0C4CD93A002F04B5 /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */; };
+		033A71310C70B941004669D7 /* CCMProjectRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A712F0C70B941004669D7 /* CCMProjectRepository.m */; };
+		033A71320C70B941004669D7 /* CCMProjectRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A712F0C70B941004669D7 /* CCMProjectRepository.m */; };
+		033A71340C70B941004669D7 /* CCMProjectRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A712F0C70B941004669D7 /* CCMProjectRepository.m */; };
+		033A71620C70BA2C004669D7 /* CCMProjectRepositoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */; };
+		033A718F0C70BA90004669D7 /* CCMProjectRepositoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */; };
 		0357DD960C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD980C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD990C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
@@ -84,7 +89,6 @@
 		038ECB800C6D3F1200597BA0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 038ECB7E0C6D3F1200597BA0 /* plus.png */; };
 		038ECB810C6D3F1200597BA0 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 038ECB7D0C6D3F1200597BA0 /* minus.png */; };
 		038ECB820C6D3F1200597BA0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 038ECB7E0C6D3F1200597BA0 /* plus.png */; };
-		038ECBC80C6DDDF700597BA0 /* CCMPreferencesController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */; };
 		038ECBC90C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */; };
 		038ECBCB0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */; };
 		038ECBCC0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */; };
@@ -125,7 +129,6 @@
 			dstSubfolderSpec = 1;
 			files = (
 				038EC7390C6D1E1E00597BA0 /* Growl.framework in CopyFiles */,
-				038ECBC80C6DDDF700597BA0 /* CCMPreferencesController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +143,10 @@
 		03097CCB0C4CD93A002F04B5 /* CCMProjectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectWindowController.h; sourceTree = "<group>"; };
 		03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectWindowController.m; sourceTree = "<group>"; };
 		0318C85B0C6870F400D005EE /* RELEASENOTES.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = RELEASENOTES.txt; sourceTree = "<group>"; };
+		033A712E0C70B941004669D7 /* CCMProjectRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectRepository.h; sourceTree = "<group>"; };
+		033A712F0C70B941004669D7 /* CCMProjectRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectRepository.m; sourceTree = "<group>"; };
+		033A715E0C70BA2C004669D7 /* CCMProjectRepositoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectRepositoryTest.h; sourceTree = "<group>"; };
+		033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectRepositoryTest.m; sourceTree = "<group>"; };
 		03474D510C44F44B00BABD10 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03474D520C44F44B00BABD10 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		0357DD940C6B982600523845 /* CCMGrowlAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMGrowlAdaptor.h; sourceTree = "<group>"; };
@@ -259,6 +266,8 @@
 				037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */,
 				03F374680C47324E003240C4 /* CCMProjectTest.h */,
 				03F374690C47324E003240C4 /* CCMProjectTest.m */,
+				033A715E0C70BA2C004669D7 /* CCMProjectRepositoryTest.h */,
+				033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */,
 				035C70B00C5F707F00906910 /* CCMServerMonitorTest.h */,
 				035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */,
 				03D5D2660C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.h */,
@@ -298,6 +307,8 @@
 				03F3744F0C47323D003240C4 /* CCMConnection.m */,
 				0357DD940C6B982600523845 /* CCMGrowlAdaptor.h */,
 				0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */,
+				033A712E0C70B941004669D7 /* CCMProjectRepository.h */,
+				033A712F0C70B941004669D7 /* CCMProjectRepository.m */,
 				03F374560C47323D003240C4 /* CCMServerMonitor.h */,
 				03F374570C47323D003240C4 /* CCMServerMonitor.m */,
 			);
@@ -630,6 +641,8 @@
 				037C08110C6244C1006CF886 /* CCMImageFactoryTest.m in Sources */,
 				0357DD960C6B982600523845 /* CCMGrowlAdaptor.m in Sources */,
 				038ECBCC0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */,
+				033A71320C70B941004669D7 /* CCMProjectRepository.m in Sources */,
+				033A71620C70BA2C004669D7 /* CCMProjectRepositoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +670,8 @@
 				037F79EC0C6A1A9C00D4C646 /* main.m in Sources */,
 				0357DD990C6B982600523845 /* CCMGrowlAdaptor.m in Sources */,
 				038ECBC90C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */,
+				033A71340C70B941004669D7 /* CCMProjectRepository.m in Sources */,
+				033A718F0C70BA90004669D7 /* CCMProjectRepositoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +692,7 @@
 				037C07C30C6241F4006CF886 /* CCMTimeSinceDateTransformer.m in Sources */,
 				0357DD980C6B982600523845 /* CCMGrowlAdaptor.m in Sources */,
 				038ECBCB0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */,
+				033A71310C70B941004669D7 /* CCMProjectRepository.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

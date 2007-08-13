@@ -21,3 +21,8 @@
 - (IBAction)closeAddProjectsSheet:(id)sender;
 
 @end
+
+
+extern NSString *CCMDefaultsProjectListKey;
+extern NSString *CCMDefaultsProjectEntryNameKey;
+extern NSString *CCMDefaultsProjectEntryServerUrlKey;

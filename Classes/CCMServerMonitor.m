@@ -1,35 +1,19 @@
 
 #import "CCMServerMonitor.h"
+#import "CCMPreferencesController.h"
+#import "CCMProjectRepository.h"
+#import "CCMConnection.h"
 #import "CCMProject.h"
 
 NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotification";
-NSString *CCMBuildCompleteNotification = @"CCMBuildCompleteNotification";
-
-NSString *CCMSuccessfulBuild = @"Successful";
-NSString *CCMFixedBuild = @"Fixed";
-NSString *CCMBrokenBuild = @"Broken";
-NSString *CCMStillFailingBuild = @"Still failing";
 
 
 @implementation CCMServerMonitor
 
-- (id)initWithConnection:(CCMConnection *)aConnection andProjects:(NSArray *)projectNames
-{
-	[super init];
-	connection = [aConnection retain];
-	projects = [[NSMutableDictionary alloc] init];
-	NSEnumerator *nameEnum = [projectNames objectEnumerator];
-	NSString *name;
-	while((name = [nameEnum nextObject]) != nil)
-		[projects setObject:[[[CCMProject alloc] initWithName:name] autorelease] forKey:name];		
-	return self;
-}
-
 - (void)dealloc
 {
 	[self stop];
-	[connection release];
-	[projects release];
+	[repositories release];
 	[super dealloc];	
 }
 
@@ -38,9 +22,45 @@ NSString *CCMStillFailingBuild = @"Still failing";
 	notificationCenter = center;
 }
 
+- (void)setUserDefaults:(NSUserDefaults *)defaults
+{
+	userDefaults = defaults;
+}
+
+- (void)setupRepositories:(NSArray *)defaultsProjectList
+{
+	NSMutableDictionary *projectNamesByServer = [NSMutableDictionary dictionary];
+	NSEnumerator *defaultsProjectEntryEnum = [defaultsProjectList objectEnumerator];
+	NSDictionary *defaultsProjectEntry;
+	while((defaultsProjectEntry = [defaultsProjectEntryEnum nextObject]) != nil)
+	{
+		NSString *server = [defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
+		NSMutableArray *projectNames = [projectNamesByServer objectForKey:server];
+		if(projectNames == nil)
+		{
+			projectNames = [NSMutableArray array];
+			[projectNamesByServer setObject:projectNames forKey:server];
+		}
+		[projectNames addObject:[defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryNameKey]];
+	}
+
+	[repositories release];
+	repositories = [[NSMutableDictionary dictionary] retain];
+	NSEnumerator *serverEnum = [projectNamesByServer keyEnumerator];
+	NSString *server;
+	while((server = [serverEnum nextObject]) != nil)
+	{
+		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[NSURL URLWithString:server]] autorelease];
+		NSArray *projectNames = [projectNamesByServer objectForKey:server];
+		CCMProjectRepository *repo = [[[CCMProjectRepository alloc] initWithConnection:connection andProjects:projectNames] autorelease];
+		[repositories setObject:repo forKey:server];
+	}
+}
+
 - (void)start
 {
-	timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(pollServer:) userInfo:nil repeats:YES];
+	[self setupRepositories:[NSUnarchiver unarchiveObjectWithData:[userDefaults dataForKey:CCMDefaultsProjectListKey]]];
+	timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(pollServers:) userInfo:nil repeats:YES];
 }
 
 - (void)stop
@@ -49,60 +69,25 @@ NSString *CCMStillFailingBuild = @"Still failing";
 	timer = nil;
 }
 
-- (NSString *)buildResultForLastStatus:(NSString *)lastStatus newStatus:(NSString *)newStatus
+- (void)pollServers:(id)sender
 {
-	if([lastStatus isEqualToString:CCMSuccessStatus] && [newStatus isEqualToString:CCMSuccessStatus])
-		return CCMSuccessfulBuild;
-	if([lastStatus isEqualToString:CCMSuccessStatus] && [newStatus isEqualToString:CCMFailedStatus])
-		return CCMBrokenBuild;
-	if([lastStatus isEqualToString:CCMFailedStatus] && [newStatus isEqualToString:CCMSuccessStatus])
-		return CCMFixedBuild;
-	if([lastStatus isEqualToString:CCMFailedStatus] && [newStatus isEqualToString:CCMFailedStatus])
-		return CCMStillFailingBuild;
-	return @"";
-}
-
-- (NSDictionary *)buildCompleteInfoForProject:(CCMProject *)project andNewProjectInfo:(NSDictionary *)projectInfo
-{
-	NSMutableDictionary *notificationInfo = [NSMutableDictionary dictionary];
-	[notificationInfo setObject:[project valueForKey:@"name"] forKey:@"projectName"];
-	NSString *lastStatus = [project valueForKey:@"lastBuildStatus"];
-	NSString *newStatus = [projectInfo objectForKey:@"lastBuildStatus"];
-	NSString *result = [self buildResultForLastStatus:lastStatus newStatus:newStatus];
-	[notificationInfo setObject:result forKey:@"buildResult"];
-	return notificationInfo;
-}
-
-- (void)pollServer:(id)sender
-{
-	NSEnumerator *infoEnum = [[connection getProjectInfos] objectEnumerator];
-	NSDictionary *info;
-	while((info = [infoEnum nextObject]) != nil)
-	{
-		CCMProject *project = [projects objectForKey:[info objectForKey:@"name"]];
-		if(project == nil)
-			continue;
-
-		if([[project valueForKey:@"activity"] isEqualToString:CCMBuildingActivity] &&
-			![[info objectForKey:@"activity"] isEqualToString:CCMBuildingActivity])
-		{
-			NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
-			[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
-		} 
-		else if(([project valueForKey:@"lastBuildStatus"] != nil) &&
-				![[project valueForKey:@"lastBuildStatus"] isEqualToString:[info valueForKey:@"lastBuildStatus"]])
-		{
-			NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
-			[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
-		}
-		[project updateWithInfo:info];
-	}
+	NSEnumerator *repositoryEnum = [[repositories allValues] objectEnumerator];
+	CCMProjectRepository *repository;
+	while((repository = [repositoryEnum nextObject]) != nil)
+		[repository pollServer];
 	[notificationCenter postNotificationName:CCMProjectStatusUpdateNotification object:self userInfo:nil];
 }
 
 - (NSArray *)projects
 {
-	return [projects allValues];
+	NSMutableArray *projects = [NSMutableArray array];
+	NSEnumerator *repositoryEnum = [[repositories allValues] objectEnumerator];
+	CCMProjectRepository *repository;
+	while((repository = [repositoryEnum nextObject]) != nil)
+		[projects addObjectsFromArray:[repository projects]];
+	return projects;
 }
+
+
 
 @end

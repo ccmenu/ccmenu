@@ -1,7 +1,7 @@
 
 #import <Growl/Growl.h>
 #import "CCMGrowlAdaptor.h"
-#import "CCMServerMonitor.h"
+#import "CCMProjectRepository.h"
 #import "CCMProject.h"
 
 

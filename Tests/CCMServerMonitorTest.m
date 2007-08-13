@@ -7,138 +7,56 @@
 
 - (void)setUp
 {
-	monitor = [[[CCMServerMonitor alloc] initWithConnection:(id)self andProjects:[NSArray arrayWithObject:@"connectfour"]] autorelease];
+	monitor = [[[CCMServerMonitor alloc] init] autorelease];
 	[monitor setNotificationCenter:(id)self];
+	[monitor setUserDefaults:(id)self];
 	postedNotifications = [NSMutableArray array];
 }
 
-- (NSMutableDictionary *)createProjectInfoWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
+- (void)tearDown
 {
-	NSMutableDictionary *info = [NSMutableDictionary dictionary];
-	[info setObject:@"connectfour" forKey:@"name"];
-	[info setObject:activity forKey:@"activity"];
-	[info setObject:status forKey:@"lastBuildStatus"];
-	[info setObject:[NSCalendarDate calendarDate] forKey:@"lastBuildDate"];
-	return info;
+	[monitor stop];
 }
 
-- (void)testCreatesProjects
-{	
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
+- (void)testCreatesRepositories
+{
+	NSDictionary *pd1 = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"name", @"localhost", @"server", nil];
+	NSDictionary *pd2 = [NSDictionary dictionaryWithObjectsAndKeys:@"cozmoz", @"name", @"another", @"server", nil];
+	NSDictionary *pd3 = [NSDictionary dictionaryWithObjectsAndKeys:@"protest", @"name", @"another", @"server", nil];
+	projectsUserDefaults = [NSArray arrayWithObjects:pd1, pd2, pd3, nil];
 	
+	[monitor start];
+	
+	NSArray *repositories = [monitor valueForKey:@"repositories"];
+	STAssertEquals(2u, [repositories count], @"Should have created minimum number of repositories.");
+}
+
+- (void)testGetsProjectsFromRepository
+{	
+	// Unfortunately, we can't stub the repository because the monitor creates it. So, we need a working URL,
+	// which makes this almost an integration test.
+	NSString *url = [[NSURL fileURLWithPath:@"Tests/cctray.xml"] absoluteString];
+	NSDictionary *pd = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"name", url, @"server", nil];
+	projectsUserDefaults = [NSArray arrayWithObject:pd];
+
+	[monitor start];
+	[monitor pollServers:nil];
+
 	NSArray *projectList = [monitor projects];
-	STAssertEquals(1u, [projectList count], @"Should have created one project.");
+	STAssertEquals(1u, [projectList count], @"Should have found one project.");
 	CCMProject *project = [projectList objectAtIndex:0];
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have set up project with right name."); 
-	STAssertEqualObjects(CCMSuccessStatus, [project valueForKey:@"lastBuildStatus"], @"Should have set up project projectInfo."); 
+	STAssertEqualObjects(@"build.1", [project valueForKey:@"lastBuildLabel"], @"Should have set up project projectInfo."); 
 }
 
-- (void)testIgnoresProjectsNotInInitialList
-{	
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	[projectInfo setObject:@"foo" forKey:@"name"];
-	[monitor pollServer:nil];
-	
-	NSArray *projectList = [monitor projects];
-	STAssertEquals(1u, [projectList count], @"Should have ignored additional project.");
-	CCMProject *project = [projectList objectAtIndex:0];
-	STAssertEqualObjects(@"connectfour", [project name], @"Should have kept project with right name."); 
-	STAssertEqualObjects(CCMSuccessStatus, [project valueForKey:@"lastBuildStatus"], @"Should have kept right status."); 
-}
 
-- (void)testUpdatesProjects
+// defaults stub
+
+- (NSData *)dataForKey:(NSString *)key
 {
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	[monitor pollServer:nil];
-	
-	NSArray *projectList = [monitor projects];
-	STAssertEquals(1u, [projectList count], @"Should have created only one project.");
-	CCMProject *project = [projectList objectAtIndex:0];
-	STAssertEqualObjects(CCMFailedStatus, [project valueForKey:@"lastBuildStatus"], @"Should have updated project projectInfo."); 
-}
-
-- (void)testSendsSuccessfulBuildCompleteNotification
-{	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	
-	STAssertTrue([postedNotifications count] > 0, @"Should have posted notification.");
-	// This next one is a bit dodgy; we're relying on the posting sequence, which we shouldn't.
-	NSNotification *notification = [postedNotifications objectAtIndex:1];
-	STAssertEqualObjects(CCMBuildCompleteNotification, [notification name], @"Should have posted correct notification.");
-	NSDictionary *userInfo = [notification userInfo];
-	STAssertEqualObjects(@"connectfour", [userInfo objectForKey:@"projectName"], @"Should have set project name.");
-	STAssertEqualObjects(CCMSuccessfulBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
-}
-
-- (void)testSendsBrokenBuildCompleteNotification
-{	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	[monitor pollServer:nil];
-	
-	NSDictionary *userInfo = [[postedNotifications objectAtIndex:1] userInfo];
-	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
-}
-
-- (void)testSendsFixedBuildCompleteNotification
-{	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	
-	NSDictionary *userInfo = [[postedNotifications objectAtIndex:1] userInfo];
-	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
-}
-
-- (void)testSendsStillFailingBuildCompleteNotification
-{	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	[monitor pollServer:nil];
-	
-	NSDictionary *userInfo = [[postedNotifications objectAtIndex:1] userInfo];
-	STAssertEqualObjects(CCMStillFailingBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
-}
-
-- (void)testSendsBrokenBuildCompletionNotificationEvenIfBuildWasMissed
-{
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	[monitor pollServer:nil];
-	
-	NSDictionary *userInfo = [[postedNotifications objectAtIndex:1] userInfo];
-	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
-}
-
-- (void)testSendsFixenBuildCompletionNotificationEvenIfBuildWasMissed
-{
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	[monitor pollServer:nil];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	[monitor pollServer:nil];
-	
-	NSDictionary *userInfo = [[postedNotifications objectAtIndex:1] userInfo];
-	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
-}
-
-
-// connection stub
-
-- (NSArray *)getProjectInfos
-{
-	return [NSArray arrayWithObject:projectInfo];
+	if([key isEqualToString:@"Projects"])
+		return [NSArchiver archivedDataWithRootObject:projectsUserDefaults];
+	return nil;
 }
 
 // notification center stub

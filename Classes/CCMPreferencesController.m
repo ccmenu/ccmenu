@@ -2,6 +2,10 @@
 #import "CCMPreferencesController.h"
 #import "CCMConnection.h"
 
+NSString *CCMDefaultsProjectListKey = @"Projects";
+NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
+NSString *CCMDefaultsProjectEntryServerUrlKey = @"serverUrl";
+
 
 @implementation CCMPreferencesController
 
@@ -33,14 +37,14 @@
 	[preferencesWindow makeKeyAndOrderFront:self];	
 }
 
-- (IBAction)addProjects:(id)sender
+- (void)addProjects:(id)sender
 {
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:preferencesWindow modalDelegate:self 
 		didEndSelector:@selector(addProjectsSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
-- (IBAction)chooseProjects:(id)sender
+- (void)chooseProjects:(id)sender
 {
 	@try 
 	{
@@ -58,7 +62,7 @@
 	}
 }
 
-- (IBAction)closeAddProjectsSheet:(id)sender
+- (void)closeAddProjectsSheet:(id)sender
 {
 	[NSApp endSheet:addProjectsSheet returnCode:[sender tag]];
 }
@@ -69,18 +73,17 @@
 	if(returnCode == 0)
 		return;
 	
-	NSLog(@"projects = %@", [chooseProjectsViewController selectedObjects]);
-	NSMutableArray *projectIdList = [NSMutableArray array];
+	NSMutableArray *defaultsProjectList = [NSMutableArray array];
 	NSEnumerator *projectInfoEnum = [[chooseProjectsViewController selectedObjects] objectEnumerator];
 	NSDictionary *projectInfo;
 	while((projectInfo = [projectInfoEnum nextObject]) != nil)
 	{
-		[projectIdList addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-			[projectInfo objectForKey:@"name"], @"name", 
-			[self getServerURL], @"server", nil]];
+		[defaultsProjectList addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+			[projectInfo objectForKey:@"name"], CCMDefaultsProjectEntryNameKey, 
+			[[self getServerURL] absoluteString], CCMDefaultsProjectEntryServerUrlKey, nil]];
 	}
-	NSData *data = [NSArchiver archivedDataWithRootObject:projectIdList];
-	[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"Projects"];
+	NSData *data = [NSArchiver archivedDataWithRootObject:defaultsProjectList];
+	[[NSUserDefaults standardUserDefaults] setObject:data forKey:CCMDefaultsProjectListKey];
 
 }
 

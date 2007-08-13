@@ -5,30 +5,24 @@
 
 @interface CCMServerMonitor : NSObject 
 {
-	CCMConnection			*connection;
 	NSNotificationCenter	*notificationCenter;
+	NSUserDefaults			*userDefaults;
 
 	NSTimer					*timer;
-	NSMutableDictionary		*projects;
+	NSMutableDictionary		*repositories;
 }
 
-- (id)initWithConnection:(CCMConnection *)aConnection andProjects:(NSArray *)projectNames;
-
 - (void)setNotificationCenter:(NSNotificationCenter *)center;
+- (void)setUserDefaults:(NSUserDefaults *)defaults;
 
 - (void)start;
 - (void)stop;
 
-- (void)pollServer:(id)sender;
+- (void)pollServers:(id)sender;
 
 - (NSArray *)projects;
 
 @end
 
 extern NSString *CCMProjectStatusUpdateNotification;
-extern NSString *CCMBuildCompleteNotification;
 
-extern NSString *CCMSuccessfulBuild;
-extern NSString *CCMFixedBuild;
-extern NSString *CCMBrokenBuild;
-extern NSString *CCMStillFailingBuild;

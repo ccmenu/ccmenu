@@ -21,11 +21,9 @@
 	CCMGrowlAdaptor *growlAdaptor = [[CCMGrowlAdaptor alloc] init]; // intentional 'leak'
 	[growlAdaptor start]; 
 	
-//	NSURL *url = [NSURL URLWithString:@"http://cclive.thoughtworks.com/dashboard/cctray.xml"];
-	NSURL *url = [NSURL URLWithString:@"http://localhost:8080/dashboard/cctray.xml"];
-	CCMConnection *connection = [[[CCMConnection alloc] initWithURL:url] autorelease];
-	monitor = [[CCMServerMonitor alloc] initWithConnection:connection andProjects:[NSArray arrayWithObject:@"connectfour"]];
+	monitor = [[CCMServerMonitor alloc] init];
 	[monitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
+	[monitor setUserDefaults:[NSUserDefaults standardUserDefaults]];
 	[monitor start];
 }
 
