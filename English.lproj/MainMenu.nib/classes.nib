@@ -13,6 +13,26 @@
         }, 
         {CLASS = CCMImageFactory; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
+            ACTIONS = {
+                addServer = id; 
+                closeAddServerSheet = id; 
+                showWindow = id; 
+                testServerConnection = id; 
+            }; 
+            CLASS = CCMPreferencesController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                addServerSheet = NSPanel; 
+                preferencesWindow = NSPanel; 
+                serverAndProjectView = NSOutlineView; 
+                serverAndProjectViewController = NSTreeController; 
+                serverTypeMatrix = NSMatrix; 
+                serverUrlComboBox = NSComboBox; 
+                testServerProgressIndicator = NSProgressIndicator; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
             ACTIONS = {forceBuild = id; showWindow = id; }; 
             CLASS = CCMProjectWindowController; 
             LANGUAGE = ObjC; 
@@ -23,7 +43,6 @@
             }; 
             SUPERCLASS = NSObject; 
         }, 
-        {CLASS = CCMServerMonitor; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {openProject = id; }; 
             CLASS = CCMStatusBarMenuController; 

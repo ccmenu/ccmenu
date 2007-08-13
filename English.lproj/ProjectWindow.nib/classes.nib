@@ -7,8 +7,8 @@
             CLASS = CCMProjectWindowController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
-                projectController = NSArrayController; 
                 tableView = NSTableView; 
+                tableViewController = NSArrayController; 
                 window = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 

@@ -1,0 +1,28 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                addServer = id; 
+                closeAddServerSheet = id; 
+                removeServer = id; 
+                showWindow = id; 
+                testServerConnection = id; 
+            }; 
+            CLASS = CCMPreferencesController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                addServerSheet = NSPanel; 
+                preferencesWindow = NSPanel; 
+                serverAndProjectView = NSOutlineView; 
+                serverAndProjectViewController = NSTreeController; 
+                serverTypeMatrix = NSMatrix; 
+                serverUrlComboBox = NSComboBox; 
+                testServerProgressIndicator = NSProgressIndicator; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
+    ); 
+    IBVersion = 1; 
+}

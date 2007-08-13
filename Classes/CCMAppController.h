@@ -15,6 +15,4 @@
 	CCMServerMonitor					*monitor;
 }
 
-- (IBAction)checkStatus:(id)sender;
-
 @end

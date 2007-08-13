@@ -6,7 +6,7 @@
 {
 	IBOutlet NSWindow			*window;
 	IBOutlet NSTableView		*tableView;
-	IBOutlet NSArrayController	*projectController;
+	IBOutlet NSArrayController	*tableViewController;
 }
 
 - (NSToolbar *)createToolbar;
@@ -14,6 +14,5 @@
 
 - (IBAction)showWindow:(id)sender;
 - (IBAction)forceBuild:(id)sender;
-- (IBAction)editSettings:(id)sender;
 
 @end

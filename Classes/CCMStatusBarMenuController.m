@@ -6,8 +6,6 @@
 
 @implementation CCMStatusBarMenuController
 
-static const int PROJECT_LIST_SEPARATOR_TAG = 7;
-
 - (void)setMenu:(NSMenu *)aMenu
 {
 	statusMenu = aMenu;
@@ -39,7 +37,7 @@ static const int PROJECT_LIST_SEPARATOR_TAG = 7;
 {
 	NSMenu *menu = [statusItem menu];
 	
-	int index = [menu indexOfItemWithTag:PROJECT_LIST_SEPARATOR_TAG] + 1;
+	int index = 0;
 	while([[[menu itemArray] objectAtIndex:index] isSeparatorItem] == FALSE)
 		[menu removeItemAtIndex:index];
 	

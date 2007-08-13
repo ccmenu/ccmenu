@@ -4,14 +4,13 @@
 
 NSString *CCMProjectWindowToolBar = @"CCMProjectWindowToolBar";
 NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
-NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 
 
 @implementation CCMProjectWindowController
 
 - (NSToolbar *)createToolbar
-{
-    NSToolbar *toolbar = [[[NSToolbar alloc] initWithIdentifier: CCMProjectWindowToolBar] autorelease];
+{	
+    NSToolbar *toolbar = [[[NSToolbar alloc] initWithIdentifier:CCMProjectWindowToolBar] autorelease];
     [toolbar setAllowsUserCustomization:YES];
     [toolbar setAutosavesConfiguration:YES];
     [toolbar setDisplayMode:NSToolbarDisplayModeIconAndLabel];
@@ -33,15 +32,6 @@ NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction: @selector(forceBuild:)];
 	} 
-	else if([identifier isEqual:CCMSettingsToolBarIdentifier])
-	{
-		[toolbarItem setLabel:@"Settings"];
-		[toolbarItem setPaletteLabel:@"Settings"];
-		[toolbarItem setToolTip: @"Edit settings"];
-		[toolbarItem setImage: [NSImage imageNamed:@"Placeholder"]];
-		[toolbarItem setTarget:self];
-		[toolbarItem setAction: @selector(editSettings:)];
-	}
 	else
 	{
 		toolbarItem = nil;
@@ -51,13 +41,12 @@ NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar 
 {
-    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier, NSToolbarFlexibleSpaceItemIdentifier, 
-		CCMSettingsToolBarIdentifier, nil];
+    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier, nil];
 }
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar 
 {
-    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier, CCMSettingsToolBarIdentifier,
+    return [NSArray arrayWithObjects:CCMForceBuildToolBarIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier, 
 		NSToolbarSpaceItemIdentifier, NSToolbarSeparatorItemIdentifier, nil];
 }
@@ -65,7 +54,7 @@ NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 - (BOOL)validateToolbarItem:(NSToolbarItem *)toolbarItem 
 {
     if([[toolbarItem itemIdentifier] isEqual:CCMForceBuildToolBarIdentifier]) 
-		return ([[projectController selectionIndexes] count] > 0);
+		return ([[tableViewController selectionIndexes] count] > 0);
     return NO;
 }
 
@@ -76,7 +65,7 @@ NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 
 - (void)displayProjects:(NSArray *)projects
 {
-	[projectController setContent:projects];
+	[tableViewController setContent:projects];
 }
 
 - (void)showWindow:(id)sender
@@ -97,8 +86,5 @@ NSString *CCMSettingsToolBarIdentifier = @"CCMSettingsToolBarIdentifier";
 	NSRunAlertPanel(nil, @"Force build does not work yet", @"OK", nil, nil);
 }
 
-- (void)editSettings:(id)sender
-{
-}
 
 @end

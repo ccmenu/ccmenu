@@ -8,9 +8,8 @@
 - (void)setUp
 {
     NSMenu *menu = [[[NSMenu alloc] initWithTitle:@"Test"] autorelease];
-	NSMenuItem *sepItem = [[[NSMenuItem separatorItem] copy] autorelease];
-	[sepItem setTag:7];
-	[menu addItem:sepItem];
+	NSMenuItem *projectItem = [[[NSMenuItem alloc] initWithTitle:@"(loading...)" action:NULL keyEquivalent:@""] autorelease];
+	[menu addItem:projectItem];
 	[menu addItem:[NSMenuItem separatorItem]];
 	NSMenuItem *openItem = [[[NSMenuItem alloc] initWithTitle:@"Open..." action:NULL keyEquivalent:@""] autorelease];
 	[openItem setTarget:self];
@@ -42,10 +41,10 @@
 	[controller displayProjects:infoList];
 	
 	NSArray *items = [[statusItem menu] itemArray];
-	STAssertEqualObjects(@"connectfour", [[items objectAtIndex:1] title], @"Should have set right project name.");
-	STAssertEquals(controller, [[items objectAtIndex:1] target], @"Should have set right target.");
-	STAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
-	STAssertEquals(4u, [items count], @"Should have created right number of items.");
+	STAssertEqualObjects(@"connectfour", [[items objectAtIndex:0] title], @"Should have set right project name.");
+	STAssertEquals(controller, [[items objectAtIndex:0] target], @"Should have set right target.");
+	STAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
+	STAssertEquals(3u, [items count], @"Should have created right number of items.");
 }
 
 - (void)testDisplaysSuccessWhenAllProjectsSuccessful
