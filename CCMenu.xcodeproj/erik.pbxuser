@@ -700,7 +700,7 @@
 		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
 		name = "CCMConnection.m: 51";
 		rLen = 0;
-		rLoc = 1463;
+		rLoc = 1511;
 		rType = 0;
 		vrLen = 1509;
 		vrLoc = 0;
@@ -810,7 +810,7 @@
 		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
 		name = "CCMConnection.m: 51";
 		rLen = 0;
-		rLoc = 1463;
+		rLoc = 1511;
 		rType = 0;
 		vrLen = 1509;
 		vrLoc = 0;
@@ -974,7 +974,7 @@
 		isa = PBXTextBookmark;
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		rLen = 0;
-		rLoc = 62;
+		rLoc = 67;
 		rType = 1;
 	};
 	033A6FB90C7092C1004669D7 /* PBXTextBookmark */ = {
@@ -1012,7 +1012,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 44";
 		rLen = 0;
-		rLoc = 2138;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 221;
 		vrLoc = 785;
@@ -1032,7 +1032,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 45";
 		rLen = 0;
-		rLoc = 1998;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1313;
 		vrLoc = 476;
@@ -1042,7 +1042,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 45";
 		rLen = 0;
-		rLoc = 1998;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 493;
@@ -1062,7 +1062,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 45";
 		rLen = 0;
-		rLoc = 1998;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 595;
 		vrLoc = 691;
@@ -1072,7 +1072,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 39";
 		rLen = 0;
-		rLoc = 1998;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1685;
 		vrLoc = 493;
@@ -1082,7 +1082,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 39";
 		rLen = 0;
-		rLoc = 1998;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1287;
 		vrLoc = 802;
@@ -1092,7 +1092,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1287;
 		vrLoc = 802;
@@ -1102,7 +1102,7 @@
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "- (NSArray *)projects;";
 		rLen = 23;
-		rLoc = 411;
+		rLoc = 381;
 		rType = 0;
 		vrLen = 679;
 		vrLoc = 0;
@@ -1112,7 +1112,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -1132,7 +1132,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1881;
 		vrLoc = 753;
@@ -1142,7 +1142,7 @@
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "- (NSArray *)projects;";
 		rLen = 23;
-		rLoc = 411;
+		rLoc = 381;
 		rType = 0;
 		vrLen = 679;
 		vrLoc = 0;
@@ -1152,7 +1152,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -1182,7 +1182,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 692;
@@ -2246,7 +2246,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 43";
 		rLen = 0;
-		rLoc = 2138;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 390;
 		vrLoc = 787;
@@ -2306,7 +2306,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1715;
 		vrLoc = 493;
@@ -2326,7 +2326,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1715;
 		vrLoc = 493;
@@ -2366,7 +2366,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -2376,7 +2376,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1715;
 		vrLoc = 493;
@@ -2406,7 +2406,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 46";
 		rLen = 0;
-		rLoc = 2175;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -2426,7 +2426,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 106";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 2137;
 		vrLoc = 1463;
@@ -2446,7 +2446,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 106";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1302;
 		vrLoc = 2297;
@@ -2476,7 +2476,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 106";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1341;
 		vrLoc = 0;
@@ -2742,7 +2742,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 83";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2008;
 		vrLoc = 1828;
@@ -2762,7 +2762,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 104";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1327;
 		vrLoc = 0;
@@ -2772,7 +2772,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 104";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 714;
 		vrLoc = 613;
@@ -2790,7 +2790,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 104";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 714;
 		vrLoc = 613;
@@ -2800,7 +2800,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@\"buildResult\"], @\"Should have set correct build result.\");";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 1739;
 		vrLoc = 1750;
@@ -2810,7 +2810,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@\"buildResult\"], @\"Should have set correct build result.\");";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2686;
 		vrLoc = 1324;
@@ -2820,7 +2820,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 104";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1327;
 		vrLoc = 0;
@@ -2830,7 +2830,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@\"buildResult\"], @\"Should have set correct build result.\");";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2686;
 		vrLoc = 1324;
@@ -2840,7 +2840,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 104";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1327;
 		vrLoc = 0;
@@ -2850,7 +2850,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@\"buildResult\"], @\"Should have set correct build result.\");";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 1739;
 		vrLoc = 1750;
@@ -2860,7 +2860,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2240;
 		vrLoc = 1455;
@@ -2870,7 +2870,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@\"buildResult\"], @\"Should have set correct build result.\");";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 1739;
 		vrLoc = 1750;
@@ -2880,7 +2880,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 2427;
@@ -2890,7 +2890,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2142;
 		vrLoc = 1553;
@@ -2900,7 +2900,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2142;
 		vrLoc = 1553;
@@ -2910,7 +2910,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 2427;
@@ -2920,7 +2920,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 2427;
@@ -2930,7 +2930,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2142;
 		vrLoc = 1553;
@@ -2950,7 +2950,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 40";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2213;
 		vrLoc = 34;
@@ -2960,7 +2960,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2142;
 		vrLoc = 1553;
@@ -2970,7 +2970,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: testCreatesProjects";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2089;
 		vrLoc = 3832;
@@ -2990,7 +2990,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 40";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2213;
 		vrLoc = 34;
@@ -3010,7 +3010,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 44";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2079;
 		vrLoc = 34;
@@ -3020,7 +3020,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 92";
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 2427;
@@ -3038,7 +3038,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEquals(0u, [projectList count], @\"Should have ignored the project.\");";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 1321;
 		vrLoc = 664;
@@ -3048,7 +3048,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2240;
 		vrLoc = 1455;
@@ -3068,7 +3068,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 44";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2397;
 		vrLoc = 247;
@@ -3078,7 +3078,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 44";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2397;
 		vrLoc = 247;
@@ -3088,7 +3088,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2240;
 		vrLoc = 1455;
@@ -3108,7 +3108,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 43";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2596;
 		vrLoc = 113;
@@ -3118,7 +3118,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 43";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 2554;
 		vrLoc = 453;
@@ -3128,7 +3128,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 43";
 		rLen = 0;
-		rLoc = 1870;
+		rLoc = 1910;
 		rType = 0;
 		vrLen = 1789;
 		vrLoc = 920;
@@ -3138,7 +3138,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 34";
 		rLen = 0;
-		rLoc = 1789;
+		rLoc = 1829;
 		rType = 0;
 		vrLen = 1789;
 		vrLoc = 920;
@@ -3148,7 +3148,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 34";
 		rLen = 0;
-		rLoc = 1789;
+		rLoc = 1829;
 		rType = 0;
 		vrLen = 2132;
 		vrLoc = 0;
@@ -3168,7 +3168,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2240;
 		vrLoc = 1455;
@@ -3178,7 +3178,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 34";
 		rLen = 0;
-		rLoc = 1789;
+		rLoc = 1829;
 		rType = 0;
 		vrLen = 2132;
 		vrLoc = 0;
@@ -3198,7 +3198,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1713;
 		vrLoc = 842;
@@ -3208,7 +3208,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1713;
 		vrLoc = 842;
@@ -3218,7 +3218,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 34";
 		rLen = 0;
-		rLoc = 1789;
+		rLoc = 1829;
 		rType = 0;
 		vrLen = 1585;
 		vrLoc = 516;
@@ -3228,7 +3228,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 1191;
@@ -3238,7 +3238,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 1191;
@@ -3309,7 +3309,7 @@
 		isa = PBXTextBookmark;
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 3";
-		rLen = 2777;
+		rLen = 3078;
 		rLoc = 67;
 		rType = 0;
 		vrLen = 2142;
@@ -3360,7 +3360,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1977;
 		vrLoc = 1002;
@@ -3394,7 +3394,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1654;
 		vrLoc = 1325;
@@ -3414,7 +3414,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1654;
 		vrLoc = 1325;
@@ -3464,7 +3464,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2362;
 		vrLoc = 1325;
@@ -3553,7 +3553,7 @@
 		isa = PBXTextBookmark;
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 3";
-		rLen = 2777;
+		rLen = 3078;
 		rLoc = 67;
 		rType = 0;
 		vrLen = 2142;
@@ -3614,7 +3614,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 1191;
@@ -3663,7 +3663,7 @@
 		isa = PBXTextBookmark;
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: setUp";
-		rLen = 2209;
+		rLen = 2399;
 		rLoc = 97;
 		rType = 0;
 		vrLen = 2089;
@@ -3783,7 +3783,7 @@
 		isa = PBXTextBookmark;
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: setUp";
-		rLen = 2209;
+		rLen = 2399;
 		rLoc = 97;
 		rType = 0;
 		vrLen = 2089;
@@ -3804,7 +3804,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 1191;
@@ -3874,7 +3874,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 1191;
@@ -3974,7 +3974,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = updateWithInfo;
 		rLen = 0;
-		rLoc = 2209;
+		rLoc = 2196;
 		rType = 0;
 		vrLen = 2335;
 		vrLoc = 1191;
@@ -4024,7 +4024,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 27";
 		rLen = 502;
-		rLoc = 1367;
+		rLoc = 1407;
 		rType = 0;
 		vrLen = 1092;
 		vrLoc = 612;
@@ -4074,7 +4074,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 27";
 		rLen = 502;
-		rLoc = 1367;
+		rLoc = 1407;
 		rType = 0;
 		vrLen = 1092;
 		vrLoc = 612;
@@ -4202,7 +4202,7 @@
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "CCMServerMonitor.h: pollServers:";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 348;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 0;
@@ -4352,7 +4352,7 @@
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "CCMServerMonitor.h: pollServers:";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 348;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 0;
@@ -4451,7 +4451,7 @@
 		isa = PBXTextBookmark;
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		rLen = 0;
-		rLoc = "-2147483041";
+		rLoc = "-2147482851";
 		rType = 0;
 	};
 	033A72140C70C020004669D7 /* PBXTextBookmark */ = {
@@ -4469,7 +4469,7 @@
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "CCMServerMonitor.h: pollServers:";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 348;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 0;
@@ -4539,7 +4539,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 27";
 		rLen = 0;
-		rLoc = 1367;
+		rLoc = 1407;
 		rType = 0;
 		vrLen = 1525;
 		vrLoc = 0;
@@ -4579,7 +4579,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 28";
 		rLen = 0;
-		rLoc = 1196;
+		rLoc = 1226;
 		rType = 0;
 		vrLen = 1772;
 		vrLoc = 0;
@@ -4609,7 +4609,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: testCreatesProjects";
 		rLen = 0;
-		rLoc = 1903;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1749;
 		vrLoc = 58;
@@ -4649,7 +4649,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 37";
 		rLen = 0;
-		rLoc = 1772;
+		rLoc = 1812;
 		rType = 0;
 		vrLen = 1746;
 		vrLoc = 0;
@@ -4659,7 +4659,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "<#(id)rootObject#>";
 		rLen = 22;
-		rLoc = 2019;
+		rLoc = 2059;
 		rType = 0;
 		vrLen = 1826;
 		vrLoc = 58;
@@ -4679,7 +4679,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 33";
 		rLen = 0;
-		rLoc = 1469;
+		rLoc = 1509;
 		rType = 0;
 		vrLen = 1775;
 		vrLoc = 0;
@@ -4699,7 +4699,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 37";
 		rLen = 0;
-		rLoc = 1772;
+		rLoc = 1812;
 		rType = 0;
 		vrLen = 1746;
 		vrLoc = 0;
@@ -4719,7 +4719,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 15";
 		rLen = 0;
-		rLoc = 979;
+		rLoc = 1009;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 0;
@@ -4739,7 +4739,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 15";
 		rLen = 0;
-		rLoc = 979;
+		rLoc = 1009;
 		rType = 0;
 		vrLen = 1079;
 		vrLoc = 0;
@@ -4758,7 +4758,7 @@
 		isa = PBXTextBookmark;
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "CCMServerMonitor.h: setNotificationCenter:";
-		rLen = 200;
+		rLen = 170;
 		rLoc = 233;
 		rType = 0;
 		vrLen = 543;
@@ -4779,7 +4779,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 15";
 		rLen = 0;
-		rLoc = 979;
+		rLoc = 1009;
 		rType = 0;
 		vrLen = 1079;
 		vrLoc = 0;
@@ -4818,7 +4818,7 @@
 		isa = PBXTextBookmark;
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "CCMServerMonitor.h: setNotificationCenter:";
-		rLen = 200;
+		rLen = 170;
 		rLoc = 233;
 		rType = 0;
 		vrLen = 543;
@@ -4839,7 +4839,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 15";
 		rLen = 0;
-		rLoc = 979;
+		rLoc = 1009;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 0;
@@ -4939,7 +4939,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: stop";
 		rLen = 0;
-		rLoc = 2196;
+		rLoc = 2183;
 		rType = 0;
 		vrLen = 933;
 		vrLoc = 1;
@@ -4989,7 +4989,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: stop";
 		rLen = 0;
-		rLoc = 2196;
+		rLoc = 2183;
 		rType = 0;
 		vrLen = 933;
 		vrLoc = 1;
@@ -5009,7 +5009,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 45";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 885;
 		vrLoc = 1;
@@ -5019,7 +5019,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 45";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 1;
@@ -5037,7 +5037,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 45";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 1;
@@ -5047,7 +5047,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEqualObjects(@\"build.1\", [project valueForKey:@\"lastBuildLabel\"], @\"Should have set up project projectInfo.\");";
 		rLen = 121;
-		rLoc = 1748;
+		rLoc = 1788;
 		rType = 0;
 		vrLen = 1161;
 		vrLoc = 301;
@@ -5057,7 +5057,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 30";
 		rLen = 0;
-		rLoc = 1861;
+		rLoc = 2092;
 		rType = 0;
 		vrLen = 960;
 		vrLoc = 53;
@@ -5067,7 +5067,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 32";
 		rLen = 0;
-		rLoc = 1890;
+		rLoc = 1930;
 		rType = 0;
 		vrLen = 1462;
 		vrLoc = 0;
@@ -5077,7 +5077,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 30";
 		rLen = 0;
-		rLoc = 1861;
+		rLoc = 2092;
 		rType = 0;
 		vrLen = 960;
 		vrLoc = 53;
@@ -5087,7 +5087,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 26";
 		rLen = 0;
-		rLoc = 976;
+		rLoc = 1006;
 		rType = 0;
 		vrLen = 1861;
 		vrLoc = 0;
@@ -5097,7 +5097,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEquals(2u, [repositories count], @\"Should have created minimum number of repositories.\");";
 		rLen = 99;
-		rLoc = 878;
+		rLoc = 908;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 301;
@@ -5107,7 +5107,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "STAssertEquals(2u, [repositories count], @\"Should have created minimum number of repositories.\");";
 		rLen = 99;
-		rLoc = 878;
+		rLoc = 908;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 301;
@@ -5127,7 +5127,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 26";
 		rLen = 0;
-		rLoc = 976;
+		rLoc = 1006;
 		rType = 0;
 		vrLen = 1861;
 		vrLoc = 0;
@@ -5167,7 +5167,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 76";
 		rLen = 0;
-		rLoc = 2404;
+		rLoc = 2391;
 		rType = 0;
 		vrLen = 1881;
 		vrLoc = 767;
@@ -5237,7 +5237,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 76";
 		rLen = 0;
-		rLoc = 2404;
+		rLoc = 2391;
 		rType = 0;
 		vrLen = 1881;
 		vrLoc = 767;
@@ -5340,7 +5340,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 20";
 		rLen = 0;
-		rLoc = 701;
+		rLoc = 728;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 214;
@@ -5360,7 +5360,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 20";
 		rLen = 0;
-		rLoc = 701;
+		rLoc = 728;
 		rType = 0;
 		vrLen = 1215;
 		vrLoc = 57;
@@ -5390,7 +5390,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 36";
 		rLen = 0;
-		rLoc = 1440;
+		rLoc = 1480;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 953;
@@ -5399,7 +5399,7 @@
 		isa = PBXTextBookmark;
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		rLen = 0;
-		rLoc = 73;
+		rLoc = 69;
 		rType = 1;
 	};
 	033A72B70C70C9DA004669D7 /* PBXTextBookmark */ = {
@@ -5407,7 +5407,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 20";
 		rLen = 0;
-		rLoc = 701;
+		rLoc = 728;
 		rType = 0;
 		vrLen = 701;
 		vrLoc = 251;
@@ -5427,7 +5427,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 36";
 		rLen = 0;
-		rLoc = 1440;
+		rLoc = 1480;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 953;
@@ -5437,7 +5437,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 73";
 		rLen = 0;
-		rLoc = 2210;
+		rLoc = 2197;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 1988;
@@ -5457,7 +5457,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 73";
 		rLen = 0;
-		rLoc = 2210;
+		rLoc = 2197;
 		rType = 0;
 		vrLen = 1716;
 		vrLoc = 235;
@@ -5477,7 +5477,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 26";
 		rLen = 0;
-		rLoc = 976;
+		rLoc = 1006;
 		rType = 0;
 		vrLen = 1861;
 		vrLoc = 0;
@@ -5487,7 +5487,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 73";
 		rLen = 0;
-		rLoc = 2210;
+		rLoc = 2197;
 		rType = 0;
 		vrLen = 1716;
 		vrLoc = 235;
@@ -5507,7 +5507,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 32";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 2012;
 		vrLoc = 1;
@@ -5517,7 +5517,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 32";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 2068;
 		vrLoc = 59;
@@ -5527,7 +5527,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 34";
 		rLen = 0;
-		rLoc = 1274;
+		rLoc = 1304;
 		rType = 0;
 		vrLen = 1558;
 		vrLoc = 251;
@@ -5537,7 +5537,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 34";
 		rLen = 0;
-		rLoc = 1274;
+		rLoc = 1304;
 		rType = 0;
 		vrLen = 1558;
 		vrLoc = 251;
@@ -5547,7 +5547,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 31";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 2050;
 		vrLoc = 57;
@@ -5557,7 +5557,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 31";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 2051;
 		vrLoc = 58;
@@ -5567,7 +5567,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 31";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 1556;
 		vrLoc = 333;
@@ -5577,7 +5577,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 31";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 1556;
 		vrLoc = 333;
@@ -5587,7 +5587,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 73";
 		rLen = 0;
-		rLoc = 2210;
+		rLoc = 2197;
 		rType = 0;
 		vrLen = 1860;
 		vrLoc = 492;
@@ -5597,7 +5597,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 31";
 		rLen = 0;
-		rLoc = 1068;
+		rLoc = 1098;
 		rType = 0;
 		vrLen = 2051;
 		vrLoc = 58;
@@ -5607,7 +5607,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 31";
 		rLen = 0;
-		rLoc = 1068;
+		rLoc = 1098;
 		rType = 0;
 		vrLen = 2051;
 		vrLoc = 58;
@@ -5617,7 +5617,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 73";
 		rLen = 0;
-		rLoc = 2210;
+		rLoc = 2197;
 		rType = 0;
 		vrLen = 1860;
 		vrLoc = 492;
@@ -5627,7 +5627,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 26";
 		rLen = 0;
-		rLoc = 742;
+		rLoc = 772;
 		rType = 0;
 		vrLen = 1981;
 		vrLoc = 34;
@@ -5637,7 +5637,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 36";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 1544;
 		vrLoc = 300;
@@ -5647,7 +5647,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 39";
 		rLen = 0;
-		rLoc = 1419;
+		rLoc = 1459;
 		rType = 0;
 		vrLen = 1958;
 		vrLoc = 34;
@@ -5657,7 +5657,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 36";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 1521;
 		vrLoc = 300;
@@ -5667,7 +5667,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 44";
 		rLen = 0;
-		rLoc = 1470;
+		rLoc = 1510;
 		rType = 0;
 		vrLen = 1965;
 		vrLoc = 59;
@@ -5677,7 +5677,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 31";
 		rLen = 0;
-		rLoc = 939;
+		rLoc = 969;
 		rType = 0;
 		vrLen = 1520;
 		vrLoc = 339;
@@ -5687,7 +5687,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 36";
 		rLen = 0;
-		rLoc = 1123;
+		rLoc = 1153;
 		rType = 0;
 		vrLen = 1852;
 		vrLoc = 0;
@@ -5697,7 +5697,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 39";
 		rLen = 0;
-		rLoc = 1418;
+		rLoc = 1458;
 		rType = 0;
 		vrLen = 1399;
 		vrLoc = 300;
@@ -5707,7 +5707,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 87";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 711;
 		vrLoc = 0;
@@ -5717,7 +5717,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 39";
 		rLen = 0;
-		rLoc = 1418;
+		rLoc = 1458;
 		rType = 0;
 		vrLen = 1399;
 		vrLoc = 300;
@@ -5727,7 +5727,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 87";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 711;
 		vrLoc = 0;
@@ -5737,7 +5737,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 36";
 		rLen = 0;
-		rLoc = 1123;
+		rLoc = 1153;
 		rType = 0;
 		vrLen = 1925;
 		vrLoc = 113;
@@ -5747,7 +5747,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 87";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1703;
 		vrLoc = 235;
@@ -5757,7 +5757,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 87";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 711;
 		vrLoc = 0;
@@ -5767,7 +5767,7 @@
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "CCMServerMonitor.h: pollServers:";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 348;
 		rType = 0;
 		vrLen = 495;
 		vrLoc = 0;
@@ -5777,7 +5777,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 87";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1703;
 		vrLoc = 235;
@@ -5787,7 +5787,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 87";
 		rLen = 0;
-		rLoc = 2824;
+		rLoc = 3138;
 		rType = 0;
 		vrLen = 1703;
 		vrLoc = 235;
@@ -5797,7 +5797,7 @@
 		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
 		name = "CCMServerMonitor.h: pollServers:";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 348;
 		rType = 0;
 		vrLen = 495;
 		vrLoc = 0;
@@ -5807,7 +5807,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = Id;
 		rLen = 0;
-		rLoc = 682;
+		rLoc = 913;
 		rType = 0;
 		vrLen = 1712;
 		vrLoc = 314;
@@ -5817,7 +5817,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = Id;
 		rLen = 0;
-		rLoc = 682;
+		rLoc = 913;
 		rType = 0;
 		vrLen = 1017;
 		vrLoc = 314;
@@ -5827,7 +5827,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = Id;
 		rLen = 0;
-		rLoc = 682;
+		rLoc = 913;
 		rType = 0;
 		vrLen = 1712;
 		vrLoc = 314;
@@ -5857,7 +5857,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = Id;
 		rLen = 0;
-		rLoc = 682;
+		rLoc = 913;
 		rType = 0;
 		vrLen = 1712;
 		vrLoc = 314;
@@ -5897,7 +5897,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = Id;
 		rLen = 0;
-		rLoc = 682;
+		rLoc = 913;
 		rType = 0;
 		vrLen = 1017;
 		vrLoc = 314;
@@ -5987,7 +5987,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 73";
 		rLen = 0;
-		rLoc = 2210;
+		rLoc = 2197;
 		rType = 0;
 		vrLen = 399;
 		vrLoc = 1955;
@@ -6052,7 +6052,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 61";
 		rLen = 0;
-		rLoc = 1880;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 581;
 		vrLoc = 930;
@@ -6079,7 +6079,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 61";
 		rLen = 0;
-		rLoc = 1880;
+		rLoc = 2164;
 		rType = 0;
 		vrLen = 581;
 		vrLoc = 930;
@@ -6094,7 +6094,7 @@
 		vrLen = 207;
 		vrLoc = 1022;
 	};
-	033A73230C70CFD2004669D7 /* CCMServerMonitor.m:53 */ = {
+	033A73230C70CFD2004669D7 /* CCMServerMonitor.m:55 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -6104,7 +6104,7 @@
 		fileReference = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		functionName = "-setupRepositories:";
 		hitCount = 1;
-		lineNumber = 53;
+		lineNumber = 55;
 		location = CCMServerMonitor.ob;
 		modificationTime = 208719932.100589;
 		state = 1;
@@ -6144,7 +6144,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = Id;
 		rLen = 0;
-		rLoc = 682;
+		rLoc = 913;
 		rType = 0;
 		vrLen = 1712;
 		vrLoc = 314;
@@ -6184,7 +6184,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 43";
 		rLen = 0;
-		rLoc = 1234;
+		rLoc = 1465;
 		rType = 0;
 		vrLen = 1704;
 		vrLoc = 253;
@@ -6194,7 +6194,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 43";
 		rLen = 0;
-		rLoc = 1234;
+		rLoc = 1465;
 		rType = 0;
 		vrLen = 1683;
 		vrLoc = 311;
@@ -6214,7 +6214,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 43";
 		rLen = 0;
-		rLoc = 1234;
+		rLoc = 1465;
 		rType = 0;
 		vrLen = 1683;
 		vrLoc = 311;
@@ -6229,7 +6229,7 @@
 		vrLen = 1031;
 		vrLoc = 193;
 	};
-	033A73310C70D031004669D7 /* CCMServerMonitor.m:37 */ = {
+	033A73310C70D031004669D7 /* CCMServerMonitor.m:39 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -6239,7 +6239,7 @@
 		fileReference = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		functionName = "-setupRepositories:";
 		hitCount = 1;
-		lineNumber = 37;
+		lineNumber = 39;
 		location = CCMServerMonitor.ob;
 		modificationTime = 208719934.417102;
 		state = 1;
@@ -6249,7 +6249,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 43";
 		rLen = 0;
-		rLoc = 1234;
+		rLoc = 1465;
 		rType = 0;
 		vrLen = 1683;
 		vrLoc = 311;
@@ -6278,7 +6278,7 @@
 		isa = PBXTextBookmark;
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		rLen = 0;
-		rLoc = 36;
+		rLoc = 38;
 		rType = 1;
 	};
 	033A73360C70D054004669D7 /* PBXTextBookmark */ = {
@@ -6286,7 +6286,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 43";
 		rLen = 0;
-		rLoc = 1234;
+		rLoc = 1465;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 770;
@@ -6306,7 +6306,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 52";
 		rLen = 0;
-		rLoc = 1499;
+		rLoc = 1730;
 		rType = 0;
 		vrLen = 602;
 		vrLoc = 1108;
@@ -6326,7 +6326,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 52";
 		rLen = 0;
-		rLoc = 1499;
+		rLoc = 1730;
 		rType = 0;
 		vrLen = 602;
 		vrLoc = 1108;
@@ -6346,7 +6346,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 52";
 		rLen = 0;
-		rLoc = 1499;
+		rLoc = 1730;
 		rType = 0;
 		vrLen = 487;
 		vrLoc = 622;
@@ -6366,7 +6366,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 36";
 		rLen = 0;
-		rLoc = 867;
+		rLoc = 1098;
 		rType = 0;
 		vrLen = 613;
 		vrLoc = 492;
@@ -6376,7 +6376,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 36";
 		rLen = 0;
-		rLoc = 867;
+		rLoc = 1098;
 		rType = 0;
 		vrLen = 1683;
 		vrLoc = 311;
@@ -6406,7 +6406,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 36";
 		rLen = 0;
-		rLoc = 867;
+		rLoc = 1098;
 		rType = 0;
 		vrLen = 1683;
 		vrLoc = 311;
@@ -6663,7 +6663,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = Id;
 		rLen = 0;
-		rLoc = 682;
+		rLoc = 913;
 		rType = 0;
 		vrLen = 1017;
 		vrLoc = 314;
@@ -6703,7 +6703,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 33";
 		rLen = 0;
-		rLoc = 706;
+		rLoc = 937;
 		rType = 0;
 		vrLen = 1727;
 		vrLoc = 288;
@@ -6723,7 +6723,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1845;
 		vrLoc = 329;
@@ -6733,7 +6733,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1988;
 		vrLoc = 526;
@@ -6743,7 +6743,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 329;
@@ -6753,7 +6753,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 329;
@@ -6773,7 +6773,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 329;
@@ -6793,7 +6793,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1988;
 		vrLoc = 526;
@@ -6863,7 +6863,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1609;
 		vrLoc = 0;
@@ -6903,7 +6903,7 @@
 		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
 		name = "CCMServerMonitor.m: 54";
 		rLen = 0;
-		rLoc = 1678;
+		rLoc = 1909;
 		rType = 0;
 		vrLen = 1609;
 		vrLoc = 0;
@@ -7133,7 +7133,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 36";
 		rLen = 0;
-		rLoc = 1123;
+		rLoc = 1153;
 		rType = 0;
 		vrLen = 1842;
 		vrLoc = 0;
@@ -7183,7 +7183,7 @@
 		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
 		name = "CCMServerMonitorTest.m: 37";
 		rLen = 0;
-		rLoc = 1177;
+		rLoc = 1207;
 		rType = 0;
 		vrLen = 1994;
 		vrLoc = 318;
@@ -7197,6 +7197,382 @@
 		rType = 0;
 		vrLen = 1003;
 		vrLoc = 226;
+	};
+	033A73E00C70DDC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 37";
+		rLen = 0;
+		rLoc = 1207;
+		rType = 0;
+		vrLen = 1992;
+		vrLoc = 320;
+	};
+	033A73E10C70DDC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
+		name = "CCMServerMonitor.h: 24";
+		rLen = 0;
+		rLoc = 434;
+		rType = 0;
+		vrLen = 495;
+		vrLoc = 0;
+	};
+	033A73E20C70DDC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 84";
+		rLen = 0;
+		rLoc = 2823;
+		rType = 0;
+		vrLen = 1961;
+		vrLoc = 1067;
+	};
+	033A73E30C70DDC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 37";
+		rLen = 0;
+		rLoc = 1207;
+		rType = 0;
+		vrLen = 1992;
+		vrLoc = 320;
+	};
+	033A73E40C70DDC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 84";
+		rLen = 0;
+		rLoc = 2823;
+		rType = 0;
+		vrLen = 1961;
+		vrLoc = 1067;
+	};
+	033A73E50C70DDC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374560C47323D003240C4 /* CCMServerMonitor.h */;
+		name = "CCMServerMonitor.h: 24";
+		rLen = 0;
+		rLoc = 434;
+		rType = 0;
+		vrLen = 495;
+		vrLoc = 0;
+	};
+	033A73E60C70DDC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 23";
+		rLen = 0;
+		rLoc = 548;
+		rType = 0;
+		vrLen = 1556;
+		vrLoc = 1505;
+	};
+	033A73EB0C70DDD6004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 23";
+		rLen = 0;
+		rLoc = 548;
+		rType = 0;
+		vrLen = 1555;
+		vrLoc = 1504;
+	};
+	033A73EC0C70DDD6004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */;
+		name = "CCMAppController.m: 27";
+		rLen = 0;
+		rLoc = 1000;
+		rType = 0;
+		vrLen = 1003;
+		vrLoc = 226;
+	};
+	033A73ED0C70DDD6004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: parse error before ']' token";
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		rLen = 1;
+		rLoc = 32;
+		rType = 1;
+	};
+	033A73EE0C70DDD6004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 33";
+		rLen = 0;
+		rLoc = 818;
+		rType = 0;
+		vrLen = 1204;
+		vrLoc = 329;
+	};
+	033A73EF0C70DEC2004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: setUserDefaults:";
+		rLen = 0;
+		rLoc = 692;
+		rType = 0;
+		vrLen = 1204;
+		vrLoc = 329;
+	};
+	033A73F30C70DEF9004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1800;
+		vrLoc = 1299;
+	};
+	033A73F40C70DEFC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1552;
+		vrLoc = 1592;
+	};
+	033A73F50C70DEFC004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1201;
+		vrLoc = 1299;
+	};
+	033A73F90C70DF0F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1553;
+		vrLoc = 1592;
+	};
+	033A73FA0C70DF0F004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2956;
+		rType = 0;
+		vrLen = 976;
+		vrLoc = 2164;
+	};
+	033A73FE0C70DF20004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1553;
+		vrLoc = 1592;
+	};
+	033A73FF0C70DF20004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2956;
+		rType = 0;
+		vrLen = 976;
+		vrLoc = 2164;
+	};
+	033A74020C70DFFB004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1553;
+		vrLoc = 1592;
+	};
+	033A74030C70DFFB004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2956;
+		rType = 0;
+		vrLen = 976;
+		vrLoc = 2164;
+	};
+	033A74040C70DFFB004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
+		name = "CCMConnection.m: 51";
+		rLen = 0;
+		rLoc = 1511;
+		rType = 0;
+		vrLen = 1217;
+		vrLoc = 292;
+	};
+	033A74050C70DFFB004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2956;
+		rType = 0;
+		vrLen = 976;
+		vrLoc = 2164;
+	};
+	033A74060C70DFFB004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
+		name = "CCMConnection.m: 51";
+		rLen = 0;
+		rLoc = 1333;
+		rType = 0;
+		vrLen = 1245;
+		vrLoc = 313;
+	};
+	033A740C0C70E01C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1553;
+		vrLoc = 1592;
+	};
+	033A740D0C70E01C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: parse error before '@' token";
+		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
+		rLen = 1;
+		rLoc = 50;
+		rType = 1;
+	};
+	033A740E0C70E01C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
+		name = "CCMConnection.m: 51";
+		rLen = 0;
+		rLoc = 1343;
+		rType = 0;
+		vrLen = 1245;
+		vrLoc = 313;
+	};
+	033A74130C70E1F4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
+		name = "CCMConnection.m: 16";
+		rLen = 0;
+		rLoc = 250;
+		rType = 0;
+		vrLen = 826;
+		vrLoc = 0;
+	};
+	033A74140C70E1F4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "[center addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:userDefaults]";
+		rLen = 123;
+		rLoc = 445;
+		rType = 0;
+		vrLen = 1063;
+		vrLoc = 236;
+	};
+	033A74150C70E1F4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 37";
+		rLen = 0;
+		rLoc = 1207;
+		rType = 0;
+		vrLen = 1550;
+		vrLoc = 340;
+	};
+	033A74160C70E1F4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */;
+		name = "CCMConnection.m: 16";
+		rLen = 0;
+		rLoc = 250;
+		rType = 0;
+		vrLen = 826;
+		vrLoc = 0;
+	};
+	033A74170C70E1F4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "[center addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:userDefaults]";
+		rLen = 123;
+		rLoc = 445;
+		rType = 0;
+		vrLen = 1063;
+		vrLoc = 236;
+	};
+	033A74180C70E1F4004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 65";
+		rLen = 0;
+		rLoc = 2272;
+		rType = 0;
+		vrLen = 1022;
+		vrLoc = 1440;
+	};
+	033A741C0C70E20C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 03F374570C47323D003240C4 /* CCMServerMonitor.m */;
+		name = "CCMServerMonitor.m: 90";
+		rLen = 0;
+		rLoc = 2958;
+		rType = 0;
+		vrLen = 1553;
+		vrLoc = 1592;
+	};
+	033A741D0C70E20C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 25";
+		rLen = 0;
+		rLoc = 742;
+		rType = 0;
+		vrLen = 1920;
+		vrLoc = 0;
+	};
+	033A74210C70E21C004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 39";
+		rLen = 0;
+		rLoc = 1379;
+		rType = 0;
+		vrLen = 1590;
+		vrLoc = 340;
+	};
+	033A74220C70E21E004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 39";
+		rLen = 0;
+		rLoc = 1379;
+		rType = 0;
+		vrLen = 1956;
+		vrLoc = 171;
+	};
+	033A74230C70E21E004669D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */;
+		name = "CCMServerMonitorTest.m: 39";
+		rLen = 0;
+		rLoc = 1379;
+		rType = 0;
+		vrLen = 1596;
+		vrLoc = 374;
 	};
 	03474D500C44F44B00BABD10 /* UnitTests */ = {
 		activeExec = 0;
@@ -7331,9 +7707,9 @@
 	};
 	035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1004, 1120}}";
-			sepNavSelRange = "{1177, 0}";
-			sepNavVisRect = "{{0, 268}, {1004, 836}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1004, 1200}}";
+			sepNavSelRange = "{1379, 0}";
+			sepNavVisRect = "{{0, 166}, {1004, 836}}";
 		};
 	};
 	037C07C10C6241F4006CF886 /* CCMTimeSinceDateTransformer.h */ = {
@@ -7414,8 +7790,8 @@
 			033A6FA50C709259004669D7 /* CCMAppController.m:41 */,
 			033A72A80C70C99E004669D7 /* CCMServerMonitorTest.m:43 */,
 			033A73190C70CF44004669D7 /* CCMAppController.m:24 */,
-			033A73230C70CFD2004669D7 /* CCMServerMonitor.m:53 */,
-			033A73310C70D031004669D7 /* CCMServerMonitor.m:37 */,
+			033A73230C70CFD2004669D7 /* CCMServerMonitor.m:55 */,
+			033A73310C70D031004669D7 /* CCMServerMonitor.m:39 */,
 		);
 	};
 	037F79A20C6A195900D4C646 /* CCMenu with tests */ = {
@@ -7612,9 +7988,9 @@
 	};
 	03F3744D0C47323D003240C4 /* CCMAppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1004, 836}}";
+			sepNavIntBoundsRect = "{{0, 0}, {989, 704}}";
 			sepNavSelRange = "{1000, 0}";
-			sepNavVisRect = "{{0, 0}, {1004, 836}}";
+			sepNavVisRect = "{{0, 166}, {989, 516}}";
 		};
 	};
 	03F3744E0C47323D003240C4 /* CCMConnection.h */ = {
@@ -7626,9 +8002,9 @@
 	};
 	03F3744F0C47323D003240C4 /* CCMConnection.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1004, 896}}";
-			sepNavSelRange = "{1463, 0}";
-			sepNavVisRect = "{{0, 0}, {1004, 836}}";
+			sepNavIntBoundsRect = "{{0, 0}, {989, 928}}";
+			sepNavSelRange = "{250, 0}";
+			sepNavVisRect = "{{0, 0}, {989, 516}}";
 		};
 	};
 	03F374540C47323D003240C4 /* CCMProject.h */ = {
@@ -7648,16 +8024,16 @@
 	03F374560C47323D003240C4 /* CCMServerMonitor.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1004, 836}}";
-			sepNavSelRange = "{378, 0}";
+			sepNavSelRange = "{434, 0}";
 			sepNavVisRect = "{{0, 0}, {1004, 836}}";
 			sepNavWindowFrame = "{{15, 331}, {846, 692}}";
 		};
 	};
 	03F374570C47323D003240C4 /* CCMServerMonitor.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1004, 1504}}";
-			sepNavSelRange = "{1678, 0}";
-			sepNavVisRect = "{{0, 0}, {1004, 836}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1004, 1648}}";
+			sepNavSelRange = "{2958, 0}";
+			sepNavVisRect = "{{0, 812}, {1004, 836}}";
 		};
 	};
 	03F374650C47324E003240C4 /* CCMConnectionTest.m */ = {
@@ -7684,7 +8060,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 037F79710C69C83800D4C646 /* CCMenu */;
-		activeTarget = 8D1107260486CEB800E47090 /* CCMenu */;
+		activeTarget = 03474D500C44F44B00BABD10 /* UnitTests */;
 		addToTargets = (
 			8D1107260486CEB800E47090 /* CCMenu */,
 			03474D500C44F44B00BABD10 /* UnitTests */,
@@ -7694,8 +8070,8 @@
 			033A6FA50C709259004669D7 /* CCMAppController.m:41 */,
 			033A72A80C70C99E004669D7 /* CCMServerMonitorTest.m:43 */,
 			033A73190C70CF44004669D7 /* CCMAppController.m:24 */,
-			033A73230C70CFD2004669D7 /* CCMServerMonitor.m:53 */,
-			033A73310C70D031004669D7 /* CCMServerMonitor.m:37 */,
+			033A73230C70CFD2004669D7 /* CCMServerMonitor.m:55 */,
+			033A73310C70D031004669D7 /* CCMServerMonitor.m:39 */,
 		);
 		breakpointsGroup = 037F798A0C6A178300D4C646 /* XCBreakpointsBucket */;
 		codeSenseManager = 037F797A0C69C85100D4C646 /* Code sense */;
@@ -8554,6 +8930,44 @@
 			033A73AC0C70DB6D004669D7 /* PBXTextBookmark */ = 033A73AC0C70DB6D004669D7 /* PBXTextBookmark */;
 			033A73AD0C70DB6D004669D7 /* PBXTextBookmark */ = 033A73AD0C70DB6D004669D7 /* PBXTextBookmark */;
 			033A73AE0C70DB6D004669D7 /* PBXTextBookmark */ = 033A73AE0C70DB6D004669D7 /* PBXTextBookmark */;
+			033A73E00C70DDC2004669D7 /* PBXTextBookmark */ = 033A73E00C70DDC2004669D7 /* PBXTextBookmark */;
+			033A73E10C70DDC2004669D7 /* PBXTextBookmark */ = 033A73E10C70DDC2004669D7 /* PBXTextBookmark */;
+			033A73E20C70DDC2004669D7 /* PBXTextBookmark */ = 033A73E20C70DDC2004669D7 /* PBXTextBookmark */;
+			033A73E30C70DDC2004669D7 /* PBXTextBookmark */ = 033A73E30C70DDC2004669D7 /* PBXTextBookmark */;
+			033A73E40C70DDC2004669D7 /* PBXTextBookmark */ = 033A73E40C70DDC2004669D7 /* PBXTextBookmark */;
+			033A73E50C70DDC2004669D7 /* PBXTextBookmark */ = 033A73E50C70DDC2004669D7 /* PBXTextBookmark */;
+			033A73E60C70DDC2004669D7 /* PBXTextBookmark */ = 033A73E60C70DDC2004669D7 /* PBXTextBookmark */;
+			033A73EB0C70DDD6004669D7 /* PBXTextBookmark */ = 033A73EB0C70DDD6004669D7 /* PBXTextBookmark */;
+			033A73EC0C70DDD6004669D7 /* PBXTextBookmark */ = 033A73EC0C70DDD6004669D7 /* PBXTextBookmark */;
+			033A73ED0C70DDD6004669D7 /* PBXTextBookmark */ = 033A73ED0C70DDD6004669D7 /* PBXTextBookmark */;
+			033A73EE0C70DDD6004669D7 /* PBXTextBookmark */ = 033A73EE0C70DDD6004669D7 /* PBXTextBookmark */;
+			033A73EF0C70DEC2004669D7 /* PBXTextBookmark */ = 033A73EF0C70DEC2004669D7 /* PBXTextBookmark */;
+			033A73F30C70DEF9004669D7 /* PBXTextBookmark */ = 033A73F30C70DEF9004669D7 /* PBXTextBookmark */;
+			033A73F40C70DEFC004669D7 /* PBXTextBookmark */ = 033A73F40C70DEFC004669D7 /* PBXTextBookmark */;
+			033A73F50C70DEFC004669D7 /* PBXTextBookmark */ = 033A73F50C70DEFC004669D7 /* PBXTextBookmark */;
+			033A73F90C70DF0F004669D7 /* PBXTextBookmark */ = 033A73F90C70DF0F004669D7 /* PBXTextBookmark */;
+			033A73FA0C70DF0F004669D7 /* PBXTextBookmark */ = 033A73FA0C70DF0F004669D7 /* PBXTextBookmark */;
+			033A73FE0C70DF20004669D7 /* PBXTextBookmark */ = 033A73FE0C70DF20004669D7 /* PBXTextBookmark */;
+			033A73FF0C70DF20004669D7 /* PBXTextBookmark */ = 033A73FF0C70DF20004669D7 /* PBXTextBookmark */;
+			033A74020C70DFFB004669D7 /* PBXTextBookmark */ = 033A74020C70DFFB004669D7 /* PBXTextBookmark */;
+			033A74030C70DFFB004669D7 /* PBXTextBookmark */ = 033A74030C70DFFB004669D7 /* PBXTextBookmark */;
+			033A74040C70DFFB004669D7 /* PBXTextBookmark */ = 033A74040C70DFFB004669D7 /* PBXTextBookmark */;
+			033A74050C70DFFB004669D7 /* PBXTextBookmark */ = 033A74050C70DFFB004669D7 /* PBXTextBookmark */;
+			033A74060C70DFFB004669D7 /* PBXTextBookmark */ = 033A74060C70DFFB004669D7 /* PBXTextBookmark */;
+			033A740C0C70E01C004669D7 /* PBXTextBookmark */ = 033A740C0C70E01C004669D7 /* PBXTextBookmark */;
+			033A740D0C70E01C004669D7 /* PBXTextBookmark */ = 033A740D0C70E01C004669D7 /* PBXTextBookmark */;
+			033A740E0C70E01C004669D7 /* PBXTextBookmark */ = 033A740E0C70E01C004669D7 /* PBXTextBookmark */;
+			033A74130C70E1F4004669D7 /* PBXTextBookmark */ = 033A74130C70E1F4004669D7 /* PBXTextBookmark */;
+			033A74140C70E1F4004669D7 /* PBXTextBookmark */ = 033A74140C70E1F4004669D7 /* PBXTextBookmark */;
+			033A74150C70E1F4004669D7 /* PBXTextBookmark */ = 033A74150C70E1F4004669D7 /* PBXTextBookmark */;
+			033A74160C70E1F4004669D7 /* PBXTextBookmark */ = 033A74160C70E1F4004669D7 /* PBXTextBookmark */;
+			033A74170C70E1F4004669D7 /* PBXTextBookmark */ = 033A74170C70E1F4004669D7 /* PBXTextBookmark */;
+			033A74180C70E1F4004669D7 /* PBXTextBookmark */ = 033A74180C70E1F4004669D7 /* PBXTextBookmark */;
+			033A741C0C70E20C004669D7 /* PBXTextBookmark */ = 033A741C0C70E20C004669D7 /* PBXTextBookmark */;
+			033A741D0C70E20C004669D7 /* PBXTextBookmark */ = 033A741D0C70E20C004669D7 /* PBXTextBookmark */;
+			033A74210C70E21C004669D7 /* PBXTextBookmark */ = 033A74210C70E21C004669D7 /* PBXTextBookmark */;
+			033A74220C70E21E004669D7 /* PBXTextBookmark */ = 033A74220C70E21E004669D7 /* PBXTextBookmark */;
+			033A74230C70E21E004669D7 /* PBXTextBookmark */ = 033A74230C70E21E004669D7 /* PBXTextBookmark */;
 			0356F6390C6E2C4500D0836C = 0356F6390C6E2C4500D0836C /* PBXTextBookmark */;
 			0356F6940C6E359100D0836C = 0356F6940C6E359100D0836C /* PBXTextBookmark */;
 			0356F8EB0C6F87A000D0836C = 0356F8EB0C6F87A000D0836C /* PBXTextBookmark */;

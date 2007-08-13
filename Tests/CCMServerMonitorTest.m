@@ -20,9 +20,9 @@
 
 - (void)testCreatesRepositories
 {
-	NSDictionary *pd1 = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"name", @"localhost", @"server", nil];
-	NSDictionary *pd2 = [NSDictionary dictionaryWithObjectsAndKeys:@"cozmoz", @"name", @"another", @"server", nil];
-	NSDictionary *pd3 = [NSDictionary dictionaryWithObjectsAndKeys:@"protest", @"name", @"another", @"server", nil];
+	NSDictionary *pd1 = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"projectName", @"localhost", @"serverUrl", nil];
+	NSDictionary *pd2 = [NSDictionary dictionaryWithObjectsAndKeys:@"cozmoz", @"projectName", @"another", @"serverUrl", nil];
+	NSDictionary *pd3 = [NSDictionary dictionaryWithObjectsAndKeys:@"protest", @"projectName", @"another", @"serverUrl", nil];
 	projectsUserDefaults = [NSArray arrayWithObjects:pd1, pd2, pd3, nil];
 	
 	[monitor start];
@@ -36,7 +36,7 @@
 	// Unfortunately, we can't stub the repository because the monitor creates it. So, we need a working URL,
 	// which makes this almost an integration test.
 	NSString *url = [[NSURL fileURLWithPath:@"Tests/cctray.xml"] absoluteString];
-	NSDictionary *pd = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"name", url, @"server", nil];
+	NSDictionary *pd = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"projectName", url, @"serverUrl", nil];
 	projectsUserDefaults = [NSArray arrayWithObject:pd];
 
 	[monitor start];
@@ -60,6 +60,10 @@
 }
 
 // notification center stub
+
+- (void)addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString *)notificationName object:(id)notificationSender
+{	
+}
 
 - (void)postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo
 {

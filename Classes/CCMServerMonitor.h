@@ -15,12 +15,12 @@
 - (void)setNotificationCenter:(NSNotificationCenter *)center;
 - (void)setUserDefaults:(NSUserDefaults *)defaults;
 
-- (void)start;
-- (void)stop;
-
 - (void)pollServers:(id)sender;
 
 - (NSArray *)projects;
+
+- (void)start;
+- (void)stop;
 
 @end
 

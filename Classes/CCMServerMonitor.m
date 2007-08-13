@@ -20,6 +20,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)setNotificationCenter:(NSNotificationCenter *)center
 {
 	notificationCenter = center;
+	[center addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:userDefaults];
 }
 
 - (void)setUserDefaults:(NSUserDefaults *)defaults
@@ -27,8 +28,9 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	userDefaults = defaults;
 }
 
-- (void)setupRepositories:(NSArray *)defaultsProjectList
+- (void)setupRepositoriesFromDefaults
 {
+	NSArray *defaultsProjectList = [NSUnarchiver unarchiveObjectWithData:[userDefaults dataForKey:CCMDefaultsProjectListKey]];
 	NSMutableDictionary *projectNamesByServer = [NSMutableDictionary dictionary];
 	NSEnumerator *defaultsProjectEntryEnum = [defaultsProjectList objectEnumerator];
 	NSDictionary *defaultsProjectEntry;
@@ -57,16 +59,10 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	}
 }
 
-- (void)start
+- (void)defaultsChanged:(id)sender
 {
-	[self setupRepositories:[NSUnarchiver unarchiveObjectWithData:[userDefaults dataForKey:CCMDefaultsProjectListKey]]];
-	timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(pollServers:) userInfo:nil repeats:YES];
-}
-
-- (void)stop
-{
-	[timer invalidate];
-	timer = nil;
+	[self stop];
+	[self start];
 }
 
 - (void)pollServers:(id)sender
@@ -86,6 +82,19 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	while((repository = [repositoryEnum nextObject]) != nil)
 		[projects addObjectsFromArray:[repository projects]];
 	return projects;
+}
+
+- (void)start
+{
+	[self setupRepositoriesFromDefaults];
+	[self performSelector:@selector(pollServers:) withObject:self afterDelay:0.1];
+	timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(pollServers:) userInfo:nil repeats:YES];
+}
+
+- (void)stop
+{
+	[timer invalidate];
+	timer = nil;
 }
 
 
