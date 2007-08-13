@@ -12,7 +12,7 @@
 	NSMutableDictionary		*projects;
 }
 
-- (id)initWithConnection:(CCMConnection *)aConnection;
+- (id)initWithConnection:(CCMConnection *)aConnection andProjects:(NSArray *)projectNames;
 
 - (void)setNotificationCenter:(NSNotificationCenter *)center;
 

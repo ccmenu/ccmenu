@@ -24,7 +24,7 @@
 //	NSURL *url = [NSURL URLWithString:@"http://cclive.thoughtworks.com/dashboard/cctray.xml"];
 	NSURL *url = [NSURL URLWithString:@"http://localhost:8080/dashboard/cctray.xml"];
 	CCMConnection *connection = [[[CCMConnection alloc] initWithURL:url] autorelease];
-	monitor = [[CCMServerMonitor alloc] initWithConnection:connection];
+	monitor = [[CCMServerMonitor alloc] initWithConnection:connection andProjects:[NSArray arrayWithObject:@"connectfour"]];
 	[monitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
 	[monitor start];
 }

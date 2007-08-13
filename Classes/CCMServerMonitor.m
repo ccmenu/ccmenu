@@ -13,11 +13,15 @@ NSString *CCMStillFailingBuild = @"Still failing";
 
 @implementation CCMServerMonitor
 
-- (id)initWithConnection:(CCMConnection *)aConnection
+- (id)initWithConnection:(CCMConnection *)aConnection andProjects:(NSArray *)projectNames
 {
 	[super init];
 	connection = [aConnection retain];
 	projects = [[NSMutableDictionary alloc] init];
+	NSEnumerator *nameEnum = [projectNames objectEnumerator];
+	NSString *name;
+	while((name = [nameEnum nextObject]) != nil)
+		[projects setObject:[[[CCMProject alloc] initWithName:name] autorelease] forKey:name];		
 	return self;
 }
 
@@ -75,26 +79,21 @@ NSString *CCMStillFailingBuild = @"Still failing";
 	NSDictionary *info;
 	while((info = [infoEnum nextObject]) != nil)
 	{
-		NSString *projectName = [info objectForKey:@"name"];
-		CCMProject *project = [projects objectForKey:projectName];
+		CCMProject *project = [projects objectForKey:[info objectForKey:@"name"]];
 		if(project == nil)
+			continue;
+
+		if([[project valueForKey:@"activity"] isEqualToString:CCMBuildingActivity] &&
+			![[info objectForKey:@"activity"] isEqualToString:CCMBuildingActivity])
 		{
-			project = [[[CCMProject alloc] initWithName:projectName] autorelease];
-			[projects setObject:project forKey:projectName];
-		}
-		else 
+			NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
+			[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
+		} 
+		else if(([project valueForKey:@"lastBuildStatus"] != nil) &&
+				![[project valueForKey:@"lastBuildStatus"] isEqualToString:[info valueForKey:@"lastBuildStatus"]])
 		{
-			if([[project valueForKey:@"activity"] isEqualToString:CCMBuildingActivity] &&
-				![[info objectForKey:@"activity"] isEqualToString:CCMBuildingActivity])
-			{
-				NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
-				[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
-			} 
-			else if(![[project valueForKey:@"lastBuildStatus"] isEqualToString:[info valueForKey:@"lastBuildStatus"]])
-			{
-				NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
-				[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
-			}
+			NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project andNewProjectInfo:info];
+			[notificationCenter postNotificationName:CCMBuildCompleteNotification object:self userInfo:buildCompleteInfo];
 		}
 		[project updateWithInfo:info];
 	}

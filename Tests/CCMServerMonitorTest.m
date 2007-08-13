@@ -7,12 +7,12 @@
 
 - (void)setUp
 {
-	monitor = [[[CCMServerMonitor alloc] initWithConnection:(id)self] autorelease];
+	monitor = [[[CCMServerMonitor alloc] initWithConnection:(id)self andProjects:[NSArray arrayWithObject:@"connectfour"]] autorelease];
 	[monitor setNotificationCenter:(id)self];
 	postedNotifications = [NSMutableArray array];
 }
 
-- (NSDictionary *)createProjectInfoWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
+- (NSMutableDictionary *)createProjectInfoWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
 {
 	NSMutableDictionary *info = [NSMutableDictionary dictionary];
 	[info setObject:@"connectfour" forKey:@"name"];
@@ -32,6 +32,21 @@
 	CCMProject *project = [projectList objectAtIndex:0];
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have set up project with right name."); 
 	STAssertEqualObjects(CCMSuccessStatus, [project valueForKey:@"lastBuildStatus"], @"Should have set up project projectInfo."); 
+}
+
+- (void)testIgnoresProjectsNotInInitialList
+{	
+	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	[monitor pollServer:nil];
+	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	[projectInfo setObject:@"foo" forKey:@"name"];
+	[monitor pollServer:nil];
+	
+	NSArray *projectList = [monitor projects];
+	STAssertEquals(1u, [projectList count], @"Should have ignored additional project.");
+	CCMProject *project = [projectList objectAtIndex:0];
+	STAssertEqualObjects(@"connectfour", [project name], @"Should have kept project with right name."); 
+	STAssertEqualObjects(CCMSuccessStatus, [project valueForKey:@"lastBuildStatus"], @"Should have kept right status."); 
 }
 
 - (void)testUpdatesProjects

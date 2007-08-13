@@ -6,7 +6,7 @@
 @interface CCMServerMonitorTest : SenTestCase 
 {
 	CCMServerMonitor *monitor;
-	NSDictionary *projectInfo;
+	NSMutableDictionary *projectInfo;
 	NSMutableArray *postedNotifications;
 }
 
