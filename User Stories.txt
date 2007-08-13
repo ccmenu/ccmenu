@@ -43,6 +43,5 @@ status bar item so that I can have a detailed view without opening the menu or w
 Bugs
 ====
 
-* does not recover from 'no server connection on startup' state
 - window has to wait for first notification to show content
 - many strings not localizable

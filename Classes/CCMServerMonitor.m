@@ -36,7 +36,6 @@ NSString *CCMStillFailingBuild = @"Still failing";
 
 - (void)start
 {
-	[self pollServer:nil];
 	timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(pollServer:) userInfo:nil repeats:YES];
 }
 
