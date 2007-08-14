@@ -67,6 +67,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (void)pollServers:(id)sender
 {
+	NSLog(@"polling, sender was %@", sender);
 	NSEnumerator *repositoryEnum = [[repositories allValues] objectEnumerator];
 	CCMProjectRepository *repository;
 	while((repository = [repositoryEnum nextObject]) != nil)
@@ -87,8 +88,10 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)start
 {
 	[self setupRepositoriesFromDefaults];
-	[self performSelector:@selector(pollServers:) withObject:self afterDelay:0.1];
-	timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(pollServers:) userInfo:nil repeats:YES];
+	int interval = [userDefaults integerForKey:CCMDefaultsPollIntervalKey];
+	NSAssert1(interval >= 1, @"Invalid poll interval; must be greater or equal 1 but is %d.", interval);
+	timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(pollServers:) userInfo:nil repeats:YES];
+	[timer fire];
 }
 
 - (void)stop

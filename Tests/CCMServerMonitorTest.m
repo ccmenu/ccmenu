@@ -59,6 +59,12 @@
 	return nil;
 }
 
+- (int)integerForKey:(NSString *)key
+{
+	return 1000;
+}
+					  
+
 // notification center stub
 
 - (void)addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString *)notificationName object:(id)notificationSender

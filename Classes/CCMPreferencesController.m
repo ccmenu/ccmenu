@@ -5,6 +5,7 @@
 NSString *CCMDefaultsProjectListKey = @"Projects";
 NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
 NSString *CCMDefaultsProjectEntryServerUrlKey = @"serverUrl";
+NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
 
 
 @implementation CCMPreferencesController

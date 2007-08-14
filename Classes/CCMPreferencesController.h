@@ -26,3 +26,5 @@
 extern NSString *CCMDefaultsProjectListKey;
 extern NSString *CCMDefaultsProjectEntryNameKey;
 extern NSString *CCMDefaultsProjectEntryServerUrlKey;
+
+extern NSString *CCMDefaultsPollIntervalKey;

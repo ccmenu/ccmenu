@@ -9,6 +9,24 @@
 
 @implementation CCMAppController
 
+- (void)registerFactoryDefaults
+{
+	NSDictionary *factorySettings = nil;
+	
+	NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"FactoryDefaults" ofType:@"plist"];
+	NSAssert(resourcePath != nil, @"Missing resource; cannot find FactoryDefaults.");
+	@try
+	{
+		factorySettings = [[NSString stringWithContentsOfFile:resourcePath] propertyList];
+	}
+	@catch(NSException *e)
+	{
+		// settings will remain nil which will be caught by assert below
+	}
+	NSAssert([factorySettings isKindOfClass:[NSDictionary class]], @"Damaged resource; FactoryDefaults is not a valid dictionary.");
+	[[NSUserDefaults standardUserDefaults] registerDefaults:factorySettings];
+}
+
 - (void)start
 {
 	CCMBuildStatusTransformer *statusTransformer = [[[CCMBuildStatusTransformer alloc] init] autorelease];
@@ -32,6 +50,7 @@
 {
 	@try
 	{
+		[self registerFactoryDefaults];
 		[self start];
 	}
 	@catch(NSException *e)

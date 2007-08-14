@@ -71,6 +71,8 @@
 		037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
 		037F79EC0C6A1A9C00D4C646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		037F7BFF0C6A3BF100D4C646 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
+		038D9F080C71F13200B5736F /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 038D9F070C71F13200B5736F /* FactoryDefaults.plist */; };
+		038D9F090C71F13200B5736F /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 038D9F070C71F13200B5736F /* FactoryDefaults.plist */; };
 		038EC6510C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
 		038EC6520C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
 		038EC67E0C6D14BE00597BA0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -148,7 +150,7 @@
 		033A715E0C70BA2C004669D7 /* CCMProjectRepositoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectRepositoryTest.h; sourceTree = "<group>"; };
 		033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectRepositoryTest.m; sourceTree = "<group>"; };
 		03474D510C44F44B00BABD10 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03474D520C44F44B00BABD10 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		03474D520C44F44B00BABD10 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "UnitTests-Info.plist"; path = "Resources/UnitTests-Info.plist"; sourceTree = "<group>"; };
 		0357DD940C6B982600523845 /* CCMGrowlAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMGrowlAdaptor.h; sourceTree = "<group>"; };
 		0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMGrowlAdaptor.m; sourceTree = "<group>"; };
 		035C6D780C5E48F300906910 /* CCMImageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactory.h; sourceTree = "<group>"; };
@@ -172,8 +174,9 @@
 		037C080F0C6244C1006CF886 /* CCMImageFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactoryTest.h; sourceTree = "<group>"; };
 		037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMImageFactoryTest.m; sourceTree = "<group>"; };
 		037F79A30C6A195900D4C646 /* CCMenu with tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCMenu with tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CCMenu with tests-Info.plist"; sourceTree = "<group>"; };
+		037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "CCMenu with tests-Info.plist"; path = "Resources/CCMenu with tests-Info.plist"; sourceTree = "<group>"; };
 		037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
+		038D9F070C71F13200B5736F /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = FactoryDefaults.plist; path = Resources/FactoryDefaults.plist; sourceTree = "<group>"; };
 		038EC64A0C6D0F9E00597BA0 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		038EC72C0C6D1E1000597BA0 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = build/Frameworks/Growl.framework; sourceTree = "<group>"; };
 		038EC74F0C6D1F3000597BA0 /* COPYING.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = COPYING.txt; sourceTree = "<group>"; };
@@ -209,7 +212,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* CCMenu_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMenu_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CCMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -277,6 +280,24 @@
 				03F3746A0C47324E003240C4 /* cctray.xml */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		038D9DD50C71EFD800B5736F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				038EC76B0C6D2E1300597BA0 /* CCMenu.icns */,
+				0369573B0C692C0900F89365 /* Placeholder.tiff */,
+				038ECB7D0C6D3F1200597BA0 /* minus.png */,
+				038ECB7E0C6D3F1200597BA0 /* plus.png */,
+				036958460C693C3A00F89365 /* icon-inactive.png */,
+				037C07820C621266006CF886 /* icon-building-failed.png */,
+				037C07830C621266006CF886 /* icon-failure-building.png */,
+				037C07840C621266006CF886 /* icon-success-building.png */,
+				037C07850C621266006CF886 /* icon-failure.png */,
+				037C07860C621266006CF886 /* icon-pause.png */,
+				037C07870C621266006CF886 /* icon-success.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		03F374730C473269003240C4 /* User Interface */ = {
@@ -375,6 +396,7 @@
 				03474D330C44F37200BABD10 /* Tests */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				038D9DD50C71EFD800B5736F /* Images */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -397,21 +419,11 @@
 				03097CC80C4CD926002F04B5 /* ProjectWindow.nib */,
 				038EC7920C6D35C200597BA0 /* Preferences.nib */,
 				038EC6500C6D0FB200597BA0 /* Localizable.strings */,
+				038D9F070C71F13200B5736F /* FactoryDefaults.plist */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				038EC76B0C6D2E1300597BA0 /* CCMenu.icns */,
-				0369573B0C692C0900F89365 /* Placeholder.tiff */,
-				038ECB7D0C6D3F1200597BA0 /* minus.png */,
-				038ECB7E0C6D3F1200597BA0 /* plus.png */,
-				036958460C693C3A00F89365 /* icon-inactive.png */,
-				037C07820C621266006CF886 /* icon-building-failed.png */,
-				037C07830C621266006CF886 /* icon-failure-building.png */,
-				037C07840C621266006CF886 /* icon-success-building.png */,
-				037C07850C621266006CF886 /* icon-failure.png */,
-				037C07860C621266006CF886 /* icon-pause.png */,
-				037C07870C621266006CF886 /* icon-success.png */,
-				03474D520C44F44B00BABD10 /* UnitTests-Info.plist */,
 				037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */,
+				03474D520C44F44B00BABD10 /* UnitTests-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -532,6 +544,7 @@
 				038EC7950C6D35C200597BA0 /* Preferences.nib in Resources */,
 				038ECB810C6D3F1200597BA0 /* minus.png in Resources */,
 				038ECB820C6D3F1200597BA0 /* plus.png in Resources */,
+				038D9F090C71F13200B5736F /* FactoryDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +570,7 @@
 				038EC7940C6D35C200597BA0 /* Preferences.nib in Resources */,
 				038ECB7F0C6D3F1200597BA0 /* minus.png in Resources */,
 				038ECB800C6D3F1200597BA0 /* plus.png in Resources */,
+				038D9F080C71F13200B5736F /* FactoryDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,7 +782,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INFOPLIST_FILE = "Resources/UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -807,7 +821,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INFOPLIST_FILE = "Resources/UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -848,7 +862,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "CCMenu with tests-Info.plist";
+				INFOPLIST_FILE = "Resources/CCMenu with tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -887,7 +901,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "CCMenu with tests-Info.plist";
+				INFOPLIST_FILE = "Resources/CCMenu with tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -923,7 +937,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CCMenu;
 				WRAPPER_EXTENSION = app;
@@ -953,7 +967,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CCMenu;
 				WRAPPER_EXTENSION = app;
