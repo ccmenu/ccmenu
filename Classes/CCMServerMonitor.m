@@ -20,7 +20,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)setNotificationCenter:(NSNotificationCenter *)center
 {
 	notificationCenter = center;
-	[center addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:userDefaults];
+	[center addObserver:self selector:@selector(defaultsChanged:) name:CCMPreferencesChangedNotification object:nil];
 }
 
 - (void)setUserDefaults:(NSUserDefaults *)defaults
@@ -61,6 +61,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (void)defaultsChanged:(id)sender
 {
+	NSLog(@"DEFAULTS CHANGED, sender was %@", sender);
 	[self stop];
 	[self start];
 }
@@ -90,8 +91,8 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	[self setupRepositoriesFromDefaults];
 	int interval = [userDefaults integerForKey:CCMDefaultsPollIntervalKey];
 	NSAssert1(interval >= 1, @"Invalid poll interval; must be greater or equal 1 but is %d.", interval);
+	[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(pollServers:) userInfo:nil repeats:NO];
 	timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(pollServers:) userInfo:nil repeats:YES];
-	[timer fire];
 }
 
 - (void)stop

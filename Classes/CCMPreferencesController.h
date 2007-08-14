@@ -4,8 +4,9 @@
 
 @interface CCMPreferencesController : NSObject 
 {
-	IBOutlet NSPanel				*preferencesWindow;
+	NSUserDefaults	*userDefaults;
 	
+	IBOutlet NSPanel				*preferencesWindow;
 	IBOutlet NSPanel				*addProjectsSheet;
 	IBOutlet NSTabView				*sheetTabView;
 	IBOutlet NSComboBox				*serverUrlComboBox;
@@ -20,6 +21,8 @@
 - (IBAction)chooseProjects:(id)sender;
 - (IBAction)closeAddProjectsSheet:(id)sender;
 
+- (IBAction)preferencesChanged:(id)sender;
+
 @end
 
 
@@ -28,3 +31,5 @@ extern NSString *CCMDefaultsProjectEntryNameKey;
 extern NSString *CCMDefaultsProjectEntryServerUrlKey;
 
 extern NSString *CCMDefaultsPollIntervalKey;
+
+extern NSString *CCMPreferencesChangedNotification;

@@ -5,9 +5,8 @@
                 addProjects = id; 
                 chooseProjects = id; 
                 closeAddProjectsSheet = id; 
-                removeProjects = id; 
+                preferencesChanged = id; 
                 showWindow = id; 
-                testServerConnection = id; 
             }; 
             CLASS = CCMPreferencesController; 
             LANGUAGE = ObjC; 

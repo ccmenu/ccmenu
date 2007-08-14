@@ -7,8 +7,15 @@ NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
 NSString *CCMDefaultsProjectEntryServerUrlKey = @"serverUrl";
 NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
 
+NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotification";
+
 
 @implementation CCMPreferencesController
+
+- (void)awakeFromNib
+{
+	userDefaults = [NSUserDefaults standardUserDefaults];
+}
 
 - (NSURL *)getServerURL
 {
@@ -84,8 +91,13 @@ NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
 			[[self getServerURL] absoluteString], CCMDefaultsProjectEntryServerUrlKey, nil]];
 	}
 	NSData *data = [NSArchiver archivedDataWithRootObject:defaultsProjectList];
-	[[NSUserDefaults standardUserDefaults] setObject:data forKey:CCMDefaultsProjectListKey];
+	[userDefaults setObject:data forKey:CCMDefaultsProjectListKey];
+	[self preferencesChanged:self];
+}
 
+- (void)preferencesChanged:(id)sender
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
 }
 
 @end

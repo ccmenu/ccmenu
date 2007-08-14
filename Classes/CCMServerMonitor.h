@@ -8,8 +8,8 @@
 	NSNotificationCenter	*notificationCenter;
 	NSUserDefaults			*userDefaults;
 
-	NSTimer					*timer;
 	NSMutableDictionary		*repositories;
+	NSTimer					*timer;
 }
 
 - (void)setNotificationCenter:(NSNotificationCenter *)center;
