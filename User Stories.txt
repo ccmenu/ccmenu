@@ -43,6 +43,7 @@ status bar item so that I can have a detailed view without opening the menu or w
 Bugs
 ====
 
+* remove project(s) doesn't trigger monitor restart
 * build status change notifications sent during event handling
 - window has to wait for first notification to show content
 - many strings not localizable

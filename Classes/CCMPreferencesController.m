@@ -26,7 +26,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[serverUrlComboBox setStringValue:serverUrl];
 	}
 	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml.jsp", @"XmlServerReport.aspx", @"??", @"", nil];
-	NSString *filename = [allFilenames objectAtIndex:[[serverTypeMatrix selectedCell] tag]];
+	NSString *filename = [allFilenames objectAtIndex:[serverTypeMatrix selectedTag]];
 	if(([serverUrl length] > 0) && (![serverUrl hasSuffix:filename]))
 	{
 		if(![serverUrl hasSuffix:@"/"])
@@ -75,20 +75,26 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[NSApp endSheet:addProjectsSheet returnCode:[sender tag]];
 }
 
-- (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+- (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
 	[addProjectsSheet orderOut:self];
 	if(returnCode == 0)
 		return;
-	
+
 	NSMutableArray *defaultsProjectList = [NSMutableArray array];
+	NSData *defaultsData = [userDefaults dataForKey:CCMDefaultsProjectListKey];
+	if(defaultsData != nil)
+		defaultsProjectList = [[[NSUnarchiver unarchiveObjectWithData:defaultsData] mutableCopy] autorelease];
+	
 	NSEnumerator *projectInfoEnum = [[chooseProjectsViewController selectedObjects] objectEnumerator];
 	NSDictionary *projectInfo;
 	while((projectInfo = [projectInfoEnum nextObject]) != nil)
 	{
-		[defaultsProjectList addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+		NSDictionary *defaultsProjectListEntry = [NSDictionary dictionaryWithObjectsAndKeys:
 			[projectInfo objectForKey:@"name"], CCMDefaultsProjectEntryNameKey, 
-			[[self getServerURL] absoluteString], CCMDefaultsProjectEntryServerUrlKey, nil]];
+			[[self getServerURL] absoluteString], CCMDefaultsProjectEntryServerUrlKey, nil];
+		if(![defaultsProjectList containsObject:defaultsProjectListEntry])
+		   [defaultsProjectList addObject:defaultsProjectListEntry];
 	}
 	NSData *data = [NSArchiver archivedDataWithRootObject:defaultsProjectList];
 	[userDefaults setObject:data forKey:CCMDefaultsProjectListKey];

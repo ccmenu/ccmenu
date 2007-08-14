@@ -23,6 +23,8 @@
 
 - (IBAction)preferencesChanged:(id)sender;
 
+- (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+
 @end
 
 

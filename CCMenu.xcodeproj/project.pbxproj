@@ -94,6 +94,11 @@
 		038ECBC90C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */; };
 		038ECBCB0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */; };
 		038ECBCC0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */; };
+		039AB8090C720FEE00A8FE20 /* CCMPreferencesControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 039AB8070C720FEE00A8FE20 /* CCMPreferencesControllerTest.m */; };
+		039AB80A0C720FEE00A8FE20 /* CCMPreferencesControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 039AB8070C720FEE00A8FE20 /* CCMPreferencesControllerTest.m */; };
+		039AB8400C72125200A8FE20 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039AB8390C72125200A8FE20 /* OCMock.framework */; };
+		039AB8410C72125200A8FE20 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039AB8390C72125200A8FE20 /* OCMock.framework */; };
+		039AB90F0C721C7B00A8FE20 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 039AB8390C72125200A8FE20 /* OCMock.framework */; };
 		03D5D24A0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D24B0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D2690C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2670C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m */; };
@@ -130,6 +135,7 @@
 			dstPath = Contents/Frameworks;
 			dstSubfolderSpec = 1;
 			files = (
+				039AB90F0C721C7B00A8FE20 /* OCMock.framework in CopyFiles */,
 				038EC7390C6D1E1E00597BA0 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +192,9 @@
 		038ECB7E0C6D3F1200597BA0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = Images/plus.png; sourceTree = "<group>"; };
 		038ECBC60C6DDDF700597BA0 /* CCMPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMPreferencesController.h; sourceTree = "<group>"; };
 		038ECBC70C6DDDF700597BA0 /* CCMPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMPreferencesController.m; sourceTree = "<group>"; };
+		039AB8060C720FEE00A8FE20 /* CCMPreferencesControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMPreferencesControllerTest.h; sourceTree = "<group>"; };
+		039AB8070C720FEE00A8FE20 /* CCMPreferencesControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMPreferencesControllerTest.m; sourceTree = "<group>"; };
+		039AB8390C72125200A8FE20 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = build/Frameworks/OCMock.framework; sourceTree = "<group>"; };
 		03B5A4590C5E2DFD0096247E /* User Stories.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "User Stories.txt"; sourceTree = "<group>"; };
 		03D5D2480C5A18FD0083AA94 /* CCMStatusBarMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusBarMenuController.h; sourceTree = "<group>"; };
 		03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusBarMenuController.m; sourceTree = "<group>"; };
@@ -224,6 +233,7 @@
 				038EC67E0C6D14BE00597BA0 /* Cocoa.framework in Frameworks */,
 				038EC6810C6D14C600597BA0 /* SenTestingKit.framework in Frameworks */,
 				038EC7360C6D1E1000597BA0 /* Growl.framework in Frameworks */,
+				039AB8410C72125200A8FE20 /* OCMock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +244,7 @@
 				037F79E30C6A1A3E00D4C646 /* Cocoa.framework in Frameworks */,
 				037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */,
 				038EC7340C6D1E1000597BA0 /* Growl.framework in Frameworks */,
+				039AB8400C72125200A8FE20 /* OCMock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +278,8 @@
 				03F374650C47324E003240C4 /* CCMConnectionTest.m */,
 				037C080F0C6244C1006CF886 /* CCMImageFactoryTest.h */,
 				037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */,
+				039AB8060C720FEE00A8FE20 /* CCMPreferencesControllerTest.h */,
+				039AB8070C720FEE00A8FE20 /* CCMPreferencesControllerTest.m */,
 				03F374680C47324E003240C4 /* CCMProjectTest.h */,
 				03F374690C47324E003240C4 /* CCMProjectTest.m */,
 				033A715E0C70BA2C004669D7 /* CCMProjectRepositoryTest.h */,
@@ -359,6 +372,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				039AB8390C72125200A8FE20 /* OCMock.framework */,
 				038EC72C0C6D1E1000597BA0 /* Growl.framework */,
 				037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
@@ -601,7 +615,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\npopd\n\n";
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\npopd\n\n";
 		};
 		038EC73A0C6D1E2C00597BA0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -614,7 +628,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\npopd\n\n";
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\npopd\n";
 		};
 		038EC7410C6D1E4A00597BA0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -627,7 +641,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\npopd\n\n";
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\npopd\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -657,6 +671,7 @@
 				038ECBCC0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */,
 				033A71320C70B941004669D7 /* CCMProjectRepository.m in Sources */,
 				033A71620C70BA2C004669D7 /* CCMProjectRepositoryTest.m in Sources */,
+				039AB80A0C720FEE00A8FE20 /* CCMPreferencesControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +701,7 @@
 				038ECBC90C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */,
 				033A71340C70B941004669D7 /* CCMProjectRepository.m in Sources */,
 				033A718F0C70BA90004669D7 /* CCMProjectRepositoryTest.m in Sources */,
+				039AB8090C720FEE00A8FE20 /* CCMPreferencesControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,12 +783,14 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -808,12 +826,14 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -847,12 +867,14 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -888,12 +910,14 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
