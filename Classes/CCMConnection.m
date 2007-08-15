@@ -46,9 +46,7 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 
 - (NSArray *)getProjectInfos
 {
-	NSLog(@"GET %@", serverUrl);
 	NSData *response = [serverUrl resourceDataUsingCache:NO];
-	NSLog(@"done.");
 	if((response == nil) || ([response length] == 0))
 		[NSException raise:@"NotFoundException" format:@"Failed to get project info from %@", [serverUrl absoluteString]];	
 	return [self infosFromXmlData:response];

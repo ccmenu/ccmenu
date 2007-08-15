@@ -20,9 +20,9 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)identifier willBeInsertedIntoToolbar:(BOOL)willBeInserted 
 {
+	// TODO: Maybe we should use EDToolbarDefinition here
     NSToolbarItem *toolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier:identifier] autorelease];
     
-	// TODO: Maybe we should use something like EDToolbarDefinition here
     if([identifier isEqual:CCMForceBuildToolBarIdentifier])
 	{
 		[toolbarItem setLabel:@"Force Build"];
@@ -83,7 +83,7 @@ NSString *CCMForceBuildToolBarIdentifier = @"CCMForceBuildToolBarIdentifier";
 
 - (void)forceBuild:(id)sender
 {
-	NSRunAlertPanel(nil, @"Force build does not work yet", @"OK", nil, nil);
+	NSRunAlertPanel(nil, @"Force build is not supported for this CruiseControl server yet.", @"OK", nil, nil);
 }
 
 

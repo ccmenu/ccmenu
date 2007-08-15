@@ -2,13 +2,6 @@
 Outstanding Stories
 ===================
 
-Server Settings: As a developer I want to set which server CCMenu monitors so that I can see information relevant to me.
-
-Exclude project from menu: As a developer I want to specify which projects should be excluded from the display in the 
-menu.
-
--- release 1 ?
-
 Audible notifications: As a developer I want CCMenu to notify me of relevant events by playing configurable sounds so
 that I am aware of status changes without having to switch applications.
 
@@ -43,8 +36,8 @@ status bar item so that I can have a detailed view without opening the menu or w
 Bugs
 ====
 
-* remove project(s) doesn't trigger monitor restart
-* build status change notifications sent during event handling
+- build status change notifications sent during event handling
 - window has to wait for first notification to show content
 - many strings not localizable
 - project window loses selection when project list is changed in preferences
+- (OCMock 1.17 is not compiled as embedded, used a custom version)

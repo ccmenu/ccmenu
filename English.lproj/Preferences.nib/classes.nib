@@ -6,12 +6,14 @@
                 chooseProjects = id; 
                 closeAddProjectsSheet = id; 
                 preferencesChanged = id; 
+                removeProjects = id; 
                 showWindow = id; 
             }; 
             CLASS = CCMPreferencesController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
                 addProjectsSheet = NSPanel; 
+                allProjectsViewController = NSArrayController; 
                 chooseProjectsViewController = NSArrayController; 
                 preferencesWindow = NSPanel; 
                 serverTypeMatrix = NSMatrix; 

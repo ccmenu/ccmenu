@@ -1,6 +1,7 @@
 
 #import "CCMProjectRepositoryTest.h"
 #import "CCMProject.h"
+#import <OCMock/OCMock.h>
 
 
 @implementation CCMProjectRepositoryTest
@@ -8,9 +9,11 @@
 - (void)setUp
 {
 	NSArray *projects = [NSArray arrayWithObject:@"connectfour"];
-	repository = [[[CCMProjectRepository alloc] initWithConnection:(id)self andProjects:projects] autorelease];
-	[repository setNotificationCenter:(id)self];
 	postedNotifications = [NSMutableArray array];
+
+	connectionMock = [OCMockObject mockForClass:[CCMConnection class]];
+	repository = [[[CCMProjectRepository alloc] initWithConnection:(id)connectionMock andProjects:projects] autorelease];	
+	[repository setNotificationCenter:(id)self];
 }
 
 - (NSMutableDictionary *)createProjectInfoWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
@@ -25,7 +28,9 @@
 
 - (void)testCreatesProjects
 {	
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi]] getProjectInfos];
+
 	[repository pollServer];
 	
 	NSArray *projectList = [repository projects];
@@ -37,24 +42,25 @@
 
 - (void)testIgnoresProjectsNotInInitialList
 {	
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSMutableDictionary *pi2 = [[self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus] mutableCopy];
+	[pi2 setObject:@"foo" forKey:@"name"];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObjects:pi1, pi2, nil]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	[projectInfo setObject:@"foo" forKey:@"name"];
-	[repository pollServer];
-	
+
 	NSArray *projectList = [repository projects];
 	STAssertEquals(1u, [projectList count], @"Should have ignored additional project.");
 	CCMProject *project = [projectList objectAtIndex:0];
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have kept project with right name."); 
-	STAssertEqualObjects(CCMSuccessStatus, [project valueForKey:@"lastBuildStatus"], @"Should have kept right status."); 
 }
 
 - (void)testUpdatesProjects
 {
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi1]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi2]] getProjectInfos];
 	[repository pollServer];
 	
 	NSArray *projectList = [repository projects];
@@ -65,9 +71,11 @@
 
 - (void)testSendsSuccessfulBuildCompleteNotification
 {	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi1]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi2]] getProjectInfos];
 	[repository pollServer];
 	
 	STAssertTrue([postedNotifications count] > 0, @"Should have posted notification.");
@@ -80,68 +88,71 @@
 
 - (void)testSendsBrokenBuildCompleteNotification
 {	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi1]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi2]] getProjectInfos];
 	[repository pollServer];
-	
+
 	NSDictionary *userInfo = [[postedNotifications objectAtIndex:0] userInfo];
 	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
 }
 
 - (void)testSendsFixedBuildCompleteNotification
 {	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi1]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi2]] getProjectInfos];
 	[repository pollServer];
-	
+
 	NSDictionary *userInfo = [[postedNotifications objectAtIndex:0] userInfo];
 	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
 }
 
 - (void)testSendsStillFailingBuildCompleteNotification
 {	
-	projectInfo = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi1]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi2]] getProjectInfos];
 	[repository pollServer];
-	
+
 	NSDictionary *userInfo = [[postedNotifications objectAtIndex:0] userInfo];
 	STAssertEqualObjects(CCMStillFailingBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
 }
 
 - (void)testSendsBrokenBuildCompletionNotificationEvenIfBuildWasMissed
 {
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi1]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi2]] getProjectInfos];
 	[repository pollServer];
-	
+
 	NSDictionary *userInfo = [[postedNotifications objectAtIndex:0] userInfo];
 	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
 }
 
-- (void)testSendsFixenBuildCompletionNotificationEvenIfBuildWasMissed
+- (void)testSendsFixedBuildCompletionNotificationEvenIfBuildWasMissed
 {
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi1]] getProjectInfos];
 	[repository pollServer];
-	projectInfo = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	[[[connectionMock expect] andReturn:[NSArray arrayWithObject:pi2]] getProjectInfos];
 	[repository pollServer];
-	
+
 	NSDictionary *userInfo = [[postedNotifications objectAtIndex:0] userInfo];
 	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
 }
 
 
-// connection stub
-
-- (NSArray *)getProjectInfos
-{
-	return [NSArray arrayWithObject:projectInfo];
-}
-
-// notification center stub
+// notification center stub (need this until next version of OCMock, which will have constraints)
 
 - (void)postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo
 {

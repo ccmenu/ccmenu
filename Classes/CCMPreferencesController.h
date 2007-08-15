@@ -7,6 +7,7 @@
 	NSUserDefaults	*userDefaults;
 	
 	IBOutlet NSPanel				*preferencesWindow;
+	IBOutlet NSArrayController		*allProjectsViewController;
 	IBOutlet NSPanel				*addProjectsSheet;
 	IBOutlet NSTabView				*sheetTabView;
 	IBOutlet NSComboBox				*serverUrlComboBox;
@@ -21,8 +22,11 @@
 - (IBAction)chooseProjects:(id)sender;
 - (IBAction)closeAddProjectsSheet:(id)sender;
 
+- (IBAction)removeProjects:(id)sender;
+
 - (IBAction)preferencesChanged:(id)sender;
 
+- (NSURL *)getServerURL;
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 @end

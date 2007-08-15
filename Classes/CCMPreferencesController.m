@@ -1,6 +1,7 @@
 
 #import "CCMPreferencesController.h"
 #import "CCMConnection.h"
+#import <EDCommon/EDCommon.h>
 
 NSString *CCMDefaultsProjectListKey = @"Projects";
 NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
@@ -15,6 +16,14 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (void)awakeFromNib
 {
 	userDefaults = [NSUserDefaults standardUserDefaults];
+}
+
+- (NSArray *)defaultsProjectList
+{
+	NSData *defaultsData = [userDefaults dataForKey:CCMDefaultsProjectListKey];
+	if(defaultsData == nil)
+		return [NSArray array];
+	return [NSUnarchiver unarchiveObjectWithData:defaultsData];
 }
 
 - (NSURL *)getServerURL
@@ -41,12 +50,21 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	if(preferencesWindow == nil)
 	{
 		[NSBundle loadNibNamed:@"Preferences" owner:self];
+		[preferencesWindow center];
 	}
 	[preferencesWindow makeKeyAndOrderFront:self];	
 }
 
 - (void)addProjects:(id)sender
 {
+	NSArray *projects = [self defaultsProjectList];
+	if([projects count] > 0)
+	{
+		NSArray *urls = [projects arrayByMappingWithSelector:@selector(objectForKey:) withObject:CCMDefaultsProjectEntryServerUrlKey];
+		urls = [[NSSet setWithArray:urls] allObjects];
+		[serverUrlComboBox removeAllItems];
+		[serverUrlComboBox addItemsWithObjectValues:urls];
+	}
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:preferencesWindow modalDelegate:self 
 		didEndSelector:@selector(addProjectsSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -81,10 +99,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	if(returnCode == 0)
 		return;
 
-	NSMutableArray *defaultsProjectList = [NSMutableArray array];
-	NSData *defaultsData = [userDefaults dataForKey:CCMDefaultsProjectListKey];
-	if(defaultsData != nil)
-		defaultsProjectList = [[[NSUnarchiver unarchiveObjectWithData:defaultsData] mutableCopy] autorelease];
+	NSMutableArray *defaultsProjectList = [[[self defaultsProjectList] mutableCopy] autorelease];
 	
 	NSEnumerator *projectInfoEnum = [[chooseProjectsViewController selectedObjects] objectEnumerator];
 	NSDictionary *projectInfo;
@@ -99,6 +114,12 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	NSData *data = [NSArchiver archivedDataWithRootObject:defaultsProjectList];
 	[userDefaults setObject:data forKey:CCMDefaultsProjectListKey];
 	[self preferencesChanged:self];
+}
+
+- (IBAction)removeProjects:(id)sender
+{
+	[allProjectsViewController remove:sender];
+	[self preferencesChanged:sender];
 }
 
 - (void)preferencesChanged:(id)sender

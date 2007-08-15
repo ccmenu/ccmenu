@@ -3,6 +3,7 @@
 #import "CCMStatusBarMenuController.h"
 #import "CCMProject.h"
 
+
 @implementation CCMStatusBarMenuControllerTest
 
 - (void)setUp
@@ -15,11 +16,13 @@
 	[openItem setTarget:self];
 	[menu addItem:openItem];
 
+	imageFactoryMock = [OCMockObject niceMockForClass:[CCMImageFactory class]];
 	controller = [[[CCMStatusBarMenuController alloc] init] autorelease];
 	[controller setMenu:menu];
-	[controller setImageFactory:(id)self];
-
+	[controller setImageFactory:(id)imageFactoryMock];
 	statusItem = [controller createStatusItem];
+	
+	testImage = [[[NSImage alloc] init] autorelease];
 }
 
 - (CCMProject *)createProjectWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
@@ -51,11 +54,11 @@
 {
 	CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	NSArray *infoList = [NSArray arrayWithObject:project];
+	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	
 	[controller displayProjects:infoList];
 	
-	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMSleepingActivity, CCMSuccessStatus];
-	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
+	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }
 
 - (void)testDisplaysFailureWhenNotAllProjectsSuccessful
@@ -64,12 +67,11 @@
 	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	CCMProject *project3 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
+	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	
 	[controller displayProjects:infoList];
 	
-	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMSleepingActivity, CCMFailedStatus];
-	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
-	STAssertEqualObjects(@"2", [statusItem title], @"Should have added title with number of failed projects.");
+	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }
 
 - (void)testDisplaysBuildingWhenProjectIsBuilding
@@ -78,12 +80,11 @@
 	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
 	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
+	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
 	
 	[controller displayProjects:infoList];
 	
-	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMBuildingActivity, CCMSuccessStatus];
-	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
-	STAssertEqualObjects(@"", [statusItem title], @"Should not have set title.");
+	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }
 
 - (void)testDisplaysFixingWhenProjectIsBuildingWithLastStatusFailed
@@ -92,37 +93,12 @@
 	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
 	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
-	
+	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+
 	[controller displayProjects:infoList];
 	
-	NSString *expected = [NSString stringWithFormat:@"%@-%@", CCMBuildingActivity, CCMFailedStatus];
-	STAssertEqualObjects(expected, [[statusItem image] name], @"Should have set right image.");
-	STAssertEqualObjects(@"", [statusItem title], @"Should not have set title.");
+	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }
 
-
-// stub image factory
-
-- (NSImage *)imageForUnavailableServer
-{
-	return [[[NSImage alloc] init] autorelease];
-}
-
-- (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)lastBuildStatus
-{
-	NSString *name = [NSString stringWithFormat:@"%@-%@", activity, lastBuildStatus];
-	NSImage *image = [NSImage imageNamed:name];
-	if(image == nil)
-	{
-		image = [[[NSImage alloc] init] autorelease];
-		[image setName:name];
-	}
-	return image;
-}
-
-- (NSImage *)convertForMenuUse:(NSImage *)image
-{
-	return image;
-}
 
 @end

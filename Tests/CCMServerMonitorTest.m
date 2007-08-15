@@ -9,7 +9,9 @@
 {
 	monitor = [[[CCMServerMonitor alloc] init] autorelease];
 	[monitor setNotificationCenter:(id)self];
-	[monitor setUserDefaults:(id)self];
+	defaultsMock = [OCMockObject mockForClass:[NSUserDefaults class]];
+	[[[defaultsMock stub] andReturnValue:[NSNumber numberWithInt:1000]] integerForKey:@"PollInterval"];
+	[monitor setUserDefaults:(id)defaultsMock];
 	postedNotifications = [NSMutableArray array];
 }
 
@@ -23,7 +25,8 @@
 	NSDictionary *pd1 = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"projectName", @"localhost", @"serverUrl", nil];
 	NSDictionary *pd2 = [NSDictionary dictionaryWithObjectsAndKeys:@"cozmoz", @"projectName", @"another", @"serverUrl", nil];
 	NSDictionary *pd3 = [NSDictionary dictionaryWithObjectsAndKeys:@"protest", @"projectName", @"another", @"serverUrl", nil];
-	projectsUserDefaults = [NSArray arrayWithObjects:pd1, pd2, pd3, nil];
+	NSData *projectDefaultsData = [NSArchiver archivedDataWithRootObject:[NSArray arrayWithObjects:pd1, pd2, pd3, nil]];
+	[[[defaultsMock expect] andReturn:projectDefaultsData] dataForKey:@"Projects"]; 
 	
 	[monitor start];
 	
@@ -36,8 +39,9 @@
 	// Unfortunately, we can't stub the repository because the monitor creates it. So, we need a working URL,
 	// which makes this almost an integration test.
 	NSString *url = [[NSURL fileURLWithPath:@"Tests/cctray.xml"] absoluteString];
-	NSDictionary *pd = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"projectName", url, @"serverUrl", nil];
-	projectsUserDefaults = [NSArray arrayWithObject:pd];
+	NSDictionary *pd1 = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"projectName", url, @"serverUrl", nil];
+	NSData *projectDefaultsData = [NSArchiver archivedDataWithRootObject:[NSArray arrayWithObject:pd1]];
+	[[[defaultsMock expect] andReturn:projectDefaultsData] dataForKey:@"Projects"]; 
 
 	[monitor start];
 	[monitor pollServers:nil];
@@ -48,24 +52,9 @@
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have set up project with right name."); 
 	STAssertEqualObjects(@"build.1", [project valueForKey:@"lastBuildLabel"], @"Should have set up project projectInfo."); 
 }
+				  
 
-
-// defaults stub
-
-- (NSData *)dataForKey:(NSString *)key
-{
-	if([key isEqualToString:@"Projects"])
-		return [NSArchiver archivedDataWithRootObject:projectsUserDefaults];
-	return nil;
-}
-
-- (int)integerForKey:(NSString *)key
-{
-	return 1000;
-}
-					  
-
-// notification center stub
+// notification center stub (need this until next version of OCMock, which will have custom constraints)
 
 - (void)addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString *)notificationName object:(id)notificationSender
 {	

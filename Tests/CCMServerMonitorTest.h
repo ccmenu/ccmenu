@@ -1,12 +1,14 @@
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <OCMock/OCMock.h>
 #import "CCMServerMonitor.h"
 
 
 @interface CCMServerMonitorTest : SenTestCase 
 {
 	CCMServerMonitor *monitor;
-	NSMutableArray *projectsUserDefaults;
+	OCMockObject *defaultsMock;
+	
 	NSMutableArray *postedNotifications;
 }
 

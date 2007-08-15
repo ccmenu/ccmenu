@@ -17,6 +17,11 @@
 		033A71340C70B941004669D7 /* CCMProjectRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A712F0C70B941004669D7 /* CCMProjectRepository.m */; };
 		033A71620C70BA2C004669D7 /* CCMProjectRepositoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */; };
 		033A718F0C70BA90004669D7 /* CCMProjectRepositoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */; };
+		03424A930C736CAB00372C07 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
+		03424A940C736CAB00372C07 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
+		03424A950C736CAB00372C07 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
+		03424A960C736CB100372C07 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
+		03424A970C736CB500372C07 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
 		0357DD960C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD980C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD990C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
@@ -125,6 +130,7 @@
 			dstPath = Contents/Frameworks;
 			dstSubfolderSpec = 1;
 			files = (
+				03424A960C736CB100372C07 /* EDCommon.framework in CopyFiles */,
 				038EC7380C6D1E1900597BA0 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +141,9 @@
 			dstPath = Contents/Frameworks;
 			dstSubfolderSpec = 1;
 			files = (
-				039AB90F0C721C7B00A8FE20 /* OCMock.framework in CopyFiles */,
+				03424A970C736CB500372C07 /* EDCommon.framework in CopyFiles */,
 				038EC7390C6D1E1E00597BA0 /* Growl.framework in CopyFiles */,
+				039AB90F0C721C7B00A8FE20 /* OCMock.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +162,7 @@
 		033A712F0C70B941004669D7 /* CCMProjectRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectRepository.m; sourceTree = "<group>"; };
 		033A715E0C70BA2C004669D7 /* CCMProjectRepositoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectRepositoryTest.h; sourceTree = "<group>"; };
 		033A715F0C70BA2C004669D7 /* CCMProjectRepositoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectRepositoryTest.m; sourceTree = "<group>"; };
+		03424A520C736CAB00372C07 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = build/Frameworks/EDCommon.framework; sourceTree = "<group>"; };
 		03474D510C44F44B00BABD10 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03474D520C44F44B00BABD10 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "UnitTests-Info.plist"; path = "Resources/UnitTests-Info.plist"; sourceTree = "<group>"; };
 		0357DD940C6B982600523845 /* CCMGrowlAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMGrowlAdaptor.h; sourceTree = "<group>"; };
@@ -234,6 +242,7 @@
 				038EC6810C6D14C600597BA0 /* SenTestingKit.framework in Frameworks */,
 				038EC7360C6D1E1000597BA0 /* Growl.framework in Frameworks */,
 				039AB8410C72125200A8FE20 /* OCMock.framework in Frameworks */,
+				03424A940C736CAB00372C07 /* EDCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +254,7 @@
 				037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */,
 				038EC7340C6D1E1000597BA0 /* Growl.framework in Frameworks */,
 				039AB8400C72125200A8FE20 /* OCMock.framework in Frameworks */,
+				03424A930C736CAB00372C07 /* EDCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +264,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				038EC7350C6D1E1000597BA0 /* Growl.framework in Frameworks */,
+				03424A950C736CAB00372C07 /* EDCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +383,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03424A520C736CAB00372C07 /* EDCommon.framework */,
 				039AB8390C72125200A8FE20 /* OCMock.framework */,
 				038EC72C0C6D1E1000597BA0 /* Growl.framework */,
 				037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */,
@@ -615,7 +627,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\npopd\n\n";
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  EDCommon.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/EDCommon.tar.gz\"\nfi\npopd\n\n";
 		};
 		038EC73A0C6D1E2C00597BA0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -628,7 +640,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\npopd\n";
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  EDCommon.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/EDCommon.tar.gz\"\nfi\npopd\n";
 		};
 		038EC7410C6D1E4A00597BA0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -641,7 +653,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\npopd\n";
+			shellScript = "pushd \"${TEMP_ROOT}\"\nif [ ! -d Frameworks ]; then\n\tmkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  EDCommon.framework ]; then\n    gnutar xzf \"${PROJECT_DIR}/Frameworks/EDCommon.tar.gz\"\nfi\npopd\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -784,6 +796,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_7)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
@@ -791,6 +804,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -827,6 +841,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_7)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
@@ -834,6 +849,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -868,6 +884,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_7)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
@@ -875,6 +892,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -911,6 +929,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_6)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_7)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
@@ -918,6 +937,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -950,11 +970,13 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -982,11 +1004,13 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/../../../EDFrameworks/Source/EDCommon/build/Appwrapper Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/build/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;

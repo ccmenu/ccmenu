@@ -4,6 +4,7 @@
 #import "CCMProjectRepository.h"
 #import "CCMConnection.h"
 #import "CCMProject.h"
+#import <EDCommon/EDCommon.h>
 
 NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotification";
 
@@ -36,14 +37,8 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	NSDictionary *defaultsProjectEntry;
 	while((defaultsProjectEntry = [defaultsProjectEntryEnum nextObject]) != nil)
 	{
-		NSString *server = [defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
-		NSMutableArray *projectNames = [projectNamesByServer objectForKey:server];
-		if(projectNames == nil)
-		{
-			projectNames = [NSMutableArray array];
-			[projectNamesByServer setObject:projectNames forKey:server];
-		}
-		[projectNames addObject:[defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryNameKey]];
+		NSString *serverUrl = [defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
+		[projectNamesByServer addObject:[defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryNameKey] toArrayForKey:serverUrl];
 	}
 
 	[repositories release];
@@ -61,7 +56,6 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (void)defaultsChanged:(id)sender
 {
-	NSLog(@"DEFAULTS CHANGED, sender was %@", sender);
 	[self stop];
 	[self start];
 }
@@ -78,12 +72,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (NSArray *)projects
 {
-	NSMutableArray *projects = [NSMutableArray array];
-	NSEnumerator *repositoryEnum = [[repositories allValues] objectEnumerator];
-	CCMProjectRepository *repository;
-	while((repository = [repositoryEnum nextObject]) != nil)
-		[projects addObjectsFromArray:[repository projects]];
-	return projects;
+	return [[[repositories allValues] arrayByMappingWithSelector:@selector(projects)] flattenedArray];
 }
 
 - (void)start

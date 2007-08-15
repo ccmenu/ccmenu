@@ -1,12 +1,14 @@
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <OCMock/OCMock.h>
 #import "CCMProjectRepository.h"
 
 
 @interface CCMProjectRepositoryTest : SenTestCase 
 {
 	CCMProjectRepository *repository;
-	NSMutableDictionary *projectInfo;
+	OCMockObject *connectionMock;	
+
 	NSMutableArray *postedNotifications;
 }
 

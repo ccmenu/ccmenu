@@ -12,21 +12,39 @@
 	[controller setValue:self forKey:@"userDefaults"];
 	
 	OCMockObject *comboBoxMock = [OCMockObject mockForClass:[NSComboBox class]];
-	[[[comboBoxMock stub] andReturn:@"http://test"] stringValue];
 	[controller setValue:comboBoxMock forKey:@"serverUrlComboBox"];
+	[[[comboBoxMock stub] andReturn:@"http://test"] stringValue];
 	
 	OCMockObject *serverTypeMatrixMock = [OCMockObject mockForClass:[NSMatrix class]];
-	[[[serverTypeMatrixMock stub] andReturn:0] selectedTag]; // this tag signals 'cctray.xml'
 	[controller setValue:serverTypeMatrixMock forKey:@"serverTypeMatrix"];
+	[[[serverTypeMatrixMock stub] andReturn:0] selectedTag]; // this tag signals 'cctray.xml'
 
 	OCMockObject *viewControllerMock = [OCMockObject mockForClass:[NSArrayController class]];
+	[controller setValue:viewControllerMock forKey:@"chooseProjectsViewController"];
 	NSArray *selectedObjects = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"new" forKey:@"name"]];
 	[[[viewControllerMock stub] andReturn:selectedObjects] selectedObjects];
-	[controller setValue:viewControllerMock forKey:@"chooseProjectsViewController"];
 }
 
+- (void)testAppendsExtensionForServerType
+{
+	NSURL *url = [controller getServerURL];
+	STAssertEqualObjects(@"http://test/cctray.xml", [url absoluteString], @"Should have appended extension for server type.");
+}
 
-- (void)testAddsProjectWithRightUrlAndNameToDefaults
+- (void)testPrependsHttpSchemeIfNecessary
+{
+	OCMockObject *specialComboBoxMock = [OCMockObject mockForClass:[NSComboBox class]];
+	[controller setValue:specialComboBoxMock forKey:@"serverUrlComboBox"];
+	[[[specialComboBoxMock stub] andReturn:@"test"] stringValue];
+	[[specialComboBoxMock expect] setStringValue:@"http://test"];
+	
+	NSURL *url = [controller getServerURL];
+	
+	[specialComboBoxMock verify];
+	STAssertEqualObjects(@"http://test/cctray.xml", [url absoluteString], @"Should have prepended http scheme.");
+}
+
+- (void)testAddsProjectWithServerUrlAndNameToDefaults
 {
 	[controller addProjectsSheetDidEnd:nil returnCode:1 contextInfo:0];
 
