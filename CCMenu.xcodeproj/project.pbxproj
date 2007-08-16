@@ -125,8 +125,6 @@
 		03AFA0840C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AFA0830C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m */; };
 		03AFA0850C7475FA00B74B1C /* NSArray+CCMAdditionsTest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03AFA0820C7475FA00B74B1C /* NSArray+CCMAdditionsTest.h */; };
 		03AFA0860C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AFA0830C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m */; };
-		03AFA0870C7475FA00B74B1C /* NSArray+CCMAdditionsTest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03AFA0820C7475FA00B74B1C /* NSArray+CCMAdditionsTest.h */; };
-		03AFA0880C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AFA0830C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m */; };
 		03D5D24A0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D24B0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D2690C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2670C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m */; };
@@ -157,7 +155,6 @@
 				038EC7380C6D1E1900597BA0 /* Growl.framework in CopyFiles */,
 				038D27E10C74681300F62CC1 /* CCMWindowController.h in CopyFiles */,
 				038D28DE0C746D4500F62CC1 /* NSArray+CCMAdditions.h in CopyFiles */,
-				03AFA0870C7475FA00B74B1C /* NSArray+CCMAdditionsTest.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,7 +797,6 @@
 				033A71310C70B941004669D7 /* CCMProjectRepository.m in Sources */,
 				038D27E20C74681300F62CC1 /* CCMWindowController.m in Sources */,
 				038D28DF0C746D4500F62CC1 /* NSArray+CCMAdditions.m in Sources */,
-				03AFA0880C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
