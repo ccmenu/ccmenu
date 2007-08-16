@@ -33,11 +33,9 @@ Display project status heatmap in status item: As a developer I wangt to see the
 status bar item so that I can have a detailed view without opening the menu or window.
 
 
-Bugs
-====
+Internal Bugs
+=============
 
 - build status change notifications sent during event handling
-- window has to wait for first notification to show content
 - many strings not localizable
-- project window loses selection when project list is changed in preferences
 - (OCMock 1.17 is not compiled as embedded, used a custom version)

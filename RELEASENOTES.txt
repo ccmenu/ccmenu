@@ -2,6 +2,6 @@ CruiseControl Release Notes
 
 Changes listed by release, then alphabetically.
 
-CCMenu 1.0
+CCMenu 0.9
 
-* Basic version
+* Basic version, release candidate for first public release.
