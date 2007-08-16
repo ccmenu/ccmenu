@@ -7,12 +7,10 @@ class Project
         @name = name
         @version = version
         @basename = name.downcase + "-" + version
-        @webdir = "/www/sites/www.mulle-kybernetik.com/htdocs/software/#{name}"
-        @uploaddir = webdir + "/Downloads"
         @settings = "INSTALL_PATH=\"/\" COPY_PHASE_STRIP=YES"
     end
     
-    attr_accessor :name, :version, :svnroot, :basename, :webdir, :uploaddir, :settings
+    attr_accessor :name, :version, :svnroot, :basename, :settings
 end
 
 
@@ -126,7 +124,7 @@ class ReleaseManager
     
     def buildModules
         @worker.chdir("#{@env.sourcedir}/#{@proj.basename}")
-        @worker.run("xcodebuild -project #{@proj.name}.xcodeproj -target CCMenu -configuration Release DSTROOT=#{@env.productdir} #{@proj.settings} install")
+        @worker.run("xcodebuild -project #{@proj.name}.xcodeproj -target #{@proj.name} -configuration Release DSTROOT=#{@env.productdir} #{@proj.settings} install")
     end
 
     def createBinaryPackage
@@ -136,7 +134,7 @@ class ReleaseManager
     
     def upload
         @worker.chdir(@env.packagedir)
-        @worker.run("scp *.tar.gz #{ENV['USER']}@muller.mulle-kybernetik.com:#{@proj.uploaddir}")
+        @worker.run("ftp -v -a -u ftp://upload.sourceforge.net/incoming #{@proj.basename}-?.tar.gz")
     end
    
     def cleanup
