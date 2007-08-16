@@ -37,7 +37,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		serverUrl = [@"http://" stringByAppendingString:serverUrl];
 		[serverUrlComboBox setStringValue:serverUrl];
 	}
-	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml.jsp", @"XmlServerReport.aspx", @"XmlStatusReport.aspx", @"", nil];
+	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml.jsp", @"XmlStatusReport.aspx", @"XmlStatusReport.aspx", @"", nil];
 	NSString *filename = [allFilenames objectAtIndex:[serverTypeMatrix selectedTag]];
 	if(([serverUrl length] > 0) && (![serverUrl hasSuffix:filename]))
 	{
