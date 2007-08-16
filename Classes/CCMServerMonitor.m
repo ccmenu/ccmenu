@@ -51,6 +51,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[NSURL URLWithString:server]] autorelease];
 		NSArray *projectNames = [projectNamesByServer objectForKey:server];
 		CCMProjectRepository *repo = [[[CCMProjectRepository alloc] initWithConnection:connection andProjects:projectNames] autorelease];
+		[repo setNotificationCenter:notificationCenter];
 		[repositories setObject:repo forKey:server];
 	}
 }

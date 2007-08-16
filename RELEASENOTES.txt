@@ -2,6 +2,13 @@ CruiseControl Release Notes
 
 Changes listed by release, then alphabetically.
 
+CCMenu 0.9.1
+
+* Fixed CC.NET filename bug (#1775460)
+* Fixed missing Growl notifications bug
+* Choose server combo box doesn't autocomplete
+
+
 CCMenu 0.9
 
 * Basic version, release candidate for first public release.
