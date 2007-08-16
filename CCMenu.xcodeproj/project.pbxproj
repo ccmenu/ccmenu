@@ -76,6 +76,19 @@
 		037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
 		037F79EC0C6A1A9C00D4C646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		037F7BFF0C6A3BF100D4C646 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
+		038D25930C74519000F62CC1 /* pref-advanced.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 038D25910C74519000F62CC1 /* pref-advanced.tiff */; };
+		038D25940C74519000F62CC1 /* pref-notifications.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 038D25920C74519000F62CC1 /* pref-notifications.tiff */; };
+		038D25950C74519000F62CC1 /* pref-advanced.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 038D25910C74519000F62CC1 /* pref-advanced.tiff */; };
+		038D25960C74519000F62CC1 /* pref-notifications.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 038D25920C74519000F62CC1 /* pref-notifications.tiff */; };
+		038D271B0C7463DC00F62CC1 /* Preferences.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 038D27190C7463DC00F62CC1 /* Preferences.toolbar */; };
+		038D271C0C7463DC00F62CC1 /* Preferences.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 038D27190C7463DC00F62CC1 /* Preferences.toolbar */; };
+		038D27270C74643600F62CC1 /* ProjectWindow.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 038D27260C74643500F62CC1 /* ProjectWindow.toolbar */; };
+		038D27280C74643600F62CC1 /* ProjectWindow.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 038D27260C74643500F62CC1 /* ProjectWindow.toolbar */; };
+		038D27DF0C74681300F62CC1 /* CCMWindowController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 038D27DD0C74681300F62CC1 /* CCMWindowController.h */; };
+		038D27E00C74681300F62CC1 /* CCMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038D27DE0C74681300F62CC1 /* CCMWindowController.m */; };
+		038D27E10C74681300F62CC1 /* CCMWindowController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 038D27DD0C74681300F62CC1 /* CCMWindowController.h */; };
+		038D27E20C74681300F62CC1 /* CCMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038D27DE0C74681300F62CC1 /* CCMWindowController.m */; };
+		038D27E30C74681300F62CC1 /* CCMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038D27DE0C74681300F62CC1 /* CCMWindowController.m */; };
 		038D9F080C71F13200B5736F /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 038D9F070C71F13200B5736F /* FactoryDefaults.plist */; };
 		038D9F090C71F13200B5736F /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 038D9F070C71F13200B5736F /* FactoryDefaults.plist */; };
 		038EC6510C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
@@ -132,6 +145,7 @@
 			files = (
 				03424A960C736CB100372C07 /* EDCommon.framework in CopyFiles */,
 				038EC7380C6D1E1900597BA0 /* Growl.framework in CopyFiles */,
+				038D27E10C74681300F62CC1 /* CCMWindowController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +158,7 @@
 				03424A970C736CB500372C07 /* EDCommon.framework in CopyFiles */,
 				038EC7390C6D1E1E00597BA0 /* Growl.framework in CopyFiles */,
 				039AB90F0C721C7B00A8FE20 /* OCMock.framework in CopyFiles */,
+				038D27DF0C74681300F62CC1 /* CCMWindowController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,9 +202,15 @@
 		037C07C20C6241F4006CF886 /* CCMTimeSinceDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeSinceDateTransformer.m; sourceTree = "<group>"; };
 		037C080F0C6244C1006CF886 /* CCMImageFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactoryTest.h; sourceTree = "<group>"; };
 		037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMImageFactoryTest.m; sourceTree = "<group>"; };
-		037F79A30C6A195900D4C646 /* CCMenu with tests.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "CCMenu with tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		037F79A30C6A195900D4C646 /* CCMenu with tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCMenu with tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "CCMenu with tests-Info.plist"; path = "Resources/CCMenu with tests-Info.plist"; sourceTree = "<group>"; };
 		037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
+		038D25910C74519000F62CC1 /* pref-advanced.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "pref-advanced.tiff"; path = "Images/pref-advanced.tiff"; sourceTree = "<group>"; };
+		038D25920C74519000F62CC1 /* pref-notifications.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "pref-notifications.tiff"; path = "Images/pref-notifications.tiff"; sourceTree = "<group>"; };
+		038D271A0C7463DC00F62CC1 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = English; path = English.lproj/Preferences.toolbar; sourceTree = "<group>"; };
+		038D27210C74642F00F62CC1 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = English; path = English.lproj/ProjectWindow.toolbar; sourceTree = "<group>"; };
+		038D27DD0C74681300F62CC1 /* CCMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMWindowController.h; sourceTree = "<group>"; };
+		038D27DE0C74681300F62CC1 /* CCMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMWindowController.m; sourceTree = "<group>"; };
 		038D9F070C71F13200B5736F /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = FactoryDefaults.plist; path = Resources/FactoryDefaults.plist; sourceTree = "<group>"; };
 		038EC64A0C6D0F9E00597BA0 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		038EC72C0C6D1E1000597BA0 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = build/Frameworks/Growl.framework; sourceTree = "<group>"; };
@@ -309,6 +330,8 @@
 		038D9DD50C71EFD800B5736F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				038D25910C74519000F62CC1 /* pref-advanced.tiff */,
+				038D25920C74519000F62CC1 /* pref-notifications.tiff */,
 				038EC76B0C6D2E1300597BA0 /* CCMenu.icns */,
 				0369573B0C692C0900F89365 /* Placeholder.tiff */,
 				038ECB7D0C6D3F1200597BA0 /* minus.png */,
@@ -335,6 +358,8 @@
 				03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */,
 				03D5D2480C5A18FD0083AA94 /* CCMStatusBarMenuController.h */,
 				03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */,
+				038D27DD0C74681300F62CC1 /* CCMWindowController.h */,
+				038D27DE0C74681300F62CC1 /* CCMWindowController.m */,
 				035C6D780C5E48F300906910 /* CCMImageFactory.h */,
 				035C6D790C5E48F300906910 /* CCMImageFactory.m */,
 				035C6DA50C5E4AA100906910 /* CCMBuildStatusTransformer.h */,
@@ -443,11 +468,13 @@
 			children = (
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 				03097CC80C4CD926002F04B5 /* ProjectWindow.nib */,
+				038D27260C74643500F62CC1 /* ProjectWindow.toolbar */,
 				038EC7920C6D35C200597BA0 /* Preferences.nib */,
+				038D27190C7463DC00F62CC1 /* Preferences.toolbar */,
 				038EC6500C6D0FB200597BA0 /* Localizable.strings */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				038D9F070C71F13200B5736F /* FactoryDefaults.plist */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */,
 				03474D520C44F44B00BABD10 /* UnitTests-Info.plist */,
 			);
@@ -571,6 +598,10 @@
 				038ECB810C6D3F1200597BA0 /* minus.png in Resources */,
 				038ECB820C6D3F1200597BA0 /* plus.png in Resources */,
 				038D9F090C71F13200B5736F /* FactoryDefaults.plist in Resources */,
+				038D25930C74519000F62CC1 /* pref-advanced.tiff in Resources */,
+				038D25940C74519000F62CC1 /* pref-notifications.tiff in Resources */,
+				038D271B0C7463DC00F62CC1 /* Preferences.toolbar in Resources */,
+				038D27280C74643600F62CC1 /* ProjectWindow.toolbar in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +628,10 @@
 				038ECB7F0C6D3F1200597BA0 /* minus.png in Resources */,
 				038ECB800C6D3F1200597BA0 /* plus.png in Resources */,
 				038D9F080C71F13200B5736F /* FactoryDefaults.plist in Resources */,
+				038D25950C74519000F62CC1 /* pref-advanced.tiff in Resources */,
+				038D25960C74519000F62CC1 /* pref-notifications.tiff in Resources */,
+				038D271C0C7463DC00F62CC1 /* Preferences.toolbar in Resources */,
+				038D27270C74643600F62CC1 /* ProjectWindow.toolbar in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +719,7 @@
 				033A71320C70B941004669D7 /* CCMProjectRepository.m in Sources */,
 				033A71620C70BA2C004669D7 /* CCMProjectRepositoryTest.m in Sources */,
 				039AB80A0C720FEE00A8FE20 /* CCMPreferencesControllerTest.m in Sources */,
+				038D27E30C74681300F62CC1 /* CCMWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +750,7 @@
 				033A71340C70B941004669D7 /* CCMProjectRepository.m in Sources */,
 				033A718F0C70BA90004669D7 /* CCMProjectRepositoryTest.m in Sources */,
 				039AB8090C720FEE00A8FE20 /* CCMPreferencesControllerTest.m in Sources */,
+				038D27E00C74681300F62CC1 /* CCMWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +772,7 @@
 				0357DD980C6B982600523845 /* CCMGrowlAdaptor.m in Sources */,
 				038ECBCB0C6DDDF700597BA0 /* CCMPreferencesController.m in Sources */,
 				033A71310C70B941004669D7 /* CCMProjectRepository.m in Sources */,
+				038D27E20C74681300F62CC1 /* CCMWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +785,22 @@
 				03097CC90C4CD926002F04B5 /* English */,
 			);
 			name = ProjectWindow.nib;
+			sourceTree = "<group>";
+		};
+		038D27190C7463DC00F62CC1 /* Preferences.toolbar */ = {
+			isa = PBXVariantGroup;
+			children = (
+				038D271A0C7463DC00F62CC1 /* English */,
+			);
+			name = Preferences.toolbar;
+			sourceTree = "<group>";
+		};
+		038D27260C74643500F62CC1 /* ProjectWindow.toolbar */ = {
+			isa = PBXVariantGroup;
+			children = (
+				038D27210C74642F00F62CC1 /* English */,
+			);
+			name = ProjectWindow.toolbar;
 			sourceTree = "<group>";
 		};
 		038EC6500C6D0FB200597BA0 /* Localizable.strings */ = {

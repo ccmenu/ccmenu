@@ -1,0 +1,27 @@
+/* Notes to localizers: Do not change the identifiers. Labels are used for window title, too. */
+
+{
+    allowedItemIdentifiers = (
+        ForceBuild,
+        NSToolbarSeparatorItem, 
+        NSToolbarSpaceItem, 
+        NSToolbarFlexibleSpaceItem, 
+        NSToolbarCustomizeToolbarItem
+	);
+
+    defaultItemIdentifiers = (
+        ForceBuild
+	);
+
+    itemInfoByIdentifier = {
+        ForceBuild = {
+            action = "forceBuild:"; 
+            imageName = "Placeholder"; 
+            label = "Force Build";
+			toolTip = "Force build of selected projects"; 
+        }; 
+	};
+
+}
+	
+	

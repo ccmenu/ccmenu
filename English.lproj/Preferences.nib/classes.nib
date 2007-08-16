@@ -13,9 +13,13 @@
             LANGUAGE = ObjC; 
             OUTLETS = {
                 addProjectsSheet = NSPanel; 
+                advancedPrefsView = NSView; 
                 allProjectsViewController = NSArrayController; 
                 chooseProjectsViewController = NSArrayController; 
+                notificationPrefsView = NSView; 
+                paneHolderView = NSView; 
                 preferencesWindow = NSPanel; 
+                projectsView = NSView; 
                 serverTypeMatrix = NSMatrix; 
                 serverUrlComboBox = NSComboBox; 
                 sheetTabView = NSTabView; 

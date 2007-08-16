@@ -1,0 +1,42 @@
+/* Notes to localizers: Do not change the identifiers. Labels are used for window title, too. */
+
+{
+    allowedItemIdentifiers = (
+        Projects,
+        Notifications,
+        Advanced
+	);
+
+	selectableItemIdentifiers = (
+        Projects,
+        Notifications,
+        Advanced
+	);
+
+    defaultItemIdentifiers = (
+        Projects,
+        Notifications,
+        Advanced
+	);
+
+    itemInfoByIdentifier = {
+        Projects = {
+            action = "switchPreferencesPane:"; 
+            imageName = "Placeholder"; 
+            label = "Projects"; 
+        }; 
+
+        Notifications = {
+            action = "switchPreferencesPane:"; 
+            imageName = "pref-notifications"; 
+            label = "Notifications"; 
+        }; 
+
+        Advanced = {
+            action = "switchPreferencesPane:"; 
+            imageName = "pref-advanced"; 
+            label = "Advanced"; 
+        }; 
+    };
+	
+}

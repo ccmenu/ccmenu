@@ -3,6 +3,8 @@
 #import "CCMConnection.h"
 #import <EDCommon/EDCommon.h>
 
+#define WINDOW_TITLE_HEIGHT 78
+
 NSString *CCMDefaultsProjectListKey = @"Projects";
 NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
 NSString *CCMDefaultsProjectEntryServerUrlKey = @"serverUrl";
@@ -34,7 +36,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		serverUrl = [@"http://" stringByAppendingString:serverUrl];
 		[serverUrlComboBox setStringValue:serverUrl];
 	}
-	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml.jsp", @"XmlServerReport.aspx", @"??", @"", nil];
+	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml.jsp", @"XmlServerReport.aspx", @"XmlStatusReport.aspx", @"", nil];
 	NSString *filename = [allFilenames objectAtIndex:[serverTypeMatrix selectedTag]];
 	if(([serverUrl length] > 0) && (![serverUrl hasSuffix:filename]))
 	{
@@ -51,8 +53,33 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	{
 		[NSBundle loadNibNamed:@"Preferences" owner:self];
 		[preferencesWindow center];
+		[preferencesWindow setToolbar:[self createToolbarWithName:@"Preferences"]];
+		[[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
+		[self switchPreferencesPane:self];
 	}
 	[preferencesWindow makeKeyAndOrderFront:self];	
+}
+
+- (void)switchPreferencesPane:(id)sender
+{
+	NSString *selectedIdentifier = [[preferencesWindow toolbar] selectedItemIdentifier];
+	int index = [[self toolbarDefaultItemIdentifiers:nil] indexOfObject:selectedIdentifier];
+	NSArray *allViews = [NSArray arrayWithObjects:projectsView, notificationPrefsView, advancedPrefsView, nil];
+	NSView *prefView = [allViews objectAtIndex:index];
+	NSDictionary *itemDef = [[toolbarDefinition objectForKey:@"itemInfoByIdentifier"] objectForKey:selectedIdentifier];
+	[preferencesWindow setTitle:[itemDef objectForKey:@"label"]]; 
+
+	NSRect windowFrame = [preferencesWindow frame];
+	windowFrame.size.height = [prefView frame].size.height + WINDOW_TITLE_HEIGHT;
+	windowFrame.size.width = [prefView frame].size.width;
+	windowFrame.origin.y = NSMaxY([preferencesWindow frame]) - ([prefView frame].size.height + WINDOW_TITLE_HEIGHT);
+	
+	if([[paneHolderView subviews] count] > 0)
+		[[[paneHolderView subviews] firstObject] removeFromSuperview];
+	[preferencesWindow setFrame:windowFrame display:YES animate:(sender != self)];
+	
+	[paneHolderView setFrame:[prefView frame]];
+	[paneHolderView addSubview:prefView];
 }
 
 - (void)addProjects:(id)sender

@@ -1,15 +1,14 @@
 
-#import <Cocoa/Cocoa.h>
+#import "CCMWindowController.h"
 
 
-@interface CCMProjectWindowController : NSObject 
+@interface CCMProjectWindowController : CCMWindowController 
 {
 	IBOutlet NSWindow			*window;
 	IBOutlet NSTableView		*tableView;
 	IBOutlet NSArrayController	*tableViewController;
 }
 
-- (NSToolbar *)createToolbar;
 - (void)displayProjects:(NSArray *)projects;
 
 - (IBAction)showWindow:(id)sender;

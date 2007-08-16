@@ -1,13 +1,18 @@
 
-#import <Cocoa/Cocoa.h>
+#import "CCMWindowController.h"
 
 
-@interface CCMPreferencesController : NSObject 
+@interface CCMPreferencesController : CCMWindowController 
 {
 	NSUserDefaults	*userDefaults;
 	
 	IBOutlet NSPanel				*preferencesWindow;
+	IBOutlet NSView					*paneHolderView;
 	IBOutlet NSArrayController		*allProjectsViewController;
+	IBOutlet NSView					*projectsView;
+	IBOutlet NSView					*notificationPrefsView;
+	IBOutlet NSView					*advancedPrefsView;
+	
 	IBOutlet NSPanel				*addProjectsSheet;
 	IBOutlet NSTabView				*sheetTabView;
 	IBOutlet NSComboBox				*serverUrlComboBox;
@@ -24,6 +29,7 @@
 
 - (IBAction)removeProjects:(id)sender;
 
+- (IBAction)switchPreferencesPane:(id)sender;
 - (IBAction)preferencesChanged:(id)sender;
 
 - (NSURL *)getServerURL;
