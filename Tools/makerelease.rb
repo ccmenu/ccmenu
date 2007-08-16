@@ -2,7 +2,7 @@
 
 load "ReleaseManager.rb"
 
-proj = Project.new("CCMenu", "0.9")
+proj = Project.new("CCMenu", "0.9.1")
 proj.svnroot = "https://ccmenu.svn.sourceforge.net/svnroot/ccmenu"
 
 env = Environment.new()
