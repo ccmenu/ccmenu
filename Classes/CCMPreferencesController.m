@@ -1,6 +1,7 @@
 
 #import "CCMPreferencesController.h"
 #import "CCMConnection.h"
+#import "NSArray+CCMAdditions.h"
 #import <EDCommon/EDCommon.h>
 
 #define WINDOW_TITLE_HEIGHT 78
@@ -87,7 +88,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	NSArray *projects = [self defaultsProjectList];
 	if([projects count] > 0)
 	{
-		NSArray *urls = [projects arrayByMappingWithSelector:@selector(objectForKey:) withObject:CCMDefaultsProjectEntryServerUrlKey];
+		NSArray *urls = [[projects collect] objectForKey:CCMDefaultsProjectEntryServerUrlKey];
 		urls = [[NSSet setWithArray:urls] allObjects];
 		[serverUrlComboBox removeAllItems];
 		[serverUrlComboBox addItemsWithObjectValues:urls];

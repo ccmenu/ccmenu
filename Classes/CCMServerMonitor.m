@@ -4,6 +4,7 @@
 #import "CCMProjectRepository.h"
 #import "CCMConnection.h"
 #import "CCMProject.h"
+#import "NSArray+CCMAdditions.h"
 #import <EDCommon/EDCommon.h>
 
 NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotification";
@@ -72,7 +73,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (NSArray *)projects
 {
-	return [[[repositories allValues] arrayByMappingWithSelector:@selector(projects)] flattenedArray];
+	return [[[[repositories allValues] collect] projects] flattenedArray];
 }
 
 - (void)start

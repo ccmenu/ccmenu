@@ -5,7 +5,6 @@
 #import "CCMGrowlAdaptor.h"
 #import "CCMBuildStatusTransformer.h"
 #import "CCMTimeSinceDateTransformer.h"
-#import <EDCommon/EDCommon.h>
 
 
 @implementation CCMAppController
