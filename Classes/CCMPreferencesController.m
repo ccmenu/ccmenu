@@ -58,6 +58,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
 		[self switchPreferencesPane:self];
 	}
+	[NSApp activateIgnoringOtherApps:YES];
 	[preferencesWindow makeKeyAndOrderFront:self];	
 }
 

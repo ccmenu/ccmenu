@@ -35,6 +35,7 @@
 		[[NSNotificationCenter defaultCenter] 
 			addObserver:self selector:@selector(statusUpdate:) name:CCMProjectStatusUpdateNotification object:nil];
 	}
+	[NSApp activateIgnoringOtherApps:YES];
 	[window makeKeyAndOrderFront:self];	
 }
 

@@ -2,6 +2,11 @@ CruiseControl Release Notes
 
 Changes listed by release, then alphabetically.
 
+CCMenu 0.9.2
+
+* Fixed window ordering bug (#1777599)
+
+
 CCMenu 0.9.1
 
 * Fixed CC.NET filename bug (#1775460)
