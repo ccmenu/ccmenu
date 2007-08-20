@@ -123,6 +123,7 @@
 		03D5D24A0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D24B0C5A18FD0083AA94 /* CCMStatusBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */; };
 		03D5D2690C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D2670C5A1A990083AA94 /* CCMStatusBarMenuControllerTest.m */; };
+		03E5D8E20C7A0C8B0031B014 /* RELEASENOTES.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0318C85B0C6870F400D005EE /* RELEASENOTES.txt */; };
 		03F374580C47323D003240C4 /* CCMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F3744D0C47323D003240C4 /* CCMAppController.m */; };
 		03F374590C47323D003240C4 /* CCMConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F3744F0C47323D003240C4 /* CCMConnection.m */; };
 		03F3745C0C47323D003240C4 /* CCMProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F374550C47323D003240C4 /* CCMProject.m */; };
@@ -641,6 +642,7 @@
 				038D25960C74519000F62CC1 /* pref-notifications.tiff in Resources */,
 				038D271C0C7463DC00F62CC1 /* Preferences.toolbar in Resources */,
 				038D27270C74643600F62CC1 /* ProjectWindow.toolbar in Resources */,
+				03E5D8E20C7A0C8B0031B014 /* RELEASENOTES.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

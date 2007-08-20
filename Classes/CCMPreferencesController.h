@@ -12,6 +12,7 @@
 	IBOutlet NSView					*projectsView;
 	IBOutlet NSView					*notificationPrefsView;
 	IBOutlet NSView					*advancedPrefsView;
+	IBOutlet NSTextField			*versionField;
 	
 	IBOutlet NSPanel				*addProjectsSheet;
 	IBOutlet NSTabView				*sheetTabView;
