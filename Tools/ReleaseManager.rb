@@ -10,7 +10,7 @@ class Project
         @settings = "INSTALL_PATH=\"/\" COPY_PHASE_STRIP=YES"
     end
     
-    attr_accessor :name, :version, :svnroot, :basename, :settings
+    attr_accessor :name, :version, :basename, :settings, :svnroot, :ftpdest
 end
 
 
@@ -46,6 +46,10 @@ class Logger
     def run(cmd)
         puts "** #{cmd}"
     end
+
+    def makedmg(contentdir, volumename, imagename)
+        puts "** creating disk image #{imagename} with contents of #{contentdir}"
+    end
 end
 
 
@@ -65,6 +69,24 @@ class Executer
 
     def run(cmd)
         system(cmd)
+    end
+    
+    def makedmg(contentdir, volumename, imagename)
+        system("hdiutil create -size 4m temp.dmg -layout NONE") 
+
+        disk_id = nil
+        IO.popen("hdid -nomount temp.dmg") { |hdid| disk_id = hdid.readline.split[0] }
+        system("newfs_hfs -v '#{volumename}' #{disk_id}")
+        system("hdiutil eject #{disk_id}")
+
+        IO.popen("hdid temp.dmg") { |hdid| disk_id = hdid.readline.split[0] }
+        system("cp -R #{contentdir}/* '/Volumes/#{volumename}'")
+        system("hdiutil eject #{disk_id}")
+
+        system("hdiutil convert -format UDZO temp.dmg -o #{imagename} -imagekey zlib-level=9")
+        system("hdiutil internet-enable -yes #{imagename}")
+        
+        system("rm temp.dmg")
     end
 end
 
@@ -88,11 +110,14 @@ class CompositeWorker
     def run(cmd)
         @workers.each { |w| w.run(cmd) }
     end
+
+    def makedmg(contentdir, volumename, imagename)
+        @workers.each { |w| w.makedmg(contentdir, volumename, imagename) }
+    end
 end    
 
 
 ## The ReleaseManager class
-## contains methods for the individual release steps
 
 class ReleaseManager
 
@@ -128,13 +153,13 @@ class ReleaseManager
     end
 
     def createBinaryPackage
-        @worker.chdir(@env.productdir)
-        @worker.run("gnutar cvzf #{@env.packagedir}/#{@proj.basename}-b.tar.gz *")
+        @worker.chdir(@env.packagedir)
+        @worker.makedmg(@env.productdir, "#{@proj.name} #{@proj.version}", "#{@env.packagedir}/#{@proj.basename}-b.dmg")
     end
     
     def upload
         @worker.chdir(@env.packagedir)
-        @worker.run("ftp -v -a -u ftp://upload.sourceforge.net/incoming #{@proj.basename}-?.tar.gz")
+        @worker.run("ftp -v -a -u #{@proj.ftpdest} #{@proj.basename}-*")
     end
    
     def cleanup
