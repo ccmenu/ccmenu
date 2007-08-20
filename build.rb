@@ -6,6 +6,10 @@ load 'Tools/ReleaseManager.rb'
 label = DateTime.now.strftime("%Y%m%d%H%M%S")
 worker = CompositeWorker.new([Logger.new(), Executer.new()])
 
+# clean up
+worker.run("chmod -R a+w build")
+worker.run("rm -Rf build")
+
 # build and run unit tests
 worker.run("xcodebuild -project CCMenu.xcodeproj -target UnitTests -configuration Debug | tee build/buildlog.txt")
 
