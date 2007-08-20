@@ -9,6 +9,7 @@ worker = CompositeWorker.new([Logger.new(), Executer.new()])
 # clean up
 worker.run("chmod -R a+w build")
 worker.run("rm -Rf build")
+worker.run("mkdir build")
 
 # build and run unit tests
 worker.run("xcodebuild -project CCMenu.xcodeproj -target UnitTests -configuration Debug | tee build/buildlog.txt")
