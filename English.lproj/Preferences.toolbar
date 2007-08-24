@@ -22,7 +22,7 @@
     itemInfoByIdentifier = {
         Projects = {
             action = "switchPreferencesPane:"; 
-            imageName = "Placeholder"; 
+            imageName = "pref-projects"; 
             label = "Projects"; 
         }; 
 

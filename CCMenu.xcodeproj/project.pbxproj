@@ -22,6 +22,10 @@
 		03424A950C736CAB00372C07 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
 		03424A960C736CB100372C07 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
 		03424A970C736CB500372C07 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
+		03543E730C7EE45100DA557B /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 03543E710C7EE45100DA557B /* btn-force-build.png */; };
+		03543E740C7EE45100DA557B /* pref-projects.png in Resources */ = {isa = PBXBuildFile; fileRef = 03543E720C7EE45100DA557B /* pref-projects.png */; };
+		03543E750C7EE45100DA557B /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 03543E710C7EE45100DA557B /* btn-force-build.png */; };
+		03543E760C7EE45100DA557B /* pref-projects.png in Resources */ = {isa = PBXBuildFile; fileRef = 03543E720C7EE45100DA557B /* pref-projects.png */; };
 		0357DD960C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD980C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
 		0357DD990C6B982600523845 /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */; };
@@ -182,6 +186,8 @@
 		03424A520C736CAB00372C07 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = build/Frameworks/EDCommon.framework; sourceTree = "<group>"; };
 		03474D510C44F44B00BABD10 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03474D520C44F44B00BABD10 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "UnitTests-Info.plist"; path = "Resources/UnitTests-Info.plist"; sourceTree = "<group>"; };
+		03543E710C7EE45100DA557B /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn-force-build.png"; path = "Images/btn-force-build.png"; sourceTree = "<group>"; };
+		03543E720C7EE45100DA557B /* pref-projects.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pref-projects.png"; path = "Images/pref-projects.png"; sourceTree = "<group>"; };
 		0357DD940C6B982600523845 /* CCMGrowlAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMGrowlAdaptor.h; sourceTree = "<group>"; };
 		0357DD950C6B982600523845 /* CCMGrowlAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMGrowlAdaptor.m; sourceTree = "<group>"; };
 		035C6D780C5E48F300906910 /* CCMImageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactory.h; sourceTree = "<group>"; };
@@ -340,6 +346,8 @@
 		038D9DD50C71EFD800B5736F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				03543E710C7EE45100DA557B /* btn-force-build.png */,
+				03543E720C7EE45100DA557B /* pref-projects.png */,
 				038D25910C74519000F62CC1 /* pref-advanced.tiff */,
 				038D25920C74519000F62CC1 /* pref-notifications.tiff */,
 				038EC76B0C6D2E1300597BA0 /* CCMenu.icns */,
@@ -612,6 +620,8 @@
 				038D25940C74519000F62CC1 /* pref-notifications.tiff in Resources */,
 				038D271B0C7463DC00F62CC1 /* Preferences.toolbar in Resources */,
 				038D27280C74643600F62CC1 /* ProjectWindow.toolbar in Resources */,
+				03543E750C7EE45100DA557B /* btn-force-build.png in Resources */,
+				03543E760C7EE45100DA557B /* pref-projects.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +653,8 @@
 				038D271C0C7463DC00F62CC1 /* Preferences.toolbar in Resources */,
 				038D27270C74643600F62CC1 /* ProjectWindow.toolbar in Resources */,
 				03E5D8E20C7A0C8B0031B014 /* RELEASENOTES.txt in Resources */,
+				03543E730C7EE45100DA557B /* btn-force-build.png in Resources */,
+				03543E740C7EE45100DA557B /* pref-projects.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@
     itemInfoByIdentifier = {
         ForceBuild = {
             action = "forceBuild:"; 
-            imageName = "Placeholder"; 
+            imageName = "btn-force-build"; 
             label = "Force Build";
 			toolTip = "Force build of selected projects"; 
         }; 

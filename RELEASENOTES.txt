@@ -2,6 +2,11 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 0.9.3
+
+* Added remaining icons
+
+
 CCMenu 0.9.2
 
 * Version number displayed on project preferences pane
