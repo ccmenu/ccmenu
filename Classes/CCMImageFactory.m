@@ -23,6 +23,8 @@
 	if(status == nil)
 		return [self imageForUnavailableServer];
 	activity = [activity isEqualToString:CCMBuildingActivity] ? @"-building" : @"";
+	if(![status isEqualToString:CCMSuccessStatus])
+		status = CCMFailedStatus;
 	status = [status lowercaseString];
 	NSString *name = [NSString stringWithFormat:@"icon-%@%@.png", status, activity];
 	return [self imageNamed:name];

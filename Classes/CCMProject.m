@@ -74,7 +74,7 @@ static NSSet *infoKeys;
 
 - (BOOL)isFailed
 {
-	return [[self lastBuildStatus] isEqualToString:CCMFailedStatus];
+	return ([self lastBuildStatus] != nil) && ![[self lastBuildStatus] isEqualToString:CCMSuccessStatus];
 }
 
 - (BOOL)isBuilding

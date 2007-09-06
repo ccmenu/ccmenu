@@ -46,6 +46,12 @@
 	STAssertEqualObjects(@"icon-inactive", [image name], @"Should have loaded correct image.");
 }
 
+- (void)testInvalidBuildStatusImage
+{
+	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:@"Exception"];
+	STAssertEqualObjects(@"icon-failure", [image name], @"Should have loaded correct image.");
+}
+
 - (void)testCachesMenuImages
 {
 	NSImage *original = [[NSImage alloc] init];
