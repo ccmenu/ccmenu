@@ -131,7 +131,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 		CCMProject *project = [server projectNamed:[projectInfo objectForKey:@"name"]];
 		if(project == nil)
 			continue;
-		NSNotification *notification = [notificationFactory buildCompleteNotificationForProject:project andNewInfo:projectInfo];
+		NSNotification *notification = [notificationFactory buildCompleteNotificationForOldProjectInfo:[project info] andNewProjectInfo:projectInfo];
 		if(notification != nil)
 			[notificationCenter postNotification:notification];
 		[server updateWithProjectInfo:projectInfo];

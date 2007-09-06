@@ -58,8 +58,7 @@ static NSSet *infoKeys;
 
 - (void)forwardInvocation:(NSInvocation *)invocation
 {
-	NSString *methodName = NSStringFromSelector([invocation selector]);
-	NSString *value = [info objectForKey:methodName];
+	NSString *value = [info objectForKey:NSStringFromSelector([invocation selector])];
 	[invocation setReturnValue:&value];
 }
 
