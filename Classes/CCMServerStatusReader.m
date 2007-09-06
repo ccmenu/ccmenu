@@ -20,6 +20,25 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 	[super dealloc];
 }
 
+- (NSCalendarDate *)convertDateString:(NSString *)dateString
+{
+	return [NSCalendarDate dateWithString:dateString calendarFormat:XML_DATE_FORMAT];
+}
+
+- (NSString *)fixUrlStringIfNecessary:(NSString *)urlString
+{
+	// The following is a workaround for a CruiseControl.rb bug
+	NSRange ppRange = [urlString rangeOfString:@"projectsprojects"];
+	if(ppRange.length > 0)
+	{
+		NSMutableString *copy = [NSMutableString stringWithString:urlString];
+		[copy replaceCharactersInRange:ppRange withString:@"projects"];
+		urlString = copy;
+	}
+	return urlString;
+}
+
+
 - (NSArray *)projectInfos
 {
     NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:nil];	
@@ -35,7 +54,9 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 		{
 			id value = [attribute stringValue];
 			if([[attribute name] isEqualToString:@"lastBuildTime"])
-				value = [NSCalendarDate dateWithString:value calendarFormat:XML_DATE_FORMAT];
+				value = [self convertDateString:value];
+			if([[attribute name] isEqualToString:@"webUrl"])
+				value = [self fixUrlStringIfNecessary:value];
 			[info setValue:value forKey:[attribute name]];
 		}
 		[infoArray addObject:info];

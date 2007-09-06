@@ -29,5 +29,17 @@
 	STAssertEqualObjects(@"http://localhost:8080/dashboard/build/detail/connectfour", [info objectForKey:@"webUrl"], @"Should have copied web url.");
 }
 
+- (void)testFixesBrokenCruiseControlRbUrls
+{
+	NSString *xml = @"<Projects><Project name='connectfour' activity='Sleeping' lastBuildStatus='Success' lastBuildLabel='build.1' lastBuildTime='2007-07-18T18:44:48' webUrl='http://localhost:8080/projectsprojects/connectfour'/></Projects>";
+	NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
+	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
+	
+	NSArray *infos = [reader projectInfos];
+	
+	NSDictionary *info = [infos objectAtIndex:0];
+	STAssertEqualObjects(@"http://localhost:8080/projects/connectfour", [info objectForKey:@"webUrl"], @"Should have fixed web url.");
+}
+
 
 @end
