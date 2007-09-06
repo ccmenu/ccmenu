@@ -19,9 +19,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.9.3d7</string>
+	<string>0.9.3d8</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9.3d7</string>
+	<string>0.9.3d8</string>
 	<key>LSUIElement</key>
 	<string>1</string>
 	<key>NSMainNibFile</key>

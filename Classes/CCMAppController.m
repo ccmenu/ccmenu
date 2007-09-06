@@ -8,7 +8,14 @@
 
 @implementation CCMAppController
 
-- (void)start
+- (void)setupRequestCache
+{
+	NSURLCache *cache = [NSURLCache sharedURLCache];
+	[cache setDiskCapacity:0];
+	[cache setMemoryCapacity:2*1024*1024];
+}
+
+- (void)registerValueTransformers
 {
 	CCMBuildStatusTransformer *statusTransformer = [[[CCMBuildStatusTransformer alloc] init] autorelease];
 	[statusTransformer setImageFactory:imageFactory];
@@ -16,10 +23,16 @@
 	
 	CCMTimeSinceDateTransformer *dateTransformer = [[[CCMTimeSinceDateTransformer alloc] init] autorelease];
 	[NSValueTransformer setValueTransformer:dateTransformer forName:CCMTimeSinceDateTransformerName];
-	
+}
+
+- (void)startGrowlAdaptor
+{
 	CCMGrowlAdaptor *growlAdaptor = [[CCMGrowlAdaptor alloc] init]; // intentional 'leak'
 	[growlAdaptor start]; 
-	
+}
+
+- (void)startServerMonitor
+{
 	monitor = [[CCMServerMonitor alloc] init];
 	[monitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
 	[monitor setUserDefaults:[NSUserDefaults standardUserDefaults]];
@@ -32,7 +45,10 @@
 {
 	@try
 	{
-		[self start];
+		[self setupRequestCache];
+		[self registerValueTransformers];
+		[self startGrowlAdaptor];
+		[self startServerMonitor];
 	}
 	@catch(NSException *e)
 	{

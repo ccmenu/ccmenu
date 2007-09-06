@@ -41,7 +41,7 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 
 - (NSArray *)projectInfos
 {
-    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:nil];	
+    NSXMLDocument *doc = [[[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:nil] autorelease];	
 	NSMutableArray *infoArray = [NSMutableArray array];
 	NSEnumerator *projectEnum = [[doc nodesForXPath:@"//Project" error:nil] objectEnumerator];
 	NSXMLElement *element = nil;
