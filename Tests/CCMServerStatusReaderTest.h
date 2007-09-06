@@ -2,7 +2,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 
-@interface CCMConnectionTest : SenTestCase 
+@interface CCMServerStatusReaderTest : SenTestCase 
 {
 }
 

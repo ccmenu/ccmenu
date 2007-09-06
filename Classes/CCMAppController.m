@@ -1,8 +1,7 @@
 
 #import "CCMAppController.h"
-#import "CCMConnection.h"
-#import "CCMServerMonitor.h"
 #import "CCMGrowlAdaptor.h"
+#import "CCMBuildNotificationFactory.h"
 #import "CCMBuildStatusTransformer.h"
 #import "CCMTimeSinceDateTransformer.h"
 
@@ -24,6 +23,7 @@
 	monitor = [[CCMServerMonitor alloc] init];
 	[monitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
 	[monitor setUserDefaults:[NSUserDefaults standardUserDefaults]];
+	[monitor setNotificationFactory:[[[CCMBuildNotificationFactory alloc] init] autorelease]];
 	[monitor start];
 }
 

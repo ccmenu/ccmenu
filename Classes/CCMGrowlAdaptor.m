@@ -1,8 +1,7 @@
 
 #import <Growl/Growl.h>
 #import "CCMGrowlAdaptor.h"
-#import "CCMProjectRepository.h"
-#import "CCMProject.h"
+#import "CCMServerMonitor.h"
 
 
 struct {

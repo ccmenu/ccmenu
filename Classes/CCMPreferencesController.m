@@ -111,10 +111,10 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[chooseProjectsViewController setContent:projectInfos];
 		[sheetTabView selectNextTabViewItem:self];
 	}
-	@catch (NSException *exception) 
+	@catch(NSException *exception) 
 	{
 		[testServerProgressIndicator stopAnimation:self];
-		NSRunAlertPanel(@"Connection failure", @"Could not connect to server. Error was: %@", @"Cancel", nil, nil, [exception reason]);
+		NSRunAlertPanel(@"Connection failure", @"Could not connect to server. %@", @"Cancel", nil, nil, [exception reason]);
 	}
 }
 

@@ -1,11 +1,12 @@
 
 #import "CCMServerMonitor.h"
-#import "CCMPreferencesController.h"
-#import "CCMProjectRepository.h"
-#import "CCMConnection.h"
+#import "CCMServer.h"
 #import "CCMProject.h"
+#import "CCMConnection.h"
+#import "CCMPreferencesController.h"
 #import "NSArray+CCMAdditions.h"
 #import <EDCommon/EDCommon.h>
+
 
 NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotification";
 
@@ -15,8 +16,13 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)dealloc
 {
 	[self stop];
-	[repositories release];
+	[serverConnectionPairs release];
 	[super dealloc];	
+}
+
+- (void)setUserDefaults:(NSUserDefaults *)defaults
+{
+	userDefaults = defaults;
 }
 
 - (void)setNotificationCenter:(NSNotificationCenter *)center
@@ -25,12 +31,39 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	[center addObserver:self selector:@selector(defaultsChanged:) name:CCMPreferencesChangedNotification object:nil];
 }
 
-- (void)setUserDefaults:(NSUserDefaults *)defaults
+- (void)setNotificationFactory:(CCMBuildNotificationFactory *)factory
 {
-	userDefaults = defaults;
+	notificationFactory = [factory retain];
 }
 
-- (void)setupRepositoriesFromDefaults
+- (NSArray *)servers
+{
+	return [[serverConnectionPairs collect] firstObject];
+}
+
+- (NSArray *)projects
+{
+	return [[[[self servers] collect] projects] flattenedArray];
+}
+
+- (NSArray *)connections
+{
+	return [[serverConnectionPairs collect] secondObject];
+}
+
+- (CCMServer *)serverForConnection:(CCMConnection *)connection
+{
+	NSEnumerator *pairEnum = [serverConnectionPairs objectEnumerator];
+	EDObjectPair *pair;
+	while((pair = [pairEnum nextObject]) != nil)
+	{
+		if([pair secondObject] == connection)
+			return [pair firstObject];
+	}
+	return nil;
+}
+
+- (void)setupFromUserDefaults
 {
 	NSArray *defaultsProjectList = [NSUnarchiver unarchiveObjectWithData:[userDefaults dataForKey:CCMDefaultsProjectListKey]];
 	NSMutableDictionary *projectNamesByServer = [NSMutableDictionary dictionary];
@@ -39,47 +72,28 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	while((defaultsProjectEntry = [defaultsProjectEntryEnum nextObject]) != nil)
 	{
 		NSString *serverUrl = [defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
-		[projectNamesByServer addObject:[defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryNameKey] toArrayForKey:serverUrl];
+		NSString *projectName = [defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryNameKey];
+		[projectNamesByServer addObject:projectName toArrayForKey:serverUrl];
 	}
-
-	[repositories release];
-	repositories = [[NSMutableDictionary dictionary] retain];
-	NSEnumerator *serverEnum = [projectNamesByServer keyEnumerator];
-	NSString *server;
-	while((server = [serverEnum nextObject]) != nil)
+	
+	[[[self connections] each] cancelStatusRequest];
+	[serverConnectionPairs release];
+	serverConnectionPairs = [[NSMutableArray array] retain];
+	NSEnumerator *serverUrlEnum = [projectNamesByServer keyEnumerator];
+	NSString *serverUrl;
+	while((serverUrl = [serverUrlEnum nextObject]) != nil)
 	{
-		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[NSURL URLWithString:server]] autorelease];
-		NSArray *projectNames = [projectNamesByServer objectForKey:server];
-		CCMProjectRepository *repo = [[[CCMProjectRepository alloc] initWithConnection:connection andProjects:projectNames] autorelease];
-		[repo setNotificationCenter:notificationCenter];
-		[repositories setObject:repo forKey:server];
+		CCMServer *server = [[[CCMServer alloc] initWithProjectNames:[projectNamesByServer objectForKey:serverUrl]] autorelease];
+		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[NSURL URLWithString:serverUrl]] autorelease];
+		[connection setDelegate:self];
+		EDObjectPair *pair = [EDObjectPair pairWithObjects:server :connection];
+		[serverConnectionPairs addObject:pair];
 	}
-}
-
-- (void)defaultsChanged:(id)sender
-{
-	[self stop];
-	[self start];
-}
-
-- (void)pollServers:(id)sender
-{
-	NSLog(@"polling, sender was %@", sender);
-	NSEnumerator *repositoryEnum = [[repositories allValues] objectEnumerator];
-	CCMProjectRepository *repository;
-	while((repository = [repositoryEnum nextObject]) != nil)
-		[repository pollServer];
-	[notificationCenter postNotificationName:CCMProjectStatusUpdateNotification object:self userInfo:nil];
-}
-
-- (NSArray *)projects
-{
-	return [[[[repositories allValues] collect] projects] flattenedArray];
 }
 
 - (void)start
 {
-	[self setupRepositoriesFromDefaults];
+	[self setupFromUserDefaults];
 	int interval = [userDefaults integerForKey:CCMDefaultsPollIntervalKey];
 	NSAssert1(interval >= 1, @"Invalid poll interval; must be greater or equal 1 but is %d.", interval);
 	[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(pollServers:) userInfo:nil repeats:NO];
@@ -92,6 +106,43 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	timer = nil;
 }
 
+- (void)pollServers:(id)sender
+{
+	NSLog(@"polling, sender was %@", sender);
+	[[[self connections] each] requestServerStatus];
+}
 
+- (void)defaultsChanged:(id)sender
+{
+	[self stop];
+	[self start];
+}
+
+- (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList
+{
+	CCMServer *server = [self serverForConnection:connection];
+	if(server == nil)
+		return;
+	
+	NSEnumerator *projectInfoEnum = [projectInfoList objectEnumerator];
+	NSDictionary *projectInfo;
+	while((projectInfo = [projectInfoEnum nextObject]) != nil)
+	{
+		CCMProject *project = [server projectNamed:[projectInfo objectForKey:@"name"]];
+		if(project == nil)
+			continue;
+		NSNotification *notification = [notificationFactory buildCompleteNotificationForProject:project andNewInfo:projectInfo];
+		if(notification != nil)
+			[notificationCenter postNotification:notification];
+		[server updateWithProjectInfo:projectInfo];
+	}
+	
+	[notificationCenter postNotificationName:CCMProjectStatusUpdateNotification object:self];
+}
+
+- (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString
+{
+	NSLog(@"%@", errorString); 
+}
 
 @end

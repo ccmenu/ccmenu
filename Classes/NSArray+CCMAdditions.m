@@ -1,15 +1,14 @@
 
 #import "NSArray+CCMAdditions.h"
 
-
-@interface _CCMArrayCollector : NSObject
+@interface _CCMArrayInvoker : NSObject
 {
 	NSArray	*array;
 }
 
 @end
 
-@implementation _CCMArrayCollector
+@implementation _CCMArrayInvoker
 
 - (id)initWithArray:(NSArray *)anArray
 {
@@ -27,6 +26,29 @@
 	}
 	return [[array objectAtIndex:0] methodSignatureForSelector:aSelector];
 }
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+	NSEnumerator *objectEnumerator = [array objectEnumerator];
+	NSObject *object;
+	while((object = [objectEnumerator nextObject]) != nil)
+	{
+		[anInvocation setTarget:object];
+		[anInvocation invoke];
+	}
+	[anInvocation setTarget:self];
+}
+
+@end
+
+
+@interface _CCMArrayCollector : _CCMArrayInvoker
+{
+}
+
+@end
+
+@implementation _CCMArrayCollector
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
@@ -49,7 +71,14 @@
 @end
 
 
+
+
 @implementation NSArray(CCMCollectionAdditions)
+
+- (id)each
+{
+	return [[[_CCMArrayInvoker alloc] initWithArray:self] autorelease];
+}
 
 - (id)collect
 {

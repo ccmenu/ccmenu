@@ -12,7 +12,7 @@
 	IBOutlet CCMStatusBarMenuController	*statusBarMenuController;
 	IBOutlet CCMImageFactory			*imageFactory;
 	
-	CCMServerMonitor					*monitor;
+	CCMServerMonitor	*monitor;
 }
 
 @end

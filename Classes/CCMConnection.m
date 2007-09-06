@@ -1,12 +1,9 @@
 
 #import "CCMConnection.h"
-#import "CCMProject.h"
+#import "CCMServerStatusReader.h"
 
 
 @implementation CCMConnection
-
-static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
-
 
 - (id)initWithURL:(NSURL *)theServerUrl
 {
@@ -21,35 +18,82 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 	[super dealloc];
 }
 
-- (NSArray *)infosFromXmlData:(NSData *)xml
+- (void)setDelegate:(id)aDelegate
 {
-    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:xml options:NSXMLNodeOptionsNone error:nil];	
-	NSMutableArray *infoArray = [NSMutableArray array];
-	NSEnumerator *projectEnum = [[doc nodesForXPath:@"//Project" error:nil] objectEnumerator];
-	NSXMLElement *element = nil;
-	while((element = [projectEnum nextObject]) != nil)
-	{
-		NSDictionary *info = [NSMutableDictionary dictionary];
-		NSEnumerator *attributeEnum = [[element attributes] objectEnumerator];
-		NSXMLNode *attribute = nil;
-		while((attribute = [attributeEnum nextObject]) != nil)
-		{
-			id value = [attribute stringValue];
-			if([[attribute name] isEqualToString:@"lastBuildTime"])
-				value = [NSCalendarDate dateWithString:value calendarFormat:XML_DATE_FORMAT];
-			[info setValue:value forKey:[attribute name]];
-		}
-		[infoArray addObject:info];
-	}
-	return infoArray;
+	delegate = aDelegate;
+}
+
+- (id)delegate
+{
+	return delegate;
+}
+
+- (NSString *)errorStringForError:(NSError *)error
+{
+	return [NSString stringWithFormat:@"Failed to get status from [%@]: %@",   
+		[[error userInfo] objectForKey:NSErrorFailingURLStringKey], [error localizedDescription]];
 }
 
 - (NSArray *)getProjectInfos
 {
-	NSData *response = [serverUrl resourceDataUsingCache:NO];
-	if((response == nil) || ([response length] == 0))
-		[NSException raise:@"NotFoundException" format:@"Failed to get project info from %@", [serverUrl absoluteString]];	
-	return [self infosFromXmlData:response];
+	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
+	NSURLResponse *response = nil;
+	NSError *error = nil;
+	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+	if(error != nil)
+		[NSException raise:@"ConnectionException" format:[self errorStringForError:error]];
+	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
+	return [reader projectInfos];
+}
+
+- (void)requestServerStatus
+{
+	if(urlConnection != nil)
+		return;
+	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
+	if((urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self]) == nil) 
+		[NSException raise:@"ConfigurationException" format:@"Cannot create connection for URL [%@]", [serverUrl absoluteString]];	
+	receivedData = [[NSMutableData data] retain];
+}
+
+- (void)cleanUpAfterStatusRequest
+{
+	[urlConnection release];
+    [receivedData release];
+	urlConnection = nil;
+	receivedData = nil;
+}
+
+- (void)cancelStatusRequest
+{
+	if(urlConnection == nil)
+		return;
+	[urlConnection cancel];
+	[self cleanUpAfterStatusRequest];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+	// this could be called multiple times, due to redirects for example, so we reset data
+    [receivedData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [receivedData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
+    [self cleanUpAfterStatusRequest];
+	[delegate connection:self didReceiveServerStatus:[reader projectInfos]];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+	[self cleanUpAfterStatusRequest];
+	[delegate connection:self hadTemporaryError:[self errorStringForError:error]];
 }
 
 @end

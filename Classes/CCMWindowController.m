@@ -8,7 +8,6 @@
 {
 	NSString *toolbarResourcePath = [[NSBundle mainBundle] pathForResource:name ofType:@"toolbar"];
 	toolbarDefinition = [[NSDictionary dictionaryWithContentsOfFile:toolbarResourcePath] retain];
-	
 	NSToolbar *toolbar = [[[NSToolbar alloc] initWithIdentifier:[NSString stringWithFormat:@"%@ Toollbar", name]] autorelease];
 	[toolbar setDelegate:self];
 	return toolbar;

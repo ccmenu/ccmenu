@@ -4,6 +4,7 @@ Changes listed by release.
 
 CCMenu 0.9.3
 
+* Completely reworked server polling to be asynchronous and more resilient
 * Added remaining icons
 
 
