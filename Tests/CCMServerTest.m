@@ -39,7 +39,7 @@
 	
 	STAssertEquals(1u, [projectList count], @"Should have created only one project.");
 	CCMProject *project = [projectList objectAtIndex:0];
-	STAssertEqualObjects(CCMFailedStatus, [project valueForKey:@"lastBuildStatus"], @"Should have updated project projectInfo."); 
+	STAssertEqualObjects(CCMFailedStatus, [project lastBuildStatus], @"Should have updated project projectInfo."); 
 }
 
 - (void)testIgnoresProjectsNotInInitialList
@@ -55,7 +55,7 @@
 	STAssertEquals(1u, [projectList count], @"Should have ignored additional project.");
 	CCMProject *project = [projectList objectAtIndex:0];
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have kept project with right name."); 
-	STAssertEqualObjects(CCMSuccessStatus, [project valueForKey:@"lastBuildStatus"], @"Should have updated project projectInfo."); 
+	STAssertEqualObjects(CCMSuccessStatus, [project lastBuildStatus], @"Should have updated project projectInfo."); 
 }
 
 @end

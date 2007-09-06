@@ -9,8 +9,15 @@ NSString *CCMFailedStatus = @"Failure";
 NSString *CCMSleepingActivity = @"Sleeping";
 NSString *CCMBuildingActivity = @"Building";
 
+static NSSet *infoKeys;
+
 
 @implementation CCMProject
+
++ (void)initialize
+{
+	infoKeys = [[NSSet setWithObjects:@"activity", @"lastBuildStatus", @"lastBuildLabel", @"lastBuildTime", @"webUrl", nil] retain];
+}
 
 - (id)initWithName:(NSString *)aName
 {
@@ -31,15 +38,34 @@ NSString *CCMBuildingActivity = @"Building";
 	return [self retain];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-	return [info objectForKey:key]; 
-}
-
 - (void)updateWithInfo:(NSDictionary *)dictionary
 {
 	[info autorelease];
 	info = [dictionary copy];
+}
+
+- (NSDictionary *)info
+{
+	return info;
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)selector
+{
+	if([infoKeys containsObject:NSStringFromSelector(selector)])
+		return [super methodSignatureForSelector:@selector(name)];
+	return [super methodSignatureForSelector:selector];
+}
+
+- (void)forwardInvocation:(NSInvocation *)invocation
+{
+	NSString *methodName = NSStringFromSelector([invocation selector]);
+	NSString *value = [info objectForKey:methodName];
+	[invocation setReturnValue:&value];
+}
+
+- (id)valueForUndefinedKey:(NSString *)key
+{
+	return [info objectForKey:key]; 
 }
 
 - (NSString *)name
@@ -49,12 +75,12 @@ NSString *CCMBuildingActivity = @"Building";
 
 - (BOOL)isFailed
 {
-	return [[self valueForKey:@"lastBuildStatus"] isEqualToString:CCMFailedStatus];
+	return [[self lastBuildStatus] isEqualToString:CCMFailedStatus];
 }
 
 - (BOOL)isBuilding
 {
-	return [[self valueForKey:@"activity"] isEqualToString:CCMBuildingActivity];
+	return [[self activity] isEqualToString:CCMBuildingActivity];
 }
 
 

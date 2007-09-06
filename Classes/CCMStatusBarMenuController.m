@@ -50,8 +50,7 @@
 	{
 		NSString *title = [NSString stringWithFormat:@"%@", [project name]];
 		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		NSImage *image = [imageFactory imageForActivity:[project valueForKey:@"activity"] 
-										lastBuildStatus:[project valueForKey:@"lastBuildStatus"]];
+		NSImage *image = [imageFactory imageForActivity:[project activity] lastBuildStatus:[project lastBuildStatus]];
 		image = [imageFactory convertForMenuUse:image];
 		[menuItem setImage:image];
 		if([project isFailed])
@@ -88,7 +87,7 @@
 
 - (IBAction)openProject:(id)sender
 {
-	NSString *urlString = [[sender representedObject] valueForKey:@"webUrl"];
+	NSString *urlString = [[sender representedObject] webUrl];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
 }
 

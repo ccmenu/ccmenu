@@ -48,8 +48,7 @@
 	CCMProject *project = [projectList objectAtIndex:0];
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have set up project with right name."); 
 
-	
-	//	STAssertEqualObjects(@"build.1", [project valueForKey:@"lastBuildLabel"], @"Should have set up project projectInfo."); 
+	//	STAssertEqualObjects(@"build.1", [project lastBuildLabel], @"Should have set up project projectInfo."); 
 }
 
 

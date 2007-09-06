@@ -4,14 +4,22 @@
 
 @implementation CCMProjectTest
 
-- (void)testImplementsValueForKey
+- (void)testCanCallMethodsForInfoKeys
 {
 	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
 	NSDictionary *info = [NSDictionary dictionaryWithObject:@"Success" forKey:@"lastBuildStatus"];
 	[project updateWithInfo:info];
 	
-	STAssertEquals(@"connectfour", [project valueForKey:@"name"], @"Should have returned right project name.");
-	STAssertEquals(@"Success", [project valueForKey:@"lastBuildStatus"], @"Should have returned right build status.");
+	STAssertEquals(@"Success", [project lastBuildStatus], @"Should have returned right build status.");
+}
+
+- (void)testRaisesUnknownMethodExceptionForMethodsNotCorrespondingToInfoKeys
+{
+	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+	NSDictionary *info = [NSDictionary dictionaryWithObject:@"Success" forKey:@"lastBuildStatus"];
+	[project updateWithInfo:info];
+	
+	STAssertThrows([(id)project lowercaseString], @"Should have thrown an exception.");
 }
 
 - (void)testParsesFailedStatusString

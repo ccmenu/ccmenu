@@ -11,11 +11,22 @@
 - (id)initWithName:(NSString *)aName;
 
 - (void)updateWithInfo:(NSDictionary *)dictionary;
+- (NSDictionary *)info;
 
 - (NSString *)name;
 
 - (BOOL)isFailed;
 - (BOOL)isBuilding;
+
+@end
+
+@interface CCMProject(AttributesFromInfo)
+
+- (NSString *)activity;
+- (NSString *)lastBuildStatus;
+- (NSString *)lastBuildLabel;
+- (NSString *)lastBuildTime;
+- (NSString *)webUrl;
 
 @end
 
