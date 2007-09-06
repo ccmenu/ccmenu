@@ -20,6 +20,8 @@
 
 - (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)status
 {
+	if(status == nil)
+		return [self imageForUnavailableServer];
 	activity = [activity isEqualToString:CCMBuildingActivity] ? @"-building" : @"";
 	status = [status lowercaseString];
 	NSString *name = [NSString stringWithFormat:@"icon-%@%@.png", status, activity];

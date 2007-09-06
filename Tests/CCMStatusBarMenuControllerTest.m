@@ -39,9 +39,9 @@
 - (void)testAddsProjects
 {
 	CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	NSArray *infoList = [NSArray arrayWithObject:project];
+	NSArray *projectList = [NSArray arrayWithObject:project];
 	
-	[controller displayProjects:infoList];
+	[controller displayProjects:projectList];
 	
 	NSArray *items = [[statusItem menu] itemArray];
 	STAssertEqualObjects(@"connectfour", [[items objectAtIndex:0] title], @"Should have set right project name.");
@@ -53,10 +53,10 @@
 - (void)testDisplaysSuccessWhenAllProjectsSuccessful
 {
 	CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	NSArray *infoList = [NSArray arrayWithObject:project];
+	NSArray *projectList = [NSArray arrayWithObject:project];
 	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	
-	[controller displayProjects:infoList];
+	[controller displayProjects:projectList];
 	
 	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }
@@ -66,10 +66,10 @@
 	CCMProject *project1 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	CCMProject *project3 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
+	NSArray *projectList = [NSArray arrayWithObjects:project1, project2, project3, nil];
 	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	
-	[controller displayProjects:infoList];
+	[controller displayProjects:projectList];
 	
 	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }
@@ -79,10 +79,10 @@
 	CCMProject *project1 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
+	NSArray *projectList = [NSArray arrayWithObjects:project1, project2, project3, nil];
 	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
 	
-	[controller displayProjects:infoList];
+	[controller displayProjects:projectList];
 	
 	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }
@@ -92,10 +92,21 @@
 	CCMProject *project1 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-	NSArray *infoList = [NSArray arrayWithObjects:project1, project2, project3, nil];
+	NSArray *projectList = [NSArray arrayWithObjects:project1, project2, project3, nil];
 	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
 
-	[controller displayProjects:infoList];
+	[controller displayProjects:projectList];
+	
+	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
+}
+
+- (void)testDisplaysUnknownWhenNoStatusIsKnown
+{
+	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+	NSArray *projectList = [NSArray arrayWithObjects:project, nil];
+	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:nil lastBuildStatus:nil];
+	
+	[controller displayProjects:projectList];
 	
 	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
 }

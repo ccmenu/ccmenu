@@ -34,10 +34,16 @@
 	STAssertEqualObjects(@"icon-success-building", [image name], @"Should have loaded correct image.");
 }
 
-- (void)testNameForLastBuildFailedBuildingImage
+- (void)testLastBuildFailedBuildingImage
 {
 	NSImage *image = [factory imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
 	STAssertEqualObjects(@"icon-failure-building", [image name], @"Should have loaded correct image.");
+}
+
+- (void)testNoBuildStatusImage
+{
+	NSImage *image = [factory imageForActivity:@"foo" lastBuildStatus:nil];
+	STAssertEqualObjects(@"icon-inactive", [image name], @"Should have loaded correct image.");
 }
 
 - (void)testCachesMenuImages

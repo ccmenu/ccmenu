@@ -44,6 +44,7 @@
 	unsigned failCount = 0;
 	unsigned buildCount = 0;
 	bool isFixing = NO;
+	bool haveAtLeastOneStatus = NO;
 	NSEnumerator *projectEnum = [projectList objectEnumerator];
 	CCMProject *project;
 	while((project = [projectEnum nextObject]) != nil)
@@ -59,10 +60,17 @@
 			buildCount += 1;
 		if([project isBuilding] && [project isFailed])
 			isFixing = YES;
+		if([project lastBuildStatus] != nil)
+			haveAtLeastOneStatus = YES;
 		[menuItem setTarget:self];
 		[menuItem setRepresentedObject:project];
 	}
-	if(buildCount > 0)
+	if(haveAtLeastOneStatus == NO)
+	{
+		[statusItem setImage:[imageFactory imageForActivity:nil lastBuildStatus:nil]];
+		[statusItem setTitle:@""];
+	}
+	else if(buildCount > 0)
 	{
 		NSString *status = isFixing ? CCMFailedStatus : CCMSuccessStatus;
 		[statusItem setImage:[imageFactory imageForActivity:CCMBuildingActivity lastBuildStatus:status]];

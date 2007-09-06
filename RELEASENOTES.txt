@@ -4,6 +4,7 @@ Changes listed by release.
 
 CCMenu 0.9.3
 
+* Now showing a grey icon when project status unavailable
 * Completely reworked server polling to be asynchronous and more resilient
 * Added remaining icons
 
