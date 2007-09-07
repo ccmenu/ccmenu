@@ -1,15 +1,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CCMServerMonitor.h"
-#import "CCMStatusBarMenuController.h"
-#import "CCMProjectWindowController.h"
+#import "CCMPreferencesController.h"
 #import "CCMImageFactory.h"
 
 
 @interface CCMAppController : NSObject
 {
-	IBOutlet CCMProjectWindowController	*projectWindowController;
-	IBOutlet CCMStatusBarMenuController	*statusBarMenuController;
+	IBOutlet CCMPreferencesController	*preferencesController;
 	IBOutlet CCMImageFactory			*imageFactory;
 	
 	CCMServerMonitor	*monitor;

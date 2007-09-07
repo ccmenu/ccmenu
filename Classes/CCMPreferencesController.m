@@ -157,4 +157,14 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
 }
 
+- (IBAction)updateIntervalChanged:(id)sender
+{
+	[updater scheduleCheckWithInterval:[sender selectedTag]];
+}
+
+- (IBAction)checkForUpdateNow:(id)sender
+{
+	[updater checkForUpdates:sender];
+}
+
 @end

@@ -49,6 +49,8 @@
 		[self registerValueTransformers];
 		[self startGrowlAdaptor];
 		[self startServerMonitor];
+		if([[monitor projects] count] == 0)
+			[preferencesController showWindow:self];
 	}
 	@catch(NSException *e)
 	{

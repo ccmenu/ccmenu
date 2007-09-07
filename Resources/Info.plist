@@ -19,14 +19,16 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.9.4d1</string>
+	<string>0.9.4d2</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9.4d1</string>
+	<string>0.9.4d2</string>
 	<key>LSUIElement</key>
 	<string>1</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>EDApplication</string>
+	<key>SUFeedURL</key>
+	<string>http://ccmenu.sourceforge.net/update.xml</string>
 </dict>
 </plist>

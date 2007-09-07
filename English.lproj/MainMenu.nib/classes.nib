@@ -1,36 +1,46 @@
 {
     IBClasses = (
         {
-            ACTIONS = {checkStatus = id; }; 
             CLASS = CCMAppController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
                 imageFactory = CCMImageFactory; 
-                projectWindowController = CCMProjectWindowController; 
-                statusBarMenuController = CCMStatusBarMenuController; 
+                preferencesController = CCMPreferencesController; 
             }; 
             SUPERCLASS = NSObject; 
         }, 
         {CLASS = CCMImageFactory; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {
-                addServer = id; 
-                closeAddServerSheet = id; 
+                addProjects = id; 
+                checkForUpdateNow = id; 
+                chooseProjects = id; 
+                closeAddProjectsSheet = id; 
+                preferencesChanged = id; 
+                removeProjects = id; 
                 showWindow = id; 
-                testServerConnection = id; 
+                switchPreferencesPane = id; 
+                updateIntervalChanged = id; 
             }; 
             CLASS = CCMPreferencesController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
-                addServerSheet = NSPanel; 
+                addProjectsSheet = NSPanel; 
+                advancedPrefsView = NSView; 
+                allProjectsViewController = NSArrayController; 
+                chooseProjectsViewController = NSArrayController; 
+                notificationPrefsView = NSView; 
+                paneHolderView = NSView; 
                 preferencesWindow = NSPanel; 
-                serverAndProjectView = NSOutlineView; 
-                serverAndProjectViewController = NSTreeController; 
+                projectsView = NSView; 
                 serverTypeMatrix = NSMatrix; 
                 serverUrlComboBox = NSComboBox; 
+                sheetTabView = NSTabView; 
                 testServerProgressIndicator = NSProgressIndicator; 
+                updater = SUUpdater; 
+                versionField = NSTextField; 
             }; 
-            SUPERCLASS = NSObject; 
+            SUPERCLASS = CCMWindowController; 
         }, 
         {
             ACTIONS = {forceBuild = id; showWindow = id; }; 
@@ -50,7 +60,14 @@
             OUTLETS = {imageFactory = CCMImageFactory; statusMenu = NSMenu; }; 
             SUPERCLASS = NSObject; 
         }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+        {CLASS = CCMWindowController; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {checkForUpdates = id; }; 
+            CLASS = SUUpdater; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }
     ); 
     IBVersion = 1; 
 }

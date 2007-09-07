@@ -11,16 +11,16 @@
 		<key>419</key>
 		<string>655 570 370 270 0 0 1680 1028 </string>
 		<key>421</key>
-		<string>655 570 370 270 0 0 1680 1028 </string>
+		<string>561 194 370 270 0 0 1680 1028 </string>
 	</dict>
 	<key>IBFramework Version</key>
 	<string>446.1</string>
 	<key>IBOpenObjects</key>
 	<array>
 		<integer>403</integer>
-		<integer>419</integer>
 		<integer>406</integer>
 		<integer>203</integer>
+		<integer>419</integer>
 		<integer>421</integer>
 	</array>
 	<key>IBSystem Version</key>

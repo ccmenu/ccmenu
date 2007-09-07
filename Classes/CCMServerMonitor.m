@@ -65,7 +65,8 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (void)setupFromUserDefaults
 {
-	NSArray *defaultsProjectList = [NSUnarchiver unarchiveObjectWithData:[userDefaults dataForKey:CCMDefaultsProjectListKey]];
+	NSData *defaultsData = [userDefaults dataForKey:CCMDefaultsProjectListKey];
+	NSArray *defaultsProjectList = (defaultsData != nil) ? [NSUnarchiver unarchiveObjectWithData:defaultsData] : [NSArray array];
 	NSMutableDictionary *projectNamesByServer = [NSMutableDictionary dictionary];
 	NSEnumerator *defaultsProjectEntryEnum = [defaultsProjectList objectEnumerator];
 	NSDictionary *defaultsProjectEntry;

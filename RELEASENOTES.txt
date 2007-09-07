@@ -4,7 +4,10 @@ Changes listed by release.
 
 CCMenu 0.9.4
 
+* Added autoupdate using the Sparkle framework
+* Now opening the preferences panel when no projects are configured
 * Now showing a meaningful message when server does not provide web URLs
+* Fixed bug that would prevent monitor from running on first startup
 
 
 CCMenu 0.9.3

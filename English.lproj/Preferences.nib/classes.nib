@@ -3,12 +3,14 @@
         {
             ACTIONS = {
                 addProjects = id; 
+                checkForUpdateNow = id; 
                 chooseProjects = id; 
                 closeAddProjectsSheet = id; 
                 preferencesChanged = id; 
                 removeProjects = id; 
                 showWindow = id; 
                 switchPreferencesPane = id; 
+                updateIntervalChanged = id; 
             }; 
             CLASS = CCMPreferencesController; 
             LANGUAGE = ObjC; 
@@ -25,6 +27,7 @@
                 serverUrlComboBox = NSComboBox; 
                 sheetTabView = NSTabView; 
                 testServerProgressIndicator = NSProgressIndicator; 
+                updater = SUUpdater; 
                 versionField = NSTextField; 
             }; 
             SUPERCLASS = CCMWindowController; 

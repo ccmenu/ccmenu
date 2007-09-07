@@ -27,8 +27,19 @@
 	[monitor start];
 	
 	NSArray *servers = [monitor servers];
-	STAssertEquals(2u, [servers count], @"Should have created minimum number of monitors.");
+	STAssertEquals(2u, [servers count], @"Should have created minimum number of servers.");
 }
+
+- (void)testHandlesNoProjectDefaults
+{
+	[[[defaultsMock expect] andReturn:nil] dataForKey:@"Projects"]; 
+	
+	[monitor start];
+	
+	NSArray *servers = [monitor servers];
+	STAssertEquals(0u, [servers count], @"Should have created 0 servers.");
+}
+
 
 - (void)testGetsProjectsFromConnection
 {	

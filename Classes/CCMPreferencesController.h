@@ -1,5 +1,6 @@
 
 #import "CCMWindowController.h"
+#import <Sparkle/Sparkle.h>
 
 
 @interface CCMPreferencesController : CCMWindowController 
@@ -20,6 +21,8 @@
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
 	IBOutlet NSArrayController		*chooseProjectsViewController;	
+	
+	IBOutlet SUUpdater				*updater;
 }
 
 - (IBAction)showWindow:(id)sender;
@@ -32,6 +35,9 @@
 
 - (IBAction)switchPreferencesPane:(id)sender;
 - (IBAction)preferencesChanged:(id)sender;
+
+- (IBAction)updateIntervalChanged:(id)sender;
+- (IBAction)checkForUpdateNow:(id)sender;
 
 - (NSURL *)getServerURL;
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
