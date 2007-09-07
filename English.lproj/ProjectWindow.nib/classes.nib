@@ -1,5 +1,7 @@
 {
     IBClasses = (
+        {CLASS = CCMFakeMenuWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {CLASS = CCMNoMenuWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
         {CLASS = CCMProject; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {CLASS = CCMProjectInfo; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {

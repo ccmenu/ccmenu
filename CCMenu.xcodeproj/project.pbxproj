@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0307973A0C91B91000BFE0EC /* CCMFakeMenuWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030797380C91B91000BFE0EC /* CCMFakeMenuWindow.h */; };
+		0307973B0C91B91000BFE0EC /* CCMFakeMenuWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 030797390C91B91000BFE0EC /* CCMFakeMenuWindow.m */; };
+		0307973C0C91B91000BFE0EC /* CCMFakeMenuWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030797380C91B91000BFE0EC /* CCMFakeMenuWindow.h */; };
+		0307973D0C91B91000BFE0EC /* CCMFakeMenuWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 030797390C91B91000BFE0EC /* CCMFakeMenuWindow.m */; };
+		0307973E0C91B91000BFE0EC /* CCMFakeMenuWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 030797390C91B91000BFE0EC /* CCMFakeMenuWindow.m */; };
 		03097A130C48B268002F04B5 /* NSCalendarDate+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097A120C48B268002F04B5 /* NSCalendarDate+CCMAdditions.m */; };
 		03097A140C48B268002F04B5 /* NSCalendarDate+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097A120C48B268002F04B5 /* NSCalendarDate+CCMAdditions.m */; };
 		03097A200C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03097A1F0C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m */; };
@@ -169,6 +174,7 @@
 				03424A960C736CB100372C07 /* EDCommon.framework in CopyFiles */,
 				038EC7380C6D1E1900597BA0 /* Growl.framework in CopyFiles */,
 				03B8BAB80C91608D005855BE /* Sparkle.framework in CopyFiles */,
+				0307973C0C91B91000BFE0EC /* CCMFakeMenuWindow.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,12 +188,15 @@
 				038EC7390C6D1E1E00597BA0 /* Growl.framework in CopyFiles */,
 				03B8BABD0C916094005855BE /* Sparkle.framework in CopyFiles */,
 				039AB90F0C721C7B00A8FE20 /* OCMock.framework in CopyFiles */,
+				0307973A0C91B91000BFE0EC /* CCMFakeMenuWindow.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		030797380C91B91000BFE0EC /* CCMFakeMenuWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMFakeMenuWindow.h; sourceTree = "<group>"; };
+		030797390C91B91000BFE0EC /* CCMFakeMenuWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMFakeMenuWindow.m; sourceTree = "<group>"; };
 		03097A110C48B268002F04B5 /* NSCalendarDate+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+CCMAdditions.h"; sourceTree = "<group>"; };
 		03097A120C48B268002F04B5 /* NSCalendarDate+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+CCMAdditions.m"; sourceTree = "<group>"; };
 		03097A1E0C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+CCMAdditionsTest.h"; sourceTree = "<group>"; };
@@ -336,6 +345,10 @@
 		03097A0D0C48B199002F04B5 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				038D27DD0C74681300F62CC1 /* CCMWindowController.h */,
+				038D27DE0C74681300F62CC1 /* CCMWindowController.m */,
+				030797380C91B91000BFE0EC /* CCMFakeMenuWindow.h */,
+				030797390C91B91000BFE0EC /* CCMFakeMenuWindow.m */,
 				038D28D90C746D4500F62CC1 /* NSArray+CCMAdditions.h */,
 				038D28DA0C746D4500F62CC1 /* NSArray+CCMAdditions.m */,
 				03097A110C48B268002F04B5 /* NSCalendarDate+CCMAdditions.h */,
@@ -442,8 +455,6 @@
 				03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */,
 				03D5D2480C5A18FD0083AA94 /* CCMStatusBarMenuController.h */,
 				03D5D2490C5A18FD0083AA94 /* CCMStatusBarMenuController.m */,
-				038D27DD0C74681300F62CC1 /* CCMWindowController.h */,
-				038D27DE0C74681300F62CC1 /* CCMWindowController.m */,
 				035C6D780C5E48F300906910 /* CCMImageFactory.h */,
 				035C6D790C5E48F300906910 /* CCMImageFactory.m */,
 				035C6DA50C5E4AA100906910 /* CCMBuildStatusTransformer.h */,
@@ -820,6 +831,7 @@
 				03BEB94C0C832195000C75B6 /* CCMBuildNotificationFactoryTest.m in Sources */,
 				03BEB9CF0C832649000C75B6 /* CCMServer.m in Sources */,
 				03BEB9DA0C83269C000C75B6 /* CCMServerTest.m in Sources */,
+				0307973E0C91B91000BFE0EC /* CCMFakeMenuWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,6 +869,7 @@
 				03BEB94B0C832195000C75B6 /* CCMBuildNotificationFactoryTest.m in Sources */,
 				03BEB9CE0C832649000C75B6 /* CCMServer.m in Sources */,
 				03BEB9D90C83269C000C75B6 /* CCMServerTest.m in Sources */,
+				0307973B0C91B91000BFE0EC /* CCMFakeMenuWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +895,7 @@
 				03FBEDA10C8314D5005EC94E /* CCMServerStatusReader.m in Sources */,
 				03BEB9400C8320F9000C75B6 /* CCMBuildNotificationFactory.m in Sources */,
 				03BEB9D10C832649000C75B6 /* CCMServer.m in Sources */,
+				0307973D0C91B91000BFE0EC /* CCMFakeMenuWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

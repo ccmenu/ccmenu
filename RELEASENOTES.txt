@@ -7,6 +7,7 @@ CCMenu 0.9.4
 * Added autoupdate using the Sparkle framework
 * Now opening the preferences panel when no projects are configured
 * Now showing a meaningful message when server does not provide web URLs
+* Fixed key binding bug (#1779159), can also close/miniaturize windows now
 * Fixed bug that would prevent monitor from running on first startup
 
 
