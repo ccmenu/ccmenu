@@ -2,8 +2,6 @@
 Outstanding Stories
 ===================
 
-Weird status: As a developer I want CCMenu to show an icon if the build status is neither successsful nor failed.
-
 Audible notifications: As a developer I want CCMenu to notify me of relevant events by playing configurable sounds so
 that I am aware of status changes without having to switch applications.
 

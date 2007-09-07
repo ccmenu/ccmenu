@@ -96,6 +96,11 @@
 - (IBAction)openProject:(id)sender
 {
 	NSString *urlString = [[sender representedObject] webUrl];
+	if(urlString == nil)
+	{
+		NSRunAlertPanel(nil , NSLocalizedString(@"This CruiseControl server does not provide web URLs for projects. Please contact the server administrator.", "Alert message when server does not provide webUrl"), @"OK", nil, nil);
+		return;
+	}
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
 }
 
