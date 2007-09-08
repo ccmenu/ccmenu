@@ -1,33 +1,17 @@
 
 #import "CCMPreferencesController.h"
+#import "CCMUserDefaultsManager.h"
 #import "CCMConnection.h"
+#import "CCMServer.h"
 #import "NSArray+CCMAdditions.h"
 #import <EDCommon/EDCommon.h>
 
 #define WINDOW_TITLE_HEIGHT 78
 
-NSString *CCMDefaultsProjectListKey = @"Projects";
-NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
-NSString *CCMDefaultsProjectEntryServerUrlKey = @"serverUrl";
-NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
-
 NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotification";
 
 
 @implementation CCMPreferencesController
-
-- (void)awakeFromNib
-{
-	userDefaults = [NSUserDefaults standardUserDefaults];
-}
-
-- (NSArray *)defaultsProjectList
-{
-	NSData *defaultsData = [userDefaults dataForKey:CCMDefaultsProjectListKey];
-	if(defaultsData == nil)
-		return [NSArray array];
-	return [NSUnarchiver unarchiveObjectWithData:defaultsData];
-}
 
 - (NSURL *)getServerURL
 {
@@ -87,13 +71,11 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (void)addProjects:(id)sender
 {
-	NSArray *projects = [self defaultsProjectList];
-	if([projects count] > 0)
+	NSArray *servers = [defaultsManager servers];
+	if([servers count] > 0)
 	{
-		NSArray *urls = [[projects collect] objectForKey:CCMDefaultsProjectEntryServerUrlKey];
-		urls = [[NSSet setWithArray:urls] allObjects];
 		[serverUrlComboBox removeAllItems];
-		[serverUrlComboBox addItemsWithObjectValues:urls];
+		[serverUrlComboBox addItemsWithObjectValues:(id)[[servers collect] url]];
 	}
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:preferencesWindow modalDelegate:self 
@@ -129,20 +111,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	if(returnCode == 0)
 		return;
 
-	NSMutableArray *defaultsProjectList = [[[self defaultsProjectList] mutableCopy] autorelease];
-	
-	NSEnumerator *projectInfoEnum = [[chooseProjectsViewController selectedObjects] objectEnumerator];
-	NSDictionary *projectInfo;
-	while((projectInfo = [projectInfoEnum nextObject]) != nil)
-	{
-		NSDictionary *defaultsProjectListEntry = [NSDictionary dictionaryWithObjectsAndKeys:
-			[projectInfo objectForKey:@"name"], CCMDefaultsProjectEntryNameKey, 
-			[[self getServerURL] absoluteString], CCMDefaultsProjectEntryServerUrlKey, nil];
-		if(![defaultsProjectList containsObject:defaultsProjectListEntry])
-		   [defaultsProjectList addObject:defaultsProjectListEntry];
-	}
-	NSData *data = [NSArchiver archivedDataWithRootObject:defaultsProjectList];
-	[userDefaults setObject:data forKey:CCMDefaultsProjectListKey];
+	[defaultsManager updateWithProjectInfos:[chooseProjectsViewController selectedObjects] withServerURL:[self getServerURL]];
 	[self preferencesChanged:self];
 }
 

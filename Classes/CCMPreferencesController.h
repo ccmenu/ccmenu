@@ -1,11 +1,13 @@
 
 #import "CCMWindowController.h"
+#import "CCMUserDefaultsManager.h"
 #import <Sparkle/Sparkle.h>
 
 
 @interface CCMPreferencesController : CCMWindowController 
 {
-	NSUserDefaults	*userDefaults;
+	IBOutlet CCMUserDefaultsManager	*defaultsManager;
+	IBOutlet SUUpdater				*updater;
 	
 	IBOutlet NSPanel				*preferencesWindow;
 	IBOutlet NSView					*paneHolderView;
@@ -21,8 +23,6 @@
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
 	IBOutlet NSArrayController		*chooseProjectsViewController;	
-	
-	IBOutlet SUUpdater				*updater;
 }
 
 - (IBAction)showWindow:(id)sender;
@@ -44,11 +44,5 @@
 
 @end
 
-
-extern NSString *CCMDefaultsProjectListKey;
-extern NSString *CCMDefaultsProjectEntryNameKey;
-extern NSString *CCMDefaultsProjectEntryServerUrlKey;
-
-extern NSString *CCMDefaultsPollIntervalKey;
 
 extern NSString *CCMPreferencesChangedNotification;

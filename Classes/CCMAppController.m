@@ -27,17 +27,14 @@
 
 - (void)startGrowlAdaptor
 {
-	CCMGrowlAdaptor *growlAdaptor = [[CCMGrowlAdaptor alloc] init]; // intentional 'leak'
 	[growlAdaptor start]; 
 }
 
 - (void)startServerMonitor
 {
-	monitor = [[CCMServerMonitor alloc] init];
-	[monitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
-	[monitor setUserDefaults:[NSUserDefaults standardUserDefaults]];
-	[monitor setNotificationFactory:[[[CCMBuildNotificationFactory alloc] init] autorelease]];
-	[monitor start];
+	[serverMonitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
+	[serverMonitor setNotificationFactory:[[[CCMBuildNotificationFactory alloc] init] autorelease]];
+	[serverMonitor start];
 }
 
 
@@ -49,7 +46,7 @@
 		[self registerValueTransformers];
 		[self startGrowlAdaptor];
 		[self startServerMonitor];
-		if([[monitor projects] count] == 0)
+		if([[serverMonitor projects] count] == 0)
 			[preferencesController showWindow:self];
 	}
 	@catch(NSException *e)

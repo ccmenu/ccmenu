@@ -8,7 +8,7 @@
 - (void)setUp
 {
 	NSArray *projectNames = [NSArray arrayWithObject:@"connectfour"];
-	server = [[[CCMServer alloc] initWithProjectNames:projectNames] autorelease];	
+	server = [[[CCMServer alloc] initWithURL:nil andProjectNames:projectNames] autorelease];	
 }
 
 - (NSMutableDictionary *)createProjectInfoWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status

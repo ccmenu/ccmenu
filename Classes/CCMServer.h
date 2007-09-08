@@ -5,14 +5,16 @@
 
 @interface CCMServer : NSObject 
 {
+	NSURL				*url;
 	NSMutableDictionary	*projects;
 }
 
-- (id)initWithProjectNames:(NSArray *)projectNames;
+- (id)initWithURL:(NSURL *)url andProjectNames:(NSArray *)projectNames;
+
+- (NSURL *)url;
+- (NSArray *)projects;
+- (CCMProject *)projectNamed:(NSString *)name;
 
 - (void)updateWithProjectInfo:(NSDictionary *)info;
-
-- (CCMProject *)projectNamed:(NSString *)name;
-- (NSArray *)projects;
 
 @end

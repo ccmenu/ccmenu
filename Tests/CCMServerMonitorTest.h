@@ -7,9 +7,7 @@
 @interface CCMServerMonitorTest : SenTestCase 
 {
 	CCMServerMonitor *monitor;
-
-	OCMockObject *defaultsMock;
-	
+	OCMockObject *defaultsManagerMock;
 	NSMutableArray *postedNotifications;
 }
 

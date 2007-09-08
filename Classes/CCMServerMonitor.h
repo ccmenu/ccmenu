@@ -1,20 +1,21 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CCMConnection.h"
+#import "CCMUserDefaultsManager.h"
 #import "CCMBuildNotificationFactory.h"
 
 
 @interface CCMServerMonitor : NSObject 
 {
-	NSUserDefaults				*userDefaults;
-	NSNotificationCenter		*notificationCenter;
-	CCMBuildNotificationFactory	*notificationFactory;
+	IBOutlet CCMUserDefaultsManager		*defaultsManager;
+	NSNotificationCenter				*notificationCenter;
+	CCMBuildNotificationFactory			*notificationFactory;
 	
-	NSMutableArray				*serverConnectionPairs;
-	NSTimer						*timer;
+	NSMutableArray						*serverConnectionPairs;
+	NSTimer								*timer;
 }
 
-- (void)setUserDefaults:(NSUserDefaults *)defaults;
+- (void)setDefaultsManager:(CCMUserDefaultsManager *)manager;
 - (void)setNotificationCenter:(NSNotificationCenter *)center;
 - (void)setNotificationFactory:(CCMBuildNotificationFactory *)factory;
 

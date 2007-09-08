@@ -20,5 +20,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUCheckAtStartup</key>		
+	<false/>
 </dict>
 </plist>

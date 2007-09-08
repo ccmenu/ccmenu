@@ -1,5 +1,6 @@
 
 #import "CCMServerMonitor.h"
+#import "CCMUserDefaultsManager.h"
 #import "CCMServer.h"
 #import "CCMProject.h"
 #import "CCMConnection.h"
@@ -20,9 +21,9 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	[super dealloc];	
 }
 
-- (void)setUserDefaults:(NSUserDefaults *)defaults
+- (void)setDefaultsManager:(CCMUserDefaultsManager *)manager
 {
-	userDefaults = defaults;
+	defaultsManager = manager;
 }
 
 - (void)setNotificationCenter:(NSNotificationCenter *)center
@@ -65,27 +66,15 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (void)setupFromUserDefaults
 {
-	NSData *defaultsData = [userDefaults dataForKey:CCMDefaultsProjectListKey];
-	NSArray *defaultsProjectList = (defaultsData != nil) ? [NSUnarchiver unarchiveObjectWithData:defaultsData] : [NSArray array];
-	NSMutableDictionary *projectNamesByServer = [NSMutableDictionary dictionary];
-	NSEnumerator *defaultsProjectEntryEnum = [defaultsProjectList objectEnumerator];
-	NSDictionary *defaultsProjectEntry;
-	while((defaultsProjectEntry = [defaultsProjectEntryEnum nextObject]) != nil)
-	{
-		NSString *serverUrl = [defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
-		NSString *projectName = [defaultsProjectEntry objectForKey:CCMDefaultsProjectEntryNameKey];
-		[projectNamesByServer addObject:projectName toArrayForKey:serverUrl];
-	}
-	
 	[[[self connections] each] cancelStatusRequest];
 	[serverConnectionPairs release];
+	
 	serverConnectionPairs = [[NSMutableArray array] retain];
-	NSEnumerator *serverUrlEnum = [projectNamesByServer keyEnumerator];
-	NSString *serverUrl;
-	while((serverUrl = [serverUrlEnum nextObject]) != nil)
+	NSEnumerator *serverEnum = [[defaultsManager servers] objectEnumerator];
+	CCMServer *server;
+	while((server = [serverEnum nextObject]) != nil)
 	{
-		CCMServer *server = [[[CCMServer alloc] initWithProjectNames:[projectNamesByServer objectForKey:serverUrl]] autorelease];
-		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[NSURL URLWithString:serverUrl]] autorelease];
+		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[server url]] autorelease];
 		[connection setDelegate:self];
 		EDObjectPair *pair = [EDObjectPair pairWithObjects:server :connection];
 		[serverConnectionPairs addObject:pair];
@@ -95,8 +84,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)start
 {
 	[self setupFromUserDefaults];
-	int interval = [userDefaults integerForKey:CCMDefaultsPollIntervalKey];
-	NSAssert1(interval >= 1, @"Invalid poll interval; must be greater or equal 1 but is %d.", interval);
+	int interval = [defaultsManager pollInterval];
 	[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(pollServers:) userInfo:nil repeats:NO];
 	timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(pollServers:) userInfo:nil repeats:YES];
 }

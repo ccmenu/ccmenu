@@ -1,5 +1,7 @@
 
 #import "CCMServerMonitorTest.h"
+#import "CCMUserDefaultsManager.h"
+#import "CCMServer.h"
 #import "CCMProject.h"
 #import <OCMock/OCMock.h>
 
@@ -10,34 +12,15 @@
 {
 	monitor = [[[CCMServerMonitor alloc] init] autorelease];
 	[monitor setNotificationCenter:(id)self];
-	defaultsMock = [OCMockObject mockForClass:[NSUserDefaults class]];
-	[[[defaultsMock stub] andReturnValue:[NSNumber numberWithInt:1000]] integerForKey:@"PollInterval"];
-	[monitor setUserDefaults:(id)defaultsMock];
+	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
+	[monitor setDefaultsManager:(id)defaultsManagerMock];
 	postedNotifications = [NSMutableArray array];
 }
 
-- (void)testCreatesServerConnectionPairs
+- (void)tearDown
 {
-	NSDictionary *pd1 = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"projectName", @"localhost", @"serverUrl", nil];
-	NSDictionary *pd2 = [NSDictionary dictionaryWithObjectsAndKeys:@"cozmoz", @"projectName", @"another", @"serverUrl", nil];
-	NSDictionary *pd3 = [NSDictionary dictionaryWithObjectsAndKeys:@"protest", @"projectName", @"another", @"serverUrl", nil];
-	NSData *projectDefaultsData = [NSArchiver archivedDataWithRootObject:[NSArray arrayWithObjects:pd1, pd2, pd3, nil]];
-	[[[defaultsMock expect] andReturn:projectDefaultsData] dataForKey:@"Projects"]; 
-	
-	[monitor start];
-	
-	NSArray *servers = [monitor servers];
-	STAssertEquals(2u, [servers count], @"Should have created minimum number of servers.");
-}
-
-- (void)testHandlesNoProjectDefaults
-{
-	[[[defaultsMock expect] andReturn:nil] dataForKey:@"Projects"]; 
-	
-	[monitor start];
-	
-	NSArray *servers = [monitor servers];
-	STAssertEquals(0u, [servers count], @"Should have created 0 servers.");
+	[defaultsManagerMock verify];
 }
 
 
@@ -45,10 +28,10 @@
 {	
 	// Unfortunately, we can't stub the connection because the repository creates it. So, we need a working URL,
 	// which makes this almost an integration test.
-	NSString *url = [[NSURL fileURLWithPath:@"Tests/cctray.xml"] absoluteString];
-	NSDictionary *pd1 = [NSDictionary dictionaryWithObjectsAndKeys:@"connectfour", @"projectName", url, @"serverUrl", nil];
-	NSData *projectDefaultsData = [NSArchiver archivedDataWithRootObject:[NSArray arrayWithObject:pd1]];
-	[[[defaultsMock expect] andReturn:projectDefaultsData] dataForKey:@"Projects"]; 
+	NSURL *url = [NSURL fileURLWithPath:@"Tests/cctray.xml"];
+	CCMServer *server = [[[CCMServer alloc] initWithURL:url andProjectNames:[NSArray arrayWithObject:@"connectfour"]] autorelease];
+	
+	[[[defaultsManagerMock expect] andReturn:[NSArray arrayWithObject:server]] servers]; 
 	
 	// this is now all async and will not work in a unit test anymore
 	[monitor start];
