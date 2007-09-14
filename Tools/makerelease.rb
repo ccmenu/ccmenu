@@ -2,7 +2,7 @@
 
 load "ReleaseManager.rb"
 
-proj = Project.new("CCMenu", "0.9.3")
+proj = Project.new("CCMenu", "0.9.4")
 proj.svnroot = "https://ccmenu.svn.sourceforge.net/svnroot/ccmenu"
 proj.ftpdest = "ftp://upload.sourceforge.net/incoming"
 
