@@ -24,6 +24,18 @@
 }
 
 
+- (void)testPostsStatusChangeNotificationWhenNoServersDefined
+{
+	[[[defaultsManagerMock expect] andReturn:[NSArray array]] servers]; 
+	
+	[monitor start];
+
+	STAssertEquals(1u, [postedNotifications count], @"Should have posted a notification");
+	NSNotification *notification = [postedNotifications objectAtIndex:0];
+	STAssertEqualObjects(CCMProjectStatusUpdateNotification, [notification name], @"Should have posted right notification.");
+}
+
+
 - (void)testGetsProjectsFromConnection
 {	
 	// Unfortunately, we can't stub the connection because the repository creates it. So, we need a working URL,
@@ -55,6 +67,11 @@
 - (void)postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo
 {
 	[postedNotifications addObject:[NSNotification notificationWithName:aName object:anObject userInfo:aUserInfo]];
+}
+
+- (void)postNotificationName:(NSString *)aName object:(id)anObject
+{
+	[self postNotificationName:aName object:anObject userInfo:nil];
 }
 
 @end
