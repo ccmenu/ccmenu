@@ -21,7 +21,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		serverUrl = [@"http://" stringByAppendingString:serverUrl];
 		[serverUrlComboBox setStringValue:serverUrl];
 	}
-	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml.jsp", @"XmlStatusReport.aspx", @"XmlStatusReport.aspx", @"", nil];
+	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml", @"XmlStatusReport.aspx", @"XmlStatusReport.aspx", @"", nil];
 	NSString *filename = [allFilenames objectAtIndex:[serverTypeMatrix selectedTag]];
 	if(([serverUrl length] > 0) && (![serverUrl hasSuffix:filename]))
 	{
@@ -71,26 +71,46 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (void)addProjects:(id)sender
 {
-	NSArray *servers = [defaultsManager servers];
-	if([servers count] > 0)
+	NSArray *urls = [defaultsManager serverURLHistory];
+	if([urls count] > 0)
 	{
 		[serverUrlComboBox removeAllItems];
-		[serverUrlComboBox addItemsWithObjectValues:(id)[[servers collect] url]];
+		urls = [urls sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+		[serverUrlComboBox addItemsWithObjectValues:urls];
 	}
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:preferencesWindow modalDelegate:self 
 		didEndSelector:@selector(addProjectsSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
+- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
+{
+	NSMutableArray *result = [NSMutableArray array];
+	NSEnumerator *projectInfoEnum = [projectInfos objectEnumerator];
+	NSDictionary *projectInfo;
+	while((projectInfo = [projectInfoEnum nextObject]) != nil)
+	{
+		NSMutableDictionary *listEntry = [NSMutableDictionary dictionary];
+		NSString *projectName = [projectInfo objectForKey:@"name"];
+		[listEntry setObject:projectName forKey:@"name"];
+		if([defaultsManager projectListContainsProject:projectName onServerWithURL:serverUrl])
+			[listEntry setObject:[NSColor disabledControlTextColor] forKey:@"textColor"];
+		[result addObject:listEntry];
+	}
+	return result;
+}
+
+
 - (void)chooseProjects:(id)sender
 {
 	@try 
 	{
 		[testServerProgressIndicator startAnimation:self];
-		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[self getServerURL]] autorelease];
+		NSURL *serverUrl = [self getServerURL];
+		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:serverUrl] autorelease];
 		NSArray *projectInfos = [connection getProjectInfos];
 		[testServerProgressIndicator stopAnimation:self];
-		[chooseProjectsViewController setContent:projectInfos];
+		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:[serverUrl absoluteString]]];
 		[sheetTabView selectNextTabViewItem:self];
 	}
 	@catch(NSException *exception) 
@@ -111,7 +131,12 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	if(returnCode == 0)
 		return;
 
-	[defaultsManager updateWithProjectInfos:[chooseProjectsViewController selectedObjects] withServerURL:[self getServerURL]];
+	NSEnumerator *selectionEnum = [[chooseProjectsViewController selectedObjects] objectEnumerator];
+	NSDictionary *entry;
+	NSString *serverUrl = [[self getServerURL] absoluteString];
+	while((entry = [selectionEnum nextObject]) != nil)
+		[defaultsManager addProject:[entry objectForKey:@"name"] onServerWithURL:serverUrl];
+	[defaultsManager addServerURLToHistory:serverUrl];
 	[self preferencesChanged:self];
 }
 

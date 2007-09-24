@@ -4,6 +4,9 @@ Changes listed by release.
 
 CCMenu 0.9.5
 
+* Now projects already monitored are greyed out in 'add project' dialog
+* Server URL combo box now remembers all URLs seen before
+* Fixed bug related to classic reporting app URLs
 * Fixed bug that caused project window not to update when removing all projects
 
 

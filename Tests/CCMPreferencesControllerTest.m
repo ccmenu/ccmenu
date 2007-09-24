@@ -52,9 +52,8 @@
 
 - (void)testAddsProjectWithServerUrlAndNameToDefaults
 {
-	NSURL *url = [NSURL URLWithString:@"http://test/cctray.xml"];
-	NSDictionary *pi = [@"{ name = new; }" propertyList];
-	[[defaultsManagerMock expect] updateWithProjectInfos:[NSArray arrayWithObject:pi] withServerURL:url];
+	[[defaultsManagerMock expect] addProject:@"new" onServerWithURL:@"http://test/cctray.xml"];
+	[[defaultsManagerMock expect] addServerURLToHistory:@"http://test/cctray.xml"];
 	
 	[controller addProjectsSheetDidEnd:nil returnCode:1 contextInfo:0];
 }

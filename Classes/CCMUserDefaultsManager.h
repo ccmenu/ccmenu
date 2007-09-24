@@ -9,9 +9,13 @@
 
 - (int)pollInterval;
 
-- (void)updateWithProjectInfos:(NSArray *)projectInfos withServerURL:(NSURL *)serverUrl;
+- (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
+- (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (NSArray *)projectListEntries;
 - (NSArray *)servers;
+
+- (void)addServerURLToHistory:(NSString *)serverUrl;
+- (NSArray *)serverURLHistory;
 
 @end
 
@@ -21,3 +25,5 @@ extern NSString *CCMDefaultsPollIntervalKey;
 extern NSString *CCMDefaultsProjectListKey;
 extern NSString *CCMDefaultsProjectEntryNameKey;
 extern NSString *CCMDefaultsProjectEntryServerUrlKey;
+
+extern NSString *CCMDefaultsServerUrlHistoryKey;

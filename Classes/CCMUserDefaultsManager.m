@@ -1,12 +1,14 @@
 
 #import "CCMUserDefaultsManager.h"
 #import "CCMServer.h"
+#import "NSArray+CCMAdditions.h"
 #import <EDCommon/EDCommon.h>
 
 NSString *CCMDefaultsProjectListKey = @"Projects";
 NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
 NSString *CCMDefaultsProjectEntryServerUrlKey = @"serverUrl";
 NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
+NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 
 
 @implementation CCMUserDefaultsManager
@@ -23,22 +25,25 @@ NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
 	return interval;
 }
 
-- (void)updateWithProjectInfos:(NSArray *)projectInfos withServerURL:(NSURL *)serverUrl
+- (NSDictionary *)createEntryWithProject:(NSString *)projectName andURL:(NSString *)serverUrl
 {
+	return [NSDictionary dictionaryWithObjectsAndKeys: projectName, CCMDefaultsProjectEntryNameKey, 
+		serverUrl, CCMDefaultsProjectEntryServerUrlKey, nil];	
+}
+
+- (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
+{
+	if([self projectListContainsProject:projectName onServerWithURL:serverUrl])
+		return;
 	NSMutableArray *mutableList = [[[self projectListEntries] mutableCopy] autorelease];
-	
-	NSEnumerator *projectInfoEnum = [projectInfos objectEnumerator];
-	NSDictionary *projectInfo;
-	while((projectInfo = [projectInfoEnum nextObject]) != nil)
-	{
-		NSDictionary *projectListEntry = [NSDictionary dictionaryWithObjectsAndKeys:
-			[projectInfo objectForKey:@"name"], CCMDefaultsProjectEntryNameKey, 
-			[serverUrl absoluteString], CCMDefaultsProjectEntryServerUrlKey, nil];
-		if(![mutableList containsObject:projectListEntry])
-			[mutableList addObject:projectListEntry];
-	}
+	[mutableList addObject:[self createEntryWithProject:projectName andURL:serverUrl]];
 	NSData *data = [NSArchiver archivedDataWithRootObject:[mutableList copy]];
 	[userDefaults setObject:data forKey:CCMDefaultsProjectListKey];
+}
+
+- (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
+{
+	return [[self projectListEntries] containsObject:[self createEntryWithProject:projectName andURL:serverUrl]];
 }
 
 - (NSArray *)projectListEntries
@@ -58,7 +63,8 @@ NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
 	{
 		NSString *urlString = [projectListEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
 		NSString *projectName = [projectListEntry objectForKey:CCMDefaultsProjectEntryNameKey];
-		[projectNamesByServer addObject:projectName toArrayForKey:urlString];
+		if((urlString != nil) && (projectName != nil))
+			[projectNamesByServer addObject:projectName toArrayForKey:urlString];
 	}
 	
 	NSMutableArray *servers = [NSMutableArray array];
@@ -72,6 +78,32 @@ NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
 		[servers addObject:server];
 	}
 	return servers;
+}
+
+- (void)addServerURLToHistory:(NSString *)serverUrl
+{
+	NSArray *list = [self serverURLHistory];
+	if([list containsObject:serverUrl])
+		return;
+	list = [list arrayByAddingObject:serverUrl];
+	[userDefaults setObject:list forKey:CCMDefaultsServerUrlHistoryKey];
+}
+
+- (NSArray *)serverURLHistory
+{
+	NSArray *urls = [userDefaults arrayForKey:CCMDefaultsServerUrlHistoryKey];
+	if(urls != nil)
+	{
+		return urls;
+	}
+	NSArray *servers = [self servers];
+	if([servers count] > 0)
+	{
+		urls = (id)[[(id)[[servers collect] url] collect] absoluteString];
+		[userDefaults setObject:urls forKey:CCMDefaultsServerUrlHistoryKey];
+		return urls;
+	}
+	return [NSArray array];
 }
 
 @end
