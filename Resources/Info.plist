@@ -27,7 +27,7 @@
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
-	<string>EDApplication</string>
+	<string>CCMStatusItemApplication</string>
 	<key>SUFeedURL</key>
 	<string>http://ccmenu.sourceforge.net/update.xml</string>
 </dict>

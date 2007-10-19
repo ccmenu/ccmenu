@@ -1,15 +1,15 @@
 
-#import "CCMFakeMenuWindow.h"
+#import "CCMStatusItemApplication.h"
 
 static NSDictionary *bindings;
 
 
-@implementation CCMFakeMenuWindow
+@implementation CCMStatusItemApplication
 
 + (void)initialize
 {
 	NSString *plist = @"{ x = cut:; c = copy:; v = paste:; a = selectAll:; m = performMiniaturize:; w = performClose:; }";
-	bindings = [[plist propertyList] retain];
+	bindings = [[plist propertyList] copy];
 }
 
 - (void)sendEvent:(NSEvent *)event
@@ -18,7 +18,7 @@ static NSDictionary *bindings;
 	{
 		NSString *action = [bindings objectForKey:[event characters]];
 		if(action != nil)
-			[[self firstResponder] doCommandBySelector:NSSelectorFromString(action)];
+			[[[self keyWindow] firstResponder] doCommandBySelector:NSSelectorFromString(action)];
 		return;
 	}
 	[super sendEvent:event];

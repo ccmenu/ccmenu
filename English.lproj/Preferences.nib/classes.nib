@@ -1,6 +1,5 @@
 {
     IBClasses = (
-        {CLASS = CCMFakeMenuWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
         {
             ACTIONS = {
                 addProjects = id; 
