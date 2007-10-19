@@ -1,10 +1,10 @@
 
-#import "CCMStatusBarMenuController.h"
+#import "CCMStatusItemMenuController.h"
 #import "CCMImageFactory.h"
 #import "CCMServerMonitor.h"
 #import "CCMProject.h"
 
-@implementation CCMStatusBarMenuController
+@implementation CCMStatusItemMenuController
 
 - (void)setMenu:(NSMenu *)aMenu
 {

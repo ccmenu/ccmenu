@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 #import "CCMImageFactory.h"
 
-@interface CCMStatusBarMenuController : NSObject 
+@interface CCMStatusItemMenuController : NSObject 
 {
 	IBOutlet NSMenu				*statusMenu;
 	IBOutlet CCMImageFactory	*imageFactory;

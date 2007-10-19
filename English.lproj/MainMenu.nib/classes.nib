@@ -71,6 +71,13 @@
             OUTLETS = {imageFactory = CCMImageFactory; statusMenu = NSMenu; }; 
             SUPERCLASS = NSObject; 
         }, 
+        {
+            ACTIONS = {openProject = id; }; 
+            CLASS = CCMStatusItemMenuController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {imageFactory = CCMImageFactory; statusMenu = NSMenu; }; 
+            SUPERCLASS = NSObject; 
+        }, 
         {CLASS = CCMUserDefaultsManager; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {CLASS = CCMWindowController; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 

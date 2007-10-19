@@ -1,10 +1,9 @@
 
-#import "CCMStatusBarMenuControllerTest.h"
-#import "CCMStatusBarMenuController.h"
+#import "CCMStatusItemMenuControllerTest.h"
 #import "CCMProject.h"
 
 
-@implementation CCMStatusBarMenuControllerTest
+@implementation CCMStatusItemMenuControllerTest
 
 - (void)setUp
 {
@@ -17,7 +16,7 @@
 	[menu addItem:openItem];
 
 	imageFactoryMock = [OCMockObject niceMockForClass:[CCMImageFactory class]];
-	controller = [[[CCMStatusBarMenuController alloc] init] autorelease];
+	controller = [[[CCMStatusItemMenuController alloc] init] autorelease];
 	[controller setMenu:menu];
 	[controller setImageFactory:(id)imageFactoryMock];
 	statusItem = [controller createStatusItem];
