@@ -138,12 +138,10 @@
 		03BEB9D90C83269C000C75B6 /* CCMServerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BEB9D70C83269C000C75B6 /* CCMServerTest.m */; };
 		03BEB9DA0C83269C000C75B6 /* CCMServerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BEB9D70C83269C000C75B6 /* CCMServerTest.m */; };
 		03E5D8E20C7A0C8B0031B014 /* RELEASENOTES.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0318C85B0C6870F400D005EE /* RELEASENOTES.txt */; };
-		03F308EC0CC8C02500EA7F53 /* CCMStatusItemApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03F308EA0CC8C02500EA7F53 /* CCMStatusItemApplication.h */; };
 		03F308ED0CC8C02500EA7F53 /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F308EB0CC8C02500EA7F53 /* CCMStatusItemApplication.m */; };
 		03F308EE0CC8C02500EA7F53 /* CCMStatusItemApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03F308EA0CC8C02500EA7F53 /* CCMStatusItemApplication.h */; };
 		03F308EF0CC8C02500EA7F53 /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F308EB0CC8C02500EA7F53 /* CCMStatusItemApplication.m */; };
 		03F308F00CC8C02500EA7F53 /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F308EB0CC8C02500EA7F53 /* CCMStatusItemApplication.m */; };
-		03F3092C0CC8C46D00EA7F53 /* CCMStatusItemMenuController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03F3092A0CC8C46D00EA7F53 /* CCMStatusItemMenuController.h */; };
 		03F3092D0CC8C46D00EA7F53 /* CCMStatusItemMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F3092B0CC8C46D00EA7F53 /* CCMStatusItemMenuController.m */; };
 		03F3092E0CC8C46D00EA7F53 /* CCMStatusItemMenuController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03F3092A0CC8C46D00EA7F53 /* CCMStatusItemMenuController.h */; };
 		03F3092F0CC8C46D00EA7F53 /* CCMStatusItemMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F3092B0CC8C46D00EA7F53 /* CCMStatusItemMenuController.m */; };
@@ -180,8 +178,6 @@
 				03424A960C736CB100372C07 /* EDCommon.framework in CopyFiles */,
 				038EC7380C6D1E1900597BA0 /* Growl.framework in CopyFiles */,
 				03B8BAB80C91608D005855BE /* Sparkle.framework in CopyFiles */,
-				03F308EC0CC8C02500EA7F53 /* CCMStatusItemApplication.h in CopyFiles */,
-				03F3092C0CC8C46D00EA7F53 /* CCMStatusItemMenuController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
