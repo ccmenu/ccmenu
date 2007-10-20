@@ -83,6 +83,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		didEndSelector:@selector(addProjectsSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
+
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
 {
 	NSMutableArray *result = [NSMutableArray array];
@@ -99,7 +100,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	}
 	return result;
 }
-
 
 - (void)chooseProjects:(id)sender
 {
