@@ -88,7 +88,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	{
 		[testServerProgressIndicator startAnimation:self];
 		NSString *serverUrl = [serverUrlComboBox stringValue];
-		if(([serverTypeMatrix selectedTag] == CCMUnknownServer) && ([serverUrl cruiseControlServerType] == CCMUnknownServer))
+		if([serverTypeMatrix selectedTag] == CCMUnknownServer)
 		{
 			if((serverUrl = [self determineServerURL]) == nil)
 			{

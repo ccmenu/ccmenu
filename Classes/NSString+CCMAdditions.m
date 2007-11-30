@@ -22,6 +22,13 @@ static void initialize()
 	return (index == NSNotFound) ? CCMUnknownServer : index;
 }
 
+- (NSString *)stringByAddingSchemeIfNecessary
+{
+	if(![self hasPrefix:@"http://"] && ![self hasPrefix:@"https://"])
+		return [@"http://" stringByAppendingString:self];
+	return self;
+}
+
 - (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType withPath:(NSString *)path
 {
 	initialize();
@@ -34,11 +41,7 @@ static void initialize()
 			result = [result stringByAppendingString:@"/"];
 		result = [result stringByAppendingString:completion];
 	}
-	if(![result hasPrefix:@"http://"] && ![result hasPrefix:@"https://"])
-	{
-		result = [@"http://" stringByAppendingString:result];
-	}
-	return result;
+	return [result stringByAddingSchemeIfNecessary];
 }
 
 - (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType
@@ -48,6 +51,8 @@ static void initialize()
 
 - (NSArray *)completeCruiseControlURLs
 {
+	if([self cruiseControlServerType] != CCMUnknownServer)
+		return [NSArray arrayWithObject:[self stringByAddingSchemeIfNecessary]];
 	NSMutableSet *urls = [NSMutableSet set];
 	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDashboard]];
 	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDashboard withPath:@"dashboard"]];

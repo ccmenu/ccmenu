@@ -82,6 +82,12 @@
 	STAssertEquals(5u, [urls count], @"Should have returned only expected urls.");
 }
 
+- (void)testOnlyReturnsOneCompleteURLWhenURLWasComplete
+{
+	NSArray *urls = [@"localhost/XmlStatusReport.aspx" completeCruiseControlURLs];
+	STAssertTrue([urls containsObject:@"http://localhost/XmlStatusReport.aspx"], @"Should have returned complete URL.");
+	STAssertEquals(1u, [urls count], @"Should have returned only one urls.");
+}
 
 - (void)testRemovesDashboardFileNameIfPresent
 {
