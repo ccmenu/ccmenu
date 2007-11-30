@@ -22,26 +22,39 @@ static void initialize()
 	return (index == NSNotFound) ? CCMUnknownServer : index;
 }
 
-- (NSArray *)completeCruiseControlURLs
-{
-	return nil;
-}
-
-- (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType
+- (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType withPath:(NSString *)path
 {
 	initialize();
+	NSString *completion = [path stringByAppendingPathComponent:[filenames objectAtIndex:serverType]];
 	NSString *result = self;
+	if(![result hasSuffix:completion])
+	{
+		// can't use appendPathComponent because that normalises the double-slash in http://
+		if(![result hasSuffix:@"/"])
+			result = [result stringByAppendingString:@"/"];
+		result = [result stringByAppendingString:completion];
+	}
 	if(![result hasPrefix:@"http://"])
 	{
 		result = [@"http://" stringByAppendingString:result];
 	}
-	if(![result hasSuffix:[filenames objectAtIndex:serverType]])
-	{
-		if(![result hasSuffix:@"/"])
-			result = [result stringByAppendingString:@"/"];
-		result = [result stringByAppendingString:[filenames objectAtIndex:serverType]];
-	}
 	return result;
+}
+
+- (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType
+{
+	return [self completeCruiseControlURLForServerType:serverType withPath:@""];
+}
+
+- (NSArray *)completeCruiseControlURLs
+{
+	NSMutableSet *urls = [NSMutableSet set];
+	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDashboard]];
+	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDashboard withPath:@"dashboard"]];
+	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlClassic]];
+	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDotNetServer]];
+	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDotNetServer withPath:@"ccnet"]];
+	return [urls allObjects];
 }
 
 - (NSString *)stringByRemovingCruiseControlReportFileName

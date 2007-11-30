@@ -13,11 +13,13 @@
 }
 
 - (id)initWithURL:(NSURL *)theServerUrl;
+- (id)initWithURLString:(NSString *)theServerUrlAsString;
 
 - (void)setDelegate:(id)aDelegate;
 - (id)delegate;
 
-- (NSArray *)getProjectInfos;
+- (BOOL)testConnection;
+- (NSArray *)retrieveServerStatus;
 
 - (void)requestServerStatus;
 - (void)cancelStatusRequest;

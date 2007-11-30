@@ -2,7 +2,7 @@
 #import "CCMPreferencesControllerTest.h"
 #import "CCMPreferencesController.h"
 #import "CCMUserDefaultsManager.h"
-#import "CCMURLManager.h"
+#import "NSString+CCMAdditions.h"
 
 
 @implementation CCMPreferencesControllerTest

@@ -51,6 +51,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[paneHolderView addSubview:prefView];
 }
 
+
 - (void)addProjects:(id)sender
 {
 	NSArray *urls = [defaultsManager serverURLHistory];
@@ -80,6 +81,53 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[serverUrlComboBox setStringValue:serverUrl];
 }
 
+
+- (void)chooseProjects:(id)sender
+{
+	@try 
+	{
+		[testServerProgressIndicator startAnimation:self];
+		NSString *serverUrl = [serverUrlComboBox stringValue];
+		if(([serverTypeMatrix selectedTag] == CCMUnknownServer) && ([serverUrl cruiseControlServerType] == CCMUnknownServer))
+		{
+			if((serverUrl = [self determineServerURL]) == nil)
+			{
+				[testServerProgressIndicator stopAnimation:self];
+				NSRunAlertPanel(nil, @"Cannot determine server type.", @"Cancel", nil, nil);
+				return;
+			}
+		}
+		CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:serverUrl] autorelease];
+		NSArray *projectInfos = [connection retrieveServerStatus];
+		[testServerProgressIndicator stopAnimation:self];
+		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
+		[sheetTabView selectNextTabViewItem:self];
+	}
+	@catch(NSException *exception) 
+	{
+		[testServerProgressIndicator stopAnimation:self];
+		NSRunAlertPanel(@"Connection failure", @"Could not connect to server. %@", @"Cancel", nil, nil, [exception reason]);
+	}
+}
+
+- (NSString *)determineServerURL
+{
+	NSString *originalUrl = [serverUrlComboBox stringValue];
+	NSEnumerator *urlEnum = [[originalUrl completeCruiseControlURLs] objectEnumerator];
+	NSString *url;
+	while((url = [urlEnum nextObject]) != nil)
+	{
+		[serverUrlComboBox setStringValue:url];
+		[serverUrlComboBox display];
+		CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:url] autorelease];
+		if([connection testConnection])
+			return url;
+	}
+	[serverUrlComboBox setStringValue:originalUrl];
+	[serverUrlComboBox display];
+	return nil;
+}
+
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
 {
 	NSMutableArray *result = [NSMutableArray array];
@@ -98,29 +146,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	return result;
 }
 
-- (void)chooseProjects:(id)sender
-{
-	@try 
-	{
-		if([serverTypeMatrix selectedTag] == CCMUnknownServer)
-		{
-			NSBeep();
-			return;
-		}
-		[testServerProgressIndicator startAnimation:self];
-		NSURL *serverUrl = [NSURL URLWithString:[serverUrlComboBox stringValue]];
-		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:serverUrl] autorelease];
-		NSArray *projectInfos = [connection getProjectInfos];
-		[testServerProgressIndicator stopAnimation:self];
-		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:[serverUrl absoluteString]]];
-		[sheetTabView selectNextTabViewItem:self];
-	}
-	@catch(NSException *exception) 
-	{
-		[testServerProgressIndicator stopAnimation:self];
-		NSRunAlertPanel(@"Connection failure", @"Could not connect to server. %@", @"Cancel", nil, nil, [exception reason]);
-	}
-}
 
 - (void)closeAddProjectsSheet:(id)sender
 {
@@ -143,6 +168,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	}
 	[self preferencesChanged:self];
 }
+
 
 - (IBAction)removeProjects:(id)sender
 {

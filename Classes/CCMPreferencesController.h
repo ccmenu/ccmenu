@@ -41,6 +41,8 @@
 - (IBAction)updateIntervalChanged:(id)sender;
 - (IBAction)checkForUpdateNow:(id)sender;
 
+- (NSString *)determineServerURL;
+- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl ;
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 @end
