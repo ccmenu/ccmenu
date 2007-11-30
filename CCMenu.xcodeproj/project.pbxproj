@@ -22,6 +22,11 @@
 		03424A950C736CAB00372C07 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
 		03424A960C736CB100372C07 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
 		03424A970C736CB500372C07 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03424A520C736CAB00372C07 /* EDCommon.framework */; };
+		0344C03C0CFE3445003D20DA /* NSString+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0344C03B0CFE3445003D20DA /* NSString+CCMAdditions.m */; };
+		0344C03D0CFE3445003D20DA /* NSString+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0344C03B0CFE3445003D20DA /* NSString+CCMAdditions.m */; };
+		0344C03E0CFE3445003D20DA /* NSString+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0344C03B0CFE3445003D20DA /* NSString+CCMAdditions.m */; };
+		0344C0410CFE3D00003D20DA /* NSString+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0344C0400CFE3D00003D20DA /* NSString+CCMAdditionsTest.m */; };
+		0344C0420CFE3D00003D20DA /* NSString+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0344C0400CFE3D00003D20DA /* NSString+CCMAdditionsTest.m */; };
 		03543E730C7EE45100DA557B /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 03543E710C7EE45100DA557B /* btn-force-build.png */; };
 		03543E740C7EE45100DA557B /* pref-projects.png in Resources */ = {isa = PBXBuildFile; fileRef = 03543E720C7EE45100DA557B /* pref-projects.png */; };
 		03543E750C7EE45100DA557B /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 03543E710C7EE45100DA557B /* btn-force-build.png */; };
@@ -75,7 +80,6 @@
 		037F79C50C6A19B300D4C646 /* ProjectWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03097CC80C4CD926002F04B5 /* ProjectWindow.nib */; };
 		037F79CD0C6A19CC00D4C646 /* CCMenu with tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */; };
 		037F79E30C6A1A3E00D4C646 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
 		037F79EC0C6A1A9C00D4C646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		037F7BFF0C6A3BF100D4C646 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
 		038D25930C74519000F62CC1 /* pref-advanced.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 038D25910C74519000F62CC1 /* pref-advanced.tiff */; };
@@ -97,7 +101,6 @@
 		038EC6510C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
 		038EC6520C6D0FB200597BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038EC6500C6D0FB200597BA0 /* Localizable.strings */; };
 		038EC67E0C6D14BE00597BA0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		038EC6810C6D14C600597BA0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */; };
 		038EC7340C6D1E1000597BA0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
 		038EC7350C6D1E1000597BA0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
 		038EC7360C6D1E1000597BA0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038EC72C0C6D1E1000597BA0 /* Growl.framework */; };
@@ -120,6 +123,8 @@
 		039AB8400C72125200A8FE20 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039AB8390C72125200A8FE20 /* OCMock.framework */; };
 		039AB8410C72125200A8FE20 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039AB8390C72125200A8FE20 /* OCMock.framework */; };
 		039AB90F0C721C7B00A8FE20 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 039AB8390C72125200A8FE20 /* OCMock.framework */; };
+		03A115750CFE6CE3007C82EF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A115740CFE6CE3007C82EF /* SenTestingKit.framework */; };
+		03A115760CFE6CE3007C82EF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A115740CFE6CE3007C82EF /* SenTestingKit.framework */; };
 		03AFA0840C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AFA0830C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m */; };
 		03AFA0860C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AFA0830C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m */; };
 		03B8BAB50C916088005855BE /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B8BAA10C916088005855BE /* Sparkle.framework */; };
@@ -212,6 +217,10 @@
 		03097CCC0C4CD93A002F04B5 /* CCMProjectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectWindowController.m; sourceTree = "<group>"; };
 		0318C85B0C6870F400D005EE /* RELEASENOTES.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = RELEASENOTES.txt; sourceTree = "<group>"; };
 		03424A520C736CAB00372C07 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = "$(TEMP_ROOT)/Frameworks/EDCommon.framework"; sourceTree = "<absolute>"; };
+		0344C03A0CFE3445003D20DA /* NSString+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CCMAdditions.h"; sourceTree = "<group>"; };
+		0344C03B0CFE3445003D20DA /* NSString+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CCMAdditions.m"; sourceTree = "<group>"; };
+		0344C03F0CFE3D00003D20DA /* NSString+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CCMAdditionsTest.h"; sourceTree = "<group>"; };
+		0344C0400CFE3D00003D20DA /* NSString+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CCMAdditionsTest.m"; sourceTree = "<group>"; };
 		03474D510C44F44B00BABD10 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03474D520C44F44B00BABD10 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "UnitTests-Info.plist"; path = "Resources/UnitTests-Info.plist"; sourceTree = "<group>"; };
 		03543E710C7EE45100DA557B /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn-force-build.png"; path = "Images/btn-force-build.png"; sourceTree = "<group>"; };
@@ -240,7 +249,6 @@
 		037C08100C6244C1006CF886 /* CCMImageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMImageFactoryTest.m; sourceTree = "<group>"; };
 		037F79A30C6A195900D4C646 /* CCMenu with tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCMenu with tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		037F79A50C6A195A00D4C646 /* CCMenu with tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "CCMenu with tests-Info.plist"; path = "Resources/CCMenu with tests-Info.plist"; sourceTree = "<group>"; };
-		037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
 		038D25910C74519000F62CC1 /* pref-advanced.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "pref-advanced.tiff"; path = "Images/pref-advanced.tiff"; sourceTree = "<group>"; };
 		038D25920C74519000F62CC1 /* pref-notifications.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "pref-notifications.tiff"; path = "Images/pref-notifications.tiff"; sourceTree = "<group>"; };
 		038D271A0C7463DC00F62CC1 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = English; path = English.lproj/Preferences.toolbar; sourceTree = "<group>"; };
@@ -262,6 +270,7 @@
 		039AB8060C720FEE00A8FE20 /* CCMPreferencesControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMPreferencesControllerTest.h; sourceTree = "<group>"; };
 		039AB8070C720FEE00A8FE20 /* CCMPreferencesControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMPreferencesControllerTest.m; sourceTree = "<group>"; };
 		039AB8390C72125200A8FE20 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = "$(TEMP_ROOT)/Frameworks/OCMock.framework"; sourceTree = "<absolute>"; };
+		03A115740CFE6CE3007C82EF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
 		03AFA0820C7475FA00B74B1C /* NSArray+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSArray+CCMAdditionsTest.h"; sourceTree = "<group>"; };
 		03AFA0830C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CCMAdditionsTest.m"; sourceTree = "<group>"; };
 		03B5A4590C5E2DFD0096247E /* User Stories.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "User Stories.txt"; sourceTree = "<group>"; };
@@ -315,11 +324,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				038EC67E0C6D14BE00597BA0 /* Cocoa.framework in Frameworks */,
-				038EC6810C6D14C600597BA0 /* SenTestingKit.framework in Frameworks */,
 				038EC7360C6D1E1000597BA0 /* Growl.framework in Frameworks */,
 				039AB8410C72125200A8FE20 /* OCMock.framework in Frameworks */,
 				03424A940C736CAB00372C07 /* EDCommon.framework in Frameworks */,
 				03B8BAB70C916088005855BE /* Sparkle.framework in Frameworks */,
+				03A115750CFE6CE3007C82EF /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,11 +337,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				037F79E30C6A1A3E00D4C646 /* Cocoa.framework in Frameworks */,
-				037F79EA0C6A1A8300D4C646 /* SenTestingKit.framework in Frameworks */,
 				038EC7340C6D1E1000597BA0 /* Growl.framework in Frameworks */,
 				039AB8400C72125200A8FE20 /* OCMock.framework in Frameworks */,
 				03424A930C736CAB00372C07 /* EDCommon.framework in Frameworks */,
 				03B8BAB50C916088005855BE /* Sparkle.framework in Frameworks */,
+				03A115760CFE6CE3007C82EF /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +370,8 @@
 				038D28DA0C746D4500F62CC1 /* NSArray+CCMAdditions.m */,
 				03097A110C48B268002F04B5 /* NSCalendarDate+CCMAdditions.h */,
 				03097A120C48B268002F04B5 /* NSCalendarDate+CCMAdditions.m */,
+				0344C03A0CFE3445003D20DA /* NSString+CCMAdditions.h */,
+				0344C03B0CFE3445003D20DA /* NSString+CCMAdditions.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -416,12 +427,12 @@
 			children = (
 				03F374640C47324E003240C4 /* CCMConnectionTest.h */,
 				03F374650C47324E003240C4 /* CCMConnectionTest.m */,
-				03BEB9480C832194000C75B6 /* CCMBuildNotificationFactoryTest.h */,
-				03BEB9490C832194000C75B6 /* CCMBuildNotificationFactoryTest.m */,
 				035C70B00C5F707F00906910 /* CCMServerMonitorTest.h */,
 				035C70B10C5F707F00906910 /* CCMServerMonitorTest.m */,
 				03FBEDA50C8314E7005EC94E /* CCMServerStatusReaderTest.h */,
 				03FBEDA60C8314E7005EC94E /* CCMServerStatusReaderTest.m */,
+				03BEB9480C832194000C75B6 /* CCMBuildNotificationFactoryTest.h */,
+				03BEB9490C832194000C75B6 /* CCMBuildNotificationFactoryTest.m */,
 				030799860C92D41900BFE0EC /* CCMUserDefaultsManagerTest.h */,
 				030799870C92D41900BFE0EC /* CCMUserDefaultsManagerTest.m */,
 			);
@@ -435,6 +446,8 @@
 				03AFA0830C7475FA00B74B1C /* NSArray+CCMAdditionsTest.m */,
 				03097A1E0C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.h */,
 				03097A1F0C48B2C8002F04B5 /* NSCalendarDate+CCMAdditionsTest.m */,
+				0344C03F0CFE3D00003D20DA /* NSString+CCMAdditionsTest.h */,
+				0344C0400CFE3D00003D20DA /* NSString+CCMAdditionsTest.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -523,7 +536,7 @@
 				03424A520C736CAB00372C07 /* EDCommon.framework */,
 				039AB8390C72125200A8FE20 /* OCMock.framework */,
 				038EC72C0C6D1E1000597BA0 /* Growl.framework */,
-				037F79E90C6A1A8300D4C646 /* SenTestingKit.framework */,
+				03A115740CFE6CE3007C82EF /* SenTestingKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -669,9 +682,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CCMenu" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CCMenu */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* CCMenu */,
 				037F79A20C6A195900D4C646 /* CCMenu with tests */,
@@ -846,6 +861,8 @@
 				03F308F00CC8C02500EA7F53 /* CCMStatusItemApplication.m in Sources */,
 				03F309300CC8C46D00EA7F53 /* CCMStatusItemMenuController.m in Sources */,
 				03F309400CC8C4B400EA7F53 /* CCMStatusItemMenuControllerTest.m in Sources */,
+				0344C03D0CFE3445003D20DA /* NSString+CCMAdditions.m in Sources */,
+				0344C0410CFE3D00003D20DA /* NSString+CCMAdditionsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,6 +902,8 @@
 				030799890C92D41900BFE0EC /* CCMUserDefaultsManagerTest.m in Sources */,
 				03F308EF0CC8C02500EA7F53 /* CCMStatusItemApplication.m in Sources */,
 				03F3092F0CC8C46D00EA7F53 /* CCMStatusItemMenuController.m in Sources */,
+				0344C03C0CFE3445003D20DA /* NSString+CCMAdditions.m in Sources */,
+				0344C0420CFE3D00003D20DA /* NSString+CCMAdditionsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,6 +931,7 @@
 				030799820C92D3DD00BFE0EC /* CCMUserDefaultsManager.m in Sources */,
 				03F308ED0CC8C02500EA7F53 /* CCMStatusItemApplication.m in Sources */,
 				03F3092D0CC8C46D00EA7F53 /* CCMStatusItemMenuController.m in Sources */,
+				0344C03E0CFE3445003D20DA /* NSString+CCMAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,11 +1007,14 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_FRAMEWORKS_DIR)\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1026,11 +1049,14 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(DEVELOPER_FRAMEWORKS_DIR)\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1063,11 +1089,13 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_FRAMEWORKS_DIR)\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1102,11 +1130,13 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_4)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_5)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/build/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/build/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(DEVELOPER_FRAMEWORKS_DIR)\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

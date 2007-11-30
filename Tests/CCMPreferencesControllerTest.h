@@ -7,7 +7,10 @@
 @interface CCMPreferencesControllerTest : SenTestCase 
 {
 	CCMPreferencesController *controller;
+	
 	OCMockObject *defaultsManagerMock;
+	OCMockObject *serverUrlComboBoxMock;
+	OCMockObject *serverTypeMatrixMock;
 }
 
 @end

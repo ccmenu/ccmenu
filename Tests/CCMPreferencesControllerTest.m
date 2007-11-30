@@ -2,6 +2,7 @@
 #import "CCMPreferencesControllerTest.h"
 #import "CCMPreferencesController.h"
 #import "CCMUserDefaultsManager.h"
+#import "CCMURLManager.h"
 
 
 @implementation CCMPreferencesControllerTest
@@ -9,49 +10,57 @@
 - (void)setUp
 {
 	controller = [[[CCMPreferencesController alloc] init] autorelease];
+	
 	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
 	[controller setValue:defaultsManagerMock forKey:@"defaultsManager"];
 	
-	OCMockObject *comboBoxMock = [OCMockObject mockForClass:[NSComboBox class]];
-	[controller setValue:comboBoxMock forKey:@"serverUrlComboBox"];
-	[[[comboBoxMock stub] andReturn:@"http://test"] stringValue];
+	serverUrlComboBoxMock = [OCMockObject mockForClass:[NSComboBox class]];
+	[controller setValue:serverUrlComboBoxMock forKey:@"serverUrlComboBox"];
 	
-	OCMockObject *serverTypeMatrixMock = [OCMockObject mockForClass:[NSMatrix class]];
+	serverTypeMatrixMock = [OCMockObject mockForClass:[NSMatrix class]];
 	[controller setValue:serverTypeMatrixMock forKey:@"serverTypeMatrix"];
-	[[[serverTypeMatrixMock stub] andReturn:0] selectedTag]; // this tag signals 'cctray.xml'
-
-	OCMockObject *viewControllerMock = [OCMockObject mockForClass:[NSArrayController class]];
-	[controller setValue:viewControllerMock forKey:@"chooseProjectsViewController"];
-	NSArray *selectedObjects = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"new" forKey:@"name"]];
-	[[[viewControllerMock stub] andReturn:selectedObjects] selectedObjects];
 }
 
 - (void)tearDown
 {
 	[defaultsManagerMock verify];
+	[serverUrlComboBoxMock verify];
+	[serverTypeMatrixMock verify];
 }
 
-- (void)testAppendsExtensionForServerType
+- (void)testSelectsServerTypeWhenHistoryURLIsSelected
 {
-	NSURL *url = [controller getServerURL];
-	STAssertEqualObjects(@"http://test/cctray.xml", [url absoluteString], @"Should have appended extension for server type.");
+	[[[serverUrlComboBoxMock stub] andReturn:@"http://localhost/cctray.xml"] stringValue];
+	[[serverTypeMatrixMock expect] selectCellWithTag:CCMCruiseControlDashboard];
+	
+	[controller historyURLSelected:nil];
 }
 
-- (void)testPrependsHttpSchemeIfNecessary
+- (void)testAddsHttpSchemeAndFilenameWhenSettingServerType
 {
-	OCMockObject *specialComboBoxMock = [OCMockObject mockForClass:[NSComboBox class]];
-	[controller setValue:specialComboBoxMock forKey:@"serverUrlComboBox"];
-	[[[specialComboBoxMock stub] andReturn:@"test"] stringValue];
-	[[specialComboBoxMock expect] setStringValue:@"http://test"];
+	[[[serverUrlComboBoxMock stub] andReturn:@"test"] stringValue];
+	[[[serverTypeMatrixMock stub] andReturn:CCMCruiseControlDashboard] selectedTag];
+	[[serverUrlComboBoxMock expect] setStringValue:@"http://test/cctray.xml"];
+		
+	[controller serverTypeChanged:nil];
+}
+
+- (void)testSwapsFilenamesWhenChangingsServerTypes
+{
+	[[[serverUrlComboBoxMock stub] andReturn:@"test/xml"] stringValue];
+	[[[serverTypeMatrixMock stub] andReturn:CCMCruiseControlDashboard] selectedTag];
+	[[serverUrlComboBoxMock expect] setStringValue:@"http://test/cctray.xml"];
 	
-	NSURL *url = [controller getServerURL];
-	
-	[specialComboBoxMock verify];
-	STAssertEqualObjects(@"http://test/cctray.xml", [url absoluteString], @"Should have prepended http scheme.");
+	[controller serverTypeChanged:nil];
 }
 
 - (void)testAddsProjectWithServerUrlAndNameToDefaults
 {
+	OCMockObject *viewControllerMock = [OCMockObject mockForClass:[NSArrayController class]];
+	[controller setValue:viewControllerMock forKey:@"chooseProjectsViewController"];
+	NSArray *selectedObjects = [@"( { name = new; server = 'http://test/cctray.xml'; } )" propertyList];
+	[[[viewControllerMock stub] andReturn:selectedObjects] selectedObjects];
+	
 	[[defaultsManagerMock expect] addProject:@"new" onServerWithURL:@"http://test/cctray.xml"];
 	[[defaultsManagerMock expect] addServerURLToHistory:@"http://test/cctray.xml"];
 	

@@ -4,6 +4,7 @@
 #import "CCMConnection.h"
 #import "CCMServer.h"
 #import "NSArray+CCMAdditions.h"
+#import "NSString+CCMAdditions.h"
 #import <EDCommon/EDCommon.h>
 
 #define WINDOW_TITLE_HEIGHT 78
@@ -12,25 +13,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 
 @implementation CCMPreferencesController
-
-- (NSURL *)getServerURL
-{
-	NSString *serverUrl = [serverUrlComboBox stringValue];
-	if(![serverUrl hasPrefix:@"http://"])
-	{
-		serverUrl = [@"http://" stringByAppendingString:serverUrl];
-		[serverUrlComboBox setStringValue:serverUrl];
-	}
-	NSArray *allFilenames = [NSArray arrayWithObjects:@"cctray.xml", @"xml", @"XmlStatusReport.aspx", @"XmlStatusReport.aspx", @"", nil];
-	NSString *filename = [allFilenames objectAtIndex:[serverTypeMatrix selectedTag]];
-	if(([serverUrl length] > 0) && (![serverUrl hasSuffix:filename]))
-	{
-		if(![serverUrl hasSuffix:@"/"])
-			serverUrl = [serverUrl stringByAppendingString:@"/"];
-		serverUrl = [serverUrl stringByAppendingString:filename];
-	}
-	return [NSURL URLWithString:serverUrl];
-}
 
 - (void)showWindow:(id)sender
 {
@@ -83,6 +65,20 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		didEndSelector:@selector(addProjectsSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
+- (void)historyURLSelected:(id)sender
+{
+	NSString *serverUrl = [serverUrlComboBox stringValue];
+	[serverTypeMatrix selectCellWithTag:[serverUrl cruiseControlServerType]];
+}
+
+- (void)serverTypeChanged:(id)sender
+{
+	NSString *serverUrl = [serverUrlComboBox stringValue];
+	serverUrl = [serverUrl stringByRemovingCruiseControlReportFileName];
+	if([serverTypeMatrix selectedTag] != CCMUnknownServer)
+		serverUrl = [serverUrl completeCruiseControlURLForServerType:[serverTypeMatrix selectedTag]];
+	[serverUrlComboBox setStringValue:serverUrl];
+}
 
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
 {
@@ -94,6 +90,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		NSMutableDictionary *listEntry = [NSMutableDictionary dictionary];
 		NSString *projectName = [projectInfo objectForKey:@"name"];
 		[listEntry setObject:projectName forKey:@"name"];
+		[listEntry setObject:serverUrl forKey:@"server"];
 		if([defaultsManager projectListContainsProject:projectName onServerWithURL:serverUrl])
 			[listEntry setObject:[NSColor disabledControlTextColor] forKey:@"textColor"];
 		[result addObject:listEntry];
@@ -105,8 +102,13 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
 	@try 
 	{
+		if([serverTypeMatrix selectedTag] == CCMUnknownServer)
+		{
+			NSBeep();
+			return;
+		}
 		[testServerProgressIndicator startAnimation:self];
-		NSURL *serverUrl = [self getServerURL];
+		NSURL *serverUrl = [NSURL URLWithString:[serverUrlComboBox stringValue]];
 		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:serverUrl] autorelease];
 		NSArray *projectInfos = [connection getProjectInfos];
 		[testServerProgressIndicator stopAnimation:self];
@@ -133,10 +135,12 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 	NSEnumerator *selectionEnum = [[chooseProjectsViewController selectedObjects] objectEnumerator];
 	NSDictionary *entry;
-	NSString *serverUrl = [[self getServerURL] absoluteString];
 	while((entry = [selectionEnum nextObject]) != nil)
+	{
+		NSString *serverUrl = [entry objectForKey:@"server"];
 		[defaultsManager addProject:[entry objectForKey:@"name"] onServerWithURL:serverUrl];
-	[defaultsManager addServerURLToHistory:serverUrl];
+		[defaultsManager addServerURLToHistory:serverUrl];
+	}
 	[self preferencesChanged:self];
 }
 

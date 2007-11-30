@@ -28,6 +28,8 @@
 - (IBAction)showWindow:(id)sender;
 
 - (IBAction)addProjects:(id)sender;
+- (IBAction)historyURLSelected:(id)sender;
+- (IBAction)serverTypeChanged:(id)sender;
 - (IBAction)chooseProjects:(id)sender;
 - (IBAction)closeAddProjectsSheet:(id)sender;
 
@@ -39,7 +41,6 @@
 - (IBAction)updateIntervalChanged:(id)sender;
 - (IBAction)checkForUpdateNow:(id)sender;
 
-- (NSURL *)getServerURL;
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 @end

@@ -2,6 +2,11 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.0.0
+
+* Improved URL handling in 'add projects' dialog
+
+
 CCMenu 0.9.5
 
 * Now projects already monitored are greyed out in 'add project' dialog

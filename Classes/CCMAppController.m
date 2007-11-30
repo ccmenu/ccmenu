@@ -12,7 +12,7 @@
 {
 	NSURLCache *cache = [NSURLCache sharedURLCache];
 	[cache setDiskCapacity:0];
-	[cache setMemoryCapacity:2*1024*1024];
+	[cache setMemoryCapacity:5*1024*1024];
 }
 
 - (void)registerValueTransformers
