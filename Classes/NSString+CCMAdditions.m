@@ -34,7 +34,7 @@ static void initialize()
 			result = [result stringByAppendingString:@"/"];
 		result = [result stringByAppendingString:completion];
 	}
-	if(![result hasPrefix:@"http://"])
+	if(![result hasPrefix:@"http://"] && ![result hasPrefix:@"https://"])
 	{
 		result = [@"http://" stringByAppendingString:result];
 	}

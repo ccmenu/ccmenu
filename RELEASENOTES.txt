@@ -6,6 +6,7 @@ CCMenu 1.0.0
 
 * Improved URL handling in 'add projects' dialog
 * Now automatically determines full URL in 'add projects' dialog
+* Fixed HTTPS bug (#1805720)
 
 
 CCMenu 0.9.5

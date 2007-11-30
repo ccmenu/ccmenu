@@ -53,6 +53,12 @@
 	STAssertEqualObjects(@"http://localhost/cctray.xml", url, @"Should have completed URL.");
 }
 
+- (void)testLeavesHTTPSSchemeWhenCompletingURLs
+{
+	NSString *url = [@"https://localhost/cctray.xml" completeCruiseControlURLForServerType:CCMCruiseControlDashboard];
+	STAssertEqualObjects(@"https://localhost/cctray.xml", url, @"Should have kept HTTPS scheme.");
+}
+
 - (void)testCompletesCruiseControlClassicURLs
 {
 	NSString *url = [@"localhost" completeCruiseControlURLForServerType:CCMCruiseControlClassic];
