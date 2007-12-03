@@ -23,7 +23,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[preferencesWindow setToolbar:[self createToolbarWithName:@"Preferences"]];
 		[[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
 		[self switchPreferencesPane:self];
-		[versionField setStringValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+		[versionField setStringValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
 	}
 	[NSApp activateIgnoringOtherApps:YES];
 	[preferencesWindow makeKeyAndOrderFront:self];	
