@@ -19,7 +19,7 @@ end
 
 class Environment
     def initialize()
-        @svn = "/usr/local/bin/svn"
+        @svn = "/usr/bin/svn"
         @tmpdir = "/tmp/makerelease.#{Process.pid}"
         @sourcedir = tmpdir + "/Source"
         @productdir = tmpdir + "/Products"
