@@ -4,7 +4,6 @@
 #import "CCMConnection.h"
 #import "CCMServer.h"
 #import "NSArray+CCMAdditions.h"
-#import "NSBundle+CCMAdditions.h"
 #import "NSString+CCMAdditions.h"
 #import <EDCommon/EDCommon.h>
 
@@ -24,7 +23,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[preferencesWindow setToolbar:[self createToolbarWithName:@"Preferences"]];
 		[[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
 		[self switchPreferencesPane:self];
-		[versionField setStringValue:[[NSBundle mainBundle] bundleVersionString]];
+		[versionField setStringValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
 	}
 	[NSApp activateIgnoringOtherApps:YES];
 	[preferencesWindow makeKeyAndOrderFront:self];	

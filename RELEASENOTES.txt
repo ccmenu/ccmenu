@@ -2,7 +2,7 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
-CCMenu 1.0.0
+CCMenu 1.0
 
 * Improved URL handling in 'add projects' dialog
 * Now automatically determines full URL in 'add projects' dialog
