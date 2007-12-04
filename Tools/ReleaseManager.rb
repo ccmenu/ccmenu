@@ -166,6 +166,8 @@ class ReleaseManager
     end
     
     def createAppcast
+        @worker.chdir(@env.packagedir)
+
         pubdate = DateTime.now.strftime("%A, %B %d, %Y %H:%M:%S %Z")
         imagename = "#{@proj.basename}-b.dmg"
         imagesize = File.stat("#{@env.packagedir}/#{imagename}").size
@@ -183,7 +185,6 @@ class ReleaseManager
         <pubDate>#{pubdate}</pubDate>
         <sparkle:releaseNotesLink>http://ccmenu.svn.sourceforge.net/viewvc/*checkout*/ccmenu/trunk/RELEASENOTES.txt?revision=#{svnrev}</sparkle:releaseNotesLink> 
         <enclosure 
-          sparkle:shortVersionString="#{@proj.version}"
           url="http://downloads.sourceforge.net/sourceforge/ccmenu/#{imagename}" 
           length="#{imagesize}" 
           type="application/octet-stream"/>
@@ -191,8 +192,6 @@ class ReleaseManager
   </channel>
 </rss>
 END_OF_TEMPLATE
-
-        @worker.chdir(@env.packagedir)
         @worker.write("update.xml", appcast)
     end
    
