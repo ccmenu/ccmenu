@@ -1,3 +1,6 @@
+require 'Date'
+require 'rexml/document'
+include REXML
 
 ## Project configuration
 ## use attributes to configure your release
@@ -87,7 +90,7 @@ class Executer
         system("hdiutil internet-enable -yes #{imagename}")
         
         system("rm temp.dmg")
-    end
+    end    
 end
 
 
@@ -160,6 +163,37 @@ class ReleaseManager
     def upload
         @worker.chdir(@env.packagedir)
         @worker.run("ftp -v -a -u #{@proj.ftpdest} #{@proj.basename}-*")
+    end
+    
+    def createAppcast
+        pubdate = DateTime.now.strftime("%A, %B %d, %Y %H:%M:%S %Z")
+        imagename = "#{@proj.basename}-b.dmg"
+        imagesize = File.stat("#{@env.packagedir}/#{imagename}").size
+        svnout = IO.popen("#{@env.svn} --xml info #{@proj.svnroot}/trunk").read
+        svnrev = Document.new(svnout).elements["info/entry/@revision"].value
+        
+        appcast=<<END_OF_TEMPLATE        
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>CCMenu Updates</title>
+    <language>en</language>
+    <item>
+        <title>CCMenu #{@proj.version}</title>
+        <pubDate>#{pubdate}</pubDate>
+        <sparkle:releaseNotesLink>http://ccmenu.svn.sourceforge.net/viewvc/*checkout*/ccmenu/trunk/RELEASENOTES.txt?revision=#{svnrev}</sparkle:releaseNotesLink> 
+        <enclosure 
+          sparkle:shortVersionString="#{@proj.version}"
+          url="http://downloads.sourceforge.net/sourceforge/ccmenu/#{imagename}" 
+          length="#{imagesize}" 
+          type="application/octet-stream"/>
+    </item>
+  </channel>
+</rss>
+END_OF_TEMPLATE
+
+        @worker.chdir(@env.packagedir)
+        @worker.write("update.xml", appcast)
     end
    
     def cleanup

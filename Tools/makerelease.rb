@@ -14,6 +14,7 @@ m.checkOutSource
 m.createSourcePackage
 m.buildModules
 m.createBinaryPackage
+m.createAppcast
 #m.upload
 #m.cleanup
 
