@@ -15,7 +15,7 @@ static void initialize()
 	filenames = [[plist propertyList] copy];
 }
 
-- (CCMServerType)cruiseControlServerType
+- (CCMServerType)serverType
 {
 	initialize();
 	unsigned index = [filenames indexOfObject:[self lastPathComponent]];
@@ -29,7 +29,7 @@ static void initialize()
 	return self;
 }
 
-- (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType withPath:(NSString *)path
+- (NSString *)completeURLForServerType:(CCMServerType)serverType withPath:(NSString *)path
 {
 	initialize();
 	NSString *completion = [path stringByAppendingPathComponent:[filenames objectAtIndex:serverType]];
@@ -44,27 +44,27 @@ static void initialize()
 	return [result stringByAddingSchemeIfNecessary];
 }
 
-- (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType
+- (NSString *)completeURLForServerType:(CCMServerType)serverType
 {
-	return [self completeCruiseControlURLForServerType:serverType withPath:@""];
+	return [self completeURLForServerType:serverType withPath:@""];
 }
 
-- (NSArray *)completeCruiseControlURLs
+- (NSArray *)completeURLForAllServerTypes
 {
-	if([self cruiseControlServerType] != CCMUnknownServer)
+	if([self serverType] != CCMUnknownServer)
 		return [NSArray arrayWithObject:[self stringByAddingSchemeIfNecessary]];
 	NSMutableSet *urls = [NSMutableSet set];
-	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDashboard]];
-	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDashboard withPath:@"dashboard"]];
-	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlClassic]];
-	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDotNetServer]];
-	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDotNetServer withPath:@"ccnet"]];
-	[urls addObject:[self completeCruiseControlURLForServerType:CCMHudsonServer]];
-	[urls addObject:[self completeCruiseControlURLForServerType:CCMHudsonServer withPath:@"hudson"]];
+	[urls addObject:[self completeURLForServerType:CCMCruiseControlDashboard]];
+	[urls addObject:[self completeURLForServerType:CCMCruiseControlDashboard withPath:@"dashboard"]];
+	[urls addObject:[self completeURLForServerType:CCMCruiseControlClassic]];
+	[urls addObject:[self completeURLForServerType:CCMCruiseControlDotNetServer]];
+	[urls addObject:[self completeURLForServerType:CCMCruiseControlDotNetServer withPath:@"ccnet"]];
+	[urls addObject:[self completeURLForServerType:CCMHudsonServer]];
+	[urls addObject:[self completeURLForServerType:CCMHudsonServer withPath:@"hudson"]];
 	return [urls allObjects];
 }
 
-- (NSString *)stringByRemovingCruiseControlReportFileName
+- (NSString *)stringByRemovingServerReportFileName
 {
 	initialize();
 	unsigned index = [filenames indexOfObject:[self lastPathComponent]];

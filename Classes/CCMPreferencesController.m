@@ -69,15 +69,15 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (void)historyURLSelected:(id)sender
 {
 	NSString *serverUrl = [serverUrlComboBox stringValue];
-	[serverTypeMatrix selectCellWithTag:[serverUrl cruiseControlServerType]];
+	[serverTypeMatrix selectCellWithTag:[serverUrl serverType]];
 }
 
 - (void)serverTypeChanged:(id)sender
 {
 	NSString *serverUrl = [serverUrlComboBox stringValue];
-	serverUrl = [serverUrl stringByRemovingCruiseControlReportFileName];
+	serverUrl = [serverUrl stringByRemovingServerReportFileName];
 	if([serverTypeMatrix selectedTag] != CCMUnknownServer)
-		serverUrl = [serverUrl completeCruiseControlURLForServerType:[serverTypeMatrix selectedTag]];
+		serverUrl = [serverUrl completeURLForServerType:[serverTypeMatrix selectedTag]];
 	[serverUrlComboBox setStringValue:serverUrl];
 }
 
@@ -113,7 +113,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (NSString *)determineServerURL
 {
 	NSString *originalUrl = [serverUrlComboBox stringValue];
-	NSEnumerator *urlEnum = [[originalUrl completeCruiseControlURLs] objectEnumerator];
+	NSEnumerator *urlEnum = [[originalUrl completeURLForAllServerTypes] objectEnumerator];
 	NSString *url;
 	while((url = [urlEnum nextObject]) != nil)
 	{

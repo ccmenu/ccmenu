@@ -12,9 +12,9 @@ typedef enum {
 
 @interface NSString(CCMAdditions)
 
-- (CCMServerType)cruiseControlServerType;
-- (NSString *)completeCruiseControlURLForServerType:(CCMServerType)serverType;
-- (NSArray *)completeCruiseControlURLs;
-- (NSString *)stringByRemovingCruiseControlReportFileName;
+- (CCMServerType)serverType;
+- (NSString *)completeURLForServerType:(CCMServerType)serverType;
+- (NSArray *)completeURLForAllServerTypes;
+- (NSString *)stringByRemovingServerReportFileName;
 
 @end
