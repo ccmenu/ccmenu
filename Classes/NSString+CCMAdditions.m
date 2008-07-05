@@ -11,7 +11,7 @@ static void initialize()
 {
 	if(filenames != nil)
 		return;
-	NSString *plist = @"( 'cctray.xml', 'xml', 'XmlStatusReport.aspx' )";
+	NSString *plist = @"( 'cctray.xml', 'xml', 'XmlStatusReport.aspx', 'cc.xml' )";
 	filenames = [[plist propertyList] copy];
 }
 
@@ -59,6 +59,8 @@ static void initialize()
 	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlClassic]];
 	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDotNetServer]];
 	[urls addObject:[self completeCruiseControlURLForServerType:CCMCruiseControlDotNetServer withPath:@"ccnet"]];
+	[urls addObject:[self completeCruiseControlURLForServerType:CCMHudsonServer]];
+	[urls addObject:[self completeCruiseControlURLForServerType:CCMHudsonServer withPath:@"hudson"]];
 	return [urls allObjects];
 }
 

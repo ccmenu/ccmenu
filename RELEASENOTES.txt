@@ -2,6 +2,11 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.1
+
+* Supports Hudson integration servers
+
+
 CCMenu 1.0
 
 * Improved URL handling in 'add projects' dialog

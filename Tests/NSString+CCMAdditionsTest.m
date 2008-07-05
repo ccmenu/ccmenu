@@ -23,10 +23,17 @@
 	STAssertEquals(CCMCruiseControlDotNetServer, type, @"Should have detected CC.NET URL.");
 }
 
+- (void)testDetectsHudsonURLs
+{
+	CCMServerType type = [@"http://localhost/cc.xml" cruiseControlServerType];
+	STAssertEquals(CCMHudsonServer, type, @"Should have detected Hudson URL.");
+
+}
+
 - (void)testTreatsRandomXMLFileExtensionAsUnknown
 {
 	CCMServerType type = [@"http://localhost/foo.xml" cruiseControlServerType];
-	STAssertEquals(CCMUnknownServer, type, @"Should have detected classic reporting app URL.");
+	STAssertEquals(CCMUnknownServer, type, @"Should have reported unknown server.");
 }
 
 - (void)testCompletesCruiseControlDashboardURL
@@ -71,7 +78,13 @@
 	STAssertEqualObjects(@"http://localhost/XmlStatusReport.aspx", url, @"Should have completed URL.");
 }
 
-- (void)testCompletesCruiseControlURLs
+- (void)testCompletesHudsonURLs
+{
+	NSString *url = [@"localhost" completeCruiseControlURLForServerType:CCMHudsonServer];
+	STAssertEqualObjects(@"http://localhost/cc.xml", url, @"Should have completed URL.");
+}
+
+- (void)testCompletesIntegrationServerURLs
 {
 	NSArray *urls = [@"http://localhost" completeCruiseControlURLs];
 	STAssertTrue([urls containsObject:@"http://localhost/cctray.xml"], @"Should have returned dashboard URL.");
@@ -79,7 +92,9 @@
 	STAssertTrue([urls containsObject:@"http://localhost/xml"], @"Should have returned classic reporting URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/XmlStatusReport.aspx"], @"Should have returned CC.NET URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/ccnet/XmlStatusReport.aspx"], @"Should have returned alternate CC.NET URL.");
-	STAssertEquals(5u, [urls count], @"Should have returned only expected urls.");
+	STAssertTrue([urls containsObject:@"http://localhost/cc.xml"], @"Should have returned Hudson URL.");
+	STAssertTrue([urls containsObject:@"http://localhost/hudson/cc.xml"], @"Should have returned alternate Hudson URL.");
+	STAssertEquals(7u, [urls count], @"Should have returned only expected urls.");
 }
 
 - (void)testOnlyReturnsOneCompleteURLWhenURLWasComplete
