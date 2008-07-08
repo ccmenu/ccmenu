@@ -93,7 +93,10 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 			if((serverUrl = [self determineServerURL]) == nil)
 			{
 				[testServerProgressIndicator stopAnimation:self];
-				NSRunAlertPanel(nil, @"Cannot determine server type.", @"Cancel", nil, nil);
+				NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+				[alert setMessageText:NSLocalizedString(@"Cannot determine server type", "Alert message when server type cannot be determined.")];
+				[alert setInformativeText:NSLocalizedString(@"Please contact the server administrator and enter the full URL into the location field.", "Informative text when server type cannot be determined.")];
+				[alert runModal];
 				return;
 			}
 		}
@@ -106,7 +109,10 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	@catch(NSException *exception) 
 	{
 		[testServerProgressIndicator stopAnimation:self];
-		NSRunAlertPanel(@"Connection failure", @"Could not connect to server. %@", @"Cancel", nil, nil, [exception reason]);
+		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		[alert setMessageText:NSLocalizedString(@"Could not connect to server", "Alert message when connection fails in preferences.")];
+		[alert setInformativeText:[exception reason]];
+		[alert runModal];
 	}
 }
 

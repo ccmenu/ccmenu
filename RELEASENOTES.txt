@@ -2,6 +2,12 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.2
+
+* Connection errors are now displayed when clicking on a project in the menu
+* Connection errors are no longer logged to console (#1894125)
+
+
 CCMenu 1.1
 
 * Supports Hudson integration servers

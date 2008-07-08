@@ -132,9 +132,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 }
 
 - (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString
-{
-	NSLog(@"%@", errorString); 
-	
+{	
 	CCMServer *server = [self serverForConnection:connection];
 	if(server == nil)
 		return;

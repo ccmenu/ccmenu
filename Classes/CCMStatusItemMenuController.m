@@ -98,7 +98,19 @@
 	NSString *urlString = [[sender representedObject] webUrl];
 	if(urlString == nil)
 	{
-		NSRunAlertPanel(nil , NSLocalizedString(@"This CruiseControl server does not provide web URLs for projects. Please contact the server administrator.", "Alert message when server does not provide webUrl"), @"OK", nil, nil);
+		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		NSString *errorString = [[sender representedObject] valueForKey:@"errorString"];
+		if(errorString != nil) 
+		{
+			[alert setMessageText:NSLocalizedString(@"An error occured when retrieving the project status", "Alert message when an error occured talking to the server.")];
+			[alert setInformativeText:errorString];
+		}
+		else
+		{
+			[alert setMessageText:NSLocalizedString(@"Cannot open web page", "Alert message when server does not provide webUrl")];
+			[alert setInformativeText:NSLocalizedString(@"This continuous integration server does not provide web URLs for projects. Please contact the server administrator.", "Informative text when server does not provide webUrl")];
+		}
+		[alert runModal];
 		return;
 	}
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];

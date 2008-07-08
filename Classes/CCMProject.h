@@ -27,6 +27,7 @@
 - (NSString *)lastBuildLabel;
 - (NSString *)lastBuildTime;
 - (NSString *)webUrl;
+- (NSString *)errorString;
 
 @end
 
