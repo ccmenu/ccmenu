@@ -37,7 +37,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 		return;
 	NSMutableArray *mutableList = [[[self projectListEntries] mutableCopy] autorelease];
 	[mutableList addObject:[self createEntryWithProject:projectName andURL:serverUrl]];
-	NSData *data = [NSArchiver archivedDataWithRootObject:[mutableList copy]];
+	NSData *data = [NSArchiver archivedDataWithRootObject:[[mutableList copy] autorelease]];
 	[userDefaults setObject:data forKey:CCMDefaultsProjectListKey];
 }
 

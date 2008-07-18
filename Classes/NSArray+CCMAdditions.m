@@ -13,8 +13,14 @@
 - (id)initWithArray:(NSArray *)anArray
 {
 	[super init];
-	array = anArray;
+	array = [anArray retain];
 	return self;
+}
+
+- (void)dealloc
+{
+	[array release];
+	[super dealloc];
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector

@@ -71,7 +71,7 @@ static void initialize()
 	if(index == NSNotFound)
 		return self;
 	// can't use deleteLastPathComponent because that normalises the double-slash in http://
-	NSMutableString *mutableCopy = [self mutableCopy];
+	NSMutableString *mutableCopy = [[self mutableCopy] autorelease];
 	NSRange range = [mutableCopy rangeOfString:[filenames objectAtIndex:index] options:NSBackwardsSearch|NSAnchoredSearch];
 	[mutableCopy deleteCharactersInRange:range];
 	return [NSString stringWithString:mutableCopy];

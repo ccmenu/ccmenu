@@ -4,6 +4,12 @@
 
 @implementation CCMWindowController
 
+- (void)dealloc
+{
+	[toolbarDefinition release];
+	[super dealloc];
+}
+
 - (NSToolbar *)createToolbarWithName:(NSString *)name
 {
 	NSString *toolbarResourcePath = [[NSBundle mainBundle] pathForResource:name ofType:@"toolbar"];

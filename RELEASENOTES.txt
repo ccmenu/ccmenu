@@ -6,6 +6,7 @@ CCMenu 1.2
 
 * Connection errors are now displayed when clicking on a project in the menu
 * Connection errors are no longer logged to console (#1894125)
+* Fixed a few (harmless) memory leaks; thanks to clang scan build
 
 
 CCMenu 1.1

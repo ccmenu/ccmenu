@@ -162,7 +162,7 @@ class ReleaseManager
     
     def upload
         @worker.chdir(@env.packagedir)
-        @worker.run("ftp -v -a -u #{@proj.ftpdest} #{@proj.basename}-*")
+        @worker.run("sftp -v -a -u #{@proj.ftpdest} #{@proj.basename}-*")
     end
     
     def createAppcast
