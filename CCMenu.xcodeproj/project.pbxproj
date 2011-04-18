@@ -7,20 +7,102 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0328D380135C191500D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
+		0328D381135C191500D35055 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37D135C191500D35055 /* Growl.framework */; };
+		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
+		0328D384135C192400D35055 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37E135C191500D35055 /* OCMock.framework */; };
+		0328D385135C192800D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
+		0328D386135C192C00D35055 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37D135C191500D35055 /* Growl.framework */; };
+		0328D387135C193000D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
+		0328D388135C1A2E00D35055 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
+		0328D389135C1A3500D35055 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37D135C191500D35055 /* Growl.framework */; };
+		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
+		0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */; };
+		0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5A134F9EE600D2F269 /* btn-force-build.png */; };
+		0349BC6A134F9EE700D2F269 /* CCMenu.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5B134F9EE600D2F269 /* CCMenu.icns */; };
+		0349BC6B134F9EE700D2F269 /* icon-building-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5C134F9EE600D2F269 /* icon-building-failed.png */; };
+		0349BC6C134F9EE700D2F269 /* icon-failure-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5D134F9EE600D2F269 /* icon-failure-building.png */; };
+		0349BC6D134F9EE700D2F269 /* icon-failure.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5E134F9EE600D2F269 /* icon-failure.png */; };
+		0349BC6E134F9EE700D2F269 /* icon-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5F134F9EE600D2F269 /* icon-inactive.png */; };
+		0349BC6F134F9EE700D2F269 /* icon-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC60134F9EE600D2F269 /* icon-pause.png */; };
+		0349BC70134F9EE700D2F269 /* icon-success-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC61134F9EE600D2F269 /* icon-success-building.png */; };
+		0349BC71134F9EE700D2F269 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC62134F9EE600D2F269 /* icon-success.png */; };
+		0349BC72134F9EE700D2F269 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC63134F9EE600D2F269 /* minus.png */; };
+		0349BC73134F9EE700D2F269 /* Placeholder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC64134F9EE600D2F269 /* Placeholder.tiff */; };
+		0349BC74134F9EE700D2F269 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC65134F9EE600D2F269 /* plus.png */; };
+		0349BC75134F9EE700D2F269 /* pref-advanced.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC66134F9EE600D2F269 /* pref-advanced.tiff */; };
+		0349BC76134F9EE700D2F269 /* pref-notifications.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC67134F9EE600D2F269 /* pref-notifications.tiff */; };
+		0349BC77134F9EE700D2F269 /* pref-projects.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC68134F9EE600D2F269 /* pref-projects.png */; };
+		0349BC96134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC7A134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m */; };
+		0349BC97134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC7C134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m */; };
+		0349BC98134F9F9100D2F269 /* CCMConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC7E134F9F9100D2F269 /* CCMConnectionTest.m */; };
+		0349BC99134F9F9100D2F269 /* CCMImageFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC80134F9F9100D2F269 /* CCMImageFactoryTest.m */; };
+		0349BC9A134F9F9100D2F269 /* CCMPreferencesControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC82134F9F9100D2F269 /* CCMPreferencesControllerTest.m */; };
+		0349BC9B134F9F9100D2F269 /* CCMProjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC84134F9F9100D2F269 /* CCMProjectTest.m */; };
+		0349BC9C134F9F9100D2F269 /* CCMServerMonitorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */; };
+		0349BC9D134F9F9100D2F269 /* CCMServerStatusReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */; };
+		0349BC9E134F9F9100D2F269 /* CCMServerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8A134F9F9100D2F269 /* CCMServerTest.m */; };
+		0349BC9F134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */; };
+		0349BCA0134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */; };
+		0349BCA1134F9F9100D2F269 /* cctray.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC8F134F9F9100D2F269 /* cctray.xml */; };
+		0349BCA2134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */; };
+		0349BCA3134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */; };
+		0349BCA4134F9F9100D2F269 /* NSString+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC95134F9F9100D2F269 /* NSString+CCMAdditionsTest.m */; };
 		038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038ABE1D134F11090053F0D1 /* Cocoa.framework */; };
 		038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE26134F11090053F0D1 /* InfoPlist.strings */; };
 		038ABE2B134F11090053F0D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ABE2A134F11090053F0D1 /* main.m */; };
-		038ABE2E134F11090053F0D1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE2C134F11090053F0D1 /* Credits.rtf */; };
-		038ABE31134F11090053F0D1 /* CCMenuAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ABE30134F11090053F0D1 /* CCMenuAppDelegate.m */; };
-		038ABE34134F11090053F0D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE32134F11090053F0D1 /* MainMenu.xib */; };
 		038ABE3B134F11090053F0D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038ABE1D134F11090053F0D1 /* Cocoa.framework */; };
 		038ABE43134F11090053F0D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE41134F11090053F0D1 /* InfoPlist.strings */; };
-		038ABE46134F11090053F0D1 /* CCMenuTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE45134F11090053F0D1 /* CCMenuTests.h */; };
-		038ABE48134F11090053F0D1 /* CCMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ABE47134F11090053F0D1 /* CCMenuTests.m */; };
+		039C92D7135CE0080012838C /* CCMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08276134F97940039E3BD /* CCMAppController.m */; };
+		039C92D8135CE0080012838C /* CCMBuildNotificationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */; };
+		039C92D9135CE0080012838C /* CCMBuildStatusTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */; };
+		039C92DA135CE0080012838C /* CCMConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0827C134F97940039E3BD /* CCMConnection.m */; };
+		039C92DB135CE0080012838C /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */; };
+		039C92DC135CE0080012838C /* CCMImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08280134F97940039E3BD /* CCMImageFactory.m */; };
+		039C92DD135CE0080012838C /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08282134F97940039E3BD /* CCMPreferencesController.m */; };
+		039C92DE135CE0080012838C /* CCMProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08284134F97940039E3BD /* CCMProject.m */; };
+		039C92DF135CE0080012838C /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08286134F97940039E3BD /* CCMProjectWindowController.m */; };
+		039C92E0135CE0080012838C /* CCMServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08288134F97940039E3BD /* CCMServer.m */; };
+		039C92E1135CE0080012838C /* CCMServerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828A134F97940039E3BD /* CCMServerMonitor.m */; };
+		039C92E2135CE0080012838C /* CCMServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828C134F97940039E3BD /* CCMServerStatusReader.m */; };
+		039C92E3135CE0080012838C /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */; };
+		039C92E4135CE0080012838C /* CCMStatusItemMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */; };
+		039C92E5135CE0080012838C /* CCMTimeSinceDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */; };
+		039C92E6135CE0080012838C /* CCMUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */; };
+		039C92E7135CE0080012838C /* CCMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08296134F97940039E3BD /* CCMWindowController.m */; };
+		039C92E8135CE0080012838C /* NSArray+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */; };
+		039C92E9135CE0080012838C /* NSCalendarDate+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */; };
+		039C92EA135CE0080012838C /* NSString+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */; };
+		03C0829D134F97940039E3BD /* CCMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08276134F97940039E3BD /* CCMAppController.m */; };
+		03C0829E134F97940039E3BD /* CCMBuildNotificationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */; };
+		03C0829F134F97940039E3BD /* CCMBuildStatusTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */; };
+		03C082A0134F97940039E3BD /* CCMConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0827C134F97940039E3BD /* CCMConnection.m */; };
+		03C082A1134F97940039E3BD /* CCMGrowlAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */; };
+		03C082A2134F97940039E3BD /* CCMImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08280134F97940039E3BD /* CCMImageFactory.m */; };
+		03C082A3134F97940039E3BD /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08282134F97940039E3BD /* CCMPreferencesController.m */; };
+		03C082A4134F97940039E3BD /* CCMProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08284134F97940039E3BD /* CCMProject.m */; };
+		03C082A5134F97940039E3BD /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08286134F97940039E3BD /* CCMProjectWindowController.m */; };
+		03C082A6134F97940039E3BD /* CCMServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08288134F97940039E3BD /* CCMServer.m */; };
+		03C082A7134F97940039E3BD /* CCMServerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828A134F97940039E3BD /* CCMServerMonitor.m */; };
+		03C082A8134F97940039E3BD /* CCMServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828C134F97940039E3BD /* CCMServerStatusReader.m */; };
+		03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */; };
+		03C082AA134F97940039E3BD /* CCMStatusItemMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */; };
+		03C082AB134F97940039E3BD /* CCMTimeSinceDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */; };
+		03C082AC134F97940039E3BD /* CCMUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */; };
+		03C082AD134F97940039E3BD /* CCMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08296134F97940039E3BD /* CCMWindowController.m */; };
+		03C082AE134F97940039E3BD /* NSArray+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */; };
+		03C082AF134F97940039E3BD /* NSCalendarDate+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */; };
+		03C082B0134F97940039E3BD /* NSString+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */; };
+		03C082E2134F9D250039E3BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C082D6134F9D250039E3BD /* Localizable.strings */; };
+		03C082E3134F9D250039E3BD /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03C082D8134F9D250039E3BD /* MainMenu.nib */; };
+		03C082E4134F9D250039E3BD /* Preferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DA134F9D250039E3BD /* Preferences.nib */; };
+		03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DC134F9D250039E3BD /* Preferences.toolbar */; };
+		03C082E6134F9D250039E3BD /* ProjectWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DE134F9D250039E3BD /* ProjectWindow.nib */; };
+		03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		038ABE3C134F11090053F0D1 /* PBXContainerItemProxy */ = {
+		039C92D5135CDFED0012838C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 038ABE10134F11080053F0D1 /* Project object */;
 			proxyType = 1;
@@ -29,7 +111,71 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		03C082D0134F9C530039E3BD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Frameworks;
+			dstSubfolderSpec = 1;
+			files = (
+				0328D388135C1A2E00D35055 /* EDCommon.framework in CopyFiles */,
+				0328D389135C1A3500D35055 /* Growl.framework in CopyFiles */,
+				0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/EDCommon.framework"; sourceTree = "<group>"; };
+		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/Growl.framework"; sourceTree = "<group>"; };
+		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/OCMock.framework"; sourceTree = "<group>"; };
+		0328D37F135C191500D35055 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/Sparkle.framework"; sourceTree = "<group>"; };
+		0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FactoryDefaults.plist; sourceTree = "<group>"; };
+		0349BC5A134F9EE600D2F269 /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-force-build.png"; sourceTree = "<group>"; };
+		0349BC5B134F9EE600D2F269 /* CCMenu.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CCMenu.icns; sourceTree = "<group>"; };
+		0349BC5C134F9EE600D2F269 /* icon-building-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-building-failed.png"; sourceTree = "<group>"; };
+		0349BC5D134F9EE600D2F269 /* icon-failure-building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-failure-building.png"; sourceTree = "<group>"; };
+		0349BC5E134F9EE600D2F269 /* icon-failure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-failure.png"; sourceTree = "<group>"; };
+		0349BC5F134F9EE600D2F269 /* icon-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-inactive.png"; sourceTree = "<group>"; };
+		0349BC60134F9EE600D2F269 /* icon-pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pause.png"; sourceTree = "<group>"; };
+		0349BC61134F9EE600D2F269 /* icon-success-building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success-building.png"; sourceTree = "<group>"; };
+		0349BC62134F9EE600D2F269 /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
+		0349BC63134F9EE600D2F269 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
+		0349BC64134F9EE600D2F269 /* Placeholder.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Placeholder.tiff; sourceTree = "<group>"; };
+		0349BC65134F9EE600D2F269 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		0349BC66134F9EE600D2F269 /* pref-advanced.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "pref-advanced.tiff"; sourceTree = "<group>"; };
+		0349BC67134F9EE600D2F269 /* pref-notifications.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "pref-notifications.tiff"; sourceTree = "<group>"; };
+		0349BC68134F9EE600D2F269 /* pref-projects.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pref-projects.png"; sourceTree = "<group>"; };
+		0349BC79134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildNotificationFactoryTest.h; sourceTree = "<group>"; };
+		0349BC7A134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildNotificationFactoryTest.m; sourceTree = "<group>"; };
+		0349BC7B134F9F9100D2F269 /* CCMBuildStatusTransformerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildStatusTransformerTest.h; sourceTree = "<group>"; };
+		0349BC7C134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildStatusTransformerTest.m; sourceTree = "<group>"; };
+		0349BC7D134F9F9100D2F269 /* CCMConnectionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMConnectionTest.h; sourceTree = "<group>"; };
+		0349BC7E134F9F9100D2F269 /* CCMConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMConnectionTest.m; sourceTree = "<group>"; };
+		0349BC7F134F9F9100D2F269 /* CCMImageFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactoryTest.h; sourceTree = "<group>"; };
+		0349BC80134F9F9100D2F269 /* CCMImageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMImageFactoryTest.m; sourceTree = "<group>"; };
+		0349BC81134F9F9100D2F269 /* CCMPreferencesControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMPreferencesControllerTest.h; sourceTree = "<group>"; };
+		0349BC82134F9F9100D2F269 /* CCMPreferencesControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMPreferencesControllerTest.m; sourceTree = "<group>"; };
+		0349BC83134F9F9100D2F269 /* CCMProjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectTest.h; sourceTree = "<group>"; };
+		0349BC84134F9F9100D2F269 /* CCMProjectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectTest.m; sourceTree = "<group>"; };
+		0349BC85134F9F9100D2F269 /* CCMServerMonitorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerMonitorTest.h; sourceTree = "<group>"; };
+		0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerMonitorTest.m; sourceTree = "<group>"; };
+		0349BC87134F9F9100D2F269 /* CCMServerStatusReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerStatusReaderTest.h; sourceTree = "<group>"; };
+		0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerStatusReaderTest.m; sourceTree = "<group>"; };
+		0349BC89134F9F9100D2F269 /* CCMServerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerTest.h; sourceTree = "<group>"; };
+		0349BC8A134F9F9100D2F269 /* CCMServerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerTest.m; sourceTree = "<group>"; };
+		0349BC8B134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusItemMenuControllerTest.h; sourceTree = "<group>"; };
+		0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemMenuControllerTest.m; sourceTree = "<group>"; };
+		0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMUserDefaultsManagerTest.h; sourceTree = "<group>"; };
+		0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMUserDefaultsManagerTest.m; sourceTree = "<group>"; };
+		0349BC8F134F9F9100D2F269 /* cctray.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cctray.xml; sourceTree = "<group>"; };
+		0349BC90134F9F9100D2F269 /* NSArray+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CCMAdditionsTest.h"; sourceTree = "<group>"; };
+		0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CCMAdditionsTest.m"; sourceTree = "<group>"; };
+		0349BC92134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+CCMAdditionsTest.h"; sourceTree = "<group>"; };
+		0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+CCMAdditionsTest.m"; sourceTree = "<group>"; };
+		0349BC94134F9F9100D2F269 /* NSString+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CCMAdditionsTest.h"; sourceTree = "<group>"; };
+		0349BC95134F9F9100D2F269 /* NSString+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CCMAdditionsTest.m"; sourceTree = "<group>"; };
 		038ABE19134F11080053F0D1 /* CCMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038ABE1D134F11090053F0D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		038ABE20134F11090053F0D1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -39,16 +185,56 @@
 		038ABE27134F11090053F0D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		038ABE29134F11090053F0D1 /* CCMenu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCMenu-Prefix.pch"; sourceTree = "<group>"; };
 		038ABE2A134F11090053F0D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		038ABE2D134F11090053F0D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		038ABE2F134F11090053F0D1 /* CCMenuAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMenuAppDelegate.h; sourceTree = "<group>"; };
-		038ABE30134F11090053F0D1 /* CCMenuAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCMenuAppDelegate.m; sourceTree = "<group>"; };
-		038ABE33134F11090053F0D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		038ABE3A134F11090053F0D1 /* CCMenuTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCMenuTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		038ABE40134F11090053F0D1 /* CCMenuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCMenuTests-Info.plist"; sourceTree = "<group>"; };
 		038ABE42134F11090053F0D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		038ABE44134F11090053F0D1 /* CCMenuTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCMenuTests-Prefix.pch"; sourceTree = "<group>"; };
-		038ABE45134F11090053F0D1 /* CCMenuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMenuTests.h; sourceTree = "<group>"; };
-		038ABE47134F11090053F0D1 /* CCMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCMenuTests.m; sourceTree = "<group>"; };
+		03C08275134F97940039E3BD /* CCMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMAppController.h; sourceTree = "<group>"; };
+		03C08276134F97940039E3BD /* CCMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMAppController.m; sourceTree = "<group>"; };
+		03C08277134F97940039E3BD /* CCMBuildNotificationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildNotificationFactory.h; sourceTree = "<group>"; };
+		03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildNotificationFactory.m; sourceTree = "<group>"; };
+		03C08279134F97940039E3BD /* CCMBuildStatusTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildStatusTransformer.h; sourceTree = "<group>"; };
+		03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildStatusTransformer.m; sourceTree = "<group>"; };
+		03C0827B134F97940039E3BD /* CCMConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMConnection.h; sourceTree = "<group>"; };
+		03C0827C134F97940039E3BD /* CCMConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMConnection.m; sourceTree = "<group>"; };
+		03C0827D134F97940039E3BD /* CCMGrowlAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMGrowlAdaptor.h; sourceTree = "<group>"; };
+		03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMGrowlAdaptor.m; sourceTree = "<group>"; };
+		03C0827F134F97940039E3BD /* CCMImageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactory.h; sourceTree = "<group>"; };
+		03C08280134F97940039E3BD /* CCMImageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMImageFactory.m; sourceTree = "<group>"; };
+		03C08281134F97940039E3BD /* CCMPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMPreferencesController.h; sourceTree = "<group>"; };
+		03C08282134F97940039E3BD /* CCMPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMPreferencesController.m; sourceTree = "<group>"; };
+		03C08283134F97940039E3BD /* CCMProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProject.h; sourceTree = "<group>"; };
+		03C08284134F97940039E3BD /* CCMProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProject.m; sourceTree = "<group>"; };
+		03C08285134F97940039E3BD /* CCMProjectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectWindowController.h; sourceTree = "<group>"; };
+		03C08286134F97940039E3BD /* CCMProjectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectWindowController.m; sourceTree = "<group>"; };
+		03C08287134F97940039E3BD /* CCMServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServer.h; sourceTree = "<group>"; };
+		03C08288134F97940039E3BD /* CCMServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServer.m; sourceTree = "<group>"; };
+		03C08289134F97940039E3BD /* CCMServerMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerMonitor.h; sourceTree = "<group>"; };
+		03C0828A134F97940039E3BD /* CCMServerMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerMonitor.m; sourceTree = "<group>"; };
+		03C0828B134F97940039E3BD /* CCMServerStatusReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerStatusReader.h; sourceTree = "<group>"; };
+		03C0828C134F97940039E3BD /* CCMServerStatusReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerStatusReader.m; sourceTree = "<group>"; };
+		03C0828D134F97940039E3BD /* CCMStatusItemApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusItemApplication.h; sourceTree = "<group>"; };
+		03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemApplication.m; sourceTree = "<group>"; };
+		03C0828F134F97940039E3BD /* CCMStatusItemMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusItemMenuController.h; sourceTree = "<group>"; };
+		03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemMenuController.m; sourceTree = "<group>"; };
+		03C08291134F97940039E3BD /* CCMTimeSinceDateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMTimeSinceDateTransformer.h; sourceTree = "<group>"; };
+		03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeSinceDateTransformer.m; sourceTree = "<group>"; };
+		03C08293134F97940039E3BD /* CCMUserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMUserDefaultsManager.h; sourceTree = "<group>"; };
+		03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMUserDefaultsManager.m; sourceTree = "<group>"; };
+		03C08295134F97940039E3BD /* CCMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMWindowController.h; sourceTree = "<group>"; };
+		03C08296134F97940039E3BD /* CCMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMWindowController.m; sourceTree = "<group>"; };
+		03C08297134F97940039E3BD /* NSArray+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CCMAdditions.h"; sourceTree = "<group>"; };
+		03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CCMAdditions.m"; sourceTree = "<group>"; };
+		03C08299134F97940039E3BD /* NSCalendarDate+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+CCMAdditions.h"; sourceTree = "<group>"; };
+		03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+CCMAdditions.m"; sourceTree = "<group>"; };
+		03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CCMAdditions.h"; sourceTree = "<group>"; };
+		03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CCMAdditions.m"; sourceTree = "<group>"; };
+		03C082D7134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		03C082D9134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		03C082DB134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/Preferences.nib; sourceTree = "<group>"; };
+		03C082DD134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/Preferences.toolbar; sourceTree = "<group>"; };
+		03C082DF134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/ProjectWindow.nib; sourceTree = "<group>"; };
+		03C082E1134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/ProjectWindow.toolbar; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +243,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */,
+				0328D380135C191500D35055 /* EDCommon.framework in Frameworks */,
+				0328D381135C191500D35055 /* Growl.framework in Frameworks */,
+				0328D383135C191500D35055 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +254,74 @@
 			buildActionMask = 2147483647;
 			files = (
 				038ABE3B134F11090053F0D1 /* Cocoa.framework in Frameworks */,
+				0328D384135C192400D35055 /* OCMock.framework in Frameworks */,
+				0328D385135C192800D35055 /* Sparkle.framework in Frameworks */,
+				0328D386135C192C00D35055 /* Growl.framework in Frameworks */,
+				0328D387135C193000D35055 /* EDCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0349BC59134F9EE600D2F269 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0349BC5A134F9EE600D2F269 /* btn-force-build.png */,
+				0349BC5B134F9EE600D2F269 /* CCMenu.icns */,
+				0349BC5C134F9EE600D2F269 /* icon-building-failed.png */,
+				0349BC5D134F9EE600D2F269 /* icon-failure-building.png */,
+				0349BC5E134F9EE600D2F269 /* icon-failure.png */,
+				0349BC5F134F9EE600D2F269 /* icon-inactive.png */,
+				0349BC60134F9EE600D2F269 /* icon-pause.png */,
+				0349BC61134F9EE600D2F269 /* icon-success-building.png */,
+				0349BC62134F9EE600D2F269 /* icon-success.png */,
+				0349BC63134F9EE600D2F269 /* minus.png */,
+				0349BC64134F9EE600D2F269 /* Placeholder.tiff */,
+				0349BC65134F9EE600D2F269 /* plus.png */,
+				0349BC66134F9EE600D2F269 /* pref-advanced.tiff */,
+				0349BC67134F9EE600D2F269 /* pref-notifications.tiff */,
+				0349BC68134F9EE600D2F269 /* pref-projects.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		0349BC78134F9F9100D2F269 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0349BC79134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.h */,
+				0349BC7A134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m */,
+				0349BC7B134F9F9100D2F269 /* CCMBuildStatusTransformerTest.h */,
+				0349BC7C134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m */,
+				0349BC7D134F9F9100D2F269 /* CCMConnectionTest.h */,
+				0349BC7E134F9F9100D2F269 /* CCMConnectionTest.m */,
+				0349BC7F134F9F9100D2F269 /* CCMImageFactoryTest.h */,
+				0349BC80134F9F9100D2F269 /* CCMImageFactoryTest.m */,
+				0349BC81134F9F9100D2F269 /* CCMPreferencesControllerTest.h */,
+				0349BC82134F9F9100D2F269 /* CCMPreferencesControllerTest.m */,
+				0349BC83134F9F9100D2F269 /* CCMProjectTest.h */,
+				0349BC84134F9F9100D2F269 /* CCMProjectTest.m */,
+				0349BC85134F9F9100D2F269 /* CCMServerMonitorTest.h */,
+				0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */,
+				0349BC87134F9F9100D2F269 /* CCMServerStatusReaderTest.h */,
+				0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */,
+				0349BC89134F9F9100D2F269 /* CCMServerTest.h */,
+				0349BC8A134F9F9100D2F269 /* CCMServerTest.m */,
+				0349BC8B134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.h */,
+				0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */,
+				0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */,
+				0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */,
+				0349BC8F134F9F9100D2F269 /* cctray.xml */,
+				0349BC90134F9F9100D2F269 /* NSArray+CCMAdditionsTest.h */,
+				0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */,
+				0349BC92134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.h */,
+				0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */,
+				0349BC94134F9F9100D2F269 /* NSString+CCMAdditionsTest.h */,
+				0349BC95134F9F9100D2F269 /* NSString+CCMAdditionsTest.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		038ABE0E134F11080053F0D1 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +345,10 @@
 			isa = PBXGroup;
 			children = (
 				038ABE1D134F11090053F0D1 /* Cocoa.framework */,
+				0328D37C135C191500D35055 /* EDCommon.framework */,
+				0328D37D135C191500D35055 /* Growl.framework */,
+				0328D37F135C191500D35055 /* Sparkle.framework */,
+				0328D37E135C191500D35055 /* OCMock.framework */,
 				038ABE1F134F11090053F0D1 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -112,9 +367,9 @@
 		038ABE23134F11090053F0D1 /* CCMenu */ = {
 			isa = PBXGroup;
 			children = (
-				038ABE2F134F11090053F0D1 /* CCMenuAppDelegate.h */,
-				038ABE30134F11090053F0D1 /* CCMenuAppDelegate.m */,
-				038ABE32134F11090053F0D1 /* MainMenu.xib */,
+				03C08274134F97940039E3BD /* Classes */,
+				03C082D5134F9CF90039E3BD /* Interface */,
+				0349BC59134F9EE600D2F269 /* Images */,
 				038ABE24134F11090053F0D1 /* Supporting Files */,
 			);
 			path = CCMenu;
@@ -123,11 +378,11 @@
 		038ABE24134F11090053F0D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */,
 				038ABE25134F11090053F0D1 /* CCMenu-Info.plist */,
 				038ABE26134F11090053F0D1 /* InfoPlist.strings */,
 				038ABE29134F11090053F0D1 /* CCMenu-Prefix.pch */,
 				038ABE2A134F11090053F0D1 /* main.m */,
-				038ABE2C134F11090053F0D1 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -135,8 +390,7 @@
 		038ABE3E134F11090053F0D1 /* CCMenuTests */ = {
 			isa = PBXGroup;
 			children = (
-				038ABE45134F11090053F0D1 /* CCMenuTests.h */,
-				038ABE47134F11090053F0D1 /* CCMenuTests.m */,
+				0349BC78134F9F9100D2F269 /* Classes */,
 				038ABE3F134F11090053F0D1 /* Supporting Files */,
 			);
 			path = CCMenuTests;
@@ -152,6 +406,66 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		03C08274134F97940039E3BD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				03C08275134F97940039E3BD /* CCMAppController.h */,
+				03C08276134F97940039E3BD /* CCMAppController.m */,
+				03C08277134F97940039E3BD /* CCMBuildNotificationFactory.h */,
+				03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */,
+				03C08279134F97940039E3BD /* CCMBuildStatusTransformer.h */,
+				03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */,
+				03C0827B134F97940039E3BD /* CCMConnection.h */,
+				03C0827C134F97940039E3BD /* CCMConnection.m */,
+				03C0827D134F97940039E3BD /* CCMGrowlAdaptor.h */,
+				03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */,
+				03C0827F134F97940039E3BD /* CCMImageFactory.h */,
+				03C08280134F97940039E3BD /* CCMImageFactory.m */,
+				03C08281134F97940039E3BD /* CCMPreferencesController.h */,
+				03C08282134F97940039E3BD /* CCMPreferencesController.m */,
+				03C08283134F97940039E3BD /* CCMProject.h */,
+				03C08284134F97940039E3BD /* CCMProject.m */,
+				03C08285134F97940039E3BD /* CCMProjectWindowController.h */,
+				03C08286134F97940039E3BD /* CCMProjectWindowController.m */,
+				03C08287134F97940039E3BD /* CCMServer.h */,
+				03C08288134F97940039E3BD /* CCMServer.m */,
+				03C08289134F97940039E3BD /* CCMServerMonitor.h */,
+				03C0828A134F97940039E3BD /* CCMServerMonitor.m */,
+				03C0828B134F97940039E3BD /* CCMServerStatusReader.h */,
+				03C0828C134F97940039E3BD /* CCMServerStatusReader.m */,
+				03C0828D134F97940039E3BD /* CCMStatusItemApplication.h */,
+				03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */,
+				03C0828F134F97940039E3BD /* CCMStatusItemMenuController.h */,
+				03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */,
+				03C08291134F97940039E3BD /* CCMTimeSinceDateTransformer.h */,
+				03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */,
+				03C08293134F97940039E3BD /* CCMUserDefaultsManager.h */,
+				03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */,
+				03C08295134F97940039E3BD /* CCMWindowController.h */,
+				03C08296134F97940039E3BD /* CCMWindowController.m */,
+				03C08297134F97940039E3BD /* NSArray+CCMAdditions.h */,
+				03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */,
+				03C08299134F97940039E3BD /* NSCalendarDate+CCMAdditions.h */,
+				03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */,
+				03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */,
+				03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		03C082D5134F9CF90039E3BD /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				03C082D6134F9D250039E3BD /* Localizable.strings */,
+				03C082D8134F9D250039E3BD /* MainMenu.nib */,
+				03C082DA134F9D250039E3BD /* Preferences.nib */,
+				03C082DC134F9D250039E3BD /* Preferences.toolbar */,
+				03C082DE134F9D250039E3BD /* ProjectWindow.nib */,
+				03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +473,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 038ABE4B134F11090053F0D1 /* Build configuration list for PBXNativeTarget "CCMenu" */;
 			buildPhases = (
+				03C082B9134F997B0039E3BD /* ShellScript */,
 				038ABE15134F11080053F0D1 /* Sources */,
 				038ABE16134F11080053F0D1 /* Frameworks */,
 				038ABE17134F11080053F0D1 /* Resources */,
+				03C082D0134F9C530039E3BD /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -184,7 +500,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				038ABE3D134F11090053F0D1 /* PBXTargetDependency */,
+				039C92D6135CDFED0012838C /* PBXTargetDependency */,
 			);
 			name = CCMenuTests;
 			productName = CCMenuTests;
@@ -223,8 +539,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */,
-				038ABE2E134F11090053F0D1 /* Credits.rtf in Resources */,
-				038ABE34134F11090053F0D1 /* MainMenu.xib in Resources */,
+				03C082E2134F9D250039E3BD /* Localizable.strings in Resources */,
+				03C082E3134F9D250039E3BD /* MainMenu.nib in Resources */,
+				03C082E4134F9D250039E3BD /* Preferences.nib in Resources */,
+				03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */,
+				03C082E6134F9D250039E3BD /* ProjectWindow.nib in Resources */,
+				03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */,
+				0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */,
+				0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */,
+				0349BC6A134F9EE700D2F269 /* CCMenu.icns in Resources */,
+				0349BC6B134F9EE700D2F269 /* icon-building-failed.png in Resources */,
+				0349BC6C134F9EE700D2F269 /* icon-failure-building.png in Resources */,
+				0349BC6D134F9EE700D2F269 /* icon-failure.png in Resources */,
+				0349BC6E134F9EE700D2F269 /* icon-inactive.png in Resources */,
+				0349BC6F134F9EE700D2F269 /* icon-pause.png in Resources */,
+				0349BC70134F9EE700D2F269 /* icon-success-building.png in Resources */,
+				0349BC71134F9EE700D2F269 /* icon-success.png in Resources */,
+				0349BC72134F9EE700D2F269 /* minus.png in Resources */,
+				0349BC73134F9EE700D2F269 /* Placeholder.tiff in Resources */,
+				0349BC74134F9EE700D2F269 /* plus.png in Resources */,
+				0349BC75134F9EE700D2F269 /* pref-advanced.tiff in Resources */,
+				0349BC76134F9EE700D2F269 /* pref-notifications.tiff in Resources */,
+				0349BC77134F9EE700D2F269 /* pref-projects.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				038ABE43134F11090053F0D1 /* InfoPlist.strings in Resources */,
-				038ABE46134F11090053F0D1 /* CCMenuTests.h in Resources */,
+				0349BCA1134F9F9100D2F269 /* cctray.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +589,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		03C082B9134F997B0039E3BD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Unpack frameworks required for this target\npushd \"${TARGET_BUILD_DIR}\"\nif [ ! -d Frameworks ]; then\n  mkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  EDCommon.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/EDCommon.tar.gz\"\nfi\nif [ ! -d  Sparkle.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/Sparkle.tar.gz\"\nfi\npopd\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -261,7 +610,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				038ABE2B134F11090053F0D1 /* main.m in Sources */,
-				038ABE31134F11090053F0D1 /* CCMenuAppDelegate.m in Sources */,
+				03C0829D134F97940039E3BD /* CCMAppController.m in Sources */,
+				03C0829E134F97940039E3BD /* CCMBuildNotificationFactory.m in Sources */,
+				03C0829F134F97940039E3BD /* CCMBuildStatusTransformer.m in Sources */,
+				03C082A0134F97940039E3BD /* CCMConnection.m in Sources */,
+				03C082A1134F97940039E3BD /* CCMGrowlAdaptor.m in Sources */,
+				03C082A2134F97940039E3BD /* CCMImageFactory.m in Sources */,
+				03C082A3134F97940039E3BD /* CCMPreferencesController.m in Sources */,
+				03C082A4134F97940039E3BD /* CCMProject.m in Sources */,
+				03C082A5134F97940039E3BD /* CCMProjectWindowController.m in Sources */,
+				03C082A6134F97940039E3BD /* CCMServer.m in Sources */,
+				03C082A7134F97940039E3BD /* CCMServerMonitor.m in Sources */,
+				03C082A8134F97940039E3BD /* CCMServerStatusReader.m in Sources */,
+				03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */,
+				03C082AA134F97940039E3BD /* CCMStatusItemMenuController.m in Sources */,
+				03C082AB134F97940039E3BD /* CCMTimeSinceDateTransformer.m in Sources */,
+				03C082AC134F97940039E3BD /* CCMUserDefaultsManager.m in Sources */,
+				03C082AD134F97940039E3BD /* CCMWindowController.m in Sources */,
+				03C082AE134F97940039E3BD /* NSArray+CCMAdditions.m in Sources */,
+				03C082AF134F97940039E3BD /* NSCalendarDate+CCMAdditions.m in Sources */,
+				03C082B0134F97940039E3BD /* NSString+CCMAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,17 +637,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				038ABE48134F11090053F0D1 /* CCMenuTests.m in Sources */,
+				0349BC96134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m in Sources */,
+				0349BC97134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m in Sources */,
+				0349BC98134F9F9100D2F269 /* CCMConnectionTest.m in Sources */,
+				0349BC99134F9F9100D2F269 /* CCMImageFactoryTest.m in Sources */,
+				0349BC9A134F9F9100D2F269 /* CCMPreferencesControllerTest.m in Sources */,
+				0349BC9B134F9F9100D2F269 /* CCMProjectTest.m in Sources */,
+				0349BC9C134F9F9100D2F269 /* CCMServerMonitorTest.m in Sources */,
+				0349BC9D134F9F9100D2F269 /* CCMServerStatusReaderTest.m in Sources */,
+				0349BC9E134F9F9100D2F269 /* CCMServerTest.m in Sources */,
+				0349BC9F134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m in Sources */,
+				0349BCA0134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m in Sources */,
+				0349BCA2134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m in Sources */,
+				0349BCA3134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m in Sources */,
+				0349BCA4134F9F9100D2F269 /* NSString+CCMAdditionsTest.m in Sources */,
+				039C92D7135CE0080012838C /* CCMAppController.m in Sources */,
+				039C92D8135CE0080012838C /* CCMBuildNotificationFactory.m in Sources */,
+				039C92D9135CE0080012838C /* CCMBuildStatusTransformer.m in Sources */,
+				039C92DA135CE0080012838C /* CCMConnection.m in Sources */,
+				039C92DB135CE0080012838C /* CCMGrowlAdaptor.m in Sources */,
+				039C92DC135CE0080012838C /* CCMImageFactory.m in Sources */,
+				039C92DD135CE0080012838C /* CCMPreferencesController.m in Sources */,
+				039C92DE135CE0080012838C /* CCMProject.m in Sources */,
+				039C92DF135CE0080012838C /* CCMProjectWindowController.m in Sources */,
+				039C92E0135CE0080012838C /* CCMServer.m in Sources */,
+				039C92E1135CE0080012838C /* CCMServerMonitor.m in Sources */,
+				039C92E2135CE0080012838C /* CCMServerStatusReader.m in Sources */,
+				039C92E3135CE0080012838C /* CCMStatusItemApplication.m in Sources */,
+				039C92E4135CE0080012838C /* CCMStatusItemMenuController.m in Sources */,
+				039C92E5135CE0080012838C /* CCMTimeSinceDateTransformer.m in Sources */,
+				039C92E6135CE0080012838C /* CCMUserDefaultsManager.m in Sources */,
+				039C92E7135CE0080012838C /* CCMWindowController.m in Sources */,
+				039C92E8135CE0080012838C /* NSArray+CCMAdditions.m in Sources */,
+				039C92E9135CE0080012838C /* NSCalendarDate+CCMAdditions.m in Sources */,
+				039C92EA135CE0080012838C /* NSString+CCMAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		038ABE3D134F11090053F0D1 /* PBXTargetDependency */ = {
+		039C92D6135CDFED0012838C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 038ABE18134F11080053F0D1 /* CCMenu */;
-			targetProxy = 038ABE3C134F11090053F0D1 /* PBXContainerItemProxy */;
+			targetProxy = 039C92D5135CDFED0012838C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -292,22 +693,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		038ABE2C134F11090053F0D1 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				038ABE2D134F11090053F0D1 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		038ABE32134F11090053F0D1 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				038ABE33134F11090053F0D1 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		038ABE41134F11090053F0D1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -316,17 +701,65 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		03C082D6134F9D250039E3BD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C082D7134F9D250039E3BD /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		03C082D8134F9D250039E3BD /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C082D9134F9D250039E3BD /* en */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		03C082DA134F9D250039E3BD /* Preferences.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C082DB134F9D250039E3BD /* en */,
+			);
+			name = Preferences.nib;
+			sourceTree = "<group>";
+		};
+		03C082DC134F9D250039E3BD /* Preferences.toolbar */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C082DD134F9D250039E3BD /* en */,
+			);
+			name = Preferences.toolbar;
+			sourceTree = "<group>";
+		};
+		03C082DE134F9D250039E3BD /* ProjectWindow.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C082DF134F9D250039E3BD /* en */,
+			);
+			name = ProjectWindow.nib;
+			sourceTree = "<group>";
+		};
+		03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C082E1134F9D250039E3BD /* en */,
+			);
+			name = ProjectWindow.toolbar;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		038ABE49134F11090053F0D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -339,9 +772,9 @@
 		038ABE4A134F11090053F0D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -355,6 +788,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${TARGET_BUILD_DIR}/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -371,6 +808,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${TARGET_BUILD_DIR}/Frameworks\"",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CCMenu/CCMenu-Prefix.pch";
@@ -386,13 +827,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CCMenu.app/Contents/MacOS/CCMenu";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"${TARGET_BUILD_DIR}/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CCMenuTests/CCMenuTests-Prefix.pch";
 				INFOPLIST_FILE = "CCMenuTests/CCMenuTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../Frameworks";
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,
@@ -410,12 +855,16 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CCMenu.app/Contents/MacOS/CCMenu";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"${TARGET_BUILD_DIR}/Frameworks\"",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CCMenuTests/CCMenuTests-Prefix.pch";
 				INFOPLIST_FILE = "CCMenuTests/CCMenuTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../Frameworks";
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,
@@ -445,6 +894,7 @@
 				038ABE4D134F11090053F0D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		038ABE4E134F11090053F0D1 /* Build configuration list for PBXNativeTarget "CCMenuTests" */ = {
 			isa = XCConfigurationList;
@@ -453,6 +903,7 @@
 				038ABE50134F11090053F0D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

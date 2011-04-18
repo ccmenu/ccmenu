@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface CCMWindowController : NSObject 
+@interface CCMWindowController : NSObject <NSToolbarDelegate>
 {
 	NSDictionary	*toolbarDefinition;
 }

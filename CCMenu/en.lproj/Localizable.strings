@@ -1,0 +1,24 @@
+/* Growl notification for successful build */
+"Broken build" = "Broken build";
+
+/* Growl notification for successful build */
+"Build still failing" = "Build still failing";
+
+/* Growl notification for successful build */
+"Build successful" = "Build successful";
+
+/* Growl notification for successful build */
+"Fixed build" = "Fixed build";
+
+/* No comment provided by engineer. */
+"Recent checkins have broken the build." = "Recent checkins have broken the build.";
+
+/* No comment provided by engineer. */
+"Recent checkins have fixed the build." = "Recent checkins have fixed the build.";
+
+/* No comment provided by engineer. */
+"The build is still broken." = "The build is still broken.";
+
+/* No comment provided by engineer. */
+"Yet another successful build!" = "Yet another successful build!";
+

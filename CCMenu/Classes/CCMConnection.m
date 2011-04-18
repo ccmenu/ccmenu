@@ -53,7 +53,7 @@
 	NSError *error = nil;
 	[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 	if(error != nil)
-		[NSException raise:@"ConnectionException" format:[self errorStringForError:error]];
+		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:error]];
 	int status = [response statusCode];
 	return (status >= 200 && status != 404 && status < 500);
 }
@@ -65,9 +65,9 @@
 	NSError *error = nil;
 	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 	if(error != nil)
-		[NSException raise:@"ConnectionException" format:[self errorStringForError:error]];
+		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:error]];
 	if([response statusCode] != 200)
-		[NSException raise:@"ConnectionException" format:[self errorStringForResponse:response]];
+		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForResponse:response]];
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
 	return [reader projectInfos];
 }
