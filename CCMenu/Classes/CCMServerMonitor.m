@@ -114,6 +114,13 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	CCMServer *server = [self serverForConnection:connection];
 	if(server == nil)
 		return;
+    
+    NSEnumerator *projectEnum = [[server projects] objectEnumerator];
+    CCMProject *project;
+    while((project = [projectEnum nextObject]) != nil)
+    {
+        [project updateWithInfo:[NSDictionary dictionaryWithObject:@"No project information provided by server." forKey:@"errorString"]]; 
+    }
 	
 	NSEnumerator *projectInfoEnum = [projectInfoList objectEnumerator];
 	NSDictionary *projectInfo;
