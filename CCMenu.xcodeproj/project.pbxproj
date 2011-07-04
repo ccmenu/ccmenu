@@ -127,10 +127,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/EDCommon.framework"; sourceTree = "<group>"; };
-		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/Growl.framework"; sourceTree = "<group>"; };
-		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/OCMock.framework"; sourceTree = "<group>"; };
-		0328D37F135C191500D35055 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CCMenu-clqotwvlvffaebeoormeyxrnxxqq/Build/Products/Debug/Frameworks/Sparkle.framework"; sourceTree = "<group>"; };
+		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = Frameworks/EDCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0328D37F135C191500D35055 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FactoryDefaults.plist; sourceTree = "<group>"; };
 		0349BC5A134F9EE600D2F269 /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-force-build.png"; sourceTree = "<group>"; };
 		0349BC5B134F9EE600D2F269 /* CCMenu.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CCMenu.icns; sourceTree = "<group>"; };
@@ -680,7 +680,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Unpack frameworks required for this target\npushd \"${TARGET_BUILD_DIR}\"\nif [ ! -d Frameworks ]; then\n  mkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  EDCommon.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/EDCommon.tar.gz\"\nfi\nif [ ! -d  Sparkle.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/Sparkle.tar.gz\"\nfi\npopd\n";
+			shellScript = "# Unpack frameworks required for this target\n#pushd \"${TARGET_BUILD_DIR}\"\npushd \"${BUILT_PRODUCTS_DIR}\"\nif [ ! -d Frameworks ]; then\n  mkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  Growl.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/Growl.tar.gz\"\nfi\nif [ ! -d  OCMock.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  EDCommon.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/EDCommon.tar.gz\"\nfi\nif [ ! -d  Sparkle.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/Sparkle.tar.gz\"\nfi\npopd\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -890,7 +890,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${TARGET_BUILD_DIR}/Frameworks\"",
+					"\"${BUILT_PRODUCTS_DIR}/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
