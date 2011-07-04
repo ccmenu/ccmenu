@@ -1,4 +1,5 @@
 
+#import <EDCommon/EDCommon.h>
 #import "CCMStatusItemMenuController.h"
 #import "CCMImageFactory.h"
 #import "CCMServerMonitor.h"
@@ -45,7 +46,7 @@
 	unsigned buildCount = 0;
 	bool isFixing = NO;
 	bool haveAtLeastOneStatus = NO;
-	NSEnumerator *projectEnum = [projectList objectEnumerator];
+	NSEnumerator *projectEnum = [[projectList sortedArrayByComparingAttribute:@"name"] objectEnumerator];
 	CCMProject *project;
 	while((project = [projectEnum nextObject]) != nil)
 	{
