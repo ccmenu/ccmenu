@@ -35,16 +35,21 @@
 
 - (NSString *)errorStringForError:(NSError *)error
 {
-	return [NSString stringWithFormat:@"Failed to get status from [%@]: %@",   
-		[[error userInfo] objectForKey:NSErrorFailingURLStringKey], [error localizedDescription]];
+	return [NSString stringWithFormat:@"Failed to get status from %@: %@",   
+		[[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey], [error localizedDescription]];
 }
 
 - (NSString *)errorStringForResponse:(NSHTTPURLResponse *)response
 {
-	return [NSString stringWithFormat:@"Failed to get status from [%@]: %@",   
+	return [NSString stringWithFormat:@"Failed to get status from %@: %@",   
 			[response URL], [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]];
 }
 
+- (NSString *)errorStringForParseError:(NSError *)error
+{
+	return [NSString stringWithFormat:@"Failed to parse status from %@: %@ (Maybe the server is returning a temporary HTML error page instead of an XML document.)",   
+                [serverUrl description], [[error localizedDescription] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+}
 
 - (BOOL)testConnection
 {
@@ -113,7 +118,11 @@
 {
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
     [self cleanUpAfterStatusRequest];
-	[delegate connection:self didReceiveServerStatus:[reader projectInfos]];
+    NSError *error = [reader tryParse];
+    if(error != nil)
+        [delegate connection:self hadTemporaryError:[self errorStringForParseError:error]];
+    else
+        [delegate connection:self didReceiveServerStatus:[reader projectInfos]];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

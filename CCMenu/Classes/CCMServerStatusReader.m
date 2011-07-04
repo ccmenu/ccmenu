@@ -39,11 +39,19 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 }
 
 
+- (NSError *)tryParse
+{
+	NSError *error = nil;
+    [[[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:&error] autorelease];
+    return error;
+}
+
+
 - (NSArray *)projectInfos
 {
 	NSError *error = nil;
     NSXMLDocument *doc = [[[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:&error] autorelease];
-	if(error != nil)
+	if(error != nil) // [error domain] == NSXMLParserErrorDomain
 		[NSException raise:@"Parse Exception" format:@"%@", [error localizedDescription]];
 	NSMutableArray *infoArray = [NSMutableArray array];
 	NSEnumerator *projectEnum = [[doc nodesForXPath:@"//Project" error:nil] objectEnumerator];

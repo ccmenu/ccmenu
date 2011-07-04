@@ -41,5 +41,16 @@
 	STAssertEqualObjects(@"http://localhost:8080/projects/connectfour", [info objectForKey:@"webUrl"], @"Should have fixed web url.");
 }
 
+- (void)testReturnsParseError
+{
+	NSString *xml = @"<Projects><Project name='connectfour' deliberately broken";
+	NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
+	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
+    
+    NSError *error = [reader tryParse];
+    
+    STAssertNotNil(error, @"Should have returned an error.");
+}
+
 
 @end

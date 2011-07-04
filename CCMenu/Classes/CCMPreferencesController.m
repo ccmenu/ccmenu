@@ -110,7 +110,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	{
 		[testServerProgressIndicator stopAnimation:self];
 		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-		[alert setMessageText:NSLocalizedString(@"Could not connect to server", "Alert message when connection fails in preferences.")];
+		[alert setMessageText:NSLocalizedString(@"Could not retrieve project information", "Alert message when connection fails in preferences.")];
 		[alert setInformativeText:[exception reason]];
 		[alert runModal];
 	}

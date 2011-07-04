@@ -169,7 +169,7 @@
 		0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemMenuControllerTest.m; sourceTree = "<group>"; };
 		0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMUserDefaultsManagerTest.h; sourceTree = "<group>"; };
 		0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMUserDefaultsManagerTest.m; sourceTree = "<group>"; };
-		0349BC8F134F9F9100D2F269 /* cctray.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cctray.xml; sourceTree = "<group>"; };
+		0349BC8F134F9F9100D2F269 /* cctray.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = cctray.xml; path = Classes/cctray.xml; sourceTree = "<group>"; };
 		0349BC90134F9F9100D2F269 /* NSArray+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CCMAdditionsTest.h"; sourceTree = "<group>"; };
 		0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CCMAdditionsTest.m"; sourceTree = "<group>"; };
 		0349BC92134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+CCMAdditionsTest.h"; sourceTree = "<group>"; };
@@ -264,6 +264,116 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		031D05C01371574300AE5A48 /* Foundation Additions */ = {
+			isa = PBXGroup;
+			children = (
+				03C08297134F97940039E3BD /* NSArray+CCMAdditions.h */,
+				03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */,
+				03C08299134F97940039E3BD /* NSCalendarDate+CCMAdditions.h */,
+				03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */,
+				03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */,
+				03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */,
+			);
+			name = "Foundation Additions";
+			sourceTree = "<group>";
+		};
+		031D05C1137157A100AE5A48 /* Domain Model */ = {
+			isa = PBXGroup;
+			children = (
+				03C08283134F97940039E3BD /* CCMProject.h */,
+				03C08284134F97940039E3BD /* CCMProject.m */,
+				03C08287134F97940039E3BD /* CCMServer.h */,
+				03C08288134F97940039E3BD /* CCMServer.m */,
+			);
+			name = "Domain Model";
+			sourceTree = "<group>";
+		};
+		031D05C2137157D700AE5A48 /* Project Window */ = {
+			isa = PBXGroup;
+			children = (
+				03C08279134F97940039E3BD /* CCMBuildStatusTransformer.h */,
+				03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */,
+				03C08285134F97940039E3BD /* CCMProjectWindowController.h */,
+				03C08286134F97940039E3BD /* CCMProjectWindowController.m */,
+				03C08291134F97940039E3BD /* CCMTimeSinceDateTransformer.h */,
+				03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */,
+			);
+			name = "Project Window";
+			sourceTree = "<group>";
+		};
+		031D05C31371598500AE5A48 /* CI Server Interface */ = {
+			isa = PBXGroup;
+			children = (
+				03C08277134F97940039E3BD /* CCMBuildNotificationFactory.h */,
+				03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */,
+				03C0827B134F97940039E3BD /* CCMConnection.h */,
+				03C0827C134F97940039E3BD /* CCMConnection.m */,
+				03C08289134F97940039E3BD /* CCMServerMonitor.h */,
+				03C0828A134F97940039E3BD /* CCMServerMonitor.m */,
+				03C0828B134F97940039E3BD /* CCMServerStatusReader.h */,
+				03C0828C134F97940039E3BD /* CCMServerStatusReader.m */,
+			);
+			name = "CI Server Interface";
+			sourceTree = "<group>";
+		};
+		031D05C413715A4E00AE5A48 /* Preferences Window */ = {
+			isa = PBXGroup;
+			children = (
+				03C08281134F97940039E3BD /* CCMPreferencesController.h */,
+				03C08282134F97940039E3BD /* CCMPreferencesController.m */,
+			);
+			name = "Preferences Window";
+			sourceTree = "<group>";
+		};
+		031D05C513715AFE00AE5A48 /* Status Item */ = {
+			isa = PBXGroup;
+			children = (
+				03C0828F134F97940039E3BD /* CCMStatusItemMenuController.h */,
+				03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */,
+			);
+			name = "Status Item";
+			sourceTree = "<group>";
+		};
+		031D05C613715B2900AE5A48 /* Cocoa Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				03C0828D134F97940039E3BD /* CCMStatusItemApplication.h */,
+				03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */,
+				03C08295134F97940039E3BD /* CCMWindowController.h */,
+				03C08296134F97940039E3BD /* CCMWindowController.m */,
+			);
+			name = "Cocoa Extensions";
+			sourceTree = "<group>";
+		};
+		031D05C713715B7300AE5A48 /* Resource Managers */ = {
+			isa = PBXGroup;
+			children = (
+				03C0827F134F97940039E3BD /* CCMImageFactory.h */,
+				03C08280134F97940039E3BD /* CCMImageFactory.m */,
+				03C08293134F97940039E3BD /* CCMUserDefaultsManager.h */,
+				03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */,
+			);
+			name = "Resource Managers";
+			sourceTree = "<group>";
+		};
+		031D05C813715C0E00AE5A48 /* Growl Interface */ = {
+			isa = PBXGroup;
+			children = (
+				03C0827D134F97940039E3BD /* CCMGrowlAdaptor.h */,
+				03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */,
+			);
+			name = "Growl Interface";
+			sourceTree = "<group>";
+		};
+		031D05C913715C3D00AE5A48 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				03C08275134F97940039E3BD /* CCMAppController.h */,
+				03C08276134F97940039E3BD /* CCMAppController.m */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 		0349BC59134F9EE600D2F269 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,7 +421,6 @@
 				0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */,
 				0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */,
 				0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */,
-				0349BC8F134F9F9100D2F269 /* cctray.xml */,
 				0349BC90134F9F9100D2F269 /* NSArray+CCMAdditionsTest.h */,
 				0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */,
 				0349BC92134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.h */,
@@ -400,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				038ABE40134F11090053F0D1 /* CCMenuTests-Info.plist */,
+				0349BC8F134F9F9100D2F269 /* cctray.xml */,
 				038ABE41134F11090053F0D1 /* InfoPlist.strings */,
 				038ABE44134F11090053F0D1 /* CCMenuTests-Prefix.pch */,
 			);
@@ -409,46 +519,16 @@
 		03C08274134F97940039E3BD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				03C08275134F97940039E3BD /* CCMAppController.h */,
-				03C08276134F97940039E3BD /* CCMAppController.m */,
-				03C08277134F97940039E3BD /* CCMBuildNotificationFactory.h */,
-				03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */,
-				03C08279134F97940039E3BD /* CCMBuildStatusTransformer.h */,
-				03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */,
-				03C0827B134F97940039E3BD /* CCMConnection.h */,
-				03C0827C134F97940039E3BD /* CCMConnection.m */,
-				03C0827D134F97940039E3BD /* CCMGrowlAdaptor.h */,
-				03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */,
-				03C0827F134F97940039E3BD /* CCMImageFactory.h */,
-				03C08280134F97940039E3BD /* CCMImageFactory.m */,
-				03C08281134F97940039E3BD /* CCMPreferencesController.h */,
-				03C08282134F97940039E3BD /* CCMPreferencesController.m */,
-				03C08283134F97940039E3BD /* CCMProject.h */,
-				03C08284134F97940039E3BD /* CCMProject.m */,
-				03C08285134F97940039E3BD /* CCMProjectWindowController.h */,
-				03C08286134F97940039E3BD /* CCMProjectWindowController.m */,
-				03C08287134F97940039E3BD /* CCMServer.h */,
-				03C08288134F97940039E3BD /* CCMServer.m */,
-				03C08289134F97940039E3BD /* CCMServerMonitor.h */,
-				03C0828A134F97940039E3BD /* CCMServerMonitor.m */,
-				03C0828B134F97940039E3BD /* CCMServerStatusReader.h */,
-				03C0828C134F97940039E3BD /* CCMServerStatusReader.m */,
-				03C0828D134F97940039E3BD /* CCMStatusItemApplication.h */,
-				03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */,
-				03C0828F134F97940039E3BD /* CCMStatusItemMenuController.h */,
-				03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */,
-				03C08291134F97940039E3BD /* CCMTimeSinceDateTransformer.h */,
-				03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */,
-				03C08293134F97940039E3BD /* CCMUserDefaultsManager.h */,
-				03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */,
-				03C08295134F97940039E3BD /* CCMWindowController.h */,
-				03C08296134F97940039E3BD /* CCMWindowController.m */,
-				03C08297134F97940039E3BD /* NSArray+CCMAdditions.h */,
-				03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */,
-				03C08299134F97940039E3BD /* NSCalendarDate+CCMAdditions.h */,
-				03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */,
-				03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */,
-				03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */,
+				031D05C1137157A100AE5A48 /* Domain Model */,
+				031D05C31371598500AE5A48 /* CI Server Interface */,
+				031D05C813715C0E00AE5A48 /* Growl Interface */,
+				031D05C913715C3D00AE5A48 /* Global */,
+				031D05C513715AFE00AE5A48 /* Status Item */,
+				031D05C413715A4E00AE5A48 /* Preferences Window */,
+				031D05C2137157D700AE5A48 /* Project Window */,
+				031D05C713715B7300AE5A48 /* Resource Managers */,
+				031D05C613715B2900AE5A48 /* Cocoa Extensions */,
+				031D05C01371574300AE5A48 /* Foundation Additions */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
