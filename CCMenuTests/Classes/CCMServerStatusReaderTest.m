@@ -12,7 +12,7 @@
 	NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
 
-	NSArray *infos = [reader projectInfos];
+	NSArray *infos = [reader readProjectInfos:NULL];
 	
     STAssertNotNil(infos, @"Should receive a response.");
     STAssertEquals(1u, [infos count], @"Response should be an array.");
@@ -35,7 +35,7 @@
 	NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
 	
-	NSArray *infos = [reader projectInfos];
+	NSArray *infos = [reader readProjectInfos:NULL];
 	
 	NSDictionary *info = [infos objectAtIndex:0];
 	STAssertEqualObjects(@"http://localhost:8080/projects/connectfour", [info objectForKey:@"webUrl"], @"Should have fixed web url.");
@@ -47,9 +47,11 @@
 	NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
     
-    NSError *error = [reader tryParse];
+    NSError *error = nil;
+    NSArray *result = [reader readProjectInfos:&error];
     
-    STAssertNotNil(error, @"Should have returned an error.");
+    STAssertNil(result, @"Should have returned nil.");
+    STAssertNotNil(error, @"Should have set error.");
 }
 
 

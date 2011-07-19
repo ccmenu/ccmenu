@@ -67,14 +67,18 @@
 {
 	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
 	NSHTTPURLResponse *response = nil;
-	NSError *error = nil;
-	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-	if(error != nil)
-		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:error]];
+	NSError *requestError = nil;
+	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+	if(data == nil)
+		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:requestError]];
 	if([response statusCode] != 200)
 		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForResponse:response]];
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
-	return [reader projectInfos];
+    NSError *parseError = nil;
+	NSArray *infos = [reader readProjectInfos:&parseError];
+    if(infos == nil)
+		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForParseError:parseError]];
+    return infos;
 }
 
 - (void)requestServerStatus
@@ -118,11 +122,12 @@
 {
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
     [self cleanUpAfterStatusRequest];
-    NSError *error = [reader tryParse];
-    if(error != nil)
-        [delegate connection:self hadTemporaryError:[self errorStringForParseError:error]];
+    NSError *error = nil;
+    NSArray *infos = [reader readProjectInfos:&error];
+    if(infos != nil)
+        [delegate connection:self didReceiveServerStatus:infos];
     else
-        [delegate connection:self didReceiveServerStatus:[reader projectInfos]];
+        [delegate connection:self hadTemporaryError:[self errorStringForParseError:error]];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

@@ -10,9 +10,7 @@
 	[super init];
 	url = [anUrl retain];
 	projects = [[NSMutableDictionary alloc] init];
-	NSEnumerator *nameEnum = [projectNames objectEnumerator];
-	NSString *name;
-	while((name = [nameEnum nextObject]) != nil)
+    for(NSString *name in projectNames)
 		[projects setObject:[[[CCMProject alloc] initWithName:name] autorelease] forKey:name];		
 	return self;
 }
@@ -38,13 +36,5 @@
 {
 	return [projects objectForKey:name];
 }
-
-- (void)updateWithProjectInfo:(NSDictionary *)info
-{
-	CCMProject *project = [projects objectForKey:[info objectForKey:@"name"]];
-	if(project != nil)
-		[project updateWithInfo:info];
-}
-
 
 @end

@@ -15,6 +15,4 @@
 - (NSArray *)projects;
 - (CCMProject *)projectNamed:(NSString *)name;
 
-- (void)updateWithProjectInfo:(NSDictionary *)info;
-
 @end

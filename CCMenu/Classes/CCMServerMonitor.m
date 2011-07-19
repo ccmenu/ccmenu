@@ -54,9 +54,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (CCMServer *)serverForConnection:(CCMConnection *)connection
 {
-	NSEnumerator *pairEnum = [serverConnectionPairs objectEnumerator];
-	EDObjectPair *pair;
-	while((pair = [pairEnum nextObject]) != nil)
+    for(EDObjectPair *pair in serverConnectionPairs)
 	{
 		if([pair secondObject] == connection)
 			return [pair firstObject];
@@ -126,7 +124,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 		NSNotification *notification = [notificationFactory buildCompleteNotificationForOldProjectInfo:[project info] andNewProjectInfo:projectInfo];
 		if(notification != nil)
 			[notificationCenter postNotification:notification];
-		[server updateWithProjectInfo:projectInfo];
+		[project updateWithInfo:projectInfo];
 	}
     
     for(CCMProject *project in unseenProjects)

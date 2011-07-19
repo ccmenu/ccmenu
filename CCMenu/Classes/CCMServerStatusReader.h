@@ -9,8 +9,6 @@
 
 - (id)initWithServerResponse:(NSData *)data;
 
-- (NSError *)tryParse;
-
-- (NSArray *)projectInfos;
+- (NSArray *)readProjectInfos:(NSError **)errorPtr;
 
 @end

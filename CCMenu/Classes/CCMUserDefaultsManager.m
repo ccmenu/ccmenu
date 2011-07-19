@@ -57,9 +57,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 - (NSArray *)servers
 {
 	NSMutableDictionary *projectNamesByServer = [NSMutableDictionary dictionary];
-	NSEnumerator *projectListEnum = [[self projectListEntries] objectEnumerator];
-	NSDictionary *projectListEntry;
-	while((projectListEntry = [projectListEnum nextObject]) != nil)
+	for(NSDictionary *projectListEntry in [self projectListEntries])
 	{
 		NSString *urlString = [projectListEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
 		NSString *projectName = [projectListEntry objectForKey:CCMDefaultsProjectEntryNameKey];
@@ -68,9 +66,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 	}
 	
 	NSMutableArray *servers = [NSMutableArray array];
-	NSEnumerator *urlEnum = [projectNamesByServer keyEnumerator];
-	NSString *urlString;
-	while((urlString = [urlEnum nextObject]) != nil)
+	for(NSString *urlString in projectNamesByServer)
 	{
 		NSURL *url = [NSURL URLWithString:urlString];
 		NSArray *projectNames = [projectNamesByServer objectForKey:urlString];

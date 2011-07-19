@@ -38,30 +38,17 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 	return urlString;
 }
 
-
-- (NSError *)tryParse
+- (NSArray *)readProjectInfos:(NSError **)errorPtr
 {
-	NSError *error = nil;
-    [[[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:&error] autorelease];
-    return error;
-}
-
-
-- (NSArray *)projectInfos
-{
-	NSError *error = nil;
-    NSXMLDocument *doc = [[[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:&error] autorelease];
-	if(error != nil) // [error domain] == NSXMLParserErrorDomain
-		[NSException raise:@"Parse Exception" format:@"%@", [error localizedDescription]];
-	NSMutableArray *infoArray = [NSMutableArray array];
-	NSEnumerator *projectEnum = [[doc nodesForXPath:@"//Project" error:nil] objectEnumerator];
-	NSXMLElement *element = nil;
-	while((element = [projectEnum nextObject]) != nil)
+    NSXMLDocument *doc = [[[NSXMLDocument alloc] initWithData:responseData options:NSXMLNodeOptionsNone error:errorPtr] autorelease];
+    if(doc == nil)
+        return nil;
+    
+    NSMutableArray *projectInfos = [[NSMutableArray array] retain];
+    for(NSXMLElement *element in [doc nodesForXPath:@"//Project" error:nil])
 	{
 		NSDictionary *info = [NSMutableDictionary dictionary];
-		NSEnumerator *attributeEnum = [[element attributes] objectEnumerator];
-		NSXMLNode *attribute = nil;
-		while((attribute = [attributeEnum nextObject]) != nil)
+        for(NSXMLNode *attribute in [element attributes])
 		{
 			id value = [attribute stringValue];
 			if([[attribute name] isEqualToString:@"lastBuildTime"])
@@ -70,9 +57,9 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 				value = [self fixUrlStringIfNecessary:value];
 			[info setValue:value forKey:[attribute name]];
 		}
-		[infoArray addObject:info];
+		[projectInfos addObject:info];
 	}
-	return infoArray;
+    return projectInfos;        
 }
 
 @end

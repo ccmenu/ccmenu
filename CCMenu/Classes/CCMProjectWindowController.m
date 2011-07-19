@@ -41,7 +41,7 @@
 
 - (void)forceBuild:(id)sender
 {
-	NSRunAlertPanel(nil, @"Force build is not supported for this CruiseControl server yet.", @"OK", nil, nil);
+	NSRunAlertPanel(nil, @"Force build is not supported yet.", @"OK", nil, nil);
 }
 
 @end

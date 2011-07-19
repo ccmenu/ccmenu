@@ -46,9 +46,7 @@
 	unsigned buildCount = 0;
 	bool isFixing = NO;
 	bool haveAtLeastOneStatus = NO;
-	NSEnumerator *projectEnum = [[projectList sortedArrayByComparingAttribute:@"name"] objectEnumerator];
-	CCMProject *project;
-	while((project = [projectEnum nextObject]) != nil)
+    for(CCMProject *project in [projectList sortedArrayByComparingAttribute:@"name"])
 	{
 		NSString *title = [NSString stringWithFormat:@"%@", [project name]];
 		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];

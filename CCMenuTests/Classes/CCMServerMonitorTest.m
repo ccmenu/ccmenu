@@ -45,7 +45,7 @@
     NSDictionary *newProjectInfo = [@"{ name = Foo; lastBuildStatus = Success; }" propertyList];
     
     CCMServer *server = [[[CCMServer alloc] initWithURL:nil andProjectNames:[NSArray arrayWithObjects:@"Foo", @"Bar", nil]] autorelease];
-    [server updateWithProjectInfo:oldProjectInfo];
+    [[server projectNamed:@"Foo"] updateWithInfo:oldProjectInfo];
     CCMConnection *dummyConnection = [[[CCMConnection alloc] initWithURL:nil] autorelease];
     NSArray *serverConnectionPairs = [NSArray arrayWithObject:[EDObjectPair pairWithObjects:server :dummyConnection]];
     [monitor setValue:serverConnectionPairs forKey:@"serverConnectionPairs"];   

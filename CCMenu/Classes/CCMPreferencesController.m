@@ -119,9 +119,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (NSString *)determineServerURL
 {
 	NSString *originalUrl = [serverUrlComboBox stringValue];
-	NSEnumerator *urlEnum = [[originalUrl completeURLForAllServerTypes] objectEnumerator];
-	NSString *url;
-	while((url = [urlEnum nextObject]) != nil)
+    for(NSString *url in [originalUrl completeURLForAllServerTypes])
 	{
 		[serverUrlComboBox setStringValue:url];
 		[serverUrlComboBox display];
@@ -137,9 +135,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
 {
 	NSMutableArray *result = [NSMutableArray array];
-	NSEnumerator *projectInfoEnum = [projectInfos objectEnumerator];
-	NSDictionary *projectInfo;
-	while((projectInfo = [projectInfoEnum nextObject]) != nil)
+	for(NSDictionary *projectInfo in projectInfos)
 	{
 		NSMutableDictionary *listEntry = [NSMutableDictionary dictionary];
 		NSString *projectName = [projectInfo objectForKey:@"name"];
@@ -164,9 +160,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	if(returnCode == 0)
 		return;
 
-	NSEnumerator *selectionEnum = [[chooseProjectsViewController selectedObjects] objectEnumerator];
-	NSDictionary *entry;
-	while((entry = [selectionEnum nextObject]) != nil)
+    for(NSDictionary *entry in [chooseProjectsViewController selectedObjects])
 	{
 		NSString *serverUrl = [entry objectForKey:@"server"];
 		[defaultsManager addProject:[entry objectForKey:@"name"] onServerWithURL:serverUrl];
