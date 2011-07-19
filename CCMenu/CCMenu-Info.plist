@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3 (dev3)</string>
+	<string>1.3.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.3</string>
+	<string>1.3.2</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>LSUIElement</key>
@@ -31,6 +31,6 @@
 	<key>NSPrincipalClass</key>
 	<string>CCMStatusItemApplication</string>
 	<key>SUFeedURL</key>
-	<string>http://ccmenu.sourceforge.net/update.xml</string>
+	<string>http://ccmenu.sourceforge.net/update-dev.xml</string>
 </dict>
 </plist>

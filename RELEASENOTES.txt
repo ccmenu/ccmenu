@@ -1,12 +1,22 @@
 CruiseControl Status Menu Release Notes
 
 Changes listed by release.
+              
+CCMenu 1.3
+
+* Handling parse errors (#2315056 and #3051368 )
+* Menu items now sorted alphabetically (#3111566)
+* Now requires Mac OS X 10.5
+
 
 CCMenu 1.2
 
-* Connection errors are now displayed when clicking on a project in the menu
-* Connection errors are no longer logged to console (#1894125)
-* Fixed a few (harmless) memory leaks; thanks to clang scan build
+* Connection errors are now displayed when clicking on a
+  project in the menu
+* Connection errors are no longer logged to console
+  (#1894125)
+* Fixed a few (harmless) memory leaks; thanks to clang
+  scan build
 
 
 CCMenu 1.1
@@ -17,33 +27,45 @@ CCMenu 1.1
 CCMenu 1.0
 
 * Improved URL handling in 'add projects' dialog
-* Now automatically determines full URL in 'add projects' dialog
+* Now automatically determines full URL in 'add
+  projects' dialog
 * Fixed HTTPS bug (#1805720)
 
 
 CCMenu 0.9.5
 
-* Now projects already monitored are greyed out in 'add project' dialog
-* Server URL combo box now remembers all URLs seen before
+* Now projects already monitored are greyed out in 'add
+  project' dialog
+* Server URL combo box now remembers all URLs seen
+  before
 * Fixed bug related to classic reporting app URLs
-* Fixed bug that caused project window not to update when removing all projects
+* Fixed bug that caused project window not to update
+  when removing all projects
 
 
 CCMenu 0.9.4
 
 * Added autoupdate using the Sparkle framework
-* Now opening the preferences panel when no projects are configured
-* Now showing a meaningful message when server does not provide web URLs
-* Fixed key binding bug (#1779159), can also close/miniaturize windows now
-* Fixed bug that would prevent monitor from running on first startup
+* Now opening the preferences panel when no projects 
+  are configured
+* Now showing a meaningful message when server does not
+  provide web URLs
+* Fixed key binding bug (#1779159), can also
+  close/miniaturize windows now
+* Fixed bug that would prevent monitor from running on
+  first startup
 
 
 CCMenu 0.9.3
 
-* Now showing a grey icon when project status unavailable
-* Project with unknown status is treated as if status was failure
-* Completely reworked server polling to be asynchronous and more resilient
-* Added workaround for broken URLs provided by CruiseControl.rb
+* Now showing a grey icon when project status
+  unavailable
+* Project with unknown status is treated as if status
+  was failure
+* Completely reworked server polling to be asynchronous
+  and more resilient
+* Added workaround for broken URLs provided by
+  CruiseControl.rb
 * Added remaining icons
 
 
@@ -63,4 +85,5 @@ CCMenu 0.9.1
 
 CCMenu 0.9
 
-* Basic version, release candidate for first public release.
+* Basic version, release candidate for first public
+  release.
