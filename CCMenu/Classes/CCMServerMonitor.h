@@ -27,6 +27,9 @@
 
 - (void)pollServers:(id)sender;
 
+- (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList;
+- (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString;
+
 @end
 
 extern NSString *CCMProjectStatusUpdateNotification;

@@ -4,6 +4,7 @@
 #import "CCMServer.h"
 #import "CCMProject.h"
 #import <OCMock/OCMock.h>
+#import <EDCommon/EDCommon.h>
 
 
 @implementation CCMServerMonitorTest
@@ -13,8 +14,9 @@
 	monitor = [[[CCMServerMonitor alloc] init] autorelease];
 	[monitor setNotificationCenter:(id)self];
 	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
-	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
-	[monitor setDefaultsManager:(id)defaultsManagerMock];
+	[monitor setDefaultsManager:defaultsManagerMock];
+    notificationFactoryMock = [OCMockObject mockForClass:[CCMBuildNotificationFactory class]];
+    [monitor setNotificationFactory:notificationFactoryMock];
 	postedNotifications = [NSMutableArray array];
 }
 
@@ -26,6 +28,7 @@
 
 - (void)testPostsStatusChangeNotificationWhenNoServersDefined
 {
+	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
 	[[[defaultsManagerMock expect] andReturn:[NSArray array]] servers]; 
 	
 	[monitor start];
@@ -36,6 +39,28 @@
 }
 
 
+- (void)testUpdatesProjectsAndPostsBuildCompleteNotificationWhenStatusChanged
+{    
+    NSDictionary *oldProjectInfo = [@"{ name = Foo; lastBuildStatus = Failure; }" propertyList];
+    NSDictionary *newProjectInfo = [@"{ name = Foo; lastBuildStatus = Success; }" propertyList];
+    
+    CCMServer *server = [[[CCMServer alloc] initWithURL:nil andProjectNames:[NSArray arrayWithObjects:@"Foo", @"Bar", nil]] autorelease];
+    [server updateWithProjectInfo:oldProjectInfo];
+    CCMConnection *dummyConnection = [[[CCMConnection alloc] initWithURL:nil] autorelease];
+    NSArray *serverConnectionPairs = [NSArray arrayWithObject:[EDObjectPair pairWithObjects:server :dummyConnection]];
+    [monitor setValue:serverConnectionPairs forKey:@"serverConnectionPairs"];   
+    NSNotification *dummyNotification = [NSNotification notificationWithName:@"test" object:nil];
+    [[[notificationFactoryMock expect] andReturn:dummyNotification] buildCompleteNotificationForOldProjectInfo:oldProjectInfo andNewProjectInfo:newProjectInfo];
+    
+    [monitor connection:dummyConnection didReceiveServerStatus:[NSArray arrayWithObject:newProjectInfo]];
+    
+    STAssertEqualObjects(CCMSuccessStatus, [[server projectNamed:@"Foo"] lastBuildStatus], @"Should have updated status");
+    STAssertEqualObjects(@"No project information provided by server.", [[server projectNamed:@"Bar"] errorString], @"Should have set error string");
+	STAssertEquals(2u, [postedNotifications count], @"Should have posted two notifications");
+    STAssertTrue([postedNotifications indexOfObject:dummyNotification] != NSNotFound, @"Should have posted build complete notification");
+}
+
+
 - (void)testGetsProjectsFromConnection
 {	
 	// Unfortunately, we can't stub the connection because the repository creates it. So, we need a working URL,
@@ -43,6 +68,7 @@
 	NSURL *url = [NSURL fileURLWithPath:@"Tests/cctray.xml"];
 	CCMServer *server = [[[CCMServer alloc] initWithURL:url andProjectNames:[NSArray arrayWithObject:@"connectfour"]] autorelease];
 	
+	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
 	[[[defaultsManagerMock expect] andReturn:[NSArray arrayWithObject:server]] servers]; 
 	
 	// this is now all async and will not work in a unit test anymore
@@ -62,6 +88,11 @@
 
 - (void)addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString *)notificationName object:(id)notificationSender
 {	
+}
+
+- (void)postNotification:(NSNotification *)aNotification
+{
+    [postedNotifications addObject:aNotification];
 }
 
 - (void)postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo

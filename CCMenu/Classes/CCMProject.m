@@ -16,7 +16,8 @@ static NSSet *infoKeys;
 
 + (void)initialize
 {
-	infoKeys = [[NSSet setWithObjects:@"activity", @"lastBuildStatus", @"lastBuildLabel", @"lastBuildTime", @"webUrl", nil] retain];
+	infoKeys = [[NSSet setWithObjects:@"activity", @"lastBuildStatus", @"lastBuildLabel", @"lastBuildTime", 
+                 @"webUrl", @"errorString", nil] retain];
 }
 
 - (id)initWithName:(NSString *)aName
