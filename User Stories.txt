@@ -1,36 +1,30 @@
 
-Outstanding Stories
-===================
+High-priority Stories
+=====================
 
-Audible notifications: As a developer I want CCMenu to notify me of relevant events by playing configurable sounds so
-that I am aware of status changes without having to switch applications.
+#28 Server info for project: As a developer I want CCMenu to show the server name for the projects, so that I can tell which project I'm looking at.
 
-Force build: As a developer I want to e able to force a build from the project window so that I do not have to go to
-the dashboard for this operation. 
+#26 Exclude projects from aggregation to status bar item: As a developer I want to exclude projects that are visible in the menu from the aggregation to the status bar item so that the status bar item provides information about the project I care about most but I can still keep an eye on other projects in the menu.          
 
-Selectable columns: As a developer I want to configure which columns are visible in the project window so that I can see 
-the information that is most relevant to me.
+#29 Sort projects: As a developer I would like to change the order in which projects are displayed so that I can see the projects that are most important to me quickly. [Maybe have two sections; anything "below the line" would be excluded from aggregation (see #26).]
 
-Absolute build time format: As a developer I want to set the format in which the last build times are displayed so that 
-I can see relevant information in the format that suits me best.
+#27 Display project status heatmap in status item: As a developer I wangt to see the status of multiple projects in the status bar item so that I can have a detailed view without opening the menu or window.
 
-Build timing in menu: As a developer I want to see build timing, that is remaining time for this build (as a negative 
-number) or time by which current build exceeds last build (as a positive number), in the menu so that I know how long I
-have to wait before checking in or that the build might be stuck.
+#24 Build timing in menu: As a developer I want to see build timing, that is remaining time for this build (as a negative number) or time by which current build exceeds last build (as a positive number), in the menu so that I know how long I have to wait before checking in or that the build might be stuck.
 
-Publish notification if current build time exceeds last build time by x: As a developer I want CCMenu to notify me (via 
-Growl) if the current build time exceeds the last build time by a margin that I can configure so that I am alerted as 
-soon as possible about a build that might be stuck.
+#25 Publish notification if current build time exceeds last build time by x: As a developer I want CCMenu to notify me (via Growl) if the current build time exceeds the last build time by a margin that I can configure so that I am alerted as soon as possible about a build that might be stuck.
 
-Multi server/column for server: As a developer I want CCMenu to monitor multiple CC servers, and show CC server name 
-alongside project name, so that I can see all projects that I am working on in one CCMenu instance.
 
-Exclude projects from aggregation to status bar item: As a developer I want to exclude projects that are visible in the
-menu from the aggregation to the status bar item so that the status bar item provides information about the project I 
-care about most but I can still keep an eye on other projects in the menu.
+Low-priority Stories
+====================
 
-Display project status heatmap in status item: As a developer I wangt to see the status of multiple projects in the 
-status bar item so that I can have a detailed view without opening the menu or window.
+#20 Audible notifications: As a developer I want CCMenu to notify me of relevant events by playing configurable sounds so that I am aware of status changes without having to switch applications. [This is possible via Growl.]
+
+#21 Force build: As a developer I want to e able to force a build from the project window so that I do not have to go to the dashboard for this operation. [Few servers support this.] 
+
+#22 Selectable columns: As a developer I want to configure which columns are visible in the project window so that I can see the information that is most relevant to me. [Project window not used much?]
+
+#23 Absolute build time format: As a developer I want to set the format in which the last build times are displayed so that I can see relevant information in the format that suits me best.
 
 
 Internal Bugs
@@ -38,4 +32,4 @@ Internal Bugs
 
 - build status change notifications sent during event handling
 - many strings not localizable
-- (OCMock 1.17 is not compiled as embedded, used a custom version)
+
