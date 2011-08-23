@@ -5,6 +5,7 @@
 #import "CCMServer.h"
 #import "NSArray+CCMAdditions.h"
 #import "NSString+CCMAdditions.h"
+#import "NSAppleScript+EDAdditions.h"
 #import <EDCommon/EDCommon.h>
 
 #define WINDOW_TITLE_HEIGHT 78
@@ -181,6 +182,11 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
 }
 
+- (IBAction)openGrowlPreferences:(id)sender
+{
+    [[NSAppleScript scriptWithName:@"handlers"] callHandler:@"open_growl"];
+}
+
 - (IBAction)updateIntervalChanged:(id)sender
 {
 	[updater scheduleCheckWithInterval:[sender selectedTag]];
@@ -188,7 +194,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (IBAction)checkForUpdateNow:(id)sender
 {
-	[updater checkForUpdates:sender];
+    [updater checkForUpdates:sender];
 }
 
 @end

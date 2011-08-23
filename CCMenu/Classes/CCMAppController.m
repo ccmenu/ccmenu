@@ -4,6 +4,7 @@
 #import "CCMBuildNotificationFactory.h"
 #import "CCMBuildStatusTransformer.h"
 #import "CCMTimeSinceDateTransformer.h"
+#import "CCMBuildTimer.h"
 
 
 @implementation CCMAppController
@@ -25,6 +26,13 @@
 	[NSValueTransformer setValueTransformer:dateTransformer forName:CCMTimeSinceDateTransformerName];
 }
 
+- (void)startBuildTimer
+{
+    CCMBuildTimer *buildTimer = [[CCMBuildTimer alloc] init];
+    [buildTimer start];
+}
+
+
 - (void)startGrowlAdaptor
 {
 	[growlAdaptor start]; 
@@ -44,6 +52,7 @@
 	{
 		[self setupRequestCache];
 		[self registerValueTransformers];
+        [self startBuildTimer];
 		[self startGrowlAdaptor];
 		[self startServerMonitor];
 		if([[serverMonitor projects] count] == 0)

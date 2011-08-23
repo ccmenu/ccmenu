@@ -6,14 +6,24 @@
 {
 	NSString		*name;
 	NSDictionary	*info;
+    NSTimeInterval  buildDuration;
+    NSCalendarDate  *buildStartTime;
 }
 
 - (id)initWithName:(NSString *)aName;
 
+- (NSString *)name;
+
 - (void)updateWithInfo:(NSDictionary *)dictionary;
 - (NSDictionary *)info;
 
-- (NSString *)name;
+- (void)setBuildDuration:(NSTimeInterval)duration;
+- (NSTimeInterval)buildDuration;
+
+- (void)setBuildStartTime:(NSCalendarDate *)aTime;
+- (NSCalendarDate *)buildStartTime;
+
+- (NSCalendarDate *)estimatedBuildCompleteTime;
 
 - (BOOL)isFailed;
 - (BOOL)isBuilding;

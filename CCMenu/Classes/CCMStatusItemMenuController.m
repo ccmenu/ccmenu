@@ -1,9 +1,29 @@
 
 #import <EDCommon/EDCommon.h>
+#import "NSCalendarDate+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"
 #import "CCMImageFactory.h"
 #import "CCMServerMonitor.h"
 #import "CCMProject.h"
+
+@interface NSStatusItem(MyTitleFormatting)
+
+- (void)setFormattedTitle:(NSString *)aTitle;
+
+@end
+
+@implementation NSStatusItem(MyTitleFormatting)
+
+- (void)setFormattedTitle:(NSString *)aTitle
+{
+    NSMutableDictionary *attr = [NSMutableDictionary dictionary];
+    [attr setObject:[NSFont fontWithName:@"Lucida Grande" size:12] forKey:NSFontAttributeName];
+    NSAttributedString *strg = [[[NSAttributedString alloc] initWithString:aTitle attributes:attr] autorelease];
+    [self setAttributedTitle:strg];
+}
+
+@end
+
 
 @implementation CCMStatusItemMenuController
 
@@ -46,13 +66,32 @@
 	unsigned buildCount = 0;
 	bool isFixing = NO;
 	bool haveAtLeastOneStatus = NO;
+    CCMProject *displayProject = nil;
     for(CCMProject *project in [projectList sortedArrayByComparingAttribute:@"name"])
 	{
 		NSString *title = [NSString stringWithFormat:@"%@", [project name]];
-		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		NSImage *image = [imageFactory imageForActivity:[project activity] lastBuildStatus:[project lastBuildStatus]];
-		image = [imageFactory convertForMenuUse:image];
-		[menuItem setImage:image];
+        if([project isBuilding])
+        {
+            buildCount += 1;
+            NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
+            if(estimatedComplete != nil)
+            {
+                if(displayProject == nil)
+                {
+                    displayProject = project;
+                }
+                else if([project isFailed])
+                {
+                    if(![displayProject isFailed] || [estimatedComplete precedesDate:[displayProject estimatedBuildCompleteTime]])
+                        displayProject = project;
+                }
+                else
+                {
+                    if(![displayProject isFailed] && [estimatedComplete precedesDate:[displayProject estimatedBuildCompleteTime]])
+                        displayProject = project;
+                }
+            }
+        }
 		if([project isFailed])
 			failCount += 1;
 		if([project isBuilding])
@@ -61,6 +100,12 @@
 			isFixing = YES;
 		if([project lastBuildStatus] != nil)
 			haveAtLeastOneStatus = YES;
+
+        
+		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
+		NSImage *image = [imageFactory imageForActivity:[project activity] lastBuildStatus:[project lastBuildStatus]];
+		image = [imageFactory convertForMenuUse:image];
+		[menuItem setImage:image];
 		[menuItem setTarget:self];
 		[menuItem setRepresentedObject:project];
 	}
@@ -73,18 +118,25 @@
 	{
 		NSString *status = isFixing ? CCMFailedStatus : CCMSuccessStatus;
 		[statusItem setImage:[imageFactory imageForActivity:CCMBuildingActivity lastBuildStatus:status]];
-		[statusItem setTitle:@""];
-	}
+		if(displayProject == nil)
+        {
+            [statusItem setTitle:@""];
+        }
+        else
+        {
+            [statusItem setFormattedTitle:[[NSCalendarDate date] descriptionOfIntervalSinceDate:[displayProject estimatedBuildCompleteTime] withSign:YES]];
+        }
+    }
 	else if(failCount > 0)
 	{
 		[statusItem setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus]];
-		[statusItem setTitle:[NSString stringWithFormat:@"%u", failCount]];
+		[statusItem setFormattedTitle:[NSString stringWithFormat:@"%u", failCount]];
 	}
 	else
 	{
 		[statusItem setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus]];
 		[statusItem setTitle:@""];
-	}
+    }
 }
 
 - (void)statusUpdate:(NSNotification *)notification

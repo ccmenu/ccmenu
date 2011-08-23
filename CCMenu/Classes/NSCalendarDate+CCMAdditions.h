@@ -4,6 +4,15 @@
 
 @interface NSCalendarDate(CCMAdditions)
 
-- (NSString *)descriptionOfIntervalSinceDate:(NSCalendarDate *)other;
+- (NSString *)relativeDescriptionOfPastDate:(NSCalendarDate *)other;
+- (NSString *)descriptionOfIntervalWithDate:(NSCalendarDate *)other;
+- (NSString *)descriptionOfIntervalSinceDate:(NSCalendarDate *)other withSign:(BOOL)withSign;
+
+@end
+
+
+@interface NSDate(CCMAdditions)
+
+- (NSString *)timeAsString;
 
 @end

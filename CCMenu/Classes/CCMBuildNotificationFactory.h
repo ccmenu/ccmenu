@@ -6,11 +6,14 @@
 {
 }
 
-- (NSNotification *)buildCompleteNotificationForOldProjectInfo:(NSDictionary *)oldInfo andNewProjectInfo:(NSDictionary *)newInfo;
+
+- (NSNotification *)buildNotificationForOldProjectInfo:(NSDictionary *)oldInfo andNewProjectInfo:(NSDictionary *)newInfo;
 
 @end
 
+extern NSString *CCMBuildStartNotification;
 extern NSString *CCMBuildCompleteNotification;
+
 extern NSString *CCMSuccessfulBuild;
 extern NSString *CCMFixedBuild;
 extern NSString *CCMBrokenBuild;

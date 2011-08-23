@@ -2,9 +2,9 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface CCMGrowlAdaptor : NSObject 
+@interface CCMBuildTimer : NSObject 
 {
-	
+    
 }
 
 - (void)start;

@@ -24,7 +24,7 @@
 	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
 	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 
-	NSNotification *notification = [factory buildCompleteNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
+	NSNotification *notification = [factory buildNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
 	
 	STAssertNotNil(notification, @"Should have created a notification.");
 	STAssertEqualObjects(CCMBuildCompleteNotification, [notification name], @"Should have created correct notification.");
@@ -38,7 +38,7 @@
 	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
 	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	
-	NSNotification *notification = [factory buildCompleteNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
+	NSNotification *notification = [factory buildNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
 	
 	NSDictionary *userInfo = [notification userInfo];
 	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
@@ -49,7 +49,7 @@
 	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
 	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	
-	NSNotification *notification = [factory buildCompleteNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
+	NSNotification *notification = [factory buildNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
 	
 	NSDictionary *userInfo = [notification userInfo];
 	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
@@ -60,7 +60,7 @@
 	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
 	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	
-	NSNotification *notification = [factory buildCompleteNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
+	NSNotification *notification = [factory buildNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
 	
 	NSDictionary *userInfo = [notification userInfo];
 	STAssertEqualObjects(CCMStillFailingBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
@@ -71,7 +71,7 @@
 	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	
-	NSNotification *notification = [factory buildCompleteNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
+	NSNotification *notification = [factory buildNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
 	
 	NSDictionary *userInfo = [notification userInfo];
 	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
@@ -82,10 +82,23 @@
 	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
 	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
 	
-	NSNotification *notification = [factory buildCompleteNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
+	NSNotification *notification = [factory buildNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
 	
 	NSDictionary *userInfo = [notification userInfo];
 	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
+}
+
+- (void)testCreatesBuildStartingNotification
+{
+	NSDictionary *pi1 = [self createProjectInfoWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	NSDictionary *pi2 = [self createProjectInfoWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+	
+	NSNotification *notification = [factory buildNotificationForOldProjectInfo:pi1 andNewProjectInfo:pi2];
+	
+	STAssertNotNil(notification, @"Should have created a notification.");
+	STAssertEqualObjects(CCMBuildStartNotification, [notification name], @"Should have created correct notification.");
+	NSDictionary *userInfo = [notification userInfo];
+	STAssertEqualObjects(@"connectfour", [userInfo objectForKey:@"projectName"], @"Should have set project name.");
 }
 
 @end

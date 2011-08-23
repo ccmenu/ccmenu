@@ -31,6 +31,7 @@ static NSSet *infoKeys;
 {
 	[name release];
 	[info release];
+    [buildStartTime release];
 	[super dealloc];
 }
 
@@ -38,6 +39,13 @@ static NSSet *infoKeys;
 {
 	return [self retain];
 }
+
+
+- (NSString *)name
+{
+	return name;
+}
+
 
 - (void)updateWithInfo:(NSDictionary *)dictionary
 {
@@ -48,6 +56,35 @@ static NSSet *infoKeys;
 - (NSDictionary *)info
 {
 	return info;
+}
+
+
+- (void)setBuildDuration:(NSTimeInterval)duration
+{
+    buildDuration = duration;
+}
+
+- (NSTimeInterval)buildDuration
+{   
+    return buildDuration;
+}
+
+- (void)setBuildStartTime:(NSCalendarDate *)aTime
+{
+    [buildStartTime autorelease];
+    buildStartTime = [aTime retain];
+}
+
+- (NSDate *)buildStartTime
+{
+    return buildStartTime;
+}
+
+- (NSCalendarDate *)estimatedBuildCompleteTime
+{
+    if(buildDuration == 0)
+        return nil;
+    return [buildStartTime dateByAddingTimeInterval:buildDuration];
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector
@@ -68,10 +105,6 @@ static NSSet *infoKeys;
 	return [info objectForKey:key]; 
 }
 
-- (NSString *)name
-{
-	return name;
-}
 
 - (BOOL)isFailed
 {

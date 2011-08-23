@@ -44,7 +44,7 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
     if(doc == nil)
         return nil;
     
-    NSMutableArray *projectInfos = [[NSMutableArray array] retain];
+    NSMutableArray *projectInfos = [NSMutableArray array];
     for(NSXMLElement *element in [doc nodesForXPath:@"//Project" error:nil])
 	{
 		NSDictionary *info = [NSMutableDictionary dictionary];

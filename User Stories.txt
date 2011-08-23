@@ -13,6 +13,8 @@ High-priority Stories
 #24 Build timing in menu: As a developer I want to see build timing, that is remaining time for this build (as a negative number) or time by which current build exceeds last build (as a positive number), in the menu so that I know how long I have to wait before checking in or that the build might be stuck.
 
 #25 Publish notification if current build time exceeds last build time by x: As a developer I want CCMenu to notify me (via Growl) if the current build time exceeds the last build time by a margin that I can configure so that I am alerted as soon as possible about a build that might be stuck.
+    
+#30 Auto start: As a developer I would like to set CCMenu to start at login in the CCMenu preference so that I don't have to go to the system preferences, or know about them.
 
 
 Low-priority Stories

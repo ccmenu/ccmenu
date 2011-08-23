@@ -3,6 +3,7 @@
 #import "CCMProject.h"
 
 
+NSString *CCMBuildStartNotification = @"CCMBuildStartNotification";
 NSString *CCMBuildCompleteNotification = @"CCMBuildCompleteNotification";
 
 NSString *CCMSuccessfulBuild = @"Successful";
@@ -26,7 +27,7 @@ NSString *CCMStillFailingBuild = @"Still failing";
 	return @"";
 }
 
-- (NSDictionary *)notificationInfoForOldProjectInfo:(NSDictionary *)oldInfo andNewInfo:(NSDictionary *)newInfo
+- (NSDictionary *)completeInfoForOldProjectInfo:(NSDictionary *)oldInfo andNewInfo:(NSDictionary *)newInfo
 {
 	NSMutableDictionary *notificationInfo = [NSMutableDictionary dictionary];
 	[notificationInfo setObject:[oldInfo objectForKey:@"name"] forKey:@"projectName"];
@@ -37,18 +38,31 @@ NSString *CCMStillFailingBuild = @"Still failing";
 	return notificationInfo;
 }
 
-- (NSNotification *)buildCompleteNotificationForOldProjectInfo:(NSDictionary *)oldInfo andNewProjectInfo:(NSDictionary *)newInfo
+- (NSDictionary *)startInfoForOldProjectInfo:(NSDictionary *)oldInfo andNewInfo:(NSDictionary *)newInfo
 {
+	NSMutableDictionary *notificationInfo = [NSMutableDictionary dictionary];
+	[notificationInfo setObject:[oldInfo objectForKey:@"name"] forKey:@"projectName"];
+	return notificationInfo;
+}
+
+- (NSNotification *)buildNotificationForOldProjectInfo:(NSDictionary *)oldInfo andNewProjectInfo:(NSDictionary *)newInfo
+{
+	if([[oldInfo objectForKey:@"activity"] isEqualToString:CCMSleepingActivity] &&
+	   [[newInfo objectForKey:@"activity"] isEqualToString:CCMBuildingActivity])
+    {
+		NSDictionary *buildStartInfo = [self startInfoForOldProjectInfo:oldInfo andNewInfo:newInfo];
+		return [NSNotification notificationWithName:CCMBuildStartNotification object:nil userInfo:buildStartInfo];
+    }
 	if([[oldInfo objectForKey:@"activity"] isEqualToString:CCMBuildingActivity] &&
 	   ![[newInfo objectForKey:@"activity"] isEqualToString:CCMBuildingActivity])
 	{
-		NSDictionary *buildCompleteInfo = [self notificationInfoForOldProjectInfo:oldInfo andNewInfo:newInfo];
+		NSDictionary *buildCompleteInfo = [self completeInfoForOldProjectInfo:oldInfo andNewInfo:newInfo];
 		return [NSNotification notificationWithName:CCMBuildCompleteNotification object:nil userInfo:buildCompleteInfo];
 	} 
-	else if(([oldInfo objectForKey:@"lastBuildStatus"] != nil) &&
-			![[oldInfo objectForKey:@"lastBuildStatus"] isEqualToString:[newInfo objectForKey:@"lastBuildStatus"]])
+	if(([oldInfo objectForKey:@"lastBuildStatus"] != nil) &&
+       ![[oldInfo objectForKey:@"lastBuildStatus"] isEqualToString:[newInfo objectForKey:@"lastBuildStatus"]])
 	{
-		NSDictionary *buildCompleteInfo = [self notificationInfoForOldProjectInfo:oldInfo andNewInfo:newInfo];
+		NSDictionary *buildCompleteInfo = [self completeInfoForOldProjectInfo:oldInfo andNewInfo:newInfo];
 		return [NSNotification notificationWithName:CCMBuildCompleteNotification object:nil userInfo:buildCompleteInfo];
 	}
 	return nil;

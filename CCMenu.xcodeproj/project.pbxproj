@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
+		0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0328D380135C191500D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
 		0328D381135C191500D35055 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37D135C191500D35055 /* Growl.framework */; };
 		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
@@ -48,6 +50,11 @@
 		0349BCA2134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */; };
 		0349BCA3134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */; };
 		0349BCA4134F9F9100D2F269 /* NSString+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC95134F9F9100D2F269 /* NSString+CCMAdditionsTest.m */; };
+		03843A081403901600C4C953 /* handlers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 03843A071403901600C4C953 /* handlers.applescript */; };
+		03843A0B140390BC00C4C953 /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03843A0A140390BC00C4C953 /* NSAppleScript+EDAdditions.m */; };
+		03843A0C140390BC00C4C953 /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03843A0A140390BC00C4C953 /* NSAppleScript+EDAdditions.m */; };
+		03843A0F1403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03843A0E1403915200C4C953 /* NSAppleEventDescriptor+EDAdditions.m */; };
+		03843A101403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03843A0E1403915200C4C953 /* NSAppleEventDescriptor+EDAdditions.m */; };
 		038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038ABE1D134F11090053F0D1 /* Cocoa.framework */; };
 		038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE26134F11090053F0D1 /* InfoPlist.strings */; };
 		038ABE2B134F11090053F0D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ABE2A134F11090053F0D1 /* main.m */; };
@@ -127,6 +134,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
+		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
 		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = Frameworks/EDCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +185,11 @@
 		0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+CCMAdditionsTest.m"; sourceTree = "<group>"; };
 		0349BC94134F9F9100D2F269 /* NSString+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CCMAdditionsTest.h"; sourceTree = "<group>"; };
 		0349BC95134F9F9100D2F269 /* NSString+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CCMAdditionsTest.m"; sourceTree = "<group>"; };
+		03843A071403901600C4C953 /* handlers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = handlers.applescript; path = Scripts/handlers.applescript; sourceTree = "<group>"; };
+		03843A09140390BC00C4C953 /* NSAppleScript+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleScript+EDAdditions.h"; sourceTree = "<group>"; };
+		03843A0A140390BC00C4C953 /* NSAppleScript+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleScript+EDAdditions.m"; sourceTree = "<group>"; };
+		03843A0D1403915200C4C953 /* NSAppleEventDescriptor+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor+EDAdditions.h"; sourceTree = "<group>"; };
+		03843A0E1403915200C4C953 /* NSAppleEventDescriptor+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor+EDAdditions.m"; sourceTree = "<group>"; };
 		038ABE19134F11080053F0D1 /* CCMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038ABE1D134F11090053F0D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		038ABE20134F11090053F0D1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -273,6 +287,10 @@
 				03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */,
 				03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */,
 				03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */,
+				03843A09140390BC00C4C953 /* NSAppleScript+EDAdditions.h */,
+				03843A0A140390BC00C4C953 /* NSAppleScript+EDAdditions.m */,
+				03843A0D1403915200C4C953 /* NSAppleEventDescriptor+EDAdditions.h */,
+				03843A0E1403915200C4C953 /* NSAppleEventDescriptor+EDAdditions.m */,
 			);
 			name = "Foundation Additions";
 			sourceTree = "<group>";
@@ -325,13 +343,17 @@
 			name = "Preferences Window";
 			sourceTree = "<group>";
 		};
-		031D05C513715AFE00AE5A48 /* Status Item */ = {
+		031D05C513715AFE00AE5A48 /* Status Observers */ = {
 			isa = PBXGroup;
 			children = (
+				0306184E13DD554F003B065E /* CCMBuildTimer.h */,
+				0306184F13DD554F003B065E /* CCMBuildTimer.m */,
+				03C0827D134F97940039E3BD /* CCMGrowlAdaptor.h */,
+				03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */,
 				03C0828F134F97940039E3BD /* CCMStatusItemMenuController.h */,
 				03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */,
 			);
-			name = "Status Item";
+			name = "Status Observers";
 			sourceTree = "<group>";
 		};
 		031D05C613715B2900AE5A48 /* Cocoa Extensions */ = {
@@ -354,15 +376,6 @@
 				03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */,
 			);
 			name = "Resource Managers";
-			sourceTree = "<group>";
-		};
-		031D05C813715C0E00AE5A48 /* Growl Interface */ = {
-			isa = PBXGroup;
-			children = (
-				03C0827D134F97940039E3BD /* CCMGrowlAdaptor.h */,
-				03C0827E134F97940039E3BD /* CCMGrowlAdaptor.m */,
-			);
-			name = "Growl Interface";
 			sourceTree = "<group>";
 		};
 		031D05C913715C3D00AE5A48 /* Global */ = {
@@ -487,6 +500,7 @@
 		038ABE24134F11090053F0D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				03843A071403901600C4C953 /* handlers.applescript */,
 				0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */,
 				038ABE25134F11090053F0D1 /* CCMenu-Info.plist */,
 				038ABE26134F11090053F0D1 /* InfoPlist.strings */,
@@ -521,11 +535,10 @@
 			children = (
 				031D05C1137157A100AE5A48 /* Domain Model */,
 				031D05C31371598500AE5A48 /* CI Server Interface */,
-				031D05C813715C0E00AE5A48 /* Growl Interface */,
-				031D05C913715C3D00AE5A48 /* Global */,
-				031D05C513715AFE00AE5A48 /* Status Item */,
-				031D05C413715A4E00AE5A48 /* Preferences Window */,
+				031D05C513715AFE00AE5A48 /* Status Observers */,
 				031D05C2137157D700AE5A48 /* Project Window */,
+				031D05C413715A4E00AE5A48 /* Preferences Window */,
+				031D05C913715C3D00AE5A48 /* Global */,
 				031D05C713715B7300AE5A48 /* Resource Managers */,
 				031D05C613715B2900AE5A48 /* Cocoa Extensions */,
 				031D05C01371574300AE5A48 /* Foundation Additions */,
@@ -710,6 +723,10 @@
 				03C082AE134F97940039E3BD /* NSArray+CCMAdditions.m in Sources */,
 				03C082AF134F97940039E3BD /* NSCalendarDate+CCMAdditions.m in Sources */,
 				03C082B0134F97940039E3BD /* NSString+CCMAdditions.m in Sources */,
+				0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */,
+				03843A081403901600C4C953 /* handlers.applescript in Sources */,
+				03843A0B140390BC00C4C953 /* NSAppleScript+EDAdditions.m in Sources */,
+				03843A0F1403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +768,9 @@
 				039C92E8135CE0080012838C /* NSArray+CCMAdditions.m in Sources */,
 				039C92E9135CE0080012838C /* NSCalendarDate+CCMAdditions.m in Sources */,
 				039C92EA135CE0080012838C /* NSString+CCMAdditions.m in Sources */,
+				0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */,
+				03843A0C140390BC00C4C953 /* NSAppleScript+EDAdditions.m in Sources */,
+				03843A101403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

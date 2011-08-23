@@ -4,6 +4,27 @@
 
 @implementation CCMProjectTest
 
+- (void)testCalculatesEstimatedCompleteTime
+{
+	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+    [project setBuildDuration:90];
+    [project setBuildStartTime:[NSDate dateWithNaturalLanguageString:@"2011-07-25 13:47:00"]];
+
+    NSDate *completeTime = [project estimatedBuildCompleteTime];
+    
+    STAssertEqualObjects([NSDate dateWithNaturalLanguageString:@"2011-07-25 13:48:30"], completeTime, @"Should have returned 90s from start");
+}
+
+- (void)testDoesNotCalculateEstimatedCompleteTimeWhenNoBuildDurationIsSet
+{
+	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+    [project setBuildStartTime:[NSDate dateWithNaturalLanguageString:@"2011-07-25 13:47:00"]];
+    
+    NSDate *completeTime = [project estimatedBuildCompleteTime];
+    
+    STAssertNil(completeTime, @"Should have returned nil");
+}
+
 - (void)testCanCallMethodsForInfoKeys
 {
 	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];

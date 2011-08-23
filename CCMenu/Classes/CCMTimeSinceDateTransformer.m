@@ -21,7 +21,7 @@ NSString *CCMTimeSinceDateTransformerName = @"CCMTimeSinceDateTransformer";
 {
 	if(value == nil)
 		return nil;
-	return [[NSCalendarDate calendarDate] descriptionOfIntervalSinceDate:value];
+	return [[NSCalendarDate calendarDate] relativeDescriptionOfPastDate:value];
 }
 
 @end

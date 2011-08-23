@@ -113,7 +113,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	if(server == nil)
 		return;
     
-    NSMutableSet *unseenProjects = [[server projects] mutableCopy];
+    NSMutableSet *unseenProjects = [[[server projects] mutableCopy] autorelease];
 
     for(NSDictionary *projectInfo in projectInfoList)
 	{
@@ -121,9 +121,9 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 		if(project == nil)
 			continue;
         [unseenProjects removeObject:project];
-		NSNotification *notification = [notificationFactory buildCompleteNotificationForOldProjectInfo:[project info] andNewProjectInfo:projectInfo];
+		NSNotification *notification = [notificationFactory buildNotificationForOldProjectInfo:[project info] andNewProjectInfo:projectInfo];
 		if(notification != nil)
-			[notificationCenter postNotification:notification];
+			[notificationCenter postNotificationName:[notification name] object:project userInfo:[notification userInfo]];
 		[project updateWithInfo:projectInfo];
 	}
     
