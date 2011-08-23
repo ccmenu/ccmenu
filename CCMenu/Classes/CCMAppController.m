@@ -3,7 +3,8 @@
 #import "CCMGrowlAdaptor.h"
 #import "CCMBuildNotificationFactory.h"
 #import "CCMBuildStatusTransformer.h"
-#import "CCMTimeSinceDateTransformer.h"
+#import "CCMRelativeDateTransformer.h"
+#import "CCMTimeIntervalTransformer.h"
 #import "CCMBuildTimer.h"
 
 
@@ -22,8 +23,11 @@
 	[statusTransformer setImageFactory:imageFactory];
 	[NSValueTransformer setValueTransformer:statusTransformer forName:CCMBuildStatusTransformerName];
 	
-	CCMTimeSinceDateTransformer *dateTransformer = [[[CCMTimeSinceDateTransformer alloc] init] autorelease];
-	[NSValueTransformer setValueTransformer:dateTransformer forName:CCMTimeSinceDateTransformerName];
+	CCMRelativeDateTransformer *relativeDateTransformer = [[[CCMRelativeDateTransformer alloc] init] autorelease];
+	[NSValueTransformer setValueTransformer:relativeDateTransformer forName:CCMRelativeDateTransformerName];
+
+	CCMRelativeDateTransformer *timeIntervalTransformer = [[[CCMTimeIntervalTransformer alloc] init] autorelease];
+	[NSValueTransformer setValueTransformer:timeIntervalTransformer forName:CCMTimeIntervalTransformerName];
 }
 
 - (void)startBuildTimer

@@ -25,9 +25,19 @@
 	return @"less than a minute ago";
 }
 
+- (NSString *)descriptionOfIntervalWithDate:(NSCalendarDate *)other
+{  
+    return [self descriptionOfIntervalSinceDate:other withSign:NO];
+}
+
 - (NSString *)descriptionOfIntervalSinceDate:(NSCalendarDate *)other withSign:(BOOL)withSign
 {
-    long interval = (long)[self timeIntervalSinceDate:other];
+    return [[self class] descriptionOfInterval:[self timeIntervalSinceDate:other] withSign:withSign];
+}
+
++ (NSString *)descriptionOfInterval:(NSTimeInterval)timeInterval withSign:(BOOL)withSign
+{
+    long interval = (long)timeInterval;
     NSString *sign = withSign ? ((interval < 0) ? @"-" : @"+") : @"";
     interval = abs(interval);
 
@@ -38,10 +48,6 @@
     return [NSString stringWithFormat:@"%@%ds", sign, interval];
 }
 
-- (NSString *)descriptionOfIntervalWithDate:(NSCalendarDate *)other
-{  
-    return [self descriptionOfIntervalSinceDate:other withSign:NO];
-}
 
 @end
 

@@ -8,6 +8,8 @@
 - (NSString *)descriptionOfIntervalWithDate:(NSCalendarDate *)other;
 - (NSString *)descriptionOfIntervalSinceDate:(NSCalendarDate *)other withSign:(BOOL)withSign;
 
++ (NSString *)descriptionOfInterval:(NSTimeInterval)interval withSign:(BOOL)withSign;
+
 @end
 
 

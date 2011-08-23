@@ -1,11 +1,11 @@
 
-#import "CCMTimeSinceDateTransformer.h"
+#import "CCMRelativeDateTransformer.h"
 #import "NSCalendarDate+CCMAdditions.h"
 
-NSString *CCMTimeSinceDateTransformerName = @"CCMTimeSinceDateTransformer";
+NSString *CCMRelativeDateTransformerName = @"CCMRelativeDateTransformer";
 
 
-@implementation CCMTimeSinceDateTransformer
+@implementation CCMRelativeDateTransformer
 
 + (Class)transformedValueClass 
 { 

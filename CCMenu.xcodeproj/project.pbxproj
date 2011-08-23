@@ -19,6 +19,10 @@
 		0328D388135C1A2E00D35055 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
 		0328D389135C1A3500D35055 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37D135C191500D35055 /* Growl.framework */; };
 		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
+		032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
+		032E6ECC140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
+		032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */; };
+		032E6ED0140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */; };
 		0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */; };
 		0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5A134F9EE600D2F269 /* btn-force-build.png */; };
 		0349BC6A134F9EE700D2F269 /* CCMenu.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5B134F9EE600D2F269 /* CCMenu.icns */; };
@@ -74,7 +78,6 @@
 		039C92E2135CE0080012838C /* CCMServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828C134F97940039E3BD /* CCMServerStatusReader.m */; };
 		039C92E3135CE0080012838C /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */; };
 		039C92E4135CE0080012838C /* CCMStatusItemMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */; };
-		039C92E5135CE0080012838C /* CCMTimeSinceDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */; };
 		039C92E6135CE0080012838C /* CCMUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */; };
 		039C92E7135CE0080012838C /* CCMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08296134F97940039E3BD /* CCMWindowController.m */; };
 		039C92E8135CE0080012838C /* NSArray+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */; };
@@ -94,7 +97,6 @@
 		03C082A8134F97940039E3BD /* CCMServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828C134F97940039E3BD /* CCMServerStatusReader.m */; };
 		03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */; };
 		03C082AA134F97940039E3BD /* CCMStatusItemMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */; };
-		03C082AB134F97940039E3BD /* CCMTimeSinceDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */; };
 		03C082AC134F97940039E3BD /* CCMUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */; };
 		03C082AD134F97940039E3BD /* CCMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08296134F97940039E3BD /* CCMWindowController.m */; };
 		03C082AE134F97940039E3BD /* NSArray+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */; };
@@ -140,6 +142,10 @@
 		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37F135C191500D35055 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		032E6EC9140411A100DBA2E0 /* CCMRelativeDateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMRelativeDateTransformer.h; sourceTree = "<group>"; };
+		032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMRelativeDateTransformer.m; sourceTree = "<group>"; };
+		032E6ECD140416C900DBA2E0 /* CCMTimeIntervalTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMTimeIntervalTransformer.h; sourceTree = "<group>"; };
+		032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeIntervalTransformer.m; sourceTree = "<group>"; };
 		0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FactoryDefaults.plist; sourceTree = "<group>"; };
 		0349BC5A134F9EE600D2F269 /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-force-build.png"; sourceTree = "<group>"; };
 		0349BC5B134F9EE600D2F269 /* CCMenu.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CCMenu.icns; sourceTree = "<group>"; };
@@ -231,8 +237,6 @@
 		03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemApplication.m; sourceTree = "<group>"; };
 		03C0828F134F97940039E3BD /* CCMStatusItemMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusItemMenuController.h; sourceTree = "<group>"; };
 		03C08290134F97940039E3BD /* CCMStatusItemMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemMenuController.m; sourceTree = "<group>"; };
-		03C08291134F97940039E3BD /* CCMTimeSinceDateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMTimeSinceDateTransformer.h; sourceTree = "<group>"; };
-		03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeSinceDateTransformer.m; sourceTree = "<group>"; };
 		03C08293134F97940039E3BD /* CCMUserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMUserDefaultsManager.h; sourceTree = "<group>"; };
 		03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMUserDefaultsManager.m; sourceTree = "<group>"; };
 		03C08295134F97940039E3BD /* CCMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMWindowController.h; sourceTree = "<group>"; };
@@ -311,10 +315,12 @@
 			children = (
 				03C08279134F97940039E3BD /* CCMBuildStatusTransformer.h */,
 				03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */,
+				032E6EC9140411A100DBA2E0 /* CCMRelativeDateTransformer.h */,
+				032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */,
+				032E6ECD140416C900DBA2E0 /* CCMTimeIntervalTransformer.h */,
+				032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */,
 				03C08285134F97940039E3BD /* CCMProjectWindowController.h */,
 				03C08286134F97940039E3BD /* CCMProjectWindowController.m */,
-				03C08291134F97940039E3BD /* CCMTimeSinceDateTransformer.h */,
-				03C08292134F97940039E3BD /* CCMTimeSinceDateTransformer.m */,
 			);
 			name = "Project Window";
 			sourceTree = "<group>";
@@ -717,7 +723,6 @@
 				03C082A8134F97940039E3BD /* CCMServerStatusReader.m in Sources */,
 				03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */,
 				03C082AA134F97940039E3BD /* CCMStatusItemMenuController.m in Sources */,
-				03C082AB134F97940039E3BD /* CCMTimeSinceDateTransformer.m in Sources */,
 				03C082AC134F97940039E3BD /* CCMUserDefaultsManager.m in Sources */,
 				03C082AD134F97940039E3BD /* CCMWindowController.m in Sources */,
 				03C082AE134F97940039E3BD /* NSArray+CCMAdditions.m in Sources */,
@@ -727,6 +732,8 @@
 				03843A081403901600C4C953 /* handlers.applescript in Sources */,
 				03843A0B140390BC00C4C953 /* NSAppleScript+EDAdditions.m in Sources */,
 				03843A0F1403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
+				032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */,
+				032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,7 +769,6 @@
 				039C92E2135CE0080012838C /* CCMServerStatusReader.m in Sources */,
 				039C92E3135CE0080012838C /* CCMStatusItemApplication.m in Sources */,
 				039C92E4135CE0080012838C /* CCMStatusItemMenuController.m in Sources */,
-				039C92E5135CE0080012838C /* CCMTimeSinceDateTransformer.m in Sources */,
 				039C92E6135CE0080012838C /* CCMUserDefaultsManager.m in Sources */,
 				039C92E7135CE0080012838C /* CCMWindowController.m in Sources */,
 				039C92E8135CE0080012838C /* NSArray+CCMAdditions.m in Sources */,
@@ -771,6 +777,8 @@
 				0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */,
 				03843A0C140390BC00C4C953 /* NSAppleScript+EDAdditions.m in Sources */,
 				03843A101403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
+				032E6ECC140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */,
+				032E6ED0140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
