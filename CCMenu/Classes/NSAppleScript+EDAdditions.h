@@ -12,7 +12,6 @@ More information at: http://www.scifihifi.com/weblog/mac/Cocoa-AppleEvent-Handle
 + (NSAppleScript *)scriptWithName:(NSString *)name;
 
 - (id)callHandler:(NSString *)handler;
-- (id)callHandler:(NSString *)handler withArgument:(id)argument;
 - (id)callHandler:(NSString *)handler withArguments:(NSArray *)arguments;
 - (id)callHandler:(NSString *)handler withArguments:(NSArray *)arguments errorInfo:(NSDictionary **) errorInfo;
 

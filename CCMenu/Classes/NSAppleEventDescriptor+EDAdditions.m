@@ -20,11 +20,8 @@
 + (NSAppleEventDescriptor *)descriptorWithArray:(NSArray *)array
 {
     NSAppleEventDescriptor *descriptor = [[[NSAppleEventDescriptor alloc] initListDescriptor] autorelease];
-	int i;
-	for(i = 0; i < [array count]; i++)
-	{
+	for(int i = 0; i < [array count]; i++)
 		[descriptor insertDescriptor:[self descriptorWithValue:[array objectAtIndex:i]] atIndex:i+1];
-	}
 	return descriptor;
 }
 
@@ -52,8 +49,7 @@
 - (NSArray *)listValue
 {
 	NSMutableArray *result = [NSMutableArray array];
-	int i;
-	for(i = 1; i <= [self numberOfItems]; i++)
+	for(int i = 1; i <= [self numberOfItems]; i++)
 		[result addObject:[[self descriptorAtIndex:i] naturalValue]];
 	return result;	
 }
@@ -63,8 +59,7 @@
 {
 	NSAppleEventDescriptor *innerList = [self descriptorAtIndex:1];
 	NSMutableDictionary *result = [NSMutableDictionary dictionary];
-	int i;
-	for(i = 1; i <= [innerList numberOfItems]; i = i + 2)
+	for(int i = 1; i <= [innerList numberOfItems]; i = i + 2)
 		[result setValue:[[innerList descriptorAtIndex:i + 1] naturalValue] forKey:[[innerList descriptorAtIndex:i] naturalValue]];
 	return result;
 }

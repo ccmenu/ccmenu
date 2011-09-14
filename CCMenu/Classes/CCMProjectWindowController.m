@@ -27,10 +27,10 @@
 	if(window == nil)
 	{
 		[NSBundle loadNibNamed:@"ProjectWindow" owner:self];
-		NSToolbar *toolbar = [self createToolbarWithName:@"ProjectWindow"];
-		[window setToolbar:toolbar];
-		[toolbar setAllowsUserCustomization:YES];
-		[toolbar setAutosavesConfiguration:YES];
+//		NSToolbar *toolbar = [self createToolbarWithName:@"ProjectWindow"];
+//		[window setToolbar:toolbar];
+//		[toolbar setAllowsUserCustomization:YES];
+//		[toolbar setAutosavesConfiguration:YES];
 
 		[[NSNotificationCenter defaultCenter] 
 			addObserver:self selector:@selector(statusUpdate:) name:CCMProjectStatusUpdateNotification object:nil];

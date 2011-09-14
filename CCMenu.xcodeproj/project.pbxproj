@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300E7591408021800E59AFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7531408021800E59AFD /* MainMenu.xib */; };
+		0300E75A1408021800E59AFD /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7551408021800E59AFD /* Preferences.xib */; };
+		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
+		032755E11420F6EA0083BC0E /* growl-config-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 032755DF1420F6EA0083BC0E /* growl-config-1.png */; };
+		032755E21420F6EA0083BC0E /* growl-config-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 032755E01420F6EA0083BC0E /* growl-config-2.png */; };
 		0328D380135C191500D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
 		0328D381135C191500D35055 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37D135C191500D35055 /* Growl.framework */; };
 		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
@@ -103,10 +108,7 @@
 		03C082AF134F97940039E3BD /* NSCalendarDate+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */; };
 		03C082B0134F97940039E3BD /* NSString+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */; };
 		03C082E2134F9D250039E3BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C082D6134F9D250039E3BD /* Localizable.strings */; };
-		03C082E3134F9D250039E3BD /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03C082D8134F9D250039E3BD /* MainMenu.nib */; };
-		03C082E4134F9D250039E3BD /* Preferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DA134F9D250039E3BD /* Preferences.nib */; };
 		03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DC134F9D250039E3BD /* Preferences.toolbar */; };
-		03C082E6134F9D250039E3BD /* ProjectWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DE134F9D250039E3BD /* ProjectWindow.nib */; };
 		03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */; };
 /* End PBXBuildFile section */
 
@@ -136,8 +138,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0300E7541408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0300E7561408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
+		0300E7581408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProjectWindow.xib; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
+		032755DF1420F6EA0083BC0E /* growl-config-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "growl-config-1.png"; sourceTree = "<group>"; };
+		032755E01420F6EA0083BC0E /* growl-config-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "growl-config-2.png"; sourceTree = "<group>"; };
 		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = Frameworks/EDCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,10 +255,7 @@
 		03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CCMAdditions.h"; sourceTree = "<group>"; };
 		03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CCMAdditions.m"; sourceTree = "<group>"; };
 		03C082D7134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		03C082D9134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		03C082DB134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/Preferences.nib; sourceTree = "<group>"; };
 		03C082DD134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/Preferences.toolbar; sourceTree = "<group>"; };
-		03C082DF134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/ProjectWindow.nib; sourceTree = "<group>"; };
 		03C082E1134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/ProjectWindow.toolbar; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -396,6 +400,8 @@
 		0349BC59134F9EE600D2F269 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				032755DF1420F6EA0083BC0E /* growl-config-1.png */,
+				032755E01420F6EA0083BC0E /* growl-config-2.png */,
 				0349BC5A134F9EE600D2F269 /* btn-force-build.png */,
 				0349BC5B134F9EE600D2F269 /* CCMenu.icns */,
 				0349BC5C134F9EE600D2F269 /* icon-building-failed.png */,
@@ -555,11 +561,11 @@
 		03C082D5134F9CF90039E3BD /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				0300E7531408021800E59AFD /* MainMenu.xib */,
+				0300E7551408021800E59AFD /* Preferences.xib */,
+				0300E7571408021800E59AFD /* ProjectWindow.xib */,
 				03C082D6134F9D250039E3BD /* Localizable.strings */,
-				03C082D8134F9D250039E3BD /* MainMenu.nib */,
-				03C082DA134F9D250039E3BD /* Preferences.nib */,
 				03C082DC134F9D250039E3BD /* Preferences.toolbar */,
-				03C082DE134F9D250039E3BD /* ProjectWindow.nib */,
 				03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */,
 			);
 			name = Interface;
@@ -639,10 +645,7 @@
 			files = (
 				038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */,
 				03C082E2134F9D250039E3BD /* Localizable.strings in Resources */,
-				03C082E3134F9D250039E3BD /* MainMenu.nib in Resources */,
-				03C082E4134F9D250039E3BD /* Preferences.nib in Resources */,
 				03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */,
-				03C082E6134F9D250039E3BD /* ProjectWindow.nib in Resources */,
 				03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */,
 				0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */,
 				0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */,
@@ -660,6 +663,11 @@
 				0349BC75134F9EE700D2F269 /* pref-advanced.tiff in Resources */,
 				0349BC76134F9EE700D2F269 /* pref-notifications.tiff in Resources */,
 				0349BC77134F9EE700D2F269 /* pref-projects.png in Resources */,
+				0300E7591408021800E59AFD /* MainMenu.xib in Resources */,
+				0300E75A1408021800E59AFD /* Preferences.xib in Resources */,
+				0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */,
+				032755E11420F6EA0083BC0E /* growl-config-1.png in Resources */,
+				032755E21420F6EA0083BC0E /* growl-config-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +801,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0300E7531408021800E59AFD /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0300E7541408021800E59AFD /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0300E7551408021800E59AFD /* Preferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0300E7561408021800E59AFD /* en */,
+			);
+			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		0300E7571408021800E59AFD /* ProjectWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0300E7581408021800E59AFD /* en */,
+			);
+			name = ProjectWindow.xib;
+			sourceTree = "<group>";
+		};
 		038ABE26134F11090053F0D1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -817,36 +849,12 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		03C082D8134F9D250039E3BD /* MainMenu.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03C082D9134F9D250039E3BD /* en */,
-			);
-			name = MainMenu.nib;
-			sourceTree = "<group>";
-		};
-		03C082DA134F9D250039E3BD /* Preferences.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03C082DB134F9D250039E3BD /* en */,
-			);
-			name = Preferences.nib;
-			sourceTree = "<group>";
-		};
 		03C082DC134F9D250039E3BD /* Preferences.toolbar */ = {
 			isa = PBXVariantGroup;
 			children = (
 				03C082DD134F9D250039E3BD /* en */,
 			);
 			name = Preferences.toolbar;
-			sourceTree = "<group>";
-		};
-		03C082DE134F9D250039E3BD /* ProjectWindow.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03C082DF134F9D250039E3BD /* en */,
-			);
-			name = ProjectWindow.nib;
 			sourceTree = "<group>";
 		};
 		03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */ = {

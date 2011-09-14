@@ -59,12 +59,13 @@ static NSSet *infoKeys;
 }
 
 
-- (void)setBuildDuration:(NSTimeInterval)duration
+- (void)setBuildDuration:(NSNumber *)duration
 {
-    buildDuration = duration;
+    [buildDuration autorelease];
+    buildDuration = [duration retain];
 }
 
-- (NSTimeInterval)buildDuration
+- (NSNumber *)buildDuration
 {   
     return buildDuration;
 }
@@ -82,9 +83,9 @@ static NSSet *infoKeys;
 
 - (NSCalendarDate *)estimatedBuildCompleteTime
 {
-    if(buildDuration == 0)
+    if(buildDuration == nil)
         return nil;
-    return [buildStartTime dateByAddingTimeInterval:buildDuration];
+    return [buildStartTime dateByAddingTimeInterval:[buildDuration doubleValue]];
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector

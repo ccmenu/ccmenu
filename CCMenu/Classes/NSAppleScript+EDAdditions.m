@@ -6,9 +6,6 @@
  */
 
 #import <Foundation/Foundation.h>
-
-static NSString *NSAppleScriptLoadException = @"NSAppleScriptNotFoundException";
-
 #import "NSAppleScript+EDAdditions.h"
 #import "NSAppleEventDescriptor+EDAdditions.h"
 
@@ -27,10 +24,7 @@ static NSString *NSAppleScriptLoadException = @"NSAppleScriptNotFoundException";
     NSDictionary *errorInfo = nil;
 	NSAppleScript *script = [[[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:&errorInfo] autorelease];    
     if(errorInfo != nil)
-	{
-		NSException *ex = [NSException exceptionWithName:NSAppleScriptLoadException reason:[NSString stringWithFormat:@"Error while loading AppleScript %@", name] userInfo:errorInfo];
-		[ex raise];
-	}
+		[[NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Error while loading AppleScript %@", name] userInfo:errorInfo] raise];
 	return script;
 }
 

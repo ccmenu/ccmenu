@@ -6,7 +6,7 @@
 {
 	NSString		*name;
 	NSDictionary	*info;
-    NSTimeInterval  buildDuration;
+    NSNumber        *buildDuration;
     NSCalendarDate  *buildStartTime;
 }
 
@@ -17,8 +17,8 @@
 - (void)updateWithInfo:(NSDictionary *)dictionary;
 - (NSDictionary *)info;
 
-- (void)setBuildDuration:(NSTimeInterval)duration;
-- (NSTimeInterval)buildDuration;
+- (void)setBuildDuration:(NSNumber *)duration;
+- (NSNumber *)buildDuration;
 
 - (void)setBuildStartTime:(NSCalendarDate *)aTime;
 - (NSCalendarDate *)buildStartTime;

@@ -7,7 +7,7 @@
 - (void)testCalculatesEstimatedCompleteTime
 {
 	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-    [project setBuildDuration:90];
+    [project setBuildDuration:[NSNumber numberWithDouble:90.0]];
     [project setBuildStartTime:[NSDate dateWithNaturalLanguageString:@"2011-07-25 13:47:00"]];
 
     NSDate *completeTime = [project estimatedBuildCompleteTime];

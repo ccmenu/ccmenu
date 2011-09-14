@@ -32,7 +32,6 @@
 {
     CCMProject *project = [notification object];
     [project setBuildStartTime:[NSDate date]];
-    NSLog(@"Starting build of %@ at %@", [project name], [project buildStartTime]);
 }
 
 - (void)buildComplete:(NSNotification *)notification
@@ -45,8 +44,7 @@
     NSTimeInterval difference = [startTime timeIntervalSinceNow] * -1;
     [project setBuildStartTime:nil];
     if(difference < 12 * 3600) // 12 hours should be enough for any build...
-        [project setBuildDuration:difference];
-    NSLog(@"Completed build of %@ after %g seconds", [project name], [project buildDuration]);
+        [project setBuildDuration:[NSNumber numberWithDouble:difference]];
 }
 
 @end
