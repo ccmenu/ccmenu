@@ -56,9 +56,6 @@
 
 - (void)displayProjects:(id)sender
 {
-    [timer invalidate];
-    timer = nil;
-    
     NSArray *projectList = [serverMonitor projects];
 	NSMenu *menu = [statusItem menu];
 	
@@ -130,7 +127,7 @@
         {
             [statusItem setFormattedTitle:[[NSCalendarDate date] descriptionOfIntervalSinceDate:[displayProject estimatedBuildCompleteTime] withSign:YES]];
         }
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(displayProjects:) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(displayProjects:) userInfo:nil repeats:NO];
     }
 	else if(failCount > 0)
 	{
