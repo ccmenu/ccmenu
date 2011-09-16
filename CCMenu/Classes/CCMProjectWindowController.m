@@ -12,36 +12,32 @@
     return NO;
 }
 
-- (void)statusUpdate:(NSNotification *)notification
-{	
-	[self displayProjects:[[notification object] projects]];
-}
-
-- (void)displayProjects:(NSArray *)projects
-{
-	[tableViewController setContent:projects];
-}
-
 - (void)showWindow:(id)sender
 {
 	if(window == nil)
-	{
+    {
 		[NSBundle loadNibNamed:@"ProjectWindow" owner:self];
-//		NSToolbar *toolbar = [self createToolbarWithName:@"ProjectWindow"];
-//		[window setToolbar:toolbar];
-//		[toolbar setAllowsUserCustomization:YES];
-//		[toolbar setAutosavesConfiguration:YES];
-
 		[[NSNotificationCenter defaultCenter] 
-			addObserver:self selector:@selector(statusUpdate:) name:CCMProjectStatusUpdateNotification object:nil];
-	}
+         addObserver:self selector:@selector(displayProjects:) name:CCMProjectStatusUpdateNotification object:nil];
+    }
+
+    [self displayProjects:self];
+    timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(displayProjects:) userInfo:nil repeats:YES];
+
 	[NSApp activateIgnoringOtherApps:YES];
 	[window makeKeyAndOrderFront:self];	
 }
 
-- (void)forceBuild:(id)sender
+- (void)windowWillClose:(NSNotification *)notification
 {
-	NSRunAlertPanel(nil, @"Force build is not supported yet.", @"OK", nil, nil);
+    [timer invalidate];
 }
+
+- (void)displayProjects:(id)sender
+{
+    NSArray *projects = [serverMonitor projects];
+	[tableViewController setContent:projects];
+}
+
 
 @end

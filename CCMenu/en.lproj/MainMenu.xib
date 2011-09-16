@@ -115,9 +115,6 @@
 				</array>
 				<string key="NSName"/>
 			</object>
-			<object class="NSCustomObject" id="351581124">
-				<string key="NSClassName">CCMProjectWindowController</string>
-			</object>
 			<object class="NSCustomObject" id="885934058">
 				<string key="NSClassName">CCMImageFactory</string>
 			</object>
@@ -139,6 +136,9 @@
 			<object class="NSCustomObject" id="575480597">
 				<string key="NSClassName">CCMStatusItemMenuController</string>
 			</object>
+			<object class="NSCustomObject" id="351581124">
+				<string key="NSClassName">CCMProjectWindowController</string>
+			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -157,14 +157,6 @@
 						<reference key="destination" ref="1043267748"/>
 					</object>
 					<int key="connectionID">219</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">showWindow:</string>
-						<reference key="source" ref="351581124"/>
-						<reference key="destination" ref="232744206"/>
-					</object>
-					<int key="connectionID">246</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -254,6 +246,30 @@
 					</object>
 					<int key="connectionID">275</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showWindow:</string>
+						<reference key="source" ref="351581124"/>
+						<reference key="destination" ref="232744206"/>
+					</object>
+					<int key="connectionID">278</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">serverMonitor</string>
+						<reference key="source" ref="351581124"/>
+						<reference key="destination" ref="249743854"/>
+					</object>
+					<int key="connectionID">279</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">serverMonitor</string>
+						<reference key="source" ref="575480597"/>
+						<reference key="destination" ref="249743854"/>
+					</object>
+					<int key="connectionID">280</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -322,12 +338,6 @@
 						<reference key="parent" ref="864840789"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">245</int>
-						<reference key="object" ref="351581124"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">CCMProjectWindowController</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">249</int>
 						<reference key="object" ref="885934058"/>
 						<reference key="parent" ref="0"/>
@@ -385,6 +395,12 @@
 						<reference key="object" ref="823646064"/>
 						<reference key="parent" ref="864840789"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">277</int>
+						<reference key="object" ref="351581124"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">CCMProjectWindowController</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -403,8 +419,6 @@
 				<boolean value="YES" key="217.ImportedFromIB2"/>
 				<string key="218.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="218.ImportedFromIB2"/>
-				<string key="245.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<boolean value="YES" key="245.ImportedFromIB2"/>
 				<string key="249.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="249.ImportedFromIB2"/>
 				<string key="253.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -425,12 +439,13 @@
 				<boolean value="YES" key="272.ImportedFromIB2"/>
 				<string key="273.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="273.ImportedFromIB2"/>
+				<string key="277.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">275</int>
+			<int key="maxID">280</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -636,26 +651,28 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">CCMProjectWindowController</string>
 					<string key="superclassName">CCMWindowController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="forceBuild:">id</string>
-						<string key="showWindow:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="forceBuild:">
-							<string key="name">forceBuild:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showWindow:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">showWindow:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">showWindow:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">showWindow:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="serverMonitor">CCMServerMonitor</string>
 						<string key="tableView">NSTableView</string>
 						<string key="tableViewController">NSArrayController</string>
 						<string key="window">NSWindow</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="serverMonitor">
+							<string key="name">serverMonitor</string>
+							<string key="candidateClassName">CCMServerMonitor</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="tableView">
 							<string key="name">tableView</string>
 							<string key="candidateClassName">NSTableView</string>
@@ -709,12 +726,17 @@
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="imageFactory">CCMImageFactory</string>
+						<string key="serverMonitor">CCMServerMonitor</string>
 						<string key="statusMenu">NSMenu</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="imageFactory">
 							<string key="name">imageFactory</string>
 							<string key="candidateClassName">CCMImageFactory</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="serverMonitor">
+							<string key="name">serverMonitor</string>
+							<string key="candidateClassName">CCMServerMonitor</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="statusMenu">
 							<string key="name">statusMenu</string>

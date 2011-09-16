@@ -41,8 +41,8 @@
 - (void)awakeFromNib
 {
 	[self createStatusItem];
-	[[NSNotificationCenter defaultCenter] 
-		addObserver:self selector:@selector(statusUpdate:) name:CCMProjectStatusUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self selector:@selector(displayProjects:) name:CCMProjectStatusUpdateNotification object:nil];
 }
 
 - (NSStatusItem *)createStatusItem
@@ -54,8 +54,12 @@
 	return statusItem;
 }
 
-- (void)displayProjects:(NSArray *)projectList
+- (void)displayProjects:(id)sender
 {
+    [timer invalidate];
+    timer = nil;
+    
+    NSArray *projectList = [serverMonitor projects];
 	NSMenu *menu = [statusItem menu];
 	
 	int index = 0;
@@ -126,6 +130,7 @@
         {
             [statusItem setFormattedTitle:[[NSCalendarDate date] descriptionOfIntervalSinceDate:[displayProject estimatedBuildCompleteTime] withSign:YES]];
         }
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(displayProjects:) userInfo:nil repeats:YES];
     }
 	else if(failCount > 0)
 	{
@@ -139,10 +144,6 @@
     }
 }
 
-- (void)statusUpdate:(NSNotification *)notification
-{	
-	[self displayProjects:[[notification object] projects]];
-}
 
 - (IBAction)openProject:(id)sender
 {
