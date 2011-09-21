@@ -21,7 +21,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 - (int)pollInterval
 {
 	int interval = [userDefaults integerForKey:CCMDefaultsPollIntervalKey];
-	NSAssert1(interval >= 5, @"Invalid poll interval; must be greater or equal 1 but is %d.", interval);
+	NSAssert1(interval >= 5, @"Invalid poll interval; must be greater or equal 5 but is %d.", interval);
 	return interval;
 }
 
@@ -37,8 +37,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 		return;
 	NSMutableArray *mutableList = [[[self projectListEntries] mutableCopy] autorelease];
 	[mutableList addObject:[self createEntryWithProject:projectName andURL:serverUrl]];
-	NSData *data = [NSArchiver archivedDataWithRootObject:[[mutableList copy] autorelease]];
-	[userDefaults setObject:data forKey:CCMDefaultsProjectListKey];
+	[userDefaults setObject:mutableList forKey:CCMDefaultsProjectListKey];
 }
 
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
@@ -48,10 +47,13 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 
 - (NSArray *)projectListEntries
 {
-	NSData *defaultsData = [userDefaults dataForKey:CCMDefaultsProjectListKey];
-	if(defaultsData == nil)
-		return [NSArray array];
-	return [NSUnarchiver unarchiveObjectWithData:defaultsData];
+    NSArray *list = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
+    if(list != nil)
+        return list;
+	NSData *data = [userDefaults dataForKey:CCMDefaultsProjectListKey];
+	if(data != nil)
+        return [NSUnarchiver unarchiveObjectWithData:data];
+    return [NSArray array];
 }
 
 - (NSArray *)servers
