@@ -4,9 +4,6 @@
 
 @implementation CCMServerStatusReader
 
-static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
-
-
 - (id)initWithServerResponse:(NSData *)data
 {
 	[super init];
@@ -20,9 +17,10 @@ static NSString *XML_DATE_FORMAT = @"%Y-%m-%dT%H:%M:%S";
 	[super dealloc];
 }
 
-- (NSCalendarDate *)convertDateString:(NSString *)dateString
+- (NSDate *)convertDateString:(NSString *)dateString
 {
-	return [NSCalendarDate dateWithString:dateString calendarFormat:XML_DATE_FORMAT];
+    // see http://stackoverflow.com/questions/2201216/is-there-a-simple-way-of-converting-an-iso8601-timestamp-to-a-formatted-nsdate
+    return [NSDate dateWithNaturalLanguageString:dateString];
 }
 
 - (NSString *)fixUrlStringIfNecessary:(NSString *)urlString

@@ -22,11 +22,28 @@
 	STAssertEqualObjects(@"Sleeping", [info objectForKey:@"activity"], @"Should have copied activity.");
 	STAssertEqualObjects(@"Success", [info objectForKey:@"lastBuildStatus"], @"Should have copied status.");
 	STAssertEqualObjects(@"build.1", [info objectForKey:@"lastBuildLabel"], @"Should have copied label.");
-	NSTimeZone *timezone = [NSTimeZone defaultTimeZone];
-	NSCalendarDate *date = [NSCalendarDate dateWithYear:2007 month:7 day:18 hour:18 minute:44 second:48 timeZone:timezone];
-	STAssertTrue([[info objectForKey:@"lastBuildTime"] isKindOfClass:[NSCalendarDate class]], @"Should have returned a date object.");
-	STAssertEqualObjects(date, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+	STAssertTrue([[info objectForKey:@"lastBuildTime"] isKindOfClass:[NSDate class]], @"Should have returned a date object.");
+    NSDate *expected = [NSDate dateWithNaturalLanguageString:@"2007-07-18 18:44:48 GMT"];
+	STAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 	STAssertEqualObjects(@"http://localhost:8080/dashboard/build/detail/connectfour", [info objectForKey:@"webUrl"], @"Should have copied web url.");
+}
+
+- (void)testReadsIsoFormattedDateWithUtcMarker
+{
+	NSString *xml = @"<Projects><Project name='connectfour' lastBuildTime='2007-07-18T18:44:48Z' /></Projects>";
+    NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
+	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
+    
+	NSArray *infos = [reader readProjectInfos:NULL];
+    
+//    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSISO8601Calendar] autorelease];
+    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
+    [components setYear:2007]; [components setMonth:7]; [components setDay:18];
+    [components setHour:18]; [components setMinute:44]; [components setSecond:48];
+    NSDate *expected = [calendar dateFromComponents:components];
+	STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
 - (void)testFixesBrokenCruiseControlRbUrls
@@ -53,6 +70,5 @@
     STAssertNil(result, @"Should have returned nil.");
     STAssertNotNil(error, @"Should have set error.");
 }
-
 
 @end
