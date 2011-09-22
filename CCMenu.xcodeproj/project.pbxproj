@@ -13,8 +13,6 @@
 		0301A778142BB9980041F299 /* NotificationHelp.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 0301A776142BB9980041F299 /* NotificationHelp.rtfd */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
-		032755E11420F6EA0083BC0E /* growl-config-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 032755DF1420F6EA0083BC0E /* growl-config-1.png */; };
-		032755E21420F6EA0083BC0E /* growl-config-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 032755E01420F6EA0083BC0E /* growl-config-2.png */; };
 		0328D380135C191500D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
 		0328D381135C191500D35055 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37D135C191500D35055 /* Growl.framework */; };
 		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
@@ -145,8 +143,6 @@
 		0301A777142BB9980041F299 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = en; path = en.lproj/NotificationHelp.rtfd; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
-		032755DF1420F6EA0083BC0E /* growl-config-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "growl-config-1.png"; sourceTree = "<group>"; };
-		032755E01420F6EA0083BC0E /* growl-config-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "growl-config-2.png"; sourceTree = "<group>"; };
 		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = Frameworks/EDCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -402,8 +398,6 @@
 		0349BC59134F9EE600D2F269 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				032755DF1420F6EA0083BC0E /* growl-config-1.png */,
-				032755E01420F6EA0083BC0E /* growl-config-2.png */,
 				0349BC5A134F9EE600D2F269 /* btn-force-build.png */,
 				0349BC5B134F9EE600D2F269 /* CCMenu.icns */,
 				0349BC5C134F9EE600D2F269 /* icon-building-failed.png */,
@@ -669,8 +663,6 @@
 				0300E7591408021800E59AFD /* MainMenu.xib in Resources */,
 				0300E75A1408021800E59AFD /* Preferences.xib in Resources */,
 				0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */,
-				032755E11420F6EA0083BC0E /* growl-config-1.png in Resources */,
-				032755E21420F6EA0083BC0E /* growl-config-2.png in Resources */,
 				0301A778142BB9980041F299 /* NotificationHelp.rtfd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

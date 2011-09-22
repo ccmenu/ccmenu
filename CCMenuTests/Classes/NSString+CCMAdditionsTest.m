@@ -89,12 +89,13 @@
 	NSArray *urls = [@"http://localhost" completeURLForAllServerTypes];
 	STAssertTrue([urls containsObject:@"http://localhost/cctray.xml"], @"Should have returned dashboard URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/dashboard/cctray.xml"], @"Should have returned alternate dashboard URL.");
+	STAssertTrue([urls containsObject:@"http://localhost/go/cctray.xml"], @"Should have returned Go URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/xml"], @"Should have returned classic reporting URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/XmlStatusReport.aspx"], @"Should have returned CC.NET URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/ccnet/XmlStatusReport.aspx"], @"Should have returned alternate CC.NET URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/cc.xml"], @"Should have returned Hudson URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/hudson/cc.xml"], @"Should have returned alternate Hudson URL.");
-	STAssertEquals(7u, [urls count], @"Should have returned only expected urls.");
+	STAssertEquals(8u, [urls count], @"Should have returned only expected urls.");
 }
 
 - (void)testOnlyReturnsOneCompleteURLWhenURLWasComplete

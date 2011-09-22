@@ -56,6 +56,7 @@ static void initialize()
 	NSMutableSet *urls = [NSMutableSet set];
 	[urls addObject:[self completeURLForServerType:CCMCruiseControlDashboard]];
 	[urls addObject:[self completeURLForServerType:CCMCruiseControlDashboard withPath:@"dashboard"]];
+	[urls addObject:[self completeURLForServerType:CCMCruiseControlDashboard withPath:@"go"]];
 	[urls addObject:[self completeURLForServerType:CCMCruiseControlClassic]];
 	[urls addObject:[self completeURLForServerType:CCMCruiseControlDotNetServer]];
 	[urls addObject:[self completeURLForServerType:CCMCruiseControlDotNetServer withPath:@"ccnet"]];

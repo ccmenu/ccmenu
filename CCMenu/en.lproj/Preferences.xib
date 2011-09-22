@@ -240,7 +240,7 @@
 															<object class="NSMatrix" id="1069527840">
 																<reference key="NSNextResponder" ref="466855544"/>
 																<int key="NSvFlags">256</int>
-																<string key="NSFrame">{{14, 14}, {290, 98}}</string>
+																<string key="NSFrame">{{14, 14}, {361, 98}}</string>
 																<reference key="NSSuperview" ref="466855544"/>
 																<reference key="NSWindow"/>
 																<reference key="NSNextKeyView" ref="611131538"/>
@@ -272,7 +272,7 @@
 																	<object class="NSButtonCell" id="410318252">
 																		<int key="NSCellFlags">67239424</int>
 																		<int key="NSCellFlags2">0</int>
-																		<string key="NSContents">CruiseControl Dashboard</string>
+																		<string key="NSContents">ThoughtWorks Go and CruiseControl Dashboard</string>
 																		<reference key="NSSupport" ref="776795984"/>
 																		<reference key="NSControlView" ref="1069527840"/>
 																		<int key="NSButtonFlags">1211912703</int>
@@ -303,7 +303,7 @@
 																	<object class="NSButtonCell" id="434668973">
 																		<int key="NSCellFlags">67239424</int>
 																		<int key="NSCellFlags2">0</int>
-																		<string key="NSContents">CruiseControl.NET or CruiseControl.rb</string>
+																		<string key="NSContents">CruiseControl.NET and CruiseControl.rb</string>
 																		<reference key="NSSupport" ref="776795984"/>
 																		<reference key="NSControlView" ref="1069527840"/>
 																		<int key="NSTag">2</int>
@@ -316,7 +316,7 @@
 																	<object class="NSButtonCell" id="647359810">
 																		<int key="NSCellFlags">67239424</int>
 																		<int key="NSCellFlags2">0</int>
-																		<string key="NSContents">Jenkins/Hudson</string>
+																		<string key="NSContents">Jenkins and Hudson</string>
 																		<reference key="NSSupport" ref="776795984"/>
 																		<reference key="NSControlView" ref="1069527840"/>
 																		<int key="NSTag">3</int>
@@ -407,7 +407,7 @@ AAAAAAAAbW1vZAAAAAAAAAYQAACSHQL+EhG+V+GAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 																		<int key="NSPeriodicInterval">75</int>
 																	</object>
 																</array>
-																<string key="NSCellSize">{290, 18}</string>
+																<string key="NSCellSize">{361, 18}</string>
 																<string key="NSIntercellSpacing">{4, 2}</string>
 																<int key="NSMatrixFlags">1143480320</int>
 																<string key="NSCellClass">NSActionCell</string>
@@ -1689,28 +1689,8 @@ A</string>
 										<object class="NSTextView" id="202092944">
 											<reference key="NSNextResponder" ref="163715783"/>
 											<int key="NSvFlags">2322</int>
-											<set class="NSMutableSet" key="NSDragTypes">
-												<string>Apple HTML pasteboard type</string>
-												<string>Apple PDF pasteboard type</string>
-												<string>Apple PICT pasteboard type</string>
-												<string>Apple PNG pasteboard type</string>
-												<string>Apple URL pasteboard type</string>
-												<string>CorePasteboardFlavorType 0x6D6F6F76</string>
-												<string>NSColor pasteboard type</string>
-												<string>NSFilenamesPboardType</string>
-												<string>NSStringPboardType</string>
-												<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
-												<string>NeXT RTFD pasteboard type</string>
-												<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-												<string>NeXT TIFF v4.0 pasteboard type</string>
-												<string>NeXT font pasteboard type</string>
-												<string>NeXT ruler pasteboard type</string>
-												<string>WebURLsWithTitlesPboardType</string>
-												<string>public.url</string>
-											</set>
 											<string key="NSFrameSize">{515, 14}</string>
 											<reference key="NSSuperview" ref="163715783"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="347174949"/>
 											<object class="NSTextContainer" key="NSTextContainer" id="653833433">
 												<object class="NSLayoutManager" key="NSLayoutManager">
@@ -1771,7 +1751,6 @@ A</string>
 									</array>
 									<string key="NSFrameSize">{515, 530}</string>
 									<reference key="NSSuperview" ref="1071830231"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="202092944"/>
 									<reference key="NSDocView" ref="202092944"/>
 									<reference key="NSBGColor" ref="167243481"/>
@@ -1786,7 +1765,6 @@ A</string>
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{515, 0}, {15, 530}}</string>
 									<reference key="NSSuperview" ref="1071830231"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView"/>
 									<reference key="NSTarget" ref="1071830231"/>
 									<string key="NSAction">_doScroller:</string>
@@ -1798,7 +1776,6 @@ A</string>
 									<int key="NSvFlags">-2147483392</int>
 									<string key="NSFrame">{{-100, -100}, {87, 18}}</string>
 									<reference key="NSSuperview" ref="1071830231"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="163715783"/>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="1071830231"/>
@@ -1809,7 +1786,6 @@ A</string>
 							</array>
 							<string key="NSFrameSize">{530, 530}</string>
 							<reference key="NSSuperview" ref="778254840"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="524894176"/>
 							<int key="NSsFlags">16</int>
 							<reference key="NSVScroller" ref="347174949"/>
@@ -1819,7 +1795,6 @@ A</string>
 					</array>
 					<string key="NSFrame">{{7, 11}, {530, 530}}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="1071830231"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
