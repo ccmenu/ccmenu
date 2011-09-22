@@ -10,6 +10,7 @@
 		0300E7591408021800E59AFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7531408021800E59AFD /* MainMenu.xib */; };
 		0300E75A1408021800E59AFD /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7551408021800E59AFD /* Preferences.xib */; };
 		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
+		0301A778142BB9980041F299 /* NotificationHelp.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 0301A776142BB9980041F299 /* NotificationHelp.rtfd */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		032755E11420F6EA0083BC0E /* growl-config-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 032755DF1420F6EA0083BC0E /* growl-config-1.png */; };
@@ -141,6 +142,7 @@
 		0300E7541408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0300E7561408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0300E7581408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProjectWindow.xib; sourceTree = "<group>"; };
+		0301A777142BB9980041F299 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = en; path = en.lproj/NotificationHelp.rtfd; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
 		032755DF1420F6EA0083BC0E /* growl-config-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "growl-config-1.png"; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 		03C082D5134F9CF90039E3BD /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				0301A776142BB9980041F299 /* NotificationHelp.rtfd */,
 				0300E7531408021800E59AFD /* MainMenu.xib */,
 				0300E7551408021800E59AFD /* Preferences.xib */,
 				0300E7571408021800E59AFD /* ProjectWindow.xib */,
@@ -668,6 +671,7 @@
 				0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */,
 				032755E11420F6EA0083BC0E /* growl-config-1.png in Resources */,
 				032755E21420F6EA0083BC0E /* growl-config-2.png in Resources */,
+				0301A778142BB9980041F299 /* NotificationHelp.rtfd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +827,14 @@
 				0300E7581408021800E59AFD /* en */,
 			);
 			name = ProjectWindow.xib;
+			sourceTree = "<group>";
+		};
+		0301A776142BB9980041F299 /* NotificationHelp.rtfd */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0301A777142BB9980041F299 /* en */,
+			);
+			name = NotificationHelp.rtfd;
 			sourceTree = "<group>";
 		};
 		038ABE26134F11090053F0D1 /* InfoPlist.strings */ = {

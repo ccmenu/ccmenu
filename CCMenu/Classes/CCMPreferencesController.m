@@ -187,6 +187,16 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
     [[NSAppleScript scriptWithName:@"handlers"] callHandler:@"open_growl"];
 }
 
+- (IBAction)showNotificationHelp:(id)sender
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"NotificationHelp" ofType:@"rtfd"];
+    NSAttributedString *text = [[[NSAttributedString alloc] initWithPath:path documentAttributes:NULL] autorelease];
+    [notificationHelpView insertText:text];
+    [notificationHelpView setEditable:NO];
+    [notificationHelpView scrollToBeginningOfDocument:self];
+    [[notificationHelpView window] makeKeyAndOrderFront:self];
+}
+
 - (IBAction)updateIntervalChanged:(id)sender
 {
 	[updater scheduleCheckWithInterval:[sender selectedTag]];

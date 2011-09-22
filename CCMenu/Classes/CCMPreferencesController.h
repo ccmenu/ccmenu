@@ -14,6 +14,7 @@
 	IBOutlet NSArrayController		*allProjectsViewController;
 	IBOutlet NSView					*projectsView;
 	IBOutlet NSView					*notificationPrefsView;
+    IBOutlet NSTextView             *notificationHelpView;
 	IBOutlet NSView					*advancedPrefsView;
 	IBOutlet NSTextField			*versionField;
 	
@@ -39,6 +40,7 @@
 - (IBAction)preferencesChanged:(id)sender;
 
 - (IBAction)openGrowlPreferences:(id)sender;
+- (IBAction)showNotificationHelp:(id)sender;
 
 - (IBAction)updateIntervalChanged:(id)sender;
 - (IBAction)checkForUpdateNow:(id)sender;
