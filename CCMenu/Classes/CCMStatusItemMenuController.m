@@ -99,12 +99,12 @@
 			buildCount += 1;
 		if([project isBuilding] && [project isFailed])
 			isFixing = YES;
-		if([project lastBuildStatus] != nil)
+		if([project status] != nil)
 			haveAtLeastOneStatus = YES;
 
         
 		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		NSImage *image = [imageFactory imageForActivity:[project activity] lastBuildStatus:[project lastBuildStatus]];
+		NSImage *image = [imageFactory imageForActivity:[[project status] activity] lastBuildStatus:[[project status] lastBuildStatus]];
 		image = [imageFactory convertForMenuUse:image];
 		[menuItem setImage:image];
 		[menuItem setTarget:self];
@@ -144,15 +144,18 @@
 
 - (IBAction)openProject:(id)sender
 {
-	NSString *urlString = [[sender representedObject] webUrl];
-	if(urlString == nil)
+    CCMProject *project = [sender representedObject];
+	if([[project status] webUrl] != nil)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[[project status] webUrl]]];
+    }
+    else
 	{
 		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-		NSString *errorString = [[sender representedObject] valueForKey:@"errorString"];
-		if(errorString != nil) 
+		if([project statusError] != nil) 
 		{
 			[alert setMessageText:NSLocalizedString(@"An error occured when retrieving the project status", "Alert message when an error occured talking to the server.")];
-			[alert setInformativeText:errorString];
+			[alert setInformativeText:[project statusError]];
 		}
 		else
 		{
@@ -160,9 +163,7 @@
 			[alert setInformativeText:NSLocalizedString(@"This continuous integration server does not provide web URLs for projects. Please contact the server administrator.", "Informative text when server does not provide webUrl")];
 		}
 		[alert runModal];
-		return;
 	}
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
 }
 
 @end

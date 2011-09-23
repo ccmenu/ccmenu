@@ -2,7 +2,6 @@
 #import "CCMPreferencesController.h"
 #import "CCMUserDefaultsManager.h"
 #import "CCMConnection.h"
-#import "CCMServer.h"
 #import "NSArray+CCMAdditions.h"
 #import "NSString+CCMAdditions.h"
 #import "NSAppleScript+EDAdditions.h"

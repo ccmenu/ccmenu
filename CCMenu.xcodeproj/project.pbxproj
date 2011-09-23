@@ -11,6 +11,9 @@
 		0300E75A1408021800E59AFD /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7551408021800E59AFD /* Preferences.xib */; };
 		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
 		0301A778142BB9980041F299 /* NotificationHelp.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 0301A776142BB9980041F299 /* NotificationHelp.rtfd */; };
+		0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
+		0301A781142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
+		0301A785142C7D940041F299 /* CCMProjectStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A783142C7D940041F299 /* CCMProjectStatusTest.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0328D380135C191500D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
@@ -141,6 +144,10 @@
 		0300E7561408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0300E7581408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProjectWindow.xib; sourceTree = "<group>"; };
 		0301A777142BB9980041F299 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = en; path = en.lproj/NotificationHelp.rtfd; sourceTree = "<group>"; };
+		0301A77E142C702F0041F299 /* CCMProjectStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatus.h; sourceTree = "<group>"; };
+		0301A77F142C702F0041F299 /* CCMProjectStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatus.m; sourceTree = "<group>"; };
+		0301A782142C7D940041F299 /* CCMProjectStatusTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatusTest.h; sourceTree = "<group>"; };
+		0301A783142C7D940041F299 /* CCMProjectStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatusTest.m; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
 		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = Frameworks/EDCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +313,8 @@
 			children = (
 				03C08283134F97940039E3BD /* CCMProject.h */,
 				03C08284134F97940039E3BD /* CCMProject.m */,
+				0301A77E142C702F0041F299 /* CCMProjectStatus.h */,
+				0301A77F142C702F0041F299 /* CCMProjectStatus.m */,
 				03C08287134F97940039E3BD /* CCMServer.h */,
 				03C08288134F97940039E3BD /* CCMServer.m */,
 			);
@@ -432,6 +441,8 @@
 				0349BC82134F9F9100D2F269 /* CCMPreferencesControllerTest.m */,
 				0349BC83134F9F9100D2F269 /* CCMProjectTest.h */,
 				0349BC84134F9F9100D2F269 /* CCMProjectTest.m */,
+				0301A782142C7D940041F299 /* CCMProjectStatusTest.h */,
+				0301A783142C7D940041F299 /* CCMProjectStatusTest.m */,
 				0349BC85134F9F9100D2F269 /* CCMServerMonitorTest.h */,
 				0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */,
 				0349BC87134F9F9100D2F269 /* CCMServerStatusReaderTest.h */,
@@ -738,6 +749,7 @@
 				03843A0F1403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 				032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */,
 				032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */,
+				0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +795,8 @@
 				03843A101403915300C4C953 /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 				032E6ECC140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */,
 				032E6ED0140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */,
+				0301A781142C702F0041F299 /* CCMProjectStatus.m in Sources */,
+				0301A785142C7D940041F299 /* CCMProjectStatusTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

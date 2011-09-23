@@ -588,86 +588,6 @@
 					<int key="connectionID">57</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.activity</string>
-						<reference key="source" ref="682518471"/>
-						<reference key="destination" ref="1054633410"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="682518471"/>
-							<reference key="NSDestination" ref="1054633410"/>
-							<string key="NSLabel">value: arrangedObjects.activity</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.activity</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSAllowsEditingMultipleValuesSelection</string>
-								<boolean value="NO" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">64</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.lastBuildLabel</string>
-						<reference key="source" ref="12706033"/>
-						<reference key="destination" ref="1054633410"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="12706033"/>
-							<reference key="NSDestination" ref="1054633410"/>
-							<string key="NSLabel">value: arrangedObjects.lastBuildLabel</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.lastBuildLabel</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSConditionallySetsEditable</string>
-								<boolean value="YES" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">65</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.lastBuildTime</string>
-						<reference key="source" ref="161648534"/>
-						<reference key="destination" ref="1054633410"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="161648534"/>
-							<reference key="NSDestination" ref="1054633410"/>
-							<string key="NSLabel">value: arrangedObjects.lastBuildTime</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.lastBuildTime</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSConditionallySetsEditable</string>
-								<boolean value="YES" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">89</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.lastBuildStatus</string>
-						<reference key="source" ref="464685628"/>
-						<reference key="destination" ref="1054633410"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="464685628"/>
-							<reference key="NSDestination" ref="1054633410"/>
-							<string key="NSLabel">value: arrangedObjects.lastBuildStatus</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.lastBuildStatus</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSConditionallySetsEditable</string>
-								<boolean value="YES" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">92</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">tableViewController</string>
 						<reference key="source" ref="714195056"/>
@@ -730,6 +650,86 @@
 						</object>
 					</object>
 					<int key="connectionID">132</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.status.activity</string>
+						<reference key="source" ref="682518471"/>
+						<reference key="destination" ref="1054633410"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="682518471"/>
+							<reference key="NSDestination" ref="1054633410"/>
+							<string key="NSLabel">value: arrangedObjects.status.activity</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.status.activity</string>
+							<dictionary key="NSOptions">
+								<boolean value="NO" key="NSAllowsEditingMultipleValuesSelection"/>
+								<boolean value="YES" key="NSConditionallySetsEditable"/>
+							</dictionary>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">133</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.status.lastBuildStatus</string>
+						<reference key="source" ref="464685628"/>
+						<reference key="destination" ref="1054633410"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="464685628"/>
+							<reference key="NSDestination" ref="1054633410"/>
+							<string key="NSLabel">value: arrangedObjects.status.lastBuildStatus</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.status.lastBuildStatus</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSConditionallySetsEditable</string>
+								<boolean value="YES" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">134</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.status.lastBuildTime</string>
+						<reference key="source" ref="161648534"/>
+						<reference key="destination" ref="1054633410"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="161648534"/>
+							<reference key="NSDestination" ref="1054633410"/>
+							<string key="NSLabel">value: arrangedObjects.status.lastBuildTime</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.status.lastBuildTime</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSConditionallySetsEditable</string>
+								<boolean value="YES" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">135</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.status.lastBuildLabel</string>
+						<reference key="source" ref="12706033"/>
+						<reference key="destination" ref="1054633410"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="12706033"/>
+							<reference key="NSDestination" ref="1054633410"/>
+							<string key="NSLabel">value: arrangedObjects.status.lastBuildLabel</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.status.lastBuildLabel</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSConditionallySetsEditable</string>
+								<boolean value="YES" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">136</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1000,33 +1000,35 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">132</int>
+			<int key="maxID">136</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">CCMProjectWindowController</string>
 					<string key="superclassName">CCMWindowController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="forceBuild:">id</string>
-						<string key="showWindow:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="forceBuild:">
-							<string key="name">forceBuild:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showWindow:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">showWindow:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">showWindow:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">showWindow:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="serverMonitor">CCMServerMonitor</string>
 						<string key="tableView">NSTableView</string>
 						<string key="tableViewController">NSArrayController</string>
 						<string key="window">NSWindow</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="serverMonitor">
+							<string key="name">serverMonitor</string>
+							<string key="candidateClassName">CCMServerMonitor</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="tableView">
 							<string key="name">tableView</string>
 							<string key="candidateClassName">NSTableView</string>
@@ -1043,6 +1045,33 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CCMProjectWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">CCMServerMonitor</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">defaultsManager</string>
+						<string key="NS.object.0">CCMUserDefaultsManager</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">defaultsManager</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">defaultsManager</string>
+							<string key="candidateClassName">CCMUserDefaultsManager</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CCMServerMonitor.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">CCMUserDefaultsManager</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CCMUserDefaultsManager.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

@@ -54,8 +54,8 @@
     
     [monitor connection:dummyConnection didReceiveServerStatus:[NSArray arrayWithObject:newProjectInfo]];
     
-    STAssertEqualObjects(CCMSuccessStatus, [[server projectNamed:@"Foo"] lastBuildStatus], @"Should have updated status");
-    STAssertEqualObjects(@"No project information provided by server.", [[server projectNamed:@"Bar"] errorString], @"Should have set error string");
+    STAssertEqualObjects(CCMSuccessStatus, [[[server projectNamed:@"Foo"] status] lastBuildStatus], @"Should have updated status");
+    STAssertEqualObjects(@"No project information provided by server.", [[server projectNamed:@"Bar"] statusError], @"Should have set error string");
 	STAssertEquals(2u, [postedNotifications count], @"Should have posted two notifications");
 //    TODO: need to fix re-creating of notification to insert object
 //    STAssertTrue([postedNotifications indexOfObject:dummyNotification] != NSNotFound, @"Should have posted build complete notification");

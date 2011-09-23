@@ -1,6 +1,7 @@
 
 #import "CCMBuildNotificationFactory.h"
 #import "CCMProject.h"
+#import "CCMProjectStatus.h"
 
 
 NSString *CCMBuildStartNotification = @"CCMBuildStartNotification";

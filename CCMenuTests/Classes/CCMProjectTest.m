@@ -2,7 +2,30 @@
 #import "CCMProjectTest.h"
 #import "CCMProject.h"
 
+
 @implementation CCMProjectTest
+
+- (void)testTakesStatusFromInfo
+{
+	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+	NSDictionary *info = [NSDictionary dictionaryWithObject:@"foo" forKey:@"bar"];
+    
+    [project updateWithInfo:info];
+    
+    STAssertNotNil([project status], @"Should have status.");
+    STAssertNil([project statusError], @"Should not have an error.");    
+}
+
+- (void)testHandlesStatusErrors
+{
+	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+	NSDictionary *info = [NSDictionary dictionaryWithObject:@"test" forKey:@"errorString"];
+    
+    [project updateWithInfo:info];
+    
+    STAssertEqualObjects(@"test", [project statusError], @"Should report error.");
+    STAssertNil([project status], @"Should not have created status object.");    
+}
 
 - (void)testCalculatesEstimatedCompleteTime
 {
@@ -23,52 +46,6 @@
     NSDate *completeTime = [project estimatedBuildCompleteTime];
     
     STAssertNil(completeTime, @"Should have returned nil");
-}
-
-- (void)testCanCallMethodsForInfoKeys
-{
-	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-	NSDictionary *info = [NSDictionary dictionaryWithObject:@"Success" forKey:@"lastBuildStatus"];
-	[project updateWithInfo:info];
-	
-	STAssertEquals(@"Success", [project lastBuildStatus], @"Should have returned right build status.");
-}
-
-- (void)testRaisesUnknownMethodExceptionForMethodsNotCorrespondingToInfoKeys
-{
-	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-	NSDictionary *info = [NSDictionary dictionaryWithObject:@"Success" forKey:@"lastBuildStatus"];
-	[project updateWithInfo:info];
-	
-	STAssertThrows([(id)project lowercaseString], @"Should have thrown an exception.");
-}
-
-- (void)testImplementsKeyValueCoding
-{
-	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-	NSDictionary *info = [NSDictionary dictionaryWithObject:@"Success" forKey:@"lastBuildStatus"];
-	[project updateWithInfo:info];
-	
-	STAssertEquals(@"connectfour", [project valueForKey:@"name"], @"Should have returned right project name.");
-	STAssertEquals(@"Success", [project valueForKey:@"lastBuildStatus"], @"Should have returned right build status.");
-}
-
-- (void)testParsesFailedStatusString
-{
-	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-	NSDictionary *info = [NSDictionary dictionaryWithObject:CCMFailedStatus forKey:@"lastBuildStatus"];
-	[project updateWithInfo:info];
-
-	STAssertTrue([project isFailed], @"Should return YES.");
-}
-
-- (void)testParsesBuildingActivityString
-{
-	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-	NSDictionary *info = [NSDictionary dictionaryWithObject:CCMBuildingActivity forKey:@"activity"];
-	[project updateWithInfo:info];
-	
-	STAssertTrue([project isBuilding], @"Should return YES.");
 }
 
 @end

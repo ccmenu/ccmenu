@@ -1,13 +1,8 @@
 
 #import "CCMProject.h"
+#import "CCMProjectStatus.h"
 #import "NSCalendarDate+CCMAdditions.h"
 
-
-NSString *CCMSuccessStatus = @"Success";
-NSString *CCMFailedStatus = @"Failure";
-
-NSString *CCMSleepingActivity = @"Sleeping";
-NSString *CCMBuildingActivity = @"Building";
 
 static NSSet *infoKeys;
 
@@ -30,7 +25,8 @@ static NSSet *infoKeys;
 - (void)dealloc
 {
 	[name release];
-	[info release];
+	[status release];
+    [statusError release];
     [buildStartTime release];
 	[super dealloc];
 }
@@ -47,15 +43,46 @@ static NSSet *infoKeys;
 }
 
 
+- (void)setStatus:(CCMProjectStatus *)newStatus
+{
+    [status autorelease];
+    status = [newStatus retain];
+}
+
+- (CCMProjectStatus *)status
+{
+    return status;
+}
+
+- (void)setStatusError:(NSString *)newError
+{
+    [statusError autorelease];
+    statusError = [newError retain];
+}
+
+- (NSString *)statusError
+{
+    return statusError;
+}
+
+
 - (void)updateWithInfo:(NSDictionary *)dictionary
 {
-	[info autorelease];
-	info = [dictionary copy];
+    if([dictionary objectForKey:@"errorString"] == nil)
+    {
+        [self setStatus:[[CCMProjectStatus alloc] initWithDictionary:dictionary]];
+        [self setStatusError:nil];
+    }
+    else
+    {
+        [self setStatus:nil];
+        [self setStatusError:[dictionary objectForKey:@"errorString"]];
+    }
 }
 
 - (NSDictionary *)info
 {
-	return info;
+    return [status info];
 }
 
 
@@ -88,33 +115,15 @@ static NSSet *infoKeys;
     return [buildStartTime dateByAddingTimeInterval:[buildDuration doubleValue]];
 }
 
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)selector
-{
-	if([infoKeys containsObject:NSStringFromSelector(selector)])
-		return [super methodSignatureForSelector:@selector(name)];
-	return [super methodSignatureForSelector:selector];
-}
-
-- (void)forwardInvocation:(NSInvocation *)invocation
-{
-	NSString *value = [info objectForKey:NSStringFromSelector([invocation selector])];
-	[invocation setReturnValue:&value];
-}
-
-- (id)valueForUndefinedKey:(NSString *)key
-{
-	return [info objectForKey:key]; 
-}
-
 
 - (BOOL)isFailed
 {
-	return ([self lastBuildStatus] != nil) && ![[self lastBuildStatus] isEqualToString:CCMSuccessStatus];
+	return ([status lastBuildStatus] != nil) && ![[status lastBuildStatus] isEqualToString:CCMSuccessStatus];
 }
 
 - (BOOL)isBuilding
 {
-	return [[self activity] isEqualToString:CCMBuildingActivity];
+	return [[status activity] isEqualToString:CCMBuildingActivity];
 }
 
 
