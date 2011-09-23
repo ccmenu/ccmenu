@@ -30,25 +30,17 @@
 	[NSValueTransformer setValueTransformer:timeIntervalTransformer forName:CCMTimeIntervalTransformerName];
 }
 
-- (void)startBuildTimer
+- (void)startServices
 {
     CCMBuildTimer *buildTimer = [[CCMBuildTimer alloc] init];
     [buildTimer start];
-}
 
-
-- (void)startGrowlAdaptor
-{
 	[growlAdaptor start]; 
-}
 
-- (void)startServerMonitor
-{
 	[serverMonitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
 	[serverMonitor setNotificationFactory:[[[CCMBuildNotificationFactory alloc] init] autorelease]];
 	[serverMonitor start];
 }
-
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification 
 {
@@ -56,9 +48,7 @@
 	{
 		[self setupRequestCache];
 		[self registerValueTransformers];
-        [self startBuildTimer];
-		[self startGrowlAdaptor];
-		[self startServerMonitor];
+        [self startServices];
 		if([[serverMonitor projects] count] == 0)
 			[preferencesController showWindow:self];
 	}

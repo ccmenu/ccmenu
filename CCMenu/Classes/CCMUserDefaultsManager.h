@@ -17,6 +17,8 @@
 - (void)addServerURLToHistory:(NSString *)serverUrl;
 - (NSArray *)serverURLHistory;
 
+- (void)convertDefaultsIfNecessary;
+
 @end
 
 

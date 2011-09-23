@@ -16,6 +16,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 - (void)awakeFromNib
 {
 	userDefaults = [NSUserDefaults standardUserDefaults];
+    [self convertDefaultsIfNecessary];
 }
 
 - (int)pollInterval
@@ -50,9 +51,6 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     NSArray *list = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
     if(list != nil)
         return list;
-	NSData *data = [userDefaults dataForKey:CCMDefaultsProjectListKey];
-	if(data != nil)
-        return [NSUnarchiver unarchiveObjectWithData:data];
     return [NSArray array];
 }
 
@@ -103,5 +101,16 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 	}
 	return [NSArray array];
 }
+
+- (void)convertDefaultsIfNecessary
+{
+    NSArray *list = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
+    NSData *data = [userDefaults dataForKey:CCMDefaultsProjectListKey];
+    if((list == nil) && (data != nil))
+    {
+        [userDefaults setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:CCMDefaultsProjectListKey];
+    }
+}
+
 
 @end

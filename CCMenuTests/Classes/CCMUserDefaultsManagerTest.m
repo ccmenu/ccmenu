@@ -21,15 +21,9 @@ do { \
 - (void)setUp
 {
 	manager = [[[CCMUserDefaultsManager alloc] init] autorelease];
-	defaultsMock = [OCMockObject mockForClass:[NSUserDefaults class]];
+	defaultsMock = [OCMockObject niceMockForClass:[NSUserDefaults class]];
 	[manager setValue:defaultsMock forKey:@"userDefaults"];
 }
-
-- (void)tearDown
-{
-	_verify(defaultsMock);
-}
-
 
 - (void)testRetrievesPollInterval
 {
@@ -38,17 +32,18 @@ do { \
 	int interval = [manager pollInterval];
 	
 	STAssertEquals(1000, interval, @"Should have returned right interval.");
+	_verify(defaultsMock);
 }
 
 - (void)testRetrievesEmptyListFromNonExistentDefaults
 {
 	[[[defaultsMock expect] andReturn:nil] arrayForKey:CCMDefaultsProjectListKey];
-	[[[defaultsMock expect] andReturn:nil] dataForKey:CCMDefaultsProjectListKey];
 	
 	NSArray *entries = [manager projectListEntries];
 	
 	STAssertNotNil(entries, @"Should have returned empty list.");
 	STAssertEquals(0u, [entries count], @"Should have returned empty list.");
+	_verify(defaultsMock);
 }
 
 - (void)testRetrievesProjectListFromDefaults
@@ -62,22 +57,7 @@ do { \
 	NSDictionary *projectListEntry = [entries objectAtIndex:0];
 	STAssertEqualObjects(@"new", [projectListEntry objectForKey:@"projectName"], @"Should have set right project name.");
 	STAssertEqualObjects(@"http://test/cctray.xml", [projectListEntry objectForKey:@"serverUrl"], @"Should have set right URL.");
-}
-
-- (void)testRetrievesDataBasedListIfArrayIsNotAvailable
-{
-	NSDictionary *ple = [@"{ projectName = legacy; serverUrl = 'http://test/cctray.xml'; }" propertyList];
-	NSData *defaultsData = [NSArchiver archivedDataWithRootObject:[NSArray arrayWithObject:ple]];
-	[[[defaultsMock stub] andReturn:nil] arrayForKey:CCMDefaultsProjectListKey];
-	[[[defaultsMock expect] andReturn:defaultsData] dataForKey:CCMDefaultsProjectListKey];
-    
-	NSArray *entries = [manager projectListEntries];
-	
-	STAssertEquals(1u, [entries count], @"Should have returned one project.");
-	NSDictionary *projectListEntry = [entries objectAtIndex:0];
-	STAssertEqualObjects(@"legacy", [projectListEntry objectForKey:@"projectName"], @"Should have set right project name.");
-	STAssertEqualObjects(@"http://test/cctray.xml", [projectListEntry objectForKey:@"serverUrl"], @"Should have set right URL.");
-
+	_verify(defaultsMock);
 }
 
 - (void)testCanCheckWhichProjectsAreInList
@@ -98,7 +78,6 @@ do { \
 - (void)testAddsProjects
 {
 	[[[defaultsMock stub] andReturn:nil] arrayForKey:CCMDefaultsProjectListKey];
-	[[[defaultsMock stub] andReturn:nil] dataForKey:CCMDefaultsProjectListKey];
 
 	// We have to create the dictionary this way, otherwise it serialises differently and data doesn't match
 	NSArray *pl = [NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -131,6 +110,8 @@ do { \
 	STAssertEquals(1u, [[server projects] count], @"Should have created project.");
 	CCMProject *project = [[server projects] objectAtIndex:0];
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have set right name.");
+
+	_verify(defaultsMock);
 }
 
 
@@ -147,6 +128,20 @@ do { \
 }
 
 
+- (void)testConvertsDataBasedListIfArrayIsNotAvailable
+{
+	NSArray *projectList = [@"({ projectName = legacy; serverUrl = 'http://test/cctray.xml'; })" propertyList];
+	NSData *defaultsData = [NSArchiver archivedDataWithRootObject:projectList];
+	[[[defaultsMock stub] andReturn:nil] arrayForKey:CCMDefaultsProjectListKey];
+	[[[defaultsMock expect] andReturn:defaultsData] dataForKey:CCMDefaultsProjectListKey];
+    [[defaultsMock expect] setObject:projectList forKey:CCMDefaultsProjectListKey];
+    
+	[manager convertDefaultsIfNecessary];
+	
+    _verify(defaultsMock);
+}
+
+
 - (void)testAddsToEmptyServerUrlHistory
 {
 	[[[defaultsMock stub] andReturn:[NSArray array]] arrayForKey:CCMDefaultsServerUrlHistoryKey];
@@ -154,6 +149,8 @@ do { \
 	[[defaultsMock expect] setObject:historyArray forKey:CCMDefaultsServerUrlHistoryKey];
 	
 	[manager addServerURLToHistory:@"http://test/cctray.xml"];
+
+	_verify(defaultsMock);
 }
 
 - (void)testAddsToExistingServerUrlHistory
@@ -163,6 +160,8 @@ do { \
 	[[defaultsMock expect] setObject:historyArray forKey:CCMDefaultsServerUrlHistoryKey];
 	
 	[manager addServerURLToHistory:@"http://test2/xml"];
+
+	_verify(defaultsMock);
 }
 
 - (void)testDoesNotAddDuplicatesToServerUrlHistory
@@ -170,7 +169,8 @@ do { \
 	[[[defaultsMock stub] andReturn:[NSArray arrayWithObject:@"http://test/cctray.xml"]] arrayForKey:CCMDefaultsServerUrlHistoryKey];
 	
 	[manager addServerURLToHistory:@"http://test/cctray.xml"];
-    // we're not using a nice mock, so if the manager tried to set a new list, the mock would complain
+
+	_verify(defaultsMock);
 }
 
 - (void)testReturnsServerUrlHistory
