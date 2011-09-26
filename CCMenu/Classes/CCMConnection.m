@@ -5,7 +5,7 @@
 
 @implementation CCMConnection
 
-- (id)initWithURL:(NSURL *)theServerUrl
+- (id)initWithServerURL:(NSURL *)theServerUrl
 {
 	[super init];
 	serverUrl = [theServerUrl retain];
@@ -14,13 +14,18 @@
 
 - (id)initWithURLString:(NSString *)theServerUrlAsString
 {
-	return [self initWithURL:[NSURL URLWithString:theServerUrlAsString]];
+	return [self initWithServerURL:[NSURL URLWithString:theServerUrlAsString]];
 }
 
 - (void)dealloc
 {
 	[serverUrl release];
 	[super dealloc];
+}
+
+- (NSURL *)serverURL
+{
+    return serverUrl;
 }
 
 - (void)setDelegate:(id)aDelegate

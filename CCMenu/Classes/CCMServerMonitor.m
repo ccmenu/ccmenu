@@ -37,46 +37,50 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	notificationFactory = [factory retain];
 }
 
-- (NSArray *)servers
-{
-	return [[serverConnectionPairs collect] firstObject];
-}
-
 - (NSArray *)projects
 {
-	return [[[[self servers] collect] projects] flattenedArray];
+	return projects;
 }
 
 - (NSArray *)connections
 {
-	return [[serverConnectionPairs collect] secondObject];
+	return connections;
 }
 
-- (CCMServer *)serverForConnection:(CCMConnection *)connection
+- (NSMutableDictionary *)projectsByNameForConnection:(CCMConnection *)aConection
 {
-    for(EDObjectPair *pair in serverConnectionPairs)
-	{
-		if([pair secondObject] == connection)
-			return [pair firstObject];
-	}
-	return nil;
+    NSMutableDictionary *projectsByName = [NSMutableDictionary dictionary];
+    for(CCMProject *p in projects)
+    {
+        if([[p serverURL] isEqual:[aConection serverURL]])
+            [projectsByName setObject:p forKey:[p name]];
+    }
+    return projectsByName;
 }
 
 - (void)setupFromUserDefaults
 {
-	[[[self connections] each] cancelStatusRequest];
-	[serverConnectionPairs release];
-	
-	serverConnectionPairs = [[NSMutableArray array] retain];
-	NSEnumerator *serverEnum = [[defaultsManager servers] objectEnumerator];
-	CCMServer *server;
-	while((server = [serverEnum nextObject]) != nil)
-	{
-		CCMConnection *connection = [[[CCMConnection alloc] initWithURL:[server url]] autorelease];
-		[connection setDelegate:self];
-		EDObjectPair *pair = [EDObjectPair pairWithObjects:server :connection];
-		[serverConnectionPairs addObject:pair];
-	}
+	[[connections each] cancelStatusRequest];
+	[connections release];
+	[projects release];
+    
+	connections = [[NSMutableArray alloc] init];
+    projects = [[NSMutableArray alloc] init];
+    
+    NSMutableSet *urlSet = [NSMutableSet set];
+    for(NSDictionary *defaultsEntry in [defaultsManager projectList])
+    {
+        CCMProject *p = [[[CCMProject alloc] initWithName:[defaultsEntry objectForKey:CCMDefaultsProjectEntryNameKey]] autorelease];
+        [p setServerURL:[NSURL URLWithString:[defaultsEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey]]];
+        [projects addObject:p];
+        [urlSet addObject:[defaultsEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey]];
+    }
+    for(NSString *url in urlSet)
+    {
+		CCMConnection *c = [[[CCMConnection alloc] initWithServerURL:[NSURL URLWithString:url]] autorelease];
+		[c setDelegate:self];
+        [connections addObject:c];
+    }
 }
 
 - (void)start
@@ -96,53 +100,42 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	timer = nil;
 }
 
-- (void)pollServers:(id)sender
-{
-	[[[self connections] each] requestServerStatus];
-}
-
 - (void)defaultsChanged:(id)sender
 {
 	[self stop];
 	[self start];
 }
 
+- (void)pollServers:(id)sender
+{
+	[[[self connections] each] requestServerStatus];
+}
+
 - (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList
 {
-	CCMServer *server = [self serverForConnection:connection];
-	if(server == nil)
-		return;
-    
-    NSMutableSet *unseenProjects = [[[server projects] mutableCopy] autorelease];
-
+    NSMutableDictionary *projectsByName = [self projectsByNameForConnection:connection];
     for(NSDictionary *projectInfo in projectInfoList)
 	{
-		CCMProject *project = [server projectNamed:[projectInfo objectForKey:@"name"]];
+		CCMProject *project = [projectsByName objectForKey:[projectInfo objectForKey:@"name"]];
 		if(project == nil)
 			continue;
-        [unseenProjects removeObject:project];
+        [projectsByName removeObjectForKey:[projectInfo objectForKey:@"name"]];
 		NSNotification *notification = [notificationFactory buildNotificationForOldProjectInfo:[project info] andNewProjectInfo:projectInfo];
 		if(notification != nil)
 			[notificationCenter postNotificationName:[notification name] object:project userInfo:[notification userInfo]];
 		[project updateWithInfo:projectInfo];
 	}
-    
-    for(CCMProject *project in unseenProjects)
-    {
-        [project updateWithInfo:[NSDictionary dictionaryWithObject:@"No project information provided by server." forKey:@"errorString"]]; 
-    }
+ 	NSDictionary *projectErrorInfo = [NSDictionary dictionaryWithObject:@"No project information provided by server." forKey:@"errorString"];
+	[[[projectsByName allValues] each] updateWithInfo:projectErrorInfo];
     
 	[notificationCenter postNotificationName:CCMProjectStatusUpdateNotification object:self];
 }
 
 - (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString
 {	
-	CCMServer *server = [self serverForConnection:connection];
-	if(server == nil)
-		return;
-	
+    NSMutableDictionary *projectsByName = [self projectsByNameForConnection:connection];
 	NSDictionary *projectErrorInfo = [NSDictionary dictionaryWithObject:errorString forKey:@"errorString"];
-	[[[server projects] each] updateWithInfo:projectErrorInfo];
+	[[[projectsByName allValues] each] updateWithInfo:projectErrorInfo];
 	
 	[notificationCenter postNotificationName:CCMProjectStatusUpdateNotification object:self];
 }

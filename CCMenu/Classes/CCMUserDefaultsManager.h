@@ -11,8 +11,7 @@
 
 - (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
-- (NSArray *)projectListEntries;
-- (NSArray *)servers;
+- (NSArray *)projectList;
 
 - (void)addServerURLToHistory:(NSString *)serverUrl;
 - (NSArray *)serverURLHistory;

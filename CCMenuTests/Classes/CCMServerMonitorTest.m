@@ -12,30 +12,25 @@
 - (void)setUp
 {
 	monitor = [[[CCMServerMonitor alloc] init] autorelease];
-	[monitor setNotificationCenter:(id)self];
 	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
 	[monitor setDefaultsManager:defaultsManagerMock];
     notificationFactoryMock = [OCMockObject mockForClass:[CCMBuildNotificationFactory class]];
     [monitor setNotificationFactory:notificationFactoryMock];
-	postedNotifications = [NSMutableArray array];
-}
-
-- (void)tearDown
-{
-	[defaultsManagerMock verify];
+	notificationCenterMock = [OCMockObject mockForClass:[NSNotificationCenter class]];
+	[monitor setNotificationCenter:notificationCenterMock];
 }
 
 
 - (void)testPostsStatusChangeNotificationWhenNoServersDefined
 {
 	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
-	[[[defaultsManagerMock expect] andReturn:[NSArray array]] servers]; 
-	
+	[[[defaultsManagerMock expect] andReturn:[NSArray array]] projectList]; 
+	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
+    
 	[monitor start];
 
-	STAssertEquals(1u, [postedNotifications count], @"Should have posted a notification");
-	NSNotification *notification = [postedNotifications objectAtIndex:0];
-	STAssertEqualObjects(CCMProjectStatusUpdateNotification, [notification name], @"Should have posted right notification.");
+    [defaultsManagerMock verify];
+    [notificationCenterMock verify];
 }
 
 
@@ -43,10 +38,13 @@
 {    
     NSDictionary *oldProjectInfo = [@"{ name = Foo; lastBuildStatus = Failure; }" propertyList];
     NSDictionary *newProjectInfo = [@"{ name = Foo; lastBuildStatus = Success; }" propertyList];
+
+    CCMConnection *dummyConnection = [[[CCMConnection alloc] initWithServerURL:nil] autorelease];
+    [monitor setValue:[NSArray arrayWithObject:dummyConnection] forKey:@"connections"];   
+
     
     CCMServer *server = [[[CCMServer alloc] initWithURL:nil andProjectNames:[NSArray arrayWithObjects:@"Foo", @"Bar", nil]] autorelease];
     [[server projectNamed:@"Foo"] updateWithInfo:oldProjectInfo];
-    CCMConnection *dummyConnection = [[[CCMConnection alloc] initWithURL:nil] autorelease];
     NSArray *serverConnectionPairs = [NSArray arrayWithObject:[EDObjectPair pairWithObjects:server :dummyConnection]];
     [monitor setValue:serverConnectionPairs forKey:@"serverConnectionPairs"];   
     NSNotification *dummyNotification = [NSNotification notificationWithName:@"test" object:nil];
@@ -82,28 +80,6 @@
 	STAssertEqualObjects(@"connectfour", [project name], @"Should have set up project with right name."); 
 
 	//	STAssertEqualObjects(@"build.1", [project lastBuildLabel], @"Should have set up project projectInfo."); 
-}
-
-
-// notification center stub (need this until next version of OCMock, which will have custom constraints)
-
-- (void)addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString *)notificationName object:(id)notificationSender
-{	
-}
-
-- (void)postNotification:(NSNotification *)aNotification
-{
-    [postedNotifications addObject:aNotification];
-}
-
-- (void)postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo
-{
-	[postedNotifications addObject:[NSNotification notificationWithName:aName object:anObject userInfo:aUserInfo]];
-}
-
-- (void)postNotificationName:(NSString *)aName object:(id)anObject
-{
-	[self postNotificationName:aName object:anObject userInfo:nil];
 }
 
 @end

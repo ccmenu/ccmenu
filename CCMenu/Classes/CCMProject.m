@@ -25,6 +25,7 @@ static NSSet *infoKeys;
 - (void)dealloc
 {
 	[name release];
+    [serverURL release];
 	[status release];
     [statusError release];
     [buildStartTime release];
@@ -42,6 +43,16 @@ static NSSet *infoKeys;
 	return name;
 }
 
+- (void)setServerURL:(NSURL *)aURL
+{
+    [serverURL autorelease];
+    serverURL = [aURL retain];
+}
+
+- (NSURL *)serverURL
+{
+    return serverURL;
+}
 
 - (void)setStatus:(CCMProjectStatus *)newStatus
 {

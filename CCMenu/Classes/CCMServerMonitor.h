@@ -10,7 +10,10 @@
 	IBOutlet CCMUserDefaultsManager		*defaultsManager;
 	NSNotificationCenter				*notificationCenter;
 	CCMBuildNotificationFactory			*notificationFactory;
-	
+
+	NSMutableArray                      *connections;
+    NSMutableArray                      *projects;
+    
 	NSMutableArray						*serverConnectionPairs;
 	NSTimer								*timer;
 }
@@ -19,7 +22,8 @@
 - (void)setNotificationCenter:(NSNotificationCenter *)center;
 - (void)setNotificationFactory:(CCMBuildNotificationFactory *)factory;
 
-- (NSArray *)servers;
+- (void)setupFromUserDefaults;
+
 - (NSArray *)projects;
 
 - (void)start;

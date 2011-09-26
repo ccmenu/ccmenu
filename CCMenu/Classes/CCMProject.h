@@ -6,6 +6,7 @@
 @interface CCMProject : NSObject <NSCopying>
 {
 	NSString            *name;
+    NSURL               *serverURL;
 	CCMProjectStatus	*status;
     NSString            *statusError;
     NSNumber            *buildDuration;
@@ -15,6 +16,9 @@
 - (id)initWithName:(NSString *)aName;
 
 - (NSString *)name;
+
+- (void)setServerURL:(NSURL *)aURL;
+- (NSURL *)serverURL;
 
 - (void)updateWithInfo:(NSDictionary *)dictionary;
 - (NSDictionary *)info;

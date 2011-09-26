@@ -12,8 +12,10 @@
 	id delegate;
 }
 
-- (id)initWithURL:(NSURL *)theServerUrl;
+- (id)initWithServerURL:(NSURL *)theServerUrl;
 - (id)initWithURLString:(NSString *)theServerUrlAsString;
+
+- (NSURL *)serverURL;
 
 - (void)setDelegate:(id)aDelegate;
 - (id)delegate;

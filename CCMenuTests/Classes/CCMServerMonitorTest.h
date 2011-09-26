@@ -9,7 +9,7 @@
 	CCMServerMonitor *monitor;
 	id               defaultsManagerMock;
     id               notificationFactoryMock;
-	NSMutableArray   *postedNotifications;
+    id               notificationCenterMock;
 }
 
 @end

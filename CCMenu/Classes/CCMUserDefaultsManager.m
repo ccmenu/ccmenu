@@ -36,44 +36,22 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 {
 	if([self projectListContainsProject:projectName onServerWithURL:serverUrl])
 		return;
-	NSMutableArray *mutableList = [[[self projectListEntries] mutableCopy] autorelease];
+	NSMutableArray *mutableList = [[[self projectList] mutableCopy] autorelease];
 	[mutableList addObject:[self createEntryWithProject:projectName andURL:serverUrl]];
 	[userDefaults setObject:mutableList forKey:CCMDefaultsProjectListKey];
 }
 
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
 {
-	return [[self projectListEntries] containsObject:[self createEntryWithProject:projectName andURL:serverUrl]];
+	return [[self projectList] containsObject:[self createEntryWithProject:projectName andURL:serverUrl]];
 }
 
-- (NSArray *)projectListEntries
+- (NSArray *)projectList
 {
     NSArray *list = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
     if(list != nil)
         return list;
     return [NSArray array];
-}
-
-- (NSArray *)servers
-{
-	NSMutableDictionary *projectNamesByServer = [NSMutableDictionary dictionary];
-	for(NSDictionary *projectListEntry in [self projectListEntries])
-	{
-		NSString *urlString = [projectListEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey];
-		NSString *projectName = [projectListEntry objectForKey:CCMDefaultsProjectEntryNameKey];
-		if((urlString != nil) && (projectName != nil))
-			[projectNamesByServer addObject:projectName toArrayForKey:urlString];
-	}
-	
-	NSMutableArray *servers = [NSMutableArray array];
-	for(NSString *urlString in projectNamesByServer)
-	{
-		NSURL *url = [NSURL URLWithString:urlString];
-		NSArray *projectNames = [projectNamesByServer objectForKey:urlString];
-		CCMServer *server = [[[CCMServer alloc] initWithURL:url andProjectNames:projectNames] autorelease];
-		[servers addObject:server];
-	}
-	return servers;
 }
 
 - (void)addServerURLToHistory:(NSString *)serverUrl
@@ -92,10 +70,10 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 	{
 		return urls;
 	}
-	NSArray *servers = [self servers];
-	if([servers count] > 0)
-	{
-		urls = (id)[[(id)[[servers collect] url] collect] absoluteString];
+    NSArray *list = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
+    if(list != nil)
+    {
+        urls = [[NSSet setWithArray:[[list collect] objectForKey:CCMDefaultsProjectEntryServerUrlKey]] allObjects];
 		[userDefaults setObject:urls forKey:CCMDefaultsServerUrlHistoryKey];
 		return urls;
 	}
