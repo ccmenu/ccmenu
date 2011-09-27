@@ -3,6 +3,7 @@
 #import "CCMUserDefaultsManager.h"
 #import "CCMServer.h"
 #import "CCMProject.h"
+#import "NSArray+CCMAdditions.h"
 #import <OCMock/OCMock.h>
 #import <EDCommon/EDCommon.h>
 
@@ -14,72 +15,102 @@
 	monitor = [[[CCMServerMonitor alloc] init] autorelease];
 	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
 	[monitor setDefaultsManager:defaultsManagerMock];
-    notificationFactoryMock = [OCMockObject mockForClass:[CCMBuildNotificationFactory class]];
+    notificationFactoryMock = [OCMockObject niceMockForClass:[CCMBuildNotificationFactory class]];
     [monitor setNotificationFactory:notificationFactoryMock];
-	notificationCenterMock = [OCMockObject mockForClass:[NSNotificationCenter class]];
+	notificationCenterMock = [OCMockObject niceMockForClass:[NSNotificationCenter class]];
 	[monitor setNotificationCenter:notificationCenterMock];
+}
+
+
+- (void)testSetsUpProjectsAndConnectionsFromDefaults
+{
+	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; },"
+                              " { projectName = cozmoz; serverUrl = 'file:cctray.xml'; },"
+                              " { projectName = protest; serverUrl = 'file:cctray.xml'; })" propertyList];
+    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
+    
+    [monitor setupFromUserDefaults];
+    
+    // This also asserts that the projects are in the same order as the defaults; we rely on this in other tests...
+    STAssertEquals(3u, [[monitor projects] count], @"Should have created right number of projects.");
+    STAssertEqualObjects(@"connectfour", [[[monitor projects] objectAtIndex:0] name], @"Should have created project with correct name.");
+    STAssertEqualObjects(@"cozmoz", [[[monitor projects] objectAtIndex:1] name], @"Should have created project with correct name.");
+    STAssertEqualObjects(@"protest", [[[monitor projects] objectAtIndex:2] name], @"Should have created project with correct name.");
+
+    STAssertEquals(2u, [[monitor connections] count], @"Should have created minimum number of connection.");
+    NSArray *urls = (id)[[[monitor connections] collect] serverURL];
+    STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"http://test/cctray.xml"]] != NSNotFound, @"Should have created connection for first URL.");
+    STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"file:cctray.xml"]] != NSNotFound, @"Should have created connection for second URL.");
 }
 
 
 - (void)testPostsStatusChangeNotificationWhenNoServersDefined
 {
 	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
-	[[[defaultsManagerMock expect] andReturn:[NSArray array]] projectList]; 
+	[[[defaultsManagerMock stub] andReturn:[NSArray array]] projectList]; 
 	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
     
 	[monitor start];
 
-    [defaultsManagerMock verify];
     [notificationCenterMock verify];
 }
 
 
-- (void)testUpdatesProjectsAndPostsBuildCompleteNotificationWhenStatusChanged
-{    
-    NSDictionary *oldProjectInfo = [@"{ name = Foo; lastBuildStatus = Failure; }" propertyList];
-    NSDictionary *newProjectInfo = [@"{ name = Foo; lastBuildStatus = Success; }" propertyList];
-
-    CCMConnection *dummyConnection = [[[CCMConnection alloc] initWithServerURL:nil] autorelease];
-    [monitor setValue:[NSArray arrayWithObject:dummyConnection] forKey:@"connections"];   
-
+- (void)testUpdatesProjectWithStatusAndPostsNotifications
+{
+	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; })" propertyList];
+    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
+    [monitor setupFromUserDefaults];
+ 	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
+    NSArray *statusList = [@"({ name = 'connectfour'; lastBuildLabel = 'test1234'; })" propertyList]; 
     
-    CCMServer *server = [[[CCMServer alloc] initWithURL:nil andProjectNames:[NSArray arrayWithObjects:@"Foo", @"Bar", nil]] autorelease];
-    [[server projectNamed:@"Foo"] updateWithInfo:oldProjectInfo];
-    NSArray *serverConnectionPairs = [NSArray arrayWithObject:[EDObjectPair pairWithObjects:server :dummyConnection]];
-    [monitor setValue:serverConnectionPairs forKey:@"serverConnectionPairs"];   
-    NSNotification *dummyNotification = [NSNotification notificationWithName:@"test" object:nil];
-    [[[notificationFactoryMock expect] andReturn:dummyNotification] buildNotificationForOldProjectInfo:oldProjectInfo andNewProjectInfo:newProjectInfo];
+    [monitor connection:[[monitor connections] firstObject] didReceiveServerStatus:statusList];
     
-    [monitor connection:dummyConnection didReceiveServerStatus:[NSArray arrayWithObject:newProjectInfo]];
-    
-    STAssertEqualObjects(CCMSuccessStatus, [[[server projectNamed:@"Foo"] status] lastBuildStatus], @"Should have updated status");
-    STAssertEqualObjects(@"No project information provided by server.", [[server projectNamed:@"Bar"] statusError], @"Should have set error string");
-	STAssertEquals(2u, [postedNotifications count], @"Should have posted two notifications");
-//    TODO: need to fix re-creating of notification to insert object
-//    STAssertTrue([postedNotifications indexOfObject:dummyNotification] != NSNotFound, @"Should have posted build complete notification");
+    CCMProject *project = [[monitor projects] firstObject];
+    STAssertNil([project statusError], @"Should not have set status error");
+    STAssertEqualObjects(@"test1234", [[project status] lastBuildLabel], @"Should have set status.");
+    [notificationCenterMock verify];
 }
 
 
-- (void)testGetsProjectsFromConnection
-{	
-	// Unfortunately, we can't stub the connection because the repository creates it. So, we need a working URL,
-	// which makes this almost an integration test.
-	NSURL *url = [NSURL fileURLWithPath:@"Tests/cctray.xml"];
-	CCMServer *server = [[[CCMServer alloc] initWithURL:url andProjectNames:[NSArray arrayWithObject:@"connectfour"]] autorelease];
-	
-	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
-	[[[defaultsManagerMock expect] andReturn:[NSArray arrayWithObject:server]] servers]; 
-	
-	// this is now all async and will not work in a unit test anymore
-	[monitor start];
-	[monitor pollServers:nil];
-	
-	NSArray *projectList = [monitor projects];
-	STAssertEquals(1u, [projectList count], @"Should have found one project.");
-	CCMProject *project = [projectList objectAtIndex:0];
-	STAssertEqualObjects(@"connectfour", [project name], @"Should have set up project with right name."); 
-
-	//	STAssertEqualObjects(@"build.1", [project lastBuildLabel], @"Should have set up project projectInfo."); 
+- (void)testUpdatesProjectWhenStatusWasNotIncludedInItsConnectionResponse
+{
+	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; })" propertyList];
+    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
+    [monitor setupFromUserDefaults];
+ 	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
+    NSArray *statusList = [@"({ name = 'SomeProjectNotConnectfour'; })" propertyList]; 
+    
+    [monitor connection:[[monitor connections] firstObject] didReceiveServerStatus:statusList];
+    
+    CCMProject *project = [[monitor projects] firstObject];
+    STAssertNotNil([project statusError], @"Should have set a status error");
+    STAssertNil(nil, [[project status] lastBuildLabel], @"Should have reset status to nil.");
+    [notificationCenterMock verify];
 }
+
+
+- (void)testUpdatesProjectsWithErrorAndPostsNotifications
+{
+	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; },"
+                              " { projectName = cozmoz; serverUrl = 'file:cctray.xml'; },"
+                              " { projectName = protest; serverUrl = 'file:cctray.xml'; })" propertyList];
+    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
+    [monitor setupFromUserDefaults];
+    __block CCMConnection *connection = nil;
+    [[monitor connections] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if([[obj serverURL] isEqual:[NSURL URLWithString:@"file:cctray.xml"]])
+            connection = obj;
+    }];
+ 	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
+   
+    [monitor connection:connection hadTemporaryError:@"broken"];
+    
+    STAssertNil([[[monitor projects] objectAtIndex:0] statusError], @"Should not have set error for project on different server");
+    STAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:1] statusError], @"Should have set status error");
+    STAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:2] statusError], @"Should have set status error");
+    [notificationCenterMock verify];
+}
+
 
 @end

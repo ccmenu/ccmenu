@@ -39,7 +39,7 @@ do { \
 {
 	[[[defaultsMock expect] andReturn:nil] arrayForKey:CCMDefaultsProjectListKey];
 	
-	NSArray *entries = [manager projectListEntries];
+	NSArray *entries = [manager projectList];
 	
 	STAssertNotNil(entries, @"Should have returned empty list.");
 	STAssertEquals(0u, [entries count], @"Should have returned empty list.");
@@ -51,7 +51,7 @@ do { \
 	NSArray *list = [@"({ projectName = new; serverUrl = 'http://test/cctray.xml'; })" propertyList];
 	[[[defaultsMock expect] andReturn:list] arrayForKey:CCMDefaultsProjectListKey];
 
-	NSArray *entries = [manager projectListEntries];
+	NSArray *entries = [manager projectList];
 	
 	STAssertEquals(1u, [entries count], @"Should have returned one project.");
 	NSDictionary *projectListEntry = [entries objectAtIndex:0];
@@ -95,38 +95,6 @@ do { \
 	[manager addProject:@"project1" onServerWithURL:@"http://localhost/cctray.xml"];
 	// we're not using a nice mock, so if the manager tried to set a new list, the mock would complain
 }
-
-- (void)testCreatesDomainObjects
-{
-	NSDictionary *pl = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; })" propertyList];
-	[[[defaultsMock expect] andReturn:pl] arrayForKey:CCMDefaultsProjectListKey]; 
-	
-	NSArray *servers = [manager servers];
-	
-	STAssertEquals(1u, [servers count], @"Should have created server.");
-	CCMServer *server = [servers objectAtIndex:0];
-	STAssertEqualObjects([NSURL URLWithString:@"http://test/cctray.xml"], [server url], @"Should have set right URL.");
-	
-	STAssertEquals(1u, [[server projects] count], @"Should have created project.");
-	CCMProject *project = [[server projects] objectAtIndex:0];
-	STAssertEqualObjects(@"connectfour", [project name], @"Should have set right name.");
-
-	_verify(defaultsMock);
-}
-
-
-- (void)testCreatesMinimumNumberOfServers
-{
-	NSDictionary *ple0 = [@"{ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; }" propertyList];
-	NSDictionary *ple1 = [@"{ projectName = cozmoz; serverUrl = 'http://test/cctray.xml'; }" propertyList];
-	NSDictionary *ple2 = [@"{ projectName = protest; serverUrl = 'http://another/cctray.xml'; }" propertyList];
-	[[[defaultsMock expect] andReturn:[NSArray arrayWithObjects:ple0, ple1, ple2, nil]] arrayForKey:CCMDefaultsProjectListKey]; 
-	
-	NSArray *servers = [manager servers];
-	
-	STAssertEquals(2u, [servers count], @"Should have created minimum number of servers.");
-}
-
 
 - (void)testConvertsDataBasedListIfArrayIsNotAvailable
 {

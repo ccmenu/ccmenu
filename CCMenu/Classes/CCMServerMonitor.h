@@ -25,6 +25,7 @@
 - (void)setupFromUserDefaults;
 
 - (NSArray *)projects;
+- (NSArray *)connections;
 
 - (void)start;
 - (void)stop;
