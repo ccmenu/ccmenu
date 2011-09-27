@@ -339,12 +339,12 @@
 		031D05C31371598500AE5A48 /* CI Server Interface */ = {
 			isa = PBXGroup;
 			children = (
+				03C08289134F97940039E3BD /* CCMServerMonitor.h */,
+				03C0828A134F97940039E3BD /* CCMServerMonitor.m */,
 				03C08277134F97940039E3BD /* CCMBuildNotificationFactory.h */,
 				03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */,
 				03C0827B134F97940039E3BD /* CCMConnection.h */,
 				03C0827C134F97940039E3BD /* CCMConnection.m */,
-				03C08289134F97940039E3BD /* CCMServerMonitor.h */,
-				03C0828A134F97940039E3BD /* CCMServerMonitor.m */,
 				03C0828B134F97940039E3BD /* CCMServerStatusReader.h */,
 				03C0828C134F97940039E3BD /* CCMServerStatusReader.m */,
 			);

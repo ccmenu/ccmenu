@@ -120,10 +120,11 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 		if(project == nil)
 			continue;
         [projectsByName removeObjectForKey:[projectInfo objectForKey:@"name"]];
-		NSNotification *notification = [notificationFactory buildNotificationForOldProjectInfo:[project info] andNewProjectInfo:projectInfo];
-		if(notification != nil)
-			[notificationCenter postNotificationName:[notification name] object:project userInfo:[notification userInfo]];
+        CCMProjectStatus *oldStatus = [[[project status] retain] autorelease];
 		[project updateWithInfo:projectInfo];
+		NSNotification *notification = [notificationFactory notificationForProject:project withOldStatus:oldStatus];
+		if(notification != nil)
+			[notificationCenter postNotification:notification];
 	}
  	NSDictionary *projectErrorInfo = [NSDictionary dictionaryWithObject:@"No project information provided by server." forKey:@"errorString"];
 	[[[projectsByName allValues] each] updateWithInfo:projectErrorInfo];

@@ -22,7 +22,11 @@
 
 - (void)updateWithInfo:(NSDictionary *)dictionary;
 - (NSDictionary *)info;
+
+- (void)setStatus:(CCMProjectStatus *)newStatus;
 - (CCMProjectStatus *)status;
+
+- (void)setStatusError:(NSString *)newError;
 - (NSString *)statusError;
 
 - (void)setBuildDuration:(NSNumber *)duration;

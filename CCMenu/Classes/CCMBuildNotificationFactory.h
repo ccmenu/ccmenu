@@ -1,13 +1,13 @@
 
 #import <Cocoa/Cocoa.h>
+#import "CCMProject.h"
 
 
 @interface CCMBuildNotificationFactory : NSObject 
 {
 }
 
-
-- (NSNotification *)buildNotificationForOldProjectInfo:(NSDictionary *)oldInfo andNewProjectInfo:(NSDictionary *)newInfo;
+- (NSNotification *)notificationForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus;
 
 @end
 

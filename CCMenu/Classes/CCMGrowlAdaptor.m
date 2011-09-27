@@ -49,7 +49,7 @@ struct {
 
 - (void)buildComplete:(NSNotification *)notification
 {
-	NSString *projectName = [[notification userInfo] objectForKey:@"projectName"];
+	NSString *projectName = [[notification object] name];
 	NSString *buildResult = [[notification userInfo] objectForKey:@"buildResult"];
 
 	for(int i = 0; growlNotifications[i].key != nil; i++)
