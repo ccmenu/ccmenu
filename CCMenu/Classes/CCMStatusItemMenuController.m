@@ -127,7 +127,9 @@
         {
             [statusItem setFormattedTitle:[[NSCalendarDate date] descriptionOfIntervalSinceDate:[displayProject estimatedBuildCompleteTime] withSign:YES]];
         }
-        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(displayProjects:) userInfo:nil repeats:NO];
+        [timer invalidate];
+        [timer release];
+        timer = [[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(displayProjects:) userInfo:nil repeats:NO] retain];
     }
 	else if(failCount > 0)
 	{
