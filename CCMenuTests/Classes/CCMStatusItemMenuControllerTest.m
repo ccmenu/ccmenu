@@ -1,4 +1,5 @@
 
+#import "NSArray+CCMAdditions.h"
 #import "CCMStatusItemMenuControllerTest.h"
 #import "CCMProject.h"
 
@@ -7,21 +8,22 @@
 
 - (void)setUp
 {
-    NSMenu *menu = [[[NSMenu alloc] initWithTitle:@"Test"] autorelease];
-	NSMenuItem *projectItem = [[[NSMenuItem alloc] initWithTitle:@"(loading...)" action:NULL keyEquivalent:@""] autorelease];
-	[menu addItem:projectItem];
-	[menu addItem:[NSMenuItem separatorItem]];
-	NSMenuItem *openItem = [[[NSMenuItem alloc] initWithTitle:@"Open..." action:NULL keyEquivalent:@""] autorelease];
-	[openItem setTarget:self];
-	[menu addItem:openItem];
+	controller = [[[CCMStatusItemMenuController alloc] init] autorelease];
+
+    serverMonitorMock = [OCMockObject mockForClass:[CCMServerMonitor class]];
+	[controller setValue:serverMonitorMock forKey:@"serverMonitor"];
 
 	imageFactoryMock = [OCMockObject niceMockForClass:[CCMImageFactory class]];
-	controller = [[[CCMStatusItemMenuController alloc] init] autorelease];
-	[controller setMenu:menu];
-	[controller setImageFactory:(id)imageFactoryMock];
-	statusItem = [controller createStatusItem];
+	[controller setValue:imageFactoryMock forKey:@"imageFactory"];
+    
+    NSMenu *menu = [[[NSMenu alloc] initWithTitle:@"Test"] autorelease];
+	[menu addItem:[[[NSMenuItem alloc] initWithTitle:@"test project" action:NULL keyEquivalent:@""] autorelease]];
+	[menu addItem:[NSMenuItem separatorItem]];    
+	[controller setValue:menu forKey:@"statusMenu"];
 	
-	testImage = [[[NSImage alloc] init] autorelease];
+    [controller awakeFromNib];
+	
+	dummyImage = [[[NSImage alloc] init] autorelease];
 }
 
 - (CCMProject *)createProjectWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
@@ -31,84 +33,117 @@
 	[info setObject:activity forKey:@"activity"];
 	[info setObject:status forKey:@"lastBuildStatus"];
 	[info setObject:[NSCalendarDate calendarDate] forKey:@"lastBuildDate"];
-	[project updateWithInfo:info];
+    [project setStatus:[[[CCMProjectStatus alloc] initWithDictionary:info] autorelease]];
 	return project;
 }
 
 - (void)testAddsProjects
 {
-	CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	NSArray *projectList = [NSArray arrayWithObject:project];
+    NSArray *projects = [NSArray arrayWithObject:   
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus]];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
 	
-	[controller displayProjects:projectList];
+	[controller displayProjects:nil];
 	
-	NSArray *items = [[statusItem menu] itemArray];
-	STAssertEqualObjects(@"connectfour", [[items objectAtIndex:0] title], @"Should have set right project name.");
-	STAssertEquals(controller, [[items objectAtIndex:0] target], @"Should have set right target.");
+	NSArray *items = [[[controller statusItem] menu] itemArray];
+	STAssertEqualObjects(@"connectfour", [[items objectAtIndex:0] title], @"Should have set correct project name.");
+	STAssertEquals(controller, [[items objectAtIndex:0] target], @"Should have set correct target.");
 	STAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
-	STAssertEquals(3u, [items count], @"Should have created right number of items.");
-}
-
-- (void)testDisplaysSuccessWhenAllProjectsSuccessful
-{
-	CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	NSArray *projectList = [NSArray arrayWithObject:project];
-	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	
-	[controller displayProjects:projectList];
-	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
-}
-
-- (void)testDisplaysFailureWhenNotAllProjectsSuccessful
-{
-	CCMProject *project1 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	CCMProject *project3 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	NSArray *projectList = [NSArray arrayWithObjects:project1, project2, project3, nil];
-	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	
-	[controller displayProjects:projectList];
-	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
-}
-
-- (void)testDisplaysBuildingWhenProjectIsBuilding
-{
-	CCMProject *project1 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-	NSArray *projectList = [NSArray arrayWithObjects:project1, project2, project3, nil];
-	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-	
-	[controller displayProjects:projectList];
-	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
-}
-
-- (void)testDisplaysFixingWhenProjectIsBuildingWithLastStatusFailed
-{
-	CCMProject *project1 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	CCMProject *project2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	CCMProject *project3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-	NSArray *projectList = [NSArray arrayWithObjects:project1, project2, project3, nil];
-	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-
-	[controller displayProjects:projectList];
-	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
+	STAssertEquals(2u, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testDisplaysUnknownWhenNoStatusIsKnown
 {
-	CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-	NSArray *projectList = [NSArray arrayWithObjects:project, nil];
-	[[[imageFactoryMock stub] andReturn:testImage] imageForActivity:nil lastBuildStatus:nil];
+    NSArray *projects = [NSArray arrayWithObject:   
+                         [[[CCMProject alloc] initWithName:@"connectfour"] autorelease]];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:nil lastBuildStatus:nil];
 	
-	[controller displayProjects:projectList];
+	[controller displayProjects:nil];
 	
-	STAssertEqualObjects(testImage, [statusItem image], @"Should have used right image.");
+	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
 }
 
+- (void)testDisplaysSuccessAndNoTextWhenAllProjectsWithStatusAreSleepingAndSuccessful
+{
+    NSArray *projects = [NSArray arrayWithObjects:   
+                         [[[CCMProject alloc] initWithName:@"connectfour"] autorelease],
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus], nil];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+	
+	[controller displayProjects:nil];
+	
+	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+}
+
+- (void)testDisplaysFailureAndNumberOfFailuresWhenAllAreSleepingAndAtLeastOneIsFailed
+{
+    NSArray *projects = [NSArray arrayWithObjects:   
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus],
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus],
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus], nil];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+	
+	[controller displayProjects:nil];
+	
+	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	STAssertEqualObjects(@"2", [[controller statusItem] title], @"Should display correct number.");
+}
+
+- (void)testDisplaysBuildingWhenAtLeastOneProjectIsBuilding
+{
+    NSArray *projects = [NSArray arrayWithObjects:   
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus],
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus], nil];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+	
+	[controller displayProjects:nil];
+	
+	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+}
+
+- (void)testDisplaysFixingWhenAtLeastOneProjectWithLastStatusFailedIsBuilding
+{
+    NSArray *projects = [NSArray arrayWithObjects:   
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
+                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus],
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus], nil];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+
+	[controller displayProjects:nil];
+	
+	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+}
+
+- (void)testDisplaysShortestTimingForBuildingProjectsWithEstimatedCompleteTime
+{
+    NSArray *projects = [NSArray arrayWithObjects:   
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus], nil];
+    [[projects objectAtIndex:1] setBuildDuration:[NSNumber numberWithInt:300]];
+    [[projects objectAtIndex:2] setBuildDuration:[NSNumber numberWithInt:30]];
+    [[projects each] setBuildStartTime:[NSDate date]];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+    
+	[controller displayProjects:nil];
+	
+	STAssertTrue([[[controller statusItem] title] hasSuffix:@"s"], @"Should display text for project with less than a minute remaining.");
+}
+
+- (void)testDisplaysTimingForFixingEvenIfItsLongerThanForBuilding
+{
+    
+}
 
 @end

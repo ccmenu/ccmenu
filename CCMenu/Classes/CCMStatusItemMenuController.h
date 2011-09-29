@@ -15,12 +15,9 @@
 
 }
 
-- (void)setMenu:(NSMenu *)aMenu;
-- (void)setImageFactory:(CCMImageFactory *)anImageFactory;
+- (NSStatusItem *)statusItem;
 
-- (NSStatusItem *)createStatusItem;
 - (void)displayProjects:(id)sender;
-
 - (IBAction)openProject:(id)sender;
 
 @end

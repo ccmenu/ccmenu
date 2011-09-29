@@ -6,10 +6,11 @@
 
 @interface CCMStatusItemMenuControllerTest : SenTestCase 
 {
-	CCMStatusItemMenuController		*controller;
-	NSStatusItem					*statusItem;
-	OCMockObject					*imageFactoryMock;
-	NSImage							*testImage;
+	CCMStatusItemMenuController	*controller;
+	NSImage						*dummyImage;
+	
+    id                          serverMonitorMock;
+    id                          imageFactoryMock;
 }
 
 @end

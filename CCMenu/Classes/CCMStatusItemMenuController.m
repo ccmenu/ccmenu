@@ -27,31 +27,20 @@
 
 @implementation CCMStatusItemMenuController
 
-- (void)setMenu:(NSMenu *)aMenu
-{
-	statusMenu = aMenu;
-}
-
-- (void)setImageFactory:(CCMImageFactory *)anImageFactory
-{
-	[imageFactory autorelease];
-	imageFactory = [anImageFactory retain];
-}
-
 - (void)awakeFromNib
-{
-	[self createStatusItem];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(displayProjects:) name:CCMProjectStatusUpdateNotification object:nil];
-}
-
-- (NSStatusItem *)createStatusItem
 {
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];	
 	[statusItem setImage:[imageFactory imageForUnavailableServer]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
-	return statusItem;
+
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self selector:@selector(displayProjects:) name:CCMProjectStatusUpdateNotification object:nil];
+}
+
+- (NSStatusItem *)statusItem
+{
+    return statusItem;
 }
 
 - (void)displayProjects:(id)sender
