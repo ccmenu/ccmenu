@@ -78,9 +78,32 @@
     [controller displayProjects:nil];
     
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have kept correct projec.");
+	STAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have kept correct project.");
 	STAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
 	STAssertEquals(2u, [items count], @"Menu should have correct number of items.");
+}
+
+- (void)testUpdatesMenuItemsForProjectsWithSameNameOnDifferentServers
+{
+    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"bar"] autorelease];
+    [p1 setServerURL:[NSURL URLWithString:@"http://server1"]];
+    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"bar"] autorelease];
+    [p1 setServerURL:[NSURL URLWithString:@"http://server2"]];
+    CCMProject *p3 = [[[CCMProject alloc] initWithName:@"foo"] autorelease];
+    
+    NSMutableArray *projects = [NSMutableArray array];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+
+    [projects setArray:[NSArray arrayWithObjects:p1, p2, p3, nil]];
+	[controller displayProjects:nil];
+    [projects setArray:[NSArray arrayWithObjects:p2, p1, nil]];
+    [controller displayProjects:nil];
+    
+	NSArray *items = [[[controller statusItem] menu] itemArray];
+	STAssertEqualObjects(@"bar", [[items objectAtIndex:0] title], @"Should have kept correct project.");
+	STAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have kept correct project.");
+    STAssertTrue([[items objectAtIndex:0] representedObject] != [[items objectAtIndex:1] representedObject], @"Should have different projects in menu.");
+	STAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
 }
 
 

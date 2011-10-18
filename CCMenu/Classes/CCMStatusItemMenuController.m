@@ -33,7 +33,7 @@
 	[statusItem setImage:[imageFactory imageForUnavailableServer]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
-
+    
     [[NSNotificationCenter defaultCenter] 
      addObserver:self selector:@selector(displayProjects:) name:CCMProjectStatusUpdateNotification object:nil];
 }
@@ -44,34 +44,39 @@
 }
 
 
-- (void)removeProjectItemsFromMenu:(NSMenu *)menu
-{
-}
-
 - (void)setupItemsForProjects:(NSArray *)projectList inMenu:(NSMenu *)menu
 {	
-	while([[[menu itemArray] objectAtIndex:0] isSeparatorItem] == NO)
-		[menu removeItemAtIndex:0];
-
 	int index = 0;
     for(CCMProject *project in [projectList sortedArrayByComparingAttribute:@"name"])
     {
- 		NSMenuItem *menuItem = [menu insertItemWithTitle:[project name] action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
+        NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
+        while(([menuItem isSeparatorItem] == NO) && ([[project name] compare:[menuItem title]] == NSOrderedDescending))
+        {
+            [menu removeItemAtIndex:index];
+            menuItem = [[menu itemArray] objectAtIndex:index];
+        }
+        if([menuItem representedObject] != project)
+        {
+            menuItem = [menu insertItemWithTitle:[project name] action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
+            [menuItem setTarget:self];
+            [menuItem setRepresentedObject:project];
+        }
 		NSImage *image = [imageFactory imageForActivity:[[project status] activity] lastBuildStatus:[[project status] lastBuildStatus]];
 		[menuItem setImage:[imageFactory convertForMenuUse:image]];
-		[menuItem setTarget:self];
-		[menuItem setRepresentedObject:project];
-   }
-
+        index += 1;
+    }
+    while([[[menu itemArray] objectAtIndex:index] isSeparatorItem] == NO)
+    {
+        [menu removeItemAtIndex:index];
+    }
 }
 
 
 - (void)displayProjects:(id)sender
 {
     NSArray *projectList = [serverMonitor projects];
-	NSMenu *menu = [statusItem menu];
 	
-	[self setupItemsForProjects:projectList inMenu:menu];
+	[self setupItemsForProjects:projectList inMenu:[statusItem menu]];
     
 	unsigned failCount = 0;
 	unsigned buildCount = 0;
