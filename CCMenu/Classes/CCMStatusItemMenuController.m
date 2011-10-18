@@ -43,23 +43,43 @@
     return statusItem;
 }
 
+
+- (void)removeProjectItemsFromMenu:(NSMenu *)menu
+{
+}
+
+- (void)setupItemsForProjects:(NSArray *)projectList inMenu:(NSMenu *)menu
+{	
+	while([[[menu itemArray] objectAtIndex:0] isSeparatorItem] == NO)
+		[menu removeItemAtIndex:0];
+
+	int index = 0;
+    for(CCMProject *project in [projectList sortedArrayByComparingAttribute:@"name"])
+    {
+ 		NSMenuItem *menuItem = [menu insertItemWithTitle:[project name] action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
+		NSImage *image = [imageFactory imageForActivity:[[project status] activity] lastBuildStatus:[[project status] lastBuildStatus]];
+		[menuItem setImage:[imageFactory convertForMenuUse:image]];
+		[menuItem setTarget:self];
+		[menuItem setRepresentedObject:project];
+   }
+
+}
+
+
 - (void)displayProjects:(id)sender
 {
     NSArray *projectList = [serverMonitor projects];
 	NSMenu *menu = [statusItem menu];
 	
-	int index = 0;
-	while([[[menu itemArray] objectAtIndex:index] isSeparatorItem] == FALSE)
-		[menu removeItemAtIndex:index];
-	
+	[self setupItemsForProjects:projectList inMenu:menu];
+    
 	unsigned failCount = 0;
 	unsigned buildCount = 0;
 	bool isFixing = NO;
 	bool haveAtLeastOneStatus = NO;
     CCMProject *displayProject = nil;
-    for(CCMProject *project in [projectList sortedArrayByComparingAttribute:@"name"])
+    for(CCMProject *project in projectList)
 	{
-		NSString *title = [NSString stringWithFormat:@"%@", [project name]];
         if([project isBuilding])
         {
             buildCount += 1;
@@ -90,14 +110,6 @@
 			isFixing = YES;
 		if([project status] != nil)
 			haveAtLeastOneStatus = YES;
-
-        
-		NSMenuItem *menuItem = [menu insertItemWithTitle:title action:@selector(openProject:) keyEquivalent:@"" atIndex:index++];
-		NSImage *image = [imageFactory imageForActivity:[[project status] activity] lastBuildStatus:[[project status] lastBuildStatus]];
-		image = [imageFactory convertForMenuUse:image];
-		[menuItem setImage:image];
-		[menuItem setTarget:self];
-		[menuItem setRepresentedObject:project];
 	}
 	if(haveAtLeastOneStatus == NO)
 	{

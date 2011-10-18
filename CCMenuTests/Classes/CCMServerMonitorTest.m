@@ -1,7 +1,6 @@
 
 #import "CCMServerMonitorTest.h"
 #import "CCMUserDefaultsManager.h"
-#import "CCMServer.h"
 #import "CCMProject.h"
 #import "NSArray+CCMAdditions.h"
 #import <OCMock/OCMock.h>

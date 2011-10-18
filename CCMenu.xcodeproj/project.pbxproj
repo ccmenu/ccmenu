@@ -54,7 +54,6 @@
 		0349BC9B134F9F9100D2F269 /* CCMProjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC84134F9F9100D2F269 /* CCMProjectTest.m */; };
 		0349BC9C134F9F9100D2F269 /* CCMServerMonitorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */; };
 		0349BC9D134F9F9100D2F269 /* CCMServerStatusReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */; };
-		0349BC9E134F9F9100D2F269 /* CCMServerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8A134F9F9100D2F269 /* CCMServerTest.m */; };
 		0349BC9F134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */; };
 		0349BCA0134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */; };
 		0349BCA1134F9F9100D2F269 /* cctray.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC8F134F9F9100D2F269 /* cctray.xml */; };
@@ -80,7 +79,6 @@
 		039C92DD135CE0080012838C /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08282134F97940039E3BD /* CCMPreferencesController.m */; };
 		039C92DE135CE0080012838C /* CCMProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08284134F97940039E3BD /* CCMProject.m */; };
 		039C92DF135CE0080012838C /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08286134F97940039E3BD /* CCMProjectWindowController.m */; };
-		039C92E0135CE0080012838C /* CCMServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08288134F97940039E3BD /* CCMServer.m */; };
 		039C92E1135CE0080012838C /* CCMServerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828A134F97940039E3BD /* CCMServerMonitor.m */; };
 		039C92E2135CE0080012838C /* CCMServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828C134F97940039E3BD /* CCMServerStatusReader.m */; };
 		039C92E3135CE0080012838C /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */; };
@@ -99,7 +97,6 @@
 		03C082A3134F97940039E3BD /* CCMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08282134F97940039E3BD /* CCMPreferencesController.m */; };
 		03C082A4134F97940039E3BD /* CCMProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08284134F97940039E3BD /* CCMProject.m */; };
 		03C082A5134F97940039E3BD /* CCMProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08286134F97940039E3BD /* CCMProjectWindowController.m */; };
-		03C082A6134F97940039E3BD /* CCMServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08288134F97940039E3BD /* CCMServer.m */; };
 		03C082A7134F97940039E3BD /* CCMServerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828A134F97940039E3BD /* CCMServerMonitor.m */; };
 		03C082A8134F97940039E3BD /* CCMServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828C134F97940039E3BD /* CCMServerStatusReader.m */; };
 		03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0828E134F97940039E3BD /* CCMStatusItemApplication.m */; };
@@ -190,8 +187,6 @@
 		0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerMonitorTest.m; sourceTree = "<group>"; };
 		0349BC87134F9F9100D2F269 /* CCMServerStatusReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerStatusReaderTest.h; sourceTree = "<group>"; };
 		0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerStatusReaderTest.m; sourceTree = "<group>"; };
-		0349BC89134F9F9100D2F269 /* CCMServerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerTest.h; sourceTree = "<group>"; };
-		0349BC8A134F9F9100D2F269 /* CCMServerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerTest.m; sourceTree = "<group>"; };
 		0349BC8B134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusItemMenuControllerTest.h; sourceTree = "<group>"; };
 		0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemMenuControllerTest.m; sourceTree = "<group>"; };
 		0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMUserDefaultsManagerTest.h; sourceTree = "<group>"; };
@@ -239,8 +234,6 @@
 		03C08284134F97940039E3BD /* CCMProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProject.m; sourceTree = "<group>"; };
 		03C08285134F97940039E3BD /* CCMProjectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectWindowController.h; sourceTree = "<group>"; };
 		03C08286134F97940039E3BD /* CCMProjectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectWindowController.m; sourceTree = "<group>"; };
-		03C08287134F97940039E3BD /* CCMServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServer.h; sourceTree = "<group>"; };
-		03C08288134F97940039E3BD /* CCMServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServer.m; sourceTree = "<group>"; };
 		03C08289134F97940039E3BD /* CCMServerMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerMonitor.h; sourceTree = "<group>"; };
 		03C0828A134F97940039E3BD /* CCMServerMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerMonitor.m; sourceTree = "<group>"; };
 		03C0828B134F97940039E3BD /* CCMServerStatusReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerStatusReader.h; sourceTree = "<group>"; };
@@ -315,8 +308,6 @@
 				03C08284134F97940039E3BD /* CCMProject.m */,
 				0301A77E142C702F0041F299 /* CCMProjectStatus.h */,
 				0301A77F142C702F0041F299 /* CCMProjectStatus.m */,
-				03C08287134F97940039E3BD /* CCMServer.h */,
-				03C08288134F97940039E3BD /* CCMServer.m */,
 			);
 			name = "Domain Model";
 			sourceTree = "<group>";
@@ -324,14 +315,14 @@
 		031D05C2137157D700AE5A48 /* Project Window */ = {
 			isa = PBXGroup;
 			children = (
+				03C08285134F97940039E3BD /* CCMProjectWindowController.h */,
+				03C08286134F97940039E3BD /* CCMProjectWindowController.m */,
 				03C08279134F97940039E3BD /* CCMBuildStatusTransformer.h */,
 				03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */,
 				032E6EC9140411A100DBA2E0 /* CCMRelativeDateTransformer.h */,
 				032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */,
 				032E6ECD140416C900DBA2E0 /* CCMTimeIntervalTransformer.h */,
 				032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */,
-				03C08285134F97940039E3BD /* CCMProjectWindowController.h */,
-				03C08286134F97940039E3BD /* CCMProjectWindowController.m */,
 			);
 			name = "Project Window";
 			sourceTree = "<group>";
@@ -447,8 +438,6 @@
 				0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */,
 				0349BC87134F9F9100D2F269 /* CCMServerStatusReaderTest.h */,
 				0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */,
-				0349BC89134F9F9100D2F269 /* CCMServerTest.h */,
-				0349BC8A134F9F9100D2F269 /* CCMServerTest.m */,
 				0349BC8B134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.h */,
 				0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */,
 				0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */,
@@ -733,7 +722,6 @@
 				03C082A3134F97940039E3BD /* CCMPreferencesController.m in Sources */,
 				03C082A4134F97940039E3BD /* CCMProject.m in Sources */,
 				03C082A5134F97940039E3BD /* CCMProjectWindowController.m in Sources */,
-				03C082A6134F97940039E3BD /* CCMServer.m in Sources */,
 				03C082A7134F97940039E3BD /* CCMServerMonitor.m in Sources */,
 				03C082A8134F97940039E3BD /* CCMServerStatusReader.m in Sources */,
 				03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */,
@@ -765,7 +753,6 @@
 				0349BC9B134F9F9100D2F269 /* CCMProjectTest.m in Sources */,
 				0349BC9C134F9F9100D2F269 /* CCMServerMonitorTest.m in Sources */,
 				0349BC9D134F9F9100D2F269 /* CCMServerStatusReaderTest.m in Sources */,
-				0349BC9E134F9F9100D2F269 /* CCMServerTest.m in Sources */,
 				0349BC9F134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m in Sources */,
 				0349BCA0134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m in Sources */,
 				0349BCA2134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m in Sources */,
@@ -780,7 +767,6 @@
 				039C92DD135CE0080012838C /* CCMPreferencesController.m in Sources */,
 				039C92DE135CE0080012838C /* CCMProject.m in Sources */,
 				039C92DF135CE0080012838C /* CCMProjectWindowController.m in Sources */,
-				039C92E0135CE0080012838C /* CCMServer.m in Sources */,
 				039C92E1135CE0080012838C /* CCMServerMonitor.m in Sources */,
 				039C92E2135CE0080012838C /* CCMServerStatusReader.m in Sources */,
 				039C92E3135CE0080012838C /* CCMStatusItemApplication.m in Sources */,

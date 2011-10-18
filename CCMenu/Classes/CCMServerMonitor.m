@@ -1,7 +1,6 @@
 
 #import "CCMServerMonitor.h"
 #import "CCMUserDefaultsManager.h"
-#import "CCMServer.h"
 #import "CCMProject.h"
 #import "CCMConnection.h"
 #import "CCMPreferencesController.h"

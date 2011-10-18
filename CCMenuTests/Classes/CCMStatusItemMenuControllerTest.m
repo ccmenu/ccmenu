@@ -37,7 +37,7 @@
 	return project;
 }
 
-- (void)testAddsProjects
+- (void)testCreatesMenuItem
 {
     NSArray *projects = [NSArray arrayWithObject:   
                          [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus]];
@@ -51,6 +51,38 @@
 	STAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
 	STAssertEquals(2u, [items count], @"Menu should have correct number of items.");
 }
+
+- (void)testAddsMenuItemInAlphabeticalOrder
+{
+    NSMutableArray *projects = [NSMutableArray arrayWithObject:   
+                         [[[CCMProject alloc] initWithName:@"xyz"] autorelease]];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[controller displayProjects:nil];
+    [projects addObject:[[[CCMProject alloc] initWithName:@"abc"] autorelease]];
+    [controller displayProjects:nil];
+
+	NSArray *items = [[[controller statusItem] menu] itemArray];
+	STAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have ordered projects alphabetically.");
+	STAssertEqualObjects(@"xyz", [[items objectAtIndex:1] title], @"Should have ordered projects alphabetically.");
+	STAssertEquals(3u, [items count], @"Menu should have correct number of items.");
+}
+
+- (void)testRemovesMenuItem
+{
+    NSMutableArray *projects = [NSMutableArray arrayWithObjects:   
+                                [[[CCMProject alloc] initWithName:@"xyz"] autorelease],
+                                [[[CCMProject alloc] initWithName:@"abc"] autorelease], nil];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[controller displayProjects:nil];
+    [projects removeObjectAtIndex:0];
+    [controller displayProjects:nil];
+    
+	NSArray *items = [[[controller statusItem] menu] itemArray];
+	STAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have kept correct projec.");
+	STAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
+	STAssertEquals(2u, [items count], @"Menu should have correct number of items.");
+}
+
 
 - (void)testDisplaysUnknownWhenNoStatusIsKnown
 {
@@ -129,9 +161,11 @@
     NSArray *projects = [NSArray arrayWithObjects:   
                          [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
                          [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
                          [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus], nil];
-    [[projects objectAtIndex:1] setBuildDuration:[NSNumber numberWithInt:300]];
+    [[projects objectAtIndex:1] setBuildDuration:[NSNumber numberWithInt:90]];
     [[projects objectAtIndex:2] setBuildDuration:[NSNumber numberWithInt:30]];
+    [[projects objectAtIndex:3] setBuildDuration:[NSNumber numberWithInt:70]];
     [[projects each] setBuildStartTime:[NSDate date]];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
@@ -143,6 +177,21 @@
 
 - (void)testDisplaysTimingForFixingEvenIfItsLongerThanForBuilding
 {
+    NSArray *projects = [NSArray arrayWithObjects:   
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus],
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus],
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus],
+                         [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus], nil];
+    [[projects objectAtIndex:1] setBuildDuration:[NSNumber numberWithInt:90]];
+    [[projects objectAtIndex:2] setBuildDuration:[NSNumber numberWithInt:90]];
+    [[projects objectAtIndex:3] setBuildDuration:[NSNumber numberWithInt:30]];
+    [[projects each] setBuildStartTime:[NSDate date]];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
+	[[[imageFactoryMock stub] andReturn:dummyImage] imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+    
+	[controller displayProjects:nil];
+	
+	STAssertTrue([[[controller statusItem] title] hasPrefix:@"-1:"], @"Should display text for project with more than a minute remaining.");
     
 }
 

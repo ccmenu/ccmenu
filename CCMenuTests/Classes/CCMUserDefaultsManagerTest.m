@@ -1,6 +1,5 @@
 
 #import "CCMUserDefaultsManagerTest.h"
-#import "CCMServer.h"
 #import "CCMProject.h"
 
 #define _verify(mock) \
