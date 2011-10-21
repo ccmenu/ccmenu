@@ -109,6 +109,8 @@
 		03C082E2134F9D250039E3BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C082D6134F9D250039E3BD /* Localizable.strings */; };
 		03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DC134F9D250039E3BD /* Preferences.toolbar */; };
 		03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */; };
+		03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
+		03E288C4144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +257,8 @@
 		03C082D7134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		03C082DD134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/Preferences.toolbar; sourceTree = "<group>"; };
 		03C082E1134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/ProjectWindow.toolbar; sourceTree = "<group>"; };
+		03E288C1144F045E0026DAC4 /* NSObject+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CCMAdditions.h"; sourceTree = "<group>"; };
+		03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CCMAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +291,8 @@
 		031D05C01371574300AE5A48 /* Foundation Additions */ = {
 			isa = PBXGroup;
 			children = (
+				03E288C1144F045E0026DAC4 /* NSObject+CCMAdditions.h */,
+				03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */,
 				03C08297134F97940039E3BD /* NSArray+CCMAdditions.h */,
 				03C08298134F97940039E3BD /* NSArray+CCMAdditions.m */,
 				03C08299134F97940039E3BD /* NSCalendarDate+CCMAdditions.h */,
@@ -738,6 +744,7 @@
 				032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */,
 				032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */,
 				0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */,
+				03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +790,7 @@
 				032E6ED0140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */,
 				0301A781142C702F0041F299 /* CCMProjectStatus.m in Sources */,
 				0301A785142C7D940041F299 /* CCMProjectStatusTest.m in Sources */,
+				03E288C4144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,6 +37,7 @@
 
 - (NSCalendarDate *)estimatedBuildCompleteTime;
 
+- (BOOL)hasStatus;
 - (BOOL)isFailed;
 - (BOOL)isBuilding;
 

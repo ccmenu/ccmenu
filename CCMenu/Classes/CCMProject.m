@@ -126,6 +126,10 @@ static NSSet *infoKeys;
     return [buildStartTime dateByAddingTimeInterval:[buildDuration doubleValue]];
 }
 
+- (BOOL)hasStatus
+{
+    return status != nil;
+}
 
 - (BOOL)isFailed
 {

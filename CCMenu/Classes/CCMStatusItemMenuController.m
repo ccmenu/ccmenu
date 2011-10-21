@@ -1,5 +1,6 @@
 
 #import <EDCommon/EDCommon.h>
+#import "NSObject+CCMAdditions.h"
 #import "NSCalendarDate+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"
 #import "CCMImageFactory.h"
@@ -44,7 +45,59 @@
 }
 
 
-- (void)setupItemsForProjects:(NSArray *)projectList inMenu:(NSMenu *)menu
+- (CCMProject *)projectForStatusBar:(NSArray *)projectList
+{
+    NSSortDescriptor *status = [NSSortDescriptor sortDescriptorWithKey:@"hasStatus" ascending:NO];
+    NSSortDescriptor *building = [NSSortDescriptor sortDescriptorWithKey:@"isBuilding" ascending:NO];
+    NSSortDescriptor *failed = [NSSortDescriptor sortDescriptorWithKey:@"isFailed" ascending:NO];
+    NSSortDescriptor *timing = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES comparator:^(id obj1, id obj2) {
+        // custom comparator using nil key path to work around sorting nil values
+        // http://stackoverflow.com/questions/2021213/nssortdescriptor-and-nil-values
+        // http://www.cocoabuilder.com/archive/cocoa/283958-nssortdescriptor-and-block.html        
+        NSDate *val1 = [[obj1 getWithDefault:[NSDate distantFuture]] estimatedBuildCompleteTime];
+        NSDate *val2 = [[obj2 getWithDefault:[NSDate distantFuture]] estimatedBuildCompleteTime];
+        return [val1 compare:val2];
+    }];
+    
+    NSArray *descriptors = [NSArray arrayWithObjects:status, building, failed, timing, nil];
+    NSArray *sortedProjectList = [projectList sortedArrayUsingDescriptors:descriptors];
+    
+    for(CCMProject *p in sortedProjectList)
+        NSLog(@"%@ %@ %@ %@ %@", [p name], [p status] != nil ? @"Status" : @"Unknown", [p isBuilding] ? @"Building" : @"Sleeping", [p isFailed] ? @"Failed" : @"Success", [p estimatedBuildCompleteTime]); 
+    NSLog(@"----");
+    
+    return [sortedProjectList firstObject];
+}
+
+- (void)setupStatusItem:(NSStatusItem *)item forProject:(CCMProject *)project
+{
+    if((project == nil) || ([project status] == nil))
+    {
+		[item setImage:[imageFactory imageForActivity:nil lastBuildStatus:nil]];
+		[item setTitle:@""];
+    } 
+    else if([project isBuilding] == NO)
+    {
+        NSString *status = [project isFailed] ? CCMFailedStatus : CCMSuccessStatus;
+		[item setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:status]];
+        if([project isFailed])
+            [item setFormattedTitle:[NSString stringWithFormat:@"%u", 99]];
+        else
+            [item setTitle:@""];
+    }
+    else
+    {
+		NSString *status = [project isFailed] ? CCMFailedStatus : CCMSuccessStatus;
+		[item setImage:[imageFactory imageForActivity:CCMBuildingActivity lastBuildStatus:status]];
+        NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
+		if(estimatedComplete != nil)
+            [item setFormattedTitle:[[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES]];
+        else
+            [item setTitle:@""];
+    }
+}
+
+- (void)setupMenu:(NSMenu *)menu forProjects:(NSArray *)projectList
 {	
 	int index = 0;
     for(CCMProject *project in [projectList sortedArrayByComparingAttribute:@"name"])
@@ -75,77 +128,16 @@
 - (void)displayProjects:(id)sender
 {
     NSArray *projectList = [serverMonitor projects];
-	
-	[self setupItemsForProjects:projectList inMenu:[statusItem menu]];
+	[self setupMenu:[statusItem menu] forProjects:projectList];
     
-	unsigned failCount = 0;
-	unsigned buildCount = 0;
-	bool isFixing = NO;
-	bool haveAtLeastOneStatus = NO;
-    CCMProject *displayProject = nil;
-    for(CCMProject *project in projectList)
-	{
-        if([project isBuilding])
-        {
-            buildCount += 1;
-            NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
-            if(estimatedComplete != nil)
-            {
-                if(displayProject == nil)
-                {
-                    displayProject = project;
-                }
-                else if([project isFailed])
-                {
-                    if(![displayProject isFailed] || [estimatedComplete precedesDate:[displayProject estimatedBuildCompleteTime]])
-                        displayProject = project;
-                }
-                else
-                {
-                    if(![displayProject isFailed] && [estimatedComplete precedesDate:[displayProject estimatedBuildCompleteTime]])
-                        displayProject = project;
-                }
-            }
-        }
-		if([project isFailed])
-			failCount += 1;
-		if([project isBuilding])
-			buildCount += 1;
-		if([project isBuilding] && [project isFailed])
-			isFixing = YES;
-		if([project status] != nil)
-			haveAtLeastOneStatus = YES;
-	}
-	if(haveAtLeastOneStatus == NO)
-	{
-		[statusItem setImage:[imageFactory imageForActivity:nil lastBuildStatus:nil]];
-		[statusItem setTitle:@""];
-	}
-	else if(buildCount > 0)
-	{
-		NSString *status = isFixing ? CCMFailedStatus : CCMSuccessStatus;
-		[statusItem setImage:[imageFactory imageForActivity:CCMBuildingActivity lastBuildStatus:status]];
-		if(displayProject == nil)
-        {
-            [statusItem setTitle:@""];
-        }
-        else
-        {
-            [statusItem setFormattedTitle:[[NSCalendarDate date] descriptionOfIntervalSinceDate:[displayProject estimatedBuildCompleteTime] withSign:YES]];
-        }
+    CCMProject *project = [self projectForStatusBar:projectList];
+    [self setupStatusItem:statusItem forProject:project];
+    
+    if([project isBuilding])
+    {
         [timer invalidate];
         [timer release];
         timer = [[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(displayProjects:) userInfo:nil repeats:NO] retain];
-    }
-	else if(failCount > 0)
-	{
-		[statusItem setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus]];
-		[statusItem setFormattedTitle:[NSString stringWithFormat:@"%u", failCount]];
-	}
-	else
-	{
-		[statusItem setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus]];
-		[statusItem setTitle:@""];
     }
 }
 
