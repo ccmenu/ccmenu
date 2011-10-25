@@ -64,6 +64,14 @@ NSString *CCMStillFailingBuild = @"Still failing";
 		NSDictionary *buildCompleteInfo = [self completeInfoForProject:project withOldStatus:oldStatus];
 		return [NSNotification notificationWithName:CCMBuildCompleteNotification object:project userInfo:buildCompleteInfo];
 	}
+    if([[oldStatus activity] isEqualToString:CCMBuildingActivity] &&
+       [[[project status] activity] isEqualToString:CCMBuildingActivity] &&
+       [[oldStatus lastBuildLabel] isEqualToString:[[project status] lastBuildLabel]] == NO)
+    {
+		NSDictionary *buildStartInfo = [self startInfoForProject:project withOldStatus:oldStatus];
+		return [NSNotification notificationWithName:CCMBuildStartNotification object:project userInfo:buildStartInfo];
+    }
+       
 	return nil;
 }
 

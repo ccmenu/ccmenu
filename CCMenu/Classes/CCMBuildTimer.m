@@ -6,19 +6,6 @@
 
 @implementation CCMBuildTimer
 
-- (id)init
-{
-    [super init];
-    
-    return self;
-}
-
-- (void)dealloc
-{
-    [super dealloc];
-}
-
-
 - (void)start
 {
 	[[NSNotificationCenter defaultCenter] 
@@ -27,10 +14,11 @@
      addObserver:self selector:@selector(buildComplete:) name:CCMBuildCompleteNotification object:nil];
 }
 
-
 - (void)buildStart:(NSNotification *)notification
 {
     CCMProject *project = [notification object];
+    if([project buildStartTime] != nil)
+        [self buildComplete:notification];
     [project setBuildStartTime:[NSDate date]];
 }
 

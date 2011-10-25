@@ -2,33 +2,19 @@
 #import "CCMBuildNotificationFactoryTest.h"
 #import "CCMProject.h"
 
+
 @implementation CCMBuildNotificationFactoryTest
 
 - (void)setUp
 {
+    builder = [[[CCMProjectBuilder alloc] init] autorelease];
 	factory = [[[CCMBuildNotificationFactory alloc] init] autorelease];	
 }
 
-- (CCMProjectStatus *)createProjectStatusWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
-{
-	NSMutableDictionary *info = [NSMutableDictionary dictionary];
-	[info setObject:activity forKey:@"activity"];
-	[info setObject:status forKey:@"lastBuildStatus"];
-	[info setObject:[NSCalendarDate calendarDate] forKey:@"lastBuildDate"];
-	return [[[CCMProjectStatus alloc] initWithDictionary:info] autorelease];
-}
-
-- (CCMProject *)createProjectWithActivity:(NSString *)activity lastBuildStatus:(NSString *)status
-{
-    CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-    [project setStatus:[self createProjectStatusWithActivity:activity lastBuildStatus:status]];
-    return project;
-}
-
 - (void)testCreatesSuccessfulBuildCompleteNotification
-{	
-	CCMProjectStatus *old = [self createProjectStatusWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+{
+	CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus];
+    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
@@ -41,9 +27,9 @@
 
 - (void)testCreatesBrokenBuildCompleteNotification
 {	
-	CCMProjectStatus *old = [self createProjectStatusWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-    
+	CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus];
+    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
+
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
 	NSDictionary *userInfo = [notification userInfo];
@@ -52,9 +38,9 @@
 
 - (void)testCreatesFixedBuildCompleteNotification
 {	
-	CCMProjectStatus *old = [self createProjectStatusWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-    CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-    
+    CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMFailedStatus];
+    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
+
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
 	NSDictionary *userInfo = [notification userInfo];
@@ -63,9 +49,9 @@
 
 - (void)testCreatesStillFailingBuildCompleteNotification
 {	
-	CCMProjectStatus *old = [self createProjectStatusWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-    CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	
+    CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMFailedStatus];
+    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
+
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
 	NSDictionary *userInfo = [notification userInfo];
@@ -74,9 +60,9 @@
 
 - (void)testCreatesBrokenBuildCompletionNotificationEvenIfBuildWasMissed
 {
-	CCMProjectStatus *old = [self createProjectStatusWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-	
+    CCMProjectStatus *old = [[[builder status] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
+    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
+
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
 	NSDictionary *userInfo = [notification userInfo];
@@ -85,9 +71,9 @@
 
 - (void)testCreatesFixedBuildCompletionNotificationEvenIfBuildWasMissed
 {
-	CCMProjectStatus *old = [self createProjectStatusWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-    CCMProject *project = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	
+    CCMProjectStatus *old = [[[builder status] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
+    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
+
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
 	NSDictionary *userInfo = [notification userInfo];
@@ -96,11 +82,23 @@
 
 - (void)testCreatesBuildStartingNotification
 {
-	CCMProjectStatus *old = [self createProjectStatusWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
-	
+    CCMProjectStatus *old = [[[builder status] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
+    CCMProject *project = [[[builder project] withActivity:CCMBuildingActivity] withBuildStatus:CCMFailedStatus];
+
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
+	STAssertNotNil(notification, @"Should have created a notification.");
+	STAssertEqualObjects(CCMBuildStartNotification, [notification name], @"Should have created correct notification.");
+    STAssertEquals(project, [notification object], @"Should have set correct notification object.");
+}
+
+- (void)testCreatesBuildStartingNotificationOnMissedSleeping
+{
+	CCMProjectStatus *old = [[[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus] withBuildLabel:@"build.1"];
+    CCMProject *project = [[[[builder project] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus] withBuildLabel:@"build.2"];
+     
+	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
+    
 	STAssertNotNil(notification, @"Should have created a notification.");
 	STAssertEqualObjects(CCMBuildStartNotification, [notification name], @"Should have created correct notification.");
     STAssertEquals(project, [notification object], @"Should have set correct notification object.");
