@@ -69,7 +69,7 @@
     return [sortedProjectList firstObject];
 }
 
-- (void)setupStatusItem:(NSStatusItem *)item forProject:(CCMProject *)project
+- (void)setupStatusItem:(NSStatusItem *)item forProject:(CCMProject *)project fromList:(NSArray *)projectList
 {
     if((project == nil) || ([project status] == nil))
     {
@@ -80,20 +80,29 @@
     {
         NSString *status = [project isFailed] ? CCMFailedStatus : CCMSuccessStatus;
 		[item setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:status]];
+        NSString *text = @"";
         if([project isFailed])
-            [item setFormattedTitle:[NSString stringWithFormat:@"%u", 99]];
-        else
-            [item setTitle:@""];
+        {
+            __block int failCount = 0;
+            [projectList enumerateObjectsUsingBlock:^(id project, NSUInteger idx, BOOL *stop) {
+                if([project isFailed])
+                    failCount += 1;
+            }];
+            text = [NSString stringWithFormat:@"%u", failCount];
+        }
+        [item setFormattedTitle:text];
     }
     else
     {
 		NSString *status = [project isFailed] ? CCMFailedStatus : CCMSuccessStatus;
 		[item setImage:[imageFactory imageForActivity:CCMBuildingActivity lastBuildStatus:status]];
+        NSString *text = @"";
         NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
 		if(estimatedComplete != nil)
-            [item setFormattedTitle:[[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES]];
-        else
-            [item setTitle:@""];
+        {
+            text = [[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
+        }
+        [item setFormattedTitle:text];
     }
 }
 
@@ -131,7 +140,7 @@
 	[self setupMenu:[statusItem menu] forProjects:projectList];
     
     CCMProject *project = [self projectForStatusBar:projectList];
-    [self setupStatusItem:statusItem forProject:project];
+    [self setupStatusItem:statusItem forProject:project fromList:projectList];
     
     if([project isBuilding])
     {
