@@ -81,7 +81,7 @@ static NSSet *infoKeys;
 {
     if([dictionary objectForKey:@"errorString"] == nil)
     {
-        [self setStatus:[[CCMProjectStatus alloc] initWithDictionary:dictionary]];
+        [self setStatus:[[[CCMProjectStatus alloc] initWithDictionary:dictionary] autorelease]];
         [self setStatusError:nil];
     }
     else
