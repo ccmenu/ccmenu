@@ -4,7 +4,6 @@
 #import "CCMConnection.h"
 #import "NSArray+CCMAdditions.h"
 #import "NSString+CCMAdditions.h"
-#import "NSAppleScript+EDAdditions.h"
 #import <EDCommon/EDCommon.h>
 
 #define WINDOW_TITLE_HEIGHT 78
@@ -179,21 +178,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (void)preferencesChanged:(id)sender
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
-}
-
-- (IBAction)openGrowlPreferences:(id)sender
-{
-    [[NSAppleScript scriptWithName:@"handlers"] callHandler:@"open_growl"];
-}
-
-- (IBAction)showNotificationHelp:(id)sender
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"NotificationHelp" ofType:@"rtfd"];
-    NSAttributedString *text = [[[NSAttributedString alloc] initWithPath:path documentAttributes:NULL] autorelease];
-    [notificationHelpView insertText:text];
-    [notificationHelpView setEditable:NO];
-    [notificationHelpView scrollToBeginningOfDocument:self];
-    [[notificationHelpView window] makeKeyAndOrderFront:self];
 }
 
 - (IBAction)updateIntervalChanged:(id)sender

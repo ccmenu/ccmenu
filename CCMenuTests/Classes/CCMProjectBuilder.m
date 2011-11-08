@@ -25,6 +25,7 @@
 
 @end
 
+
 @implementation CCMProject(CCMProjectBuilderAdditions)
 
 - (id)withActivity:(NSString *)activity
@@ -49,7 +50,7 @@
 
 @implementation CCMProjectStatus(CCMProjectBuilderAdditions)
 
-- (void)addValue:(id)value forKey:(id)key
+- (void)addValue:(id)value forKey:(NSString *)key
 {
     NSMutableDictionary *copy = [info mutableCopy];
     [copy setObject:value forKey:key];

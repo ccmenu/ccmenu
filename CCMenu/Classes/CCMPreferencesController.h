@@ -39,9 +39,6 @@
 - (IBAction)switchPreferencesPane:(id)sender;
 - (IBAction)preferencesChanged:(id)sender;
 
-- (IBAction)openGrowlPreferences:(id)sender;
-- (IBAction)showNotificationHelp:(id)sender;
-
 - (IBAction)updateIntervalChanged:(id)sender;
 - (IBAction)checkForUpdateNow:(id)sender;
 
