@@ -36,6 +36,9 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	NSView *prefView = [allViews objectAtIndex:index];
 	NSDictionary *itemDef = [[toolbarDefinition objectForKey:@"itemInfoByIdentifier"] objectForKey:selectedIdentifier];
 	[preferencesWindow setTitle:[itemDef objectForKey:@"label"]]; 
+    
+    if(prefView == notificationPrefsView)
+        [self updateSoundPopUps];
 
 	NSRect windowFrame = [preferencesWindow frame];
 	windowFrame.size.height = [prefView frame].size.height + WINDOW_TITLE_HEIGHT;
@@ -49,7 +52,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[paneHolderView setFrame:[prefView frame]];
 	[paneHolderView addSubview:prefView];
 }
-
 
 - (void)addProjects:(id)sender
 {
@@ -169,11 +171,44 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 }
 
 
-- (IBAction)removeProjects:(id)sender
+- (void)removeProjects:(id)sender
 {
 	[allProjectsViewController remove:sender];
 	[self preferencesChanged:sender];
 }
+
+
+- (void)updateSoundPopUps
+{
+    NSArray *popups = [NSArray arrayWithObjects:successSoundPopUp, failureSoundPopUp, stillFailingSoundPopUp, fixedSoundPopUp, nil];
+    NSArray *libraries = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSAllDomainsMask, YES);
+    
+    for(NSPopUpButton *button in popups)
+    {
+        while([[button itemArray] count] > 1)
+            [button removeItemAtIndex:1];
+    }
+    for(NSString *libPath in libraries) 
+    {
+        NSString *soundLibPath = [libPath stringByAppendingString:@"/Sounds"];
+        NSArray *filenames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:soundLibPath error:nil];
+        if([filenames count] == 0)
+            continue;
+        [popups enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) { [[obj menu] addItem:[NSMenuItem separatorItem]]; }];
+        for (NSString *f in filenames) {
+            if([f hasPrefix:@"."])
+                continue;
+            [[popups each] addItemWithTitle:[f stringByDeletingPathExtension]];
+        }
+    }
+}
+
+- (void)soundSelected:(id)sender
+{
+    [[NSSound soundNamed:[sender title]] play];
+    [self preferencesChanged:self];
+}
+
 
 - (void)preferencesChanged:(id)sender
 {

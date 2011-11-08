@@ -61,11 +61,6 @@
     
     NSArray *descriptors = [NSArray arrayWithObjects:status, building, failed, timing, nil];
     NSArray *sortedProjectList = [projectList sortedArrayUsingDescriptors:descriptors];
-    
-    for(CCMProject *p in sortedProjectList)
-        NSLog(@"%@ %@ %@ %@ %@", [p name], [p status] != nil ? @"Status" : @"Unknown", [p isBuilding] ? @"Building" : @"Sleeping", [p isFailed] ? @"Failed" : @"Success", [p estimatedBuildCompleteTime]); 
-    NSLog(@"----");
-    
     return [sortedProjectList firstObject];
 }
 

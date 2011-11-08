@@ -12,11 +12,17 @@
 	IBOutlet NSPanel				*preferencesWindow;
 	IBOutlet NSView					*paneHolderView;
 	IBOutlet NSArrayController		*allProjectsViewController;
+    
 	IBOutlet NSView					*projectsView;
-	IBOutlet NSView					*notificationPrefsView;
-    IBOutlet NSTextView             *notificationHelpView;
-	IBOutlet NSView					*advancedPrefsView;
 	IBOutlet NSTextField			*versionField;
+	
+    IBOutlet NSView					*notificationPrefsView;
+    IBOutlet NSPopUpButton          *successSoundPopUp;
+    IBOutlet NSPopUpButton          *failureSoundPopUp;
+    IBOutlet NSPopUpButton          *stillFailingSoundPopUp;
+    IBOutlet NSPopUpButton          *fixedSoundPopUp;
+
+	IBOutlet NSView					*advancedPrefsView;
 	
 	IBOutlet NSPanel				*addProjectsSheet;
 	IBOutlet NSTabView				*sheetTabView;
@@ -45,6 +51,9 @@
 - (NSString *)determineServerURL;
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl ;
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+
+- (IBAction)soundSelected:(id)sender;
+- (void)updateSoundPopUps;
 
 @end
 
