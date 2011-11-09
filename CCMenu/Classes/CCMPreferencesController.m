@@ -24,6 +24,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[self switchPreferencesPane:self];
 		[versionField setStringValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
 	}
+    [soundNamesViewController setContent:[self availableSounds]];
 	[NSApp activateIgnoringOtherApps:YES];
 	[preferencesWindow makeKeyAndOrderFront:self];	
 }
@@ -37,9 +38,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	NSDictionary *itemDef = [[toolbarDefinition objectForKey:@"itemInfoByIdentifier"] objectForKey:selectedIdentifier];
 	[preferencesWindow setTitle:[itemDef objectForKey:@"label"]]; 
     
-    if(prefView == notificationPrefsView)
-        [self updateSoundPopUps];
-
 	NSRect windowFrame = [preferencesWindow frame];
 	windowFrame.size.height = [prefView frame].size.height + WINDOW_TITLE_HEIGHT;
 	windowFrame.size.width = [prefView frame].size.width;
@@ -178,35 +176,24 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 }
 
 
-- (void)updateSoundPopUps
+- (NSArray *)availableSounds
 {
-    NSArray *popups = [NSArray arrayWithObjects:successSoundPopUp, failureSoundPopUp, stillFailingSoundPopUp, fixedSoundPopUp, nil];
-    NSArray *libraries = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSAllDomainsMask, YES);
-    
-    for(NSPopUpButton *button in popups)
+    NSMutableArray *sounds = [NSMutableArray arrayWithObject:@"-"];
+    for(NSString *libPath in NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSAllDomainsMask, YES)) 
     {
-        while([[button itemArray] count] > 1)
-            [button removeItemAtIndex:1];
-    }
-    for(NSString *libPath in libraries) 
-    {
-        NSString *soundLibPath = [libPath stringByAppendingString:@"/Sounds"];
-        NSArray *filenames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:soundLibPath error:nil];
-        if([filenames count] == 0)
-            continue;
-        [popups enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) { [[obj menu] addItem:[NSMenuItem separatorItem]]; }];
-        for (NSString *f in filenames) {
-            if([f hasPrefix:@"."])
-                continue;
-            [[popups each] addItemWithTitle:[f stringByDeletingPathExtension]];
+        NSString *soundLibPath = [libPath stringByAppendingPathComponent:@"Sounds"];
+        for (NSString *filename in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:soundLibPath error:nil]) 
+        {
+            if([filename hasPrefix:@"."] == NO)
+                [sounds addObject:[filename stringByDeletingPathExtension]];
         }
     }
+    return sounds;
 }
 
 - (void)soundSelected:(id)sender
 {
     [[NSSound soundNamed:[sender title]] play];
-    [self preferencesChanged:self];
 }
 
 

@@ -10,7 +10,7 @@ NSString *CCMBuildCompleteNotification = @"CCMBuildCompleteNotification";
 NSString *CCMSuccessfulBuild = @"Successful";
 NSString *CCMFixedBuild = @"Fixed";
 NSString *CCMBrokenBuild = @"Broken";
-NSString *CCMStillFailingBuild = @"Still failing";
+NSString *CCMStillFailingBuild = @"StillFailing";
 
 
 @implementation CCMBuildNotificationFactory

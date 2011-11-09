@@ -17,10 +17,7 @@
 	IBOutlet NSTextField			*versionField;
 	
     IBOutlet NSView					*notificationPrefsView;
-    IBOutlet NSPopUpButton          *successSoundPopUp;
-    IBOutlet NSPopUpButton          *failureSoundPopUp;
-    IBOutlet NSPopUpButton          *stillFailingSoundPopUp;
-    IBOutlet NSPopUpButton          *fixedSoundPopUp;
+	IBOutlet NSArrayController		*soundNamesViewController;
 
 	IBOutlet NSView					*advancedPrefsView;
 	
@@ -53,7 +50,7 @@
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 - (IBAction)soundSelected:(id)sender;
-- (void)updateSoundPopUps;
+- (NSArray *)availableSounds;
 
 @end
 
