@@ -56,12 +56,22 @@
                 [serverUrl description], [[error localizedDescription] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
 }
 
+- (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error
+{
+	return [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
+}
+
+- (NSURLConnection *)newAsynchronousRequest:(NSURLRequest *)request
+{
+    return [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
 - (BOOL)testConnection
 {
 	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
 	NSHTTPURLResponse *response = nil;
 	NSError *error = nil;
-	[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    [self sendSynchronousRequest:request returningResponse:&response error:&error];
 	if(error != nil)
 		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:error]];
 	int status = [response statusCode];
@@ -73,7 +83,7 @@
 	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
 	NSHTTPURLResponse *response = nil;
 	NSError *requestError = nil;
-	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+	NSData *data = [self sendSynchronousRequest:request returningResponse:&response error:&requestError];
 	if(data == nil)
 		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:requestError]];
 	if([response statusCode] != 200)
@@ -91,7 +101,7 @@
 	if(urlConnection != nil)
 		return;
 	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-	if((urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self]) == nil) 
+	if((urlConnection = [self newAsynchronousRequest:request]) == nil) 
 		[NSException raise:@"ConfigurationException" format:@"Cannot create connection for URL [%@]", [serverUrl absoluteString]];	
 	receivedData = [[NSMutableData data] retain];
 }

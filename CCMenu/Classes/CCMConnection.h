@@ -26,6 +26,12 @@
 - (void)requestServerStatus;
 - (void)cancelStatusRequest;
 
+
+// internal, don't use
+
+- (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error;
+- (NSURLConnection *)newAsynchronousRequest:(NSURLRequest *)request;
+
 @end
 
 
