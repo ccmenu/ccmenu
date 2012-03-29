@@ -67,7 +67,7 @@
 
 - (void)testRetrievesStatusAsynchronously
 {
-    NSURLConnection *dummyUrlConnection = [[OCMockObject mockForClass:[NSURLConnection class]] retain];
+    NSURLConnection *dummyUrlConnection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"file:foo"]] delegate:nil startImmediately:NO];
     [[[connectionMock stub] andReturn:dummyUrlConnection] newAsynchronousRequest:[OCMArg any]];
     id responseMock = [self responseMockWithStatusCode:200];
     NSData *responseData = [RESPONSE_TEXT dataUsingEncoding:NSASCIIStringEncoding];
@@ -89,7 +89,7 @@
 
 - (void)testReportsErrorWhenAsychronousRetrievalOfStatusFailed
 {
-    NSURLConnection *dummyUrlConnection = [[OCMockObject mockForClass:[NSURLConnection class]] retain];
+    NSURLConnection *dummyUrlConnection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"file:foo"]] delegate:nil startImmediately:NO];
     [[[connectionMock stub] andReturn:dummyUrlConnection] newAsynchronousRequest:[OCMArg any]];
     id responseMock = [self responseMockWithStatusCode:500];
     [connection setDelegate:self];
