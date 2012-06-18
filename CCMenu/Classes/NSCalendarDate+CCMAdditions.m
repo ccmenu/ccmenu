@@ -55,7 +55,7 @@
 
 - (NSString *)timeAsString
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
     return [[dateFormatter stringFromDate:self] stringByRemovingSurroundingWhitespace];

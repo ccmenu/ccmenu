@@ -46,12 +46,12 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	return connections;
 }
 
-- (NSMutableDictionary *)projectsByNameForConnection:(CCMConnection *)aConection
+- (NSMutableDictionary *)projectsByNameForConnection:(CCMConnection *)aConnection
 {
     NSMutableDictionary *projectsByName = [NSMutableDictionary dictionary];
     for(CCMProject *p in projects)
     {
-        if([[p serverURL] isEqual:[aConection serverURL]])
+        if([[p serverURL] isEqual:[aConnection serverURL]])
             [projectsByName setObject:p forKey:[p name]];
     }
     return projectsByName;
