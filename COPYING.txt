@@ -1,5 +1,5 @@
 CruiseControl, a Continuous Integration Toolkit
-Copyright (c) 2001-2011, ThoughtWorks, Inc.
+Copyright (c) 2001-2012, ThoughtWorks, Inc.
 200 E. Randolph, 25th Floor
 Chicago, IL 60601 USA
 All rights reserved.
