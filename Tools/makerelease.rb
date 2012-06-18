@@ -80,7 +80,7 @@ class ReleaseManager
         <pubDate>#{pubdate}</pubDate>
         <sparkle:releaseNotesLink>http://ccmenu.svn.sourceforge.net/viewvc/*checkout*/ccmenu/trunk/RELEASENOTES.txt?revision=#{svnrev}</sparkle:releaseNotesLink> 
         <enclosure 
-          url="http://downloads.sourceforge.net/sourceforge/ccmenu/#{imagename}" 
+          url="http://sourceforge.net/projects/ccmenu/files/#{@proj.name}/#{@proj.version}/#{imagename}/download" 
           length="#{imagesize}" 
           type="application/octet-stream"/>
     </item>
