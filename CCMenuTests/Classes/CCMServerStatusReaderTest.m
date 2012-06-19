@@ -28,7 +28,7 @@
 	STAssertEqualObjects(@"http://localhost:8080/dashboard/build/detail/connectfour", [info objectForKey:@"webUrl"], @"Should have copied web url.");
 }
 
-- (void)testReadsIsoFormattedDateWithUtcMarker
+- (void)testReadsIso8601FormattedDateWithUtcMarker
 {
 	NSString *xml = @"<Projects><Project name='connectfour' lastBuildTime='2007-07-18T18:44:48Z' /></Projects>";
     NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
@@ -36,7 +36,6 @@
     
 	NSArray *infos = [reader readProjectInfos:NULL];
     
-//    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSISO8601Calendar] autorelease];
     NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
     [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
@@ -44,6 +43,40 @@
     [components setHour:18]; [components setMinute:44]; [components setSecond:48];
     NSDate *expected = [calendar dateFromComponents:components];
 	STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+}
+
+- (void)testReadsIso8601FormattedDateWithNumericalTimezone
+{
+    NSString *xml = @"<Projects><Project name='connectfour' lastBuildTime='2007-07-18T18:44:48+0200' /></Projects>";
+    NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
+    CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
+
+    NSArray *infos = [reader readProjectInfos:NULL];
+
+    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"MET"]];
+    NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
+    [components setYear:2007]; [components setMonth:7]; [components setDay:18];
+    [components setHour:18]; [components setMinute:44]; [components setSecond:48];
+    NSDate *expected = [calendar dateFromComponents:components];
+    STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+}
+
+- (void)testReadsIso8601FormattedDateWithColonInNumericalTimezone
+{
+    NSString *xml = @"<Projects><Project name='connectfour' lastBuildTime='2007-07-18T18:44:48+02:00' /></Projects>";
+    NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
+    CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
+
+    NSArray *infos = [reader readProjectInfos:NULL];
+
+    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"MET"]];
+    NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
+    [components setYear:2007]; [components setMonth:7]; [components setDay:18];
+    [components setHour:18]; [components setMinute:44]; [components setSecond:48];
+    NSDate *expected = [calendar dateFromComponents:components];
+    STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
 - (void)testFixesBrokenCruiseControlRbUrls

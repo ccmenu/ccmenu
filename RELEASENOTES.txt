@@ -4,7 +4,7 @@ Changes listed by release.
 
 CCMenu 1.4
 
-* Sound notifications directly configured/played by CCMenu
+* Sound notifications played by CCMenu
 * Basic build timing display in menu and window
 * Supports ThoughtWorks Go integration servers 
 * Fixed timestamp parsing for Jenkins/Hudson
