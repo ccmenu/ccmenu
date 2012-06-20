@@ -35,30 +35,20 @@
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
     
 	NSArray *infos = [reader readProjectInfos:NULL];
-    
-    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
-    NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
-    [components setYear:2007]; [components setMonth:7]; [components setDay:18];
-    [components setHour:18]; [components setMinute:44]; [components setSecond:48];
-    NSDate *expected = [calendar dateFromComponents:components];
-	STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+
+    NSDate *expected = [NSDate dateWithNaturalLanguageString:@"2007-07-18 18:44:48 UTC"];
+    STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
 - (void)testReadsIso8601FormattedDateWithNumericalTimezone
 {
-    NSString *xml = @"<Projects><Project name='connectfour' lastBuildTime='2007-07-18T18:44:48+0200' /></Projects>";
+    NSString *xml = @"<Projects><Project name='connectfour' lastBuildTime='2012-05-14T15:48:25.0000000-0500' /></Projects>";
     NSData *data = [xml dataUsingEncoding:NSASCIIStringEncoding];
     CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
 
     NSArray *infos = [reader readProjectInfos:NULL];
 
-    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"MET"]];
-    NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
-    [components setYear:2007]; [components setMonth:7]; [components setDay:18];
-    [components setHour:18]; [components setMinute:44]; [components setSecond:48];
-    NSDate *expected = [calendar dateFromComponents:components];
+    NSDate *expected = [NSDate dateWithNaturalLanguageString:@"2012-05-14 20:48:25 UTC"];
     STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
@@ -70,12 +60,7 @@
 
     NSArray *infos = [reader readProjectInfos:NULL];
 
-    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"MET"]];
-    NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
-    [components setYear:2007]; [components setMonth:7]; [components setDay:18];
-    [components setHour:18]; [components setMinute:44]; [components setSecond:48];
-    NSDate *expected = [calendar dateFromComponents:components];
+    NSDate *expected = [NSDate dateWithNaturalLanguageString:@"2007-07-18 18:44:48 GMT+0200"];
     STAssertEqualObjects(expected, [[infos objectAtIndex:0] objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 

@@ -20,16 +20,17 @@
 - (NSDate *)convertDateString:(NSString *)dateString
 {
     // see http://stackoverflow.com/questions/2201216/is-there-a-simple-way-of-converting-an-iso8601-timestamp-to-a-formatted-nsdate
+    // see http://stackoverflow.com/questions/10057456/parsing-iso-8601-with-nsdateformatter
 
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[+-][0-9]{2}(:?)[0-9]{2}$" options:NSRegularExpressionCaseInsensitive error:NULL];
-    NSTextCheckingResult *match = [regex firstMatchInString:dateString options:0 range:NSMakeRange(0, [dateString length])];
-
-    NSRange colonRange = [match rangeAtIndex:1];
-    if(colonRange.location != NSNotFound && colonRange.length > 0)
-        dateString = [dateString stringByReplacingCharactersInRange:colonRange withString:@""];
-    NSRange timezoneRange = [match rangeAtIndex:0];
-    if(timezoneRange.location != NSNotFound)
-        dateString = [dateString stringByReplacingCharactersInRange:NSMakeRange(timezoneRange.location, 0) withString:@" "];
+//    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[+-][0-9]{2}(:?)[0-9]{2}$" options:NSRegularExpressionCaseInsensitive error:NULL];
+//    NSTextCheckingResult *match = [regex firstMatchInString:dateString options:0 range:NSMakeRange(0, [dateString length])];
+//
+//    NSRange colonRange = [match rangeAtIndex:1];
+//    if(colonRange.location != NSNotFound && colonRange.length > 0)
+//        dateString = [dateString stringByReplacingCharactersInRange:colonRange withString:@""];
+//    NSRange timezoneRange = [match rangeAtIndex:0];
+//    if(timezoneRange.location != NSNotFound)
+//        dateString = [dateString stringByReplacingCharactersInRange:NSMakeRange(timezoneRange.location, 0) withString:@" "];
 
     return [NSDate dateWithNaturalLanguageString:dateString];
 }
