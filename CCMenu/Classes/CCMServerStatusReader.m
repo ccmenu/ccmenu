@@ -21,7 +21,7 @@
 {
     // see http://stackoverflow.com/questions/2201216/is-there-a-simple-way-of-converting-an-iso8601-timestamp-to-a-formatted-nsdate
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    if ([dateString length] <= 19)
+    if([dateString length] <= 19)
     {
         // assume old-style CruiseControl timestamp without timezone, assume local time
         [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];

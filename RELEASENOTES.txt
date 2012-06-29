@@ -9,6 +9,7 @@ CCMenu 1.4
 * Supports ThoughtWorks Go integration servers 
 * Fixed timestamp parsing for Jenkins/Hudson
 * Fixed memory leak (#3426287)
+* Now requires Mac OS X 10.6
 
 
 CCMenu 1.3
