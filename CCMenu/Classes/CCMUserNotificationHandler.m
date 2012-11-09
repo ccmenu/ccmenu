@@ -1,6 +1,6 @@
 
 #import "CCMServerMonitor.h"
-#import "CCMNotificationSender.h"
+#import "CCMUserNotificationHandler.h"
 
 
 struct {
@@ -10,7 +10,7 @@ struct {
 } notifications[5];
 
 
-@implementation CCMNotificationSender
+@implementation CCMUserNotificationHandler
 
 + (void)initialize
 {
@@ -35,12 +35,15 @@ struct {
 {
 	[[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(buildComplete:) name:CCMBuildCompleteNotification object:nil];
+    [[NSUserNotificationCenter defaultUserNotificationCenter]
+     setDelegate:self];
 }
 
 - (void)buildComplete:(NSNotification *)buildNotification
 {
 	NSString *projectName = [[buildNotification object] name];
 	NSString *buildResult = [[buildNotification userInfo] objectForKey:@"buildResult"];
+	NSString *webUrl = [[buildNotification userInfo] objectForKey:@"webUrl"];
     
 	for(int i = 0; notifications[i].key != nil; i++)
 	{
@@ -55,11 +58,21 @@ struct {
             NSString *soundName = [[NSUserDefaults standardUserDefaults] stringForKey:defaultName];
             if(![soundName isEqualToString:@"-"])
                 userNotification.soundName = soundName;
+            
+            if(webUrl != nil)
+                userNotification.userInfo = [NSDictionary dictionaryWithObject:webUrl forKey:@"webUrl"];
 
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:userNotification];
 			break;
 		}
 	}
+}
+
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+    NSString *webUrl = [notification.userInfo objectForKey:@"webUrl"];
+    if(webUrl != nil)
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:webUrl]];
 }
 
 @end

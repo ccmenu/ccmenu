@@ -1,6 +1,6 @@
 
 #import "CCMAppController.h"
-#import "CCMNotificationSender.h"
+#import "CCMUserNotificationHandler.h"
 #import "CCMBuildNotificationFactory.h"
 #import "CCMBuildStatusTransformer.h"
 #import "CCMRelativeDateTransformer.h"
@@ -35,12 +35,11 @@
     CCMBuildTimer *buildTimer = [[CCMBuildTimer alloc] init];
     [buildTimer start];
     
-    CCMNotificationSender *notificationSender = [[CCMNotificationSender alloc] init];
-    [notificationSender start];
-    
 	[serverMonitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
 	[serverMonitor setNotificationFactory:[[[CCMBuildNotificationFactory alloc] init] autorelease]];
 	[serverMonitor start];
+
+    [userNotificationHandler start];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification 
@@ -50,8 +49,13 @@
 		[self setupRequestCache];
 		[self registerValueTransformers];
         [self startServices];
+
 		if([[serverMonitor projects] count] == 0)
 			[preferencesController showWindow:self];
+      
+        NSUserNotification *userNotification = [[aNotification userInfo] objectForKey:@"NSApplicationLaunchUserNotificationKey"];
+        if(userNotification != nil)
+            [userNotificationHandler userNotificationCenter:nil didActivateNotification:userNotification];
 	}
 	@catch(NSException *e)
 	{
