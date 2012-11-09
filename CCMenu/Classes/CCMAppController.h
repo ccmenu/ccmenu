@@ -2,7 +2,6 @@
 #import <Cocoa/Cocoa.h>
 #import "CCMPreferencesController.h"
 #import "CCMServerMonitor.h"
-#import "CCMGrowlAdaptor.h"
 #import "CCMImageFactory.h"
 
 
@@ -11,7 +10,6 @@
 	IBOutlet CCMPreferencesController	*preferencesController;
 	IBOutlet CCMImageFactory			*imageFactory;
 	IBOutlet CCMServerMonitor			*serverMonitor;
-	IBOutlet CCMGrowlAdaptor			*growlAdaptor;
 }
 
 @end

@@ -1,12 +1,11 @@
 
 #import "CCMAppController.h"
-#import "CCMGrowlAdaptor.h"
+#import "CCMNotificationSender.h"
 #import "CCMBuildNotificationFactory.h"
 #import "CCMBuildStatusTransformer.h"
 #import "CCMRelativeDateTransformer.h"
 #import "CCMTimeIntervalTransformer.h"
 #import "CCMBuildTimer.h"
-#import "CCMSoundPlayer.h"
 
 
 @implementation CCMAppController
@@ -36,11 +35,9 @@
     CCMBuildTimer *buildTimer = [[CCMBuildTimer alloc] init];
     [buildTimer start];
     
-    CCMSoundPlayer *soundPlayer = [[CCMSoundPlayer alloc] init];
-    [soundPlayer start];
-
-	[growlAdaptor start]; 
-
+    CCMNotificationSender *notificationSender = [[CCMNotificationSender alloc] init];
+    [notificationSender start];
+    
 	[serverMonitor setNotificationCenter:[NSNotificationCenter defaultCenter]];
 	[serverMonitor setNotificationFactory:[[[CCMBuildNotificationFactory alloc] init] autorelease]];
 	[serverMonitor start];

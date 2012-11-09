@@ -42,10 +42,10 @@
     interval = abs(interval);
 
     if(interval > 3600)
-        return [NSString stringWithFormat:@"%@%d:%02d:%02d", sign, interval / 3600, (interval / 60) % 60, interval % 60];
+        return [NSString stringWithFormat:@"%@%ld:%02ld:%02ld", sign, interval / 3600, (interval / 60) % 60, interval % 60];
     if(interval > 60)
-        return [NSString stringWithFormat:@"%@%d:%02d", sign, interval / 60, interval % 60];
-    return [NSString stringWithFormat:@"%@%ds", sign, interval];
+        return [NSString stringWithFormat:@"%@%ld:%02ld", sign, interval / 60, interval % 60];
+    return [NSString stringWithFormat:@"%@%lds", sign, interval];
 }
 
 
