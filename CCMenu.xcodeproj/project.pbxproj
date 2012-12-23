@@ -10,6 +10,11 @@
 		0300E7591408021800E59AFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7531408021800E59AFD /* MainMenu.xib */; };
 		0300E75A1408021800E59AFD /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7551408021800E59AFD /* Preferences.xib */; };
 		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
+		030150F51687AA4800FDE9EB /* handlers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 030150F41687AA4800FDE9EB /* handlers.applescript */; };
+		030150FF1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */; };
+		030151001687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */; };
+		030151011687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */; };
+		030151021687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */; };
 		0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
 		0301A781142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
 		0301A785142C7D940041F299 /* CCMProjectStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A783142C7D940041F299 /* CCMProjectStatusTest.m */; };
@@ -138,6 +143,11 @@
 		0300E7541408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0300E7561408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0300E7581408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProjectWindow.xib; sourceTree = "<group>"; };
+		030150F41687AA4800FDE9EB /* handlers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = handlers.applescript; path = Scripts/handlers.applescript; sourceTree = "<group>"; };
+		030150FB1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor+EDAdditions.h"; sourceTree = "<group>"; };
+		030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor+EDAdditions.m"; sourceTree = "<group>"; };
+		030150FD1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleScript+EDAdditions.h"; sourceTree = "<group>"; };
+		030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleScript+EDAdditions.m"; sourceTree = "<group>"; };
 		0301A77E142C702F0041F299 /* CCMProjectStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatus.h; sourceTree = "<group>"; };
 		0301A77F142C702F0041F299 /* CCMProjectStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatus.m; sourceTree = "<group>"; };
 		0301A782142C7D940041F299 /* CCMProjectStatusTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatusTest.h; sourceTree = "<group>"; };
@@ -280,6 +290,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		030150F31687AA3300FDE9EB /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				030150F41687AA4800FDE9EB /* handlers.applescript */,
+			);
+			name = Scripts;
+			sourceTree = "<group>";
+		};
 		031D05C01371574300AE5A48 /* Foundation Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +309,10 @@
 				03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */,
 				03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */,
 				03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */,
+				030150FB1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.h */,
+				030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */,
+				030150FD1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.h */,
+				030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */,
 			);
 			name = "Foundation Additions";
 			sourceTree = "<group>";
@@ -495,6 +517,7 @@
 			children = (
 				03C08274134F97940039E3BD /* Classes */,
 				03C082D5134F9CF90039E3BD /* Interface */,
+				030150F31687AA3300FDE9EB /* Scripts */,
 				0349BC59134F9EE600D2F269 /* Images */,
 				038ABE24134F11090053F0D1 /* Supporting Files */,
 			);
@@ -730,6 +753,9 @@
 				03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 				03BDCABF1456A00F000C3D32 /* CCMProjectBuilder.m in Sources */,
 				03B79F77164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */,
+				030150F51687AA4800FDE9EB /* handlers.applescript in Sources */,
+				030150FF1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
+				030151011687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +801,8 @@
 				03E288C4144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 				03BDCAC01456A00F000C3D32 /* CCMProjectBuilder.m in Sources */,
 				03B79F78164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */,
+				030151001687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
+				030151021687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
