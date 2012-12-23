@@ -49,7 +49,7 @@ struct {
 	{
 		if([buildResult isEqualToString:notifications[i].key])
 		{
-            NSUserNotification *userNotification = [[NSUserNotification alloc] init];
+            NSUserNotification *userNotification = [[[NSUserNotification alloc] init] autorelease];
             
             userNotification.title = [NSString stringWithFormat:@"%@: %@", projectName, notifications[i].title];
             userNotification.informativeText = notifications[i].text;

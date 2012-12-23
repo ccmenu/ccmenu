@@ -13,7 +13,7 @@
 
 - (id)initWithObject:(NSObject *)anObject andDefaultValue:(id)someValue
 {
-	[super init];
+	self = [super init];
 	object = [anObject retain];
     defaultValue = [someValue retain];
 	return self;
