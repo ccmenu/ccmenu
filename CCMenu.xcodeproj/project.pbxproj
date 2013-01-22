@@ -154,6 +154,7 @@
 		0301A783142C7D940041F299 /* CCMProjectStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatusTest.m; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
+		0321274716AED55D00292F3D /* CCMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCMenu.entitlements; sourceTree = "<group>"; };
 		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = Frameworks/EDCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37D135C191500D35055 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -527,6 +528,7 @@
 		038ABE24134F11090053F0D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0321274716AED55D00292F3D /* CCMenu.entitlements */,
 				0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */,
 				038ABE25134F11090053F0D1 /* CCMenu-Info.plist */,
 				038ABE26134F11090053F0D1 /* InfoPlist.strings */,
@@ -888,6 +890,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "Developer ID Application: ThoughtWorks";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -895,8 +898,9 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx10.8;
 			};
 			name = Debug;
@@ -905,12 +909,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "Developer ID Application: ThoughtWorks";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx10.8;
 			};
 			name = Release;
@@ -919,6 +925,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = CCMenu/CCMenu.entitlements;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -938,6 +945,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = CCMenu/CCMenu.entitlements;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
