@@ -6,6 +6,7 @@ CCMenu 1.5
 
 * Now requires Mac OS X 10.8
 * Uses system notifications instead of Growl
+* Uses Sandbox and Code Signatures
 
 
 CCMenu 1.4
