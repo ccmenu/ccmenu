@@ -6,5 +6,9 @@
 	<true/>
 	<key>com.apple.security.network.client</key>
 	<true/>
+	<key>com.apple.security.temporary-exception.apple-events</key>
+	<array>
+		<string>com.apple.systempreferences</string>
+	</array>
 </dict>
 </plist>
