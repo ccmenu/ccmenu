@@ -4,7 +4,7 @@ Changes listed by release.
 
 CCMenu 1.5
 
-* Now requires Mac OS X 10.8
+* NOW REQUIRES OS X 10.8 MOUNTAIN LION
 * Uses system notifications instead of Growl
 * Uses Sandbox and Code Signatures
 
