@@ -76,7 +76,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
 	NSString *serverUrl = [serverUrlComboBox stringValue];
 	serverUrl = [serverUrl stringByRemovingServerReportFileName];
-	if([serverTypeMatrix selectedTag] != CCMUnknownServer)
+	if((int)[serverTypeMatrix selectedTag] != CCMUnknownServer)
 		serverUrl = [serverUrl completeURLForServerType:(int)[serverTypeMatrix selectedTag]];
 	[serverUrlComboBox setStringValue:serverUrl];
 }
@@ -209,7 +209,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (IBAction)updateIntervalChanged:(id)sender
 {
-	[updater scheduleCheckWithInterval:[sender selectedTag]];
+	[updater setUpdateCheckInterval:(NSTimeInterval)[sender selectedTag]];
 }
 
 - (IBAction)checkForUpdateNow:(id)sender

@@ -31,12 +31,12 @@
     [monitor setupFromUserDefaults];
     
     // This also asserts that the projects are in the same order as the defaults; we rely on this in other tests...
-    STAssertEquals(3u, [[monitor projects] count], @"Should have created right number of projects.");
+    STAssertEquals(3ul, [[monitor projects] count], @"Should have created right number of projects.");
     STAssertEqualObjects(@"connectfour", [[[monitor projects] objectAtIndex:0] name], @"Should have created project with correct name.");
     STAssertEqualObjects(@"cozmoz", [[[monitor projects] objectAtIndex:1] name], @"Should have created project with correct name.");
     STAssertEqualObjects(@"protest", [[[monitor projects] objectAtIndex:2] name], @"Should have created project with correct name.");
 
-    STAssertEquals(2u, [[monitor connections] count], @"Should have created minimum number of connection.");
+    STAssertEquals(2ul, [[monitor connections] count], @"Should have created minimum number of connection.");
     NSArray *urls = (id)[[[monitor connections] collect] serverURL];
     STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"http://test/cctray.xml"]] != NSNotFound, @"Should have created connection for first URL.");
     STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"file:cctray.xml"]] != NSNotFound, @"Should have created connection for second URL.");

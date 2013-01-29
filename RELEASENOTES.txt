@@ -4,9 +4,17 @@ Changes listed by release.
 
 CCMenu 1.5
 
-* NOW REQUIRES OS X 10.8 MOUNTAIN LION
-* Uses system notifications instead of Growl
-* Uses Sandbox and Code Signatures
+* Now requires OS X 10.8 Mountain Lion
+* Uses Notification Center instead of Growl
+* Runs in Sandbox
+
+
+CCMenu 1.4.1
+
+* Preparation for update to Mountain Lion version
+* Updated update mechanism (Sparkle)
+* Now runs in 64bit
+* Added code signature
 
 
 CCMenu 1.4

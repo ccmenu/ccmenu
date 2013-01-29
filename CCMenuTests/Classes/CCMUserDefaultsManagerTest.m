@@ -26,11 +26,11 @@ do { \
 
 - (void)testRetrievesPollInterval
 {
-	[[[defaultsMock expect] andReturnValue:[NSNumber numberWithInt:1000]] integerForKey:CCMDefaultsPollIntervalKey];
+	[[[defaultsMock expect] andReturnValue:[NSNumber numberWithInteger:1000]] integerForKey:CCMDefaultsPollIntervalKey];
 	
-	int interval = [manager pollInterval];
+	NSInteger interval = [manager pollInterval];
 	
-	STAssertEquals(1000, interval, @"Should have returned right interval.");
+	STAssertEquals((NSInteger)1000, interval, @"Should have returned right interval.");
 	_verify(defaultsMock);
 }
 
@@ -41,7 +41,7 @@ do { \
 	NSArray *entries = [manager projectList];
 	
 	STAssertNotNil(entries, @"Should have returned empty list.");
-	STAssertEquals(0u, [entries count], @"Should have returned empty list.");
+	STAssertEquals(0ul, [entries count], @"Should have returned empty list.");
 	_verify(defaultsMock);
 }
 
@@ -52,7 +52,7 @@ do { \
 
 	NSArray *entries = [manager projectList];
 	
-	STAssertEquals(1u, [entries count], @"Should have returned one project.");
+	STAssertEquals(1ul, [entries count], @"Should have returned one project.");
 	NSDictionary *projectListEntry = [entries objectAtIndex:0];
 	STAssertEqualObjects(@"new", [projectListEntry objectForKey:@"projectName"], @"Should have set right project name.");
 	STAssertEqualObjects(@"http://test/cctray.xml", [projectListEntry objectForKey:@"serverUrl"], @"Should have set right URL.");
@@ -146,7 +146,7 @@ do { \
 	
 	NSArray *history = [manager serverURLHistory];
 	
-	STAssertEquals(1u, [history count], @"Should have returned correct list.");
+	STAssertEquals(1ul, [history count], @"Should have returned correct list.");
 	STAssertEqualObjects(@"http://test/cctray.xml", [history objectAtIndex:0], @"Should have returned correct list.");
 }
 

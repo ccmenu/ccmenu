@@ -4,8 +4,6 @@
 <dict>
 	<key>PollInterval</key>			
 	<string>5</string>
-	<key>SUCheckAtStartup</key>		
-	<false/>
 	<key>SUScheduledCheckInterval</key>
 	<integer>604800</integer>
 </dict>

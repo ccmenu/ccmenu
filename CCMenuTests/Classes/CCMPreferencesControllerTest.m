@@ -39,8 +39,8 @@
 - (void)testAddsHttpSchemeAndFilenameWhenSettingServerType
 {
 	[[[serverUrlComboBoxMock stub] andReturn:@"test"] stringValue];
-    CCMServerType serverType = CCMCruiseControlDashboard;
-	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE(serverType)] selectedTag];
+    NSInteger serverTypeTag = CCMCruiseControlDashboard;
+	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE(serverTypeTag)] selectedTag];
 	[[serverUrlComboBoxMock expect] setStringValue:@"http://test/cctray.xml"];
 		
 	[controller serverTypeChanged:nil];
@@ -49,8 +49,8 @@
 - (void)testSwapsFilenamesWhenChangingsServerTypes
 {
 	[[[serverUrlComboBoxMock stub] andReturn:@"test/xml"] stringValue];
-    CCMServerType serverType = CCMCruiseControlDashboard;
-	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE(serverType)] selectedTag];
+    NSInteger serverTypeTag = CCMCruiseControlDashboard;
+	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE(serverTypeTag)] selectedTag];
 	[[serverUrlComboBoxMock expect] setStringValue:@"http://test/cctray.xml"];
 	
 	[controller serverTypeChanged:nil];

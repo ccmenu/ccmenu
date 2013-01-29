@@ -34,7 +34,8 @@ NSString *CCMStillFailingBuild = @"StillFailing";
 	[notificationInfo setObject:oldStatus forKey:@"oldStatus"];
 	NSString *result = [self buildResultForLastStatus:[oldStatus lastBuildStatus] newStatus:[[project status] lastBuildStatus]];
 	[notificationInfo setObject:result forKey:@"buildResult"];
-    [notificationInfo setObject:[[project status] webUrl] forKey:@"webUrl"];
+    if([[project status] webUrl] != nil)
+        [notificationInfo setObject:[[project status] webUrl] forKey:@"webUrl"];
 	return notificationInfo;
 }
 

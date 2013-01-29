@@ -95,14 +95,14 @@
 	STAssertTrue([urls containsObject:@"http://localhost/ccnet/XmlStatusReport.aspx"], @"Should have returned alternate CC.NET URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/cc.xml"], @"Should have returned Hudson URL.");
 	STAssertTrue([urls containsObject:@"http://localhost/hudson/cc.xml"], @"Should have returned alternate Hudson URL.");
-	STAssertEquals(8u, [urls count], @"Should have returned only expected urls.");
+	STAssertEquals(8ul, [urls count], @"Should have returned only expected urls.");
 }
 
 - (void)testOnlyReturnsOneCompleteURLWhenURLWasComplete
 {
 	NSArray *urls = [@"localhost/XmlStatusReport.aspx" completeURLForAllServerTypes];
 	STAssertTrue([urls containsObject:@"http://localhost/XmlStatusReport.aspx"], @"Should have returned complete URL.");
-	STAssertEquals(1u, [urls count], @"Should have returned only one urls.");
+	STAssertEquals(1ul, [urls count], @"Should have returned only one urls.");
 }
 
 - (void)testRemovesDashboardFileNameIfPresent
