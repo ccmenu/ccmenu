@@ -32,7 +32,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (void)switchPreferencesPane:(id)sender
 {
 	NSString *selectedIdentifier = [[preferencesWindow toolbar] selectedItemIdentifier];
-	int index = [[self toolbarDefaultItemIdentifiers:nil] indexOfObject:selectedIdentifier];
+	NSUInteger index = [[self toolbarDefaultItemIdentifiers:nil] indexOfObject:selectedIdentifier];
 	NSArray *allViews = [NSArray arrayWithObjects:projectsView, notificationPrefsView, advancedPrefsView, nil];
 	NSView *prefView = [allViews objectAtIndex:index];
 	NSDictionary *itemDef = [[toolbarDefinition objectForKey:@"itemInfoByIdentifier"] objectForKey:selectedIdentifier];
@@ -76,7 +76,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	NSString *serverUrl = [serverUrlComboBox stringValue];
 	serverUrl = [serverUrl stringByRemovingServerReportFileName];
 	if([serverTypeMatrix selectedTag] != CCMUnknownServer)
-		serverUrl = [serverUrl completeURLForServerType:[serverTypeMatrix selectedTag]];
+		serverUrl = [serverUrl completeURLForServerType:(int)[serverTypeMatrix selectedTag]];
 	[serverUrlComboBox setStringValue:serverUrl];
 }
 
@@ -204,7 +204,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (IBAction)updateIntervalChanged:(id)sender
 {
-	[updater scheduleCheckWithInterval:[sender selectedTag]];
+	[updater setUpdateCheckInterval:(NSTimeInterval)[sender selectedTag]];
 }
 
 - (IBAction)checkForUpdateNow:(id)sender

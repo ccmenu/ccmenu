@@ -74,7 +74,7 @@
     [self sendSynchronousRequest:request returningResponse:&response error:&error];
 	if(error != nil)
 		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:error]];
-	int status = [response statusCode];
+	NSInteger status = [response statusCode];
 	return (status >= 200 && status != 404 && status < 500);
 }
 

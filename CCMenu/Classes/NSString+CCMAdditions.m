@@ -18,8 +18,8 @@ static void initialize()
 - (CCMServerType)serverType
 {
 	initialize();
-	unsigned index = [filenames indexOfObject:[self lastPathComponent]];
-	return (index == NSNotFound) ? CCMUnknownServer : index;
+	NSUInteger index = [filenames indexOfObject:[self lastPathComponent]];
+	return (index == NSNotFound) ? CCMUnknownServer : (int)index;
 }
 
 - (NSString *)stringByAddingSchemeIfNecessary
@@ -68,7 +68,7 @@ static void initialize()
 - (NSString *)stringByRemovingServerReportFileName
 {
 	initialize();
-	unsigned index = [filenames indexOfObject:[self lastPathComponent]];
+	NSUInteger index = [filenames indexOfObject:[self lastPathComponent]];
 	if(index == NSNotFound)
 		return self;
 	// can't use deleteLastPathComponent because that normalises the double-slash in http://

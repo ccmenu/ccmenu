@@ -18,10 +18,10 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     [self convertDefaultsIfNecessary];
 }
 
-- (int)pollInterval
+- (NSInteger)pollInterval
 {
-	int interval = [userDefaults integerForKey:CCMDefaultsPollIntervalKey];
-	NSAssert1(interval >= 5, @"Invalid poll interval; must be greater or equal 5 but is %d.", interval);
+	NSInteger interval = [userDefaults integerForKey:CCMDefaultsPollIntervalKey];
+	NSAssert1(interval >= 5, @"Invalid poll interval; must be greater or equal 5 but is %ld.", interval);
 	return interval;
 }
 

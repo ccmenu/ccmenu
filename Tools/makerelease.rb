@@ -8,7 +8,7 @@ include REXML
 class ReleaseManager
 
     def initialize
-        @proj = Project.new("CCMenu", "1.4", "https://ccmenu.svn.sourceforge.net/svnroot/ccmenu")
+        @proj = Project.new("CCMenu", "1.4.1", "https://ccmenu.svn.sourceforge.net/svnroot/ccmenu/branches/sparkleupdate")
         @env = Environment.new()
         @worker = CompositeWorker.new([Logger.new(), Executer.new()])
     end
@@ -31,7 +31,7 @@ class ReleaseManager
     
     def checkOutSource
         @worker.chdir(@env.sourcedir)
-        @worker.run("svn export #{@proj.svnroot}/trunk #{@proj.basename}")
+        @worker.run("svn export #{@proj.svnroot} #{@proj.basename}")
     end
 
     def createSourcePackage
@@ -66,7 +66,7 @@ class ReleaseManager
         pubdate = DateTime.now.strftime("%A, %B %d, %Y %H:%M:%S %Z")
         imagename = "#{@proj.basename}-b.dmg"
         imagesize = File.stat("#{@env.packagedir}/#{imagename}").size
-        svnout = IO.popen("svn --xml info #{@proj.svnroot}/trunk").read
+        svnout = IO.popen("svn --xml info #{@proj.svnroot}").read
         svnrev = Document.new(svnout).elements["info/entry/@revision"].value
         
         appcast=<<END_OF_TEMPLATE        
@@ -80,6 +80,7 @@ class ReleaseManager
         <pubDate>#{pubdate}</pubDate>
         <sparkle:releaseNotesLink>http://ccmenu.svn.sourceforge.net/viewvc/*checkout*/ccmenu/trunk/RELEASENOTES.txt?revision=#{svnrev}</sparkle:releaseNotesLink> 
         <enclosure 
+          sparkle:version="#{@proj.version}"
           url="http://sourceforge.net/projects/ccmenu/files/#{@proj.name}/#{@proj.version}/#{imagename}/download" 
           length="#{imagesize}" 
           type="application/octet-stream"/>

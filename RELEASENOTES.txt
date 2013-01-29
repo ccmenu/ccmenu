@@ -2,6 +2,14 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.4.1
+
+* Preparation for update to Mountain Lion version
+* Updated update mechanism (Sparkle)
+* Now runs in 64bit
+* Added code signature
+
+
 CCMenu 1.4
 
 * Sound notifications played by CCMenu

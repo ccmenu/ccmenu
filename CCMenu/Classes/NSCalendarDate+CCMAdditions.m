@@ -7,19 +7,19 @@
 
 - (NSString *)relativeDescriptionOfPastDate:(NSCalendarDate *)other
 {
-	int days, hours, mins;
+	NSInteger days, hours, mins;
 	[self years:NULL months:NULL days:&days hours:&hours minutes:&mins seconds:NULL sinceDate:other];
 	
 	if(days > 1)
-		return [NSString stringWithFormat:@"%d days ago", days];
+		return [NSString stringWithFormat:@"%ld days ago", days];
 	if(days == 1)
 		return @"1 day ago";
 	if(hours > 1)
-		return [NSString stringWithFormat:@"%d hours ago", hours];
+		return [NSString stringWithFormat:@"%ld hours ago", hours];
 	if(hours == 1)
 		return @"an hour ago";
 	if(mins > 1)
-		return [NSString stringWithFormat:@"%d minutes ago", mins];
+		return [NSString stringWithFormat:@"%ld minutes ago", mins];
 	if(mins == 1)
 		return @"a minute ago";
 	return @"less than a minute ago";
@@ -37,7 +37,7 @@
 
 + (NSString *)descriptionOfInterval:(NSTimeInterval)timeInterval withSign:(BOOL)withSign
 {
-    long interval = (long)timeInterval;
+    int interval = (int)timeInterval;
     NSString *sign = withSign ? ((interval < 0) ? @"-" : @"+") : @"";
     interval = abs(interval);
 
