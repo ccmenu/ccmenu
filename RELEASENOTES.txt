@@ -6,7 +6,10 @@ CCMenu 1.5
 
 * Now requires OS X 10.8 Mountain Lion
 * Uses Notification Center instead of Growl
-* Runs in Sandbox
+* The app does not run in a sandbox because the update
+  mechanism (Sparkle) does not yet work when run in a
+  sandboxed application. There should be a sandboxed 
+  version of CCMenu in the Mac App Store soon.
 
 
 CCMenu 1.4.1
