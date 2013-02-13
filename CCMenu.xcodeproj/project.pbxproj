@@ -30,7 +30,6 @@
 		032E6ED0140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */; };
 		0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */; };
 		0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5A134F9EE600D2F269 /* btn-force-build.png */; };
-		0349BC6A134F9EE700D2F269 /* CCMenu.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5B134F9EE600D2F269 /* CCMenu.icns */; };
 		0349BC6B134F9EE700D2F269 /* icon-building-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5C134F9EE600D2F269 /* icon-building-failed.png */; };
 		0349BC6C134F9EE700D2F269 /* icon-failure-building.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5D134F9EE600D2F269 /* icon-failure-building.png */; };
 		0349BC6D134F9EE700D2F269 /* icon-failure.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5E134F9EE600D2F269 /* icon-failure.png */; };
@@ -106,6 +105,8 @@
 		03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */; };
 		03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
 		03E288C4144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
+		03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03F5734216CC011D0007E109 /* CCMenu.iconset */; };
+		03F5734416CC011D0007E109 /* CCMenu.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03F5734216CC011D0007E109 /* CCMenu.iconset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,7 +156,6 @@
 		032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeIntervalTransformer.m; sourceTree = "<group>"; };
 		0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FactoryDefaults.plist; sourceTree = "<group>"; };
 		0349BC5A134F9EE600D2F269 /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-force-build.png"; sourceTree = "<group>"; };
-		0349BC5B134F9EE600D2F269 /* CCMenu.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CCMenu.icns; sourceTree = "<group>"; };
 		0349BC5C134F9EE600D2F269 /* icon-building-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-building-failed.png"; sourceTree = "<group>"; };
 		0349BC5D134F9EE600D2F269 /* icon-failure-building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-failure-building.png"; sourceTree = "<group>"; };
 		0349BC5E134F9EE600D2F269 /* icon-failure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-failure.png"; sourceTree = "<group>"; };
@@ -252,6 +252,7 @@
 		03C082E1134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/ProjectWindow.toolbar; sourceTree = "<group>"; };
 		03E288C1144F045E0026DAC4 /* NSObject+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CCMAdditions.h"; sourceTree = "<group>"; };
 		03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CCMAdditions.m"; sourceTree = "<group>"; };
+		03F5734216CC011D0007E109 /* CCMenu.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = CCMenu.iconset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,8 +402,8 @@
 		0349BC59134F9EE600D2F269 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				03F5734216CC011D0007E109 /* CCMenu.iconset */,
 				0349BC5A134F9EE600D2F269 /* btn-force-build.png */,
-				0349BC5B134F9EE600D2F269 /* CCMenu.icns */,
 				0349BC5C134F9EE600D2F269 /* icon-building-failed.png */,
 				0349BC5D134F9EE600D2F269 /* icon-failure-building.png */,
 				0349BC5E134F9EE600D2F269 /* icon-failure.png */,
@@ -649,7 +650,6 @@
 				03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */,
 				0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */,
 				0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */,
-				0349BC6A134F9EE700D2F269 /* CCMenu.icns in Resources */,
 				0349BC6B134F9EE700D2F269 /* icon-building-failed.png in Resources */,
 				0349BC6C134F9EE700D2F269 /* icon-failure-building.png in Resources */,
 				0349BC6D134F9EE700D2F269 /* icon-failure.png in Resources */,
@@ -666,6 +666,7 @@
 				0300E7591408021800E59AFD /* MainMenu.xib in Resources */,
 				0300E75A1408021800E59AFD /* Preferences.xib in Resources */,
 				0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */,
+				03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +676,7 @@
 			files = (
 				038ABE43134F11090053F0D1 /* InfoPlist.strings in Resources */,
 				0349BCA1134F9F9100D2F269 /* cctray.xml in Resources */,
+				03F5734416CC011D0007E109 /* CCMenu.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
