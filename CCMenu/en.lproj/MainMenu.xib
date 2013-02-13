@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12C3006</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
@@ -66,26 +66,6 @@
 						<reference key="NSOnImage" ref="1048976653"/>
 						<reference key="NSMixedImage" ref="401432611"/>
 					</object>
-					<object class="NSMenuItem" id="462574318">
-						<reference key="NSMenu" ref="864840789"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<bool key="NSIsSeparator">YES</bool>
-						<string key="NSTitle"/>
-						<string key="NSKeyEquiv"/>
-						<int key="NSKeyEquivModMask">1048576</int>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="1048976653"/>
-						<reference key="NSMixedImage" ref="401432611"/>
-					</object>
-					<object class="NSMenuItem" id="823646064">
-						<reference key="NSMenu" ref="864840789"/>
-						<string key="NSTitle">Check for Updates...</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSKeyEquivModMask">1048576</int>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="1048976653"/>
-						<reference key="NSMixedImage" ref="401432611"/>
-					</object>
 					<object class="NSMenuItem" id="1047142555">
 						<reference key="NSMenu" ref="864840789"/>
 						<string key="NSTitle">Preferences...</string>
@@ -123,9 +103,6 @@
 			</object>
 			<object class="NSCustomObject" id="255578085">
 				<string key="NSClassName">CCMPreferencesController</string>
-			</object>
-			<object class="NSCustomObject" id="403763867">
-				<string key="NSClassName">SUUpdater</string>
 			</object>
 			<object class="NSCustomObject" id="967950104">
 				<string key="NSClassName">CCMUserDefaultsManager</string>
@@ -203,27 +180,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">updater</string>
-						<reference key="source" ref="255578085"/>
-						<reference key="destination" ref="403763867"/>
-					</object>
-					<int key="connectionID">260</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">defaultsManager</string>
 						<reference key="source" ref="255578085"/>
 						<reference key="destination" ref="967950104"/>
 					</object>
 					<int key="connectionID">262</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">checkForUpdates:</string>
-						<reference key="source" ref="403763867"/>
-						<reference key="destination" ref="823646064"/>
-					</object>
-					<int key="connectionID">275</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -309,8 +270,6 @@
 							<reference ref="1043267748"/>
 							<reference ref="145583562"/>
 							<reference ref="1047142555"/>
-							<reference ref="462574318"/>
-							<reference ref="823646064"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Status Bar Menu</string>
@@ -353,12 +312,6 @@
 						<string key="objectName">CCMPreferencesController</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">259</int>
-						<reference key="object" ref="403763867"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">SUUpdater</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">261</int>
 						<reference key="object" ref="967950104"/>
 						<reference key="parent" ref="0"/>
@@ -381,16 +334,6 @@
 						<reference key="object" ref="452978800"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Application</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">272</int>
-						<reference key="object" ref="462574318"/>
-						<reference key="parent" ref="864840789"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">273</int>
-						<reference key="object" ref="823646064"/>
-						<reference key="parent" ref="864840789"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">277</int>
@@ -419,12 +362,9 @@
 				<string key="249.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="253.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="256.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="259.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="261.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="264.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="268.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="272.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="273.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="277.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="281.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -481,25 +421,20 @@
 					<string key="superclassName">CCMWindowController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addProjects:">id</string>
-						<string key="checkForUpdateNow:">id</string>
 						<string key="chooseProjects:">id</string>
 						<string key="closeAddProjectsSheet:">id</string>
 						<string key="historyURLSelected:">id</string>
+						<string key="openNotificationPreferences:">id</string>
 						<string key="preferencesChanged:">id</string>
 						<string key="removeProjects:">id</string>
 						<string key="serverTypeChanged:">id</string>
 						<string key="showWindow:">id</string>
 						<string key="soundSelected:">id</string>
 						<string key="switchPreferencesPane:">id</string>
-						<string key="updateIntervalChanged:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="addProjects:">
 							<string key="name">addProjects:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="checkForUpdateNow:">
-							<string key="name">checkForUpdateNow:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="chooseProjects:">
@@ -512,6 +447,10 @@
 						</object>
 						<object class="IBActionInfo" key="historyURLSelected:">
 							<string key="name">historyURLSelected:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openNotificationPreferences:">
+							<string key="name">openNotificationPreferences:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="preferencesChanged:">
@@ -538,10 +477,6 @@
 							<string key="name">switchPreferencesPane:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="updateIntervalChanged:">
-							<string key="name">updateIntervalChanged:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="addProjectsSheet">NSPanel</string>
@@ -558,7 +493,6 @@
 						<string key="sheetTabView">NSTabView</string>
 						<string key="soundNamesViewController">NSArrayController</string>
 						<string key="testServerProgressIndicator">NSProgressIndicator</string>
-						<string key="updater">SUUpdater</string>
 						<string key="versionField">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -617,10 +551,6 @@
 						<object class="IBToOneOutletInfo" key="testServerProgressIndicator">
 							<string key="name">testServerProgressIndicator</string>
 							<string key="candidateClassName">NSProgressIndicator</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="updater">
-							<string key="name">updater</string>
-							<string key="candidateClassName">SUUpdater</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="versionField">
 							<string key="name">versionField</string>
@@ -754,25 +684,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CCMWindowController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SUUpdater</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">checkForUpdates:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">checkForUpdates:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">checkForUpdates:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SUUpdater.h</string>
 					</object>
 				</object>
 			</array>
