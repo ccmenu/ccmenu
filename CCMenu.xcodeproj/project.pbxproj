@@ -10,7 +10,6 @@
 		0300E7591408021800E59AFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7531408021800E59AFD /* MainMenu.xib */; };
 		0300E75A1408021800E59AFD /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7551408021800E59AFD /* Preferences.xib */; };
 		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
-		030150F51687AA4800FDE9EB /* handlers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 030150F41687AA4800FDE9EB /* handlers.applescript */; };
 		030150FF1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */; };
 		030151001687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */; };
 		030151011687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */; };
@@ -136,7 +135,6 @@
 		0300E7541408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0300E7561408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0300E7581408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProjectWindow.xib; sourceTree = "<group>"; };
-		030150F41687AA4800FDE9EB /* handlers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = handlers.applescript; path = Scripts/handlers.applescript; sourceTree = "<group>"; };
 		030150FB1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor+EDAdditions.h"; sourceTree = "<group>"; };
 		030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor+EDAdditions.m"; sourceTree = "<group>"; };
 		030150FD1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleScript+EDAdditions.h"; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 		030150F31687AA3300FDE9EB /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				030150F41687AA4800FDE9EB /* handlers.applescript */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -741,7 +738,6 @@
 				03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 				03BDCABF1456A00F000C3D32 /* CCMProjectBuilder.m in Sources */,
 				03B79F77164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */,
-				030150F51687AA4800FDE9EB /* handlers.applescript in Sources */,
 				030150FF1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 				030151011687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */,
 			);

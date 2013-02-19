@@ -47,8 +47,6 @@
 - (IBAction)soundSelected:(id)sender;
 - (NSArray *)availableSounds;
 
-- (IBAction)openNotificationPreferences:(id)sender;
-
 @end
 
 

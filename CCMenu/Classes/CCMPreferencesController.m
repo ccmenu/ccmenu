@@ -197,11 +197,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
     [[NSSound soundNamed:[sender title]] play];
 }
 
-- (IBAction)openNotificationPreferences:(id)sender
-{
-    [[NSAppleScript scriptWithName:@"handlers"] callHandler:@"open_notifications"];
-}
-
 - (void)preferencesChanged:(id)sender
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
