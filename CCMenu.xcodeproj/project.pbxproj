@@ -15,10 +15,7 @@
 		0301A785142C7D940041F299 /* CCMProjectStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A783142C7D940041F299 /* CCMProjectStatusTest.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0306185113DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
-		0328D380135C191500D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
 		0328D384135C192400D35055 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37E135C191500D35055 /* OCMock.framework */; };
-		0328D387135C193000D35055 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
-		0328D388135C1A2E00D35055 /* EDCommon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37C135C191500D35055 /* EDCommon.framework */; };
 		032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
 		032E6ECC140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
 		032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */; };
@@ -129,7 +126,6 @@
 			dstPath = Contents/Frameworks;
 			dstSubfolderSpec = 1;
 			files = (
-				0328D388135C1A2E00D35055 /* EDCommon.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +142,6 @@
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
 		0321274716AED55D00292F3D /* CCMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCMenu.entitlements; sourceTree = "<group>"; };
-		0328D37C135C191500D35055 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = Frameworks/EDCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		032E6EC9140411A100DBA2E0 /* CCMRelativeDateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMRelativeDateTransformer.h; sourceTree = "<group>"; };
 		032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMRelativeDateTransformer.m; sourceTree = "<group>"; };
@@ -267,7 +262,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */,
-				0328D380135C191500D35055 /* EDCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +271,6 @@
 			files = (
 				038ABE3B134F11090053F0D1 /* Cocoa.framework in Frameworks */,
 				0328D384135C192400D35055 /* OCMock.framework in Frameworks */,
-				0328D387135C193000D35055 /* EDCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +475,6 @@
 			isa = PBXGroup;
 			children = (
 				038ABE1D134F11090053F0D1 /* Cocoa.framework */,
-				0328D37C135C191500D35055 /* EDCommon.framework */,
 				0328D37E135C191500D35055 /* OCMock.framework */,
 				038ABE1F134F11090053F0D1 /* Other Frameworks */,
 			);
@@ -725,7 +717,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Unpack frameworks required for this target\n#pushd \"${TARGET_BUILD_DIR}\"\npushd \"${BUILT_PRODUCTS_DIR}\"\nif [ ! -d Frameworks ]; then\n  mkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  OCMock.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  EDCommon.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/EDCommon.tar.gz\"\nfi\nif [ ! -d  Sparkle.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/Sparkle.tar.gz\"\nfi\npopd\n";
+			shellScript = "# Unpack frameworks required for this target\n#pushd \"${TARGET_BUILD_DIR}\"\npushd \"${BUILT_PRODUCTS_DIR}\"\nif [ ! -d Frameworks ]; then\n  mkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  OCMock.framework ]; then\n  gnutar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\npopd\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
