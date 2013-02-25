@@ -1,5 +1,5 @@
 
-#import <EDCommon/EDCommon.h>
+#import "NSString+EDExtensions.h"
 #import "NSCalendarDate+CCMAdditions.h"
 
 

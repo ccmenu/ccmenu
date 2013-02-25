@@ -5,7 +5,6 @@
 #import "CCMConnection.h"
 #import "CCMPreferencesController.h"
 #import "NSArray+CCMAdditions.h"
-#import <EDCommon/EDCommon.h>
 
 
 NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotification";

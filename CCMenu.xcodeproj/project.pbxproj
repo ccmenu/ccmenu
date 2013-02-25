@@ -10,10 +10,6 @@
 		0300E7591408021800E59AFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7531408021800E59AFD /* MainMenu.xib */; };
 		0300E75A1408021800E59AFD /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7551408021800E59AFD /* Preferences.xib */; };
 		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
-		030150FF1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */; };
-		030151001687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */; };
-		030151011687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */; };
-		030151021687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */; };
 		0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
 		0301A781142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
 		0301A785142C7D940041F299 /* CCMProjectStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A783142C7D940041F299 /* CCMProjectStatusTest.m */; };
@@ -102,6 +98,14 @@
 		03C082E2134F9D250039E3BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C082D6134F9D250039E3BD /* Localizable.strings */; };
 		03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082DC134F9D250039E3BD /* Preferences.toolbar */; };
 		03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */; };
+		03D154F216DC11B3008F994D /* EDApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154EB16DC11B3008F994D /* EDApplication.m */; };
+		03D154F316DC11B3008F994D /* EDApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154EB16DC11B3008F994D /* EDApplication.m */; };
+		03D154F416DC11B3008F994D /* NSApplication+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154ED16DC11B3008F994D /* NSApplication+EDExtensions.m */; };
+		03D154F516DC11B3008F994D /* NSApplication+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154ED16DC11B3008F994D /* NSApplication+EDExtensions.m */; };
+		03D154F616DC11B3008F994D /* NSArray+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */; };
+		03D154F716DC11B3008F994D /* NSArray+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */; };
+		03D154F816DC11B3008F994D /* NSString+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154F116DC11B3008F994D /* NSString+EDExtensions.m */; };
+		03D154F916DC11B3008F994D /* NSString+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154F116DC11B3008F994D /* NSString+EDExtensions.m */; };
 		03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
 		03E288C4144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
 		03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03F5734216CC011D0007E109 /* CCMenu.iconset */; };
@@ -135,10 +139,6 @@
 		0300E7541408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0300E7561408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0300E7581408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProjectWindow.xib; sourceTree = "<group>"; };
-		030150FB1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor+EDAdditions.h"; sourceTree = "<group>"; };
-		030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor+EDAdditions.m"; sourceTree = "<group>"; };
-		030150FD1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleScript+EDAdditions.h"; sourceTree = "<group>"; };
-		030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleScript+EDAdditions.m"; sourceTree = "<group>"; };
 		0301A77E142C702F0041F299 /* CCMProjectStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatus.h; sourceTree = "<group>"; };
 		0301A77F142C702F0041F299 /* CCMProjectStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatus.m; sourceTree = "<group>"; };
 		0301A782142C7D940041F299 /* CCMProjectStatusTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatusTest.h; sourceTree = "<group>"; };
@@ -248,6 +248,14 @@
 		03C082D7134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		03C082DD134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/Preferences.toolbar; sourceTree = "<group>"; };
 		03C082E1134F9D250039E3BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/ProjectWindow.toolbar; sourceTree = "<group>"; };
+		03D154EA16DC11B3008F994D /* EDApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDApplication.h; sourceTree = "<group>"; };
+		03D154EB16DC11B3008F994D /* EDApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDApplication.m; sourceTree = "<group>"; };
+		03D154EC16DC11B3008F994D /* NSApplication+EDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+EDExtensions.h"; sourceTree = "<group>"; };
+		03D154ED16DC11B3008F994D /* NSApplication+EDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+EDExtensions.m"; sourceTree = "<group>"; };
+		03D154EE16DC11B3008F994D /* NSArray+EDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+EDExtensions.h"; sourceTree = "<group>"; };
+		03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+EDExtensions.m"; sourceTree = "<group>"; };
+		03D154F016DC11B3008F994D /* NSString+EDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EDExtensions.h"; sourceTree = "<group>"; };
+		03D154F116DC11B3008F994D /* NSString+EDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EDExtensions.m"; sourceTree = "<group>"; };
 		03E288C1144F045E0026DAC4 /* NSObject+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CCMAdditions.h"; sourceTree = "<group>"; };
 		03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CCMAdditions.m"; sourceTree = "<group>"; };
 		03F5734216CC011D0007E109 /* CCMenu.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = CCMenu.iconset; sourceTree = "<group>"; };
@@ -294,10 +302,6 @@
 				03C0829A134F97940039E3BD /* NSCalendarDate+CCMAdditions.m */,
 				03C0829B134F97940039E3BD /* NSString+CCMAdditions.h */,
 				03C0829C134F97940039E3BD /* NSString+CCMAdditions.m */,
-				030150FB1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.h */,
-				030150FC1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m */,
-				030150FD1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.h */,
-				030150FE1687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m */,
 			);
 			name = "Foundation Additions";
 			sourceTree = "<group>";
@@ -503,6 +507,7 @@
 				030150F31687AA3300FDE9EB /* Scripts */,
 				0349BC59134F9EE600D2F269 /* Images */,
 				038ABE24134F11090053F0D1 /* Supporting Files */,
+				03D154E916DC1180008F994D /* EDCommon */,
 			);
 			path = CCMenu;
 			sourceTree = "<group>";
@@ -567,6 +572,22 @@
 				03C082E0134F9D250039E3BD /* ProjectWindow.toolbar */,
 			);
 			name = Interface;
+			sourceTree = "<group>";
+		};
+		03D154E916DC1180008F994D /* EDCommon */ = {
+			isa = PBXGroup;
+			children = (
+				03D154EA16DC11B3008F994D /* EDApplication.h */,
+				03D154EB16DC11B3008F994D /* EDApplication.m */,
+				03D154EC16DC11B3008F994D /* NSApplication+EDExtensions.h */,
+				03D154ED16DC11B3008F994D /* NSApplication+EDExtensions.m */,
+				03D154EE16DC11B3008F994D /* NSArray+EDExtensions.h */,
+				03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */,
+				03D154F016DC11B3008F994D /* NSString+EDExtensions.h */,
+				03D154F116DC11B3008F994D /* NSString+EDExtensions.m */,
+			);
+			name = EDCommon;
+			path = ../EDCommon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -738,8 +759,10 @@
 				03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 				03BDCABF1456A00F000C3D32 /* CCMProjectBuilder.m in Sources */,
 				03B79F77164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */,
-				030150FF1687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
-				030151011687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */,
+				03D154F216DC11B3008F994D /* EDApplication.m in Sources */,
+				03D154F416DC11B3008F994D /* NSApplication+EDExtensions.m in Sources */,
+				03D154F616DC11B3008F994D /* NSArray+EDExtensions.m in Sources */,
+				03D154F816DC11B3008F994D /* NSString+EDExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,8 +808,10 @@
 				03E288C4144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 				03BDCAC01456A00F000C3D32 /* CCMProjectBuilder.m in Sources */,
 				03B79F78164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */,
-				030151001687ACBE00FDE9EB /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
-				030151021687ACBE00FDE9EB /* NSAppleScript+EDAdditions.m in Sources */,
+				03D154F316DC11B3008F994D /* EDApplication.m in Sources */,
+				03D154F516DC11B3008F994D /* NSApplication+EDExtensions.m in Sources */,
+				03D154F716DC11B3008F994D /* NSArray+EDExtensions.m in Sources */,
+				03D154F916DC11B3008F994D /* NSString+EDExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
