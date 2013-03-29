@@ -1,5 +1,5 @@
 
-#import <EDCommon/EDCommon.h>
+#import "NSArray+EDExtensions.h"
 #import "NSObject+CCMAdditions.h"
 #import "NSCalendarDate+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"

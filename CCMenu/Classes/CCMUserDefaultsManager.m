@@ -1,7 +1,6 @@
 
 #import "CCMUserDefaultsManager.h"
 #import "NSArray+CCMAdditions.h"
-#import <EDCommon/EDCommon.h>
 
 NSString *CCMDefaultsProjectListKey = @"Projects";
 NSString *CCMDefaultsProjectEntryNameKey = @"projectName";

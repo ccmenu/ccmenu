@@ -1,6 +1,6 @@
 
 #import <Cocoa/Cocoa.h>
-#import <EDCommon/EDApplication.h>
+#import "EDApplication.h"
 
 
 @interface CCMStatusItemApplication : EDApplication 
