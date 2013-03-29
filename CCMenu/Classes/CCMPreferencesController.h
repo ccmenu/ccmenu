@@ -20,6 +20,8 @@
 	IBOutlet NSArrayController		*soundNamesViewController;
 
 	IBOutlet NSView					*advancedPrefsView;
+    
+    IBOutlet NSView                 *aboutView;
 	
 	IBOutlet NSPanel				*addProjectsSheet;
 	IBOutlet NSTabView				*sheetTabView;
