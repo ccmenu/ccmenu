@@ -2,6 +2,14 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.5.1
+
+* Runs in sandbox
+* Removed feature to open Notfication pane in 
+  System Preferences; this feature used Apple Script 
+  and that was not accepted for the Mac App Store.
+
+
 CCMenu 1.5
 
 * Now requires OS X 10.8 Mountain Lion
