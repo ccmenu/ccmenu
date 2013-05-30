@@ -1,24 +1,13 @@
 
 #import <Cocoa/Cocoa.h>
+#import "CCMConnectionBase.h"
 
 
-@interface CCMConnection : NSObject 
-{
-	NSURL			*serverUrl;
-	
+@interface CCMConnection : CCMConnectionBase
+{	
 	NSURLConnection *urlConnection;
 	NSMutableData	*receivedData;
-	
-	id delegate;
 }
-
-- (id)initWithServerURL:(NSURL *)theServerUrl;
-- (id)initWithURLString:(NSString *)theServerUrlAsString;
-
-- (NSURL *)serverURL;
-
-- (void)setDelegate:(id)aDelegate;
-- (id)delegate;
 
 - (BOOL)testConnection;
 - (NSArray *)retrieveServerStatus;

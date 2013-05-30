@@ -3,8 +3,8 @@
 #import "CCMUserDefaultsManager.h"
 #import "CCMProject.h"
 #import "NSArray+CCMAdditions.h"
+#import "NSArray+EDExtensions.h"
 #import <OCMock/OCMock.h>
-#import <EDCommon/EDCommon.h>
 
 
 @implementation CCMServerMonitorTest

@@ -9,6 +9,17 @@ $KCODE = 'u' if RUBY_VERSION < '1.9'
 @@BUILD_TIME = "2007-07-18T18:44:48"
 
 helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['dev', 'password']
+  end
+
   def is_building()
     @@ACTIVITY != :Sleeping
   end
@@ -42,6 +53,12 @@ post '/control/failure' do
 end
 
 get '/cctray.xml' do
+  content_type :xml
+  haml :cctray
+end
+
+get '/protected/cctray.xml' do
+  protected!
   content_type :xml
   haml :cctray
 end

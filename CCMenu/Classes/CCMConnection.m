@@ -5,57 +5,6 @@
 
 @implementation CCMConnection
 
-- (id)initWithServerURL:(NSURL *)theServerUrl
-{
-	self = [super init];
-	serverUrl = [theServerUrl retain];
-	return self;
-}
-
-- (id)initWithURLString:(NSString *)theServerUrlAsString
-{
-	return [self initWithServerURL:[NSURL URLWithString:theServerUrlAsString]];
-}
-
-- (void)dealloc
-{
-	[serverUrl release];
-	[super dealloc];
-}
-
-- (NSURL *)serverURL
-{
-    return serverUrl;
-}
-
-- (void)setDelegate:(id)aDelegate
-{
-	delegate = aDelegate;
-}
-
-- (id)delegate
-{
-	return delegate;
-}
-
-- (NSString *)errorStringForError:(NSError *)error
-{
-	return [NSString stringWithFormat:@"Failed to get status from %@: %@",   
-		[[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey], [error localizedDescription]];
-}
-
-- (NSString *)errorStringForResponse:(NSHTTPURLResponse *)response
-{
-	return [NSString stringWithFormat:@"Failed to get status from %@: %@",   
-			[response URL], [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]];
-}
-
-- (NSString *)errorStringForParseError:(NSError *)error
-{
-	return [NSString stringWithFormat:@"Failed to parse status from %@: %@ (Maybe the server is returning a temporary HTML error page instead of an XML document.)",   
-                [serverUrl description], [[error localizedDescription] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-}
-
 - (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error
 {
 	return [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
@@ -120,6 +69,15 @@
 		return;
 	[urlConnection cancel];
 	[self cleanUpAfterStatusRequest];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+//    if([challenge previousFailureCount] == 0)
+//    {
+//        NSURLCredential *credential = [NSURLCredential credentialWithUser:@"dev" password:@"passw0rd" persistence:NSURLCredentialPersistenceForSession];
+//        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+//    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

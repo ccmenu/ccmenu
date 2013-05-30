@@ -6,6 +6,7 @@
 #import "NSString+CCMAdditions.h"
 #import "NSArray+EDExtensions.h"
 #import "NSAppleScript+EDAdditions.h"
+#import "CCMTestConnection.h"
 
 #define WINDOW_TITLE_HEIGHT 78
 
@@ -106,7 +107,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		NSArray *projectInfos = [connection retrieveServerStatus];
 		[testServerProgressIndicator stopAnimation:self];
 		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
-		[sheetTabView selectNextTabViewItem:self];
+		[sheetTabView selectLastTabViewItem:self];
 	}
 	@catch(NSException *exception) 
 	{
@@ -125,7 +126,8 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	{
 		[serverUrlComboBox setStringValue:url];
 		[serverUrlComboBox display];
-		CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:url] autorelease];
+		CCMTestConnection *connection = [[[CCMTestConnection alloc] initWithURLString:url] autorelease];
+        [connection setDelegate:self];
 		if([connection testConnection])
 			return url;
 	}
@@ -133,6 +135,30 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[serverUrlComboBox display];
 	return nil;
 }
+
+- (NSURLCredential *)connection:(CCMTestConnection *)connection willUseCredential:(NSURLCredential *)proposedCredential forMessage:(NSString *)message
+{
+    [authMessage setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Authentication required for \"%@\"", "Instructions for authentication sheet. Placeholder will be replaced with server message, ie. the auth realm."), message]];
+    if([proposedCredential user])
+        [userField setStringValue:[proposedCredential user]];
+    if([proposedCredential hasPassword])
+        [passwordField setStringValue:[proposedCredential password]];
+    
+    [sheetTabView selectNextTabViewItem:self];
+    NSInteger tag = [NSApp runModalForWindow:preferencesWindow];
+    [sheetTabView selectFirstTabViewItem:self];
+    
+    if(tag == 0)
+        return nil;
+
+    return [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistencePermanent];
+}
+
+- (void)stopCredentialSheet:(id)sender
+{
+    [NSApp stopModalWithCode:[sender tag]];
+}
+
 
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
 {

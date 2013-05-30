@@ -28,7 +28,10 @@
 	IBOutlet NSComboBox				*serverUrlComboBox;
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
-	IBOutlet NSArrayController		*chooseProjectsViewController;	
+    IBOutlet NSTextField            *authMessage;
+    IBOutlet NSTextField            *userField;
+    IBOutlet NSTextField            *passwordField;
+	IBOutlet NSArrayController		*chooseProjectsViewController;
 }
 
 - (IBAction)showWindow:(id)sender;
@@ -48,7 +51,9 @@
 - (IBAction)checkForUpdateNow:(id)sender;
 
 - (NSString *)determineServerURL;
+- (IBAction)stopCredentialSheet:(id)sender;
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl ;
+
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 - (IBAction)soundSelected:(id)sender;
