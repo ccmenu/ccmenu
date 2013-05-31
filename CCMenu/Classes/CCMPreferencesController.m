@@ -103,7 +103,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 				return;
 			}
 		}
-		CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:serverUrl] autorelease];
+		CCMTestConnection *connection = [[[CCMTestConnection alloc] initWithURLString:serverUrl] autorelease];
 		NSArray *projectInfos = [connection retrieveServerStatus];
 		[testServerProgressIndicator stopAnimation:self];
 		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];

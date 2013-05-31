@@ -5,53 +5,12 @@
 
 @implementation CCMConnection
 
-- (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error
-{
-	return [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
-}
-
-- (NSURLConnection *)newAsynchronousRequest:(NSURLRequest *)request
-{
-    return [[NSURLConnection alloc] initWithRequest:request delegate:self];
-}
-
-- (BOOL)testConnection
-{
-	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-	NSHTTPURLResponse *response = nil;
-	NSError *error = nil;
-    [self sendSynchronousRequest:request returningResponse:&response error:&error];
-	if(error != nil)
-		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:error]];
-	NSInteger status = [response statusCode];
-	return (status >= 200 && status != 404 && status < 500);
-}
-
-- (NSArray *)retrieveServerStatus
-{
-	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-	NSHTTPURLResponse *response = nil;
-	NSError *requestError = nil;
-	NSData *data = [self sendSynchronousRequest:request returningResponse:&response error:&requestError];
-	if(data == nil)
-		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:requestError]];
-	if([response statusCode] != 200)
-		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForResponse:response]];
-	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:data] autorelease];
-    NSError *parseError = nil;
-	NSArray *infos = [reader readProjectInfos:&parseError];
-    if(infos == nil)
-		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForParseError:parseError]];
-    return infos;
-}
-
 - (void)requestServerStatus
 {
 	if(urlConnection != nil)
 		return;
 	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-	if((urlConnection = [self newAsynchronousRequest:request]) == nil) 
-		[NSException raise:@"ConfigurationException" format:@"Cannot create connection for URL [%@]", [serverUrl absoluteString]];	
+    urlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
 	receivedData = [[NSMutableData data] retain];
 }
 

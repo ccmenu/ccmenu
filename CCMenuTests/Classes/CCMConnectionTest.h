@@ -7,7 +7,7 @@
 {
     CCMConnection   *connection;
     id              connectionMock;
-    NSArray         *recordedInfos;
+    NSArray         *recordedInfoList;
     NSString        *recordedError;
 }
 

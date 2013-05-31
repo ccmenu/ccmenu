@@ -3,25 +3,21 @@
 #import "CCMConnectionBase.h"
 
 
-@interface CCMTestConnection : CCMConnectionBase
+@interface CCMTestConnection : CCMConnectionBase <NSURLConnectionDataDelegate>
 {
-    NSInteger   statusCode;
-    BOOL        didFinish;
-    NSError     *error;
+    BOOL                didFinish;
+    NSHTTPURLResponse   *receivedResponse;
+    NSMutableData	    *receivedData;
+    NSError             *receivedError;
 }
 
+- (NSArray *)retrieveServerStatus;
 - (BOOL)testConnection;
-
-// NSURLConnection delegate methods
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection;
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 
 @end
 
 
-@interface NSObject(CCMTestConnectionDelegate)
+@protocol CCMTestConnectionDelegate <NSObject>
 
 - (NSURLCredential *)connection:(CCMTestConnection *)connection willUseCredential:(NSURLCredential *)proposedCredential forMessage:(NSString *)message;
 

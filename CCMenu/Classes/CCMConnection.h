@@ -3,28 +3,19 @@
 #import "CCMConnectionBase.h"
 
 
-@interface CCMConnection : CCMConnectionBase
+@interface CCMConnection : CCMConnectionBase <NSURLConnectionDataDelegate>
 {	
 	NSURLConnection *urlConnection;
 	NSMutableData	*receivedData;
 }
 
-- (BOOL)testConnection;
-- (NSArray *)retrieveServerStatus;
-
 - (void)requestServerStatus;
 - (void)cancelStatusRequest;
-
-
-// internal, don't use
-
-- (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error;
-- (NSURLConnection *)newAsynchronousRequest:(NSURLRequest *)request;
 
 @end
 
 
-@interface NSObject(CCMConnectionDelegate)
+@protocol CCMConnectionDelegate
 
 - (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList;
 - (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString;
