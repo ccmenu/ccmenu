@@ -131,6 +131,9 @@
 		03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
 		03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03F5734216CC011D0007E109 /* CCMenu.iconset */; };
 		2FA282A13914012ABCA00F2D /* CCMConnectionTestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28DB5E98740E57952DE6D /* CCMConnectionTestBase.m */; };
+		2FA28465BE7EB26F74348CA0 /* CCMHistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */; };
+		2FA28EEE1E2F08289D958C3B /* CCMHistoryDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2888750C52351CE35929B /* CCMHistoryDataSourceTest.m */; };
+		2FA28F7C4769563BBEFD39BD /* CCMHistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -280,8 +283,12 @@
 		03E288C1144F045E0026DAC4 /* NSObject+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CCMAdditions.h"; sourceTree = "<group>"; };
 		03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CCMAdditions.m"; sourceTree = "<group>"; };
 		03F5734216CC011D0007E109 /* CCMenu.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = CCMenu.iconset; sourceTree = "<group>"; };
+		2FA28115E3F6986D57A707C9 /* CCMHistoryDataSourceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMHistoryDataSourceTest.h; sourceTree = "<group>"; };
 		2FA285CF469D5230A32A31AB /* CCMConnectionTestBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMConnectionTestBase.h; sourceTree = "<group>"; };
+		2FA2888750C52351CE35929B /* CCMHistoryDataSourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMHistoryDataSourceTest.m; sourceTree = "<group>"; };
 		2FA28DB5E98740E57952DE6D /* CCMConnectionTestBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMConnectionTestBase.m; sourceTree = "<group>"; };
+		2FA28DDF250DAF8DD83AE044 /* CCMHistoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMHistoryDataSource.h; sourceTree = "<group>"; };
+		2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMHistoryDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +385,8 @@
 			children = (
 				03C08281134F97940039E3BD /* CCMPreferencesController.h */,
 				03C08282134F97940039E3BD /* CCMPreferencesController.m */,
+				2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */,
+				2FA28DDF250DAF8DD83AE044 /* CCMHistoryDataSource.h */,
 			);
 			name = "Preferences Window";
 			sourceTree = "<group>";
@@ -485,6 +494,8 @@
 				03BDCABE1456A00F000C3D32 /* CCMProjectBuilder.m */,
 				2FA28DB5E98740E57952DE6D /* CCMConnectionTestBase.m */,
 				2FA285CF469D5230A32A31AB /* CCMConnectionTestBase.h */,
+				2FA2888750C52351CE35929B /* CCMHistoryDataSourceTest.m */,
+				2FA28115E3F6986D57A707C9 /* CCMHistoryDataSourceTest.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -828,6 +839,8 @@
 				034BF7D71757CCCA0025F9A0 /* NSArray+EDExtensions.m in Sources */,
 				034BF7D81757CCCA0025F9A0 /* NSString+EDExtensions.m in Sources */,
 				2FA282A13914012ABCA00F2D /* CCMConnectionTestBase.m in Sources */,
+				2FA28465BE7EB26F74348CA0 /* CCMHistoryDataSource.m in Sources */,
+				2FA28EEE1E2F08289D958C3B /* CCMHistoryDataSourceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,6 +881,7 @@
 				03E0821617061E3700E28E5A /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 				03E0821817061E3700E28E5A /* NSAppleScript+EDAdditions.m in Sources */,
 				034BF78F1757C4C30025F9A0 /* CCMSyncConnection.m in Sources */,
+				2FA28F7C4769563BBEFD39BD /* CCMHistoryDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

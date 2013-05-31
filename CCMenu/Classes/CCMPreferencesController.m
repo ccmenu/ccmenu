@@ -1,12 +1,11 @@
 
 #import "CCMPreferencesController.h"
-#import "CCMUserDefaultsManager.h"
 #import "CCMConnection.h"
-#import "NSArray+CCMAdditions.h"
 #import "NSString+CCMAdditions.h"
 #import "NSArray+EDExtensions.h"
 #import "NSAppleScript+EDAdditions.h"
 #import "CCMSyncConnection.h"
+#import "CCMHistoryDataSource.h"
 
 #define WINDOW_TITLE_HEIGHT 78
 
@@ -57,13 +56,8 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (void)addProjects:(id)sender
 {
-	NSArray *urls = [defaultsManager serverURLHistory];
-	if([urls count] > 0)
-	{
-		[serverUrlComboBox removeAllItems];
-		urls = [urls sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-		[serverUrlComboBox addItemsWithObjectValues:urls];
-	}
+    [(CCMHistoryDataSource *)[serverUrlComboBox dataSource] reloadData:defaultsManager];
+    [serverUrlComboBox reloadData];
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:preferencesWindow modalDelegate:self 
 		didEndSelector:@selector(addProjectsSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
