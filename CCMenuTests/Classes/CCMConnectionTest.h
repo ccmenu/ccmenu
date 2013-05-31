@@ -1,14 +1,6 @@
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "CCMConnection.h"
+#import "CCMConnectionTestBase.h"
 
-
-@interface CCMConnectionTest : SenTestCase 
-{
-    CCMConnection   *connection;
-    id              connectionMock;
-    NSArray         *recordedInfoList;
-    NSString        *recordedError;
-}
+@interface CCMConnectionTest : CCMConnectionTestBase
 
 @end

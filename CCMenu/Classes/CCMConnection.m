@@ -5,21 +5,51 @@
 
 @implementation CCMConnection
 
-- (void)requestServerStatus
+@synthesize serverURL;
+@synthesize delegate;
+
+- (id)initWithServerURL:(NSURL *)theServerUrl
 {
-	if(urlConnection != nil)
-		return;
-	NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    urlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
-	receivedData = [[NSMutableData data] retain];
+    self = [super init];
+    serverURL = [theServerUrl copy];
+    return self;
+}
+
+- (id)initWithURLString:(NSString *)theServerUrlAsString
+{
+    return [self initWithServerURL:[NSURL URLWithString:theServerUrlAsString]];
+}
+
+- (void)dealloc
+{
+    [serverURL release];
+    [receivedData release];
+    [receivedResponse release];
+    [urlConnection release]; // just in case
+    [super dealloc];
+}
+
+- (void)setUpForNewRequest
+{
+    [receivedData release];
+    receivedData = [[NSMutableData alloc] init];
+    [receivedResponse release];
+    receivedResponse = nil;
 }
 
 - (void)cleanUpAfterStatusRequest
 {
 	[urlConnection release];
-    [receivedData release];
 	urlConnection = nil;
-	receivedData = nil;
+}
+
+- (void)requestServerStatus
+{
+    if(urlConnection != nil)
+        return;
+    NSURLRequest *request = [NSURLRequest requestWithURL:serverURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    urlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    receivedData = [[NSMutableData data] retain];
 }
 
 - (void)cancelStatusRequest
@@ -30,18 +60,16 @@
 	[self cleanUpAfterStatusRequest];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-//    if([challenge previousFailureCount] == 0)
-//    {
-//        NSURLCredential *credential = [NSURLCredential credentialWithUser:@"dev" password:@"passw0rd" persistence:NSURLCredentialPersistenceForSession];
-//        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-//    }
+    NSURLCredential *credential = [delegate connection:self willUseCredential:[challenge proposedCredential] forMessage:[[challenge protectionSpace] realm]];
+    [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-	// this could be called multiple times, due to redirects for example, so we reset data
+    receivedResponse = (NSHTTPURLResponse *)[response retain];
+    // doc says this could be called multiple times, so we reset data
     [receivedData setLength:0];
 }
 
@@ -66,6 +94,27 @@
 {
 	[self cleanUpAfterStatusRequest];
 	[delegate connection:self hadTemporaryError:[self errorStringForError:error]];
+}
+
+- (NSString *)errorStringForError:(NSError *)error
+{
+    return [NSString stringWithFormat:@"Failed to get status from %@: %@",
+             [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey],
+             [error localizedDescription]];
+}
+
+- (NSString *)errorStringForResponse:(NSHTTPURLResponse *)response
+{
+    return [NSString stringWithFormat:@"Failed to get status from %@: %@",
+             [response URL],
+             [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]];
+}
+
+- (NSString *)errorStringForParseError:(NSError *)error
+{
+    return [NSString stringWithFormat:@"Failed to parse status from %@: %@ (Maybe the server is returning a temporary HTML error page instead of an XML document.)",
+             [serverURL description],
+             [[error localizedDescription] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
 }
 
 @end

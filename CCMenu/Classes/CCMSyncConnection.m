@@ -1,38 +1,36 @@
 
-#import "CCMTestConnection.h"
+#import "CCMSyncConnection.h"
 #import "CCMServerStatusReader.h"
 
-@implementation CCMTestConnection
+@implementation CCMSyncConnection
+
+@synthesize runLoop;
+
+- (id)initWithServerURL:(NSURL *)theServerUrl
+{
+    self = [super initWithServerURL:theServerUrl];
+    runLoop = [NSRunLoop currentRunLoop];
+    return self;
+}
 
 - (void)dealloc
 {
-    [receivedData release];
-    [receivedResponse release];
     [receivedError release];
     [super dealloc];
 }
 
 - (void)setUpForNewRequest
 {
-    [receivedData release];
-    receivedData = [[NSMutableData alloc] init];
-    [receivedResponse release];
-    receivedResponse = nil;
+    [super setUpForNewRequest];
     [receivedError release];
     receivedError = nil;
     didFinish = NO;
 }
 
-- (void)cleanUpAfterRequest
-{
-//    [urlConnection release];
-//    urlConnection = nil;
-}
-
 - (BOOL)testConnection
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[self serverURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     [NSURLConnection connectionWithRequest:request delegate:self];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -44,7 +42,7 @@
 - (NSArray *)retrieveServerStatus
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[self serverURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     [NSURLConnection connectionWithRequest:request delegate:self];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -60,24 +58,6 @@
     return infos;
 }
 
-- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    NSURLCredential *credential = [delegate connection:self willUseCredential:[challenge proposedCredential] forMessage:[[challenge protectionSpace] realm]];
-    [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    receivedResponse = [response retain];
-    // doc says this could be called multiple times, so we reset data
-    [receivedData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [receivedData appendData:data];
-}
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     didFinish = YES;
@@ -86,6 +66,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)anError
 {
     receivedError = [anError retain];
+    didFinish = YES;
 }
 
 @end

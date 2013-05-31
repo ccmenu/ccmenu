@@ -50,7 +50,7 @@ Setting of the factory defaults uses the #registerFactoryDefaults method and hap
 
 - init
 {
-    [super init];
+    self = [super init];
     NSSetUncaughtExceptionHandler(EDUncaughtExceptionHandler);
     return self;
 }

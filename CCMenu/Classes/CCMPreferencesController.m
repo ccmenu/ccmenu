@@ -6,7 +6,7 @@
 #import "NSString+CCMAdditions.h"
 #import "NSArray+EDExtensions.h"
 #import "NSAppleScript+EDAdditions.h"
-#import "CCMTestConnection.h"
+#import "CCMSyncConnection.h"
 
 #define WINDOW_TITLE_HEIGHT 78
 
@@ -103,7 +103,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 				return;
 			}
 		}
-		CCMTestConnection *connection = [[[CCMTestConnection alloc] initWithURLString:serverUrl] autorelease];
+		CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
 		NSArray *projectInfos = [connection retrieveServerStatus];
 		[testServerProgressIndicator stopAnimation:self];
 		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
@@ -126,7 +126,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	{
 		[serverUrlComboBox setStringValue:url];
 		[serverUrlComboBox display];
-		CCMTestConnection *connection = [[[CCMTestConnection alloc] initWithURLString:url] autorelease];
+		CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:url] autorelease];
         [connection setDelegate:self];
 		if([connection testConnection])
 			return url;
@@ -136,7 +136,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	return nil;
 }
 
-- (NSURLCredential *)connection:(CCMTestConnection *)connection willUseCredential:(NSURLCredential *)proposedCredential forMessage:(NSString *)message
+- (NSURLCredential *)connection:(CCMConnection *)connection willUseCredential:(NSURLCredential *)proposedCredential forMessage:(NSString *)message
 {
     [authMessage setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Authentication required for \"%@\"", "Instructions for authentication sheet. Placeholder will be replaced with server message, ie. the auth realm."), message]];
     if([proposedCredential user])
