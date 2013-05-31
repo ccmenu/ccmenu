@@ -30,30 +30,27 @@
 
 - (void)testSelectsServerTypeWhenHistoryURLIsSelected
 {
-	[[[serverUrlComboBoxMock stub] andReturn:@"http://localhost/cctray.xml"] stringValue];
-	[[serverTypeMatrixMock expect] selectCellWithTag:CCMCruiseControlDashboard];
-	
+	[[serverTypeMatrixMock expect] selectCellWithTag:CCMUseGivenURL];
+
 	[controller historyURLSelected:nil];
 }
 
-- (void)testAddsHttpSchemeAndFilenameWhenSettingServerType
+- (void)testAddsHttpSchemeWhenSwitchingOffDetectionAndNoSchemePresent
 {
 	[[[serverUrlComboBoxMock stub] andReturn:@"test"] stringValue];
-    NSInteger serverTypeTag = CCMCruiseControlDashboard;
-	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE(serverTypeTag)] selectedTag];
-	[[serverUrlComboBoxMock expect] setStringValue:@"http://test/cctray.xml"];
+	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){CCMUseGivenURL})] selectedTag];
+	[[serverUrlComboBoxMock expect] setStringValue:@"http://test"];
 		
-	[controller serverTypeChanged:nil];
+	[controller serverDetectionChanged:nil];
 }
 
-- (void)testSwapsFilenamesWhenChangingsServerTypes
+- (void)testDoesNotAddsHttpSchemeWhenSwitchingOffDetectionAndSchemePresent
 {
-	[[[serverUrlComboBoxMock stub] andReturn:@"test/xml"] stringValue];
-    NSInteger serverTypeTag = CCMCruiseControlDashboard;
-	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE(serverTypeTag)] selectedTag];
-	[[serverUrlComboBoxMock expect] setStringValue:@"http://test/cctray.xml"];
-	
-	[controller serverTypeChanged:nil];
+    [[[serverUrlComboBoxMock stub] andReturn:@"https://test"] stringValue];
+    [[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){CCMUseGivenURL})] selectedTag];
+    [[serverUrlComboBoxMock expect] setStringValue:@"https://test"];
+
+    [controller serverDetectionChanged:nil];
 }
 
 - (void)testAddsProjectWithServerUrlAndNameToDefaults

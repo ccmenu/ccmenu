@@ -38,7 +38,8 @@
 
 - (IBAction)addProjects:(id)sender;
 - (IBAction)historyURLSelected:(id)sender;
-- (IBAction)serverTypeChanged:(id)sender;
+- (IBAction)serverDetectionChanged:(id)sender;
+
 - (IBAction)chooseProjects:(id)sender;
 - (IBAction)closeAddProjectsSheet:(id)sender;
 

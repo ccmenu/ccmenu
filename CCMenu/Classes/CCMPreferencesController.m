@@ -65,17 +65,12 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (void)historyURLSelected:(id)sender
 {
-	NSString *serverUrl = [serverUrlComboBox stringValue];
-	[serverTypeMatrix selectCellWithTag:[serverUrl serverType]];
+	[serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
 }
 
-- (void)serverTypeChanged:(id)sender
+- (void)serverDetectionChanged:(id)sender
 {
-	NSString *serverUrl = [serverUrlComboBox stringValue];
-	serverUrl = [serverUrl stringByRemovingServerReportFileName];
-	if((int)[serverTypeMatrix selectedTag] != CCMUnknownServer)
-		serverUrl = [serverUrl completeURLForServerType:(int)[serverTypeMatrix selectedTag]];
-	[serverUrlComboBox setStringValue:serverUrl];
+    [serverUrlComboBox setStringValue:[[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary]];
 }
 
 
@@ -85,7 +80,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	{
 		[testServerProgressIndicator startAnimation:self];
 		NSString *serverUrl = [serverUrlComboBox stringValue];
-		if([serverTypeMatrix selectedTag] == CCMUnknownServer)
+		if([serverTypeMatrix selectedTag] == CCMDetectServer)
 		{
 			if((serverUrl = [self determineServerURL]) == nil)
 			{
@@ -152,7 +147,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
     [NSApp stopModalWithCode:[sender tag]];
 }
-
 
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
 {

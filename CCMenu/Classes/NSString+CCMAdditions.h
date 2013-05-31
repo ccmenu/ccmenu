@@ -9,10 +9,16 @@ typedef enum {
 	CCMHudsonServer = 3
 } CCMServerType;
 
+typedef enum {
+    CCMDetectServer = -1,
+    CCMUseGivenURL = 0
+} CCMServerURLHandling;
+
 
 @interface NSString(CCMAdditions)
 
 - (CCMServerType)serverType;
+- (NSString *)stringByAddingSchemeIfNecessary;
 - (NSString *)completeURLForServerType:(CCMServerType)serverType;
 - (NSArray *)completeURLForAllServerTypes;
 - (NSString *)stringByRemovingServerReportFileName;

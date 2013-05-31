@@ -63,6 +63,14 @@ get '/protected/cctray.xml' do
   haml :cctray
 end
 
+get '/weird/cctray.xml' do
+  halt 500, 'oops!'
+end
+
+get '/weird/cc.xml' do
+  redirect "/cctray.xml"
+end
+
 get '/dashboard/build/detail/connectfour' do
   haml :project
 end
