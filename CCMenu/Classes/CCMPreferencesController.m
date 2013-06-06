@@ -66,6 +66,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (void)historyURLSelected:(id)sender
 {
 	[serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
+    [serverUrlComboBox selectText:self];
 }
 
 - (void)serverDetectionChanged:(id)sender
@@ -93,6 +94,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 			}
 		}
 		CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
+        [connection setDelegate:self];
 		NSArray *projectInfos = [connection retrieveServerStatus];
 		[testServerProgressIndicator stopAnimation:self];
 		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
@@ -125,9 +127,10 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	return nil;
 }
 
-- (NSURLCredential *)connection:(CCMConnection *)connection willUseCredential:(NSURLCredential *)proposedCredential forMessage:(NSString *)message
+- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge;
 {
-    [authMessage setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Authentication required for \"%@\"", "Instructions for authentication sheet. Placeholder will be replaced with server message, ie. the auth realm."), message]];
+    [authMessage setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Authentication required for \"%@\"", "Instructions for authentication sheet. Placeholder will be replaced with the auth realm."), [[challenge protectionSpace] realm]]];
+    NSURLCredential *proposedCredential = [challenge proposedCredential];
     if([proposedCredential user])
         [userField setStringValue:[proposedCredential user]];
     if([proposedCredential hasPassword])

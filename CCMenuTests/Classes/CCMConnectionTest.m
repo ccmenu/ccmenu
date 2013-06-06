@@ -46,5 +46,29 @@
     STAssertNotNil(recordedError, @"connectfour", @"Should have called delegate with error.");
 }
 
+- (void)testOnFirstAttemptUsesProposedCredentialWithoutAskingDelegate
+{
+    CCMConnection *connection = [[[CCMConnection alloc] init] autorelease];
+    [self setUpDummyNSURLConnection];
+
+    id delegateMock = [OCMockObject mockForProtocol:@protocol(CCMConnectionDelegate)];
+    [connection setDelegate:delegateMock];
+
+    id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
+    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){0})] previousFailureCount];
+
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:@"dummy" password:@"testpassword" persistence:NSURLCredentialPersistenceNone];
+    [[[challengeMock stub] andReturn:credential] proposedCredential];
+
+    id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
+    [[senderMock expect] useCredential:credential forAuthenticationChallenge:challengeMock];
+    [[[challengeMock stub] andReturn:senderMock] sender];
+
+    [connection connection:dummyNSURLConnection willSendRequestForAuthenticationChallenge:challengeMock];
+
+    // if the connection calls its delegate method the mock will complain because its unexpected
+    [senderMock verify];
+}
+
 
 @end

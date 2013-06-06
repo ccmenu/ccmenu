@@ -109,6 +109,11 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	[[[self connections] each] requestServerStatus];
 }
 
+- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge
+{
+    return nil;
+}
+
 - (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList
 {
     NSMutableDictionary *projectsByName = [self projectsByNameForConnection:connection];

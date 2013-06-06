@@ -32,7 +32,8 @@
 
 @protocol CCMConnectionDelegate
 
-- (NSURLCredential *)connection:(CCMConnection *)connection willUseCredential:(NSURLCredential *)proposedCredential forMessage:(NSString *)message;
+- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge;
+
 - (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList;
 - (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString;
 

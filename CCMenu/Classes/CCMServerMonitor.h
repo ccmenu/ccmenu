@@ -5,7 +5,7 @@
 #import "CCMBuildNotificationFactory.h"
 
 
-@interface CCMServerMonitor : NSObject 
+@interface CCMServerMonitor : NSObject <CCMConnectionDelegate>
 {
 	IBOutlet CCMUserDefaultsManager		*defaultsManager;
 	NSNotificationCenter				*notificationCenter;

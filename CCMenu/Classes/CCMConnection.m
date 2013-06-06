@@ -62,8 +62,21 @@
 
 - (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-    NSURLCredential *credential = [delegate connection:self willUseCredential:[challenge proposedCredential] forMessage:[[challenge protectionSpace] realm]];
-    [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+    if([[challenge proposedCredential] hasPassword] && ([challenge previousFailureCount] == 0))
+    {
+        [[challenge sender] useCredential:[challenge proposedCredential] forAuthenticationChallenge:challenge];
+    }
+    else
+    {
+        NSLog(@"Attempt #%d", [challenge previousFailureCount]);
+        NSLog(@"Have password? %@", [[challenge proposedCredential] hasPassword] ? @"yes" : @"no");
+        NSURLCredential *credential = [delegate connection:self credentialForAuthenticationChallange:challenge];
+        NSLog(@"Delegate provided credentials? %@", (credential != nil) ? @"yes" : @"no");
+        if(credential != nil)
+            [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+        else
+            [[challenge sender] cancelAuthenticationChallenge:challenge];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -98,9 +111,14 @@
 
 - (NSString *)errorStringForError:(NSError *)error
 {
+    NSString *description = [error localizedDescription];;
+    if([[error domain] isEqualToString:NSURLErrorDomain] && ([error code] == NSURLErrorUserCancelledAuthentication))
+    {
+        description = @"Server requires authentication and there is a problem with the credentials. Please verify the connection details for the project.";
+    }
     return [NSString stringWithFormat:@"Failed to get status from %@: %@",
              [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey],
-             [error localizedDescription]];
+             description];
 }
 
 - (NSString *)errorStringForResponse:(NSHTTPURLResponse *)response
