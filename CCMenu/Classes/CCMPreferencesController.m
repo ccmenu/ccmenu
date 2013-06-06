@@ -58,6 +58,10 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
     [(CCMHistoryDataSource *)[serverUrlComboBox dataSource] reloadData:defaultsManager];
     [serverUrlComboBox reloadData];
+    [serverUrlComboBox setStringValue:@""];
+ 	[serverTypeMatrix selectCellWithTag:CCMDetectServer];
+    [credentialBox retain]; // memory leak
+    [credentialBox removeFromSuperview];
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:preferencesWindow modalDelegate:self 
 		didEndSelector:@selector(addProjectsSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -65,7 +69,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (void)historyURLSelected:(id)sender
 {
-	[serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
+//	[serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
     [serverUrlComboBox selectText:self];
 }
 
@@ -103,10 +107,23 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	@catch(NSException *exception) 
 	{
 		[testServerProgressIndicator stopAnimation:self];
-		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-		[alert setMessageText:NSLocalizedString(@"Could not retrieve project information", "Alert message when connection fails in preferences.")];
-		[alert setInformativeText:[exception reason]];
-		[alert runModal];
+        if(suppressErrorAndShowCredentialBox)
+        {
+            if([credentialBox superview] == nil)
+            {
+                [credentialBox setAlphaValue:0.0f];
+                [[credentialBox animator] setAlphaValue:1.0f];
+                [[[serverUrlComboBox superview] animator] addSubview:credentialBox];
+            }
+            suppressErrorAndShowCredentialBox = NO;
+        }
+        else
+        {
+            NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+            [alert setMessageText:NSLocalizedString(@"Could not retrieve project information", "Alert message when connection fails in preferences.")];
+            [alert setInformativeText:[exception reason]];
+            [alert runModal];
+        }
 	}
 }
 
@@ -127,31 +144,32 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	return nil;
 }
 
-- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge;
+- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge
 {
-    [authMessage setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Authentication required for \"%@\"", "Instructions for authentication sheet. Placeholder will be replaced with the auth realm."), [[challenge protectionSpace] realm]]];
-    NSURLCredential *proposedCredential = [challenge proposedCredential];
-    if([proposedCredential user])
-        [userField setStringValue:[proposedCredential user]];
-    if([proposedCredential hasPassword])
-        [passwordField setStringValue:[proposedCredential password]];
-    
-    [sheetTabView selectNextTabViewItem:self];
-    NSInteger tag = [NSApp runModalForWindow:preferencesWindow];
-    [sheetTabView selectFirstTabViewItem:self];
-    
-    if(tag == 0)
+    if([credentialBox superview] == nil)
+    {
+        suppressErrorAndShowCredentialBox = YES;
+        [authMessage setStringValue:[NSString stringWithFormat:NSLocalizedString(@"The server says: \"%@\"", "Instructions for authentication sheet. Placeholder will be replaced with the auth realm."), [[challenge protectionSpace] realm]]];
+        NSURLCredential *proposedCredential = [challenge proposedCredential];
+        if([proposedCredential user])
+            [userField setStringValue:[proposedCredential user]];
+        if([proposedCredential hasPassword])
+            [passwordField setStringValue:[proposedCredential password]];
         return nil;
-
-    return [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistencePermanent];
+    }
+    else if([challenge previousFailureCount] == 0)
+    {
+        return [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistencePermanent];
+    }
+    else
+    {
+        [passwordField setStringValue:@""];
+        suppressErrorAndShowCredentialBox = YES;
+        return nil;
+    }
 }
 
-- (void)stopCredentialSheet:(id)sender
-{
-    [NSApp stopModalWithCode:[sender tag]];
-}
-
-- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl 
+- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl
 {
 	NSMutableArray *result = [NSMutableArray array];
 	for(NSDictionary *projectInfo in projectInfos)

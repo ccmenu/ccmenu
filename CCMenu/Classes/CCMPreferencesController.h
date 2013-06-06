@@ -28,10 +28,12 @@
 	IBOutlet NSComboBox				*serverUrlComboBox;
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
+    IBOutlet NSBox                  *credentialBox;
     IBOutlet NSTextField            *authMessage;
     IBOutlet NSTextField            *userField;
     IBOutlet NSTextField            *passwordField;
 	IBOutlet NSArrayController		*chooseProjectsViewController;
+    BOOL                            suppressErrorAndShowCredentialBox;
 }
 
 - (IBAction)showWindow:(id)sender;
