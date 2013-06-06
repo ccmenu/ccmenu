@@ -68,6 +68,7 @@ get '/weird/cctray.xml' do
 end
 
 get '/weird/cc.xml' do
+  sleep 2
   redirect "/cctray.xml"
 end
 

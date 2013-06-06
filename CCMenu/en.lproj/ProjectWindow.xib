@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">12C3006</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2844</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSArrayController</string>
@@ -67,7 +67,7 @@
 										<object class="NSTableView" id="390767855">
 											<reference key="NSNextResponder" ref="351465691"/>
 											<int key="NSvFlags">256</int>
-											<string key="NSFrameSize">{956.5, 231}</string>
+											<string key="NSFrameSize">{957, 231}</string>
 											<reference key="NSSuperview" ref="351465691"/>
 											<reference key="NSNextKeyView" ref="552714068"/>
 											<bool key="NSEnabled">YES</bool>
@@ -76,7 +76,7 @@
 											<object class="NSTableHeaderView" key="NSHeaderView" id="279313293">
 												<reference key="NSNextResponder" ref="552714068"/>
 												<int key="NSvFlags">256</int>
-												<string key="NSFrameSize">{956.5, 17}</string>
+												<string key="NSFrameSize">{957, 17}</string>
 												<reference key="NSSuperview" ref="552714068"/>
 												<reference key="NSNextKeyView" ref="556222765"/>
 												<reference key="NSTableView" ref="390767855"/>
@@ -422,8 +422,8 @@
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="148499905"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSCurValue">0.29090909090909089</double>
-									<double key="NSPercent">0.97124934657605855</double>
+									<double key="NSCurValue">0.2857142857142857</double>
+									<double key="NSPercent">0.97074190177638453</double>
 								</object>
 								<object class="NSClipView" id="552714068">
 									<reference key="NSNextResponder" ref="148499905"/>
@@ -460,7 +460,7 @@
 					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="148499905"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{213, 129}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">Project Window</string>
@@ -1001,10 +1001,6 @@
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<integer value="1060" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1060" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
