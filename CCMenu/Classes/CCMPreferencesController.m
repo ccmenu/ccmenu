@@ -104,7 +104,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
 		[sheetTabView selectLastTabViewItem:self];
 	}
-	@catch(NSException *exception) 
+	@catch(NSException *exception)
 	{
 		[testServerProgressIndicator stopAnimation:self];
         if(suppressErrorAndShowCredentialBox)

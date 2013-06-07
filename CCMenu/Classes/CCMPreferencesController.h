@@ -54,7 +54,6 @@
 - (IBAction)checkForUpdateNow:(id)sender;
 
 - (NSString *)determineServerURL;
-- (IBAction)stopCredentialSheet:(id)sender;
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl ;
 
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;

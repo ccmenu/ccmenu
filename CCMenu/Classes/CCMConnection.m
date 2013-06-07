@@ -68,10 +68,7 @@
     }
     else
     {
-        NSLog(@"Attempt #%d", [challenge previousFailureCount]);
-        NSLog(@"Have password? %@", [[challenge proposedCredential] hasPassword] ? @"yes" : @"no");
         NSURLCredential *credential = [delegate connection:self credentialForAuthenticationChallange:challenge];
-        NSLog(@"Delegate provided credentials? %@", (credential != nil) ? @"yes" : @"no");
         if(credential != nil)
             [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
         else
