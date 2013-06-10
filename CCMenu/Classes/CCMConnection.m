@@ -1,33 +1,49 @@
 
 #import "CCMConnection.h"
 #import "CCMServerStatusReader.h"
+#import "CCMKeychainHelper.h"
 
 
 @implementation CCMConnection
 
-@synthesize serverURL;
+@synthesize feedURL;
+@synthesize credential;
 @synthesize delegate;
 
-- (id)initWithServerURL:(NSURL *)theServerUrl
+- (id)initWithFeedURL:(NSURL *)theFeedURL
 {
     self = [super init];
-    serverURL = [theServerUrl copy];
+    feedURL = [theFeedURL copy];
     return self;
 }
 
-- (id)initWithURLString:(NSString *)theServerUrlAsString
+- (id)initWithURLString:(NSString *)theFeedURL
 {
-    return [self initWithServerURL:[NSURL URLWithString:theServerUrlAsString]];
+    return [self initWithFeedURL:[NSURL URLWithString:theFeedURL]];
 }
 
 - (void)dealloc
 {
-    [serverURL release];
+    [feedURL release];
+    [credential release];
     [receivedData release];
     [receivedResponse release];
-    [urlConnection release]; // just in case
+    [nsurlConnection release]; // just in case
     [super dealloc];
 }
+
+- (BOOL)setUpCredential
+{
+    NSString *user = [feedURL user];
+    if(user == nil)
+        return NO;
+    NSString *password = [CCMKeychainHelper passwordForURL:feedURL error:NULL];
+    if(password == nil)
+        return NO;
+    [self setCredential:[NSURLCredential credentialWithUser:user password:password persistence:NSURLCredentialPersistenceForSession]];
+    return YES;
+}
+
 
 - (void)setUpForNewRequest
 {
@@ -37,43 +53,47 @@
     receivedResponse = nil;
 }
 
-- (void)cleanUpAfterStatusRequest
+- (void)cleanUpAfterRequest
 {
-	[urlConnection release];
-	urlConnection = nil;
+	[nsurlConnection release];
+	nsurlConnection = nil;
 }
+
 
 - (void)requestServerStatus
 {
-    if(urlConnection != nil)
+    if(nsurlConnection != nil)
         return;
-    NSURLRequest *request = [NSURLRequest requestWithURL:serverURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    urlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    NSURLRequest *request = [NSURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    nsurlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     receivedData = [[NSMutableData data] retain];
 }
 
-- (void)cancelStatusRequest
+- (void)cancelRequest
 {
-	if(urlConnection == nil)
+	if(nsurlConnection == nil)
 		return;
-	[urlConnection cancel];
-	[self cleanUpAfterStatusRequest];
+	[nsurlConnection cancel];
+    [self cleanUpAfterRequest];
 }
 
-- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+
+- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
 {
-    if([[challenge proposedCredential] hasPassword] && ([challenge previousFailureCount] == 0))
-    {
-        [[challenge sender] useCredential:[challenge proposedCredential] forAuthenticationChallenge:challenge];
-    }
+    return NO;
+}
+
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+    return YES;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    if(([challenge previousFailureCount] == 0) && ((credential != nil) || [self setUpCredential]))
+        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
     else
-    {
-        NSURLCredential *credential = [delegate connection:self credentialForAuthenticationChallange:challenge];
-        if(credential != nil)
-            [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-        else
-            [[challenge sender] cancelAuthenticationChallenge:challenge];
-    }
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -91,7 +111,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
-    [self cleanUpAfterStatusRequest];
+    [self cleanUpAfterRequest];
     NSError *error = nil;
     NSArray *infos = [reader readProjectInfos:&error];
     if(infos != nil)
@@ -102,9 +122,10 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	[self cleanUpAfterStatusRequest];
+    [self cleanUpAfterRequest];
 	[delegate connection:self hadTemporaryError:[self errorStringForError:error]];
 }
+
 
 - (NSString *)errorStringForError:(NSError *)error
 {
@@ -128,7 +149,7 @@
 - (NSString *)errorStringForParseError:(NSError *)error
 {
     return [NSString stringWithFormat:@"Failed to parse status from %@: %@ (Maybe the server is returning a temporary HTML error page instead of an XML document.)",
-             [serverURL description],
+             [feedURL description],
              [[error localizedDescription] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
 }
 

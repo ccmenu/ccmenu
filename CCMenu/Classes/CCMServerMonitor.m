@@ -50,7 +50,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
     NSMutableDictionary *projectsByName = [NSMutableDictionary dictionary];
     for(CCMProject *p in projects)
     {
-        if([[p serverURL] isEqual:[aConnection serverURL]])
+        if([[p serverURL] isEqual:[aConnection feedURL]])
             [projectsByName setObject:p forKey:[p name]];
     }
     return projectsByName;
@@ -58,7 +58,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 
 - (void)setupFromUserDefaults
 {
-	[[connections each] cancelStatusRequest];
+    [[connections each] cancelRequest];
 	[connections release];
 	[projects release];
     
@@ -75,7 +75,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
     }
     for(NSString *url in urlSet)
     {
-		CCMConnection *c = [[[CCMConnection alloc] initWithServerURL:[NSURL URLWithString:url]] autorelease];
+		CCMConnection *c = [[[CCMConnection alloc] initWithFeedURL:[NSURL URLWithString:url]] autorelease];
 		[c setDelegate:self];
         [connections addObject:c];
     }
@@ -107,11 +107,6 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)pollServers:(id)sender
 {
 	[[[self connections] each] requestServerStatus];
-}
-
-- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge
-{
-    return nil;
 }
 
 - (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList

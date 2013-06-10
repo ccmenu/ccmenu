@@ -28,13 +28,6 @@
 	[serverTypeMatrixMock verify];
 }
 
-- (void)testSelectsServerTypeWhenHistoryURLIsSelected
-{
-	[[serverTypeMatrixMock expect] selectCellWithTag:CCMUseGivenURL];
-
-	[controller historyURLSelected:nil];
-}
-
 - (void)testAddsHttpSchemeWhenSwitchingOffDetectionAndNoSchemePresent
 {
 	[[[serverUrlComboBoxMock stub] andReturn:@"test"] stringValue];
@@ -51,6 +44,42 @@
     [[serverUrlComboBoxMock expect] setStringValue:@"https://test"];
 
     [controller serverDetectionChanged:nil];
+}
+
+- (void)testAddUserAndSchemeToUrlWhenUserFieldIsEditedAndUrlHadNoUserOrScheme
+{
+    id userFieldMock = [OCMockObject mockForClass:[NSTextField class]];
+    [controller setValue:userFieldMock forKey:@"userField"];
+
+    [[[serverUrlComboBoxMock stub] andReturn:@"host.com/feed"] stringValue];
+    [[[userFieldMock stub] andReturn:@"alice"] stringValue];
+    [[serverUrlComboBoxMock expect] setStringValue:@"http://alice@host.com/feed"];
+
+    [controller controlTextDidChange:[NSNotification notificationWithName:@"test" object:userFieldMock]];
+}
+
+- (void)testReplacesUserInUrlWhenUserFieldIsEdited
+{
+    id userFieldMock = [OCMockObject mockForClass:[NSTextField class]];
+    [controller setValue:userFieldMock forKey:@"userField"];
+
+    [[[serverUrlComboBoxMock stub] andReturn:@"https://alice@host.com/feed"] stringValue];
+    [[[userFieldMock stub] andReturn:@"bob"] stringValue];
+    [[serverUrlComboBoxMock expect] setStringValue:@"https://bob@host.com/feed"];
+
+    [controller controlTextDidChange:[NSNotification notificationWithName:@"test" object:userFieldMock]];
+}
+
+- (void)testReplacesUserInUrlAndAddsSchemeWhenUserFieldIsEditedAndUrlHasNoScheme
+{
+    id userFieldMock = [OCMockObject mockForClass:[NSTextField class]];
+    [controller setValue:userFieldMock forKey:@"userField"];
+
+    [[[serverUrlComboBoxMock stub] andReturn:@"alice@host.com/feed"] stringValue];
+    [[[userFieldMock stub] andReturn:@"bob"] stringValue];
+    [[serverUrlComboBoxMock expect] setStringValue:@"http://bob@host.com/feed"];
+
+    [controller controlTextDidChange:[NSNotification notificationWithName:@"test" object:userFieldMock]];
 }
 
 - (void)testAddsProjectWithServerUrlAndNameToDefaults

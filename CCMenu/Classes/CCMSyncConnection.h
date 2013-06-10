@@ -11,7 +11,7 @@
 
 @property(nonatomic, assign) NSRunLoop *runLoop;
 
+- (NSInteger)testConnection;
 - (NSArray *)retrieveServerStatus;
-- (BOOL)testConnection;
 
 @end

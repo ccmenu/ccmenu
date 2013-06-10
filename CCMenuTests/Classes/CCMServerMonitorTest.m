@@ -37,7 +37,7 @@
     STAssertEqualObjects(@"protest", [[[monitor projects] objectAtIndex:2] name], @"Should have created project with correct name.");
 
     STAssertEquals(2ul, [[monitor connections] count], @"Should have created minimum number of connection.");
-    NSArray *urls = (id)[[[monitor connections] collect] serverURL];
+    NSArray *urls = (id) [[[monitor connections] collect] feedURL];
     STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"http://test/cctray.xml"]] != NSNotFound, @"Should have created connection for first URL.");
     STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"file:cctray.xml"]] != NSNotFound, @"Should have created connection for second URL.");
 }
@@ -98,7 +98,7 @@
     [monitor setupFromUserDefaults];
     __block CCMConnection *connection = nil;
     [[monitor connections] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if([[obj serverURL] isEqual:[NSURL URLWithString:@"file:cctray.xml"]])
+        if([[obj feedURL] isEqual:[NSURL URLWithString:@"file:cctray.xml"]])
             connection = obj;
     }];
  	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];

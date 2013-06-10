@@ -6,7 +6,7 @@
 
 @implementation CCMSyncConnectionTest
 
-- (void)testConnectionTestSuccessfulWhenServerReturns200StatusCode
+- (void)testConnectionTestReturnsServerStatusCode
 {
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
     [self setUpDummyNSURLConnection];
@@ -19,27 +19,9 @@
     [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
     [connection setRunLoop:runLoopMock];
 
-    BOOL success = [connection testConnection];
+    NSInteger statusCode = [connection testConnection];
     
-    STAssertTrue(success, @"Should have indicated success.");
-}
-
-- (void)testConnectionTestUnsuccessfulWhenServerReturns404StatusCode
-{
-    CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
-    [self setUpDummyNSURLConnection];
-
-    id runLoopMock = [OCMockObject mockForClass:[NSRunLoop class]];
-    void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
-        [connection connection:dummyNSURLConnection didReceiveResponse:[self responseMockWithStatusCode:404]];
-        [connection connectionDidFinishLoading:dummyNSURLConnection];
-    };
-    [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
-    [connection setRunLoop:runLoopMock];
-
-    BOOL success = [connection testConnection];
-    
-    STAssertFalse(success, @"Should have indicated failure.");
+    STAssertEquals((NSInteger)200, statusCode, @"Should have indicated success.");
 }
 
 - (void)testRetrievesStatusSynchronously

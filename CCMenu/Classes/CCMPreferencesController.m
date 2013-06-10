@@ -2,12 +2,21 @@
 #import "CCMPreferencesController.h"
 #import "CCMConnection.h"
 #import "NSString+CCMAdditions.h"
+#import "NSAlert+CCMAdditions.h"
 #import "NSArray+EDExtensions.h"
 #import "NSAppleScript+EDAdditions.h"
 #import "CCMSyncConnection.h"
 #import "CCMHistoryDataSource.h"
+#import "CCMKeychainHelper.h"
 
 #define WINDOW_TITLE_HEIGHT 78
+
+#define ALERT_SERVER_DETECT_FAILURE_TITLE NSLocalizedString(@"Cannot determine server type", "Alert message when server type cannot be determined.")
+#define ALERT_SERVER_DETECT_FAILURE_INFO NSLocalizedString(@"Please contact the server administrator to get the feed URL, and then enter the full URL into the field.", "Informative text when server type cannot be determined.")
+
+#define ALERT_CONN_FAILURE_TITLE NSLocalizedString(@"Cannot retrieve project information", "Alert message when connection test fails in preferences.")
+#define ALERT_CONN_FAILURE_STATUS_INFO NSLocalizedString(@"The server responded with HTTP status code %d.", "Informative text when server responded with anything but 200 OK. Placeholder is for status code.")
+#define ALERT_CONN_FAILURE_STATUS401_INFO NSLocalizedString(@"The server responded with HTTP status code 401, which means \"not authorized\". Please make sure that the username and password are correct.", "Informative text when server responded with status code 401.")
 
 NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotification";
 
@@ -71,6 +80,9 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
 //	[serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
     [serverUrlComboBox selectText:self];
+    NSString *user = [[serverUrlComboBox stringValue] usernameFromURL];
+    [userField setStringValue:(user != nil) ? user : @""];
+    [passwordField setStringValue:@""];
 }
 
 - (void)serverDetectionChanged:(id)sender
@@ -78,96 +90,137 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
     [serverUrlComboBox setStringValue:[[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary]];
 }
 
+- (void)controlTextDidChange:(NSNotification *)aNotification
+{
+    if([aNotification object] == userField)
+    {
+        NSString *serverUrl = [[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary];
+        NSString *userFromUrl = [serverUrl usernameFromURL];
+        if(userFromUrl != nil)
+        {
+            NSRange userRange = [serverUrl rangeOfString:userFromUrl];
+            serverUrl = [serverUrl stringByReplacingCharactersInRange:userRange withString:[userField stringValue]];
+        }
+        else
+        {
+            NSRange userRange = NSMakeRange(NSMaxRange([serverUrl rangeOfString:@"//"]), 0);
+            NSString *user = [[userField stringValue] stringByAppendingString:@"@"];
+            serverUrl = [serverUrl stringByReplacingCharactersInRange:userRange withString:user];
+        }
+        [serverUrlComboBox setStringValue:serverUrl];
+    }
+}
 
 - (void)chooseProjects:(id)sender
 {
 	@try 
 	{
 		[testServerProgressIndicator startAnimation:self];
-		NSString *serverUrl = [serverUrlComboBox stringValue];
-		if([serverTypeMatrix selectedTag] == CCMDetectServer)
-		{
-			if((serverUrl = [self determineServerURL]) == nil)
-			{
-				[testServerProgressIndicator stopAnimation:self];
-				NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-				[alert setMessageText:NSLocalizedString(@"Cannot determine server type", "Alert message when server type cannot be determined.")];
-				[alert setInformativeText:NSLocalizedString(@"Please contact the server administrator and enter the full URL into the location field.", "Informative text when server type cannot be determined.")];
-				[alert runModal];
-				return;
-			}
-		}
-		CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
+        NSString *serverUrl = ([serverTypeMatrix selectedTag] == CCMUseGivenURL) ? [self getValidatedURL] : [self getCompletedAndValidatedURL];
+        if(serverUrl == nil)
+            return;
+        CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
         [connection setDelegate:self];
-		NSArray *projectInfos = [connection retrieveServerStatus];
-		[testServerProgressIndicator stopAnimation:self];
-		[chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
-		[sheetTabView selectLastTabViewItem:self];
-	}
+        NSArray *projectInfos = [connection retrieveServerStatus];
+        [chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
+        [sheetTabView selectLastTabViewItem:self];
+    }
 	@catch(NSException *exception)
 	{
 		[testServerProgressIndicator stopAnimation:self];
-        if(suppressErrorAndShowCredentialBox)
-        {
-            if([credentialBox superview] == nil)
-            {
-                [credentialBox setAlphaValue:0.0f];
-                [[credentialBox animator] setAlphaValue:1.0f];
-                [[[serverUrlComboBox superview] animator] addSubview:credentialBox];
-            }
-            suppressErrorAndShowCredentialBox = NO;
-        }
-        else
-        {
-            NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-            [alert setMessageText:NSLocalizedString(@"Could not retrieve project information", "Alert message when connection fails in preferences.")];
-            [alert setInformativeText:[exception reason]];
-            [alert runModal];
-        }
-	}
+        [[NSAlert alertWithText:ALERT_CONN_FAILURE_TITLE informativeText:[exception reason]] runModal];
+    }
+    @finally
+    {
+        [testServerProgressIndicator stopAnimation:self];
+    }
 }
 
-- (NSString *)determineServerURL
+- (NSString *)getValidatedURL
 {
-	NSString *originalUrl = [serverUrlComboBox stringValue];
-    for(NSString *url in [originalUrl completeURLForAllServerTypes])
-	{
-		[serverUrlComboBox setStringValue:url];
-		[serverUrlComboBox display];
-		CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:url] autorelease];
-        [connection setDelegate:self];
-		if([connection testConnection])
-			return url;
-	}
-	[serverUrlComboBox setStringValue:originalUrl];
-	[serverUrlComboBox display];
-	return nil;
+    BOOL wasVisible = [self isCredentialBoxVisible];
+    NSString *url = [serverUrlComboBox stringValue];
+    NSInteger statusCode = [self checkURL:url];
+    if(statusCode != 200)
+    {
+        [testServerProgressIndicator stopAnimation:self];
+        if([self didCredentialBoxBecomeVisible:wasVisible])
+            return nil;
+        [[NSAlert alertWithText:ALERT_CONN_FAILURE_TITLE informativeText:[NSString stringWithFormat:(statusCode == 401) ? ALERT_CONN_FAILURE_STATUS401_INFO : ALERT_CONN_FAILURE_STATUS_INFO, (int)statusCode]] runModal];
+        return nil;
+    }
+    return url;
 }
 
-- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge
+- (NSString *)getCompletedAndValidatedURL
 {
-    if([credentialBox superview] == nil)
+    BOOL wasVisible = [self isCredentialBoxVisible];
+    BOOL saw401 = NO;
+    NSString *url = nil;
+    NSString *baseURL = [serverUrlComboBox stringValue];
+    for(NSString *completedURL in [baseURL completeURLForAllServerTypes])
     {
-        suppressErrorAndShowCredentialBox = YES;
-        [authMessage setStringValue:[NSString stringWithFormat:NSLocalizedString(@"The server says: \"%@\"", "Instructions for authentication sheet. Placeholder will be replaced with the auth realm."), [[challenge protectionSpace] realm]]];
-        NSURLCredential *proposedCredential = [challenge proposedCredential];
-        if([proposedCredential user])
-            [userField setStringValue:[proposedCredential user]];
-        if([proposedCredential hasPassword])
-            [passwordField setStringValue:[proposedCredential password]];
+        [serverUrlComboBox setStringValue:completedURL];
+        [serverUrlComboBox display];
+        NSInteger status = [self checkURL:completedURL];
+        if(status == 200)
+        {
+            url = completedURL;
+            break;
+        }
+        else if(status == 401)
+        {
+            saw401 = YES;
+        }
+    }
+    if(url == nil)
+    {
+        [serverUrlComboBox setStringValue:baseURL];
+        [serverUrlComboBox display];
+        [testServerProgressIndicator stopAnimation:self];
+        if([self didCredentialBoxBecomeVisible:wasVisible])
+            return nil;
+        [[NSAlert alertWithText:ALERT_SERVER_DETECT_FAILURE_TITLE informativeText:saw401 ? ALERT_CONN_FAILURE_STATUS401_INFO : ALERT_SERVER_DETECT_FAILURE_INFO] runModal];
         return nil;
     }
-    else if([challenge previousFailureCount] == 0)
-    {
-        return [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistencePermanent];
-    }
-    else
-    {
-        [passwordField setStringValue:@""];
-        suppressErrorAndShowCredentialBox = YES;
-        return nil;
-    }
+    return url;
 }
+
+
+- (NSInteger)checkURL:(NSString *)url
+{
+    CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:url] autorelease];
+    if([credentialBox superview] != nil)
+    {
+        NSURLCredential *credential = [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistencePermanent];
+        [connection setCredential:credential];
+    }
+
+    NSInteger statusCode = [connection testConnection];
+
+    if((statusCode == 401) && ([credentialBox superview] == nil))
+    {
+        NSString *user = [url usernameFromURL];
+        [userField setStringValue:(user != nil) ? user : @""];
+        NSString *password = [CCMKeychainHelper passwordForURLString:url error:NULL];
+        [passwordField setStringValue:(password != nil) ? password : @""];
+        [credentialBox setAlphaValue:0.0f];
+        [[credentialBox animator] setAlphaValue:1.0f];
+        [[[serverUrlComboBox superview] animator] addSubview:credentialBox];
+    }
+    return statusCode;
+}
+
+- (BOOL)isCredentialBoxVisible
+{
+    return ([credentialBox superview] != nil);
+}
+
+- (BOOL)didCredentialBoxBecomeVisible:(BOOL)previousState
+{
+    return ((previousState == NO) && ([self isCredentialBoxVisible] == YES));
+}
+
 
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl
 {
@@ -211,6 +264,29 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
 	[allProjectsViewController remove:sender];
 	[self preferencesChanged:sender];
+}
+
+
+- (void)editProject:(id)sender
+{
+    NSString *password = [CCMKeychainHelper passwordForURLString:@"http://dev@localhost:4567" error:NULL];
+    [editPasswordField setStringValue:(password != nil) ? password : @""];
+    [NSApp beginSheet:editProjectSheet modalForWindow:preferencesWindow modalDelegate:self
+       didEndSelector:@selector(editProjectSheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void)closeEditProjectSheet:(id)sender
+{
+	[NSApp endSheet:editProjectSheet returnCode:[sender tag]];
+}
+
+- (void)editProjectSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+	[editProjectSheet orderOut:self];
+	if(returnCode == 0)
+		return;
+
+   	[self preferencesChanged:self];
 }
 
 

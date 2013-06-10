@@ -78,4 +78,16 @@ static void initialize()
 	return [NSString stringWithString:mutableCopy];
 }
 
+- (NSString *)usernameFromURL
+{
+    @try
+    {
+        return [[NSURL URLWithString:self] user];
+    }
+    @catch (NSException *exception)
+    {
+        return nil;
+    }
+}
+
 @end

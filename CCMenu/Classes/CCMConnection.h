@@ -4,24 +4,25 @@
 
 @interface CCMConnection : NSObject <NSURLConnectionDataDelegate>
 {
-	NSURLConnection     *urlConnection;
+	NSURLConnection     *nsurlConnection;
     NSHTTPURLResponse   *receivedResponse;
 	NSMutableData	    *receivedData;
 }
 
-@property(nonatomic, readonly, copy) NSURL *serverURL;
+@property(nonatomic, readonly, copy) NSURL *feedURL;
+@property(nonatomic, retain) NSURLCredential *credential;
 @property(nonatomic, assign) id delegate;
 
-- (id)initWithServerURL:(NSURL *)theServerUrl;
-- (id)initWithURLString:(NSString *)theServerUrlAsString;
+- (id)initWithFeedURL:(NSURL *)theFeedURL;
+- (id)initWithURLString:(NSString *)theFeedURL;
 
 - (void)requestServerStatus;
-- (void)cancelStatusRequest;
+- (void)cancelRequest;
 
 // subclasses only
 
 - (void)setUpForNewRequest;
-- (void)cleanUpAfterStatusRequest;
+- (void)cleanUpAfterRequest;
 
 - (NSString *)errorStringForError:(NSError *)error;
 - (NSString *)errorStringForResponse:(NSHTTPURLResponse *)response;
@@ -31,8 +32,6 @@
 
 
 @protocol CCMConnectionDelegate
-
-- (NSURLCredential *)connection:(CCMConnection *)connection credentialForAuthenticationChallange:(NSURLAuthenticationChallenge *)challenge;
 
 - (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList;
 - (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString;

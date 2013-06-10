@@ -29,11 +29,13 @@
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
     IBOutlet NSBox                  *credentialBox;
-    IBOutlet NSTextField            *authMessage;
+
     IBOutlet NSTextField            *userField;
     IBOutlet NSTextField            *passwordField;
 	IBOutlet NSArrayController		*chooseProjectsViewController;
-    BOOL                            suppressErrorAndShowCredentialBox;
+
+    IBOutlet NSPanel                *editProjectSheet;
+    IBOutlet NSTextField            *editPasswordField;
 }
 
 - (IBAction)showWindow:(id)sender;
@@ -44,8 +46,9 @@
 
 - (IBAction)chooseProjects:(id)sender;
 - (IBAction)closeAddProjectsSheet:(id)sender;
-
 - (IBAction)removeProjects:(id)sender;
+- (IBAction)editProject:(id)sender;
+- (IBAction)closeEditProjectSheet:(id)sender;
 
 - (IBAction)switchPreferencesPane:(id)sender;
 - (IBAction)preferencesChanged:(id)sender;
@@ -53,10 +56,15 @@
 - (IBAction)updateIntervalChanged:(id)sender;
 - (IBAction)checkForUpdateNow:(id)sender;
 
-- (NSString *)determineServerURL;
-- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl ;
+- (NSString *)getValidatedURL;
+- (NSString *)getCompletedAndValidatedURL;
+- (NSInteger)checkURL:(NSString *)url;
+- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl;
+- (BOOL)isCredentialBoxVisible;
+- (BOOL)didCredentialBoxBecomeVisible:(BOOL)previousState;
 
 - (void)addProjectsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+- (void)editProjectSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 - (IBAction)soundSelected:(id)sender;
 - (NSArray *)availableSounds;

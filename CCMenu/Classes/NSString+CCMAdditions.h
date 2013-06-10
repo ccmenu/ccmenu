@@ -22,5 +22,6 @@ typedef enum {
 - (NSString *)completeURLForServerType:(CCMServerType)serverType;
 - (NSArray *)completeURLForAllServerTypes;
 - (NSString *)stringByRemovingServerReportFileName;
+- (NSString *)usernameFromURL;
 
 @end

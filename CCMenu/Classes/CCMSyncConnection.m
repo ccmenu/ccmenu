@@ -6,9 +6,9 @@
 
 @synthesize runLoop;
 
-- (id)initWithServerURL:(NSURL *)theServerUrl
+- (id)initWithFeedURL:(NSURL *)theServerUrl
 {
-    self = [super initWithServerURL:theServerUrl];
+    self = [super initWithFeedURL:theServerUrl];
     runLoop = [NSRunLoop currentRunLoop];
     return self;
 }
@@ -27,22 +27,28 @@
     didFinish = NO;
 }
 
-- (BOOL)testConnection
+- (NSInteger)testConnection
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self serverURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     [NSURLConnection connectionWithRequest:request delegate:self];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     if(receivedError != nil)
-		[NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:receivedError]];
-	return ([receivedResponse statusCode] == 200);
+    {
+        // faking a 401 status code for authentications we cancelled
+        if(([receivedError domain] == NSURLErrorDomain) && ([receivedError code] == NSURLErrorUserCancelledAuthentication))
+            return 401;
+        else
+		    [NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:receivedError]];
+    }
+	return [receivedResponse statusCode];
 }
 
 - (NSArray *)retrieveServerStatus
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self serverURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     [NSURLConnection connectionWithRequest:request delegate:self];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];

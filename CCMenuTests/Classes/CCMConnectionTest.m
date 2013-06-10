@@ -1,6 +1,7 @@
 #import <OCMock/OCMock.h>
 #import "CCMConnection.h"
 #import "CCMConnectionTest.h"
+#import "CCMKeychainHelper.h"
 
 
 @implementation CCMConnectionTest
@@ -46,29 +47,56 @@
     STAssertNotNil(recordedError, @"connectfour", @"Should have called delegate with error.");
 }
 
-- (void)testOnFirstAttemptUsesProposedCredentialWithoutAskingDelegate
+- (void)testLazilyCreatesCredentialWhenNeededForAuthChallenge
 {
-    CCMConnection *connection = [[[CCMConnection alloc] init] autorelease];
+    CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testuser@testhost"] autorelease];
     [self setUpDummyNSURLConnection];
 
-    id delegateMock = [OCMockObject mockForProtocol:@protocol(CCMConnectionDelegate)];
-    [connection setDelegate:delegateMock];
+    id keychainHelperMock = [OCMockObject mockForClass:[CCMKeychainHelper class]];
+    [[[keychainHelperMock stub] andReturn:@"testpassword"] passwordForURL:[OCMArg any] error:[OCMArg anyPointer]];
 
     id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
     [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){0})] previousFailureCount];
-
-    NSURLCredential *credential = [NSURLCredential credentialWithUser:@"dummy" password:@"testpassword" persistence:NSURLCredentialPersistenceNone];
-    [[[challengeMock stub] andReturn:credential] proposedCredential];
-
     id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
-    [[senderMock expect] useCredential:credential forAuthenticationChallenge:challengeMock];
     [[[challengeMock stub] andReturn:senderMock] sender];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:@"testuser" password:@"testpassword" persistence:NSURLCredentialPersistenceForSession];
+    [[senderMock expect] useCredential:credential forAuthenticationChallenge:challengeMock];
 
-    [connection connection:dummyNSURLConnection willSendRequestForAuthenticationChallenge:challengeMock];
+    [connection connection:dummyNSURLConnection didReceiveAuthenticationChallenge:challengeMock];
 
-    // if the connection calls its delegate method the mock will complain because its unexpected
     [senderMock verify];
 }
 
+- (void)testCancelsAuthChallengeWhenCredentialCannotBeCreated
+{
+    CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
+    [self setUpDummyNSURLConnection];
 
+    id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
+    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){0})] previousFailureCount];
+    id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
+    [[[challengeMock stub] andReturn:senderMock] sender];
+    [[senderMock expect] cancelAuthenticationChallenge:challengeMock];
+
+    [connection connection:dummyNSURLConnection didReceiveAuthenticationChallenge:challengeMock];
+
+    [senderMock verify];
+}
+
+- (void)testCancelsAuthChallengeWhenCredentialIsPresentButFailCountIsNotZero
+{
+    CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
+    [self setUpDummyNSURLConnection];
+    [connection setCredential:[NSURLCredential credentialWithUser:@"testuser" password:@"testpassword" persistence:NSURLCredentialPersistenceForSession]];
+
+    id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
+    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){1})] previousFailureCount];
+    id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
+    [[[challengeMock stub] andReturn:senderMock] sender];
+    [[senderMock expect] cancelAuthenticationChallenge:challengeMock];
+
+    [connection connection:dummyNSURLConnection didReceiveAuthenticationChallenge:challengeMock];
+
+    [senderMock verify];
+}
 @end
