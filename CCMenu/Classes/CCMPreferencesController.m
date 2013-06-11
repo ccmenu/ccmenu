@@ -19,6 +19,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	if(preferencesWindow == nil)
 	{
 		[NSBundle loadNibNamed:@"Preferences" owner:self];
+        [[preferencesWindow standardWindowButton:NSWindowZoomButton] setHidden:YES];
 		[preferencesWindow center];
 		[preferencesWindow setToolbar:[self createToolbarWithName:@"Preferences"]];
 		[[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
@@ -49,7 +50,17 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	if([[paneHolderView subviews] count] > 0)
 		[[[paneHolderView subviews] firstObject] removeFromSuperview];
 	[preferencesWindow setFrame:windowFrame display:YES animate:(sender != self)];
-	
+    
+    if(index == 0)
+    {
+        [preferencesWindow setContentMinSize:NSMakeSize(350, 350)];
+        [preferencesWindow setContentMaxSize:NSMakeSize(800, 1200)];
+    }
+    else
+    {
+        [preferencesWindow setContentMinSize:[prefView frame].size];
+        [preferencesWindow setContentMaxSize:[prefView frame].size];
+	}
 	[paneHolderView setFrame:[prefView frame]];
 	[paneHolderView addSubview:prefView];
 }
