@@ -7,6 +7,8 @@
 {
     IBOutlet CCMUserDefaultsManager	*defaultsManager;
 
+	IBOutlet NSArrayController		*allProjectsViewController;
+
     IBOutlet NSPanel                *editProjectSheet;
     IBOutlet NSTextField            *passwordField;
 }
@@ -15,5 +17,8 @@
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 - (IBAction)closeSheet:(id)sender;
+
+- (NSDictionary *)selectedProject;
+- (NSString *)getValidatedURL;
 
 @end

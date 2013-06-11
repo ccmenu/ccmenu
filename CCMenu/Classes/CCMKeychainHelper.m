@@ -43,15 +43,16 @@
 {
     const char *server = [[aURL host] UTF8String];
     const char *user = [[aURL user] UTF8String];
-    const char *pwData = [password UTF8String];
     UInt16 port = (UInt16) [[aURL port] integerValue];
-    SecKeychainItemRef itemRef = NULL;
+    BOOL isHTTPS = [[aURL scheme] isEqualToString:@"https"];
+    const char *pwData = [password UTF8String];
 
+    SecKeychainItemRef itemRef = NULL;
     OSStatus status = SecKeychainFindInternetPassword(NULL, (UInt32)strlen(server), server, 0, NULL, (UInt32)strlen(user), user, 0, NULL, port, kSecProtocolTypeAny, kSecAuthenticationTypeAny, 0, NULL, &itemRef);
 
     if(status == errSecItemNotFound)
     {
-        status = SecKeychainAddInternetPassword(NULL, (UInt32)strlen(server), server, 0, NULL, (UInt32)strlen(user), user, 0, NULL, port, kSecProtocolTypeAny, kSecAuthenticationTypeDefault, (UInt32)strlen(pwData), pwData, NULL);
+        status = SecKeychainAddInternetPassword(NULL, (UInt32)strlen(server), server, 0, NULL, (UInt32)strlen(user), user, 0, NULL, port, isHTTPS ? kSecProtocolTypeHTTPS : kSecProtocolTypeHTTP, kSecAuthenticationTypeDefault, (UInt32)strlen(pwData), pwData, NULL);
     }
     else if(status == noErr)
     {

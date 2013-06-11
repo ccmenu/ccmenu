@@ -140,7 +140,7 @@
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:url] autorelease];
     if([credentialBox superview] != nil)
     {
-        NSURLCredential *credential = [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistencePermanent];
+        NSURLCredential *credential = [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistenceNone];
         [connection setCredential:credential];
     }
     
@@ -155,6 +155,10 @@
         [credentialBox setAlphaValue:0.0f];
         [[credentialBox animator] setAlphaValue:1.0f];
         [[[serverUrlComboBox superview] animator] addSubview:credentialBox];
+    }
+    if((statusCode == 200) && ([connection credential] != nil))
+    {
+        [CCMKeychainHelper setPassword:[[connection credential] password] forURLString:url error:NULL];
     }
     return statusCode;
 }
