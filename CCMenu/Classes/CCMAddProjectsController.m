@@ -17,8 +17,9 @@
     [serverUrlComboBox reloadData];
     [serverUrlComboBox setStringValue:@""];
  	[serverTypeMatrix selectCellWithTag:CCMDetectServer];
-    [credentialBox retain]; // memory leak
-    [credentialBox removeFromSuperview];
+    [authCheckBox setState:NSOffState];
+    [userField setStringValue:@""];
+    [passwordField setStringValue:@""];
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:aWindow modalDelegate:self
        didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -26,7 +27,6 @@
 
 - (void)historyURLSelected:(id)sender
 {
-    //	[serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
     [serverUrlComboBox selectText:self];
     NSString *user = [[serverUrlComboBox stringValue] usernameFromURL];
     [userField setStringValue:(user != nil) ? user : @""];
@@ -64,7 +64,8 @@
 	@try
 	{
 		[testServerProgressIndicator startAnimation:self];
-        NSString *serverUrl = ([serverTypeMatrix selectedTag] == CCMUseGivenURL) ? [self getValidatedURL] : [self getCompletedAndValidatedURL];
+        BOOL useAsGiven = [serverTypeMatrix selectedTag] == CCMUseGivenURL;
+        NSString *serverUrl = useAsGiven ? [self getValidatedURL] : [self getCompletedAndValidatedURL];
         if(serverUrl == nil)
             return;
         CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
@@ -86,14 +87,11 @@
 
 - (NSString *)getValidatedURL
 {
-    [self rememberCredentialBoxVisibility];
     NSString *url = [serverUrlComboBox stringValue];
     NSInteger statusCode = [self checkURL:url];
     if(statusCode != 200)
     {
         [testServerProgressIndicator stopAnimation:self];
-        if([self didCredentialBoxBecomeVisible])
-            return nil;
         [[NSAlert alertWithText:ALERT_CONN_FAILURE_TITLE informativeText:[NSString stringWithFormat:(statusCode == 401) ? ALERT_CONN_FAILURE_STATUS401_INFO : ALERT_CONN_FAILURE_STATUS_INFO, (int)statusCode]] runModal];
         return nil;
     }
@@ -105,7 +103,6 @@
     BOOL saw401 = NO;
     NSString *url = nil;
     NSString *baseURL = [serverUrlComboBox stringValue];
-    [self rememberCredentialBoxVisibility];
     for(NSString *completedURL in [baseURL completeURLForAllServerTypes])
     {
         [serverUrlComboBox setStringValue:completedURL];
@@ -126,8 +123,6 @@
         [serverUrlComboBox setStringValue:baseURL];
         [serverUrlComboBox display];
         [testServerProgressIndicator stopAnimation:self];
-        if([self didCredentialBoxBecomeVisible])
-            return nil;
         [[NSAlert alertWithText:ALERT_SERVER_DETECT_FAILURE_TITLE informativeText:saw401 ? ALERT_CONN_FAILURE_STATUS401_INFO : ALERT_SERVER_DETECT_FAILURE_INFO] runModal];
         return nil;
     }
@@ -138,7 +133,7 @@
 - (NSInteger)checkURL:(NSString *)url
 {
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:url] autorelease];
-    if([credentialBox superview] != nil)
+    if([authCheckBox state] == NSOnState)
     {
         NSURLCredential *credential = [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistenceNone];
         [connection setCredential:credential];
@@ -146,31 +141,19 @@
     
     NSInteger statusCode = [connection testConnection];
     
-    if((statusCode == 401) && ([credentialBox superview] == nil))
+    if((statusCode == 401) && ([authCheckBox state] == NSOffState))
     {
+        [authCheckBox setState:NSOnState];
         NSString *user = [url usernameFromURL];
         [userField setStringValue:(user != nil) ? user : @""];
         NSString *password = [CCMKeychainHelper passwordForURLString:url error:NULL];
         [passwordField setStringValue:(password != nil) ? password : @""];
-        [credentialBox setAlphaValue:0.0f];
-        [[credentialBox animator] setAlphaValue:1.0f];
-        [[[serverUrlComboBox superview] animator] addSubview:credentialBox];
     }
     if((statusCode == 200) && ([connection credential] != nil))
     {
         [CCMKeychainHelper setPassword:[[connection credential] password] forURLString:url error:NULL];
     }
     return statusCode;
-}
-
-- (void)rememberCredentialBoxVisibility
-{
-    credentialBoxWasVisible = ([credentialBox superview] != nil);
-}
-
-- (BOOL)didCredentialBoxBecomeVisible
-{
-    return ((credentialBoxWasVisible == NO) && ([credentialBox superview] != nil));
 }
 
 

@@ -13,13 +13,11 @@
     IBOutlet NSComboBox				*serverUrlComboBox;
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
-    IBOutlet NSBox                  *credentialBox;
+    IBOutlet NSButton               *authCheckBox;
     IBOutlet NSTextField            *userField;
     IBOutlet NSTextField            *passwordField;
 
     IBOutlet NSArrayController		*chooseProjectsViewController;
-
-    BOOL                            credentialBoxWasVisible;
 }
 
 - (void)beginSheetForWindow:(NSWindow *)aWindow;
@@ -34,7 +32,5 @@
 - (NSString *)getCompletedAndValidatedURL;
 - (NSInteger)checkURL:(NSString *)url;
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl;
-- (void)rememberCredentialBoxVisibility;
-- (BOOL)didCredentialBoxBecomeVisible;
 
 @end
