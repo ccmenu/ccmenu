@@ -6,7 +6,7 @@ typedef enum {
 	CCMCruiseControlDashboard = 0,
 	CCMCruiseControlClassic = 1,
  	CCMCruiseControlDotNetServer = 2,   // CC.rb uses the same URL
-	CCMHudsonServer = 3
+	CCMHudsonServer = 3 // Jenkins, Travis use same URL
 } CCMServerType;
 
 typedef enum {

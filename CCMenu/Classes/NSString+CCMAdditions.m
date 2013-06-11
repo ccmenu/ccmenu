@@ -2,7 +2,7 @@
 #import "NSString+CCMAdditions.h"
 
 
-@implementation NSString(CCMAddtions)
+@implementation NSString(CCMAdditions)
 
 static NSArray *filenames = nil; 
 
@@ -18,7 +18,11 @@ static void initialize()
 - (CCMServerType)serverType
 {
 	initialize();
-	NSUInteger index = [filenames indexOfObject:[self lastPathComponent]];
+    NSString *filename = [self lastPathComponent];
+    NSRange qmarkRange = [filename rangeOfString:@"?"];
+    if(qmarkRange.location != NSNotFound)
+        filename = [filename substringToIndex:qmarkRange.location];
+    NSUInteger index = [filenames indexOfObject:filename];
 	return (index == NSNotFound) ? CCMUnknownServer : (int)index;
 }
 
@@ -32,16 +36,32 @@ static void initialize()
 - (NSString *)completeURLForServerType:(CCMServerType)serverType withPath:(NSString *)path
 {
 	initialize();
-	NSString *completion = [path stringByAppendingPathComponent:[filenames objectAtIndex:serverType]];
-	NSString *result = self;
+    NSString *baseURL = [self stringByAddingSchemeIfNecessary];
+
+    NSString *queryParams = nil;
+    NSRange qmarkRange = [self rangeOfString:@"?"];
+    if(qmarkRange.location != NSNotFound)
+    {
+        baseURL = [baseURL substringToIndex:qmarkRange.location];
+        queryParams = [self substringFromIndex:NSMaxRange(qmarkRange)];
+    }
+
+    NSString *completion = [path stringByAppendingPathComponent:[filenames objectAtIndex:serverType]];
+    NSString *result = baseURL;
 	if(![result hasSuffix:completion])
 	{
-		// can't use appendPathComponent because that normalises the double-slash in http://
-		if(![result hasSuffix:@"/"])
-			result = [result stringByAppendingString:@"/"];
-		result = [result stringByAppendingString:completion];
+        // not using appendPathComponent: because that normalises the double-slashes in http://
+		if(![result hasSuffix:@"/"] && ![completion hasPrefix:@"/"])
+            result = [result stringByAppendingString:@"/"];
+        result = [result stringByAppendingString:completion];
 	}
-	return [result stringByAddingSchemeIfNecessary];
+
+    if(queryParams != nil)
+    {
+        result = [result stringByAppendingFormat:@"?%@", queryParams];
+    }
+
+	return result;
 }
 
 - (NSString *)completeURLForServerType:(CCMServerType)serverType

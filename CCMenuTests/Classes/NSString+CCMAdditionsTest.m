@@ -1,4 +1,3 @@
-
 #import "NSString+CCMAdditionsTest.h"
 #import "NSString+CCMAdditions.h"
 
@@ -111,5 +110,22 @@
 	STAssertEqualObjects(@"http://localhost/", url, @"Should have removed filename part from URL.");
 }
 
+- (void)testDetectsServerTypeEvenWhenQueryParameterIsPresent
+{
+    CCMServerType type = [@"https://api.travis-ci.com/repositories/company-name/project-name/cc.xml?token=secrettoken" serverType];
+    STAssertEquals(CCMHudsonServer, type, @"Should have detected correct server type");
+}
+
+- (void)testLeavesQueryParametersIntactWhenCompletingURL
+{
+    NSString *url = [@"https://api.travis-ci.com/repositories/company-name/project-name?token=secrettoken" completeURLForServerType:CCMHudsonServer];
+    STAssertEqualObjects(@"https://api.travis-ci.com/repositories/company-name/project-name/cc.xml?token=secrettoken", url, @"Should have added report filename in the correct place.");
+}
+
+- (void)testLeavesQueryParametersIntactWhenAskedToCompleteURLThatWasComplete
+{
+    NSString *url = [@"https://api.travis-ci.com/repositories/company-name/project-name/cc.xml?token=secrettoken" completeURLForServerType:CCMHudsonServer];
+    STAssertEqualObjects(@"https://api.travis-ci.com/repositories/company-name/project-name/cc.xml?token=secrettoken", url, @"Should have added report filename in the correct place.");
+}
 
 @end
