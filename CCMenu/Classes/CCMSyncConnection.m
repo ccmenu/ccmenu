@@ -31,9 +31,10 @@
 {
     [self setUpForNewRequest];
     NSURLRequest *request = [NSURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    NSURLConnection *c = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    [c release];
     if(receivedError != nil)
     {
         // faking a 401 status code for authentications we cancelled

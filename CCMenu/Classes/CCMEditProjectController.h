@@ -10,7 +10,11 @@
 	IBOutlet NSArrayController		*allProjectsViewController;
 
     IBOutlet NSPanel                *editProjectSheet;
+    IBOutlet NSTextField            *feedURLField;
     IBOutlet NSTextField            *passwordField;
+
+	IBOutlet NSProgressIndicator	*progressIndicator;
+    IBOutlet NSTextField            *statusField;
 }
 
 - (void)beginSheetForWindow:(NSWindow *)aWindow;
@@ -20,5 +24,6 @@
 
 - (NSDictionary *)selectedProject;
 - (NSString *)getValidatedURL;
+- (void)showTestInProgress:(BOOL)flag;
 
 @end

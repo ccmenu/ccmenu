@@ -8,7 +8,7 @@ include REXML
 class ReleaseManager
 
     def initialize
-        @proj = Project.new("CCMenu", "1.5", "https://ccmenu.svn.sourceforge.net/svnroot/ccmenu/trunk")
+        @proj = Project.new("CCMenu", "1.6d3", "https://svn.code.sf.net/p/ccmenu/code/trunk")
         @env = Environment.new()
         @worker = CompositeWorker.new([Logger.new(), Executer.new()])
     end

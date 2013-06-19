@@ -20,6 +20,7 @@
     [authCheckBox setState:NSOffState];
     [userField setStringValue:@""];
     [passwordField setStringValue:@""];
+    [self showTestInProgress:NO];
 	[sheetTabView selectFirstTabViewItem:self];
 	[NSApp beginSheet:addProjectsSheet modalForWindow:aWindow modalDelegate:self
        didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -63,7 +64,7 @@
 {
 	@try
 	{
-		[testServerProgressIndicator startAnimation:self];
+        [self showTestInProgress:YES];
         BOOL useAsGiven = [serverTypeMatrix selectedTag] == CCMUseGivenURL;
         NSString *serverUrl = useAsGiven ? [self getValidatedURL] : [self getCompletedAndValidatedURL];
         if(serverUrl == nil)
@@ -76,12 +77,12 @@
     }
 	@catch(NSException *exception)
 	{
-		[testServerProgressIndicator stopAnimation:self];
+        [self showTestInProgress:NO];
         [[NSAlert alertWithText:ALERT_CONN_FAILURE_TITLE informativeText:[exception reason]] runModal];
     }
     @finally
     {
-        [testServerProgressIndicator stopAnimation:self];
+        [self showTestInProgress:NO];
     }
 }
 
@@ -91,7 +92,7 @@
     NSInteger statusCode = [self checkURL:url];
     if(statusCode != 200)
     {
-        [testServerProgressIndicator stopAnimation:self];
+        [self showTestInProgress:NO];
         [[NSAlert alertWithText:ALERT_CONN_FAILURE_TITLE informativeText:[NSString stringWithFormat:(statusCode == 401) ? ALERT_CONN_FAILURE_STATUS401_INFO : ALERT_CONN_FAILURE_STATUS_INFO, (int)statusCode]] runModal];
         return nil;
     }
@@ -122,7 +123,7 @@
     {
         [serverUrlComboBox setStringValue:baseURL];
         [serverUrlComboBox display];
-        [testServerProgressIndicator stopAnimation:self];
+        [self showTestInProgress:NO];
         [[NSAlert alertWithText:ALERT_SERVER_DETECT_FAILURE_TITLE informativeText:saw401 ? ALERT_CONN_FAILURE_STATUS401_INFO : ALERT_SERVER_DETECT_FAILURE_INFO] runModal];
         return nil;
     }
@@ -154,6 +155,20 @@
         [CCMKeychainHelper setPassword:[[connection credential] password] forURLString:url error:NULL];
     }
     return statusCode;
+}
+
+- (void)showTestInProgress:(BOOL)flag
+{
+    if(flag)
+    {
+		[testServerProgressIndicator startAnimation:self];
+        [statusField setStringValue:STATUS_TESTING];
+    }
+    else
+    {
+        [testServerProgressIndicator stopAnimation:self];
+        [statusField setStringValue:@""];
+    }
 }
 
 

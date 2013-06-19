@@ -13,6 +13,7 @@
     IBOutlet NSComboBox				*serverUrlComboBox;
 	IBOutlet NSMatrix				*serverTypeMatrix;
 	IBOutlet NSProgressIndicator	*testServerProgressIndicator;
+    IBOutlet NSTextField            *statusField;
     IBOutlet NSButton               *authCheckBox;
     IBOutlet NSTextField            *userField;
     IBOutlet NSTextField            *passwordField;
@@ -32,5 +33,6 @@
 - (NSString *)getCompletedAndValidatedURL;
 - (NSInteger)checkURL:(NSString *)url;
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl;
+- (void)showTestInProgress:(BOOL)flag;
 
 @end

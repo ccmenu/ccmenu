@@ -9,4 +9,6 @@
 #define ALERT_CONN_FAILURE_STATUS_INFO NSLocalizedString(@"The server responded with HTTP status code %d.", "Informative text when server responded with anything but 200 OK. Placeholder is for status code.")
 #define ALERT_CONN_FAILURE_STATUS401_INFO NSLocalizedString(@"The server responded with HTTP status code 401, which means \"unauthorized\". Please make sure that the username and password are correct.", "Informative text when server responded with status code 401.")
 
+#define STATUS_TESTING NSLocalizedString(@"Testing connection", "Status text displayed in preferences sheet when server connection is tested.")
+
 #endif
