@@ -26,6 +26,7 @@
 
 - (IBAction)historyURLSelected:(id)sender;
 - (IBAction)serverDetectionChanged:(id)sender;
+- (IBAction)useAuthenticationChanged:(id)sender;
 - (IBAction)chooseProjects:(id)sender;
 - (IBAction)closeSheet:(id)sender;
 

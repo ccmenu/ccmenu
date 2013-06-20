@@ -17,11 +17,14 @@ typedef enum {
 
 @interface NSString(CCMAdditions)
 
-- (CCMServerType)serverType;
 - (NSString *)stringByAddingSchemeIfNecessary;
+- (NSString *)stringByReplacingCredentials:(NSString *)credentials;
+- (NSString *)user;
+- (NSString *)host;
+
+- (CCMServerType)serverType;
 - (NSString *)completeURLForServerType:(CCMServerType)serverType;
 - (NSArray *)completeURLForAllServerTypes;
 - (NSString *)stringByRemovingServerReportFileName;
-- (NSString *)usernameFromURL;
 
 @end

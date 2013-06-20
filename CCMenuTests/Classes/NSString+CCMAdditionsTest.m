@@ -128,4 +128,39 @@
     STAssertEqualObjects(@"https://api.travis-ci.com/repositories/company-name/project-name/cc.xml?token=secrettoken", url, @"Should have added report filename in the correct place.");
 }
 
+- (void)testAddsUserToURLThatDoesNotHaveCredentials
+{
+    NSString *result = [@"http://hostname/path" stringByReplacingCredentials:@"user"];
+
+    STAssertEqualObjects(@"http://user@hostname/path", result, @"Should have added user in correct place.");
+}
+
+- (void)testAddsUserToURLThatDoesNotHaveCredentialsOrScheme
+{
+    NSString *result = [@"hostname/path" stringByReplacingCredentials:@"user"];
+
+    STAssertEqualObjects(@"http://user@hostname/path", result, @"Should have added user in correct place.");
+}
+
+- (void)testAddsUserToURLThatHasCredentials
+{
+    NSString *result = [@"https://old:password@hostname/path" stringByReplacingCredentials:@"new"];
+
+    STAssertEqualObjects(@"https://new@hostname/path", result, @"Should have replaced existing credentials.");
+}
+
+- (void)testRemovesCredentialsForEmptyString
+{
+    NSString *result = [@"http://old:password@hostname/path" stringByReplacingCredentials:@""];
+
+    STAssertEqualObjects(@"http://hostname/path", result, @"Should have removed existing credentials.");
+}
+
+- (void)testDoesNothingWhenURLDoesNotHaveCredentialsAndNewCredentialsAreEmpty
+{
+    NSString *result = [@"http://hostname/path" stringByReplacingCredentials:@""];
+
+    STAssertEqualObjects(@"http://hostname/path", result, @"Should have stayed with no credentials.");
+}
+
 @end

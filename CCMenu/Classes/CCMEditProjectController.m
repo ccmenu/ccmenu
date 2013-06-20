@@ -59,7 +59,7 @@
 {
     NSString *url = [feedURLField stringValue];
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:url] autorelease];
-    NSString *user = [url usernameFromURL];
+    NSString *user = [url user];
     if(user != nil)
     {
         NSString *password = [passwordField stringValue];

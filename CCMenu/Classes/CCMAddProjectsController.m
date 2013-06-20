@@ -29,9 +29,9 @@
 - (void)historyURLSelected:(id)sender
 {
     [serverUrlComboBox selectText:self];
-    NSString *user = [[serverUrlComboBox stringValue] usernameFromURL];
-    [userField setStringValue:(user != nil) ? user : @""];
-    [passwordField setStringValue:@""];
+    NSString *user = [[serverUrlComboBox stringValue] user];
+    [authCheckBox setState:(user != nil) ? NSOnState : NSOffState];
+    [self useAuthenticationChanged:self];
 }
 
 - (void)serverDetectionChanged:(id)sender
@@ -39,24 +39,40 @@
     [serverUrlComboBox setStringValue:[[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary]];
 }
 
+- (IBAction)useAuthenticationChanged:(id)sender
+{
+    NSString *url = [[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary];
+
+    if([authCheckBox state] == NSOnState)
+    {
+        NSString *user = [url user];
+        if(user == nil)
+        {
+            user = [CCMKeychainHelper accountForURLString:url error:NULL];
+            if(user == nil)
+                return;
+            url = [url stringByReplacingCredentials:user];
+            [serverUrlComboBox setStringValue:url];
+        }
+        [userField setStringValue:user];
+        NSString *password = [CCMKeychainHelper passwordForURLString:url error:NULL];
+        [passwordField setStringValue:(password != nil) ? password : @""];
+    }
+    else
+    {
+        [serverUrlComboBox setStringValue:[url stringByReplacingCredentials:@""]];
+        [userField setStringValue:@""];
+        [passwordField setStringValue:@""];
+    }
+}
+
+
 - (void)controlTextDidChange:(NSNotification *)aNotification
 {
     if([aNotification object] == userField)
     {
-        NSString *serverUrl = [[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary];
-        NSString *userFromUrl = [serverUrl usernameFromURL];
-        if(userFromUrl != nil)
-        {
-            NSRange userRange = [serverUrl rangeOfString:userFromUrl];
-            serverUrl = [serverUrl stringByReplacingCharactersInRange:userRange withString:[userField stringValue]];
-        }
-        else
-        {
-            NSRange userRange = NSMakeRange(NSMaxRange([serverUrl rangeOfString:@"//"]), 0);
-            NSString *user = [[userField stringValue] stringByAppendingString:@"@"];
-            serverUrl = [serverUrl stringByReplacingCharactersInRange:userRange withString:user];
-        }
-        [serverUrlComboBox setStringValue:serverUrl];
+        NSString *url = [[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary];
+        [serverUrlComboBox setStringValue:[url stringByReplacingCredentials:[userField stringValue]]];
     }
 }
 
@@ -145,7 +161,7 @@
     if((statusCode == 401) && ([authCheckBox state] == NSOffState))
     {
         [authCheckBox setState:NSOnState];
-        NSString *user = [url usernameFromURL];
+        NSString *user = [url user];
         [userField setStringValue:(user != nil) ? user : @""];
         NSString *password = [CCMKeychainHelper passwordForURLString:url error:NULL];
         [passwordField setStringValue:(password != nil) ? password : @""];

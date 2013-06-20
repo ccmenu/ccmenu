@@ -3,6 +3,9 @@
 
 @interface CCMKeychainHelper : NSObject
 
++ (NSString *)accountForURLString:(NSString *)aString error:(NSError **)errorPtr;
++ (NSString *)accountForURL:(NSURL *)aURL error:(NSError **)errorPtr;
+
 + (NSString *)passwordForURLString:(NSString *)aString error:(NSError **)errorPtr;
 + (NSString *)passwordForURL:(NSURL *)aURL error:(NSError **)errorPtr;
 

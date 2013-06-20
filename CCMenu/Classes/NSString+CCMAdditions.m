@@ -1,5 +1,6 @@
 
 #import "NSString+CCMAdditions.h"
+#import "NSString+EDExtensions.h"
 
 
 @implementation NSString(CCMAdditions)
@@ -15,23 +16,71 @@ static void initialize()
 	filenames = [[plist propertyList] copy];
 }
 
-- (CCMServerType)serverType
-{
-	initialize();
-    NSString *filename = [self lastPathComponent];
-    NSRange qmarkRange = [filename rangeOfString:@"?"];
-    if(qmarkRange.location != NSNotFound)
-        filename = [filename substringToIndex:qmarkRange.location];
-    NSUInteger index = [filenames indexOfObject:filename];
-	return (index == NSNotFound) ? CCMUnknownServer : (int)index;
-}
-
 - (NSString *)stringByAddingSchemeIfNecessary
 {
 	if(![self hasPrefix:@"http://"] && ![self hasPrefix:@"https://"])
 		return [@"http://" stringByAppendingString:self];
 	return self;
 }
+
+- (NSString *)stringByReplacingCredentials:(NSString *)credentials
+{
+    NSString *result = [self stringByAddingSchemeIfNecessary];
+    NSRange credRange;
+    NSString *userFromURL = [result user];
+    NSString *hostFromURL = [result host];
+    if((userFromURL != nil) && (hostFromURL != nil))
+    {
+        NSRange userRange = [result rangeOfString:userFromURL];
+        NSRange hostRange = [result rangeOfString:hostFromURL];
+        credRange = NSMakeRange(userRange.location, hostRange.location - userRange.location);
+    }
+    else
+    {
+        credRange = NSMakeRange(NSMaxRange([result rangeOfString:@"//"]), 0);
+    }
+    if(![credentials isEmpty])
+        credentials = [credentials stringByAppendingString:@"@"];
+    result = [result stringByReplacingCharactersInRange:credRange withString:credentials];
+    return result;
+}
+
+- (NSString *)user
+{
+    @try
+    {
+        return [[NSURL URLWithString:self] user];
+    }
+    @catch (NSException *exception)
+    {
+        return nil;
+    }
+}
+
+- (NSString *)host
+{
+    @try
+    {
+        return [[NSURL URLWithString:self] host];
+    }
+    @catch (NSException *exception)
+    {
+        return nil;
+    }
+}
+
+
+- (CCMServerType)serverType
+{
+    initialize();
+    NSString *filename = [self lastPathComponent];
+    NSRange qmarkRange = [filename rangeOfString:@"?"];
+    if(qmarkRange.location != NSNotFound)
+        filename = [filename substringToIndex:qmarkRange.location];
+    NSUInteger index = [filenames indexOfObject:filename];
+    return (index == NSNotFound) ? CCMUnknownServer : (int)index;
+}
+
 
 - (NSString *)completeURLForServerType:(CCMServerType)serverType withPath:(NSString *)path
 {
@@ -98,16 +147,5 @@ static void initialize()
 	return [NSString stringWithString:mutableCopy];
 }
 
-- (NSString *)usernameFromURL
-{
-    @try
-    {
-        return [[NSURL URLWithString:self] user];
-    }
-    @catch (NSException *exception)
-    {
-        return nil;
-    }
-}
 
 @end

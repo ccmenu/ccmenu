@@ -4,6 +4,35 @@
 
 @implementation CCMKeychainHelper
 
++ (NSString *)accountForURLString:(NSString *)aString error:(NSError **)errorPtr
+{
+    return [self accountForURL:[NSURL URLWithString:aString] error:errorPtr];
+}
+
++ (NSString *)accountForURL:(NSURL *)aURL error:(NSError **)errorPtr
+{
+    if([aURL host] == nil)
+        return nil;
+
+    NSMutableDictionary *query = [NSMutableDictionary dictionary];
+    [query setObject:[aURL host] forKey:(id)kSecAttrServer];
+    [query setObject:kSecClassInternetPassword forKey:kSecClass];
+    [query setObject:kCFBooleanTrue forKey:kSecReturnAttributes];
+    NSDictionary *result = nil;
+
+    OSStatus status = SecItemCopyMatching(query, &result);
+
+    if(status != noErr)
+    {
+        if(errorPtr != NULL)
+            *errorPtr = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
+        return nil;
+    }
+
+    return [result objectForKey:kSecAttrAccount];
+}
+
+
 + (NSString *)passwordForURLString:(NSString *)aString error:(NSError **)errorPtr
 {
     return [self passwordForURL:[NSURL URLWithString:aString] error:errorPtr];
