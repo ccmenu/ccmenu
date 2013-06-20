@@ -155,17 +155,7 @@
         NSURLCredential *credential = [NSURLCredential credentialWithUser:[userField stringValue] password:[passwordField stringValue] persistence:NSURLCredentialPersistenceNone];
         [connection setCredential:credential];
     }
-    
     NSInteger statusCode = [connection testConnection];
-    
-    if((statusCode == 401) && ([authCheckBox state] == NSOffState))
-    {
-        [authCheckBox setState:NSOnState];
-        NSString *user = [url user];
-        [userField setStringValue:(user != nil) ? user : @""];
-        NSString *password = [CCMKeychainHelper passwordForURLString:url error:NULL];
-        [passwordField setStringValue:(password != nil) ? password : @""];
-    }
     if((statusCode == 200) && ([connection credential] != nil))
     {
         [CCMKeychainHelper setPassword:[[connection credential] password] forURLString:url error:NULL];
