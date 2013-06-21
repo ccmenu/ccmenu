@@ -1,12 +1,12 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
-#import "CCMAddProjectsController.h"
+#import "CCMProjectSheetController.h"
 
 
-@interface CCMAddProjectsControllerTest : SenTestCase
+@interface CCMProjectSheetControllerTest : SenTestCase
 {
-    CCMAddProjectsController *controller;
+    CCMProjectSheetController *controller;
 	
 	OCMockObject *defaultsManagerMock;
 	OCMockObject *serverUrlComboBoxMock;

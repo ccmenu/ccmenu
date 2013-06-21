@@ -2,46 +2,68 @@
 #import "NSString+CCMAdditions.h"
 #import "NSAlert+CCMAdditions.h"
 #import "CCMHistoryDataSource.h"
-#import "CCMAddProjectsController.h"
+#import "CCMProjectSheetController.h"
 #import "CCMSyncConnection.h"
 #import "CCMKeychainHelper.h"
 #import "CCMPreferencesController.h"
 #import "strings.h"
 
-
-@implementation CCMAddProjectsController
-
-- (void)beginSheetForWindow:(NSWindow *)aWindow
+enum CCMButtonTag
 {
-    [(CCMHistoryDataSource *)[serverUrlComboBox dataSource] reloadData:defaultsManager];
-    [serverUrlComboBox reloadData];
-    [serverUrlComboBox setStringValue:@""];
- 	[serverTypeMatrix selectCellWithTag:CCMDetectServer];
-    [authCheckBox setState:NSOffState];
-    [userField setStringValue:@""];
-    [passwordField setStringValue:@""];
+    CCMButtonCancel = 0,
+    CCMButtonFinish = 1,
+    CCMButtonContinue = 2
+};
+
+
+@implementation CCMProjectSheetController
+
+- (void)beginAddSheetForWindow:(NSWindow *)aWindow
+{
+    [urlComboBox setStringValue:@""];
+    [serverTypeMatrix selectCellWithTag:CCMDetectServer];
+    [continueButton setTag:CCMButtonContinue];
+    [continueButton setTitle:SHEET_CONTINUE_BUTTON];
+    [self beginSheetForWindow:aWindow contextInfo:NULL];
+}
+
+- (void)beginEditSheetWithProject:(NSDictionary *)aProject forWindow:(NSWindow *)aWindow
+{
+    [urlComboBox setStringValue:[aProject objectForKey:@"serverUrl"]];
+    [serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
+    [continueButton setTag:CCMButtonFinish];
+    [continueButton setTitle:SHEET_SAVE_BUTTON];
+    [self beginSheetForWindow:aWindow contextInfo:aProject];
+}
+
+- (void)beginSheetForWindow:(NSWindow *)aWindow contextInfo:(void *)contextInfo
+{
+    [self historyURLSelected:self];
+    [(CCMHistoryDataSource *)[urlComboBox dataSource] reloadData:defaultsManager];
+    [urlComboBox reloadData];
     [self showTestInProgress:NO];
 	[sheetTabView selectFirstTabViewItem:self];
-	[NSApp beginSheet:addProjectsSheet modalForWindow:aWindow modalDelegate:self
-       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    [NSApp beginSheet:projectSheet modalForWindow:aWindow modalDelegate:self
+       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:contextInfo];
 }
+
 
 - (void)historyURLSelected:(id)sender
 {
-    [serverUrlComboBox selectText:self];
-    NSString *user = [[serverUrlComboBox stringValue] user];
+    [urlComboBox selectText:self];
+    NSString *user = [[urlComboBox stringValue] user];
     [authCheckBox setState:(user != nil) ? NSOnState : NSOffState];
     [self useAuthenticationChanged:self];
 }
 
 - (void)serverDetectionChanged:(id)sender
 {
-    [serverUrlComboBox setStringValue:[[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary]];
+    [urlComboBox setStringValue:[[urlComboBox stringValue] stringByAddingSchemeIfNecessary]];
 }
 
 - (IBAction)useAuthenticationChanged:(id)sender
 {
-    NSString *url = [[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary];
+    NSString *url = [[urlComboBox stringValue] stringByAddingSchemeIfNecessary];
 
     if([authCheckBox state] == NSOnState)
     {
@@ -52,7 +74,7 @@
             if(user == nil)
                 return;
             url = [url stringByReplacingCredentials:user];
-            [serverUrlComboBox setStringValue:url];
+            [urlComboBox setStringValue:url];
         }
         [userField setStringValue:user];
         NSString *password = [CCMKeychainHelper passwordForURLString:url error:NULL];
@@ -60,39 +82,45 @@
     }
     else
     {
-        [serverUrlComboBox setStringValue:[url stringByReplacingCredentials:@""]];
+        [urlComboBox setStringValue:[url stringByReplacingCredentials:@""]];
         [userField setStringValue:@""];
         [passwordField setStringValue:@""];
     }
 }
 
-
 - (void)controlTextDidChange:(NSNotification *)aNotification
 {
     if([aNotification object] == userField)
     {
-        NSString *url = [[serverUrlComboBox stringValue] stringByAddingSchemeIfNecessary];
-        [serverUrlComboBox setStringValue:[url stringByReplacingCredentials:[userField stringValue]]];
+        NSString *url = [[urlComboBox stringValue] stringByAddingSchemeIfNecessary];
+        [urlComboBox setStringValue:[url stringByReplacingCredentials:[userField stringValue]]];
     }
 }
 
-- (void)chooseProjects:(id)sender
+- (void)continueSheet:(id)sender
 {
-	@try
-	{
+    @try
+    {
         [self showTestInProgress:YES];
         BOOL useAsGiven = [serverTypeMatrix selectedTag] == CCMUseGivenURL;
         NSString *serverUrl = useAsGiven ? [self getValidatedURL] : [self getCompletedAndValidatedURL];
         if(serverUrl == nil)
             return;
-        CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
-        [connection setDelegate:self];
-        NSArray *projectInfos = [connection retrieveServerStatus];
-        [chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
-        [sheetTabView selectLastTabViewItem:self];
+        if([sender tag] == CCMButtonFinish) // edit mode
+        {
+            [self closeSheet:sender];
+        }
+        else
+        {
+            CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
+            [connection setDelegate:self];
+            NSArray *projectInfos = [connection retrieveServerStatus];
+            [chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
+            [sheetTabView selectLastTabViewItem:self];
+        }
     }
-	@catch(NSException *exception)
-	{
+    @catch(NSException *exception)
+    {
         [self showTestInProgress:NO];
         [[NSAlert alertWithText:ALERT_CONN_FAILURE_TITLE informativeText:[exception reason]] runModal];
     }
@@ -104,7 +132,7 @@
 
 - (NSString *)getValidatedURL
 {
-    NSString *url = [serverUrlComboBox stringValue];
+    NSString *url = [urlComboBox stringValue];
     NSInteger statusCode = [self checkURL:url];
     if(statusCode != 200)
     {
@@ -119,11 +147,11 @@
 {
     BOOL saw401 = NO;
     NSString *url = nil;
-    NSString *baseURL = [serverUrlComboBox stringValue];
+    NSString *baseURL = [urlComboBox stringValue];
     for(NSString *completedURL in [baseURL completeURLForAllServerTypes])
     {
-        [serverUrlComboBox setStringValue:completedURL];
-        [serverUrlComboBox display];
+        [urlComboBox setStringValue:completedURL];
+        [urlComboBox display];
         NSInteger status = [self checkURL:completedURL];
         if(status == 200)
         {
@@ -137,15 +165,14 @@
     }
     if(url == nil)
     {
-        [serverUrlComboBox setStringValue:baseURL];
-        [serverUrlComboBox display];
+        [urlComboBox setStringValue:baseURL];
+        [urlComboBox display];
         [self showTestInProgress:NO];
         [[NSAlert alertWithText:ALERT_SERVER_DETECT_FAILURE_TITLE informativeText:saw401 ? ALERT_CONN_FAILURE_STATUS401_INFO : ALERT_SERVER_DETECT_FAILURE_INFO] runModal];
         return nil;
     }
     return url;
 }
-
 
 - (NSInteger)checkURL:(NSString *)url
 {
@@ -167,16 +194,15 @@
 {
     if(flag)
     {
-		[testServerProgressIndicator startAnimation:self];
+		[progressIndicator startAnimation:self];
         [statusField setStringValue:STATUS_TESTING];
     }
     else
     {
-        [testServerProgressIndicator stopAnimation:self];
+        [progressIndicator stopAnimation:self];
         [statusField setStringValue:@""];
     }
 }
-
 
 - (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl
 {
@@ -197,21 +223,33 @@
 
 - (void)closeSheet:(id)sender
 {
-	[NSApp endSheet:addProjectsSheet returnCode:[sender tag]];
+    [NSApp endSheet:projectSheet returnCode:[sender tag]];
 }
+
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
-	[addProjectsSheet orderOut:self];
-	if(returnCode == 0)
+	[projectSheet orderOut:self];
+	if(returnCode == CCMButtonCancel)
 		return;
-    
-    for(NSDictionary *entry in [chooseProjectsViewController selectedObjects])
-	{
-		NSString *serverUrl = [entry objectForKey:@"server"];
-		[defaultsManager addProject:[entry objectForKey:@"name"] onServerWithURL:serverUrl];
-		[defaultsManager addServerURLToHistory:serverUrl];
-	}
+
+    if(contextInfo == NULL)
+    {
+        for(NSDictionary *entry in [chooseProjectsViewController selectedObjects])
+        {
+            NSString *serverUrl = [entry objectForKey:@"server"];
+            [defaultsManager addProject:[entry objectForKey:@"name"] onServerWithURL:serverUrl];
+            [defaultsManager addServerURLToHistory:serverUrl];
+        }
+    }
+    else
+    {
+        NSString *projectName = [(NSDictionary *)contextInfo objectForKey:@"projectName"];
+        NSString *serverUrl = [urlComboBox stringValue];
+        // Maybe we shouldn't use the allProjectsViewController here. But it makes it so much easier.
+        [allProjectsViewController remove:self];
+        [defaultsManager addProject:projectName onServerWithURL:serverUrl];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
 }
 

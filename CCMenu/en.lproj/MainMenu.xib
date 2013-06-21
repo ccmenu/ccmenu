@@ -544,7 +544,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="addProjectsSheet">NSPanel</string>
+						<string key="projectSheet">NSPanel</string>
 						<string key="advancedPrefsView">NSView</string>
 						<string key="allProjectsViewController">NSArrayController</string>
 						<string key="chooseProjectsViewController">NSArrayController</string>
@@ -554,16 +554,16 @@
 						<string key="preferencesWindow">NSPanel</string>
 						<string key="projectsView">NSView</string>
 						<string key="serverTypeMatrix">NSMatrix</string>
-						<string key="serverUrlComboBox">NSComboBox</string>
+						<string key="urlComboBox">NSComboBox</string>
 						<string key="sheetTabView">NSTabView</string>
 						<string key="soundNamesViewController">NSArrayController</string>
-						<string key="testServerProgressIndicator">NSProgressIndicator</string>
+						<string key="progressIndicator">NSProgressIndicator</string>
 						<string key="updater">SUUpdater</string>
 						<string key="versionField">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="addProjectsSheet">
-							<string key="name">addProjectsSheet</string>
+						<object class="IBToOneOutletInfo" key="projectSheet">
+							<string key="name">projectSheet</string>
 							<string key="candidateClassName">NSPanel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="advancedPrefsView">
@@ -602,8 +602,8 @@
 							<string key="name">serverTypeMatrix</string>
 							<string key="candidateClassName">NSMatrix</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="serverUrlComboBox">
-							<string key="name">serverUrlComboBox</string>
+						<object class="IBToOneOutletInfo" key="urlComboBox">
+							<string key="name">urlComboBox</string>
 							<string key="candidateClassName">NSComboBox</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="sheetTabView">
@@ -614,8 +614,8 @@
 							<string key="name">soundNamesViewController</string>
 							<string key="candidateClassName">NSArrayController</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="testServerProgressIndicator">
-							<string key="name">testServerProgressIndicator</string>
+						<object class="IBToOneOutletInfo" key="progressIndicator">
+							<string key="name">progressIndicator</string>
 							<string key="candidateClassName">NSProgressIndicator</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="updater">

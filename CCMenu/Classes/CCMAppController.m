@@ -6,6 +6,7 @@
 #import "CCMRelativeDateTransformer.h"
 #import "CCMTimeIntervalTransformer.h"
 #import "CCMBuildTimer.h"
+#import "CCMIsOneValueTransformer.h"
 
 
 @implementation CCMAppController
@@ -28,6 +29,9 @@
 
 	CCMTimeIntervalTransformer *timeIntervalTransformer = [[[CCMTimeIntervalTransformer alloc] init] autorelease];
 	[NSValueTransformer setValueTransformer:timeIntervalTransformer forName:CCMTimeIntervalTransformerName];
+
+    CCMIsOneValueTransformer *isOneTransformer = [[[CCMIsOneValueTransformer alloc] init] autorelease];
+    [NSValueTransformer setValueTransformer:isOneTransformer forName:CCMIsOneTransformerName];
 }
 
 - (void)startServices

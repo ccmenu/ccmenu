@@ -4,7 +4,7 @@
 #import "NSArray+EDExtensions.h"
 #import "NSAppleScript+EDAdditions.h"
 #import "CCMKeychainHelper.h"
-#import "CCMAddProjectsController.h"
+#import "CCMProjectSheetController.h"
 
 #define WINDOW_TITLE_HEIGHT 78
 
@@ -65,11 +65,24 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[paneHolderView addSubview:prefView];
 }
 
+- (NSDictionary *)selectedProject
+{
+    NSArray *selectedObjects = [allProjectsViewController selectedObjects];
+    return (([selectedObjects count] == 1) ? [selectedObjects objectAtIndex:0] : nil);
+}
+
 - (void)addProjects:(id)sender
 {
     // slightly naughty but we want to split the XIB files eventually
     [addProjectsController setValue:defaultsManager forKey:@"defaultsManager"];
-    [addProjectsController beginSheetForWindow:preferencesWindow];
+    [addProjectsController beginAddSheetForWindow:preferencesWindow];
+}
+
+- (void)editProject:(id)sender
+{
+    // slightly naughty but we want to split the XIB files eventually
+    [addProjectsController setValue:defaultsManager forKey:@"defaultsManager"];
+    [addProjectsController beginEditSheetWithProject:[self selectedProject] forWindow:preferencesWindow];
 }
 
 - (void)removeProjects:(id)sender
@@ -78,12 +91,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	[self preferencesChanged:sender];
 }
 
-- (void)editProject:(id)sender
-{
-    // slightly naughty but we want to split the XIB files eventually
-    [editProjectController setValue:defaultsManager forKey:@"defaultsManager"];
-    [editProjectController beginSheetForWindow:preferencesWindow];
-}
 
 - (NSArray *)availableSounds
 {
@@ -110,11 +117,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
     [[NSAppleScript scriptWithName:@"handlers"] callHandler:@"open_notifications"];
 }
 
-- (void)preferencesChanged:(id)sender
-{
-	[[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
-}
-
 - (IBAction)updateIntervalChanged:(id)sender
 {
 	[updater setUpdateCheckInterval:(NSTimeInterval)[sender selectedTag]];
@@ -123,6 +125,11 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (IBAction)checkForUpdateNow:(id)sender
 {
     [updater checkForUpdates:sender];
+}
+
+- (void)preferencesChanged:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
 }
 
 @end

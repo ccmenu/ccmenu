@@ -2,6 +2,10 @@
 #ifndef CCMenu_strings_h
 #define CCMenu_strings_h
 
+#define SHEET_CONTINUE_BUTTON NSLocalizedString(@"Continue", "Label for continue button in project sheet when adding projects.")
+
+#define SHEET_SAVE_BUTTON NSLocalizedString(@"Save", "Label for continue button in project sheet when editing a project.")
+
 #define ALERT_SERVER_DETECT_FAILURE_TITLE NSLocalizedString(@"Cannot determine server type", "Alert message when server type cannot be determined.")
 #define ALERT_SERVER_DETECT_FAILURE_INFO NSLocalizedString(@"Please contact the server administrator to get the feed URL, and then enter the full URL into the field.", "Informative text when server type cannot be determined.")
 

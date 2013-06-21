@@ -1,22 +1,22 @@
 
-#import "CCMAddProjectsController.h"
-#import "CCMAddProjectsControllerTest.h"
+#import "CCMProjectSheetController.h"
+#import "CCMProjectSheetControllerTest.h"
 #import "CCMUserDefaultsManager.h"
 #import "NSString+CCMAdditions.h"
 #import <OCMock/OCMock.h>
 
 
-@implementation CCMAddProjectsControllerTest
+@implementation CCMProjectSheetControllerTest
 
 - (void)setUp
 {
-	controller = [[[CCMAddProjectsController alloc] init] autorelease];
+	controller = [[[CCMProjectSheetController alloc] init] autorelease];
 	
 	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
 	[controller setValue:defaultsManagerMock forKey:@"defaultsManager"];
 	
 	serverUrlComboBoxMock = [OCMockObject mockForClass:[NSComboBox class]];
-	[controller setValue:serverUrlComboBoxMock forKey:@"serverUrlComboBox"];
+	[controller setValue:serverUrlComboBoxMock forKey:@"urlComboBox"];
 	
 	serverTypeMatrixMock = [OCMockObject mockForClass:[NSMatrix class]];
 	[controller setValue:serverTypeMatrixMock forKey:@"serverTypeMatrix"];

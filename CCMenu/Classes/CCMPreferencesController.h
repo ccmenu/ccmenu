@@ -1,8 +1,7 @@
 
 #import "CCMWindowController.h"
 #import "CCMUserDefaultsManager.h"
-#import "CCMAddProjectsController.h"
-#import "CCMEditProjectController.h"
+#import "CCMProjectSheetController.h"
 #import <Sparkle/Sparkle.h>
 
 
@@ -15,8 +14,7 @@
 	IBOutlet NSView					*paneHolderView;
 
 	IBOutlet NSArrayController		*allProjectsViewController;
-    IBOutlet CCMAddProjectsController *addProjectsController;
-    IBOutlet CCMEditProjectController *editProjectController;
+    IBOutlet CCMProjectSheetController *addProjectsController;
 
     IBOutlet NSView					*notificationPrefsView;
 	IBOutlet NSArrayController		*soundNamesViewController;
@@ -29,21 +27,22 @@
  }
 
 - (IBAction)showWindow:(id)sender;
+- (IBAction)switchPreferencesPane:(id)sender;
 
+- (NSDictionary *)selectedProject;
 - (IBAction)addProjects:(id)sender;
 - (IBAction)removeProjects:(id)sender;
 - (IBAction)editProject:(id)sender;
 
-- (IBAction)switchPreferencesPane:(id)sender;
-- (IBAction)preferencesChanged:(id)sender;
+- (IBAction)soundSelected:(id)sender;
+- (NSArray *)availableSounds;
+- (IBAction)openNotificationPreferences:(id)sender;
 
 - (IBAction)updateIntervalChanged:(id)sender;
 - (IBAction)checkForUpdateNow:(id)sender;
 
-- (IBAction)soundSelected:(id)sender;
-- (NSArray *)availableSounds;
+- (IBAction)preferencesChanged:(id)sender;
 
-- (IBAction)openNotificationPreferences:(id)sender;
 
 @end
 
