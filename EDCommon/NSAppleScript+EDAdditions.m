@@ -5,6 +5,8 @@
  
  */
 
+#ifndef CCM_MAS_BUILD
+
 #import <Foundation/Foundation.h>
 #import "NSAppleScript+EDAdditions.h"
 #import "NSAppleEventDescriptor+EDAdditions.h"
@@ -82,3 +84,6 @@
 }
 
 @end
+
+#endif
+

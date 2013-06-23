@@ -1,3 +1,4 @@
+#ifndef CCM_MAS_BUILD
 
 #import <Foundation/Foundation.h>
 
@@ -12,3 +13,5 @@
 - (NSDictionary *)recordValue;
 
 @end
+
+#endif

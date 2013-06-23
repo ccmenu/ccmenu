@@ -1,5 +1,4 @@
 
-#import <Security/Security.h>
 #import "CCMKeychainHelper.h"
 
 @implementation CCMKeychainHelper
@@ -14,13 +13,14 @@
     if([aURL host] == nil)
         return nil;
 
-    NSMutableDictionary *query = [NSMutableDictionary dictionary];
-    [query setObject:[aURL host] forKey:(id)kSecAttrServer];
-    [query setObject:kSecClassInternetPassword forKey:kSecClass];
-    [query setObject:kCFBooleanTrue forKey:kSecReturnAttributes];
-    NSDictionary *result = nil;
+    NSDictionary *query = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecAttrServer: [aURL host],
+        (id)kSecReturnAttributes: @YES
+    };
+    NSDictionary *attributes = nil;
 
-    OSStatus status = SecItemCopyMatching(query, &result);
+    OSStatus status = SecItemCopyMatching((CFDictionaryRef)query, (CFTypeRef*)&attributes);
 
     if(status != noErr)
     {
@@ -28,8 +28,7 @@
             *errorPtr = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
         return nil;
     }
-
-    return [result objectForKey:kSecAttrAccount];
+    return [attributes objectForKey:kSecAttrAccount];
 }
 
 
@@ -43,25 +42,26 @@
     if([aURL user] == nil)
         return nil;
 
-    const char *server = [[aURL host] UTF8String];
-    const char *user = [[aURL user] UTF8String];
-    UInt16 port = (UInt16) [[aURL port] integerValue];
-    UInt32 pwLength;
-    void *pwData;
-    
-    OSStatus status = SecKeychainFindInternetPassword(NULL, (UInt32)strlen(server), server, 0, NULL, (UInt32)strlen(user), user, 0, NULL, port, kSecProtocolTypeAny, kSecAuthenticationTypeAny, &pwLength, &pwData, NULL);
-    
+    NSDictionary* query = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecAttrServer: [aURL host],
+        (id)kSecAttrPort: [aURL port],
+        (id)kSecAttrAccount: [aURL user],
+        (id)kSecReturnData: @YES
+    };
+    NSData *data = NULL;
+
+    OSStatus status = SecItemCopyMatching((CFDictionaryRef)query, (CFTypeRef*)&data);
+
     if(status != noErr)
     {
         if(errorPtr != NULL)
             *errorPtr = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
         return nil;
     }
-
-    NSString *password = [[[NSString alloc] initWithBytes:pwData length:pwLength encoding:NSUTF8StringEncoding] autorelease];
-    SecKeychainItemFreeContent(NULL, pwData);
-    return password;
+    return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 }
+
 
 + (BOOL)setPassword:(NSString *)password forURLString:(NSString *)aString error:(NSError **)errorPtr
 {
@@ -70,23 +70,24 @@
 
 + (BOOL)setPassword:(NSString *)password forURL:(NSURL *)aURL error:(NSError **)errorPtr
 {
-    const char *server = [[aURL host] UTF8String];
-    const char *user = [[aURL user] UTF8String];
-    UInt16 port = (UInt16) [[aURL port] integerValue];
-    BOOL isHTTPS = [[aURL scheme] isEqualToString:@"https"];
-    const char *pwData = [password UTF8String];
+    NSDictionary * query = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecAttrServer: [aURL host],
+        (id)kSecAttrPort: [aURL port],
+        (id)kSecAttrAccount: [aURL user]
+    };
+    NSDictionary* item = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecAttrServer: [aURL host],
+        (id)kSecAttrPort: [aURL port],
+        (id)kSecAttrAccount: [aURL user],
+        (id)kSecAttrProtocol: [aURL scheme],
+        (id)kSecValueData:[password dataUsingEncoding:NSUTF8StringEncoding]
+    };
 
-    SecKeychainItemRef itemRef = NULL;
-    OSStatus status = SecKeychainFindInternetPassword(NULL, (UInt32)strlen(server), server, 0, NULL, (UInt32)strlen(user), user, 0, NULL, port, kSecProtocolTypeAny, kSecAuthenticationTypeAny, 0, NULL, &itemRef);
-
-    if(status == errSecItemNotFound)
-    {
-        status = SecKeychainAddInternetPassword(NULL, (UInt32)strlen(server), server, 0, NULL, (UInt32)strlen(user), user, 0, NULL, port, isHTTPS ? kSecProtocolTypeHTTPS : kSecProtocolTypeHTTP, kSecAuthenticationTypeDefault, (UInt32)strlen(pwData), pwData, NULL);
-    }
-    else if(status == noErr)
-    {
-        status = SecKeychainItemModifyAttributesAndData(itemRef, NULL, (UInt32)strlen(pwData), pwData);
-    }
+    OSStatus status = SecItemAdd((CFDictionaryRef)item, NULL);
+    if(status == errSecDuplicateItem)
+        status = SecItemUpdate((CFDictionaryRef)query, (CFDictionaryRef)item);
 
     if(status != noErr)
     {

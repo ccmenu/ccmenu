@@ -5,6 +5,8 @@ More information at: http://www.scifihifi.com/weblog/mac/Cocoa-AppleEvent-Handle
 
  */
 
+#ifndef CCM_MAS_BUILD
+
 #import <Foundation/Foundation.h>
 
 @interface NSAppleScript(EDAdditions)
@@ -16,3 +18,5 @@ More information at: http://www.scifihifi.com/weblog/mac/Cocoa-AppleEvent-Handle
 - (id)callHandler:(NSString *)handler withArguments:(NSArray *)arguments errorInfo:(NSDictionary **) errorInfo;
 
 @end
+
+#endif

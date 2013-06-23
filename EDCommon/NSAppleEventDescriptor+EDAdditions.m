@@ -1,3 +1,4 @@
+#ifndef CCM_MAS_BUILD
 
 #import "NSAppleEventDescriptor+EDAdditions.h"
 
@@ -65,3 +66,5 @@
 }
 
 @end
+
+#endif

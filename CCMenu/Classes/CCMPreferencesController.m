@@ -26,7 +26,12 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[self switchPreferencesPane:self];
         NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-		[versionField setStringValue:[NSString stringWithFormat:@"%@ (r%@)", shortVersion, version]];
+#ifndef CCM_MAS_BUILD
+        NSString *build = @"SF";
+#else
+        NSString *build = @"MAS";
+#endif
+		[versionField setStringValue:[NSString stringWithFormat:@"%@ (r%@/%@)", shortVersion, version, build]];
 	}
     [soundNamesViewController setContent:[self availableSounds]];
 	[NSApp activateIgnoringOtherApps:YES];
@@ -112,6 +117,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
     [[NSSound soundNamed:[sender title]] play];
 }
 
+#ifndef CCM_MAS_BUILD
 - (IBAction)openNotificationPreferences:(id)sender
 {
     [[NSAppleScript scriptWithName:@"handlers"] callHandler:@"open_notifications"];
@@ -126,6 +132,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
     [updater checkForUpdates:sender];
 }
+#endif
 
 - (void)preferencesChanged:(id)sender
 {

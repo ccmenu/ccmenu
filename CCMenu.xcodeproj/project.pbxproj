@@ -102,12 +102,12 @@
 		034BF7EB1757CE940025F9A0 /* pref-projects.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC68134F9EE600D2F269 /* pref-projects.png */; };
 		036FA724176236D900371BE9 /* CCMKeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA723176236D900371BE9 /* CCMKeychainHelper.m */; };
 		036FA725176236D900371BE9 /* CCMKeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA723176236D900371BE9 /* CCMKeychainHelper.m */; };
-		0384D33D17620E1400749956 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0384D33C17620E1400749956 /* Security.framework */; };
 		038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038ABE1D134F11090053F0D1 /* Cocoa.framework */; };
 		038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE26134F11090053F0D1 /* InfoPlist.strings */; };
 		038ABE2B134F11090053F0D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ABE2A134F11090053F0D1 /* main.m */; };
 		03B79F77164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B79F76164D8DE100532065 /* CCMUserNotificationHandler.m */; };
 		03BDCABF1456A00F000C3D32 /* CCMProjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDCABE1456A00F000C3D32 /* CCMProjectBuilder.m */; };
+		03C0626717773F7600FEFAB7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0384D33C17620E1400749956 /* Security.framework */; };
 		03C0829D134F97940039E3BD /* CCMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08276134F97940039E3BD /* CCMAppController.m */; };
 		03C0829E134F97940039E3BD /* CCMBuildNotificationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */; };
 		03C0829F134F97940039E3BD /* CCMBuildStatusTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C0827A134F97940039E3BD /* CCMBuildStatusTransformer.m */; };
@@ -330,7 +330,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0384D33D17620E1400749956 /* Security.framework in Frameworks */,
+				03C0626717773F7600FEFAB7 /* Security.framework in Frameworks */,
 				038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */,
 				0328D383135C191500D35055 /* Sparkle.framework in Frameworks */,
 			);
@@ -1090,6 +1090,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "Developer ID Application: ThoughtWorks";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
