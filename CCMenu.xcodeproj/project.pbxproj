@@ -13,11 +13,8 @@
 		0300E7591408021800E59AFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7531408021800E59AFD /* MainMenu.xib */; };
 		0300E75A1408021800E59AFD /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7551408021800E59AFD /* Preferences.xib */; };
 		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
-		030150F51687AA4800FDE9EB /* handlers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 030150F41687AA4800FDE9EB /* handlers.applescript */; };
 		0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
-		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
-		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
 		032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */; };
 		0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */; };
@@ -154,7 +151,6 @@
 			dstPath = Contents/Frameworks;
 			dstSubfolderSpec = 1;
 			files = (
-				0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +163,6 @@
 		0300E7541408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0300E7561408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		0300E7581408021800E59AFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProjectWindow.xib; sourceTree = "<group>"; };
-		030150F41687AA4800FDE9EB /* handlers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = handlers.applescript; path = Scripts/handlers.applescript; sourceTree = "<group>"; };
 		0301A77E142C702F0041F299 /* CCMProjectStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatus.h; sourceTree = "<group>"; };
 		0301A77F142C702F0041F299 /* CCMProjectStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatus.m; sourceTree = "<group>"; };
 		0301A782142C7D940041F299 /* CCMProjectStatusTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatusTest.h; sourceTree = "<group>"; };
@@ -332,7 +327,6 @@
 			files = (
 				03C0626717773F7600FEFAB7 /* Security.framework in Frameworks */,
 				038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */,
-				0328D383135C191500D35055 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +336,6 @@
 		030150F31687AA3300FDE9EB /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				030150F41687AA4800FDE9EB /* handlers.applescript */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -915,7 +908,6 @@
 				03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */,
 				03BDCABF1456A00F000C3D32 /* CCMProjectBuilder.m in Sources */,
 				03B79F77164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */,
-				030150F51687AA4800FDE9EB /* handlers.applescript in Sources */,
 				03D154F216DC11B3008F994D /* EDApplication.m in Sources */,
 				03D154F416DC11B3008F994D /* NSApplication+EDExtensions.m in Sources */,
 				03D154F616DC11B3008F994D /* NSArray+EDExtensions.m in Sources */,
@@ -1088,9 +1080,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "Developer ID Application: ThoughtWorks";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = CCM_MAS_BUILD;
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1105,6 +1097,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = CCMenu/CCMenu.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1125,6 +1119,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = CCMenu/CCMenu.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

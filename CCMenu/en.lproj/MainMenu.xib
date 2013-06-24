@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2844</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -77,15 +77,6 @@
 						<reference key="NSOnImage" ref="1048976653"/>
 						<reference key="NSMixedImage" ref="401432611"/>
 					</object>
-					<object class="NSMenuItem" id="823646064">
-						<reference key="NSMenu" ref="864840789"/>
-						<string key="NSTitle">Check for Updates...</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSKeyEquivModMask">1048576</int>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="1048976653"/>
-						<reference key="NSMixedImage" ref="401432611"/>
-					</object>
 					<object class="NSMenuItem" id="1047142555">
 						<reference key="NSMenu" ref="864840789"/>
 						<string key="NSTitle">Preferences...</string>
@@ -123,9 +114,6 @@
 			</object>
 			<object class="NSCustomObject" id="255578085">
 				<string key="NSClassName">CCMPreferencesController</string>
-			</object>
-			<object class="NSCustomObject" id="403763867">
-				<string key="NSClassName">SUUpdater</string>
 			</object>
 			<object class="NSCustomObject" id="967950104">
 				<string key="NSClassName">CCMUserDefaultsManager</string>
@@ -203,27 +191,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">updater</string>
-						<reference key="source" ref="255578085"/>
-						<reference key="destination" ref="403763867"/>
-					</object>
-					<int key="connectionID">260</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">defaultsManager</string>
 						<reference key="source" ref="255578085"/>
 						<reference key="destination" ref="967950104"/>
 					</object>
 					<int key="connectionID">262</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">checkForUpdates:</string>
-						<reference key="source" ref="403763867"/>
-						<reference key="destination" ref="823646064"/>
-					</object>
-					<int key="connectionID">275</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -310,7 +282,6 @@
 							<reference ref="145583562"/>
 							<reference ref="1047142555"/>
 							<reference ref="462574318"/>
-							<reference ref="823646064"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Status Bar Menu</string>
@@ -353,12 +324,6 @@
 						<string key="objectName">CCMPreferencesController</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">259</int>
-						<reference key="object" ref="403763867"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">SUUpdater</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">261</int>
 						<reference key="object" ref="967950104"/>
 						<reference key="parent" ref="0"/>
@@ -388,11 +353,6 @@
 						<reference key="parent" ref="864840789"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">273</int>
-						<reference key="object" ref="823646064"/>
-						<reference key="parent" ref="864840789"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">277</int>
 						<reference key="object" ref="351581124"/>
 						<reference key="parent" ref="0"/>
@@ -419,12 +379,10 @@
 				<string key="249.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="253.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="256.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="259.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="261.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="264.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="268.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="272.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="273.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="277.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="281.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -482,12 +440,10 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addProjects:">id</string>
 						<string key="checkForUpdateNow:">id</string>
-						<string key="chooseProjects:">id</string>
-						<string key="closeAddProjectsSheet:">id</string>
-						<string key="historyURLSelected:">id</string>
+						<string key="editProject:">id</string>
+						<string key="openNotificationPreferences:">id</string>
 						<string key="preferencesChanged:">id</string>
 						<string key="removeProjects:">id</string>
-						<string key="serverTypeChanged:">id</string>
 						<string key="showWindow:">id</string>
 						<string key="soundSelected:">id</string>
 						<string key="switchPreferencesPane:">id</string>
@@ -502,16 +458,12 @@
 							<string key="name">checkForUpdateNow:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="chooseProjects:">
-							<string key="name">chooseProjects:</string>
+						<object class="IBActionInfo" key="editProject:">
+							<string key="name">editProject:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="closeAddProjectsSheet:">
-							<string key="name">closeAddProjectsSheet:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="historyURLSelected:">
-							<string key="name">historyURLSelected:</string>
+						<object class="IBActionInfo" key="openNotificationPreferences:">
+							<string key="name">openNotificationPreferences:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="preferencesChanged:">
@@ -520,10 +472,6 @@
 						</object>
 						<object class="IBActionInfo" key="removeProjects:">
 							<string key="name">removeProjects:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="serverTypeChanged:">
-							<string key="name">serverTypeChanged:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="showWindow:">
@@ -544,27 +492,27 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="projectSheet">NSPanel</string>
+						<string key="aboutView">NSView</string>
+						<string key="addProjectsController">CCMProjectSheetController</string>
 						<string key="advancedPrefsView">NSView</string>
 						<string key="allProjectsViewController">NSArrayController</string>
-						<string key="chooseProjectsViewController">NSArrayController</string>
 						<string key="defaultsManager">CCMUserDefaultsManager</string>
 						<string key="notificationPrefsView">NSView</string>
 						<string key="paneHolderView">NSView</string>
 						<string key="preferencesWindow">NSPanel</string>
 						<string key="projectsView">NSView</string>
-						<string key="serverTypeMatrix">NSMatrix</string>
-						<string key="urlComboBox">NSComboBox</string>
-						<string key="sheetTabView">NSTabView</string>
 						<string key="soundNamesViewController">NSArrayController</string>
-						<string key="progressIndicator">NSProgressIndicator</string>
 						<string key="updater">SUUpdater</string>
 						<string key="versionField">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="projectSheet">
-							<string key="name">projectSheet</string>
-							<string key="candidateClassName">NSPanel</string>
+						<object class="IBToOneOutletInfo" key="aboutView">
+							<string key="name">aboutView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="addProjectsController">
+							<string key="name">addProjectsController</string>
+							<string key="candidateClassName">CCMProjectSheetController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="advancedPrefsView">
 							<string key="name">advancedPrefsView</string>
@@ -572,10 +520,6 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="allProjectsViewController">
 							<string key="name">allProjectsViewController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="chooseProjectsViewController">
-							<string key="name">chooseProjectsViewController</string>
 							<string key="candidateClassName">NSArrayController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="defaultsManager">
@@ -598,25 +542,9 @@
 							<string key="name">projectsView</string>
 							<string key="candidateClassName">NSView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="serverTypeMatrix">
-							<string key="name">serverTypeMatrix</string>
-							<string key="candidateClassName">NSMatrix</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="urlComboBox">
-							<string key="name">urlComboBox</string>
-							<string key="candidateClassName">NSComboBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="sheetTabView">
-							<string key="name">sheetTabView</string>
-							<string key="candidateClassName">NSTabView</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="soundNamesViewController">
 							<string key="name">soundNamesViewController</string>
 							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="progressIndicator">
-							<string key="name">progressIndicator</string>
-							<string key="candidateClassName">NSProgressIndicator</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="updater">
 							<string key="name">updater</string>
@@ -630,6 +558,112 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CCMPreferencesController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">CCMProjectSheetController</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="closeSheet:">id</string>
+						<string key="continueSheet:">id</string>
+						<string key="historyURLSelected:">id</string>
+						<string key="serverDetectionChanged:">id</string>
+						<string key="useAuthenticationChanged:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="closeSheet:">
+							<string key="name">closeSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="continueSheet:">
+							<string key="name">continueSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="historyURLSelected:">
+							<string key="name">historyURLSelected:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="serverDetectionChanged:">
+							<string key="name">serverDetectionChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="useAuthenticationChanged:">
+							<string key="name">useAuthenticationChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="allProjectsViewController">NSArrayController</string>
+						<string key="authCheckBox">NSButton</string>
+						<string key="chooseProjectsViewController">NSArrayController</string>
+						<string key="continueButton">NSButton</string>
+						<string key="defaultsManager">CCMUserDefaultsManager</string>
+						<string key="passwordField">NSTextField</string>
+						<string key="progressIndicator">NSProgressIndicator</string>
+						<string key="projectSheet">NSPanel</string>
+						<string key="serverTypeMatrix">NSMatrix</string>
+						<string key="sheetTabView">NSTabView</string>
+						<string key="statusField">NSTextField</string>
+						<string key="urlComboBox">NSComboBox</string>
+						<string key="userField">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="allProjectsViewController">
+							<string key="name">allProjectsViewController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="authCheckBox">
+							<string key="name">authCheckBox</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="chooseProjectsViewController">
+							<string key="name">chooseProjectsViewController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="continueButton">
+							<string key="name">continueButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="defaultsManager">
+							<string key="name">defaultsManager</string>
+							<string key="candidateClassName">CCMUserDefaultsManager</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="passwordField">
+							<string key="name">passwordField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="progressIndicator">
+							<string key="name">progressIndicator</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="projectSheet">
+							<string key="name">projectSheet</string>
+							<string key="candidateClassName">NSPanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="serverTypeMatrix">
+							<string key="name">serverTypeMatrix</string>
+							<string key="candidateClassName">NSMatrix</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sheetTabView">
+							<string key="name">sheetTabView</string>
+							<string key="candidateClassName">NSTabView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="statusField">
+							<string key="name">statusField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="urlComboBox">
+							<string key="name">urlComboBox</string>
+							<string key="candidateClassName">NSComboBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="userField">
+							<string key="name">userField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CCMProjectSheetController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -754,25 +788,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CCMWindowController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SUUpdater</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">checkForUpdates:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">checkForUpdates:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">checkForUpdates:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SUUpdater.h</string>
 					</object>
 				</object>
 			</array>
