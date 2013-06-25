@@ -78,14 +78,10 @@
 }
 
 
-- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
-{
-    return NO;
-}
-
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
-    return YES;
+    NSString *m = [protectionSpace authenticationMethod];
+    return ([m isEqualToString:NSURLAuthenticationMethodHTTPBasic] || [m isEqualToString:NSURLAuthenticationMethodHTTPDigest]);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
