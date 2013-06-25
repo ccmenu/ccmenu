@@ -8,7 +8,7 @@ include REXML
 class ReleaseManager
 
     def initialize
-        @proj = Project.new("CCMenu", "1.6", "https://svn.code.sf.net/p/ccmenu/code/trunk")
+        @proj = Project.new("CCMenu", "1.6.1", "https://svn.code.sf.net/p/ccmenu/code/trunk")
         @env = Environment.new()
         @worker = CompositeWorker.new([Logger.new(), Executer.new()])
     end
@@ -89,7 +89,7 @@ class ReleaseManager
   </channel>
 </rss>
 END_OF_TEMPLATE
-        @worker.write("update.xml", appcast)
+        @worker.write("update-stable.xml", appcast)
     end
    
     def openPackageDir
