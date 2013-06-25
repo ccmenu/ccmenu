@@ -2,12 +2,26 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.6.1
+
+* Fixed problem when using authentication with
+  URLs that have no port
+
+
 CCMenu 1.6
 
 * Handles server authentication requests and stores
   passwords in user's keychain
 * Existing projects can be edited
 * Project list preferences are resizable
+
+
+CCMenu 1.5.1
+
+* Runs in sandbox
+* Removed feature to open Notfication pane in 
+  System Preferences; this feature used Apple Script 
+  and that was not accepted for the Mac App Store.
 
 
 CCMenu 1.5
