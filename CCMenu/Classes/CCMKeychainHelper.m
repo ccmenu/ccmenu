@@ -13,13 +13,13 @@
     NSDictionary *query = @{
         (id)kSecClass: (id)kSecClassInternetPassword,
         (id)kSecAttrServer: [aURL host],
-        (id)kSecAttrPort: [aURL port],
+        (id)kSecAttrPort: ([aURL port] != nil) ? [aURL port] : @80,
         (id)kSecAttrAccount: [aURL user]
     };
     NSDictionary *item = @{
         (id)kSecClass: (id)kSecClassInternetPassword,
         (id)kSecAttrServer: [aURL host],
-        (id)kSecAttrPort: [aURL port],
+        (id)kSecAttrPort: ([aURL port] != nil) ? [aURL port] : @80,
         (id)kSecAttrAccount: [aURL user],
         (id)kSecAttrProtocol: [aURL scheme],
         (id)kSecValueData:[password dataUsingEncoding:NSUTF8StringEncoding]
@@ -52,7 +52,7 @@
     NSDictionary *query = @{
         (id)kSecClass: (id)kSecClassInternetPassword,
         (id)kSecAttrServer: [aURL host],
-        (id)kSecAttrPort: [aURL port],
+        (id)kSecAttrPort: ([aURL port] != nil) ? [aURL port] : @80,
         (id)kSecAttrAccount: [aURL user],
         (id)kSecReturnData: @YES
     };
