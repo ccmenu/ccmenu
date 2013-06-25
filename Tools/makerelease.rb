@@ -79,7 +79,7 @@ class ReleaseManager
         <title>#{@proj.name} #{@proj.version}</title>
         <pubDate>#{pubdate}</pubDate>
       	<sparkle:minimumSystemVersion>10.8.0</sparkle:minimumSystemVersion>
-        <sparkle:releaseNotesLink>http://ccmenu.svn.sourceforge.net/viewvc/*checkout*/ccmenu/trunk/RELEASENOTES.txt?revision=#{svnrev}</sparkle:releaseNotesLink> 
+        <sparkle:releaseNotesLink>https://sourceforge.net/p/ccmenu/code/#{svnrev}/tree/trunk/RELEASENOTES.txt?format=raw</sparkle:releaseNotesLink> 
         <enclosure 
           sparkle:version="#{@proj.version}"
           url="http://sourceforge.net/projects/ccmenu/files/#{@proj.name}/#{@proj.version}/#{imagename}/download" 
