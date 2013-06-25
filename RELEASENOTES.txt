@@ -2,6 +2,12 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.6.1
+
+* Fixed problem when using authentication with
+  URLs that have no port
+
+
 CCMenu 1.6
 
 * Handles server authentication requests and stores
