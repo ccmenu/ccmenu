@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'sinatra'
 require 'haml'
 
@@ -7,6 +8,9 @@ $KCODE = 'u' if RUBY_VERSION < '1.9'
 @@STATUS = :Success
 @@BUILD_NUM = 1
 @@BUILD_TIME = "2007-07-18T18:44:48"
+
+
+#set :port, 80
 
 helpers do
   def protected!
