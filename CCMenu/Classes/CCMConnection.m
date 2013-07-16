@@ -64,9 +64,9 @@
 {
     if(nsurlConnection != nil)
         return;
+    [self setUpForNewRequest];
     NSURLRequest *request = [NSURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     nsurlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
-    receivedData = [[NSMutableData data] retain];
 }
 
 - (void)cancelRequest
