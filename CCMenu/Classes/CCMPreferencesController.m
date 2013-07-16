@@ -27,11 +27,11 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
         NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 #ifndef CCM_MAS_BUILD
-        NSString *build = @"SF";
+        NSString *build = @"S";
 #else
-        NSString *build = @"MAS";
+        NSString *build = @"A";
 #endif
-		[versionField setStringValue:[NSString stringWithFormat:@"%@ (r%@/%@)", shortVersion, version, build]];
+		[versionField setStringValue:[NSString stringWithFormat:@"%@ (%@%@)", shortVersion, version, build]];
 	}
     [soundNamesViewController setContent:[self availableSounds]];
 	[NSApp activateIgnoringOtherApps:YES];
