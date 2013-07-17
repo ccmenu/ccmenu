@@ -27,7 +27,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
         NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 #ifndef CCM_MAS_BUILD
-        NSString *build = @"S";
+        NSString *build = @"F";
 #else
         NSString *build = @"A";
 #endif
