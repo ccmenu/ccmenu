@@ -8,7 +8,7 @@ include REXML
 class ReleaseManager
 
     def initialize
-        @proj = Project.new("CCMenu", "1.6", "https://svn.code.sf.net/p/ccmenu/code/trunk")
+        @proj = Project.new("CCMenu", "1.6.3", "https://svn.code.sf.net/p/ccmenu/code/trunk")
         @env = Environment.new()
         @worker = CompositeWorker.new([Logger.new(), Executer.new()])
     end
@@ -36,7 +36,7 @@ class ReleaseManager
 
     def createSourcePackage
         @worker.chdir(@env.sourcedir)
-        @worker.run("gnutar cvzf #{@env.packagedir}/#{@proj.basename}-s.tar.gz #{@proj.basename}")
+        @worker.run("tar cvzf #{@env.packagedir}/#{@proj.basename}-s.tar.gz #{@proj.basename}")
     end
     
     def buildModules
@@ -79,7 +79,7 @@ class ReleaseManager
         <title>#{@proj.name} #{@proj.version}</title>
         <pubDate>#{pubdate}</pubDate>
       	<sparkle:minimumSystemVersion>10.8.0</sparkle:minimumSystemVersion>
-        <sparkle:releaseNotesLink>http://ccmenu.svn.sourceforge.net/viewvc/*checkout*/ccmenu/trunk/RELEASENOTES.txt?revision=#{svnrev}</sparkle:releaseNotesLink> 
+        <sparkle:releaseNotesLink>https://sourceforge.net/p/ccmenu/code/#{svnrev}/tree/trunk/RELEASENOTES.txt?format=raw</sparkle:releaseNotesLink> 
         <enclosure 
           sparkle:version="#{@proj.version}"
           url="http://sourceforge.net/projects/ccmenu/files/#{@proj.name}/#{@proj.version}/#{imagename}/download" 
@@ -89,7 +89,7 @@ class ReleaseManager
   </channel>
 </rss>
 END_OF_TEMPLATE
-        @worker.write("update.xml", appcast)
+        @worker.write("update-stable.xml", appcast)
     end
    
     def openPackageDir

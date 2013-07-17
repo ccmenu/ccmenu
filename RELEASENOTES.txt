@@ -2,6 +2,11 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+CCMenu 1.6.3
+
+* Fixed a bug that caused a substantial memory leak
+
+
 CCMenu 1.6.2
 
 * Fixed a bug with authentication negotiation
@@ -21,7 +26,7 @@ CCMenu 1.6
 * Project list preferences are resizable
 
 
-CCMenu 1.5.1
+CCMenu 1.5.1 (Mac App Store only)
 
 * Runs in sandbox
 * Removed feature to open Notfication pane in 
