@@ -36,7 +36,7 @@ class ReleaseManager
 
     def createSourcePackage
         @worker.chdir(@env.sourcedir)
-        @worker.run("gnutar cvzf #{@env.packagedir}/#{@proj.basename}-s.tar.gz #{@proj.basename}")
+        @worker.run("tar cvzf #{@env.packagedir}/#{@proj.basename}-s.tar.gz #{@proj.basename}")
     end
     
     def buildModules
