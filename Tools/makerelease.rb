@@ -81,7 +81,8 @@ class ReleaseManager
       	<sparkle:minimumSystemVersion>10.8.0</sparkle:minimumSystemVersion>
         <sparkle:releaseNotesLink>https://sourceforge.net/p/ccmenu/code/#{svnrev}/tree/trunk/RELEASENOTES.txt?format=raw</sparkle:releaseNotesLink> 
         <enclosure 
-          sparkle:version="#{@proj.version}"
+          sparkle:version="#{svnrev}F"
+          sparkle:shortVersionString="#{@proj.version}"
           url="http://sourceforge.net/projects/ccmenu/files/#{@proj.name}/#{@proj.version}/#{imagename}/download" 
           length="#{imagesize}" 
           type="application/octet-stream"/>
@@ -89,7 +90,7 @@ class ReleaseManager
   </channel>
 </rss>
 END_OF_TEMPLATE
-        @worker.write("update-stable.xml", appcast)
+        @worker.write("update-stable-#{@proj.version}.xml", appcast)
     end
    
     def openPackageDir
