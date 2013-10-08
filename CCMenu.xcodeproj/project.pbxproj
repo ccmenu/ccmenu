@@ -102,6 +102,7 @@
 		034BF7EB1757CE940025F9A0 /* pref-projects.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC68134F9EE600D2F269 /* pref-projects.png */; };
 		036FA724176236D900371BE9 /* CCMKeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA723176236D900371BE9 /* CCMKeychainHelper.m */; };
 		036FA725176236D900371BE9 /* CCMKeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA723176236D900371BE9 /* CCMKeychainHelper.m */; };
+		0378A022180436BD00A7D65F /* RELEASENOTES.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0378A021180436BD00A7D65F /* RELEASENOTES.txt */; };
 		038ABE1E134F11090053F0D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038ABE1D134F11090053F0D1 /* Cocoa.framework */; };
 		038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038ABE26134F11090053F0D1 /* InfoPlist.strings */; };
 		038ABE2B134F11090053F0D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ABE2A134F11090053F0D1 /* main.m */; };
@@ -231,6 +232,7 @@
 		034BF7DB1757CDAD0025F9A0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		036FA722176236D900371BE9 /* CCMKeychainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMKeychainHelper.h; sourceTree = "<group>"; };
 		036FA723176236D900371BE9 /* CCMKeychainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMKeychainHelper.m; sourceTree = "<group>"; };
+		0378A021180436BD00A7D65F /* RELEASENOTES.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RELEASENOTES.txt; sourceTree = SOURCE_ROOT; };
 		0384D33C17620E1400749956 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		038ABE19134F11080053F0D1 /* CCMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038ABE1D134F11090053F0D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -593,6 +595,7 @@
 		038ABE24134F11090053F0D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0378A021180436BD00A7D65F /* RELEASENOTES.txt */,
 				0321274716AED55D00292F3D /* CCMenu.entitlements */,
 				0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */,
 				038ABE25134F11090053F0D1 /* CCMenu-Info.plist */,
@@ -767,6 +770,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0378A022180436BD00A7D65F /* RELEASENOTES.txt in Resources */,
 				038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */,
 				03C082E2134F9D250039E3BD /* Localizable.strings in Resources */,
 				03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */,

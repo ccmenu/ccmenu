@@ -87,7 +87,12 @@
 - (void)testDescribesReverseLessThan60minuteIntervalInMinutesAndSecondsWithMinusSign
 {
 	NSCalendarDate *date = [reference dateByAddingYears:0 months:0 days:0 hours:0 minutes:-59 seconds:-9];
-	STAssertEqualObjects([date descriptionOfIntervalSinceDate:reference withSign:YES ], @"-59:09", @"Should have returned time with one minus sign in front.");
+	STAssertEqualObjects([date descriptionOfIntervalSinceDate:reference withSign:YES], @"-59:09", @"Should have returned time with one minus sign in front.");
+}
+
+- (void)testDescribesZeroLengthIntervalWithEmptyString
+{
+	STAssertEqualObjects([reference descriptionOfIntervalSinceDate:reference withSign:YES], @"", @"Should have returned empty string.");
 }
 
 @end

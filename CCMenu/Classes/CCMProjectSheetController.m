@@ -116,6 +116,7 @@ enum CCMButtonTag
             [connection setDelegate:self];
             NSArray *projectInfos = [connection retrieveServerStatus];
             [chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
+            [chooseProjectsViewController setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
             [sheetTabView selectLastTabViewItem:self];
         }
     }

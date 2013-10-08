@@ -2,6 +2,13 @@ CruiseControl Status Menu Release Notes
 
 Changes listed by release.
 
+
+* Now sorting the list of projects in the add
+  project sheet
+* Fixed a bug that caused incorrect build time
+  estimation when no labels are in the feed
+
+
 CCMenu 1.6.3
 
 * Fixed a bug that caused a substantial memory leak
