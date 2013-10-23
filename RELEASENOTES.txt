@@ -1,12 +1,14 @@
 CruiseControl Status Menu Release Notes
 
 Changes listed by release.
-
+  
+CCMenu 1.6.4
 
 * Now sorting the list of projects in the add
   project sheet
 * Fixed a bug that caused incorrect build time
   estimation when no labels are in the feed
+* Now detecting paused builds from Jenkins.
 
 
 CCMenu 1.6.3

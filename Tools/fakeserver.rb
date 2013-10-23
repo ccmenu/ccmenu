@@ -119,7 +119,7 @@ __END__
     :activity => @@ACTIVITY, :lastBuildStatus => @@STATUS,
     :lastBuildLabel => "build.#{@@BUILD_NUM}", :lastBuildTime => @@BUILD_TIME}
   %Project{:name => 'dummy', :webUrl => 'http://localhost:4567/dashboard/build/detail/dummy',
-    :activity => :Sleeping, :lastBuildStatus => :Success,
+    :activity => :Sleeping, :lastBuildStatus => :Unknown,
     :lastBuildLabel => "build.99", :lastBuildTime => "2007-07-18T18:44:48"}
 
 
