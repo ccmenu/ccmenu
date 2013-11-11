@@ -45,11 +45,28 @@
 }
 
 
+- (int)statusPriorityForStatus:(CCMProjectStatus *)status
+{
+    if(status == nil)
+        return 0;
+    
+    NSString *lastBuildStatus = [status lastBuildStatus];
+    if([lastBuildStatus isEqualToString:CCMFailedStatus])
+        return 3;
+    else if([lastBuildStatus isEqualToString:CCMSuccessStatus])
+        return 2;
+    else
+        return 1;
+}
+
+
 - (CCMProject *)projectForStatusBar:(NSArray *)projectList
 {
-    NSSortDescriptor *status = [NSSortDescriptor sortDescriptorWithKey:@"hasStatus" ascending:NO];
+    NSSortDescriptor *hasStatus = [NSSortDescriptor sortDescriptorWithKey:@"hasStatus" ascending:NO];
     NSSortDescriptor *building = [NSSortDescriptor sortDescriptorWithKey:@"isBuilding" ascending:NO];
-    NSSortDescriptor *failed = [NSSortDescriptor sortDescriptorWithKey:@"isFailed" ascending:NO];
+    NSSortDescriptor *status = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO comparator:^(CCMProject *obj1, CCMProject *obj2) {
+        return (NSComparisonResult)([self statusPriorityForStatus:[obj1 status]] - [self statusPriorityForStatus:[obj2 status]]);
+    }];
     NSSortDescriptor *timing = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES comparator:^(id obj1, id obj2) {
         // custom comparator using nil key path to work around sorting nil values
         // http://stackoverflow.com/questions/2021213/nssortdescriptor-and-nil-values
@@ -59,7 +76,7 @@
         return [val1 compare:val2];
     }];
     
-    NSArray *descriptors = [NSArray arrayWithObjects:status, building, failed, timing, nil];
+    NSArray *descriptors = [NSArray arrayWithObjects:hasStatus, building, status, timing, nil];
     NSArray *sortedProjectList = [projectList sortedArrayUsingDescriptors:descriptors];
     return [sortedProjectList firstObject];
 }
@@ -73,8 +90,7 @@
     } 
     else if([project isBuilding] == NO)
     {
-        NSString *status = [project isFailed] ? CCMFailedStatus : CCMSuccessStatus;
-		[item setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:status]];
+		[item setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:[[project status] lastBuildStatus]]];
         NSString *text = @"";
         if([project isFailed])
         {
