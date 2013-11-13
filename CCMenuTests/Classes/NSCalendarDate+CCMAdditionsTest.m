@@ -90,4 +90,9 @@
 	STAssertEqualObjects([date descriptionOfIntervalSinceDate:reference withSign:YES ], @"-59:09", @"Should have returned time with one minus sign in front.");
 }
 
+- (void)testDescribesZeroLengthIntervalWithEmptyString
+{
+	STAssertEqualObjects([reference descriptionOfIntervalSinceDate:reference withSign:YES], @"", @"Should have returned empty string.");
+}
+
 @end

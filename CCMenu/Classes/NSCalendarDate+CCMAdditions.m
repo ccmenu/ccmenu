@@ -45,7 +45,9 @@
         return [NSString stringWithFormat:@"%@%d:%02d:%02d", sign, interval / 3600, (interval / 60) % 60, interval % 60];
     if(interval > 60)
         return [NSString stringWithFormat:@"%@%d:%02d", sign, interval / 60, interval % 60];
+    if(interval > 0)
     return [NSString stringWithFormat:@"%@%ds", sign, interval];
+    return @"";
 }
 
 

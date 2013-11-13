@@ -133,7 +133,7 @@ static NSSet *infoKeys;
 
 - (BOOL)isFailed
 {
-	return ([status lastBuildStatus] != nil) && ![[status lastBuildStatus] isEqualToString:CCMSuccessStatus];
+	return ([status lastBuildStatus] != nil) && [[status lastBuildStatus] isEqualToString:CCMFailedStatus];
 }
 
 - (BOOL)isBuilding

@@ -40,6 +40,13 @@
 	STAssertEqualObjects(@"icon-failure-building", [image name], @"Should have loaded correct image.");
 }
 
+- (void)testLastBuildStatusIsUknownImage
+{
+    // Jenkins uses "unknown" for builds that are inactive
+	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:@"Unknown"];
+	STAssertEqualObjects(@"icon-pause", [image name], @"Should have loaded correct image.");
+}
+
 - (void)testNoBuildStatusImage
 {
 	NSImage *image = [factory imageForActivity:@"foo" lastBuildStatus:nil];

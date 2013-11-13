@@ -68,6 +68,7 @@ NSString *CCMStillFailingBuild = @"StillFailing";
 	}
     if([[oldStatus activity] isEqualToString:CCMBuildingActivity] &&
        [[[project status] activity] isEqualToString:CCMBuildingActivity] &&
+       [oldStatus lastBuildLabel] != nil &&
        [[oldStatus lastBuildLabel] isEqualToString:[[project status] lastBuildLabel]] == NO)
     {
 		NSDictionary *buildStartInfo = [self startInfoForProject:project withOldStatus:oldStatus];

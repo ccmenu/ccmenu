@@ -22,6 +22,8 @@
 {
 	if(status == nil)
 		return [self imageForUnavailableServer];
+    if([status isEqualToString:@"Unknown"])
+        return [self imageNamed:@"icon-pause.png"];
 	activity = [activity isEqualToString:CCMBuildingActivity] ? @"-building" : @"";
 	if(![status isEqualToString:CCMSuccessStatus])
 		status = CCMFailedStatus;

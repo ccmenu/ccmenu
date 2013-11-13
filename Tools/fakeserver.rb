@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'sinatra'
 require 'haml'
 
@@ -6,7 +7,10 @@ $KCODE = 'u' if RUBY_VERSION < '1.9'
 @@ACTIVITY = :Sleeping
 @@STATUS = :Success
 @@BUILD_NUM = 1
-@@BUILD_TIME = "2007-07-18T18:44:48"
+@@BUILD_TIME = DateTime.now.to_s
+
+
+#set :port, 80
 
 helpers do
   def protected!
@@ -17,7 +21,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['dev', 'rosebud']
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['dev', 'rosebud2']
   end
 
   def is_building()
@@ -108,9 +112,15 @@ __END__
 @@ cctray
 !!! XML
 %Projects
+  %Project{:name => 'other project', :webUrl => 'http://localhost:4567/dashboard/build/detail/other-project',
+    :activity => :Sleeping, :lastBuildStatus => :Success,
+    :lastBuildLabel => "build.1234", :lastBuildTime => "2007-07-18T18:44:48"}
   %Project{:name => 'connectfour', :webUrl => 'http://localhost:4567/dashboard/build/detail/connectfour',
     :activity => @@ACTIVITY, :lastBuildStatus => @@STATUS,
     :lastBuildLabel => "build.#{@@BUILD_NUM}", :lastBuildTime => @@BUILD_TIME}
+  %Project{:name => 'dummy', :webUrl => 'http://localhost:4567/dashboard/build/detail/dummy',
+    :activity => :Sleeping, :lastBuildStatus => :Unknown,
+    :lastBuildLabel => "build.99", :lastBuildTime => "2007-07-18T18:44:48"}
 
 
 @@ project
