@@ -42,7 +42,7 @@
         if(r.location == [dateString length] - 5 || r.location == [dateString length] - 6)
         {
             NSRange rr = NSMakeRange(19, r.location - 19);
-            dateString = [dateString stringByReplacingCharactersInRange:rr withString:@" GMT"];
+            dateString = [dateString stringByReplacingCharactersInRange:rr withString:@" "];
         }
     }
     return [formatter dateFromString:dateString];
