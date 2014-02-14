@@ -1,6 +1,7 @@
 
 #import "CCMImageFactory.h"
 #import "CCMProject.h"
+#import "CCMProjectStatus.h"
 
 
 @implementation CCMImageFactory
@@ -13,23 +14,42 @@
 		// This is a hack to make the unit tests work when run from otool, in which case imageNamed: doesn't work
 		NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu/Images/%@", name]];
 		image = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
+        if(image == nil)
+        {
+            // Hack to make it work in AppCode...
+            NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu.app/Contents/Resources/%@", name]];
+            image = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
+        }
 		[image setName:[name substringToIndex:[name length] - [[name pathExtension] length] - 1]];
 	}
 	return image;	
 }
 
-- (NSImage *)imageForActivity:(NSString *)activity lastBuildStatus:(NSString *)status
+- (NSImage *)imageForStatus:(CCMProjectStatus *)status
 {
-	if(status == nil)
-		return [self imageForUnavailableServer];
-    if([status isEqualToString:@"Unknown"])
-        return [self imageNamed:@"icon-pause.png"];
-	activity = [activity isEqualToString:CCMBuildingActivity] ? @"-building" : @"";
-	if(![status isEqualToString:CCMSuccessStatus])
-		status = CCMFailedStatus;
-	status = [status lowercaseString];
-	NSString *name = [NSString stringWithFormat:@"icon-%@%@.png", status, activity];
-	return [self imageNamed:name];
+    if(status == nil)
+        return [self imageForUnavailableServer];
+
+    NSString *name = @"";
+    if([[status activity] isEqualToString:@"Building"])
+    {
+        if([status buildDidFail])
+            name = @"icon-failure-building.png";
+        else
+            name = @"icon-success-building.png";
+    }
+    else
+    {
+        if([status buildWasSuccessful])
+            name = @"icon-success.png";
+        else if([status buildDidFail])
+            name = @"icon-failure.png";
+        else if([[status lastBuildStatus] isEqualToString:@"Unknown"])
+            name = @"icon-pause.png";
+        else
+            name = @"icon-inactive.png";
+    }
+    return [self imageNamed:name];
 }
 
 - (NSImage *)imageForUnavailableServer

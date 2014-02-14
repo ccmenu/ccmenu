@@ -49,11 +49,9 @@
 {
     if(status == nil)
         return 0;
-    
-    NSString *lastBuildStatus = [status lastBuildStatus];
-    if([lastBuildStatus isEqualToString:CCMFailedStatus])
+    else if([status buildDidFail])
         return 3;
-    else if([lastBuildStatus isEqualToString:CCMSuccessStatus])
+    else if([status buildWasSuccessful])
         return 2;
     else
         return 1;
@@ -83,20 +81,20 @@
 
 - (void)setupStatusItem:(NSStatusItem *)item forProject:(CCMProject *)project fromList:(NSArray *)projectList
 {
-    if((project == nil) || ([project status] == nil))
+    if((project == nil) || ([project status] ==nil))
     {
-		[item setImage:[imageFactory imageForActivity:nil lastBuildStatus:nil]];
+		[item setImage:[imageFactory imageForUnavailableServer]];
 		[item setTitle:@""];
     } 
     else if([project isBuilding] == NO)
     {
-		[item setImage:[imageFactory imageForActivity:CCMSleepingActivity lastBuildStatus:[[project status] lastBuildStatus]]];
+        [item setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
-        if([project isFailed])
+        if([[project status] buildDidFail])
         {
             __block int failCount = 0;
-            [projectList enumerateObjectsUsingBlock:^(id project, NSUInteger idx, BOOL *stop) {
-                if([project isFailed])
+            [projectList enumerateObjectsUsingBlock:^(CCMProject *project, NSUInteger idx, BOOL *stop) {
+                if([[project status] buildDidFail])
                     failCount += 1;
             }];
             text = [NSString stringWithFormat:@"%u", failCount];
@@ -105,8 +103,7 @@
     }
     else
     {
-		NSString *status = [project isFailed] ? CCMFailedStatus : CCMSuccessStatus;
-		[item setImage:[imageFactory imageForActivity:CCMBuildingActivity lastBuildStatus:status]];
+		[item setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
         NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
 		if(estimatedComplete != nil)
@@ -134,7 +131,7 @@
             [menuItem setTarget:self];
             [menuItem setRepresentedObject:project];
         }
-		NSImage *image = [imageFactory imageForActivity:[[project status] activity] lastBuildStatus:[[project status] lastBuildStatus]];
+		NSImage *image = [imageFactory imageForStatus:[project status]];
 		[menuItem setImage:[imageFactory convertForMenuUse:image]];
         index += 1;
     }

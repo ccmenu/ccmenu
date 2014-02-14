@@ -18,6 +18,11 @@ static NSSet *infoKeys;
 	infoKeys = [[NSSet setWithObjects:@"activity", @"lastBuildStatus", @"lastBuildLabel", @"lastBuildTime", @"webUrl", nil] retain];
 }
 
++ (id)statusWithDictionary:(NSDictionary *)serverInfo
+{
+    return [[[CCMProjectStatus alloc] initWithDictionary:serverInfo] autorelease];
+}
+
 - (id)initWithDictionary:(NSDictionary *)serverInfo
 {
     self = [super init];
@@ -35,6 +40,18 @@ static NSSet *infoKeys;
 {
     return info;
 }
+
+- (BOOL)buildDidFail
+{
+    NSString *status = [info valueForKey:@"lastBuildStatus"];
+    return [status isEqualToString:@"Failure"] || [status isEqualToString:@"Error"];
+}
+
+- (BOOL)buildWasSuccessful
+{
+    return [[info valueForKey:@"lastBuildStatus"] isEqualToString:@"Success"];
+}
+
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector
 {

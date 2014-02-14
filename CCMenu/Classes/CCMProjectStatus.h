@@ -6,9 +6,14 @@
     NSDictionary    *info;
 }
 
++ (id)statusWithDictionary:(NSDictionary *)serverInfo;
+
 - (id)initWithDictionary:(NSDictionary *)serverInfo;
 
 - (NSDictionary *)info;
+
+- (BOOL)buildDidFail;
+- (BOOL)buildWasSuccessful;
 
 @end
 

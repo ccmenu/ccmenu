@@ -12,52 +12,69 @@
 
 - (void)testLastBuildSuccessfulSleepingImage
 {
-	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-	STAssertEqualObjects(@"icon-success", [image name], @"Should have loaded correct image.");
+    NSDictionary *d = @{ @"activity": @"Sleeping", @"lastBuildStatus": @"Success" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+    STAssertEqualObjects(@"icon-success", [image name], @"Should have loaded correct image.");
 }
 
 - (void)testLastBuildFailedSleepingImage
 {
-	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+    NSDictionary *d = @{ @"activity": @"Sleeping", @"lastBuildStatus": @"Failure" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
 	STAssertEqualObjects(@"icon-failure", [image name], @"Should have loaded correct image.");
-}
-
-- (void)testLastBuildSuccessfulOtherActivityImage
-{
-	NSImage *image = [factory imageForActivity:@"some random activity" lastBuildStatus:CCMSuccessStatus];
-	STAssertEqualObjects(@"icon-success", [image name], @"Should have loaded correct image.");
 }
 
 - (void)testLastBuildSuccessfulBuildingImage
 {
-	NSImage *image = [factory imageForActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-	STAssertEqualObjects(@"icon-success-building", [image name], @"Should have loaded correct image.");
+    NSDictionary *d = @{ @"activity": @"Building", @"lastBuildStatus": @"Success" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+    STAssertEqualObjects(@"icon-success-building", [image name], @"Should have loaded correct image.");
 }
 
 - (void)testLastBuildFailedBuildingImage
 {
-	NSImage *image = [factory imageForActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+    NSDictionary *d = @{ @"activity": @"Building", @"lastBuildStatus": @"Failure" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
 	STAssertEqualObjects(@"icon-failure-building", [image name], @"Should have loaded correct image.");
 }
 
-- (void)testLastBuildStatusIsUknownImage
+- (void)testLastBuildNeitherSuccessfulNorFailedBuildingImage
+{
+    NSDictionary *d = @{ @"activity": @"Building", @"lastBuildStatus": @"Unknown" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+    STAssertEqualObjects(@"icon-success-building", [image name], @"Should have loaded correct image.");
+}
+
+- (void)testLastBuildSuccessfulOtherActivityImage
+{
+    NSDictionary *d = @{ @"activity": @"some random activity", @"lastBuildStatus": @"Success" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+    STAssertEqualObjects(@"icon-success", [image name], @"Should have loaded correct image.");
+}
+
+- (void)testLastBuildStatusIsUnknownImage
 {
     // Jenkins uses "unknown" for builds that are inactive
-	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:@"Unknown"];
-	STAssertEqualObjects(@"icon-pause", [image name], @"Should have loaded correct image.");
+    NSDictionary *d = @{ @"lastBuildStatus": @"Unknown" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+    STAssertEqualObjects(@"icon-pause", [image name], @"Should have loaded correct image.");
 }
 
 - (void)testNoBuildStatusImage
 {
-	NSImage *image = [factory imageForActivity:@"foo" lastBuildStatus:nil];
+    NSDictionary *d = @{ @"activity": @"some random activity"};
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
 	STAssertEqualObjects(@"icon-inactive", [image name], @"Should have loaded correct image.");
 }
 
-- (void)testInvalidBuildStatusImage
+- (void)testUnexpectedBuildStatusImage
 {
-	NSImage *image = [factory imageForActivity:CCMSleepingActivity lastBuildStatus:@"Exception"];
-	STAssertEqualObjects(@"icon-failure", [image name], @"Should have loaded correct image.");
+    NSDictionary *d = @{ @"lastBuildStatus": @"Exception" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+	// note: different to old behaviour
+    STAssertEqualObjects(@"icon-inactive", [image name], @"Should have loaded correct image.");
 }
+
 
 - (void)testCachesMenuImages
 {

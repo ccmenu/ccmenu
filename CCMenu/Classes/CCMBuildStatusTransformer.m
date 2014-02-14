@@ -1,6 +1,7 @@
 
 #import "CCMImageFactory.h"
 #import "CCMBuildStatusTransformer.h"
+#import "CCMProjectStatus.h"
 
 NSString *CCMBuildStatusTransformerName = @"CCMBuildStatusTransformer";
 
@@ -33,7 +34,9 @@ NSString *CCMBuildStatusTransformerName = @"CCMBuildStatusTransformer";
 {
 	if(value == nil)
 		return nil;
-	return [imageFactory imageForActivity:nil lastBuildStatus:value];
+
+    CCMProjectStatus *status = [CCMProjectStatus statusWithDictionary:@{@"lastBuildStatus" : value}];
+    return [imageFactory imageForStatus:status];
 }
 
 @end
