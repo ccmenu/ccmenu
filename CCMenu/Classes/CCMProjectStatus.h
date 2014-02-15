@@ -12,6 +12,8 @@
 
 - (NSDictionary *)info;
 
+- (BOOL)isBuilding;
+
 - (BOOL)buildDidFail;
 - (BOOL)buildWasSuccessful;
 

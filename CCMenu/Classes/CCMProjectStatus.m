@@ -41,6 +41,11 @@ static NSSet *infoKeys;
     return info;
 }
 
+- (BOOL)isBuilding
+{
+    return [[info valueForKey:@"activity"] isEqualToString:@"Building"];
+}
+
 - (BOOL)buildDidFail
 {
     NSString *status = [info valueForKey:@"lastBuildStatus"];

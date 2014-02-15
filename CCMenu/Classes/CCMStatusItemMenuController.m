@@ -61,9 +61,9 @@
 - (CCMProject *)projectForStatusBar:(NSArray *)projectList
 {
     NSSortDescriptor *hasStatus = [NSSortDescriptor sortDescriptorWithKey:@"hasStatus" ascending:NO];
-    NSSortDescriptor *building = [NSSortDescriptor sortDescriptorWithKey:@"isBuilding" ascending:NO];
-    NSSortDescriptor *status = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO comparator:^(CCMProject *obj1, CCMProject *obj2) {
-        return (NSComparisonResult)([self statusPriorityForStatus:[obj1 status]] - [self statusPriorityForStatus:[obj2 status]]);
+    NSSortDescriptor *building = [NSSortDescriptor sortDescriptorWithKey:@"status.isBuilding" ascending:NO];
+    NSSortDescriptor *status = [NSSortDescriptor sortDescriptorWithKey:@"status" ascending:NO comparator:^(CCMProjectStatus *s1, CCMProjectStatus *s2) {
+        return (NSComparisonResult)([self statusPriorityForStatus:s1] - [self statusPriorityForStatus:s2]);
     }];
     NSSortDescriptor *timing = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES comparator:^(id obj1, id obj2) {
         // custom comparator using nil key path to work around sorting nil values
@@ -86,7 +86,7 @@
 		[item setImage:[imageFactory imageForUnavailableServer]];
 		[item setTitle:@""];
     } 
-    else if([project isBuilding] == NO)
+    else if([[project status] isBuilding] == NO)
     {
         [item setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
@@ -150,7 +150,7 @@
     CCMProject *project = [self projectForStatusBar:projectList];
     [self setupStatusItem:statusItem forProject:project fromList:projectList];
     
-    if([project isBuilding])
+    if([[project status] isBuilding])
     {
         [timer invalidate];
         [timer release];

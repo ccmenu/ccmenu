@@ -131,15 +131,4 @@ static NSSet *infoKeys;
     return status != nil;
 }
 
-- (BOOL)isFailed
-{
-	return ([status lastBuildStatus] != nil) && [[status lastBuildStatus] isEqualToString:CCMFailedStatus];
-}
-
-- (BOOL)isBuilding
-{
-	return [[status activity] isEqualToString:CCMBuildingActivity];
-}
-
-
 @end
