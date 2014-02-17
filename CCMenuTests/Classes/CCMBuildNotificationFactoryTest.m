@@ -13,8 +13,8 @@
 
 - (void)testCreatesSuccessfulBuildCompleteNotification
 {
-	CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
+	CCMProjectStatus *old = [[[builder status] withActivity:@"Building"] withBuildStatus:@"Success"];
+    CCMProject *project = [[[builder project] withActivity:@"Sleeping"] withBuildStatus:@"Success"];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
@@ -27,8 +27,8 @@
 
 - (void)testCreatesBrokenBuildCompleteNotification
 {	
-	CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
+	CCMProjectStatus *old = [[[builder status] withActivity:@"Building"] withBuildStatus:@"Success"];
+    CCMProject *project = [[[builder project] withActivity:@"Sleeping"] withBuildStatus:@"Failure"];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
@@ -38,8 +38,8 @@
 
 - (void)testCreatesFixedBuildCompleteNotification
 {	
-    CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMFailedStatus];
-    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
+    CCMProjectStatus *old = [[[builder status] withActivity:@"Building"] withBuildStatus:@"Failure"];
+    CCMProject *project = [[[builder project] withActivity:@"Sleeping"] withBuildStatus:@"Success"];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
@@ -49,8 +49,8 @@
 
 - (void)testCreatesStillFailingBuildCompleteNotification
 {	
-    CCMProjectStatus *old = [[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMFailedStatus];
-    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
+    CCMProjectStatus *old = [[[builder status] withActivity:@"Building"] withBuildStatus:@"Failure"];
+    CCMProject *project = [[[builder project] withActivity:@"Sleeping"] withBuildStatus:@"Failure"];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
@@ -60,8 +60,8 @@
 
 - (void)testCreatesBrokenBuildCompletionNotificationEvenIfBuildWasMissed
 {
-    CCMProjectStatus *old = [[[builder status] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
+    CCMProjectStatus *old = [[[builder status] withActivity:@"Sleeping"] withBuildStatus:@"Success"];
+    CCMProject *project = [[[builder project] withActivity:@"Sleeping"] withBuildStatus:@"Failure"];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
@@ -71,8 +71,8 @@
 
 - (void)testCreatesFixedBuildCompletionNotificationEvenIfBuildWasMissed
 {
-    CCMProjectStatus *old = [[[builder status] withActivity:CCMSleepingActivity] withBuildStatus:CCMFailedStatus];
-    CCMProject *project = [[[builder project] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
+    CCMProjectStatus *old = [[[builder status] withActivity:@"Sleeping"] withBuildStatus:@"Failure"];
+    CCMProject *project = [[[builder project] withActivity:@"Sleeping"] withBuildStatus:@"Success"];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
@@ -82,8 +82,8 @@
 
 - (void)testCreatesBuildStartingNotification
 {
-    CCMProjectStatus *old = [[[builder status] withActivity:CCMSleepingActivity] withBuildStatus:CCMSuccessStatus];
-    CCMProject *project = [[[builder project] withActivity:CCMBuildingActivity] withBuildStatus:CCMFailedStatus];
+    CCMProjectStatus *old = [[[builder status] withActivity:@"Sleeping"] withBuildStatus:@"Success"];
+    CCMProject *project = [[[builder project] withActivity:@"Building"] withBuildStatus:@"Failure"];
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
@@ -94,8 +94,8 @@
 
 - (void)testCreatesBuildStartingNotificationOnMissedSleeping
 {
-	CCMProjectStatus *old = [[[[builder status] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus] withBuildLabel:@"build.1"];
-    CCMProject *project = [[[[builder project] withActivity:CCMBuildingActivity] withBuildStatus:CCMSuccessStatus] withBuildLabel:@"build.2"];
+	CCMProjectStatus *old = [[[[builder status] withActivity:@"Building"] withBuildStatus:@"Success"] withBuildLabel:@"build.1"];
+    CCMProject *project = [[[[builder project] withActivity:@"Building"] withBuildStatus:@"Success"] withBuildLabel:@"build.2"];
      
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
     

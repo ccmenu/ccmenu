@@ -29,9 +29,3 @@
 - (NSString *)webUrl;
 
 @end
-
-extern NSString *CCMSuccessStatus;
-extern NSString *CCMFailedStatus;
-
-extern NSString *CCMSleepingActivity;
-extern NSString *CCMBuildingActivity;

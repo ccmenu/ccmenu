@@ -2,12 +2,6 @@
 #import "CCMProjectStatus.h"
 
 
-NSString *CCMSuccessStatus = @"Success";
-NSString *CCMFailedStatus = @"Failure";
-
-NSString *CCMSleepingActivity = @"Sleeping";
-NSString *CCMBuildingActivity = @"Building";
-
 static NSSet *infoKeys;
 
 

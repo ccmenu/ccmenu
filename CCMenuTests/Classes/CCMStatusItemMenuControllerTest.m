@@ -40,7 +40,7 @@
 - (void)testCreatesMenuItem
 {
     NSArray *projects = [NSArray arrayWithObject:   
-                         [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus]];
+                         [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"]];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 	
 	[controller displayProjects:nil];
@@ -123,7 +123,7 @@
 - (void)testDisplaysSuccessAndNoTextWhenAllProjectsWithStatusAreSleepingAndSuccessful
 {
     CCMProject *p1 = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-    CCMProject *p2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
+    CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
     NSArray *projects = [NSArray arrayWithObjects:p1, p2, nil];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 	[[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p2 status]];
@@ -136,9 +136,9 @@
 
 - (void)testDisplaysFailureAndNumberOfFailuresWhenAllAreSleepingAndAtLeastOneIsFailed
 {
-    CCMProject *p1 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *p2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-    CCMProject *p3 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+    CCMProject *p1 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
+    CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
+    CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
     NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, nil];
     [[[serverMonitorMock stub] andReturn:projects] projects];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p2 status]];
@@ -152,9 +152,9 @@
 
 - (void)testDisplaysBuildingWhenAtLeastOneProjectIsBuilding
 {
-    CCMProject *p1 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *p2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-    CCMProject *p3 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
+    CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
+    CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
+    CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
     NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, nil];
     [[[serverMonitorMock stub] andReturn:projects] projects];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p1 status]];
@@ -167,9 +167,9 @@
 
 - (void)testDisplaysFixingWhenAtLeastOneProjectWithLastStatusFailedIsBuilding
 {
-    CCMProject *p1 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *p2 = [self createProjectWithActivity:CCMSleepingActivity lastBuildStatus:CCMFailedStatus];
-    CCMProject *p3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+    CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
+    CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
+    CCMProject *p3 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
     NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, nil];
     [[[serverMonitorMock stub] andReturn:projects] projects];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p3 status]];
@@ -182,12 +182,12 @@
 
 - (void)testDisplaysShortestTimingForBuildingProjectsWithEstimatedCompleteTime
 {
-    CCMProject *p1 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
-    CCMProject *p2 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+    CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
+    CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p2 setBuildDuration:[NSNumber numberWithInt:90]];
-    CCMProject *p3 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+    CCMProject *p3 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p3 setBuildDuration:[NSNumber numberWithInt:30]];
-    CCMProject *p4 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+    CCMProject *p4 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p4 setBuildDuration:[NSNumber numberWithInt:70]];
     NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, p4, nil];
     [[projects each] setBuildStartTime:[NSCalendarDate date]];
@@ -200,9 +200,9 @@
 
 - (void)testDisplaysTimingForFixingEvenIfItsLongerThanForBuilding
 {
-    CCMProject *p1 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMSuccessStatus];
+    CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p1 setBuildDuration:[NSNumber numberWithInt:30]];
-    CCMProject *p2 = [self createProjectWithActivity:CCMBuildingActivity lastBuildStatus:CCMFailedStatus];
+    CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
     [p2 setBuildDuration:[NSNumber numberWithInt:90]];
     NSArray *projects = [NSArray arrayWithObjects:p1, p2, nil];
     [[projects each] setBuildStartTime:[NSCalendarDate date]];

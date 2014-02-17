@@ -15,31 +15,31 @@ NSString *CCMStillFailingBuild = @"StillFailing";
 
 @implementation CCMBuildNotificationFactory
 
-- (NSString *)buildResultForLastStatus:(NSString *)lastStatus newStatus:(NSString *)newStatus
+- (NSString *)buildResultForLastStatus:(CCMProjectStatus *)lastStatus newStatus:(CCMProjectStatus *)newStatus
 {
-	if([lastStatus isEqualToString:CCMSuccessStatus] && [newStatus isEqualToString:CCMSuccessStatus])
+	if(![lastStatus buildDidFail] && [newStatus buildWasSuccessful])
 		return CCMSuccessfulBuild;
-	if([lastStatus isEqualToString:CCMSuccessStatus] && [newStatus isEqualToString:CCMFailedStatus])
+	if([lastStatus buildWasSuccessful] && [newStatus buildDidFail])
 		return CCMBrokenBuild;
-	if([lastStatus isEqualToString:CCMFailedStatus] && [newStatus isEqualToString:CCMSuccessStatus])
+	if([lastStatus buildDidFail] && [newStatus buildWasSuccessful])
 		return CCMFixedBuild;
-	if([lastStatus isEqualToString:CCMFailedStatus] && [newStatus isEqualToString:CCMFailedStatus])
+	if(![lastStatus buildWasSuccessful] && [newStatus buildDidFail])
 		return CCMStillFailingBuild;
 	return @"";
 }
 
-- (NSDictionary *)completeInfoForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus
+- (NSDictionary *)buildCompleteInfoForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus
 {
 	NSMutableDictionary *notificationInfo = [NSMutableDictionary dictionary];
 	[notificationInfo setObject:oldStatus forKey:@"oldStatus"];
-	NSString *result = [self buildResultForLastStatus:[oldStatus lastBuildStatus] newStatus:[[project status] lastBuildStatus]];
+	NSString *result = [self buildResultForLastStatus:oldStatus newStatus:[project status]];
 	[notificationInfo setObject:result forKey:@"buildResult"];
     if([[project status] webUrl] != nil)
         [notificationInfo setObject:[[project status] webUrl] forKey:@"webUrl"];
 	return notificationInfo;
 }
 
-- (NSDictionary *)startInfoForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus
+- (NSDictionary *)buildStartInfoForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus
 {
 	NSMutableDictionary *notificationInfo = [NSMutableDictionary dictionary];
 	[notificationInfo setObject:oldStatus forKey:@"oldStatus"];
@@ -48,30 +48,26 @@ NSString *CCMStillFailingBuild = @"StillFailing";
 
 - (NSNotification *)notificationForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus
 {
-	if([[oldStatus activity] isEqualToString:CCMSleepingActivity] &&
-	   [[[project status] activity] isEqualToString:CCMBuildingActivity])
+	if(![oldStatus isBuilding] && [[project status] isBuilding])
     {
-		NSDictionary *buildStartInfo = [self startInfoForProject:project withOldStatus:oldStatus];
+		NSDictionary *buildStartInfo = [self buildStartInfoForProject:project withOldStatus:oldStatus];
 		return [NSNotification notificationWithName:CCMBuildStartNotification object:project userInfo:buildStartInfo];
     }
-	if([[oldStatus activity] isEqualToString:CCMBuildingActivity] &&
-	   ![[[project status] activity] isEqualToString:CCMBuildingActivity])
+	if([oldStatus isBuilding] && ![[project status] isBuilding])
 	{
-		NSDictionary *buildCompleteInfo = [self completeInfoForProject:project withOldStatus:oldStatus];
+		NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project withOldStatus:oldStatus];
 		return [NSNotification notificationWithName:CCMBuildCompleteNotification object:project userInfo:buildCompleteInfo];
 	} 
 	if(([oldStatus lastBuildStatus] != nil) &&
        ![[oldStatus lastBuildStatus] isEqualToString:[[project status] lastBuildStatus]])
 	{
-		NSDictionary *buildCompleteInfo = [self completeInfoForProject:project withOldStatus:oldStatus];
+		NSDictionary *buildCompleteInfo = [self buildCompleteInfoForProject:project withOldStatus:oldStatus];
 		return [NSNotification notificationWithName:CCMBuildCompleteNotification object:project userInfo:buildCompleteInfo];
 	}
-    if([[oldStatus activity] isEqualToString:CCMBuildingActivity] &&
-       [[[project status] activity] isEqualToString:CCMBuildingActivity] &&
-       [oldStatus lastBuildLabel] != nil &&
-       [[oldStatus lastBuildLabel] isEqualToString:[[project status] lastBuildLabel]] == NO)
+    if([oldStatus isBuilding] && [[project status] isBuilding] &&
+       [oldStatus lastBuildLabel] != nil && ![[oldStatus lastBuildLabel] isEqualToString:[[project status] lastBuildLabel]])
     {
-		NSDictionary *buildStartInfo = [self startInfoForProject:project withOldStatus:oldStatus];
+		NSDictionary *buildStartInfo = [self buildStartInfoForProject:project withOldStatus:oldStatus];
 		return [NSNotification notificationWithName:CCMBuildStartNotification object:project userInfo:buildStartInfo];
     }
        
