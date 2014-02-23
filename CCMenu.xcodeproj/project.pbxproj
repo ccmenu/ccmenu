@@ -17,6 +17,8 @@
 		0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
 		03051AD818BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */; };
 		03051AD918BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */; };
+		03051ADC18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */; };
+		03051ADD18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
@@ -180,6 +182,8 @@
 		0301A783142C7D940041F299 /* CCMProjectStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatusTest.m; sourceTree = "<group>"; };
 		03051AD618BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectDefaultValueTransformer.h; sourceTree = "<group>"; };
 		03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectDefaultValueTransformer.m; sourceTree = "<group>"; };
+		03051ADA18BAAA820090FF45 /* CCMReorderableArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMReorderableArrayController.h; sourceTree = "<group>"; };
+		03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMReorderableArrayController.m; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
 		0321274716AED55D00292F3D /* CCMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCMenu.entitlements; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 				2FA28D98711E290BB04D0ED6 /* CCMIsOneValueTransformer.m */,
 				03051AD618BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.h */,
 				03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */,
+				03051ADA18BAAA820090FF45 /* CCMReorderableArrayController.h */,
+				03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */,
 			);
 			name = "Preferences Window";
 			sourceTree = "<group>";
@@ -903,6 +909,7 @@
 				034BF7D31757CCC90025F9A0 /* EDApplication.m in Sources */,
 				034BF7D41757CCC90025F9A0 /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 				034BF7D51757CCC90025F9A0 /* NSAppleScript+EDAdditions.m in Sources */,
+				03051ADD18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */,
 				034BF7D61757CCC90025F9A0 /* NSApplication+EDExtensions.m in Sources */,
 				034BF7D71757CCCA0025F9A0 /* NSArray+EDExtensions.m in Sources */,
 				034BF7D81757CCCA0025F9A0 /* NSString+EDExtensions.m in Sources */,
@@ -952,6 +959,7 @@
 				03D154F416DC11B3008F994D /* NSApplication+EDExtensions.m in Sources */,
 				03D154F616DC11B3008F994D /* NSArray+EDExtensions.m in Sources */,
 				03D154F816DC11B3008F994D /* NSString+EDExtensions.m in Sources */,
+				03051ADC18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */,
 				03E0821617061E3700E28E5A /* NSAppleEventDescriptor+EDAdditions.m in Sources */,
 				03E0821817061E3700E28E5A /* NSAppleScript+EDAdditions.m in Sources */,
 				034BF78F1757C4C30025F9A0 /* CCMSyncConnection.m in Sources */,

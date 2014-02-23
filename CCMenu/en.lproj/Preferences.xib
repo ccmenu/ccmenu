@@ -94,14 +94,14 @@
                         <action selector="addProjects:" target="-2" id="1154"/>
                     </connections>
                 </button>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="36" horizontalPageScroll="10" verticalLineScroll="36" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="ZSn-Sm-Qgb">
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="ZSn-Sm-Qgb">
                     <rect key="frame" x="20" y="46" width="310" height="284"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="TMP-GN-F5b">
                         <rect key="frame" x="1" y="1" width="308" height="282"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" autosaveColumns="NO" rowHeight="34" rowSizeStyle="automatic" viewBased="YES" id="1Z0-Rm-xIc">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="1Z0-Rm-xIc">
                                 <rect key="frame" x="0.0" y="0.0" width="308" height="282"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -153,8 +153,8 @@
                                 <connections>
                                     <binding destination="378" name="content" keyPath="arrangedObjects" id="eRQ-zn-SWO"/>
                                     <binding destination="378" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="eRQ-zn-SWO" id="NLC-tl-agi"/>
-                                    <outlet property="dataSource" destination="-2" id="u7A-ce-2t0"/>
-                                    <outlet property="delegate" destination="-2" id="QgO-ip-86v"/>
+                                    <outlet property="dataSource" destination="378" id="gaT-Bv-nXB"/>
+                                    <outlet property="delegate" destination="378" id="Ptb-Au-Rc9"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -608,7 +608,7 @@ Copyright © 2007-2014 ThoughtWorks, Inc.</string>
                 </box>
             </subviews>
         </customView>
-        <arrayController editable="NO" avoidsEmptySelection="NO" id="378" userLabel="All Projects View Controller">
+        <arrayController editable="NO" avoidsEmptySelection="NO" id="378" userLabel="All Projects View Controller" customClass="CCMReorderableArrayController">
             <declaredKeys>
                 <string>projectName</string>
                 <string>serverUrl</string>
@@ -616,6 +616,7 @@ Copyright © 2007-2014 ThoughtWorks, Inc.</string>
             <connections>
                 <binding destination="381" name="contentArray" keyPath="values.Projects" id="623"/>
                 <outlet property="content" destination="381" id="619"/>
+                <outlet property="tableView" destination="1Z0-Rm-xIc" id="4Dg-oH-sXU"/>
             </connections>
         </arrayController>
         <arrayController objectClassName="NSString" editable="NO" id="744" userLabel="Sound Names Controller"/>

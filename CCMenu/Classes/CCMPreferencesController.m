@@ -11,8 +11,6 @@
 
 NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotification";
 
-NSString *CCMProjectTableRowType = @"CCMProjectTableRowType";
-
 
 @implementation CCMPreferencesController
 
@@ -27,8 +25,6 @@ NSString *CCMProjectTableRowType = @"CCMProjectTableRowType";
 		[preferencesWindow center];
 		[preferencesWindow setToolbar:[self createToolbarWithName:@"Preferences"]];
 		[[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
-        [projectsTableView registerForDraggedTypes:@[CCMProjectTableRowType]];
-
 		[self switchPreferencesPane:self];
 	}
     [soundNamesViewController setContent:[self availableSounds]];
@@ -93,27 +89,6 @@ NSString *CCMProjectTableRowType = @"CCMProjectTableRowType";
 	[allProjectsViewController remove:sender];
 	[self preferencesChanged:sender];
 }
-
-- (BOOL)tableView:(NSTableView *)tv writeRows:(NSArray*)rows toPasteboard:(NSPasteboard*)pboard
-{
-	[pboard declareTypes:@[CCMProjectTableRowType] owner:self];
-    [pboard setPropertyList:rows forType:CCMProjectTableRowType];
-    return YES;
-}
-
-- (NSDragOperation)tableView:(NSTableView *)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)op
-{
-    if([info draggingSource] != projectsTableView)
-        return NSDragOperationNone;
-    [tv setDropRow:row dropOperation:NSTableViewDropAbove];
-    return NSDragOperationMove;
-}
-
-- (BOOL)tableView:(NSTableView *)tv acceptDrop:(id <NSDraggingInfo>)info row:(int)row dropOperation:(NSTableViewDropOperation)op
-{
-    return NO;
-}
-
 
 - (NSArray *)availableSounds
 {
