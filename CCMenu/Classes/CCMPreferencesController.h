@@ -24,6 +24,7 @@
 	IBOutlet NSView					*advancedPrefsView;
     
     IBOutlet NSView					*projectsView;
+    IBOutlet NSTableView            *projectsTableView;
  }
 
 - (IBAction)showWindow:(id)sender;

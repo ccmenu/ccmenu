@@ -17,6 +17,7 @@
                 <outlet property="paneHolderView" destination="405" id="439"/>
                 <outlet property="preferencesWindow" destination="403" id="438"/>
                 <outlet property="projectSheet" destination="203" id="342"/>
+                <outlet property="projectsTableView" destination="1Z0-Rm-xIc" id="IWZ-CJ-nCL"/>
                 <outlet property="projectsView" destination="406" id="435"/>
                 <outlet property="sheetTabView" destination="328" id="347"/>
                 <outlet property="soundNamesViewController" destination="744" id="745"/>
@@ -100,7 +101,7 @@
                         <rect key="frame" x="1" y="1" width="308" height="282"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="34" rowSizeStyle="automatic" viewBased="YES" id="1Z0-Rm-xIc">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" autosaveColumns="NO" rowHeight="34" rowSizeStyle="automatic" viewBased="YES" id="1Z0-Rm-xIc">
                                 <rect key="frame" x="0.0" y="0.0" width="308" height="282"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -114,7 +115,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="MVy-tD-968">
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" continuous="YES" alignment="left" title="Text Cell" id="MVy-tD-968">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -151,6 +152,9 @@
                                 </tableColumns>
                                 <connections>
                                     <binding destination="378" name="content" keyPath="arrangedObjects" id="eRQ-zn-SWO"/>
+                                    <binding destination="378" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="eRQ-zn-SWO" id="NLC-tl-agi"/>
+                                    <outlet property="dataSource" destination="-2" id="u7A-ce-2t0"/>
+                                    <outlet property="delegate" destination="-2" id="QgO-ip-86v"/>
                                 </connections>
                             </tableView>
                         </subviews>
