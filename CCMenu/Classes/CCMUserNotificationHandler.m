@@ -19,15 +19,15 @@ struct {
 	notifications[0].text = NSLocalizedString(@"Yet another successful build!", "For notificiation");
     
 	notifications[1].key = CCMStillFailingBuild;
-	notifications[1].title = NSLocalizedString(@"Still broken", "Growl notification for successful build");
+	notifications[1].title = NSLocalizedString(@"Still broken", "Notification for repeatedly broken build");
 	notifications[1].text = NSLocalizedString(@"The build is still broken.", "For notificiation");
 	
 	notifications[2].key = CCMBrokenBuild;
-	notifications[2].title = NSLocalizedString(@"Broken", "Notification for successful build");
+	notifications[2].title = NSLocalizedString(@"Broken", "Notification for broken build");
 	notifications[2].text = NSLocalizedString(@"Recent checkins have broken the build.", "For notificiation");
     
 	notifications[3].key = CCMFixedBuild;
-	notifications[3].title = NSLocalizedString(@"Fixed", "Notification for successful build");
+	notifications[3].title = NSLocalizedString(@"Fixed", "Notification for just fixed build");
 	notifications[3].text = NSLocalizedString(@"Recent checkins have fixed the build.", "For notificiation");
 }	
 

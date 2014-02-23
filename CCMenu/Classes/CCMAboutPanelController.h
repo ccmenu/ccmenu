@@ -10,6 +10,10 @@
 #endif
     IBOutlet NSPanel        *aboutPanel;
     IBOutlet NSTextField	*versionField;
+#ifndef CCM_MAS_BUILD
+    IBOutlet NSTextField    *updateNoteField;
+    IBOutlet NSButton       *updateInstallButton;
+#endif
 }
 
 - (IBAction)showWindow:(id)sender;

@@ -60,7 +60,11 @@
                 <outlet property="updater" destination="259" id="260"/>
             </connections>
         </customObject>
-        <customObject id="259" userLabel="SUUpdater" customClass="SUUpdater"/>
+        <customObject id="259" userLabel="SUUpdater" customClass="SUUpdater">
+            <connections>
+                <outlet property="delegate" destination="RRF-xr-xGr" id="sO5-ba-egB"/>
+            </connections>
+        </customObject>
         <customObject id="261" userLabel="CCMUserDefaultsManager" customClass="CCMUserDefaultsManager"/>
         <customObject id="264" userLabel="CCMServerMonitor" customClass="CCMServerMonitor">
             <connections>
