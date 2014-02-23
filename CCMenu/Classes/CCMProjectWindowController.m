@@ -16,8 +16,10 @@
 {
 	if(window == nil)
     {
-		[NSBundle loadNibNamed:@"ProjectWindow" owner:self];
-		[[NSNotificationCenter defaultCenter] 
+        NSArray *toplevelObjects = nil;
+		[[NSBundle mainBundle] loadNibNamed:@"Preferences" owner:self topLevelObjects:&toplevelObjects];
+        [toplevelObjects retain];
+		[[NSNotificationCenter defaultCenter]
          addObserver:self selector:@selector(displayProjects:) name:CCMProjectStatusUpdateNotification object:nil];
     }
 

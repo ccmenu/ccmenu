@@ -18,7 +18,9 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
 	if(preferencesWindow == nil)
 	{
-		[NSBundle loadNibNamed:@"Preferences" owner:self];
+        NSArray *toplevelObjects = nil;
+		[[NSBundle mainBundle] loadNibNamed:@"Preferences" owner:self topLevelObjects:&toplevelObjects];
+        [toplevelObjects retain];
         [[preferencesWindow standardWindowButton:NSWindowZoomButton] setHidden:YES];
 		[preferencesWindow center];
 		[preferencesWindow setToolbar:[self createToolbarWithName:@"Preferences"]];
