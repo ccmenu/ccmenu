@@ -56,7 +56,7 @@
 		[self registerValueTransformers];
         [self startServices];
 
-		if([[serverMonitor projects] count] >= 0)
+		if([[serverMonitor projects] count] == 0)
 			[preferencesController showWindow:self];
       
         NSUserNotification *userNotification = [[aNotification userInfo] objectForKey:@"NSApplicationLaunchUserNotificationKey"];

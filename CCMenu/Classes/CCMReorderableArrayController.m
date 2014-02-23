@@ -1,5 +1,6 @@
 
 #import "CCMReorderableArrayController.h"
+#import "CCMPreferencesController.h"
 
 /* Implementation based on mmalc's DNDArrayController, which was originally available at
    http://homepage.mac.com/mmalc/CocoaExamples/controllers.html
@@ -50,6 +51,8 @@ NSString *CCMDraggedRowType = @"net.sourceforge.cruisecontrol.CCMenu.DraggedRowT
     indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
     [self setSelectionIndexes:indexSet];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
+
     return YES;
 }
 

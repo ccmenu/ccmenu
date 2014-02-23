@@ -117,7 +117,7 @@
 - (void)setupMenu:(NSMenu *)menu forProjects:(NSArray *)projectList
 {	
 	int index = 0;
-    for(CCMProject *project in [projectList sortedArrayByComparingAttribute:@"name"])
+    for(CCMProject *project in projectList)
     {
         NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
         while(([menuItem isSeparatorItem] == NO) && ([[project name] compare:[menuItem title]] == NSOrderedDescending))
