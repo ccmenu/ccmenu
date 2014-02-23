@@ -23,9 +23,7 @@
 
 	IBOutlet NSView					*advancedPrefsView;
     
-    IBOutlet NSView                 *aboutView;
     IBOutlet NSView					*projectsView;
-    IBOutlet NSTextField			*versionField;
  }
 
 - (IBAction)showWindow:(id)sender;

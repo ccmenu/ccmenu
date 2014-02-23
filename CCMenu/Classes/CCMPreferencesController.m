@@ -24,14 +24,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[preferencesWindow setToolbar:[self createToolbarWithName:@"Preferences"]];
 		[[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
 		[self switchPreferencesPane:self];
-        NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-#ifndef CCM_MAS_BUILD
-        NSString *build = @"F";
-#else
-        NSString *build = @"A";
-#endif
-		[versionField setStringValue:[NSString stringWithFormat:@"%@ (%@%@)", shortVersion, version, build]];
 	}
     [soundNamesViewController setContent:[self availableSounds]];
 	[NSApp activateIgnoringOtherApps:YES];
@@ -42,7 +34,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
 	NSString *selectedIdentifier = [[preferencesWindow toolbar] selectedItemIdentifier];
 	NSUInteger index = [[self toolbarDefaultItemIdentifiers:nil] indexOfObject:selectedIdentifier];
-	NSArray *allViews = [NSArray arrayWithObjects:projectsView, notificationPrefsView, advancedPrefsView, aboutView, nil];
+	NSArray *allViews = [NSArray arrayWithObjects:projectsView, notificationPrefsView, advancedPrefsView, nil];
 	NSView *prefView = [allViews objectAtIndex:index];
 	NSDictionary *itemDef = [[toolbarDefinition objectForKey:@"itemInfoByIdentifier"] objectForKey:selectedIdentifier];
 	[preferencesWindow setTitle:[itemDef objectForKey:@"label"]]; 

@@ -133,6 +133,9 @@
 		03D154F416DC11B3008F994D /* NSApplication+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154ED16DC11B3008F994D /* NSApplication+EDExtensions.m */; };
 		03D154F616DC11B3008F994D /* NSArray+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */; };
 		03D154F816DC11B3008F994D /* NSString+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154F116DC11B3008F994D /* NSString+EDExtensions.m */; };
+		03E0575C18BA4F5700E77756 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E0575A18BA4F5700E77756 /* About.xib */; };
+		03E0575F18BA512D00E77756 /* CCMAboutPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0575E18BA512D00E77756 /* CCMAboutPanelController.m */; };
+		03E0576018BA512D00E77756 /* CCMAboutPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0575E18BA512D00E77756 /* CCMAboutPanelController.m */; };
 		03E0821617061E3700E28E5A /* NSAppleEventDescriptor+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0821317061E3700E28E5A /* NSAppleEventDescriptor+EDAdditions.m */; };
 		03E0821817061E3700E28E5A /* NSAppleScript+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0821517061E3700E28E5A /* NSAppleScript+EDAdditions.m */; };
 		03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
@@ -295,6 +298,9 @@
 		03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+EDExtensions.m"; sourceTree = "<group>"; };
 		03D154F016DC11B3008F994D /* NSString+EDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EDExtensions.h"; sourceTree = "<group>"; };
 		03D154F116DC11B3008F994D /* NSString+EDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EDExtensions.m"; sourceTree = "<group>"; };
+		03E0575B18BA4F5700E77756 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = CCMenu/en.lproj/About.xib; sourceTree = "<group>"; };
+		03E0575D18BA512D00E77756 /* CCMAboutPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCMAboutPanelController.h; path = CCMenu/Classes/CCMAboutPanelController.h; sourceTree = "<group>"; };
+		03E0575E18BA512D00E77756 /* CCMAboutPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCMAboutPanelController.m; path = CCMenu/Classes/CCMAboutPanelController.m; sourceTree = "<group>"; };
 		03E0821217061E3700E28E5A /* NSAppleEventDescriptor+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor+EDAdditions.h"; sourceTree = "<group>"; };
 		03E0821317061E3700E28E5A /* NSAppleEventDescriptor+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor+EDAdditions.m"; sourceTree = "<group>"; };
 		03E0821417061E3700E28E5A /* NSAppleScript+EDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleScript+EDAdditions.h"; sourceTree = "<group>"; };
@@ -635,6 +641,7 @@
 				031D05C513715AFE00AE5A48 /* Status Observers */,
 				031D05C2137157D700AE5A48 /* Project Window */,
 				031D05C413715A4E00AE5A48 /* Preferences Window */,
+				03E0576118BA513400E77756 /* About Panel */,
 				031D05C913715C3D00AE5A48 /* Global */,
 				031D05C713715B7300AE5A48 /* Resource Managers */,
 				031D05C613715B2900AE5A48 /* Cocoa Extensions */,
@@ -648,6 +655,7 @@
 			children = (
 				0300E7531408021800E59AFD /* MainMenu.xib */,
 				0300E7551408021800E59AFD /* Preferences.xib */,
+				03E0575A18BA4F5700E77756 /* About.xib */,
 				0300E7571408021800E59AFD /* ProjectWindow.xib */,
 				03C082D6134F9D250039E3BD /* Localizable.strings */,
 				03C082DC134F9D250039E3BD /* Preferences.toolbar */,
@@ -674,6 +682,16 @@
 			);
 			name = EDCommon;
 			path = ../EDCommon;
+			sourceTree = "<group>";
+		};
+		03E0576118BA513400E77756 /* About Panel */ = {
+			isa = PBXGroup;
+			children = (
+				03E0575D18BA512D00E77756 /* CCMAboutPanelController.h */,
+				03E0575E18BA512D00E77756 /* CCMAboutPanelController.m */,
+			);
+			name = "About Panel";
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -793,6 +811,7 @@
 				0300E7591408021800E59AFD /* MainMenu.xib in Resources */,
 				0300E75A1408021800E59AFD /* Preferences.xib in Resources */,
 				0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */,
+				03E0575C18BA4F5700E77756 /* About.xib in Resources */,
 				03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -864,6 +883,7 @@
 				034BF7C71757CCAD0025F9A0 /* CCMRelativeDateTransformer.m in Sources */,
 				034BF7C81757CCAD0025F9A0 /* CCMTimeIntervalTransformer.m in Sources */,
 				034BF7C91757CCB10025F9A0 /* CCMPreferencesController.m in Sources */,
+				03E0576018BA512D00E77756 /* CCMAboutPanelController.m in Sources */,
 				034BF7CA1757CCB30025F9A0 /* CCMAppController.m in Sources */,
 				034BF7CB1757CCB70025F9A0 /* CCMImageFactory.m in Sources */,
 				034BF7CC1757CCB70025F9A0 /* CCMUserDefaultsManager.m in Sources */,
@@ -903,6 +923,7 @@
 				03C082A3134F97940039E3BD /* CCMPreferencesController.m in Sources */,
 				03C082A4134F97940039E3BD /* CCMProject.m in Sources */,
 				03C082A5134F97940039E3BD /* CCMProjectWindowController.m in Sources */,
+				03E0575F18BA512D00E77756 /* CCMAboutPanelController.m in Sources */,
 				03C082A7134F97940039E3BD /* CCMServerMonitor.m in Sources */,
 				03C082A8134F97940039E3BD /* CCMServerStatusReader.m in Sources */,
 				03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */,
@@ -1000,6 +1021,15 @@
 				03C082E1134F9D250039E3BD /* en */,
 			);
 			name = ProjectWindow.toolbar;
+			sourceTree = "<group>";
+		};
+		03E0575A18BA4F5700E77756 /* About.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03E0575B18BA4F5700E77756 /* en */,
+			);
+			name = About.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -4,22 +4,19 @@
     allowedItemIdentifiers = (
         Projects,
         Notifications,
-        Advanced,
-        About
+        Advanced
 	);
 
 	selectableItemIdentifiers = (
         Projects,
         Notifications,
-        Advanced,
-        About
-	);
+        Advanced
+    );
 
     defaultItemIdentifiers = (
         Projects,
         Notifications,
-        Advanced,
-        About
+        Advanced
 	);
 
     itemInfoByIdentifier = {
@@ -39,12 +36,6 @@
             action = "switchPreferencesPane:"; 
             imageName = "pref-advanced"; 
             label = "Advanced"; 
-        };
-        
-        About = {
-            action = "switchPreferencesPane:"; 
-            imageName = "CCMenu"; 
-            label = "About"; 
         };
         
     };
