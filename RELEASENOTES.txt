@@ -1,7 +1,12 @@
-CruiseControl Status Menu Release Notes
+CCMenu Release Notes
 
 Changes listed by release.
   
+CCMenu 1.6.5
+
+* Now interpreting "Error" status as failed build.
+	
+	
 CCMenu 1.6.4
 
 * Now sorting the list of projects in the add
