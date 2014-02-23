@@ -5,6 +5,7 @@
 #import "CCMTimeIntervalTransformer.h"
 #import "CCMBuildTimer.h"
 #import "CCMIsOneValueTransformer.h"
+#import "CCMProjectDefaultValueTransformer.h"
 
 
 @implementation CCMAppController
@@ -30,6 +31,9 @@
 
     CCMIsOneValueTransformer *isOneTransformer = [[[CCMIsOneValueTransformer alloc] init] autorelease];
     [NSValueTransformer setValueTransformer:isOneTransformer forName:CCMIsOneTransformerName];
+
+    CCMProjectDefaultValueTransformer *projectDefaultTransformer = [[[CCMProjectDefaultValueTransformer alloc] init] autorelease];
+    [NSValueTransformer setValueTransformer:projectDefaultTransformer forName:CCMProjectDefaultValueTransformerName];
 }
 
 - (void)startServices
@@ -52,7 +56,7 @@
 		[self registerValueTransformers];
         [self startServices];
 
-		if([[serverMonitor projects] count] == 0)
+		if([[serverMonitor projects] count] >= 0)
 			[preferencesController showWindow:self];
       
         NSUserNotification *userNotification = [[aNotification userInfo] objectForKey:@"NSApplicationLaunchUserNotificationKey"];

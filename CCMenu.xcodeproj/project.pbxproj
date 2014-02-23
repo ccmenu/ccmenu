@@ -15,6 +15,8 @@
 		0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300E7571408021800E59AFD /* ProjectWindow.xib */; };
 		030150F51687AA4800FDE9EB /* handlers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 030150F41687AA4800FDE9EB /* handlers.applescript */; };
 		0301A780142C702F0041F299 /* CCMProjectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A77F142C702F0041F299 /* CCMProjectStatus.m */; };
+		03051AD818BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */; };
+		03051AD918BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
@@ -176,6 +178,8 @@
 		0301A77F142C702F0041F299 /* CCMProjectStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatus.m; sourceTree = "<group>"; };
 		0301A782142C7D940041F299 /* CCMProjectStatusTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatusTest.h; sourceTree = "<group>"; };
 		0301A783142C7D940041F299 /* CCMProjectStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatusTest.m; sourceTree = "<group>"; };
+		03051AD618BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectDefaultValueTransformer.h; sourceTree = "<group>"; };
+		03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectDefaultValueTransformer.m; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
 		0321274716AED55D00292F3D /* CCMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCMenu.entitlements; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 				030050C31766199F007C3DEE /* CCMProjectSheetController.m */,
 				2FA285221A513A9D2AE197A2 /* CCMIsOneValueTransformer.h */,
 				2FA28D98711E290BB04D0ED6 /* CCMIsOneValueTransformer.m */,
+				03051AD618BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.h */,
+				03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */,
 			);
 			name = "Preferences Window";
 			sourceTree = "<group>";
@@ -873,6 +879,7 @@
 				034BF7BD1757CCA60025F9A0 /* CCMServerMonitor.m in Sources */,
 				034BF7BE1757CCA60025F9A0 /* CCMBuildNotificationFactory.m in Sources */,
 				034BF7BF1757CCA60025F9A0 /* CCMConnection.m in Sources */,
+				03051AD918BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m in Sources */,
 				034BF7C01757CCA60025F9A0 /* CCMSyncConnection.m in Sources */,
 				034BF7C11757CCA60025F9A0 /* CCMServerStatusReader.m in Sources */,
 				034BF7C21757CCAA0025F9A0 /* CCMBuildTimer.m in Sources */,
@@ -951,6 +958,7 @@
 				2FA28F7C4769563BBEFD39BD /* CCMHistoryDataSource.m in Sources */,
 				036FA724176236D900371BE9 /* CCMKeychainHelper.m in Sources */,
 				2FA28CB4322A4BE63D533ECF /* NSAlert+CCMAdditions.m in Sources */,
+				03051AD818BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m in Sources */,
 				030050C41766199F007C3DEE /* CCMProjectSheetController.m in Sources */,
 				2FA284478BD048F17C048417 /* CCMIsOneValueTransformer.m in Sources */,
 			);

@@ -1,7 +1,12 @@
 CCMenu Release Notes
 
-Changes listed by release.
-  
+CCMenu 1.7
+
+* Nicer display of project list in preferences.
+* Moved about info into its own panel.
+* Added automatic update check to about panel.
+
+
 CCMenu 1.6.5
 
 * Now interpreting "Error" status as failed build.
