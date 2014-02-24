@@ -428,16 +428,16 @@
 			children = (
 				03C08281134F97940039E3BD /* CCMPreferencesController.h */,
 				03C08282134F97940039E3BD /* CCMPreferencesController.m */,
-				2FA28DDF250DAF8DD83AE044 /* CCMHistoryDataSource.h */,
-				2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */,
+				03051ADA18BAAA820090FF45 /* CCMReorderableArrayController.h */,
+				03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */,
 				030050C21766199F007C3DEE /* CCMProjectSheetController.h */,
 				030050C31766199F007C3DEE /* CCMProjectSheetController.m */,
+				2FA28DDF250DAF8DD83AE044 /* CCMHistoryDataSource.h */,
+				2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */,
 				2FA285221A513A9D2AE197A2 /* CCMIsOneValueTransformer.h */,
 				2FA28D98711E290BB04D0ED6 /* CCMIsOneValueTransformer.m */,
 				03051AD618BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.h */,
 				03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */,
-				03051ADA18BAAA820090FF45 /* CCMReorderableArrayController.h */,
-				03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */,
 			);
 			name = "Preferences Window";
 			sourceTree = "<group>";

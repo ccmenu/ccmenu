@@ -2,7 +2,8 @@ CCMenu Release Notes
 
 CCMenu 1.7
 
-* Nicer display of project list in preferences.
+* Nicer display of project list in preferences. 
+* Projects can be ordered manually.
 * Moved about info into its own panel.
 * Added automatic update check to about panel.
 

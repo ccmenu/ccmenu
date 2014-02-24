@@ -51,6 +51,7 @@ NSString *CCMDraggedRowType = @"net.sourceforge.cruisecontrol.CCMenu.DraggedRowT
     indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
     [self setSelectionIndexes:indexSet];
     
+    // This isn't ideal because it ties this otherwise abstract controller to preferences use
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
 
     return YES;

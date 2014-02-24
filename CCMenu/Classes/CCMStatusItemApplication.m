@@ -8,8 +8,7 @@ static NSDictionary *bindings;
 
 + (void)initialize
 {
-	NSString *plist = @"{ x = cut:; c = copy:; v = paste:; a = selectAll:; m = performMiniaturize:; w = performClose:; }";
-	bindings = [[plist propertyList] copy];
+	bindings = [@{@"x": @"cut:", @"c": @"copy:", @"v": @"paste:", @"a": @"selectAll:", @"m": @"performMiniaturize:", @"w": @"performClose:"} retain];
 }
 
 - (void)sendEvent:(NSEvent *)event
