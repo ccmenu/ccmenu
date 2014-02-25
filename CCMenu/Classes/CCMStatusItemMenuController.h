@@ -6,9 +6,10 @@
 
 @interface CCMStatusItemMenuController : NSObject 
 {
-    IBOutlet CCMServerMonitor   *serverMonitor;
-	IBOutlet CCMImageFactory	*imageFactory;
-	IBOutlet NSMenu				*statusMenu;
+    IBOutlet CCMUserDefaultsManager *defaultsManager;
+    IBOutlet CCMServerMonitor       *serverMonitor;
+	IBOutlet CCMImageFactory        *imageFactory;
+	IBOutlet NSMenu                 *statusMenu;
 
 	NSStatusItem	*statusItem;
     NSTimer         *timer;

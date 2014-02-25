@@ -73,6 +73,7 @@
         </customObject>
         <customObject id="268" userLabel="CCMStatusItemMenuController" customClass="CCMStatusItemMenuController">
             <connections>
+                <outlet property="defaultsManager" destination="261" id="Bqp-OP-X44"/>
                 <outlet property="imageFactory" destination="249" id="269"/>
                 <outlet property="serverMonitor" destination="264" id="280"/>
                 <outlet property="statusMenu" destination="208" id="270"/>

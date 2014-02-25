@@ -18,13 +18,16 @@
 	IBOutlet NSArrayController		*allProjectsViewController;
     IBOutlet CCMProjectSheetController *addProjectsController;
 
+    IBOutlet NSView					*projectsView;
+
+    IBOutlet NSView					*menuView;
+
     IBOutlet NSView					*notificationPrefsView;
 	IBOutlet NSArrayController		*soundNamesViewController;
 
 	IBOutlet NSView					*advancedPrefsView;
     
-    IBOutlet NSView					*projectsView;
- }
+}
 
 - (IBAction)showWindow:(id)sender;
 - (IBAction)switchPreferencesPane:(id)sender;

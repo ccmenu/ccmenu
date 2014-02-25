@@ -24,6 +24,7 @@
 		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
 		032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */; };
+		0336510718BD4162000291C8 /* pref-menu.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0336510618BD4162000291C8 /* pref-menu.tiff */; };
 		0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */; };
 		0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5A134F9EE600D2F269 /* btn-force-build.png */; };
 		0349BC6B134F9EE700D2F269 /* icon-building-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5C134F9EE600D2F269 /* icon-building-failed.png */; };
@@ -193,6 +194,7 @@
 		032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMRelativeDateTransformer.m; sourceTree = "<group>"; };
 		032E6ECD140416C900DBA2E0 /* CCMTimeIntervalTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMTimeIntervalTransformer.h; sourceTree = "<group>"; };
 		032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeIntervalTransformer.m; sourceTree = "<group>"; };
+		0336510618BD4162000291C8 /* pref-menu.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "pref-menu.tiff"; sourceTree = "<group>"; };
 		0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FactoryDefaults.plist; sourceTree = "<group>"; };
 		0349BC5A134F9EE600D2F269 /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-force-build.png"; sourceTree = "<group>"; };
 		0349BC5C134F9EE600D2F269 /* icon-building-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-building-failed.png"; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				0349BC64134F9EE600D2F269 /* Placeholder.tiff */,
 				0349BC65134F9EE600D2F269 /* plus.png */,
 				0349BC66134F9EE600D2F269 /* pref-advanced.tiff */,
+				0336510618BD4162000291C8 /* pref-menu.tiff */,
 				0349BC67134F9EE600D2F269 /* pref-notifications.tiff */,
 				0349BC68134F9EE600D2F269 /* pref-projects.png */,
 			);
@@ -816,6 +819,7 @@
 				0349BC71134F9EE700D2F269 /* icon-success.png in Resources */,
 				0349BC72134F9EE700D2F269 /* minus.png in Resources */,
 				0349BC73134F9EE700D2F269 /* Placeholder.tiff in Resources */,
+				0336510718BD4162000291C8 /* pref-menu.tiff in Resources */,
 				0349BC74134F9EE700D2F269 /* plus.png in Resources */,
 				0349BC75134F9EE700D2F269 /* pref-advanced.tiff in Resources */,
 				0349BC76134F9EE700D2F269 /* pref-notifications.tiff in Resources */,
