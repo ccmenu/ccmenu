@@ -24,6 +24,12 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 	return interval;
 }
 
+- (BOOL)shouldShowTimerInMenu
+{
+    return [userDefaults boolForKey:@"ShowTimerInMenu"];
+}
+
+
 - (NSDictionary *)createEntryWithProject:(NSString *)projectName andURL:(NSString *)serverUrl
 {
 	return [NSDictionary dictionaryWithObjectsAndKeys: projectName, CCMDefaultsProjectEntryNameKey, 

@@ -8,6 +8,7 @@
 }
 
 - (NSInteger)pollInterval;
+- (BOOL)shouldShowTimerInMenu;
 
 - (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;

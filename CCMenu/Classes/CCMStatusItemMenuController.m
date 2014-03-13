@@ -105,10 +105,13 @@
     {
 		[item setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
-        NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
-		if(estimatedComplete != nil)
+        if([defaultsManager shouldShowTimerInMenu])
         {
-            text = [[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
+            NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
+            if(estimatedComplete != nil)
+            {
+                text = [[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
+            }
         }
         [item setFormattedTitle:text];
     }

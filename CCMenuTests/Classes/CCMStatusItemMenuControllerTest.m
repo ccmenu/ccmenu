@@ -180,8 +180,28 @@
 	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
 }
 
+- (void)testDoesNotDisplayBuildingTimerWhenDefaultIsOff
+{
+    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    [[[defaultsMock stub] andReturnValue:@NO] shouldShowTimerInMenu];
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+    
+    CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
+    [p1 setBuildDuration:[NSNumber numberWithInt:90]];
+    [p1 setBuildStartTime:[NSCalendarDate date]];
+    [[[serverMonitorMock stub] andReturn:@[p1]] projects];
+    
+	[controller displayProjects:nil];
+	
+	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+}
+
 - (void)testDisplaysShortestTimingForBuildingProjectsWithEstimatedCompleteTime
 {
+    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    [[[defaultsMock stub] andReturnValue:@YES] shouldShowTimerInMenu];
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+    
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p2 setBuildDuration:[NSNumber numberWithInt:90]];
@@ -200,6 +220,10 @@
 
 - (void)testDisplaysTimingForFixingEvenIfItsLongerThanForBuilding
 {
+    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    [[[defaultsMock stub] andReturnValue:@YES] shouldShowTimerInMenu];
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p1 setBuildDuration:[NSNumber numberWithInt:30]];
     CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
