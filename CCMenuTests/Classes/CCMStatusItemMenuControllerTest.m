@@ -52,7 +52,7 @@
 	STAssertEquals(2ul, [items count], @"Menu should have correct number of items.");
 }
 
-- (void)testAddsMenuItemInAlphabeticalOrder
+- (void)testAddsMenuItemsInAlphabeticalOrder
 {
     id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderAlphabetic}))] projectOrder];
@@ -67,6 +67,46 @@
 	NSArray *items = [[[controller statusItem] menu] itemArray];
 	STAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have ordered projects alphabetically.");
 	STAssertEqualObjects(@"xyz", [[items objectAtIndex:1] title], @"Should have ordered projects alphabetically.");
+	STAssertEquals(3ul, [items count], @"Menu should have correct number of items.");
+}
+
+- (void)testSortsMenuItemsByBuildTime
+{
+    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderByBuildTime}))] projectOrder];
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+    
+    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"abc"] autorelease];
+    [p1 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-90]}];
+    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"xyz"] autorelease];
+    [p2 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-10]}];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2]] projects];
+
+    [controller displayProjects:nil];
+    
+	NSArray *items = [[[controller statusItem] menu] itemArray];
+	STAssertEqualObjects(@"xyz", [[items objectAtIndex:0] title], @"Should have ordered projects by build time.");
+	STAssertEqualObjects(@"abc", [[items objectAtIndex:1] title], @"Should have ordered projects by build time.");
+	STAssertEquals(3ul, [items count], @"Menu should have correct number of items.");
+}
+
+- (void)testKeepsMenuItemsInNaturalOrder
+{
+    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+    
+    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"xyz"] autorelease];
+    [p1 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-90]}];
+    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"abc"] autorelease];
+    [p2 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-10]}];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2]] projects];
+
+    [controller displayProjects:nil];
+
+	NSArray *items = [[[controller statusItem] menu] itemArray];
+	STAssertEqualObjects(@"xyz", [[items objectAtIndex:0] title], @"Should have ordered projects as added.");
+	STAssertEqualObjects(@"abc", [[items objectAtIndex:1] title], @"Should have ordered projects as added.");
 	STAssertEquals(3ul, [items count], @"Menu should have correct number of items.");
 }
 

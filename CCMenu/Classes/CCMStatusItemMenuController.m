@@ -120,9 +120,16 @@
 - (void)setupMenu:(NSMenu *)menu forProjects:(NSArray *)projectList
 {	
 	int index = 0;
-    if([defaultsManager projectOrder] == CCMProjectOrderAlphabetic)
+    switch ([defaultsManager projectOrder])
     {
-        projectList = [projectList sortedArrayByComparingAttribute:@"name"];
+        case CCMProjectOrderAlphabetic:
+            projectList = [projectList sortedArrayByComparingAttribute:@"name"];
+            break;
+        case CCMProjectOrderByBuildTime:
+            projectList = [projectList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"status.lastBuildTime" ascending:NO]]];
+            break;
+        default:
+            break;
     }
     
     for(CCMProject *project in projectList)
