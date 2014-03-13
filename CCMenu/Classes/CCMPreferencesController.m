@@ -36,7 +36,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
 	NSString *selectedIdentifier = [[preferencesWindow toolbar] selectedItemIdentifier];
 	NSUInteger index = [[self toolbarDefaultItemIdentifiers:nil] indexOfObject:selectedIdentifier];
-	NSArray *allViews = [NSArray arrayWithObjects:projectsView, menuView, notificationPrefsView, advancedPrefsView, nil];
+	NSArray *allViews = [NSArray arrayWithObjects:projectsView, notificationPrefsView, appearanceView, advancedPrefsView, nil];
 	NSView *prefView = [allViews objectAtIndex:index];
 	NSDictionary *itemDef = [[toolbarDefinition objectForKey:@"itemInfoByIdentifier"] objectForKey:selectedIdentifier];
 	[preferencesWindow setTitle:[itemDef objectForKey:@"label"]]; 

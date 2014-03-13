@@ -20,7 +20,7 @@
 
     IBOutlet NSView					*projectsView;
 
-    IBOutlet NSView					*menuView;
+    IBOutlet NSView					*appearanceView;
 
     IBOutlet NSView					*notificationPrefsView;
 	IBOutlet NSArrayController		*soundNamesViewController;

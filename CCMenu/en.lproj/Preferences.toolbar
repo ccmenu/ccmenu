@@ -3,22 +3,22 @@
 {
     allowedItemIdentifiers = (
         Projects,
-        Menu,
+        Appearance,
         Notifications,
         Advanced
 	);
 
 	selectableItemIdentifiers = (
         Projects,
-        Menu,
+        Appearance,
         Notifications,
         Advanced
     );
 
     defaultItemIdentifiers = (
         Projects,
-        Menu,
         Notifications,
+        Appearance,
         Advanced
 	);
 
@@ -29,16 +29,16 @@
             label = "Projects"; 
         }; 
 
-        Menu = {
-            action = "switchPreferencesPane:"; 
-            imageName = "pref-menu";
-            label = "Menu/Menu Bar"; 
-        }; 
-
         Notifications = {
             action = "switchPreferencesPane:"; 
             imageName = "pref-notifications"; 
             label = "Notifications"; 
+        }; 
+
+        Appearance = {
+            action = "switchPreferencesPane:"; 
+            imageName = "pref-menu";
+            label = "Appearance";
         }; 
 
         Advanced = {
