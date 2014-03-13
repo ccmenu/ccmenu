@@ -175,9 +175,9 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button id="Hhj-t5-ub3">
-                    <rect key="frame" x="18" y="241" width="136" height="18"/>
+                    <rect key="frame" x="18" y="241" width="217" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show build timing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kpw-t8-xiS">
+                    <buttonCell key="cell" type="check" title="Show build timing in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kpw-t8-xiS">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -243,6 +243,18 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button id="lII-Ee-TzR">
+                    <rect key="frame" x="20" y="36" width="143" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="with last build time" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pma-Tm-imj">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="preferencesChanged:" target="-2" id="L1T-op-N0F"/>
+                        <binding destination="381" name="value" keyPath="values.ShowLastBuildTimes" id="9hM-KA-ztt"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <customView id="419" userLabel="Notifications">

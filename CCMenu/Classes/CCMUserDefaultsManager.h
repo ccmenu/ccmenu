@@ -15,6 +15,7 @@ enum {
 
 - (NSInteger)pollInterval;
 - (BOOL)shouldShowTimerInMenu;
+- (BOOL)shouldShowLastBuildTimes;
 - (NSUInteger)projectOrder;
 
 - (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;

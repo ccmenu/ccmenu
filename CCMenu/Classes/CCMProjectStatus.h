@@ -25,7 +25,7 @@
 - (NSString *)activity;
 - (NSString *)lastBuildStatus;
 - (NSString *)lastBuildLabel;
-- (NSString *)lastBuildTime;
+- (NSDate *)lastBuildTime;
 - (NSString *)webUrl;
 
 @end

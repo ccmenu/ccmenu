@@ -29,6 +29,11 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return [userDefaults boolForKey:@"ShowTimerInMenu"];
 }
 
+- (BOOL)shouldShowLastBuildTimes
+{
+    return [userDefaults boolForKey:@"ShowLastBuildTimes"];
+}
+
 - (NSUInteger)projectOrder
 {
     return [userDefaults integerForKey:@"ProjectOrder"];

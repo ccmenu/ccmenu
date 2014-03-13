@@ -1,6 +1,7 @@
 #import <OCMock/OCMock.h>
 
 #import "NSArray+CCMAdditions.h"
+#import "NSCalendarDate+CCMAdditions.h"
 #import "CCMStatusItemMenuControllerTest.h"
 
 
@@ -54,7 +55,7 @@
 
 - (void)testAddsMenuItemsInAlphabeticalOrder
 {
-    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    id defaultsMock = [OCMockObject niceMockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderAlphabetic}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
@@ -72,7 +73,7 @@
 
 - (void)testSortsMenuItemsByBuildTime
 {
-    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    id defaultsMock = [OCMockObject niceMockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderByBuildTime}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
     
@@ -92,7 +93,7 @@
 
 - (void)testKeepsMenuItemsInNaturalOrder
 {
-    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    id defaultsMock = [OCMockObject niceMockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
     
@@ -147,6 +148,29 @@
 	STAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have kept correct project.");
     STAssertTrue([[items objectAtIndex:0] representedObject] != [[items objectAtIndex:1] representedObject], @"Should have different projects in menu.");
 	STAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
+}
+
+-(void)testDisplaysLastBuildTimes
+{
+    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
+    [[[defaultsMock stub] andReturnValue:@YES] shouldShowLastBuildTimes];
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+    
+    id dateMock = [OCMockObject mockForClass:[NSCalendarDate class]];
+    NSTimeInterval interval = [[NSCalendarDate date] timeIntervalSinceReferenceDate] - 61;
+    [[[dateMock stub] andReturnValue:OCMOCK_VALUE(interval)] timeIntervalSinceReferenceDate];
+    
+    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"foo"] autorelease];
+    [p1 updateWithInfo:@{@"lastBuildTime": dateMock}];
+    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"bar"] autorelease];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2]] projects];
+    
+    [controller displayProjects:nil];
+    
+	NSArray *items = [[[controller statusItem] menu] itemArray];
+	STAssertEqualObjects(@"foo \u2014 a minute ago", [[items objectAtIndex:0] title], @"Should have included last build time where known.");
+	STAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have shown just name when last build time is not known.");
 }
 
 
@@ -225,9 +249,8 @@
 
 - (void)testDoesNotDisplayBuildingTimerWhenDefaultIsOff
 {
-    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    id defaultsMock = [OCMockObject niceMockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:@NO] shouldShowTimerInMenu];
-    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
     
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
@@ -242,9 +265,8 @@
 
 - (void)testDisplaysShortestTimingForBuildingProjectsWithEstimatedCompleteTime
 {
-    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    id defaultsMock = [OCMockObject niceMockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:@YES] shouldShowTimerInMenu];
-    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
     
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
@@ -265,9 +287,8 @@
 
 - (void)testDisplaysTimingForFixingEvenIfItsLongerThanForBuilding
 {
-    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    id defaultsMock = [OCMockObject niceMockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:@YES] shouldShowTimerInMenu];
-    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
