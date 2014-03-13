@@ -120,6 +120,11 @@
 - (void)setupMenu:(NSMenu *)menu forProjects:(NSArray *)projectList
 {	
 	int index = 0;
+    if([defaultsManager projectOrder] == CCMProjectOrderAlphabetic)
+    {
+        projectList = [projectList sortedArrayByComparingAttribute:@"name"];
+    }
+    
     for(CCMProject *project in projectList)
     {
         NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];

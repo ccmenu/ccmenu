@@ -54,8 +54,11 @@
 
 - (void)testAddsMenuItemInAlphabeticalOrder
 {
-    NSMutableArray *projects = [NSMutableArray arrayWithObject:   
-                         [[[CCMProject alloc] initWithName:@"xyz"] autorelease]];
+    id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderAlphabetic}))] projectOrder];
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+
+    NSMutableArray *projects = [NSMutableArray arrayWithObject:[[[CCMProject alloc] initWithName:@"xyz"] autorelease]];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 	[controller displayProjects:nil];
     [projects addObject:[[[CCMProject alloc] initWithName:@"abc"] autorelease]];
@@ -184,6 +187,7 @@
 {
     id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:@NO] shouldShowTimerInMenu];
+    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
     
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
@@ -200,6 +204,7 @@
 {
     id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:@YES] shouldShowTimerInMenu];
+    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
     
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
@@ -222,6 +227,7 @@
 {
     id defaultsMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
     [[[defaultsMock stub] andReturnValue:@YES] shouldShowTimerInMenu];
+    [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderNatural}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];

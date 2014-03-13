@@ -1,6 +1,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+enum {
+    CCMProjectOrderNatural = 0,
+    CCMProjectOrderAlphabetic = 1,
+    CCMProjectOrderByBuildTime = 2
+};
+
 
 @interface CCMUserDefaultsManager : NSObject 
 {
@@ -9,6 +15,7 @@
 
 - (NSInteger)pollInterval;
 - (BOOL)shouldShowTimerInMenu;
+- (NSUInteger)projectOrder;
 
 - (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;

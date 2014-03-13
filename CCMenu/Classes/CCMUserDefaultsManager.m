@@ -29,6 +29,11 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return [userDefaults boolForKey:@"ShowTimerInMenu"];
 }
 
+- (NSUInteger)projectOrder
+{
+    return [userDefaults integerForKey:@"ProjectOrder"];
+}
+
 
 - (NSDictionary *)createEntryWithProject:(NSString *)projectName andURL:(NSString *)serverUrl
 {
