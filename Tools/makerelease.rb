@@ -8,7 +8,7 @@ include REXML
 class ReleaseManager
 
     def initialize
-        @proj = Project.new("CCMenu", "1.7d1", "https://svn.code.sf.net/p/ccmenu/code/trunk")
+        @proj = Project.new("CCMenu", "1.7", "https://svn.code.sf.net/p/ccmenu/code/trunk")
         @env = Environment.new()
         @worker = CompositeWorker.new([Logger.new(), Executer.new()])
     end
@@ -42,6 +42,9 @@ class ReleaseManager
     def buildModules
         @worker.chdir("#{@env.sourcedir}/#{@proj.basename}")
         @worker.run("xcodebuild -project #{@proj.name}.xcodeproj -target #{@proj.name} -configuration Release DSTROOT=#{@env.productdir} INSTALL_PATH=\"/\" install")
+        archive_path = "#{@proj.basename}.xcarchive"
+        @worker.run("xcodebuild -project CCMenu.xcodeproj -scheme CCMenu -configuration Release -archivePath #{archive_path} archive")
+        @worker.run("xcodebuild -exportArchive -archivePath #{archive_path} -exportPath #{@env.productdir} -exportFormat APP -exportWithOriginalSigningIdentity")
     end
 
     def createBinaryPackage
