@@ -41,10 +41,9 @@ class ReleaseManager
     
     def buildModules
         @worker.chdir("#{@env.sourcedir}/#{@proj.basename}")
-        @worker.run("xcodebuild -project #{@proj.name}.xcodeproj -target #{@proj.name} -configuration Release DSTROOT=#{@env.productdir} INSTALL_PATH=\"/\" install")
-        archive_path = "#{@proj.basename}.xcarchive"
-        @worker.run("xcodebuild -project CCMenu.xcodeproj -scheme CCMenu -configuration Release -archivePath #{archive_path} archive")
-        @worker.run("xcodebuild -exportArchive -archivePath #{archive_path} -exportPath #{@env.productdir} -exportFormat APP -exportWithOriginalSigningIdentity")
+        archive_path = "#{@env.packagedir}/#{@proj.basename}.xcarchive"
+        @worker.run("xcodebuild -project #{@proj.name}.xcodeproj -scheme #{@proj.name} -configuration Release -archivePath #{archive_path} archive")
+        @worker.run("xcodebuild -exportArchive -archivePath #{archive_path} -exportPath #{@env.productdir}/#{@proj.name}.app -exportFormat APP -exportWithOriginalSigningIdentity")
     end
 
     def createBinaryPackage
