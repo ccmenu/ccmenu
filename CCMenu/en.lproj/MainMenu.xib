@@ -38,12 +38,6 @@
                         <action selector="showWindow:" target="RRF-xr-xGr" id="X8I-5u-tvh"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Check for Updates..." id="mD9-DZ-hxx">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="checkForUpdates:" target="259" id="lR8-l3-YL2"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="Preferences..." id="253">
                     <connections>
                         <action selector="showWindow:" target="256" id="257"/>
@@ -63,10 +57,8 @@
         <customObject id="256" userLabel="CCMPreferencesController" customClass="CCMPreferencesController">
             <connections>
                 <outlet property="defaultsManager" destination="261" id="262"/>
-                <outlet property="updater" destination="259" id="260"/>
             </connections>
         </customObject>
-        <customObject id="259" userLabel="SUUpdater" customClass="SUUpdater"/>
         <customObject id="261" userLabel="CCMUserDefaultsManager" customClass="CCMUserDefaultsManager"/>
         <customObject id="264" userLabel="CCMServerMonitor" customClass="CCMServerMonitor">
             <connections>

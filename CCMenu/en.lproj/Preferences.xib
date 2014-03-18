@@ -258,11 +258,11 @@
             </subviews>
         </customView>
         <customView id="419" userLabel="Notifications">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="344"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="326"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="420">
-                    <rect key="frame" x="17" y="38" width="316" height="56"/>
+                    <rect key="frame" x="17" y="20" width="316" height="56"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="575">
                         <font key="font" metaFont="smallSystem"/>
@@ -273,7 +273,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="691">
-                    <rect key="frame" x="17" y="257" width="316" height="42"/>
+                    <rect key="frame" x="17" y="239" width="316" height="42"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="692">
                         <font key="font" metaFont="smallSystem"/>
@@ -283,7 +283,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="641">
-                    <rect key="frame" x="17" y="102" width="185" height="17"/>
+                    <rect key="frame" x="17" y="84" width="185" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Notification Center" id="642">
                         <font key="font" metaFont="system"/>
@@ -292,7 +292,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="643">
-                    <rect key="frame" x="17" y="307" width="185" height="17"/>
+                    <rect key="frame" x="17" y="289" width="185" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Sounds" id="644">
                         <font key="font" metaFont="system"/>
@@ -301,7 +301,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="645">
-                    <rect key="frame" x="17" y="231" width="113" height="17"/>
+                    <rect key="frame" x="17" y="213" width="113" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build successful:" id="646">
                         <font key="font" metaFont="system"/>
@@ -310,7 +310,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="647">
-                    <rect key="frame" x="17" y="206" width="92" height="17"/>
+                    <rect key="frame" x="17" y="188" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build broken:" id="648">
                         <font key="font" metaFont="system"/>
@@ -319,7 +319,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="661">
-                    <rect key="frame" x="17" y="181" width="124" height="17"/>
+                    <rect key="frame" x="17" y="163" width="124" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build still broken:" id="662">
                         <font key="font" metaFont="system"/>
@@ -328,7 +328,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="663">
-                    <rect key="frame" x="17" y="156" width="124" height="17"/>
+                    <rect key="frame" x="17" y="138" width="124" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build fixed:" id="664">
                         <font key="font" metaFont="system"/>
@@ -337,7 +337,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="655">
-                    <rect key="frame" x="180" y="225" width="153" height="26"/>
+                    <rect key="frame" x="180" y="207" width="153" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="658" id="656">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -359,7 +359,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="694">
-                    <rect key="frame" x="180" y="200" width="153" height="26"/>
+                    <rect key="frame" x="180" y="182" width="153" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="698" id="695">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -381,7 +381,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="699">
-                    <rect key="frame" x="180" y="175" width="153" height="26"/>
+                    <rect key="frame" x="180" y="157" width="153" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="702" id="700">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -403,7 +403,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="704">
-                    <rect key="frame" x="180" y="150" width="153" height="26"/>
+                    <rect key="frame" x="180" y="132" width="153" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="707" id="705">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -425,17 +425,17 @@
                     </connections>
                 </popUpButton>
                 <imageView id="665">
-                    <rect key="frame" x="133" y="232" width="15" height="15"/>
+                    <rect key="frame" x="133" y="214" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-success-building" id="666"/>
                 </imageView>
                 <imageView id="667">
-                    <rect key="frame" x="159" y="232" width="15" height="15"/>
+                    <rect key="frame" x="159" y="214" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-success" id="668"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="671">
-                    <rect key="frame" x="144" y="230" width="20" height="16"/>
+                    <rect key="frame" x="144" y="212" width="20" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="❯" id="672">
                         <font key="font" metaFont="smallSystem"/>
@@ -444,17 +444,17 @@
                     </textFieldCell>
                 </textField>
                 <imageView id="679">
-                    <rect key="frame" x="133" y="181" width="15" height="15"/>
+                    <rect key="frame" x="133" y="163" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-failure-building" id="684"/>
                 </imageView>
                 <imageView id="680">
-                    <rect key="frame" x="159" y="181" width="15" height="15"/>
+                    <rect key="frame" x="159" y="163" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-failure" id="683"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="681">
-                    <rect key="frame" x="144" y="180" width="20" height="16"/>
+                    <rect key="frame" x="144" y="162" width="20" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="❯" id="682">
                         <font key="font" metaFont="smallSystem"/>
@@ -463,17 +463,17 @@
                     </textFieldCell>
                 </textField>
                 <imageView id="685">
-                    <rect key="frame" x="133" y="156" width="15" height="15"/>
+                    <rect key="frame" x="133" y="138" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-failure-building" id="690"/>
                 </imageView>
                 <imageView id="686">
-                    <rect key="frame" x="159" y="156" width="15" height="15"/>
+                    <rect key="frame" x="159" y="138" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-success" id="689"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="687">
-                    <rect key="frame" x="144" y="155" width="20" height="16"/>
+                    <rect key="frame" x="144" y="137" width="20" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="❯" id="688">
                         <font key="font" metaFont="smallSystem"/>
@@ -482,17 +482,17 @@
                     </textFieldCell>
                 </textField>
                 <imageView id="673">
-                    <rect key="frame" x="133" y="207" width="15" height="15"/>
+                    <rect key="frame" x="133" y="189" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-success-building" id="678"/>
                 </imageView>
                 <imageView id="674">
-                    <rect key="frame" x="159" y="207" width="15" height="15"/>
+                    <rect key="frame" x="159" y="189" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-failure" id="677"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="675">
-                    <rect key="frame" x="144" y="206" width="20" height="16"/>
+                    <rect key="frame" x="144" y="188" width="20" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="❯" id="676">
                         <font key="font" metaFont="smallSystem"/>
@@ -500,19 +500,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="799">
-                    <rect key="frame" x="67" y="13" width="200" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Open System Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="800">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="openNotificationPreferences:" target="-2" id="801"/>
-                    </connections>
-                </button>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="802">
-                    <rect key="frame" x="12" y="130" width="326" height="5"/>
+                    <rect key="frame" x="12" y="112" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -521,11 +510,11 @@
             </subviews>
         </customView>
         <customView id="421" userLabel="Advanced">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="240"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="134"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box title="Title" boxType="oldStyle" borderType="none" titlePosition="noTitle" id="422">
-                    <rect key="frame" x="0.0" y="-54" width="350" height="294"/>
+                    <rect key="frame" x="0.0" y="-160" width="350" height="294"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="294"/>
@@ -540,44 +529,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" id="451">
-                                <rect key="frame" x="210" y="153" width="116" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Never" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="453" id="579">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" title="OtherViews" id="452">
-                                        <items>
-                                            <menuItem title="Never" state="on" id="453"/>
-                                            <menuItem title="Daily" tag="86400" id="454"/>
-                                            <menuItem title="Weekly" tag="604800" id="455"/>
-                                            <menuItem title="Monthly" tag="18144000" id="456"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="updateIntervalChanged:" target="-2" id="461"/>
-                                    <binding destination="381" name="selectedTag" keyPath="values.SUScheduledCheckInterval" id="458"/>
-                                </connections>
-                            </popUpButton>
-                            <button verticalHuggingPriority="750" id="459">
-                                <rect key="frame" x="107" y="73" width="136" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Check now" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="580">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="checkForUpdateNow:" target="-2" id="460"/>
-                                </connections>
-                            </button>
-                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="491">
-                                <rect key="frame" x="12" y="189" width="326" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <font key="titleFont" metaFont="system"/>
-                            </box>
                             <popUpButton verticalHuggingPriority="750" id="424">
                                 <rect key="frame" x="210" y="254" width="116" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -605,26 +556,6 @@
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="581">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">How often CCMenu retrieves status information from the servers. If many people monitor a server, using small intervals can affect server performance.</string>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" id="495">
-                                <rect key="frame" x="21" y="109" width="305" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="582">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <string key="title">How often CCMenu checks whether a new version of itself is available. No personal or system information 
-is transmitted.</string>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" id="446">
-                                <rect key="frame" x="21" y="159" width="185" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Check for software updates:" id="578">
-                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
