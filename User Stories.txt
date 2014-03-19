@@ -4,7 +4,7 @@ High-priority Stories
 
 #26 Exclude projects from aggregation to status bar item: As a developer I want to exclude projects that are visible in the menu from the aggregation to the status bar item so that the status bar item provides information about the project I care about most but I can still keep an eye on other projects in the menu.          
 
-#31 Show CCMenu icon in app switcher and dock if the user wants it. [Need to figure out how to do this programmatically.]
+#31 Show CCMenu icon in app switcher and dock if the user wants it. [see: http://stackoverflow.com/questions/5382932/how-to-create-a-helper-application-lsuielement-that-also-has-a-removable-doc]
 
 #32 Turn off notifications by type: As a developer I want to select which status transitions are reported as notifications so that I don't receive notifications I do not care about, e.g. I might only want to know when a build is broken or fixed.
 
