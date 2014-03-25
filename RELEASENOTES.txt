@@ -1,5 +1,11 @@
 CCMenu Release Notes
 
+CCMenu 1.7.1
+
+* Added a reminder that future versions of 
+  CCMenu will only be available on the App Store.
+  
+
 CCMenu 1.7
 
 * Nicer display of project list in preferences. 
