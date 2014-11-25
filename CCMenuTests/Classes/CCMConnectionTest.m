@@ -56,13 +56,16 @@
     [[[keychainHelperMock stub] andReturn:@"testpassword"] passwordForURL:[OCMArg any] error:[OCMArg anyPointer]];
 
     id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
-    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){0})] previousFailureCount];
+    id protectionSpaceMock = [OCMockObject mockForClass:[NSURLProtectionSpace class]];
     id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
-    [[[challengeMock stub] andReturn:senderMock] sender];
+    [[[protectionSpaceMock stub] andReturn:NSURLAuthenticationMethodHTTPBasic] authenticationMethod];
     NSURLCredential *credential = [NSURLCredential credentialWithUser:@"testuser" password:@"testpassword" persistence:NSURLCredentialPersistenceForSession];
+    [[[challengeMock stub] andReturn:protectionSpaceMock] protectionSpace];
+    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){0})] previousFailureCount];
+    [[[challengeMock stub] andReturn:senderMock] sender];
     [[senderMock expect] useCredential:credential forAuthenticationChallenge:challengeMock];
 
-    [connection connection:dummyNSURLConnection didReceiveAuthenticationChallenge:challengeMock];
+    [connection connection:dummyNSURLConnection willSendRequestForAuthenticationChallenge:challengeMock];
 
     [senderMock verify];
 }
@@ -73,12 +76,15 @@
     [self setUpDummyNSURLConnection];
 
     id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
-    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){0})] previousFailureCount];
+    id protectionSpaceMock = [OCMockObject mockForClass:[NSURLProtectionSpace class]];
     id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
+    [[[protectionSpaceMock stub] andReturn:NSURLAuthenticationMethodHTTPBasic] authenticationMethod];
+    [[[challengeMock stub] andReturn:protectionSpaceMock] protectionSpace];
+    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){0})] previousFailureCount];
     [[[challengeMock stub] andReturn:senderMock] sender];
     [[senderMock expect] cancelAuthenticationChallenge:challengeMock];
 
-    [connection connection:dummyNSURLConnection didReceiveAuthenticationChallenge:challengeMock];
+    [connection connection:dummyNSURLConnection willSendRequestForAuthenticationChallenge:challengeMock];
 
     [senderMock verify];
 }
@@ -90,13 +96,67 @@
     [connection setCredential:[NSURLCredential credentialWithUser:@"testuser" password:@"testpassword" persistence:NSURLCredentialPersistenceForSession]];
 
     id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
-    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){1})] previousFailureCount];
+    id protectionSpaceMock = [OCMockObject mockForClass:[NSURLProtectionSpace class]];
     id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
+    [[[protectionSpaceMock stub] andReturn:NSURLAuthenticationMethodHTTPBasic] authenticationMethod];
+    [[[challengeMock stub] andReturn:protectionSpaceMock] protectionSpace];
+    [[[challengeMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){1})] previousFailureCount];
     [[[challengeMock stub] andReturn:senderMock] sender];
     [[senderMock expect] cancelAuthenticationChallenge:challengeMock];
 
-    [connection connection:dummyNSURLConnection didReceiveAuthenticationChallenge:challengeMock];
+    [connection connection:dummyNSURLConnection willSendRequestForAuthenticationChallenge:challengeMock];
 
     [senderMock verify];
 }
+
+
+- (void)testSetsCredentialInResponseToServerTrustChallengeWhenCertIsTrusted
+{
+    CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
+    [self setUpDummyNSURLConnection];
+
+    const SecTrustRef dummyServerTrust = (void *)0x1234567;
+
+    id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
+    id protectionSpaceMock = [OCMockObject mockForClass:[NSURLProtectionSpace class]];
+    id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
+    [[[protectionSpaceMock stub] andReturn:NSURLAuthenticationMethodServerTrust] authenticationMethod];
+    [[[protectionSpaceMock stub] andReturnValue:OCMOCK_VALUE(dummyServerTrust)] serverTrust];
+    [[[challengeMock stub] andReturn:protectionSpaceMock] protectionSpace];
+    [[[challengeMock stub] andReturn:senderMock] sender];
+    [[senderMock expect] useCredential:[OCMArg isNotNil] forAuthenticationChallenge:challengeMock];
+
+    id partialMock = [OCMockObject partialMockForObject:connection];
+    [[[partialMock stub] andReturnValue:OCMOCK_VALUE((BOOL){YES})] shouldContinueWithServerTrust:dummyServerTrust];
+
+    [connection connection:dummyNSURLConnection willSendRequestForAuthenticationChallenge:challengeMock];
+
+    [senderMock verify];
+}
+
+
+- (void)testRejectsServerTrustChallengeWhenCertNotTrusted
+{
+    CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
+    [self setUpDummyNSURLConnection];
+
+    const SecTrustRef dummyServerTrust = (void *)0x1234567;
+
+    id challengeMock = [OCMockObject mockForClass:[NSURLAuthenticationChallenge class]];
+    id protectionSpaceMock = [OCMockObject mockForClass:[NSURLProtectionSpace class]];
+    id senderMock = [OCMockObject mockForProtocol:@protocol(NSURLAuthenticationChallengeSender)];
+    [[[protectionSpaceMock stub] andReturn:NSURLAuthenticationMethodServerTrust] authenticationMethod];
+    [[[protectionSpaceMock stub] andReturnValue:OCMOCK_VALUE(dummyServerTrust)] serverTrust];
+    [[[challengeMock stub] andReturn:protectionSpaceMock] protectionSpace];
+    [[[challengeMock stub] andReturn:senderMock] sender];
+    [[senderMock expect] rejectProtectionSpaceAndContinueWithChallenge:challengeMock];
+
+    id partialMock = [OCMockObject partialMockForObject:connection];
+    [[[partialMock stub] andReturnValue:OCMOCK_VALUE((BOOL){NO})] shouldContinueWithServerTrust:dummyServerTrust];
+
+    [connection connection:dummyNSURLConnection willSendRequestForAuthenticationChallenge:challengeMock];
+
+    [senderMock verify];
+}
+
 @end

@@ -2,6 +2,7 @@ CCMenu Release Notes
 
 CCMenu 1.7.1
 
+* Prompt user when server certificate is not trusted.
 * Added a reminder that future versions of 
   CCMenu will only be available on the App Store.
   

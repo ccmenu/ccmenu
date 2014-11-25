@@ -21,6 +21,7 @@
 		03051ADD18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		032186811A24FA9E00B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
+		032186821A25360400B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
 		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
@@ -339,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				032186821A25360400B16510 /* SecurityInterface.framework in Frameworks */,
 				030050C117660C4C007C3DEE /* Security.framework in Frameworks */,
 				034BF7DC1757CDAD0025F9A0 /* SenTestingKit.framework in Frameworks */,
 				034BF79C1757C9890025F9A0 /* Cocoa.framework in Frameworks */,

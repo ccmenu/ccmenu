@@ -84,9 +84,10 @@
     NSString *method = [[challenge protectionSpace] authenticationMethod];
     if([method isEqualToString:NSURLAuthenticationMethodServerTrust])
     {
-        if([self shouldContinueWithServerTrust:[[challenge protectionSpace] serverTrust]])
+        const SecTrustRef serverTrust = [[challenge protectionSpace] serverTrust];
+        if([self shouldContinueWithServerTrust:serverTrust])
         {
-            NSURLCredential *serverTrustCredential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+            NSURLCredential *serverTrustCredential = [NSURLCredential credentialForTrust:serverTrust];
             [[challenge sender] useCredential:serverTrustCredential forAuthenticationChallenge:challenge];
         }
         else

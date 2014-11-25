@@ -24,6 +24,8 @@
 - (void)setUpForNewRequest;
 - (void)cleanUpAfterRequest;
 
+- (BOOL)shouldContinueWithServerTrust:(SecTrustRef)secTrust;
+
 - (NSString *)errorStringForError:(NSError *)error;
 - (NSString *)errorStringForResponse:(NSHTTPURLResponse *)response;
 - (NSString *)errorStringForParseError:(NSError *)error;
