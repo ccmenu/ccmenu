@@ -79,43 +79,12 @@
 }
 
 
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-    NSString *m = [protectionSpace authenticationMethod];
-    return ([m isEqualToString:NSURLAuthenticationMethodHTTPBasic]
-            || [m isEqualToString:NSURLAuthenticationMethodHTTPDigest]
-            || [m isEqualToString:NSURLAuthenticationMethodServerTrust]);
-}
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    if([[[challenge protectionSpace] authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust])
+    NSString *method = [[challenge protectionSpace] authenticationMethod];
+    if([method isEqualToString:NSURLAuthenticationMethodServerTrust])
     {
-        SecTrustResultType result;
-        SecTrustEvaluate([[challenge protectionSpace] serverTrust], &result);
-        BOOL shouldGoAhead;
-        switch(result)
-        {
-            case kSecTrustResultUnspecified:
-            case kSecTrustResultProceed:
-                shouldGoAhead = YES;
-                break;
-            case kSecTrustResultConfirm:
-            case kSecTrustResultRecoverableTrustFailure:
-            {
-                SFCertificateTrustPanel *panel = [SFCertificateTrustPanel sharedCertificateTrustPanel];
-                NSString *msg = [NSString stringWithFormat:@"CCMenu can't verify the identity of the server %@.", [feedURL host]];
-                [panel setInformativeText:@"The certificate for this server is invalid. Do you want to continue anyway?"];
-                [panel setAlternateButtonTitle:@"Cancel"];
-                shouldGoAhead = ([panel runModalForTrust:[[challenge protectionSpace] serverTrust] message:msg] == NSOKButton);
-                break;
-            }
-            default:
-                shouldGoAhead = NO;
-                break;
-        }
-        if(shouldGoAhead)
+        if([self shouldContinueWithServerTrust:[[challenge protectionSpace] serverTrust]])
         {
             NSURLCredential *serverTrustCredential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
             [[challenge sender] useCredential:serverTrustCredential forAuthenticationChallenge:challenge];
@@ -125,14 +94,44 @@
             [[challenge sender] rejectProtectionSpaceAndContinueWithChallenge:challenge];
         }
     }
-    else // basic and digest are the only others we accept
+    else if([method isEqualToString:NSURLAuthenticationMethodHTTPBasic] || [method isEqualToString:NSURLAuthenticationMethodHTTPDigest])
     {
         if(([challenge previousFailureCount] == 0) && ((credential != nil) || [self setUpCredential]))
             [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
         else
             [[challenge sender] cancelAuthenticationChallenge:challenge];
     }
+    else
+    {
+        [[challenge sender] rejectProtectionSpaceAndContinueWithChallenge:challenge];
+    }
 }
+
+- (BOOL)shouldContinueWithServerTrust:(SecTrustRef)secTrust
+{
+    SecTrustResultType result;
+    SecTrustEvaluate(secTrust, &result);
+    switch(result)
+    {
+        case kSecTrustResultUnspecified:
+        case kSecTrustResultProceed:
+            return YES;
+
+        case kSecTrustResultConfirm:
+        case kSecTrustResultRecoverableTrustFailure:
+        {
+            SFCertificateTrustPanel *panel = [SFCertificateTrustPanel sharedCertificateTrustPanel];
+            NSString *msg = [NSString stringWithFormat:@"CCMenu can't verify the identity of the server %@.", [feedURL host]];
+            [panel setInformativeText:@"The certificate for this server is invalid. Do you want to continue anyway?"];
+            [panel setAlternateButtonTitle:@"Cancel"];
+            return ([panel runModalForTrust:secTrust message:msg] == NSOKButton);
+        }
+
+        default:
+            return NO;
+    }
+}
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
