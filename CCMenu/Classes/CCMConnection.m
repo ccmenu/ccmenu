@@ -2,7 +2,8 @@
 #import "CCMConnection.h"
 #import "CCMServerStatusReader.h"
 #import "CCMKeychainHelper.h"
-
+#import <SecurityInterface/SFCertificateTrustPanel.h>
+#import <SecurityInterface/SFCertificateView.h>
 
 @implementation CCMConnection
 
@@ -81,15 +82,56 @@
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
     NSString *m = [protectionSpace authenticationMethod];
-    return ([m isEqualToString:NSURLAuthenticationMethodHTTPBasic] || [m isEqualToString:NSURLAuthenticationMethodHTTPDigest]);
+    return ([m isEqualToString:NSURLAuthenticationMethodHTTPBasic]
+            || [m isEqualToString:NSURLAuthenticationMethodHTTPDigest]
+            || [m isEqualToString:NSURLAuthenticationMethodServerTrust]);
 }
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-    if(([challenge previousFailureCount] == 0) && ((credential != nil) || [self setUpCredential]))
-        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-    else
-        [[challenge sender] cancelAuthenticationChallenge:challenge];
+    if([[[challenge protectionSpace] authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust])
+    {
+        SecTrustResultType result;
+        SecTrustEvaluate([[challenge protectionSpace] serverTrust], &result);
+        BOOL shouldGoAhead;
+        switch(result)
+        {
+            case kSecTrustResultUnspecified:
+            case kSecTrustResultProceed:
+                shouldGoAhead = YES;
+                break;
+            case kSecTrustResultConfirm:
+            case kSecTrustResultRecoverableTrustFailure:
+            {
+                SFCertificateTrustPanel *panel = [SFCertificateTrustPanel sharedCertificateTrustPanel];
+                NSString *msg = [NSString stringWithFormat:@"CCMenu can't verify the identity of the server %@.", [feedURL host]];
+                [panel setInformativeText:@"The certificate for this server is invalid. Do you want to continue anyway?"];
+                [panel setAlternateButtonTitle:@"Cancel"];
+                shouldGoAhead = ([panel runModalForTrust:[[challenge protectionSpace] serverTrust] message:msg] == NSOKButton);
+                break;
+            }
+            default:
+                shouldGoAhead = NO;
+                break;
+        }
+        if(shouldGoAhead)
+        {
+            NSURLCredential *serverTrustCredential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+            [[challenge sender] useCredential:serverTrustCredential forAuthenticationChallenge:challenge];
+        }
+        else
+        {
+            [[challenge sender] rejectProtectionSpaceAndContinueWithChallenge:challenge];
+        }
+    }
+    else // basic and digest are the only others we accept
+    {
+        if(([challenge previousFailureCount] == 0) && ((credential != nil) || [self setUpCredential]))
+            [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+        else
+            [[challenge sender] cancelAuthenticationChallenge:challenge];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -125,7 +167,7 @@
 
 - (NSString *)errorStringForError:(NSError *)error
 {
-    NSString *description = [error localizedDescription];;
+    NSString *description = [error localizedDescription];
     if([[error domain] isEqualToString:NSURLErrorDomain] && ([error code] == NSURLErrorUserCancelledAuthentication))
     {
         description = @"Server requires authentication and there is a problem with the credentials. Please verify the connection details for the project.";
