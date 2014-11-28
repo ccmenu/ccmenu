@@ -1,7 +1,12 @@
 #import <OCMock/OCMock.h>
 #import "CCMConnection.h"
-#import "CCMConnectionTest.h"
 #import "CCMKeychainHelper.h"
+#import "CCMConnectionTestBase.h"
+
+
+@interface CCMConnectionTest : CCMConnectionTestBase
+
+@end
 
 
 @implementation CCMConnectionTest
@@ -24,7 +29,7 @@
     [connection connection:dummyNSURLConnection didReceiveData:[self responseData]];
     [connection connectionDidFinishLoading:dummyNSURLConnection];
 
-    STAssertEqualObjects([[recordedInfoList objectAtIndex:0] valueForKey:@"name"], @"connectfour", @"Should have called delegate with info object corresponding to response");
+    XCTAssertEqualObjects([[recordedInfoList objectAtIndex:0] valueForKey:@"name"], @"connectfour", @"Should have called delegate with info object corresponding to response");
 }
 
 - (void)testReportsErrorWhenAsychronousRetrievalOfStatusFailed
@@ -44,7 +49,7 @@
     [connection connection:dummyNSURLConnection didReceiveResponse:[self responseMockWithStatusCode:500]];
     [connection connectionDidFinishLoading:dummyNSURLConnection];
 
-    STAssertNotNil(recordedError, @"connectfour", @"Should have called delegate with error.");
+    XCTAssertNotNil(recordedError, @"Should have called delegate with error.");
 }
 
 - (void)testLazilyCreatesCredentialWhenNeededForAuthChallenge

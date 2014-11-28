@@ -63,9 +63,10 @@
 	NSImage *menuImage = [NSImage imageNamed:name];
 	if(menuImage == nil)
 	{
-		menuImage = [[originalImage copy] autorelease];
-		[menuImage setScalesWhenResized:NO];
-		[menuImage setSize:NSMakeSize(15, 17)];
+        menuImage = [NSImage imageWithSize:NSMakeSize(15, 17) flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
+            [originalImage drawAtPoint:NSMakePoint(0, 0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+            return YES;
+        }];
 		[menuImage setName:name];
 	}
 	return menuImage;

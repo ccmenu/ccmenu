@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "034BF7981757C9890025F9A0"
-               BuildableName = "CCMenuTests.octest"
+               BuildableName = "CCMenuTests.xctest"
                BlueprintName = "CCMenuTests"
                ReferencedContainer = "container:CCMenu.xcodeproj">
             </BuildableReference>

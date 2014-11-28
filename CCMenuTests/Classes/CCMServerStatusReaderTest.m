@@ -1,7 +1,13 @@
 
-#import "CCMServerStatusReaderTest.h"
+#import <XCTest/XCTest.h>
 #import "CCMServerStatusReader.h"
 
+
+@interface CCMServerStatusReaderTest : XCTestCase
+{
+}
+
+@end
 
 
 @implementation CCMServerStatusReaderTest
@@ -14,16 +20,16 @@
 
 	NSArray *infos = [reader readProjectInfos:NULL];
 	
-    STAssertNotNil(infos, @"Should receive a response.");
-    STAssertEquals(1ul, [infos count], @"Response should be an array.");
+    XCTAssertNotNil(infos, @"Should receive a response.");
+    XCTAssertEqual(1ul, [infos count], @"Response should be an array.");
 	
 	NSDictionary *info = [infos objectAtIndex:0];
-	STAssertEqualObjects(@"connectfour", [info objectForKey:@"name"], @"Should have copied project name.");
-	STAssertEqualObjects(@"Sleeping", [info objectForKey:@"activity"], @"Should have copied activity.");
-	STAssertEqualObjects(@"Success", [info objectForKey:@"lastBuildStatus"], @"Should have copied status.");
-	STAssertEqualObjects(@"build.1", [info objectForKey:@"lastBuildLabel"], @"Should have copied label.");
-	STAssertTrue([[info objectForKey:@"lastBuildTime"] isKindOfClass:[NSDate class]], @"Should have returned a date object.");
-	STAssertEqualObjects(@"http://localhost:8080/dashboard/build/detail/connectfour", [info objectForKey:@"webUrl"], @"Should have copied web url.");
+	XCTAssertEqualObjects(@"connectfour", [info objectForKey:@"name"], @"Should have copied project name.");
+	XCTAssertEqualObjects(@"Sleeping", [info objectForKey:@"activity"], @"Should have copied activity.");
+	XCTAssertEqualObjects(@"Success", [info objectForKey:@"lastBuildStatus"], @"Should have copied status.");
+	XCTAssertEqualObjects(@"build.1", [info objectForKey:@"lastBuildLabel"], @"Should have copied label.");
+	XCTAssertTrue([[info objectForKey:@"lastBuildTime"] isKindOfClass:[NSDate class]], @"Should have returned a date object.");
+	XCTAssertEqualObjects(@"http://localhost:8080/dashboard/build/detail/connectfour", [info objectForKey:@"webUrl"], @"Should have copied web url.");
 }
 
 - (void)testReadsDatesWithoutTimezoneAsLocal
@@ -38,7 +44,7 @@
     [formatter setDateFormat:@"yyyy'-'MM'-'dd HH':'mm':'ss"];
     [formatter setTimeZone:[NSTimeZone localTimeZone]];
     NSDate *expected = [formatter dateFromString:@"2007-07-18 18:44:48"];
-	STAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+	XCTAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
 - (void)testReadsISO8601FormattedDateWithZuluMarker
@@ -50,7 +56,7 @@
 	NSDictionary *info = [[reader readProjectInfos:NULL] objectAtIndex:0];
 
     NSDate *expected = [NSDate dateWithNaturalLanguageString:@"2007-07-18 18:44:48 UTC"];
-	STAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+	XCTAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
 - (void)testReadsISO8601FormattedDateWithTimezone
@@ -62,7 +68,7 @@
 	NSDictionary *info = [[reader readProjectInfos:NULL] objectAtIndex:0];
 
     NSDate *expected = [NSDate dateWithNaturalLanguageString:@"2007-07-18 10:44:48 UTC"];
-	STAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+	XCTAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
 - (void)testReadsISO8601FormattedDateWithSubsecondsAndTimezoneInAlternateFormat
@@ -74,7 +80,7 @@
 	NSDictionary *info = [[reader readProjectInfos:NULL] objectAtIndex:0];
 
     NSDate *expected = [NSDate dateWithNaturalLanguageString:@"2007-07-18 23:44:48 UTC"];
-	STAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
+	XCTAssertEqualObjects(expected, [info objectForKey:@"lastBuildTime"], @"Should have set right last build time.");
 }
 
 - (void)testFixesBrokenCruiseControlRbUrls
@@ -86,7 +92,7 @@
 	NSArray *infos = [reader readProjectInfos:NULL];
 	
 	NSDictionary *info = [infos objectAtIndex:0];
-	STAssertEqualObjects(@"http://localhost:8080/projects/connectfour", [info objectForKey:@"webUrl"], @"Should have fixed web url.");
+	XCTAssertEqualObjects(@"http://localhost:8080/projects/connectfour", [info objectForKey:@"webUrl"], @"Should have fixed web url.");
 }
 
 - (void)testReturnsParseError
@@ -98,8 +104,8 @@
     NSError *error = nil;
     NSArray *result = [reader readProjectInfos:&error];
     
-    STAssertNil(result, @"Should have returned nil.");
-    STAssertNotNil(error, @"Should have set error.");
+    XCTAssertNil(result, @"Should have returned nil.");
+    XCTAssertNotNil(error, @"Should have set error.");
 }
 
 @end

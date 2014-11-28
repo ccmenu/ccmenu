@@ -1,7 +1,14 @@
 
-#import "CCMBuildStatusTransformerTest.h"
-#import "CCMBuildStatusTransformer.h"
+#import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#import "CCMBuildStatusTransformer.h"
+
+
+@interface CCMBuildStatusTransformerTest : XCTestCase
+{
+}
+
+@end
 
 
 @implementation CCMBuildStatusTransformerTest
@@ -16,7 +23,7 @@
 
 	NSImage *returnedImage = [transformer transformedValue:@"test"];
 	
-	STAssertEquals(testImage, returnedImage, @"Should have returned correct image.");
+	XCTAssertEqual(testImage, returnedImage, @"Should have returned correct image.");
 }
 
 @end

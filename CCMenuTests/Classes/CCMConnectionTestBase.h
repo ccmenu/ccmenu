@@ -1,7 +1,7 @@
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface CCMConnectionTestBase : SenTestCase
+@interface CCMConnectionTestBase : XCTestCase
 {
     NSURLConnection *dummyNSURLConnection;
 }

@@ -1,9 +1,20 @@
+#import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 
 #import "NSArray+CCMAdditions.h"
-#import "NSCalendarDate+CCMAdditions.h"
-#import "CCMStatusItemMenuControllerTest.h"
+#import "CCMStatusItemMenuController.h"
 
+
+@interface CCMStatusItemMenuControllerTest : XCTestCase
+{
+	CCMStatusItemMenuController	*controller;
+	NSImage						*dummyImage;
+
+    id                          serverMonitorMock;
+    id                          imageFactoryMock;
+}
+
+@end
 
 @implementation CCMStatusItemMenuControllerTest
 
@@ -40,17 +51,16 @@
 
 - (void)testCreatesMenuItem
 {
-    NSArray *projects = [NSArray arrayWithObject:   
-                         [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"]];
+    NSArray *projects = @[[self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"]];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 	
 	[controller displayProjects:nil];
 	
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"connectfour", [[items objectAtIndex:0] title], @"Should have set correct project name.");
-	STAssertEquals(controller, [[items objectAtIndex:0] target], @"Should have set correct target.");
-	STAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
-	STAssertEquals(2ul, [items count], @"Menu should have correct number of items.");
+	XCTAssertEqualObjects(@"connectfour", [[items objectAtIndex:0] title], @"Should have set correct project name.");
+	XCTAssertEqual(controller, [[items objectAtIndex:0] target], @"Should have set correct target.");
+	XCTAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
+	XCTAssertEqual(2ul, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testAddsMenuItemsInAlphabeticalOrder
@@ -59,16 +69,16 @@
     [[[defaultsMock stub] andReturnValue:OCMOCK_VALUE(((NSUInteger){CCMProjectOrderAlphabetic}))] projectOrder];
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
-    NSMutableArray *projects = [NSMutableArray arrayWithObject:[[[CCMProject alloc] initWithName:@"xyz"] autorelease]];
+    NSMutableArray *projects = [@[[[[CCMProject alloc] initWithName:@"xyz"] autorelease]] mutableCopy];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 	[controller displayProjects:nil];
     [projects addObject:[[[CCMProject alloc] initWithName:@"abc"] autorelease]];
     [controller displayProjects:nil];
 
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have ordered projects alphabetically.");
-	STAssertEqualObjects(@"xyz", [[items objectAtIndex:1] title], @"Should have ordered projects alphabetically.");
-	STAssertEquals(3ul, [items count], @"Menu should have correct number of items.");
+	XCTAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have ordered projects alphabetically.");
+	XCTAssertEqualObjects(@"xyz", [[items objectAtIndex:1] title], @"Should have ordered projects alphabetically.");
+	XCTAssertEqual(3ul, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testSortsMenuItemsByBuildTime
@@ -86,9 +96,9 @@
     [controller displayProjects:nil];
     
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"xyz", [[items objectAtIndex:0] title], @"Should have ordered projects by build time.");
-	STAssertEqualObjects(@"abc", [[items objectAtIndex:1] title], @"Should have ordered projects by build time.");
-	STAssertEquals(3ul, [items count], @"Menu should have correct number of items.");
+	XCTAssertEqualObjects(@"xyz", [[items objectAtIndex:0] title], @"Should have ordered projects by build time.");
+	XCTAssertEqualObjects(@"abc", [[items objectAtIndex:1] title], @"Should have ordered projects by build time.");
+	XCTAssertEqual(3ul, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testKeepsMenuItemsInNaturalOrder
@@ -106,25 +116,25 @@
     [controller displayProjects:nil];
 
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"xyz", [[items objectAtIndex:0] title], @"Should have ordered projects as added.");
-	STAssertEqualObjects(@"abc", [[items objectAtIndex:1] title], @"Should have ordered projects as added.");
-	STAssertEquals(3ul, [items count], @"Menu should have correct number of items.");
+	XCTAssertEqualObjects(@"xyz", [[items objectAtIndex:0] title], @"Should have ordered projects as added.");
+	XCTAssertEqualObjects(@"abc", [[items objectAtIndex:1] title], @"Should have ordered projects as added.");
+	XCTAssertEqual(3ul, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testRemovesMenuItem
 {
-    NSMutableArray *projects = [NSMutableArray arrayWithObjects:   
-                                [[[CCMProject alloc] initWithName:@"xyz"] autorelease],
-                                [[[CCMProject alloc] initWithName:@"abc"] autorelease], nil];
+    NSMutableArray *projects = [@[[[[CCMProject alloc] initWithName:@"xyz"] autorelease],
+                                  [[[CCMProject alloc] initWithName:@"abc"] autorelease]]
+                                mutableCopy];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 	[controller displayProjects:nil];
     [projects removeObjectAtIndex:0];
     [controller displayProjects:nil];
     
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have kept correct project.");
-	STAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
-	STAssertEquals(2ul, [items count], @"Menu should have correct number of items.");
+	XCTAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have kept correct project.");
+	XCTAssertTrue([[items objectAtIndex:1] isSeparatorItem], @"Should have separator after projects.");
+	XCTAssertEqual(2ul, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testUpdatesMenuItemsForProjectsWithSameNameOnDifferentServers
@@ -138,16 +148,16 @@
     NSMutableArray *projects = [NSMutableArray array];
     [[[serverMonitorMock stub] andReturn:projects] projects];
 
-    [projects setArray:[NSArray arrayWithObjects:p1, p2, p3, nil]];
+    [projects setArray:@[p1, p2, p3]];
 	[controller displayProjects:nil];
-    [projects setArray:[NSArray arrayWithObjects:p2, p1, nil]];
+    [projects setArray:@[p2, p1]];
     [controller displayProjects:nil];
     
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"bar", [[items objectAtIndex:0] title], @"Should have kept correct project.");
-	STAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have kept correct project.");
-    STAssertTrue([[items objectAtIndex:0] representedObject] != [[items objectAtIndex:1] representedObject], @"Should have different projects in menu.");
-	STAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
+	XCTAssertEqualObjects(@"bar", [[items objectAtIndex:0] title], @"Should have kept correct project.");
+	XCTAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have kept correct project.");
+    XCTAssertTrue([[items objectAtIndex:0] representedObject] != [[items objectAtIndex:1] representedObject], @"Should have different projects in menu.");
+	XCTAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
 }
 
 -(void)testDisplaysLastBuildTimes
@@ -169,36 +179,34 @@
     [controller displayProjects:nil];
     
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	STAssertEqualObjects(@"foo \u2014 a minute ago", [[items objectAtIndex:0] title], @"Should have included last build time where known.");
-	STAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have shown just name when last build time is not known.");
+	XCTAssertEqualObjects(@"foo \u2014 a minute ago", [[items objectAtIndex:0] title], @"Should have included last build time where known.");
+	XCTAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have shown just name when last build time is not known.");
 }
 
 
 - (void)testDisplaysUnknownWhenNoStatusIsKnown
 {
     CCMProject *p1 = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
-    NSArray *projects = [NSArray arrayWithObject:p1];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
+    [[[serverMonitorMock stub] andReturn:@[p1]] projects];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForUnavailableServer];
 	
 	[controller displayProjects:nil];
 	
-	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
-	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+	XCTAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	XCTAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
 }
 
 - (void)testDisplaysSuccessAndNoTextWhenAllProjectsWithStatusAreSleepingAndSuccessful
 {
     CCMProject *p1 = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
     CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
-    NSArray *projects = [NSArray arrayWithObjects:p1, p2, nil];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2]] projects];
 	[[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p2 status]];
 	
 	[controller displayProjects:nil];
 	
-	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
-	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+	XCTAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	XCTAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
 }
 
 - (void)testDisplaysFailureAndNumberOfFailuresWhenAllAreSleepingAndAtLeastOneIsFailed
@@ -206,15 +214,14 @@
     CCMProject *p1 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
     CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
     CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
-    NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, nil];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2, p3]] projects];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p2 status]];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p3 status]];
 
 	[controller displayProjects:nil];
 	
-	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
-	STAssertEqualObjects(@"2", [[controller statusItem] title], @"Should display correct number.");
+	XCTAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	XCTAssertEqualObjects(@"2", [[controller statusItem] title], @"Should display correct number.");
 }
 
 - (void)testDisplaysBuildingWhenAtLeastOneProjectIsBuilding
@@ -222,14 +229,13 @@
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
     CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
-    NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, nil];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2, p3]] projects];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p1 status]];
 	
 	[controller displayProjects:nil];
 	
-	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
-	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+	XCTAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	XCTAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
 }
 
 - (void)testDisplaysFixingWhenAtLeastOneProjectWithLastStatusFailedIsBuilding
@@ -237,14 +243,13 @@
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
     CCMProject *p3 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
-    NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, nil];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2, p3]] projects];
     [[[imageFactoryMock stub] andReturn:dummyImage] imageForStatus:[p3 status]];
 
 	[controller displayProjects:nil];
 	
-	STAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
-	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+	XCTAssertEqualObjects(dummyImage, [[controller statusItem] image], @"Should display correct image.");
+	XCTAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
 }
 
 - (void)testDoesNotDisplayBuildingTimerWhenDefaultIsOff
@@ -254,13 +259,13 @@
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
     
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
-    [p1 setBuildDuration:[NSNumber numberWithInt:90]];
+    [p1 setBuildDuration:@90];
     [p1 setBuildStartTime:[NSCalendarDate date]];
     [[[serverMonitorMock stub] andReturn:@[p1]] projects];
     
 	[controller displayProjects:nil];
 	
-	STAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
+	XCTAssertEqualObjects(@"", [[controller statusItem] title], @"Should display no text.");
 }
 
 - (void)testDisplaysShortestTimingForBuildingProjectsWithEstimatedCompleteTime
@@ -271,18 +276,17 @@
     
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
-    [p2 setBuildDuration:[NSNumber numberWithInt:90]];
+    [p2 setBuildDuration:@90];
     CCMProject *p3 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
-    [p3 setBuildDuration:[NSNumber numberWithInt:30]];
+    [p3 setBuildDuration:@30];
     CCMProject *p4 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
-    [p4 setBuildDuration:[NSNumber numberWithInt:70]];
-    NSArray *projects = [NSArray arrayWithObjects:p1, p2, p3, p4, nil];
-    [[projects each] setBuildStartTime:[NSCalendarDate date]];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
+    [p4 setBuildDuration:@70];
+    [[@[p1, p2, p3, p4] each] setBuildStartTime:[NSCalendarDate date]];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2, p3, p4]] projects];
 
 	[controller displayProjects:nil];
 	
-	STAssertTrue([[[controller statusItem] title] hasSuffix:@"s"], @"Should display text for project with less than a minute remaining.");
+	XCTAssertTrue([[[controller statusItem] title] hasSuffix:@"s"], @"Should display text for project with less than a minute remaining.");
 }
 
 - (void)testDisplaysTimingForFixingEvenIfItsLongerThanForBuilding
@@ -292,16 +296,15 @@
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
-    [p1 setBuildDuration:[NSNumber numberWithInt:30]];
+    [p1 setBuildDuration:@30];
     CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
-    [p2 setBuildDuration:[NSNumber numberWithInt:90]];
-    NSArray *projects = [NSArray arrayWithObjects:p1, p2, nil];
-    [[projects each] setBuildStartTime:[NSCalendarDate date]];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
+    [p2 setBuildDuration:@90];
+    [[@[p1, p2] each] setBuildStartTime:[NSCalendarDate date]];
+    [[[serverMonitorMock stub] andReturn:@[p1, p2]] projects];
 
 	[controller displayProjects:nil];
 	
-	STAssertTrue([[[controller statusItem] title] hasPrefix:@"-1:"], @"Should display text for project with more than a minute remaining.");
+	XCTAssertTrue([[[controller statusItem] title] hasPrefix:@"-1:"], @"Should display text for project with more than a minute remaining.");
     
 }
 

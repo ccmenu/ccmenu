@@ -1,6 +1,16 @@
 
-#import "CCMBuildNotificationFactoryTest.h"
-#import "CCMProject.h"
+#import <XCTest/XCTest.h>
+#import "CCMBuildNotificationFactory.h"
+#import "CCMProjectBuilder.h"
+
+
+@interface CCMBuildNotificationFactoryTest : XCTestCase
+{
+	CCMBuildNotificationFactory	*factory;
+    CCMProjectBuilder *builder;
+}
+
+@end
 
 
 @implementation CCMBuildNotificationFactoryTest
@@ -18,11 +28,11 @@
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
-	STAssertNotNil(notification, @"Should have created a notification.");
-	STAssertEqualObjects(CCMBuildCompleteNotification, [notification name], @"Should have created correct notification.");
-    STAssertEquals(project, [notification object], @"Should have set correct notification object.");
+	XCTAssertNotNil(notification, @"Should have created a notification.");
+	XCTAssertEqualObjects(CCMBuildCompleteNotification, [notification name], @"Should have created correct notification.");
+    XCTAssertEqual(project, [notification object], @"Should have set correct notification object.");
 	NSDictionary *userInfo = [notification userInfo];
-	STAssertEqualObjects(CCMSuccessfulBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
+	XCTAssertEqualObjects(CCMSuccessfulBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
 }
 
 - (void)testCreatesBrokenBuildCompleteNotification
@@ -33,7 +43,7 @@
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
 	NSDictionary *userInfo = [notification userInfo];
-	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
+	XCTAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
 }
 
 - (void)testCreatesFixedBuildCompleteNotification
@@ -44,7 +54,7 @@
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
 	NSDictionary *userInfo = [notification userInfo];
-	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
+	XCTAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
 }
 
 - (void)testCreatesStillFailingBuildCompleteNotification
@@ -55,7 +65,7 @@
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
 	NSDictionary *userInfo = [notification userInfo];
-	STAssertEqualObjects(CCMStillFailingBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
+	XCTAssertEqualObjects(CCMStillFailingBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");
 }
 
 - (void)testCreatesBrokenBuildCompletionNotificationEvenIfBuildWasMissed
@@ -66,7 +76,7 @@
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
 	NSDictionary *userInfo = [notification userInfo];
-	STAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
+	XCTAssertEqualObjects(CCMBrokenBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
 }
 
 - (void)testCreatesFixedBuildCompletionNotificationEvenIfBuildWasMissed
@@ -77,7 +87,7 @@
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 	
 	NSDictionary *userInfo = [notification userInfo];
-	STAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
+	XCTAssertEqualObjects(CCMFixedBuild, [userInfo objectForKey:@"buildResult"], @"Should have set correct build result.");	
 }
 
 - (void)testCreatesBuildStartingNotification
@@ -87,9 +97,9 @@
 
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
 
-	STAssertNotNil(notification, @"Should have created a notification.");
-	STAssertEqualObjects(CCMBuildStartNotification, [notification name], @"Should have created correct notification.");
-    STAssertEquals(project, [notification object], @"Should have set correct notification object.");
+	XCTAssertNotNil(notification, @"Should have created a notification.");
+	XCTAssertEqualObjects(CCMBuildStartNotification, [notification name], @"Should have created correct notification.");
+    XCTAssertEqual(project, [notification object], @"Should have set correct notification object.");
 }
 
 - (void)testCreatesBuildStartingNotificationOnMissedSleeping
@@ -99,9 +109,9 @@
      
 	NSNotification *notification = [factory notificationForProject:project withOldStatus:old];
     
-	STAssertNotNil(notification, @"Should have created a notification.");
-	STAssertEqualObjects(CCMBuildStartNotification, [notification name], @"Should have created correct notification.");
-    STAssertEquals(project, [notification object], @"Should have set correct notification object.");
+	XCTAssertNotNil(notification, @"Should have created a notification.");
+	XCTAssertEqualObjects(CCMBuildStartNotification, [notification name], @"Should have created correct notification.");
+    XCTAssertEqual(project, [notification object], @"Should have set correct notification object.");
 }
 
 @end

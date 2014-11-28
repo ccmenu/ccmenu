@@ -22,6 +22,7 @@
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		032186811A24FA9E00B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
 		032186821A25360400B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
+		032186831A27B15F00B16510 /* CCMSyncConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BF7921757C5D50025F9A0 /* CCMSyncConnectionTest.m */; };
 		0328D383135C191500D35055 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		0328D38A135C1A3A00D35055 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0328D37F135C191500D35055 /* Sparkle.framework */; };
 		032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
@@ -47,14 +48,12 @@
 		034BF7AA1757C9F20025F9A0 /* CCMBuildNotificationFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC7A134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m */; };
 		034BF7AB1757C9F20025F9A0 /* CCMBuildStatusTransformerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC7C134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m */; };
 		034BF7AC1757C9F20025F9A0 /* CCMConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC7E134F9F9100D2F269 /* CCMConnectionTest.m */; };
-		034BF7AD1757C9F20025F9A0 /* CCMSyncConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BF7921757C5D50025F9A0 /* CCMSyncConnectionTest.m */; };
 		034BF7AE1757C9F20025F9A0 /* CCMImageFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC80134F9F9100D2F269 /* CCMImageFactoryTest.m */; };
 		034BF7AF1757C9F20025F9A0 /* CCMPreferencesControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC82134F9F9100D2F269 /* CCMPreferencesControllerTest.m */; };
 		034BF7B01757C9F20025F9A0 /* CCMProjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC84134F9F9100D2F269 /* CCMProjectTest.m */; };
 		034BF7B11757C9F20025F9A0 /* CCMProjectStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A783142C7D940041F299 /* CCMProjectStatusTest.m */; };
 		034BF7B21757C9F20025F9A0 /* CCMServerMonitorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */; };
 		034BF7B31757C9F20025F9A0 /* CCMServerStatusReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */; };
-		034BF7B41757C9F20025F9A0 /* CCMStatusItemMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */; };
 		034BF7B51757C9F20025F9A0 /* CCMUserDefaultsManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */; };
 		034BF7B61757C9F20025F9A0 /* NSArray+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */; };
 		034BF7B71757C9F20025F9A0 /* NSCalendarDate+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */; };
@@ -91,7 +90,6 @@
 		034BF7D61757CCC90025F9A0 /* NSApplication+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154ED16DC11B3008F994D /* NSApplication+EDExtensions.m */; };
 		034BF7D71757CCCA0025F9A0 /* NSArray+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */; };
 		034BF7D81757CCCA0025F9A0 /* NSString+EDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D154F116DC11B3008F994D /* NSString+EDExtensions.m */; };
-		034BF7DC1757CDAD0025F9A0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034BF7DB1757CDAD0025F9A0 /* SenTestingKit.framework */; };
 		034BF7DD1757CE940025F9A0 /* CCMenu.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03F5734216CC011D0007E109 /* CCMenu.iconset */; };
 		034BF7DE1757CE940025F9A0 /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5A134F9EE600D2F269 /* btn-force-build.png */; };
 		034BF7DF1757CE940025F9A0 /* icon-building-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5C134F9EE600D2F269 /* icon-building-failed.png */; };
@@ -181,7 +179,6 @@
 		030150F41687AA4800FDE9EB /* handlers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = handlers.applescript; path = Scripts/handlers.applescript; sourceTree = "<group>"; };
 		0301A77E142C702F0041F299 /* CCMProjectStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatus.h; sourceTree = "<group>"; };
 		0301A77F142C702F0041F299 /* CCMProjectStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatus.m; sourceTree = "<group>"; };
-		0301A782142C7D940041F299 /* CCMProjectStatusTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectStatusTest.h; sourceTree = "<group>"; };
 		0301A783142C7D940041F299 /* CCMProjectStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectStatusTest.m; sourceTree = "<group>"; };
 		03051AD618BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectDefaultValueTransformer.h; sourceTree = "<group>"; };
 		03051AD718BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectDefaultValueTransformer.m; sourceTree = "<group>"; };
@@ -213,39 +210,24 @@
 		0349BC66134F9EE600D2F269 /* pref-advanced.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "pref-advanced.tiff"; sourceTree = "<group>"; };
 		0349BC67134F9EE600D2F269 /* pref-notifications.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "pref-notifications.tiff"; sourceTree = "<group>"; };
 		0349BC68134F9EE600D2F269 /* pref-projects.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pref-projects.png"; sourceTree = "<group>"; };
-		0349BC79134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildNotificationFactoryTest.h; sourceTree = "<group>"; };
 		0349BC7A134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildNotificationFactoryTest.m; sourceTree = "<group>"; };
-		0349BC7B134F9F9100D2F269 /* CCMBuildStatusTransformerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildStatusTransformerTest.h; sourceTree = "<group>"; };
 		0349BC7C134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildStatusTransformerTest.m; sourceTree = "<group>"; };
-		0349BC7D134F9F9100D2F269 /* CCMConnectionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMConnectionTest.h; sourceTree = "<group>"; };
 		0349BC7E134F9F9100D2F269 /* CCMConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMConnectionTest.m; sourceTree = "<group>"; };
-		0349BC7F134F9F9100D2F269 /* CCMImageFactoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMImageFactoryTest.h; sourceTree = "<group>"; };
 		0349BC80134F9F9100D2F269 /* CCMImageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMImageFactoryTest.m; sourceTree = "<group>"; };
-		0349BC81134F9F9100D2F269 /* CCMPreferencesControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMPreferencesControllerTest.h; sourceTree = "<group>"; };
 		0349BC82134F9F9100D2F269 /* CCMPreferencesControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMPreferencesControllerTest.m; sourceTree = "<group>"; };
-		0349BC83134F9F9100D2F269 /* CCMProjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectTest.h; sourceTree = "<group>"; };
 		0349BC84134F9F9100D2F269 /* CCMProjectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectTest.m; sourceTree = "<group>"; };
-		0349BC85134F9F9100D2F269 /* CCMServerMonitorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerMonitorTest.h; sourceTree = "<group>"; };
 		0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerMonitorTest.m; sourceTree = "<group>"; };
-		0349BC87134F9F9100D2F269 /* CCMServerStatusReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMServerStatusReaderTest.h; sourceTree = "<group>"; };
 		0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMServerStatusReaderTest.m; sourceTree = "<group>"; };
-		0349BC8B134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMStatusItemMenuControllerTest.h; sourceTree = "<group>"; };
 		0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMStatusItemMenuControllerTest.m; sourceTree = "<group>"; };
-		0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMUserDefaultsManagerTest.h; sourceTree = "<group>"; };
 		0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMUserDefaultsManagerTest.m; sourceTree = "<group>"; };
 		0349BC8F134F9F9100D2F269 /* cctray.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = cctray.xml; path = Classes/cctray.xml; sourceTree = "<group>"; };
-		0349BC90134F9F9100D2F269 /* NSArray+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CCMAdditionsTest.h"; sourceTree = "<group>"; };
 		0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CCMAdditionsTest.m"; sourceTree = "<group>"; };
-		0349BC92134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+CCMAdditionsTest.h"; sourceTree = "<group>"; };
 		0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+CCMAdditionsTest.m"; sourceTree = "<group>"; };
-		0349BC94134F9F9100D2F269 /* NSString+CCMAdditionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CCMAdditionsTest.h"; sourceTree = "<group>"; };
 		0349BC95134F9F9100D2F269 /* NSString+CCMAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CCMAdditionsTest.m"; sourceTree = "<group>"; };
 		034BF78D1757C4C30025F9A0 /* CCMSyncConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMSyncConnection.h; sourceTree = "<group>"; };
 		034BF78E1757C4C30025F9A0 /* CCMSyncConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMSyncConnection.m; sourceTree = "<group>"; };
-		034BF7911757C5D50025F9A0 /* CCMSyncConnectionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMSyncConnectionTest.h; sourceTree = "<group>"; };
 		034BF7921757C5D50025F9A0 /* CCMSyncConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMSyncConnectionTest.m; sourceTree = "<group>"; };
-		034BF7991757C9890025F9A0 /* CCMenuTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCMenuTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		034BF7DB1757CDAD0025F9A0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		034BF7991757C9890025F9A0 /* CCMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		036FA722176236D900371BE9 /* CCMKeychainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMKeychainHelper.h; sourceTree = "<group>"; };
 		036FA723176236D900371BE9 /* CCMKeychainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMKeychainHelper.m; sourceTree = "<group>"; };
 		0378A021180436BD00A7D65F /* RELEASENOTES.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RELEASENOTES.txt; sourceTree = SOURCE_ROOT; };
@@ -320,10 +302,8 @@
 		03E0821517061E3700E28E5A /* NSAppleScript+EDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleScript+EDAdditions.m"; sourceTree = "<group>"; };
 		03E288C1144F045E0026DAC4 /* NSObject+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CCMAdditions.h"; sourceTree = "<group>"; };
 		03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CCMAdditions.m"; sourceTree = "<group>"; };
-		03E744581766222000DCFF0F /* CCMProjectSheetControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectSheetControllerTest.h; sourceTree = "<group>"; };
 		03E744591766222000DCFF0F /* CCMProjectSheetControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectSheetControllerTest.m; sourceTree = "<group>"; };
 		03F5734216CC011D0007E109 /* CCMenu.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = CCMenu.iconset; sourceTree = "<group>"; };
-		2FA28115E3F6986D57A707C9 /* CCMHistoryDataSourceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMHistoryDataSourceTest.h; sourceTree = "<group>"; };
 		2FA282A416260DF796951CFD /* NSAlert+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+CCMAdditions.m"; sourceTree = "<group>"; };
 		2FA285221A513A9D2AE197A2 /* CCMIsOneValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMIsOneValueTransformer.h; sourceTree = "<group>"; };
 		2FA285CF469D5230A32A31AB /* CCMConnectionTestBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMConnectionTestBase.h; sourceTree = "<group>"; };
@@ -342,7 +322,6 @@
 			files = (
 				032186821A25360400B16510 /* SecurityInterface.framework in Frameworks */,
 				030050C117660C4C007C3DEE /* Security.framework in Frameworks */,
-				034BF7DC1757CDAD0025F9A0 /* SenTestingKit.framework in Frameworks */,
 				034BF79C1757C9890025F9A0 /* Cocoa.framework in Frameworks */,
 				034BF7BA1757CAED0025F9A0 /* OCMock.framework in Frameworks */,
 			);
@@ -521,43 +500,26 @@
 		0349BC78134F9F9100D2F269 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0349BC79134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.h */,
 				0349BC7A134F9F9100D2F269 /* CCMBuildNotificationFactoryTest.m */,
-				0349BC7B134F9F9100D2F269 /* CCMBuildStatusTransformerTest.h */,
 				0349BC7C134F9F9100D2F269 /* CCMBuildStatusTransformerTest.m */,
-				0349BC7D134F9F9100D2F269 /* CCMConnectionTest.h */,
 				0349BC7E134F9F9100D2F269 /* CCMConnectionTest.m */,
-				034BF7911757C5D50025F9A0 /* CCMSyncConnectionTest.h */,
 				034BF7921757C5D50025F9A0 /* CCMSyncConnectionTest.m */,
-				0349BC7F134F9F9100D2F269 /* CCMImageFactoryTest.h */,
 				0349BC80134F9F9100D2F269 /* CCMImageFactoryTest.m */,
-				0349BC81134F9F9100D2F269 /* CCMPreferencesControllerTest.h */,
 				0349BC82134F9F9100D2F269 /* CCMPreferencesControllerTest.m */,
-				03E744581766222000DCFF0F /* CCMProjectSheetControllerTest.h */,
 				03E744591766222000DCFF0F /* CCMProjectSheetControllerTest.m */,
-				0349BC83134F9F9100D2F269 /* CCMProjectTest.h */,
 				0349BC84134F9F9100D2F269 /* CCMProjectTest.m */,
-				0301A782142C7D940041F299 /* CCMProjectStatusTest.h */,
 				0301A783142C7D940041F299 /* CCMProjectStatusTest.m */,
-				0349BC85134F9F9100D2F269 /* CCMServerMonitorTest.h */,
 				0349BC86134F9F9100D2F269 /* CCMServerMonitorTest.m */,
-				0349BC87134F9F9100D2F269 /* CCMServerStatusReaderTest.h */,
 				0349BC88134F9F9100D2F269 /* CCMServerStatusReaderTest.m */,
-				0349BC8B134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.h */,
 				0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */,
-				0349BC8D134F9F9100D2F269 /* CCMUserDefaultsManagerTest.h */,
 				0349BC8E134F9F9100D2F269 /* CCMUserDefaultsManagerTest.m */,
-				0349BC90134F9F9100D2F269 /* NSArray+CCMAdditionsTest.h */,
 				0349BC91134F9F9100D2F269 /* NSArray+CCMAdditionsTest.m */,
-				0349BC92134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.h */,
 				0349BC93134F9F9100D2F269 /* NSCalendarDate+CCMAdditionsTest.m */,
-				0349BC94134F9F9100D2F269 /* NSString+CCMAdditionsTest.h */,
 				0349BC95134F9F9100D2F269 /* NSString+CCMAdditionsTest.m */,
 				03BDCABD1456A00F000C3D32 /* CCMProjectBuilder.h */,
 				03BDCABE1456A00F000C3D32 /* CCMProjectBuilder.m */,
 				2FA285CF469D5230A32A31AB /* CCMConnectionTestBase.h */,
 				2FA28DB5E98740E57952DE6D /* CCMConnectionTestBase.m */,
-				2FA28115E3F6986D57A707C9 /* CCMHistoryDataSourceTest.h */,
 				2FA2888750C52351CE35929B /* CCMHistoryDataSourceTest.m */,
 			);
 			path = Classes;
@@ -577,7 +539,7 @@
 			isa = PBXGroup;
 			children = (
 				038ABE19134F11080053F0D1 /* CCMenu.app */,
-				034BF7991757C9890025F9A0 /* CCMenuTests.octest */,
+				034BF7991757C9890025F9A0 /* CCMenuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -589,7 +551,6 @@
 				038ABE1D134F11090053F0D1 /* Cocoa.framework */,
 				0384D33C17620E1400749956 /* Security.framework */,
 				0328D37F135C191500D35055 /* Sparkle.framework */,
-				034BF7DB1757CDAD0025F9A0 /* SenTestingKit.framework */,
 				0328D37E135C191500D35055 /* OCMock.framework */,
 				038ABE1F134F11090053F0D1 /* Other Frameworks */,
 			);
@@ -733,8 +694,8 @@
 			);
 			name = CCMenuTests;
 			productName = CCMenuTests;
-			productReference = 034BF7991757C9890025F9A0 /* CCMenuTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productReference = 034BF7991757C9890025F9A0 /* CCMenuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		038ABE18134F11080053F0D1 /* CCMenu */ = {
 			isa = PBXNativeTarget;
@@ -761,7 +722,7 @@
 		038ABE10134F11080053F0D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastTestingUpgradeCheck = 0510;
+				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = ThoughtWorks;
 			};
@@ -878,14 +839,13 @@
 				034BF7AA1757C9F20025F9A0 /* CCMBuildNotificationFactoryTest.m in Sources */,
 				034BF7AB1757C9F20025F9A0 /* CCMBuildStatusTransformerTest.m in Sources */,
 				034BF7AC1757C9F20025F9A0 /* CCMConnectionTest.m in Sources */,
-				034BF7AD1757C9F20025F9A0 /* CCMSyncConnectionTest.m in Sources */,
 				034BF7AE1757C9F20025F9A0 /* CCMImageFactoryTest.m in Sources */,
 				034BF7AF1757C9F20025F9A0 /* CCMPreferencesControllerTest.m in Sources */,
 				034BF7B01757C9F20025F9A0 /* CCMProjectTest.m in Sources */,
 				034BF7B11757C9F20025F9A0 /* CCMProjectStatusTest.m in Sources */,
 				034BF7B21757C9F20025F9A0 /* CCMServerMonitorTest.m in Sources */,
+				032186831A27B15F00B16510 /* CCMSyncConnectionTest.m in Sources */,
 				034BF7B31757C9F20025F9A0 /* CCMServerStatusReaderTest.m in Sources */,
-				034BF7B41757C9F20025F9A0 /* CCMStatusItemMenuControllerTest.m in Sources */,
 				034BF7B51757C9F20025F9A0 /* CCMUserDefaultsManagerTest.m in Sources */,
 				034BF7B61757C9F20025F9A0 /* NSArray+CCMAdditionsTest.m in Sources */,
 				034BF7B71757C9F20025F9A0 /* NSCalendarDate+CCMAdditionsTest.m in Sources */,
@@ -1079,6 +1039,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"\"${TARGET_BUILD_DIR}/Frameworks\"",
 					"\"$(SRCROOT)\"",
+					"$(inherited)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1093,7 +1054,6 @@
 				INFOPLIST_FILE = "CCMenuTests/CCMenuTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1115,6 +1075,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"\"${TARGET_BUILD_DIR}/Frameworks\"",
 					"\"$(SRCROOT)\"",
+					"$(inherited)",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1123,7 +1084,6 @@
 				INFOPLIST_FILE = "CCMenuTests/CCMenuTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

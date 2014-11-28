@@ -1,10 +1,19 @@
 
-#import "CCMServerMonitorTest.h"
-#import "CCMUserDefaultsManager.h"
-#import "CCMProject.h"
-#import "NSArray+CCMAdditions.h"
-#import "NSArray+EDExtensions.h"
+#import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#import "CCMServerMonitor.h"
+#import "NSArray+CCMAdditions.h"
+
+
+@interface CCMServerMonitorTest : XCTestCase
+{
+	CCMServerMonitor *monitor;
+	id               defaultsManagerMock;
+    id               notificationFactoryMock;
+    id               notificationCenterMock;
+}
+
+@end
 
 
 @implementation CCMServerMonitorTest
@@ -31,15 +40,15 @@
     [monitor setupFromUserDefaults];
     
     // This also asserts that the projects are in the same order as the defaults; we rely on this in other tests...
-    STAssertEquals(3ul, [[monitor projects] count], @"Should have created right number of projects.");
-    STAssertEqualObjects(@"connectfour", [[[monitor projects] objectAtIndex:0] name], @"Should have created project with correct name.");
-    STAssertEqualObjects(@"cozmoz", [[[monitor projects] objectAtIndex:1] name], @"Should have created project with correct name.");
-    STAssertEqualObjects(@"protest", [[[monitor projects] objectAtIndex:2] name], @"Should have created project with correct name.");
+    XCTAssertEqual(3ul, [[monitor projects] count], @"Should have created right number of projects.");
+    XCTAssertEqualObjects(@"connectfour", [[[monitor projects] objectAtIndex:0] name], @"Should have created project with correct name.");
+    XCTAssertEqualObjects(@"cozmoz", [[[monitor projects] objectAtIndex:1] name], @"Should have created project with correct name.");
+    XCTAssertEqualObjects(@"protest", [[[monitor projects] objectAtIndex:2] name], @"Should have created project with correct name.");
 
-    STAssertEquals(2ul, [[monitor connections] count], @"Should have created minimum number of connection.");
+    XCTAssertEqual(2ul, [[monitor connections] count], @"Should have created minimum number of connection.");
     NSArray *urls = (id) [[[monitor connections] collect] feedURL];
-    STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"http://test/cctray.xml"]] != NSNotFound, @"Should have created connection for first URL.");
-    STAssertTrue([urls indexOfObject:[NSURL URLWithString:@"file:cctray.xml"]] != NSNotFound, @"Should have created connection for second URL.");
+    XCTAssertTrue([urls indexOfObject:[NSURL URLWithString:@"http://test/cctray.xml"]] != NSNotFound, @"Should have created connection for first URL.");
+    XCTAssertTrue([urls indexOfObject:[NSURL URLWithString:@"file:cctray.xml"]] != NSNotFound, @"Should have created connection for second URL.");
 }
 
 
@@ -66,8 +75,8 @@
     [monitor connection:[[monitor connections] firstObject] didReceiveServerStatus:statusList];
     
     CCMProject *project = [[monitor projects] firstObject];
-    STAssertNil([project statusError], @"Should not have set status error");
-    STAssertEqualObjects(@"test1234", [[project status] lastBuildLabel], @"Should have set status.");
+    XCTAssertNil([project statusError], @"Should not have set status error");
+    XCTAssertEqualObjects(@"test1234", [[project status] lastBuildLabel], @"Should have set status.");
     [notificationCenterMock verify];
 }
 
@@ -83,8 +92,10 @@
     [monitor connection:[[monitor connections] firstObject] didReceiveServerStatus:statusList];
     
     CCMProject *project = [[monitor projects] firstObject];
-    STAssertNotNil([project statusError], @"Should have set a status error");
-    STAssertNil(nil, [[project status] lastBuildLabel], @"Should have reset status to nil.");
+    XCTAssertNotNil([project statusError], @"Should have set a status error");
+    
+    XCTAssertNil([[project status] lastBuildLabel], @"Should have reset status to nil.");
+    
     [notificationCenterMock verify];
 }
 
@@ -105,9 +116,9 @@
    
     [monitor connection:connection hadTemporaryError:@"broken"];
     
-    STAssertNil([[[monitor projects] objectAtIndex:0] statusError], @"Should not have set error for project on different server");
-    STAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:1] statusError], @"Should have set status error");
-    STAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:2] statusError], @"Should have set status error");
+    XCTAssertNil([[[monitor projects] objectAtIndex:0] statusError], @"Should not have set error for project on different server");
+    XCTAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:1] statusError], @"Should have set status error");
+    XCTAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:2] statusError], @"Should have set status error");
     [notificationCenterMock verify];
 }
 

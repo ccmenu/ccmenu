@@ -1,7 +1,12 @@
 
 #import <OCMock/OCMock.h>
 #import "CCMSyncConnection.h"
-#import "CCMSyncConnectionTest.h"
+#import "CCMConnectionTestBase.h"
+
+
+@interface CCMSyncConnectionTest : CCMConnectionTestBase
+
+@end
 
 
 @implementation CCMSyncConnectionTest
@@ -21,7 +26,7 @@
 
     NSInteger statusCode = [connection testConnection];
     
-    STAssertEquals((NSInteger)200, statusCode, @"Should have indicated success.");
+    XCTAssertEqual((NSInteger)200, statusCode, @"Should have indicated success.");
 }
 
 - (void)testRetrievesStatusSynchronously
@@ -40,7 +45,7 @@
 
     NSArray *infos = [connection retrieveServerStatus];
 
-    STAssertEqualObjects([[infos objectAtIndex:0] valueForKey:@"name"], @"connectfour", @"Should have returned info object corresponding to response");
+    XCTAssertEqualObjects([[infos objectAtIndex:0] valueForKey:@"name"], @"connectfour", @"Should have returned info object corresponding to response");
 }
 
 - (void)testRaisesExceptionWhenRetrievingStatusAndResponseStatusCodeIsNot200OK
@@ -56,7 +61,7 @@
     [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
     [connection setRunLoop:runLoopMock];
 
-    STAssertThrows([connection retrieveServerStatus], @"Should have raised an exception");
+    XCTAssertThrows([connection retrieveServerStatus], @"Should have raised an exception");
 }
 
 - (void)testRaisesExceptionWhenRetrievingStatusAndUnderlyingConnectionFailedWithError
@@ -72,7 +77,7 @@
     [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
     [connection setRunLoop:runLoopMock];
 
-    STAssertThrows([connection retrieveServerStatus], @"Should have raised an exception");
+    XCTAssertThrows([connection retrieveServerStatus], @"Should have raised an exception");
 }
 
 

@@ -1,9 +1,20 @@
 
-#import "CCMProjectSheetController.h"
-#import "CCMProjectSheetControllerTest.h"
-#import "CCMUserDefaultsManager.h"
-#import "NSString+CCMAdditions.h"
+#import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#import "CCMProjectSheetController.h"
+#import "NSString+CCMAdditions.h"
+
+
+@interface CCMProjectSheetControllerTest : XCTestCase
+{
+    CCMProjectSheetController *controller;
+
+	OCMockObject *defaultsManagerMock;
+	OCMockObject *serverUrlComboBoxMock;
+	OCMockObject *serverTypeMatrixMock;
+}
+
+@end
 
 
 @implementation CCMProjectSheetControllerTest

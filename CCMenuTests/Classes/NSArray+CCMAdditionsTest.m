@@ -1,41 +1,44 @@
 
-#import "NSArray+CCMAdditionsTest.h"
-#import "NSArray+CCMAdditions.h"
+#import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#import "NSArray+CCMAdditions.h"
+
+
+@interface NSArray_CCMAdditionsTest : XCTestCase
+{
+}
+
+@end
 
 
 @implementation NSArray_CCMAdditionsTest
 
 - (void)testArrayCollect
 {
-	NSDictionary *o1 = [NSDictionary dictionaryWithObject:@"foo" forKey:@"name"];
-	NSDictionary *o2 = [NSDictionary dictionaryWithObject:@"bar" forKey:@"name"];
-	NSArray *original = [NSArray arrayWithObjects:o1, o2, nil];
+    NSArray *original = @[@{@"name" : @"foo"}, @{@"name" : @"bar"}];
 	
 	NSArray *result = [[original collect] objectForKey:@"name"];
 
-	STAssertEqualObjects(@"foo", [result objectAtIndex:0], @"Should have mapped object.");
-	STAssertEqualObjects(@"bar", [result objectAtIndex:1], @"Should have mapped object.");
-	STAssertEquals(2ul, [result count], @"Should have returned array of same size.");
+	XCTAssertEqualObjects(@"foo", [result objectAtIndex:0], @"Should have mapped object.");
+	XCTAssertEqualObjects(@"bar", [result objectAtIndex:1], @"Should have mapped object.");
+	XCTAssertEqual(2ul, [result count], @"Should have returned array of same size.");
 }
 
 - (void)testArrayCollectSkipsNilValues
 {
-	NSDictionary *o1 = [NSDictionary dictionaryWithObject:@"foo" forKey:@"nameX"];
-	NSDictionary *o2 = [NSDictionary dictionaryWithObject:@"bar" forKey:@"name"];
-	NSArray *original = [NSArray arrayWithObjects:o1, o2, nil];
+    NSArray *original = @[@{@"nameX" : @"foo"}, @{@"name" : @"bar"}];
 	
 	NSArray *result = [[original collect] objectForKey:@"name"];
 	
-	STAssertEqualObjects(@"bar", [result objectAtIndex:0], @"Should have mapped object.");
-	STAssertEquals(1ul, [result count], @"Should have returned array correct size.");
+	XCTAssertEqualObjects(@"bar", [result objectAtIndex:0], @"Should have mapped object.");
+	XCTAssertEqual(1ul, [result count], @"Should have returned array correct size.");
 }
 
 - (void)testArrayCollectWorksWithEmptyArrays
 {
 	NSArray *result = [[[NSArray array] collect] objectForKey:@"name"];
 	
-	STAssertEquals(0ul, [result count], @"Should have returned emptyArray.");
+	XCTAssertEqual(0ul, [result count], @"Should have returned emptyArray.");
 }
 
 - (void)testArrayEach
@@ -44,7 +47,7 @@
 	[[mock1 expect] lowercaseString];
 	OCMockObject *mock2 = [OCMockObject mockForClass:[NSString class]];
 	[[mock2 expect] lowercaseString];
-	NSArray *objects = [NSArray arrayWithObjects:mock1, mock2, nil];
+	NSArray *objects = @[mock1, mock2];
 	
 	[[objects each] lowercaseString];
 	
@@ -54,7 +57,7 @@
 
 - (void)testArrayEachWorksWithEmptyArrays
 {
-	STAssertNoThrow([[[NSArray array] collect] objectForKey:@"name"], @"Should ignore each on empty array");
+	XCTAssertNoThrow([[[NSArray array] collect] objectForKey:@"name"], @"Should ignore each on empty array");
 }
 
 
