@@ -67,7 +67,7 @@
     // This is not ideal but I don't think it would be possible to use different images in a multi-screen scenario anyway
     if([[NSScreen mainScreen] backingScaleFactor] == 1)
         return originalImage;
-    return [self convertInternal:originalImage targetY:1 suffix:@"-item"];
+    return [self convertInternal:originalImage targetY:0.5 suffix:@"-item"];
 }
 
 - (NSImage *)convertInternal:(NSImage *)originalImage targetY:(CGFloat)targetY suffix:(NSString *)suffix
