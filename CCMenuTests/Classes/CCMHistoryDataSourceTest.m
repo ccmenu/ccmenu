@@ -14,8 +14,9 @@
 {
     CCMHistoryDataSource *datasource = [[[CCMHistoryDataSource alloc] init] autorelease];
 
-    id udmMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
-    [[[udmMock expect] andReturn:@[@"http://localhost", @"http://cclive.thoughtworks.com/dashboard"]] serverURLHistory];
+    id udmMock = OCMClassMock([CCMUserDefaultsManager class]);
+    NSArray *const history = @[@"http://localhost", @"http://cclive.thoughtworks.com/dashboard"];
+    OCMStub([udmMock serverURLHistory]).andReturn(history);
     [datasource reloadData:udmMock];
 
     int count = (int)[datasource numberOfItemsInComboBox:nil];
@@ -31,8 +32,8 @@
 {
     CCMHistoryDataSource *datasource = [[[CCMHistoryDataSource alloc] init] autorelease];
 
-    id udmMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
-    [[[udmMock stub] andReturn:@[@"http://localhost"]] serverURLHistory];
+    id udmMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([udmMock serverURLHistory]).andReturn(@[@"http://localhost"]);
     [datasource reloadData:udmMock];
 
     NSString *completion = [datasource comboBox:nil completedString:@"h"];
@@ -44,8 +45,8 @@
 {
     CCMHistoryDataSource *datasource = [[[CCMHistoryDataSource alloc] init] autorelease];
 
-    id udmMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
-    [[[udmMock stub] andReturn:@[@"http://localhost/foo"]] serverURLHistory];
+    id udmMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([udmMock serverURLHistory]).andReturn(@[@"http://localhost/foo"]);
     [datasource reloadData:udmMock];
 
     NSString *completion = [datasource comboBox:nil completedString:@"l"];
@@ -57,8 +58,8 @@
 {
     CCMHistoryDataSource *datasource = [[[CCMHistoryDataSource alloc] init] autorelease];
 
-    id udmMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
-    [[[udmMock stub] andReturn:@[@"http://ll:password@localhost/foo"]] serverURLHistory];
+    id udmMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([udmMock serverURLHistory]).andReturn(@[@"http://ll:password@localhost/foo"]);
     [datasource reloadData:udmMock];
 
     NSString *completion = [datasource comboBox:nil completedString:@"l"];

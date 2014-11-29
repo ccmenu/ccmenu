@@ -43,16 +43,13 @@
 
 - (void)testArrayEach
 {
-	OCMockObject *mock1 = [OCMockObject mockForClass:[NSString class]];
-	[[mock1 expect] lowercaseString];
-	OCMockObject *mock2 = [OCMockObject mockForClass:[NSString class]];
-	[[mock2 expect] lowercaseString];
-	NSArray *objects = @[mock1, mock2];
-	
-	[[objects each] lowercaseString];
-	
-	[mock1 verify];
-	[mock2 verify];
+	id mock1 = OCMClassMock([NSString class]);
+    id mock2 = OCMClassMock([NSString class]);
+
+    [[@[mock1, mock2] each] lowercaseString];
+
+    OCMVerify([mock1 lowercaseString]);
+    OCMVerify([mock2 lowercaseString]);
 }
 
 - (void)testArrayEachWorksWithEmptyArrays

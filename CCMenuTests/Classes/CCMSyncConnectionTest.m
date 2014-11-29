@@ -16,12 +16,12 @@
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
     [self setUpDummyNSURLConnection];
 
-    id runLoopMock = [OCMockObject mockForClass:[NSRunLoop class]];
+    id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
         [connection connection:dummyNSURLConnection didReceiveResponse:[self responseMockWithStatusCode:200]];
         [connection connectionDidFinishLoading:dummyNSURLConnection];
     };
-    [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
+    OCMStub([runLoopMock runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]]).andDo(callbacks);
     [connection setRunLoop:runLoopMock];
 
     NSInteger statusCode = [connection testConnection];
@@ -34,13 +34,13 @@
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
     [self setUpDummyNSURLConnection];
 
-    id runLoopMock = [OCMockObject mockForClass:[NSRunLoop class]];
+    id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
         [connection connection:dummyNSURLConnection didReceiveResponse:[self responseMockWithStatusCode:200]];
         [connection connection:dummyNSURLConnection didReceiveData:[self responseData]];
         [connection connectionDidFinishLoading:dummyNSURLConnection];
     };
-    [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
+    OCMStub([runLoopMock runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]]).andDo(callbacks);
     [connection setRunLoop:runLoopMock];
 
     NSArray *infos = [connection retrieveServerStatus];
@@ -53,12 +53,12 @@
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
     [self setUpDummyNSURLConnection];
 
-    id runLoopMock = [OCMockObject mockForClass:[NSRunLoop class]];
+    id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
         [connection connection:dummyNSURLConnection didReceiveResponse:[self responseMockWithStatusCode:500]];
         [connection connectionDidFinishLoading:dummyNSURLConnection];
     };
-    [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
+    OCMStub([runLoopMock runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]]).andDo(callbacks);
     [connection setRunLoop:runLoopMock];
 
     XCTAssertThrows([connection retrieveServerStatus], @"Should have raised an exception");
@@ -69,12 +69,12 @@
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
     [self setUpDummyNSURLConnection];
 
-    id runLoopMock = [OCMockObject mockForClass:[NSRunLoop class]];
+    id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
         NSError *dummyError = [NSError errorWithDomain:@"test" code:0 userInfo:nil];
         [connection connection:dummyNSURLConnection didFailWithError:dummyError];
     };
-    [[[runLoopMock stub] andDo:callbacks] runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]];
+    OCMStub([runLoopMock runMode:NSDefaultRunLoopMode beforeDate:[OCMArg any]]).andDo(callbacks);
     [connection setRunLoop:runLoopMock];
 
     XCTAssertThrows([connection retrieveServerStatus], @"Should have raised an exception");

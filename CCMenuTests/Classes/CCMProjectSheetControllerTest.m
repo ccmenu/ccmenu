@@ -9,9 +9,9 @@
 {
     CCMProjectSheetController *controller;
 
-	OCMockObject *defaultsManagerMock;
-	OCMockObject *serverUrlComboBoxMock;
-	OCMockObject *serverTypeMatrixMock;
+	id defaultsManagerMock;
+	id serverUrlComboBoxMock;
+	id serverTypeMatrixMock;
 }
 
 @end
@@ -23,88 +23,87 @@
 {
 	controller = [[[CCMProjectSheetController alloc] init] autorelease];
 	
-	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+	defaultsManagerMock = OCMClassMock([CCMUserDefaultsManager class]);
 	[controller setValue:defaultsManagerMock forKey:@"defaultsManager"];
 	
-	serverUrlComboBoxMock = [OCMockObject mockForClass:[NSComboBox class]];
+	serverUrlComboBoxMock = OCMClassMock([NSComboBox class]);
 	[controller setValue:serverUrlComboBoxMock forKey:@"urlComboBox"];
 	
-	serverTypeMatrixMock = [OCMockObject mockForClass:[NSMatrix class]];
+	serverTypeMatrixMock = OCMClassMock([NSMatrix class]);
 	[controller setValue:serverTypeMatrixMock forKey:@"serverTypeMatrix"];
-}
-
-- (void)tearDown
-{
-	[defaultsManagerMock verify];
-	[serverUrlComboBoxMock verify];
-	[serverTypeMatrixMock verify];
 }
 
 - (void)testAddsHttpSchemeWhenSwitchingOffDetectionAndNoSchemePresent
 {
-	[[[serverUrlComboBoxMock stub] andReturn:@"test"] stringValue];
-	[[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){CCMUseGivenURL})] selectedTag];
+    OCMStub([serverUrlComboBoxMock stringValue]).andReturn(@"test");
+    OCMStub([serverTypeMatrixMock selectedTag]).andReturn(CCMUseGivenURL);
 	[[serverUrlComboBoxMock expect] setStringValue:@"http://test"];
     
 	[controller serverDetectionChanged:nil];
+
+    OCMVerify([serverUrlComboBoxMock setStringValue:@"http://test"]);
 }
 
 - (void)testDoesNotAddsHttpSchemeWhenSwitchingOffDetectionAndSchemePresent
 {
-    [[[serverUrlComboBoxMock stub] andReturn:@"https://test"] stringValue];
-    [[[serverTypeMatrixMock stub] andReturnValue:OCMOCK_VALUE((NSInteger){CCMUseGivenURL})] selectedTag];
-    [[serverUrlComboBoxMock expect] setStringValue:@"https://test"];
-    
+    OCMStub([serverUrlComboBoxMock stringValue]).andReturn(@"https://test");
+    OCMStub([serverTypeMatrixMock selectedTag]).andReturn(CCMUseGivenURL);
+
     [controller serverDetectionChanged:nil];
+
+    OCMVerify([serverUrlComboBoxMock setStringValue:@"https://test"]);
 }
 
 - (void)testAddUserAndSchemeToUrlWhenUserFieldIsEditedAndUrlHadNoUserOrScheme
 {
-    id userFieldMock = [OCMockObject mockForClass:[NSTextField class]];
+    id userFieldMock = OCMClassMock([NSTextField class]);
     [controller setValue:userFieldMock forKey:@"userField"];
-    
-    [[[serverUrlComboBoxMock stub] andReturn:@"host.com/feed"] stringValue];
-    [[[userFieldMock stub] andReturn:@"alice"] stringValue];
-    [[serverUrlComboBoxMock expect] setStringValue:@"http://alice@host.com/feed"];
-    
+
+    OCMStub([serverUrlComboBoxMock stringValue]).andReturn(@"host.com/feed");
+    OCMStub([userFieldMock stringValue]).andReturn(@"alice");
+
     [controller controlTextDidChange:[NSNotification notificationWithName:@"test" object:userFieldMock]];
+
+    OCMVerify([serverUrlComboBoxMock setStringValue:@"http://alice@host.com/feed"]);
 }
 
 - (void)testReplacesUserInUrlWhenUserFieldIsEdited
 {
-    id userFieldMock = [OCMockObject mockForClass:[NSTextField class]];
+    id userFieldMock = OCMClassMock([NSTextField class]);
     [controller setValue:userFieldMock forKey:@"userField"];
     
-    [[[serverUrlComboBoxMock stub] andReturn:@"https://alice@host.com/feed"] stringValue];
-    [[[userFieldMock stub] andReturn:@"bob"] stringValue];
-    [[serverUrlComboBoxMock expect] setStringValue:@"https://bob@host.com/feed"];
-    
+    OCMStub([serverUrlComboBoxMock stringValue]).andReturn(@"https://alice@host.com/feed");
+    OCMStub([userFieldMock stringValue]).andReturn(@"bob");
+
     [controller controlTextDidChange:[NSNotification notificationWithName:@"test" object:userFieldMock]];
+
+    OCMVerify([serverUrlComboBoxMock setStringValue:@"https://bob@host.com/feed"]);
 }
 
 - (void)testReplacesUserInUrlAndAddsSchemeWhenUserFieldIsEditedAndUrlHasNoScheme
 {
-    id userFieldMock = [OCMockObject mockForClass:[NSTextField class]];
+    id userFieldMock = OCMClassMock([NSTextField class]);
     [controller setValue:userFieldMock forKey:@"userField"];
     
-    [[[serverUrlComboBoxMock stub] andReturn:@"alice@host.com/feed"] stringValue];
-    [[[userFieldMock stub] andReturn:@"bob"] stringValue];
-    [[serverUrlComboBoxMock expect] setStringValue:@"http://bob@host.com/feed"];
-    
+    OCMStub([serverUrlComboBoxMock stringValue]).andReturn(@"alice@host.com/feed");
+    OCMStub([userFieldMock stringValue]).andReturn(@"bob");
+
     [controller controlTextDidChange:[NSNotification notificationWithName:@"test" object:userFieldMock]];
+
+    OCMVerify([serverUrlComboBoxMock setStringValue:@"http://bob@host.com/feed"]);
 }
 
 - (void)testAddsProjectWithServerUrlAndNameToDefaults
 {
-	OCMockObject *viewControllerMock = [OCMockObject mockForClass:[NSArrayController class]];
+	id viewControllerMock = OCMClassMock([NSArrayController class]);
 	[controller setValue:viewControllerMock forKey:@"chooseProjectsViewController"];
-	NSArray *selectedObjects = [@"( { name = new; server = 'http://test/cctray.xml'; } )" propertyList];
-	[[[viewControllerMock stub] andReturn:selectedObjects] selectedObjects];
-	
-	[[defaultsManagerMock expect] addProject:@"new" onServerWithURL:@"http://test/cctray.xml"];
-	[[defaultsManagerMock expect] addServerURLToHistory:@"http://test/cctray.xml"];
-	
+    NSArray *selectedObjects = @[@{ @"name": @"new", @"server": @"http://test/cctray.xml"}];
+    OCMStub([viewControllerMock selectedObjects]).andReturn(selectedObjects);
+
 	[controller sheetDidEnd:nil returnCode:1 contextInfo:0];
+
+    OCMVerify([defaultsManagerMock addProject:@"new" onServerWithURL:@"http://test/cctray.xml"]);
+    OCMVerify([defaultsManagerMock addServerURLToHistory:@"http://test/cctray.xml"]);
 }
 
 @end

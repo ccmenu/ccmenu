@@ -17,9 +17,9 @@
 {
 	CCMBuildStatusTransformer *transformer = [[[CCMBuildStatusTransformer alloc] init] autorelease];
 	NSImage *testImage = [[[NSImage alloc] init] autorelease];
-	OCMockObject *imageFactoryMock = [OCMockObject mockForClass:[CCMImageFactory class]];
-	[[[imageFactoryMock expect] andReturn:testImage] imageForStatus:[OCMArg any]];
-	[transformer setImageFactory:(id)imageFactoryMock];
+	id imageFactoryMock = OCMClassMock([CCMImageFactory class]);
+    OCMStub([imageFactoryMock imageForStatus:[OCMArg any]]).andReturn(testImage);
+	[transformer setImageFactory:imageFactoryMock];
 
 	NSImage *returnedImage = [transformer transformedValue:@"test"];
 	

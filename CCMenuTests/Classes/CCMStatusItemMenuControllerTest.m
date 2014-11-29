@@ -298,9 +298,10 @@
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p1 setBuildDuration:@30];
     CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
-    [p2 setBuildDuration:@90];
-    [[@[p1, p2] each] setBuildStartTime:[NSCalendarDate date]];
-    [[[serverMonitorMock stub] andReturn:@[p1, p2]] projects];
+    [p2 setBuildDuration:[NSNumber numberWithInt:90]];
+    NSArray *projects = [NSArray arrayWithObjects:p1, p2, nil];
+    [[projects each] setBuildStartTime:[NSCalendarDate date]];
+    [[[serverMonitorMock stub] andReturn:projects] projects];
 
 	[controller displayProjects:nil];
 	

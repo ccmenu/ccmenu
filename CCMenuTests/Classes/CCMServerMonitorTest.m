@@ -21,11 +21,11 @@
 - (void)setUp
 {
 	monitor = [[[CCMServerMonitor alloc] init] autorelease];
-	defaultsManagerMock = [OCMockObject mockForClass:[CCMUserDefaultsManager class]];
+	defaultsManagerMock = OCMClassMock([CCMUserDefaultsManager class]);
 	[monitor setDefaultsManager:defaultsManagerMock];
-    notificationFactoryMock = [OCMockObject niceMockForClass:[CCMBuildNotificationFactory class]];
+    notificationFactoryMock = OCMClassMock([CCMBuildNotificationFactory class]);
     [monitor setNotificationFactory:notificationFactoryMock];
-	notificationCenterMock = [OCMockObject niceMockForClass:[NSNotificationCenter class]];
+	notificationCenterMock = OCMClassMock([NSNotificationCenter class]);
 	[monitor setNotificationCenter:notificationCenterMock];
 }
 
@@ -35,8 +35,8 @@
 	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; },"
                               " { projectName = cozmoz; serverUrl = 'file:cctray.xml'; },"
                               " { projectName = protest; serverUrl = 'file:cctray.xml'; })" propertyList];
-    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
-    
+    OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
+
     [monitor setupFromUserDefaults];
     
     // This also asserts that the projects are in the same order as the defaults; we rely on this in other tests...
@@ -54,49 +54,44 @@
 
 - (void)testPostsStatusChangeNotificationWhenNoServersDefined
 {
-	[[[defaultsManagerMock stub] andReturnValue:[NSNumber numberWithInt:1000]] pollInterval];
-	[[[defaultsManagerMock stub] andReturn:[NSArray array]] projectList]; 
-	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
-    
+    OCMStub([defaultsManagerMock pollInterval]).andReturn(1000);
+    OCMStub([defaultsManagerMock projectList]).andReturn(@[]);
+
 	[monitor start];
 
-    [notificationCenterMock verify];
+    OCMVerify([notificationCenterMock postNotificationName:CCMProjectStatusUpdateNotification object:monitor]);
 }
 
 
 - (void)testUpdatesProjectWithStatusAndPostsNotifications
 {
 	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; })" propertyList];
-    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
+    OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
     [monitor setupFromUserDefaults];
- 	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
-    NSArray *statusList = [@"({ name = 'connectfour'; lastBuildLabel = 'test1234'; })" propertyList]; 
+    NSArray *statusList = [@"({ name = 'connectfour'; lastBuildLabel = 'test1234'; })" propertyList];
     
     [monitor connection:[[monitor connections] firstObject] didReceiveServerStatus:statusList];
     
     CCMProject *project = [[monitor projects] firstObject];
     XCTAssertNil([project statusError], @"Should not have set status error");
     XCTAssertEqualObjects(@"test1234", [[project status] lastBuildLabel], @"Should have set status.");
-    [notificationCenterMock verify];
+    OCMVerify([notificationCenterMock postNotificationName:CCMProjectStatusUpdateNotification object:monitor]);
 }
 
 
 - (void)testUpdatesProjectWhenStatusWasNotIncludedInItsConnectionResponse
 {
 	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; })" propertyList];
-    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
+    OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
     [monitor setupFromUserDefaults];
- 	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
-    NSArray *statusList = [@"({ name = 'SomeProjectNotConnectfour'; })" propertyList]; 
+    NSArray *statusList = [@"({ name = 'SomeProjectNotConnectfour'; })" propertyList];
     
     [monitor connection:[[monitor connections] firstObject] didReceiveServerStatus:statusList];
     
     CCMProject *project = [[monitor projects] firstObject];
     XCTAssertNotNil([project statusError], @"Should have set a status error");
-    
     XCTAssertNil([[project status] lastBuildLabel], @"Should have reset status to nil.");
-    
-    [notificationCenterMock verify];
+    OCMVerify([notificationCenterMock postNotificationName:CCMProjectStatusUpdateNotification object:monitor]);
 }
 
 
@@ -105,21 +100,20 @@
 	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; },"
                               " { projectName = cozmoz; serverUrl = 'file:cctray.xml'; },"
                               " { projectName = protest; serverUrl = 'file:cctray.xml'; })" propertyList];
-    [[[defaultsManagerMock stub] andReturn:defaultsList] projectList];
+    OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
     [monitor setupFromUserDefaults];
     __block CCMConnection *connection = nil;
     [[monitor connections] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if([[obj feedURL] isEqual:[NSURL URLWithString:@"file:cctray.xml"]])
             connection = obj;
     }];
- 	[[notificationCenterMock expect] postNotificationName:CCMProjectStatusUpdateNotification object:monitor];
-   
+
     [monitor connection:connection hadTemporaryError:@"broken"];
     
     XCTAssertNil([[[monitor projects] objectAtIndex:0] statusError], @"Should not have set error for project on different server");
     XCTAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:1] statusError], @"Should have set status error");
     XCTAssertEqualObjects(@"broken", [[[monitor projects] objectAtIndex:2] statusError], @"Should have set status error");
-    [notificationCenterMock verify];
+    OCMVerify([notificationCenterMock postNotificationName:CCMProjectStatusUpdateNotification object:monitor]);
 }
 
 

@@ -8,8 +8,8 @@
 - (void)setUpDummyNSURLConnection
 {
     dummyNSURLConnection = [NSURLConnection connectionWithRequest:nil delegate:nil];
-    id mockForClassMethod = [OCMockObject mockForClass:[NSURLConnection class]];
-    [[[mockForClassMethod stub] andReturn:dummyNSURLConnection] connectionWithRequest:[OCMArg any] delegate:[OCMArg any]];
+    id mockForClassMethod = OCMClassMock([NSURLConnection class]);
+    OCMStub([mockForClassMethod connectionWithRequest:[OCMArg any] delegate:[OCMArg any]]).andReturn(dummyNSURLConnection);
 }
 
 - (NSData *)responseData
@@ -20,8 +20,8 @@
 
 - (id)responseMockWithStatusCode:(NSInteger)statusCode
 {
-    id responseMock = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
-    [[[responseMock stub] andReturnValue:OCMOCK_VALUE(statusCode)] statusCode];
+    id responseMock = OCMClassMock([NSHTTPURLResponse class]);
+    OCMStub([responseMock statusCode]).andReturn(statusCode);
     return responseMock;
 }
 
