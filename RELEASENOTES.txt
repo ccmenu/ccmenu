@@ -1,6 +1,6 @@
 CCMenu Release Notes
 
-CCMenu 1.7.1
+CCMenu 1.8
 
 * Added retina icons. (This was possible because
   Luke had already created the necessary assets when

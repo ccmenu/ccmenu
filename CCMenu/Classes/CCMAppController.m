@@ -57,7 +57,7 @@
         
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"Moving to the App Store"];
-    [alert setInformativeText:@"Starting with CCMenu 1.8, which is the next major version, we will no longer maintain a self-updating release outside the App Store. Please go to the App Store now and download CCMenu from there.\n\nCCMenu will remain open source software, and it will remain free. We are focusing on the App Store as a release channel in order to reduce the overhead when publishing new versions of CCMenu."];
+    [alert setInformativeText:@"Starting with the next major version CCMenu will only be distributed via the App Store. If you do not switch to the App Store version you will not be notified of future updates. Please go to the App Store now and download CCMenu from there.\n\nCCMenu will remain open source software, and it will remain free. We are focusing on the App Store as a release channel in order to reduce the overhead when publishing new versions of CCMenu."];
     [alert addButtonWithTitle:@"Go to App Store"];
     [alert addButtonWithTitle:@"Cancel"];
     [alert setShowsSuppressionButton:YES];
