@@ -2,12 +2,12 @@ CCMenu Release Notes
 
 CCMenu 1.8
 
+* Prompt user when server certificate is not trusted.
 * Added retina icons. (This was possible because
   Luke had already created the necessary assets when
   he still could. In memory of him.)
-* Prompt user when server certificate is not trusted.
-* Added a reminder that future versions of
-  CCMenu will only be available on the App Store.
+* Added a note that going forward updates will only
+  be distributed via the App Store.
   
 
 CCMenu 1.7
