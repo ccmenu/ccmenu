@@ -12,5 +12,6 @@
 - (NSImage *)imageForUnavailableServer;
 
 - (NSImage *)convertForMenuUse:(NSImage *)image;
+- (NSImage *)convertForItemUse:(NSImage *)image;
 
 @end

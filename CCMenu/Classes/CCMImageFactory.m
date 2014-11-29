@@ -34,27 +34,27 @@
     if([[status activity] isEqualToString:@"Building"])
     {
         if([status buildDidFail])
-            name = @"icon-failure-building.png";
+            name = @"icon-failure-building";
         else
-            name = @"icon-success-building.png";
+            name = @"icon-success-building";
     }
     else
     {
         if([status buildWasSuccessful])
-            name = @"icon-success.png";
+            name = @"icon-success";
         else if([status buildDidFail])
-            name = @"icon-failure.png";
+            name = @"icon-failure";
         else if([[status lastBuildStatus] isEqualToString:@"Unknown"])
-            name = @"icon-pause.png";
+            name = @"icon-pause";
         else
-            name = @"icon-inactive.png";
+            name = @"icon-inactive";
     }
     return [self imageNamed:name];
 }
 
 - (NSImage *)imageForUnavailableServer
 {
-	return [self imageNamed:@"icon-inactive.png"];
+	return [self imageNamed:@"icon-inactive"];
 }
 
 - (NSImage *)convertForMenuUse:(NSImage *)originalImage
@@ -70,6 +70,21 @@
 		[menuImage setName:name];
 	}
 	return menuImage;
+}
+
+- (NSImage *)convertForItemUse:(NSImage *)originalImage
+{
+    NSString *name = [NSString stringWithFormat:@"%@-item", [originalImage name]];
+    NSImage *itemImage = [NSImage imageNamed:name];
+   	if(itemImage == nil)
+   	{
+           itemImage = [NSImage imageWithSize:NSMakeSize(15, 17) flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
+               [originalImage drawAtPoint:NSMakePoint(0, 0.5) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+               return YES;
+           }];
+   		[itemImage setName:name];
+   	}
+   	return itemImage;
 }
 
 @end
