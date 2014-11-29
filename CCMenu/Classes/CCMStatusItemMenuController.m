@@ -173,7 +173,8 @@
     
     CCMProject *project = [self projectForStatusBar:projectList];
     [self setupStatusItem:statusItem forProject:project fromList:projectList];
-    
+    CGFloat d = [[statusItem statusBar] thickness];
+
     if([[project status] isBuilding])
     {
         [timer invalidate];

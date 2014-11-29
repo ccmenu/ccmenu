@@ -12,15 +12,15 @@
 	if(image == nil)
 	{
 		// This is a hack to make the unit tests work when run from otool, in which case imageNamed: doesn't work
-		NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu/Images/%@", name]];
+		NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu/Images/%@.tiff", name]];
 		image = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
         if(image == nil)
         {
             // Hack to make it work in AppCode...
-            NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu.app/Contents/Resources/%@", name]];
+            NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu.app/Contents/Resources/%@.tiff", name]];
             image = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
         }
-		[image setName:[name substringToIndex:[name length] - [[name pathExtension] length] - 1]];
+		[image setName:name];
 	}
 	return image;	
 }
@@ -59,32 +59,30 @@
 
 - (NSImage *)convertForMenuUse:(NSImage *)originalImage
 {
-	NSString *name = [NSString stringWithFormat:@"%@-menu", [originalImage name]];
-	NSImage *menuImage = [NSImage imageNamed:name];
-	if(menuImage == nil)
-	{
-        menuImage = [NSImage imageWithSize:NSMakeSize(15, 17) flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
-            [originalImage drawAtPoint:NSMakePoint(0, 0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
-            return YES;
-        }];
-		[menuImage setName:name];
-	}
-	return menuImage;
+    return [self convertInternal:originalImage targetY:0 suffix:@"-menu"];
 }
 
 - (NSImage *)convertForItemUse:(NSImage *)originalImage
 {
-    NSString *name = [NSString stringWithFormat:@"%@-item", [originalImage name]];
-    NSImage *itemImage = [NSImage imageNamed:name];
-   	if(itemImage == nil)
-   	{
-           itemImage = [NSImage imageWithSize:NSMakeSize(15, 17) flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
-               [originalImage drawAtPoint:NSMakePoint(0, 0.5) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
-               return YES;
-           }];
-   		[itemImage setName:name];
-   	}
-   	return itemImage;
+    // This is not ideal but I don't think it would be possible to use different images in a multi-screen scenario anyway
+    if([[NSScreen mainScreen] backingScaleFactor] == 1)
+        return originalImage;
+    return [self convertInternal:originalImage targetY:1 suffix:@"-item"];
+}
+
+- (NSImage *)convertInternal:(NSImage *)originalImage targetY:(CGFloat)targetY suffix:(NSString *)suffix
+{
+    NSString *name = [NSString stringWithFormat:@"%@%@", [originalImage name], suffix];
+    NSImage *newImage = [NSImage imageNamed:name];
+    if(newImage == nil)
+    {
+        newImage = [NSImage imageWithSize:NSMakeSize(15, 17) flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
+            [originalImage drawAtPoint:NSMakePoint(0, targetY) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+            return YES;
+        }];
+        [newImage setName:name];
+    }
+    return newImage;
 }
 
 @end
