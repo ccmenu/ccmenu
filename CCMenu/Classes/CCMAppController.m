@@ -51,13 +51,13 @@
 - (void)showAppStoreReminder
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setBool:NO forKey:@"SupressAppStoreReminder"];
-    if([defaults boolForKey:@"SupressAppStoreReminder"])
+//    [defaults setBool:NO forKey:@"SupressAppStoreReminder2"];
+    if([defaults boolForKey:@"SupressAppStoreReminder2"])
         return;
         
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Moving to the App Store"];
-    [alert setInformativeText:@"Starting with the next major version CCMenu will only be distributed via the App Store. If you do not switch to the App Store version you will not be notified of future updates. Please go to the App Store now and download CCMenu from there.\n\nCCMenu will remain open source software, and it will remain free. We are focusing on the App Store as a release channel in order to reduce the overhead when publishing new versions of CCMenu."];
+    [alert setMessageText:@"CCMenu has moved to the App Store"];
+    [alert setInformativeText:@"A new version of CCMenu has been released via the App Store. If you do not switch to the App Store version you will not be notified of future updates. Please go to the App Store now and download CCMenu from there.\n\nCCMenu will remain open source software, and it will remain free. We are focusing on the App Store as a release channel in order to reduce the overhead when publishing new versions of CCMenu."];
     [alert addButtonWithTitle:@"Go to App Store"];
     [alert addButtonWithTitle:@"Cancel"];
     [alert setShowsSuppressionButton:YES];
@@ -67,7 +67,7 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"macappstores://itunes.apple.com/us/app/ccmenu/id603117688"]];
     
     if([[alert suppressionButton] state] == NSOnState)
-        [defaults setBool:YES forKey:@"SupressAppStoreReminder"];
+        [defaults setBool:YES forKey:@"SupressAppStoreReminder2"];
     
     [alert release];
 }

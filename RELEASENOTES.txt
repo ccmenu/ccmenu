@@ -1,5 +1,10 @@
 CCMenu Release Notes
 
+CCMenu 1.8.1
+
+* Added final reminder about App Store move.
+
+
 CCMenu 1.8
 
 * Prompt user when server certificate is not trusted.
