@@ -33,6 +33,10 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 {
     return [userDefaults boolForKey:@"ShowLastBuildTimes"];
 }
+- (BOOL)shouldShowLastBuildLabel
+{
+    return [userDefaults boolForKey:@"ShowLastBuildLabel"];
+}
 
 - (NSUInteger)projectOrder
 {
