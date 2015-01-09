@@ -21,6 +21,7 @@
 		03051ADD18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
 		031CDCA21A5FED24004BAB07 /* CCMStatusItemMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */; };
+		031CDCA41A60125B004BAB07 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031CDCA31A60125B004BAB07 /* OCHamcrest.framework */; };
 		032186811A24FA9E00B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
 		032186821A25360400B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
 		032186831A27B15F00B16510 /* CCMSyncConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BF7921757C5D50025F9A0 /* CCMSyncConnectionTest.m */; };
@@ -151,6 +152,16 @@
 		2FA28F7C4769563BBEFD39BD /* CCMHistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		03A5B5BE1A6013BB0034554B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 038ABE10134F11080053F0D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 038ABE18134F11080053F0D1;
+			remoteInfo = CCMenu;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		03C082D0134F9C530039E3BD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -181,6 +192,7 @@
 		03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMReorderableArrayController.m; sourceTree = "<group>"; };
 		0306184E13DD554F003B065E /* CCMBuildTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildTimer.h; sourceTree = "<group>"; };
 		0306184F13DD554F003B065E /* CCMBuildTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBuildTimer.m; sourceTree = "<group>"; };
+		031CDCA31A60125B004BAB07 /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = Frameworks/OCHamcrest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0321274716AED55D00292F3D /* CCMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCMenu.entitlements; sourceTree = "<group>"; };
 		032186801A24FA9E00B16510 /* SecurityInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityInterface.framework; path = System/Library/Frameworks/SecurityInterface.framework; sourceTree = SDKROOT; };
 		0328D37E135C191500D35055 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				031CDCA41A60125B004BAB07 /* OCHamcrest.framework in Frameworks */,
 				032186821A25360400B16510 /* SecurityInterface.framework in Frameworks */,
 				030050C117660C4C007C3DEE /* Security.framework in Frameworks */,
 				034BF79C1757C9890025F9A0 /* Cocoa.framework in Frameworks */,
@@ -544,6 +557,7 @@
 		038ABE1C134F11090053F0D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				031CDCA31A60125B004BAB07 /* OCHamcrest.framework */,
 				032186801A24FA9E00B16510 /* SecurityInterface.framework */,
 				038ABE1D134F11090053F0D1 /* Cocoa.framework */,
 				0384D33C17620E1400749956 /* Security.framework */,
@@ -688,6 +702,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				03A5B5BF1A6013BB0034554B /* PBXTargetDependency */,
 			);
 			name = CCMenuTests;
 			productName = CCMenuTests;
@@ -818,7 +833,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Unpack frameworks required for this target\n#pushd \"${TARGET_BUILD_DIR}\"\npushd \"${BUILT_PRODUCTS_DIR}\"\nif [ ! -d Frameworks ]; then\n  mkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  OCMock.framework ]; then\n  tar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  Sparkle.framework ]; then\n  tar xzf \"${PROJECT_DIR}/Frameworks/Sparkle.tar.gz\"\nfi\npopd\n";
+			shellScript = "# Unpack frameworks required for this target\n#pushd \"${TARGET_BUILD_DIR}\"\npushd \"${BUILT_PRODUCTS_DIR}\"\nif [ ! -d Frameworks ]; then\n  mkdir Frameworks\nfi\ncd Frameworks\nif [ ! -d  OCMock.framework ]; then\n  tar xzf \"${PROJECT_DIR}/Frameworks/OCMock.tar.gz\"\nfi\nif [ ! -d  OCHamcrest.framework ]; then\ntar xzf \"${PROJECT_DIR}/Frameworks/OCHamcrest.tar.gz\"\nfi\nif [ ! -d  Sparkle.framework ]; then\n  tar xzf \"${PROJECT_DIR}/Frameworks/Sparkle.tar.gz\"\nfi\npopd\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -937,6 +952,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		03A5B5BF1A6013BB0034554B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 038ABE18134F11080053F0D1 /* CCMenu */;
+			targetProxy = 03A5B5BE1A6013BB0034554B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		0300E7531408021800E59AFD /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
@@ -1030,7 +1053,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"\"${TARGET_BUILD_DIR}/Frameworks\"",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"$(inherited)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1066,7 +1089,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"\"${TARGET_BUILD_DIR}/Frameworks\"",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"$(inherited)",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

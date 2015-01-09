@@ -1,5 +1,7 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
 
 #import "NSArray+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"
@@ -309,9 +311,7 @@
 
 	[controller displayProjects:nil];
 
-//  TODO: decide on hamcrest use
-//	XCTAssertTrue([[[controller statusItem] title] hasSuffix:@"s"], @"Should display text for project with less than a minute remaining.");
-//  OCMVerify([statusItemMock setFormattedTitle:@""]);
+    OCMVerify([statusItemMock setFormattedTitle:endsWith(@"s")]);
 }
 
 - (void)testDisplaysTimingForFixingEvenIfItsLongerThanForBuilding
@@ -330,9 +330,7 @@
 
 	[controller displayProjects:nil];
 	
-//  TODO: decide on hamcrest use
-//	XCTAssertTrue([[[controller statusItem] title] hasPrefix:@"-1:"], @"Should display text for project with more than a minute remaining.");
-//  OCMVerify([statusItemMock setFormattedTitle:@""]);
+    OCMVerify([statusItemMock setFormattedTitle:startsWith(@"-1:")]);
 }
 
 @end
