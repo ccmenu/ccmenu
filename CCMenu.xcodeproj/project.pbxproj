@@ -20,6 +20,7 @@
 		03051ADC18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */; };
 		03051ADD18BAAA820090FF45 /* CCMReorderableArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03051ADB18BAAA820090FF45 /* CCMReorderableArrayController.m */; };
 		0306185013DD554F003B065E /* CCMBuildTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306184F13DD554F003B065E /* CCMBuildTimer.m */; };
+		031CDCA21A5FED24004BAB07 /* CCMStatusItemMenuControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349BC8C134F9F9100D2F269 /* CCMStatusItemMenuControllerTest.m */; };
 		032186811A24FA9E00B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
 		032186821A25360400B16510 /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032186801A24FA9E00B16510 /* SecurityInterface.framework */; };
 		032186831A27B15F00B16510 /* CCMSyncConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BF7921757C5D50025F9A0 /* CCMSyncConnectionTest.m */; };
@@ -828,6 +829,7 @@
 			files = (
 				034BF7AA1757C9F20025F9A0 /* CCMBuildNotificationFactoryTest.m in Sources */,
 				034BF7AB1757C9F20025F9A0 /* CCMBuildStatusTransformerTest.m in Sources */,
+				031CDCA21A5FED24004BAB07 /* CCMStatusItemMenuControllerTest.m in Sources */,
 				034BF7AC1757C9F20025F9A0 /* CCMConnectionTest.m in Sources */,
 				034BF7AE1757C9F20025F9A0 /* CCMImageFactoryTest.m in Sources */,
 				034BF7AF1757C9F20025F9A0 /* CCMPreferencesControllerTest.m in Sources */,
