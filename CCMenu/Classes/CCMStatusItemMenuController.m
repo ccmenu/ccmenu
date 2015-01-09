@@ -146,10 +146,10 @@
             [menuItem setTarget:self];
             [menuItem setRepresentedObject:project];
         }
-        NSString *lbl = [NSString stringWithFormat:@"",""];
-        if([defaultsManager shouldShowLastBuildLabel] )
+        NSMutableArray *infoTexts = [NSMutableArray array];
+        if([defaultsManager shouldShowLastBuildLabel])
         {
-            lbl = [NSString stringWithFormat:@" \u2014 %@",[[project status] lastBuildLabel]];
+            [infoTexts addObject:[NSString stringWithFormat:@"%@",[[project status] lastBuildLabel]]];
         }
         if([defaultsManager shouldShowLastBuildTimes])
         {
@@ -157,8 +157,12 @@
             if(lbt != nil)
             {
                 // the lastBuildTime date object is not a calendar date but it implements enough to be passed as one here
-                [menuItem setTitle:[NSString stringWithFormat:@"%@ %@ \u2014 %@", [project name],lbl, [[NSCalendarDate date] relativeDescriptionOfPastDate:(NSCalendarDate *)lbt]]];
+                [infoTexts addObject:[[NSCalendarDate date] relativeDescriptionOfPastDate:(NSCalendarDate *)lbt]];
             }
+        }
+        if([infoTexts count] > 0)
+        {
+            [menuItem setTitle:[NSString stringWithFormat:@"%@ \u2014 %@", [project name], [infoTexts componentsJoinedByString:@", "]]];
         }
 		NSImage *image = [imageFactory imageForStatus:[project status]];
 		[menuItem setImage:[imageFactory convertForMenuUse:image]];

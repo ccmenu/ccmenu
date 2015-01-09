@@ -172,7 +172,7 @@
 	XCTAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
 }
 
--(void)_ignore_testDisplaysLastBuildTimes
+-(void)testDisplaysLastBuildTimes
 {
     id defaultsMock = OCMClassMock([CCMUserDefaultsManager class]);
     OCMStub([defaultsMock projectOrder]).andReturn(CCMProjectOrderNatural);
