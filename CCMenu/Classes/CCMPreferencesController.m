@@ -2,7 +2,6 @@
 #import "CCMPreferencesController.h"
 #import "CCMConnection.h"
 #import "NSArray+EDExtensions.h"
-#import "NSAppleScript+EDAdditions.h"
 #import "CCMKeychainHelper.h"
 #import "CCMProjectSheetController.h"
 
@@ -109,23 +108,6 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 {
     [[NSSound soundNamed:[sender title]] play];
 }
-
-#ifndef CCM_MAS_BUILD
-- (IBAction)openNotificationPreferences:(id)sender
-{
-    [[NSAppleScript scriptWithName:@"handlers"] callHandler:@"open_notifications"];
-}
-
-- (IBAction)updateIntervalChanged:(id)sender
-{
-	[updater setUpdateCheckInterval:(NSTimeInterval)[sender selectedTag]];
-}
-
-- (IBAction)checkForUpdateNow:(id)sender
-{
-    [updater checkForUpdates:sender];
-}
-#endif
 
 - (void)preferencesChanged:(id)sender
 {

@@ -2,15 +2,11 @@
 #import "CCMWindowController.h"
 #import "CCMUserDefaultsManager.h"
 #import "CCMProjectSheetController.h"
-#import <Sparkle/Sparkle.h>
 
 
 @interface CCMPreferencesController : CCMWindowController
 {
 	IBOutlet CCMUserDefaultsManager	*defaultsManager;
-#ifndef CCM_MAS_BUILD
-	IBOutlet SUUpdater				*updater;
-#endif
     
 	IBOutlet NSPanel				*preferencesWindow;
 	IBOutlet NSView					*paneHolderView;
@@ -39,12 +35,6 @@
 
 - (IBAction)soundSelected:(id)sender;
 - (NSArray *)availableSounds;
-
-#ifndef CCM_MAS_BUILD
-- (IBAction)openNotificationPreferences:(id)sender;
-- (IBAction)updateIntervalChanged:(id)sender;
-- (IBAction)checkForUpdateNow:(id)sender;
-#endif
 
 - (IBAction)preferencesChanged:(id)sender;
 

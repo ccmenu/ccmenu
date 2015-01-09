@@ -13,12 +13,7 @@
 		[aboutPanel center];
         NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-#ifndef CCM_MAS_BUILD
-        NSString *build = @"F";
-#else
-        NSString *build = @"A";
-#endif
-		[versionField setStringValue:[NSString stringWithFormat:@"%@ (%@%@)", shortVersion, version, build]];
+		[versionField setStringValue:[NSString stringWithFormat:@"%@ (%@)", shortVersion, version]];
 	}
 	[NSApp activateIgnoringOtherApps:YES];
 	[aboutPanel makeKeyAndOrderFront:self];
