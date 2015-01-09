@@ -1,6 +1,12 @@
 CCMenu Release Notes
 
-CCMenu 1.8.1
+CCMenu 1.9
+
+* Can display last build label in menu.
+* Using Git SHA as build version.
+
+
+CCMenu 1.8.1 (SourceForge only)
 
 * Added final reminder about App Store move.
 

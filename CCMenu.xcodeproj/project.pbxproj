@@ -718,6 +718,7 @@
 				038ABE16134F11080053F0D1 /* Frameworks */,
 				038ABE17134F11080053F0D1 /* Resources */,
 				03C082D0134F9C530039E3BD /* CopyFiles */,
+				03A5B5C01A601A0C0034554B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -821,6 +822,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		03A5B5C01A601A0C0034554B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SHA=`git rev-parse --short HEAD | tr '[a-z]' '[A-Z]'`\nsed -i \"\" \"s/#gitsha#/$SHA/\" \"${BUILT_PRODUCTS_DIR}\"/CCMenu.app/Contents/Info.plist";
 		};
 		03C082B9134F997B0039E3BD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
