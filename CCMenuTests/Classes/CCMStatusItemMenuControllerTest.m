@@ -174,28 +174,35 @@
 	XCTAssertTrue([[items objectAtIndex:2] isSeparatorItem], @"Should have separator after projects.");
 }
 
--(void)testDisplaysLastBuildTimes
+-(void)testDisplaysLastBuildTimesAndLabels
 {
     id defaultsMock = OCMClassMock([CCMUserDefaultsManager class]);
-    OCMStub([defaultsMock projectOrder]).andReturn(CCMProjectOrderNatural);
+    OCMStub([defaultsMock projectOrder]).andReturn(CCMProjectOrderAlphabetic);
     OCMStub([defaultsMock shouldShowLastBuildTimes]).andReturn(YES);
+    OCMStub([defaultsMock shouldShowLastBuildLabel]).andReturn(YES);
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
     id dateMock = OCMClassMock([NSCalendarDate class]);
     NSTimeInterval interval = [[NSCalendarDate date] timeIntervalSinceReferenceDate] - 61;
     OCMStub([dateMock timeIntervalSinceReferenceDate]).andReturn(interval);
     
-    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"foo"] autorelease];
-    [p1 updateWithInfo:@{@"lastBuildTime": dateMock}];
-    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"bar"] autorelease];
-    NSArray *const projects = @[p1, p2];
+    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"project1"] autorelease];
+    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"project2"] autorelease];
+    [p2 updateWithInfo:@{@"lastBuildTime": dateMock}];
+    CCMProject *p3 = [[[CCMProject alloc] initWithName:@"project3"] autorelease];
+    [p3 updateWithInfo:@{@"lastBuildLabel": @123}];
+    CCMProject *p4 = [[[CCMProject alloc] initWithName:@"project4"] autorelease];
+    [p4 updateWithInfo:@{@"lastBuildTime": dateMock, @"lastBuildLabel": @123}];
+    NSArray *const projects = @[p1, p2, p3, p4];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
     
     [controller displayProjects:nil];
     
 	NSArray *items = [[[controller statusItem] menu] itemArray];
-	XCTAssertEqualObjects(@"foo \u2014 a minute ago", [[items objectAtIndex:0] title], @"Should have included last build time where known.");
-	XCTAssertEqualObjects(@"bar", [[items objectAtIndex:1] title], @"Should have shown just name when last build time is not known.");
+	XCTAssertEqualObjects(@"project1", [[items objectAtIndex:0] title], @"Should have shown just name when nothing else is known.");
+    XCTAssertEqualObjects(@"project2 \u2014 a minute ago", [[items objectAtIndex:1] title], @"Should have included last build time where known.");
+    XCTAssertEqualObjects(@"project3 \u2014 123", [[items objectAtIndex:2] title], @"Should have included last build label where known.");
+    XCTAssertEqualObjects(@"project4 \u2014 123, a minute ago", [[items objectAtIndex:3] title], @"Should have included last build time and label where known.");
 }
 
 

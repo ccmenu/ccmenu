@@ -149,7 +149,11 @@
         NSMutableArray *infoTexts = [NSMutableArray array];
         if([defaultsManager shouldShowLastBuildLabel])
         {
-            [infoTexts addObject:[NSString stringWithFormat:@"%@",[[project status] lastBuildLabel]]];
+            NSString *lbl = [[project status] lastBuildLabel];
+            if(lbl != nil)
+            {
+                [infoTexts addObject:lbl];
+            }
         }
         if([defaultsManager shouldShowLastBuildTimes])
         {
