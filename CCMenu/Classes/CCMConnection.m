@@ -65,9 +65,23 @@
 {
     if(nsurlConnection != nil)
         return;
+    [self setUpCredential];
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    [self prepareRequest:request];
     nsurlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+}
+
+- (void)prepareRequest:(NSMutableURLRequest*)request {
+    if(credential)
+        [request setValue:self.authHeader forHTTPHeaderField:@"Authorization"];
+}
+
+- (NSString*)authHeader
+{
+    NSString *authStr = [NSString stringWithFormat:@"%@:%@", credential.user, credential.password];
+    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+    return [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength]];
 }
 
 - (void)cancelRequest
