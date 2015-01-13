@@ -21,9 +21,10 @@
 
 // subclasses only
 
+- (BOOL)setUpCredential;
 - (void)setUpForNewRequest;
 - (void)cleanUpAfterRequest;
-
+- (void)prepareRequest:(NSMutableURLRequest*)request;
 - (BOOL)shouldContinueWithServerTrust:(SecTrustRef)secTrust;
 
 - (NSString *)errorStringForError:(NSError *)error;

@@ -30,7 +30,9 @@
 - (NSInteger)testConnection
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    [self prepareRequest:request];
+
     NSURLConnection *c = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -49,7 +51,10 @@
 - (NSArray *)retrieveServerStatus
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    [self setUpCredential];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    [self prepareRequest:request];
+
     [NSURLConnection connectionWithRequest:request delegate:self];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
