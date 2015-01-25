@@ -7,6 +7,7 @@
 	NSURLConnection     *nsurlConnection;
     NSHTTPURLResponse   *receivedResponse;
 	NSMutableData	    *receivedData;
+	BOOL				useHudsonJenkinsAuthWorkaround;
 }
 
 @property(nonatomic, readonly, copy) NSURL *feedURL;
@@ -23,6 +24,7 @@
 
 - (void)setUpForNewRequest;
 - (void)cleanUpAfterRequest;
+- (NSURLRequest *)createRequest;
 
 - (BOOL)shouldContinueWithServerTrust:(SecTrustRef)secTrust;
 

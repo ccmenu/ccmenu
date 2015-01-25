@@ -30,11 +30,16 @@
 - (NSInteger)testConnection
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    NSURLConnection *c = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    NSURLConnection *c = [[NSURLConnection connectionWithRequest:[self createRequest] delegate:self] retain];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     [c release];
+    if([self responseIsHudsonJenkinsAuthRequest] && (useHudsonJenkinsAuthWorkaround == NO))
+    {
+        [self cleanUpAfterRequest];
+        useHudsonJenkinsAuthWorkaround = YES;
+        return [self testConnection];
+    }
     if(receivedError != nil)
     {
         // faking a 401 status code for authentications we cancelled
@@ -49,10 +54,15 @@
 - (NSArray *)retrieveServerStatus
 {
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self feedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    [NSURLConnection connectionWithRequest:[self createRequest] delegate:self];
     while(didFinish == NO)
         [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    if([self responseIsHudsonJenkinsAuthRequest] && (useHudsonJenkinsAuthWorkaround == NO))
+    {
+        [self cleanUpAfterRequest];
+        useHudsonJenkinsAuthWorkaround = YES;
+        return [self retrieveServerStatus];
+    }
     if(receivedError != nil)
         [NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:receivedError]];
     if([receivedResponse statusCode] != 200)

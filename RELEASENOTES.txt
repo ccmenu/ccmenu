@@ -2,7 +2,8 @@ CCMenu Release Notes
 
 CCMenu 1.9
 
-* Can display last build label in menu.
+* Can display last build label in menu. 
+* Special workaround for authenticating against Hudson and Jenkins. 
 * Using Git SHA as build version.
 
 
@@ -14,11 +15,10 @@ CCMenu 1.8.1 (SourceForge only)
 CCMenu 1.8
 
 * Prompt user when server certificate is not trusted.
-* Added retina icons. (This was possible because
-  Luke had already created the necessary assets when
-  he still could. In memory of him.)
-* Added a note that going forward updates will only
-  be distributed via the App Store.
+* Added retina icons. (This was possible because Luke had already created the 
+  necessary assets when he still could. In memory of him.)
+* Added a note that going forward updates will only be distributed via the App 
+  Store.
   
 
 CCMenu 1.7
@@ -37,10 +37,9 @@ CCMenu 1.6.5
 	
 CCMenu 1.6.4
 
-* Now sorting the list of projects in the add
-  project sheet
-* Fixed a bug that caused incorrect build time
-  estimation when no labels are in the feed
+* Now sorting the list of projects in the add project sheet
+* Fixed a bug that caused incorrect build time estimation when no labels are 
+  in the feed
 * Now detecting paused builds from Jenkins.
 
 
@@ -56,14 +55,13 @@ CCMenu 1.6.2
 
 CCMenu 1.6.1
 
-* Fixed problem when using authentication with
-  URLs that have no port
+* Fixed problem when using authentication with URLs that have no port
 
 
 CCMenu 1.6
 
-* Handles server authentication requests and stores
-  passwords in user's keychain
+* Handles server authentication requests and stores passwords in user's 
+  keychain
 * Existing projects can be edited
 * Project list preferences are resizable
 
@@ -71,19 +69,17 @@ CCMenu 1.6
 CCMenu 1.5.1 (Mac App Store only)
 
 * Runs in sandbox
-* Removed feature to open Notfication pane in 
-  System Preferences; this feature used Apple Script 
-  and that was not accepted for the Mac App Store.
+* Removed feature to open Notfication pane in System Preferences; this feature 
+  used Apple Script and that was not accepted for the Mac App Store.
 
 
 CCMenu 1.5
 
 * Now requires OS X 10.8 Mountain Lion
 * Uses Notification Center instead of Growl
-* The app does not run in a sandbox because the update
-  mechanism (Sparkle) does not yet work when run in a
-  sandboxed application. There should be a sandboxed 
-  version of CCMenu in the Mac App Store soon.
+* The app does not run in a sandbox because the update mechanism (Sparkle) 
+  does not yet work when run in a sandboxed application. There should be a 
+	sandboxed version of CCMenu in the Mac App Store soon.
 
 
 CCMenu 1.4.1
@@ -113,12 +109,9 @@ CCMenu 1.3
 
 CCMenu 1.2
 
-* Connection errors are now displayed when clicking on 
-  a project in the menu
-* Connection errors are no longer logged to console
-  (#1894125)
-* Fixed a few (harmless) memory leaks; thanks to clang
-  scan build
+* Connection errors are now displayed when clicking on a project in the menu
+* Connection errors are no longer logged to console (#1894125)
+* Fixed a few (harmless) memory leaks; thanks to clang scan build
 
 
 CCMenu 1.1
@@ -129,45 +122,34 @@ CCMenu 1.1
 CCMenu 1.0
 
 * Improved URL handling in 'add projects' dialog
-* Now automatically determines full URL in 'add
-  projects' dialog
+* Now automatically determines full URL in 'add projects' dialog
 * Fixed HTTPS bug (#1805720)
 
 
 CCMenu 0.9.5
 
-* Now projects already monitored are greyed out in 'add
-  project' dialog
-* Server URL combo box now remembers all URLs seen
-  before
+* Now projects already monitored are greyed out in 'add project' dialog
+* Server URL combo box now remembers all URLs seen before
 * Fixed bug related to classic reporting app URLs
-* Fixed bug that caused project window not to update
-  when removing all projects
+* Fixed bug that caused project window not to update when removing all 
+  projects
 
 
 CCMenu 0.9.4
 
 * Added autoupdate using the Sparkle framework
-* Now opening the preferences panel when no projects 
-  are configured
-* Now showing a meaningful message when server does not
-  provide web URLs
-* Fixed key binding bug (#1779159), can also
-  close/miniaturize windows now
-* Fixed bug that would prevent monitor from running on
-  first startup
+* Now opening the preferences panel when no projects are configured
+* Now showing a meaningful message when server does not provide web URLs
+* Fixed key binding bug (#1779159), can also close/miniaturize windows now
+* Fixed bug that would prevent monitor from running on first startup
 
 
 CCMenu 0.9.3
 
-* Now showing a grey icon when project status
-  unavailable
-* Project with unknown status is treated as if status
-  was failure
-* Completely reworked server polling to be asynchronous
-  and more resilient
-* Added workaround for broken URLs provided by
-  CruiseControl.rb
+* Now showing a grey icon when project status unavailable
+* Project with unknown status is treated as if status was failure
+* Completely reworked server polling to be asynchronous and more resilient
+* Added workaround for broken URLs provided by CruiseControl.rb
 * Added remaining icons
 
 
@@ -187,5 +169,4 @@ CCMenu 0.9.1
 
 CCMenu 0.9
 
-* Basic version, release candidate for first public
-  release.
+* Basic version, release candidate for first public release.

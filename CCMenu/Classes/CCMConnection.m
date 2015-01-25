@@ -1,9 +1,9 @@
 
+#import <SecurityInterface/SFCertificateTrustPanel.h>
+#import "NSData+Extensions.h"
 #import "CCMConnection.h"
 #import "CCMServerStatusReader.h"
 #import "CCMKeychainHelper.h"
-#import <SecurityInterface/SFCertificateTrustPanel.h>
-#import <SecurityInterface/SFCertificateView.h>
 
 @implementation CCMConnection
 
@@ -66,8 +66,23 @@
     if(nsurlConnection != nil)
         return;
     [self setUpForNewRequest];
-    NSURLRequest *request = [NSURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    nsurlConnection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    nsurlConnection = [[NSURLConnection connectionWithRequest:[self createRequest] delegate:self] retain];
+}
+
+- (NSURLRequest *)createRequest
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    if((useHudsonJenkinsAuthWorkaround) && ((credential != nil) || [self setUpCredential]))
+        [self addBasicAuthToRequest:request];
+    return request;
+}
+
+- (void)addBasicAuthToRequest:(NSMutableURLRequest *)request
+{
+    NSString *authString = [NSString stringWithFormat:@"%@:%@", [credential user], [credential password]];
+    NSData *encodedAuthString = [[authString dataUsingEncoding:NSASCIIStringEncoding] encodeBase64WithLineLength:0 andNewlineAtEnd:NO]; // TODO: ASCII or UTF8?
+    NSString *authHeaderValue = [NSString stringWithFormat:@"Basic %@", encodedAuthString];
+    [request setValue:authHeaderValue forHTTPHeaderField:@"Authorization"];
 }
 
 - (void)cancelRequest
@@ -148,7 +163,20 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
+    if([self responseIsHudsonJenkinsAuthRequest] && (useHudsonJenkinsAuthWorkaround == NO))
+    {
+        [self cleanUpAfterRequest];
+        useHudsonJenkinsAuthWorkaround = YES;
+        [self requestServerStatus];
+        return;
+    }
+    if([receivedResponse statusCode] != 200)
+    {
+        [self cleanUpAfterRequest];
+        [delegate connection:self hadTemporaryError:[self errorStringForResponse:receivedResponse]];
+        return;
+    }
+    CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
     [self cleanUpAfterRequest];
     NSError *error = nil;
     NSArray *infos = [reader readProjectInfos:&error];
@@ -162,6 +190,14 @@
 {
     [self cleanUpAfterRequest];
 	[delegate connection:self hadTemporaryError:[self errorStringForError:error]];
+}
+
+
+- (BOOL)responseIsHudsonJenkinsAuthRequest
+{
+    NSDictionary *headerFields = [receivedResponse allHeaderFields];
+    return (([receivedResponse statusCode] == 403) &&
+            (([headerFields objectForKey:@"X-Hudson"] != nil) || ([headerFields objectForKey:@"X-Jenkins"] != nil)));
 }
 
 

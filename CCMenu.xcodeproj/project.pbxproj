@@ -27,6 +27,8 @@
 		032E6ECB140411A100DBA2E0 /* CCMRelativeDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECA140411A100DBA2E0 /* CCMRelativeDateTransformer.m */; };
 		032E6ECF140416C900DBA2E0 /* CCMTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */; };
 		0336510718BD4162000291C8 /* pref-menu.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0336510618BD4162000291C8 /* pref-menu.tiff */; };
+		03434B461A7582BB00546BEB /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03434B451A7582BB00546BEB /* NSData+Extensions.m */; };
+		03434B471A7582D200546BEB /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03434B451A7582BB00546BEB /* NSData+Extensions.m */; };
 		0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */; };
 		0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC5A134F9EE600D2F269 /* btn-force-build.png */; };
 		0349BC72134F9EE700D2F269 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349BC63134F9EE600D2F269 /* minus.png */; };
@@ -180,6 +182,8 @@
 		032E6ECD140416C900DBA2E0 /* CCMTimeIntervalTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMTimeIntervalTransformer.h; sourceTree = "<group>"; };
 		032E6ECE140416C900DBA2E0 /* CCMTimeIntervalTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMTimeIntervalTransformer.m; sourceTree = "<group>"; };
 		0336510618BD4162000291C8 /* pref-menu.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "pref-menu.tiff"; sourceTree = "<group>"; };
+		03434B441A7582BB00546BEB /* NSData+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Extensions.h"; sourceTree = "<group>"; };
+		03434B451A7582BB00546BEB /* NSData+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Extensions.m"; sourceTree = "<group>"; };
 		0349BC56134F9E1C00D2F269 /* FactoryDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FactoryDefaults.plist; sourceTree = "<group>"; };
 		0349BC5A134F9EE600D2F269 /* btn-force-build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-force-build.png"; sourceTree = "<group>"; };
 		0349BC63134F9EE600D2F269 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
@@ -629,6 +633,8 @@
 				03D154ED16DC11B3008F994D /* NSApplication+EDExtensions.m */,
 				03D154EE16DC11B3008F994D /* NSArray+EDExtensions.h */,
 				03D154EF16DC11B3008F994D /* NSArray+EDExtensions.m */,
+				03434B441A7582BB00546BEB /* NSData+Extensions.h */,
+				03434B451A7582BB00546BEB /* NSData+Extensions.m */,
 				03D154F016DC11B3008F994D /* NSString+EDExtensions.h */,
 				03D154F116DC11B3008F994D /* NSString+EDExtensions.m */,
 			);
@@ -843,6 +849,7 @@
 				034BF7BC1757CCA20025F9A0 /* CCMProjectStatus.m in Sources */,
 				034BF7BD1757CCA60025F9A0 /* CCMServerMonitor.m in Sources */,
 				034BF7BE1757CCA60025F9A0 /* CCMBuildNotificationFactory.m in Sources */,
+				03434B471A7582D200546BEB /* NSData+Extensions.m in Sources */,
 				034BF7BF1757CCA60025F9A0 /* CCMConnection.m in Sources */,
 				03051AD918BA8BF80090FF45 /* CCMProjectDefaultValueTransformer.m in Sources */,
 				034BF7C01757CCA60025F9A0 /* CCMSyncConnection.m in Sources */,
@@ -900,6 +907,7 @@
 				03C082A9134F97940039E3BD /* CCMStatusItemApplication.m in Sources */,
 				03C082AA134F97940039E3BD /* CCMStatusItemMenuController.m in Sources */,
 				03C082AC134F97940039E3BD /* CCMUserDefaultsManager.m in Sources */,
+				03434B461A7582BB00546BEB /* NSData+Extensions.m in Sources */,
 				03C082AD134F97940039E3BD /* CCMWindowController.m in Sources */,
 				03C082AE134F97940039E3BD /* NSArray+CCMAdditions.m in Sources */,
 				03C082AF134F97940039E3BD /* NSCalendarDate+CCMAdditions.m in Sources */,
