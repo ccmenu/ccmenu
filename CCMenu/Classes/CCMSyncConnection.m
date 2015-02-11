@@ -51,30 +51,6 @@
 	return [receivedResponse statusCode];
 }
 
-- (NSArray *)retrieveServerStatus
-{
-    [self setUpForNewRequest];
-    [NSURLConnection connectionWithRequest:[self createRequest] delegate:self];
-    while(didFinish == NO)
-        [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-    if([self responseIsHudsonJenkinsAuthRequest] && (useHudsonJenkinsAuthWorkaround == NO))
-    {
-        [self cleanUpAfterRequest];
-        useHudsonJenkinsAuthWorkaround = YES;
-        return [self retrieveServerStatus];
-    }
-    if(receivedError != nil)
-        [NSException raise:@"ConnectionException" format:@"%@", [self errorStringForError:receivedError]];
-    if([receivedResponse statusCode] != 200)
-        [NSException raise:@"ConnectionException" format:@"%@", [self errorStringForResponse:receivedResponse]];
-    CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
-    NSError *parseError = nil;
-    NSArray *infos = [reader readProjectInfos:&parseError];
-    if(infos == nil)
-        [NSException raise:@"ConnectionException" format:@"%@", [self errorStringForParseError:parseError]];
-    return infos;
-}
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     didFinish = YES;

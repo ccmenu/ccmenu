@@ -1,9 +1,10 @@
 CCMenu Release Notes
 
-CCMenu 1.9
+CCMenu 1.9 (not yet released)
 
 * Can display last build label in menu. 
 * Special workaround for authenticating against Hudson and Jenkins. 
+* No longer tries to autocomplete from URL history when typing.
 * Using Git SHA as build version.
 
 

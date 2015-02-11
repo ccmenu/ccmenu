@@ -112,11 +112,13 @@ enum CCMButtonTag
         }
         else
         {
-            CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:serverUrl] autorelease];
+            [chooseProjectsViewController setContent:@[ @{
+                    @"name": @"retrieving project list...",
+                    @"textColor": [NSColor disabledControlTextColor]
+            }]];
+            CCMConnection *connection = [[CCMConnection alloc] initWithURLString:serverUrl];
             [connection setDelegate:self];
-            NSArray *projectInfos = [connection retrieveServerStatus];
-            [chooseProjectsViewController setContent:[self convertProjectInfos:projectInfos withServerUrl:serverUrl]];
-            [chooseProjectsViewController setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+            [connection requestServerStatus];
             [sheetTabView selectLastTabViewItem:self];
         }
     }
@@ -205,22 +207,34 @@ enum CCMButtonTag
     }
 }
 
-- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl
+- (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList
 {
-	NSMutableArray *result = [NSMutableArray array];
-	for(NSDictionary *projectInfo in projectInfos)
-	{
-		NSMutableDictionary *listEntry = [NSMutableDictionary dictionary];
-		NSString *projectName = [projectInfo objectForKey:@"name"];
-		[listEntry setObject:projectName forKey:@"name"];
-		[listEntry setObject:serverUrl forKey:@"server"];
-		if([defaultsManager projectListContainsProject:projectName onServerWithURL:serverUrl])
-			[listEntry setObject:[NSColor disabledControlTextColor] forKey:@"textColor"];
-		[result addObject:listEntry];
-	}
-	return result;
+    [connection autorelease];
+
+    NSMutableArray *list = [NSMutableArray array];
+    NSString *serverUrl = [[connection feedURL] absoluteString];
+    for(NSDictionary *projectInfo in projectInfoList)
+    {
+        NSMutableDictionary *entry = [NSMutableDictionary dictionary];
+        NSString *projectName = [projectInfo objectForKey:@"name"];
+        [entry setObject:projectName forKey:@"name"];
+        [entry setObject:serverUrl forKey:@"server"];
+        if([defaultsManager projectListContainsProject:projectName onServerWithURL:serverUrl]) {
+            [entry setObject:[NSColor disabledControlTextColor] forKey:@"textColor"];
+        }
+        [list addObject:entry];
+    }
+    [chooseProjectsViewController setContent:list];
+    [chooseProjectsViewController setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
 }
 
+- (void)connection:(CCMConnection *)connection hadTemporaryError:(NSString *)errorString
+{
+    [connection autorelease];
+
+    [chooseProjectsViewController setContent:@[]];
+    [[NSAlert alertWithText:ALERT_CONN_FAILURE_TITLE informativeText:errorString] runModal];
+}
 
 - (void)closeSheet:(id)sender
 {
