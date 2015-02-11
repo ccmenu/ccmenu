@@ -2,11 +2,8 @@
 #import <XCTest/XCTest.h>
 
 @interface CCMConnectionTestBase : XCTestCase
-{
-    NSURLConnection *dummyNSURLConnection;
-}
 
-- (void)setUpDummyNSURLConnection;
+- (NSURLConnection *)setUpDummyNSURLConnection;
 - (NSData *)responseData;
 - (id)responseMockWithStatusCode:(NSInteger)statusCode;
 

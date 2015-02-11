@@ -14,7 +14,7 @@
 - (void)testConnectionTestReturnsServerStatusCode
 {
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
@@ -32,7 +32,7 @@
 - (void)testRetrievesStatusSynchronously
 {
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
@@ -51,7 +51,7 @@
 - (void)testRaisesExceptionWhenRetrievingStatusAndResponseStatusCodeIsNot200OK
 {
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {
@@ -67,7 +67,7 @@
 - (void)testRaisesExceptionWhenRetrievingStatusAndUnderlyingConnectionFailedWithError
 {
     CCMSyncConnection *connection = [[[CCMSyncConnection alloc] initWithURLString:@"http://dummy"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id runLoopMock = OCMClassMock([NSRunLoop class]);
     void (^callbacks)(NSInvocation *) = ^(NSInvocation *invocation) {

@@ -5,11 +5,12 @@
 
 @implementation CCMConnectionTestBase
 
-- (void)setUpDummyNSURLConnection
+- (NSURLConnection *)setUpDummyNSURLConnection
 {
-    dummyNSURLConnection = [NSURLConnection connectionWithRequest:nil delegate:nil];
+    NSURLConnection *dummyNSURLConnection = [NSURLConnection connectionWithRequest:nil delegate:nil];
     id mockForClassMethod = OCMClassMock([NSURLConnection class]);
     OCMStub([mockForClassMethod connectionWithRequest:[OCMArg any] delegate:[OCMArg any]]).andReturn(dummyNSURLConnection);
+    return dummyNSURLConnection;
 }
 
 - (NSData *)responseData

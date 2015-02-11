@@ -14,7 +14,7 @@
 - (void)testRetrievesStatusAsynchronously
 {
     CCMConnection *connection = [[[CCMConnection alloc] init] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id delegateMock = OCMProtocolMock(@protocol(CCMConnectionDelegate));
     __block NSArray *recordedInfoList = nil; // workaround until OCMock can better capture args
@@ -35,7 +35,7 @@
 - (void)testReportsErrorWhenAsychronousRetrievalOfStatusFailed
 {
     CCMConnection *connection = [[[CCMConnection alloc] init] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id delegateMock = OCMProtocolMock(@protocol(CCMConnectionDelegate));
     __block NSArray *recordedError = nil;
@@ -55,7 +55,7 @@
 - (void)testLazilyCreatesCredentialWhenNeededForAuthChallenge
 {
     CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testuser@testhost"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id keychainHelperMock = OCMClassMock([CCMKeychainHelper class]);
     [[[keychainHelperMock stub] andReturn:@"testpassword"] passwordForURL:[OCMArg any] error:[OCMArg anyPointer]];
@@ -77,7 +77,7 @@
 - (void)testCancelsAuthChallengeWhenCredentialCannotBeCreated
 {
     CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id challengeMock = OCMClassMock([NSURLAuthenticationChallenge class]);
     id protectionSpaceMock = OCMClassMock([NSURLProtectionSpace class]);
@@ -95,7 +95,7 @@
 - (void)testCancelsAuthChallengeWhenCredentialIsPresentButFailCountIsNotZero
 {
     CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
     [connection setCredential:[NSURLCredential credentialWithUser:@"testuser" password:@"testpassword" persistence:NSURLCredentialPersistenceForSession]];
 
     id challengeMock = OCMClassMock([NSURLAuthenticationChallenge class]);
@@ -115,7 +115,7 @@
 - (void)testSetsCredentialInResponseToServerTrustChallengeWhenCertIsTrusted
 {
     CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     const SecTrustRef dummyServerTrust = (void *)0x1234567;
 
@@ -139,7 +139,7 @@
 - (void)testRejectsServerTrustChallengeWhenCertNotTrusted
 {
     CCMConnection *connection = [[[CCMConnection alloc] initWithURLString:@"http://testhost"] autorelease];
-    [self setUpDummyNSURLConnection];
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     const SecTrustRef dummyServerTrust = (void *)0x1234567;
 
