@@ -4,6 +4,7 @@
 #import "CCMConnection.h"
 #import "CCMServerStatusReader.h"
 #import "CCMKeychainHelper.h"
+#import "NSString+EDExtensions.h"
 
 @implementation CCMConnection
 
@@ -79,9 +80,11 @@
 
 - (void)addBasicAuthToRequest:(NSMutableURLRequest *)request
 {
-    NSString *authString = [NSString stringWithFormat:@"%@:%@", [credential user], [credential password]];
-    NSData *encodedAuthString = [[authString dataUsingEncoding:NSASCIIStringEncoding] encodeBase64WithLineLength:0 andNewlineAtEnd:NO]; // TODO: ASCII or UTF8?
-    NSString *authHeaderValue = [NSString stringWithFormat:@"Basic %@", encodedAuthString];
+    NSString *credString = [NSString stringWithFormat:@"%@:%@", [credential user], [credential password]];
+    NSData *credStringAsData = [credString dataUsingEncoding:NSISOLatin1StringEncoding];
+    NSData *credStringEncodedAsData = [credStringAsData encodeBase64WithLineLength:0 andNewlineAtEnd:NO];
+    NSString *credStringEncoded = [NSString stringWithData:credStringEncodedAsData encoding:NSASCIIStringEncoding];
+    NSString *authHeaderValue = [NSString stringWithFormat:@"Basic %@", credStringEncoded];
     [request setValue:authHeaderValue forHTTPHeaderField:@"Authorization"];
 }
 

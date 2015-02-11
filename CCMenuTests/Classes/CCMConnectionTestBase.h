@@ -4,6 +4,7 @@
 @interface CCMConnectionTestBase : XCTestCase
 
 - (NSURLConnection *)setUpDummyNSURLConnection;
+- (NSURLConnection *)setUpDummyNSURLConnection:(OCMArg *)requestArgConstraint;
 - (NSData *)responseData;
 - (id)responseMockWithStatusCode:(NSInteger)statusCode;
 

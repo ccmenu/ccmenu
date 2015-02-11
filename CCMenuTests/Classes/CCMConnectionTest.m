@@ -47,10 +47,39 @@
 
     [connection requestServerStatus];
     [connection connection:dummyNSURLConnection didReceiveResponse:[self responseMockWithStatusCode:500]];
+    // make sure we don't rely on parse errors to detect error responses
+    [connection connection:dummyNSURLConnection didReceiveData:[@"<Projects></Projects>" dataUsingEncoding:NSASCIIStringEncoding]];
     [connection connectionDidFinishLoading:dummyNSURLConnection];
 
     XCTAssertNotNil(recordedError, @"Should have called delegate with error.");
 }
+
+- (void)testRetriesWithUnpromptedBasicAuthAfterResponseWithForbiddenStatusFromJenkinsOrHudson
+{
+    CCMConnection *connection = [[[CCMConnection alloc] init] autorelease];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:@"bob" password:@"123456" persistence:NSURLCredentialPersistenceForSession];
+    [connection setCredential:credential];
+    
+    __block NSURLRequest *recordedNSURLRequest = nil;
+    BOOL (^record)(id) = ^BOOL(id obj) {
+        recordedNSURLRequest = obj;
+        return YES;
+    };
+    NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection:[OCMArg checkWithBlock:record]];
+
+    [connection requestServerStatus];
+    XCTAssertEqualObjects([recordedNSURLRequest valueForHTTPHeaderField:@"Authorization"], nil, @"Should not have added an auth header on its own");
+
+    NSURLResponse *firstResponseMock = [self responseMockWithStatusCode:403];
+    OCMStub([firstResponseMock allHeaderFields]).andReturn(@{ @"X-Jenkins": @"1.0" });
+    [connection connection:dummyNSURLConnection didReceiveResponse:firstResponseMock];
+
+    recordedNSURLRequest = nil; // reset here, because we expect the didFinishLoading method to start another request
+    [connection connectionDidFinishLoading:dummyNSURLConnection];
+    XCTAssertNotNil(recordedNSURLRequest, @"Should have retried");
+    XCTAssertEqualObjects([recordedNSURLRequest valueForHTTPHeaderField:@"Authorization"], @"Basic Ym9iOjEyMzQ1Ng==", @"Should have added an auth header now");
+}
+
 
 - (void)testLazilyCreatesCredentialWhenNeededForAuthChallenge
 {
