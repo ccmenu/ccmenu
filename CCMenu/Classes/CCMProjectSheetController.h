@@ -1,9 +1,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CCMUserDefaultsManager.h"
+#import "CCMConnection.h"
 
 
-@interface CCMProjectSheetController : NSObject
+@interface CCMProjectSheetController : NSObject <CCMConnectionDelegate>
 {
     IBOutlet CCMUserDefaultsManager	*defaultsManager;
 
@@ -35,11 +36,9 @@
 - (IBAction)continueSheet:(id)sender;
 - (IBAction)closeSheet:(id)sender;
 
-
 - (NSString *)getValidatedURL;
 - (NSString *)getCompletedAndValidatedURL;
 - (NSInteger)checkURL:(NSString *)url;
-- (NSArray *)convertProjectInfos:(NSArray *)projectInfos withServerUrl:(NSString *)serverUrl;
 - (void)showTestInProgress:(BOOL)flag;
 
 @end

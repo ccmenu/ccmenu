@@ -27,6 +27,7 @@
 - (NSURLRequest *)createRequest;
 
 - (BOOL)shouldContinueWithServerTrust:(SecTrustRef)secTrust;
+- (BOOL)responseIsHudsonJenkinsAuthRequest;
 
 - (NSString *)errorStringForError:(NSError *)error;
 - (NSString *)errorStringForResponse:(NSHTTPURLResponse *)response;
