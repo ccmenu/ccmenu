@@ -1,6 +1,6 @@
 CCMenu Release Notes
 
-CCMenu 1.9 (not yet released)
+CCMenu 1.9
 
 * Can display last build label in menu. 
 * Special workaround for authenticating against Hudson and Jenkins. 
