@@ -10,7 +10,7 @@
     return [self setUpDummyNSURLConnection:[OCMArg any]];
 }
 
-- (NSURLConnection *)setUpDummyNSURLConnection:(OCMArg *)requestArgConstraint
+- (NSURLConnection *)setUpDummyNSURLConnection:(id)requestArgConstraint
 {
     NSURLConnection *dummyNSURLConnection = [NSURLConnection connectionWithRequest:nil delegate:nil];
     id mockForClassMethod = OCMClassMock([NSURLConnection class]);

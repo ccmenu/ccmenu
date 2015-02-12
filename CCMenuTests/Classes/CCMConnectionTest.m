@@ -70,7 +70,7 @@
     [connection requestServerStatus];
     XCTAssertEqualObjects([recordedNSURLRequest valueForHTTPHeaderField:@"Authorization"], nil, @"Should not have added an auth header on its own");
 
-    NSURLResponse *firstResponseMock = [self responseMockWithStatusCode:403];
+    NSHTTPURLResponse *firstResponseMock = [self responseMockWithStatusCode:403];
     OCMStub([firstResponseMock allHeaderFields]).andReturn(@{ @"X-Jenkins": @"1.0" });
     [connection connection:dummyNSURLConnection didReceiveResponse:firstResponseMock];
 

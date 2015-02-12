@@ -21,18 +21,13 @@
 #import <AppKit/AppKit.h>
 #import "NSApplication+EDExtensions.h"
 #import "EDApplication.h"
+#import "NSAlert+CCMAdditions.h"
 
 @interface EDApplication(PrivateAPI)
 + (void)reportException:(NSException *)theException;
 @end
 
 void EDUncaughtExceptionHandler(NSException *exception);
-
-#define LS_TOPLEVEL_EXCEPTION(APPNAME, EXNAME, EXREASON) \
-[NSString stringWithFormat:NSLocalizedString(@"An unexpected error has occured which may cause %@ to malfunction. You may want to save copies of your open documents and quit %@.\n\n%@: %@", "Text for the alert panel to report uncaught exceptions."), APPNAME, APPNAME, EXNAME, EXREASON]
-
-#define LS_OK \
-NSLocalizedString(@"Such is life", "For buttons unexpected error panel.")
 
 
 //---------------------------------------------------------------------------------------
@@ -72,7 +67,7 @@ Setting of the factory defaults uses the #registerFactoryDefaults method and hap
 + (void)reportException:(NSException *)theException
 {
     NSLog(@"%@: %@", [theException name], [theException reason]);
-    NSRunAlertPanel(nil, LS_TOPLEVEL_EXCEPTION([[NSProcessInfo processInfo] processName], [theException name], [theException reason]), LS_OK, nil, nil);
+    NSRunAlertPanel(nil, @"An unexpected error has occured which may cause %@ to malfunction. You may want to save copies of your open documents and quit %@.\n\n%@: %@", @"Such is life", nil, nil, [[NSProcessInfo processInfo] processName], [[NSProcessInfo processInfo] processName], [theException name], [theException reason]);
 }
 
 
