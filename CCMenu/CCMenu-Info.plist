@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>#gitsha#</string>
+	<string>1.9.0</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -32,5 +32,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>CCMStatusItemApplication</string>
+	<key>CCMSourceVersion</key>
+	<string>#gitsha#</string>
 </dict>
 </plist>
