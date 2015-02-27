@@ -1,6 +1,7 @@
 
 #import "CCMUserDefaultsManager.h"
 #import "NSArray+CCMAdditions.h"
+#import "CCMBuildNotificationFactory.h"
 
 NSString *CCMDefaultsProjectListKey = @"Projects";
 NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
@@ -105,6 +106,41 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     if((list == nil) && (data != nil))
     {
         [userDefaults setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:CCMDefaultsProjectListKey];
+    }
+
+    NSArray *events = @[ CCMSuccessfulBuild, CCMBrokenBuild, CCMStillFailingBuild, CCMFixedBuild ];
+    for(NSString *e in events) 
+    {
+        [self addPlaySoundKeys:e];
+        [self addSendNotificationKeys:e];
+    }
+}
+
+- (void)addPlaySoundKeys:(NSString *)event
+{
+    NSString *playSoundKey = [NSString stringWithFormat:@"PlaySound %@", event];
+    if([userDefaults objectForKey:playSoundKey] == nil)
+    {
+        NSString *soundKey = [NSString stringWithFormat:@"Sound %@", event];
+        NSString *sound = [userDefaults stringForKey:soundKey];
+        if((sound == nil) || [sound isEqualToString:@"-"])
+        {
+            [userDefaults setBool:NO forKey:playSoundKey];
+            [userDefaults setObject:@"Sosumi" forKey:soundKey];
+        }
+        else
+        {
+            [userDefaults setBool:YES forKey:playSoundKey];
+        }
+    }
+}
+
+- (void)addSendNotificationKeys:(NSString *)event
+{
+    NSString *sendNotificationKey = [NSString stringWithFormat:@"SendNotification %@", event];
+    if([userDefaults objectForKey:sendNotificationKey] == nil)
+    {
+        [userDefaults setBool:YES forKey:sendNotificationKey];
     }
 }
 

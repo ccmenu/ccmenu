@@ -12,19 +12,6 @@
 
 @end
 
-
-#define _verify(mock) \
-do { \
-    @try { \
-        ([mock verify]);\
-    } \
-    @catch (id anException) { \
-         [self recordFailureWithDescription:[anException description] \
-                                     inFile:[NSString stringWithCString:__FILE__ encoding:NSASCIIStringEncoding] \
-                                     atLine:__LINE__ expected:NO]; \
-    }\
-} while (0)
-
     
 @implementation CCMUserDefaultsManagerTest
 
@@ -113,6 +100,47 @@ do { \
     OCMVerify([defaultsMock setObject:projectList forKey:CCMDefaultsProjectListKey]);
 }
 
+- (void)testAddsPlaySoundKeyWithTrueValueWhenKeyWasNotSetButSoundWasSet
+{
+    OCMStub([defaultsMock objectForKey:@"PlaySound Successful"]).andReturn(nil);
+    OCMStub([defaultsMock stringForKey:@"Sound Successful"]).andReturn(@"Dummy Sound Name");
+
+    [manager convertDefaultsIfNecessary];
+
+    OCMVerify([defaultsMock setBool:YES forKey:@"PlaySound Successful"]);
+}
+
+- (void)testAddsPlaySoundKeyWithFalseValueAndSelectsDefaultSoundWhenKeyWasNotSetButSoundWasSetAndHadTheNoSoundValue
+{
+    OCMStub([defaultsMock objectForKey:@"PlaySound Successful"]).andReturn(nil);
+    OCMStub([defaultsMock stringForKey:@"Sound Successful"]).andReturn(@"-");
+
+    [manager convertDefaultsIfNecessary];
+
+    OCMVerify([defaultsMock setBool:NO forKey:@"PlaySound Successful"]);
+    OCMVerify([defaultsMock setObject:@"Sosumi" forKey:@"Sound Successful"]);
+}
+
+- (void)testAddsPlaySoundKeyWithFalseValueWhenKeyWasNotSetAndSoundWasNotSetEither
+{
+    OCMStub([defaultsMock objectForKey:@"PlaySound Successful"]).andReturn(nil);
+    OCMStub([defaultsMock stringForKey:@"Sound Successful"]).andReturn(nil);
+
+    [manager convertDefaultsIfNecessary];
+
+    OCMVerify([defaultsMock setBool:NO forKey:@"PlaySound Successful"]);
+}
+
+- (void)testAddSendNotificationKeyWhenItDidNotExist
+{
+    OCMStub([defaultsMock objectForKey:@"SendNotification Successful"]).andReturn(nil);
+    OCMStub([defaultsMock objectForKey:@"SendNotification Broken"]).andReturn(@YES);
+    OCMStub([defaultsMock objectForKey:@"SendNotification Fixed"]).andReturn(@NO);
+
+    [manager convertDefaultsIfNecessary];
+
+    OCMVerify([defaultsMock setBool:YES forKey:@"SendNotification Successful"]);
+}
 
 - (void)testAddsToEmptyServerUrlHistory
 {
