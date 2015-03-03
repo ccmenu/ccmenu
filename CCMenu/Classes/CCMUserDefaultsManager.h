@@ -19,6 +19,9 @@ enum {
 - (BOOL)shouldShowLastBuildLabel;
 - (NSUInteger)projectOrder;
 
+- (BOOL)shouldSendUserNotificationForBuildResult:(NSString *)result;
+- (NSString *)soundForBuildResult:(NSString *)result;
+
 - (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (NSArray *)projectList;

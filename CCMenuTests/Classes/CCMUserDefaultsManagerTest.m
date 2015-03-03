@@ -2,6 +2,7 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "CCMUserDefaultsManager.h"
+#import "CCMBuildNotificationFactory.h"
 
 
 @interface CCMUserDefaultsManagerTest : XCTestCase
@@ -39,6 +40,26 @@
 	
 	XCTAssertNotNil(entries, @"Should have returned empty list.");
 	XCTAssertEqual(0ul, [entries count], @"Should have returned empty list.");
+}
+
+- (void)testReturnsNilWhenSoundIsTurnedOff
+{
+    OCMStub([defaultsMock boolForKey:@"PlaySound Successful"]).andReturn(NO);
+    OCMStub([defaultsMock stringForKey:@"Sound Successful"]).andReturn(@"Sosumi");
+
+    NSString *sound = [manager soundForBuildResult:CCMSuccessfulBuild];
+
+    XCTAssertNil(sound, @"Should have returned nil when playSound flag is off");
+}
+
+- (void)testReturnsSoundNameWhenSoundIsTurnedOn
+{
+    OCMStub([defaultsMock boolForKey:@"PlaySound Successful"]).andReturn(YES);
+    OCMStub([defaultsMock stringForKey:@"Sound Successful"]).andReturn(@"Sosumi");
+
+    NSString *sound = [manager soundForBuildResult:CCMSuccessfulBuild];
+
+    XCTAssertEqualObjects(@"Sosumi", sound, @"Should have returned sound name when playSound flag is on");
 }
 
 - (void)testRetrievesProjectListFromDefaults

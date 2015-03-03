@@ -3,33 +3,30 @@
 #import "CCMUserNotificationHandler.h"
 
 
-struct {
-	NSString *key;
-	NSString *title;
-	NSString *text;
-} notifications[5];
-
-
 @implementation CCMUserNotificationHandler
 
-+ (void)initialize
++ (NSDictionary *)detailsForBuildResult:(NSString *)buildResult
 {
-	notifications[0].key = CCMSuccessfulBuild;
-	notifications[0].title = NSLocalizedString(@"Success", "Notification for successful build");
-	notifications[0].text = NSLocalizedString(@"Yet another successful build!", "For notificiation");
-    
-	notifications[1].key = CCMStillFailingBuild;
-	notifications[1].title = NSLocalizedString(@"Still broken", "Notification for repeatedly broken build");
-	notifications[1].text = NSLocalizedString(@"The build is still broken.", "For notificiation");
-	
-	notifications[2].key = CCMBrokenBuild;
-	notifications[2].title = NSLocalizedString(@"Broken", "Notification for broken build");
-	notifications[2].text = NSLocalizedString(@"Recent checkins have broken the build.", "For notificiation");
-    
-	notifications[3].key = CCMFixedBuild;
-	notifications[3].title = NSLocalizedString(@"Fixed", "Notification for just fixed build");
-	notifications[3].text = NSLocalizedString(@"Recent checkins have fixed the build.", "For notificiation");
-}	
+    NSDictionary *allDetails = @{
+        CCMSuccessfulBuild: @{
+            @"title": NSLocalizedString(@"Success", "Notification for successful build"),
+            @"text": NSLocalizedString(@"Yet another successful build!", "For notificiation")
+        },
+        CCMStillFailingBuild: @{
+            @"title": NSLocalizedString(@"Still broken", "Notification for repeatedly broken build"),
+            @"text": NSLocalizedString(@"The build is still broken.", "For notificiation")
+        },
+        CCMBrokenBuild: @{
+            @"title": NSLocalizedString(@"Broken", "Notification for broken build"),
+            @"text": NSLocalizedString(@"Recent checkins have broken the build.", "For notificiation")
+        },
+        CCMFixedBuild: @{
+            @"title": NSLocalizedString(@"Fixed", "Notification for just fixed build"),
+            @"text": NSLocalizedString(@"Recent checkins have fixed the build.", "For notificiation")
+        }
+    };
+    return [allDetails objectForKey:buildResult];
+}
 
 - (void)start
 {
@@ -44,28 +41,28 @@ struct {
 	NSString *projectName = [[buildNotification object] name];
 	NSString *buildResult = [[buildNotification userInfo] objectForKey:@"buildResult"];
 	NSString *webUrl = [[buildNotification userInfo] objectForKey:@"webUrl"];
-    
-	for(int i = 0; notifications[i].key != nil; i++)
-	{
-		if([buildResult isEqualToString:notifications[i].key])
-		{
-            NSUserNotification *userNotification = [[[NSUserNotification alloc] init] autorelease];
-            
-            userNotification.title = [NSString stringWithFormat:@"%@: %@", projectName, notifications[i].title];
-            userNotification.informativeText = notifications[i].text;
-            
-            NSString *defaultName = [NSString stringWithFormat:@"Sound %@", buildResult]; // slightly naughty
-            NSString *soundName = [[NSUserDefaults standardUserDefaults] stringForKey:defaultName];
-            if(![soundName isEqualToString:@"-"])
-                userNotification.soundName = soundName;
-            
-            if(webUrl != nil)
-                userNotification.userInfo = [NSDictionary dictionaryWithObject:webUrl forKey:@"webUrl"];
 
-            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:userNotification];
-			break;
-		}
-	}
+    NSDictionary *details = [[self class] detailsForBuildResult:buildResult];
+    if(details == nil)
+        return;
+
+    NSString *soundName = [defaultsManager soundForBuildResult:buildResult];
+    if([defaultsManager shouldSendUserNotificationForBuildResult:buildResult])
+    {
+        NSUserNotification *userNotification = [[[NSUserNotification alloc] init] autorelease];
+        userNotification.title = [NSString stringWithFormat:@"%@: %@", projectName, [details objectForKey:@"title"]];
+        userNotification.informativeText = [details objectForKey:@"text"];
+        if(soundName != nil)
+            userNotification.soundName = soundName;
+        if(webUrl != nil)
+            userNotification.userInfo = [NSDictionary dictionaryWithObject:webUrl forKey:@"webUrl"];
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:userNotification];
+    }
+    else
+    {
+        if(soundName != nil)
+            [[NSSound soundNamed:soundName] play];
+    }
 }
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification

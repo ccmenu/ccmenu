@@ -78,7 +78,11 @@
                 <outlet property="serverMonitor" destination="264" id="279"/>
             </connections>
         </customObject>
-        <customObject id="281" userLabel="CCMUserNotificationHandler" customClass="CCMUserNotificationHandler"/>
+        <customObject id="281" userLabel="CCMUserNotificationHandler" customClass="CCMUserNotificationHandler">
+            <connections>
+                <outlet property="defaultsManager" destination="261" id="Zx6-Ff-dC0"/>
+            </connections>
+        </customObject>
         <customObject id="RRF-xr-xGr" userLabel="CCMAboutPanelController" customClass="CCMAboutPanelController"/>
     </objects>
 </document>

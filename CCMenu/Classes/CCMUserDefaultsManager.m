@@ -34,6 +34,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 {
     return [userDefaults boolForKey:@"ShowLastBuildTimes"];
 }
+
 - (BOOL)shouldShowLastBuildLabel
 {
     return [userDefaults boolForKey:@"ShowLastBuildLabel"];
@@ -41,14 +42,29 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 
 - (NSUInteger)projectOrder
 {
-    return [userDefaults integerForKey:@"ProjectOrder"];
+    return (NSUInteger)[userDefaults integerForKey:@"ProjectOrder"];
 }
 
+- (BOOL)shouldSendUserNotificationForBuildResult:(NSString *)buildResult
+{
+    NSString *sendNotificationKey = [NSString stringWithFormat:@"SendNotification %@", buildResult];
+    return [userDefaults boolForKey:sendNotificationKey];
+}
+
+- (NSString *)soundForBuildResult:(NSString *)buildResult
+{
+    NSString *playSoundKey = [NSString stringWithFormat:@"PlaySound %@", buildResult];
+    if([userDefaults boolForKey:playSoundKey])
+    {
+        NSString *soundKey = [NSString stringWithFormat:@"Sound %@", buildResult]; // slightly naughty
+        return [userDefaults stringForKey:soundKey];
+    }
+    return nil;
+}
 
 - (NSDictionary *)createEntryWithProject:(NSString *)projectName andURL:(NSString *)serverUrl
 {
-	return [NSDictionary dictionaryWithObjectsAndKeys: projectName, CCMDefaultsProjectEntryNameKey, 
-		serverUrl, CCMDefaultsProjectEntryServerUrlKey, nil];	
+	return @{CCMDefaultsProjectEntryNameKey : projectName, CCMDefaultsProjectEntryServerUrlKey : serverUrl};
 }
 
 - (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
@@ -99,6 +115,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 	return [NSArray array];
 }
 
+
 - (void)convertDefaultsIfNecessary
 {
     NSArray *list = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
@@ -108,20 +125,19 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
         [userDefaults setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:CCMDefaultsProjectListKey];
     }
 
-    NSArray *events = @[ CCMSuccessfulBuild, CCMBrokenBuild, CCMStillFailingBuild, CCMFixedBuild ];
-    for(NSString *e in events) 
+    for(NSString *result in @[ CCMSuccessfulBuild, CCMBrokenBuild, CCMStillFailingBuild, CCMFixedBuild ])
     {
-        [self addPlaySoundKeys:e];
-        [self addSendNotificationKeys:e];
+        [self addPlaySoundKeys:result];
+        [self addSendNotificationKeys:result];
     }
 }
 
-- (void)addPlaySoundKeys:(NSString *)event
+- (void)addPlaySoundKeys:(NSString *)buildResult
 {
-    NSString *playSoundKey = [NSString stringWithFormat:@"PlaySound %@", event];
+    NSString *playSoundKey = [NSString stringWithFormat:@"PlaySound %@", buildResult];
     if([userDefaults objectForKey:playSoundKey] == nil)
     {
-        NSString *soundKey = [NSString stringWithFormat:@"Sound %@", event];
+        NSString *soundKey = [NSString stringWithFormat:@"Sound %@", buildResult];
         NSString *sound = [userDefaults stringForKey:soundKey];
         if((sound == nil) || [sound isEqualToString:@"-"])
         {
@@ -135,9 +151,9 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     }
 }
 
-- (void)addSendNotificationKeys:(NSString *)event
+- (void)addSendNotificationKeys:(NSString *)buildResult
 {
-    NSString *sendNotificationKey = [NSString stringWithFormat:@"SendNotification %@", event];
+    NSString *sendNotificationKey = [NSString stringWithFormat:@"SendNotification %@", buildResult];
     if([userDefaults objectForKey:sendNotificationKey] == nil)
     {
         [userDefaults setBool:YES forKey:sendNotificationKey];
