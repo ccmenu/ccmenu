@@ -4,7 +4,7 @@
 #import "CCMProjectSheetController.h"
 
 
-@interface CCMPreferencesController : CCMWindowController
+@interface CCMPreferencesController : CCMWindowController <NSWindowDelegate>
 {
 	IBOutlet CCMUserDefaultsManager	*defaultsManager;
     
@@ -37,6 +37,7 @@
 - (NSArray *)availableSounds;
 
 - (IBAction)preferencesChanged:(id)sender;
+- (IBAction)activationPolicyChanged:(id)sender;
 
 
 @end

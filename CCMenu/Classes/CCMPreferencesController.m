@@ -27,8 +27,9 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 		[self switchPreferencesPane:self];
 	}
     [soundNamesViewController setContent:[self availableSounds]];
-	[NSApp activateIgnoringOtherApps:YES];
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    if([defaultsManager shouldShowAppIconWhenInPrefs])
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    [NSApp activateIgnoringOtherApps:YES];
 	[preferencesWindow makeKeyAndOrderFront:self];
 }
 
@@ -119,6 +120,25 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (void)preferencesChanged:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
+}
+
+- (void)activationPolicyChanged:(id)sender
+{
+    if([defaultsManager shouldShowAppIconWhenInPrefs])
+    {
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    }
+    else
+    {
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+        // unfortunately this also deactivates our app, hiding the window in the process. so...
+        [self performSelector:@selector(reactivate:) withObject:self afterDelay:0];
+    }
+}
+
+- (void)reactivate:(id)sender
+{
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
 @end

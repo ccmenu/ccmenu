@@ -173,18 +173,18 @@
             </subviews>
         </customView>
         <customView id="vUh-BQ-iKb" userLabel="Appearance">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="277"/>
+            <rect key="frame" x="0.0" y="-1" width="350" height="286"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="XhC-4c-yK4">
-                    <rect key="frame" x="12" y="162" width="326" height="5"/>
+                    <rect key="frame" x="12" y="171" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField verticalHuggingPriority="750" id="fmK-Y3-Tee">
-                    <rect key="frame" x="18" y="179" width="305" height="56"/>
+                    <rect key="frame" x="18" y="188" width="305" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="zQf-kZ-25o">
                         <font key="font" metaFont="smallSystem"/>
@@ -194,7 +194,7 @@
                     </textFieldCell>
                 </textField>
                 <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="6sv-7r-0Uv">
-                    <rect key="frame" x="20" y="67" width="301" height="58"/>
+                    <rect key="frame" x="20" y="76" width="301" height="58"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     <size key="cellSize" width="190" height="18"/>
@@ -225,7 +225,7 @@
                     </connections>
                 </matrix>
                 <textField verticalHuggingPriority="750" id="rih-hn-RzP">
-                    <rect key="frame" x="18" y="133" width="173" height="17"/>
+                    <rect key="frame" x="18" y="142" width="173" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Display projects in menu:" id="PVJ-ad-wwe">
                         <font key="font" metaFont="system"/>
@@ -234,7 +234,7 @@
                     </textFieldCell>
                 </textField>
                 <button id="lII-Ee-TzR">
-                    <rect key="frame" x="20" y="38" width="143" height="18"/>
+                    <rect key="frame" x="20" y="47" width="143" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="with last build time" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pma-Tm-imj">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -246,7 +246,7 @@
                     </connections>
                 </button>
                 <button id="HRc-nd-4f8">
-                    <rect key="frame" x="20" y="17" width="157" height="18"/>
+                    <rect key="frame" x="20" y="26" width="157" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="with last build label" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Jg5-YH-RqX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -258,7 +258,7 @@
                     </connections>
                 </button>
                 <button id="Hhj-t5-ub3">
-                    <rect key="frame" x="18" y="241" width="217" height="18"/>
+                    <rect key="frame" x="18" y="250" width="217" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show build timing in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kpw-t8-xiS">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -270,6 +270,7 @@
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="148" y="-184"/>
         </customView>
         <customView id="419" userLabel="Notifications">
             <rect key="frame" x="0.0" y="5" width="350" height="504"/>
@@ -552,18 +553,18 @@
             <point key="canvasLocation" x="536" y="267"/>
         </customView>
         <customView id="421" userLabel="Advanced">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="240"/>
+            <rect key="frame" x="0.0" y="-1" width="350" height="231"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box title="Title" boxType="oldStyle" borderType="none" titlePosition="noTitle" id="422">
-                    <rect key="frame" x="0.0" y="-54" width="350" height="294"/>
+                    <rect key="frame" x="0.0" y="-63" width="350" height="294"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="294"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" id="431">
-                                <rect key="frame" x="21" y="260" width="173" height="17"/>
+                                <rect key="frame" x="18" y="261" width="173" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Project status poll interval:" id="577">
                                     <font key="font" metaFont="system"/>
@@ -572,7 +573,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" id="424">
-                                <rect key="frame" x="210" y="254" width="116" height="26"/>
+                                <rect key="frame" x="221" y="254" width="116" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="10 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="10" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="429" id="576">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -593,11 +594,40 @@
                                 </connections>
                             </popUpButton>
                             <textField verticalHuggingPriority="750" id="494">
-                                <rect key="frame" x="21" y="210" width="305" height="42"/>
+                                <rect key="frame" x="18" y="207" width="305" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="581">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">How often CCMenu retrieves status information from the servers. If many people monitor a server, using small intervals can affect server performance.</string>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="jee-wW-sSv">
+                                <rect key="frame" x="12" y="190" width="326" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <button id="cIT-lj-3Qm">
+                                <rect key="frame" x="18" y="160" width="288" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show app icon when preferences are open" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BM6-aI-mz9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="activationPolicyChanged:" target="-2" id="3TN-VX-lzd"/>
+                                    <binding destination="381" name="value" keyPath="values.ShowAppIconWhenInPrefs" id="TVa-24-iIn"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" id="MR3-zf-TXe">
+                                <rect key="frame" x="18" y="98" width="305" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="P8n-FN-BRo">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Whether CCMenu should show an application icon when the preferences window is open. This can help with switching in and out of CCMenu to copy feed URLs.</string>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -608,6 +638,7 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="27" y="483.5"/>
         </customView>
         <arrayController editable="NO" avoidsEmptySelection="NO" id="378" userLabel="All Projects View Controller" customClass="CCMReorderableArrayController">
             <declaredKeys>

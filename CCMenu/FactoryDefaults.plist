@@ -4,6 +4,8 @@
 <dict>
 	<key>ShowTimerInMenu</key>
 	<true/>
+	<key>ShowAppIconWhenInPrefs</key>
+	<true/>
 	<key>PollInterval</key>
 	<string>5</string>
 </dict>
