@@ -99,7 +99,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (NSArray *)availableSounds
 {
-    NSMutableArray *sounds = [NSMutableArray arrayWithObject:@"-"];
+    NSMutableArray *sounds = [NSMutableArray array];
     for(NSString *libPath in NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSAllDomainsMask, YES)) 
     {
         NSString *soundLibPath = [libPath stringByAppendingPathComponent:@"Sounds"];
