@@ -6,8 +6,6 @@ High-priority Stories
 
 #31 Show CCMenu icon in app switcher and dock if the user wants it. [see: http://stackoverflow.com/questions/5382932/how-to-create-a-helper-application-lsuielement-that-also-has-a-removable-doc]
 
-#32 Turn off notifications by type: As a developer I want to select which status transitions are reported as notifications so that I don't receive notifications I do not care about, e.g. I might only want to know when a build is broken or fixed.
-
 #33 Turn off notifications by project: As a developer I want to select on a per-project basis whether notifications about status transitions are reported so that I get information about the projects I care about most but I can still keep an eye on other projects in the menu. [See #26]
 
 #27 Display project status heatmap in status item: As a developer I want to see the status of multiple projects in the status bar item so that I can have a detailed view without opening the menu or window. This would be a 2-pixel vertical line per project, maybe with a dot running top to bottom when the project is building.

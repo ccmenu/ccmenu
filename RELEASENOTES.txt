@@ -1,5 +1,10 @@
 CCMenu Release Notes
 
+CCMenu 1.10 (not released yet)
+
+* Can select for which build results notifications are sent.
+
+
 CCMenu 1.9
 
 * Can display last build label in menu. 
