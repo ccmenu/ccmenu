@@ -28,8 +28,15 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 	}
     [soundNamesViewController setContent:[self availableSounds]];
 	[NSApp activateIgnoringOtherApps:YES];
-	[preferencesWindow makeKeyAndOrderFront:self];	
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+	[preferencesWindow makeKeyAndOrderFront:self];
 }
+
+- (void)windowWillClose:(NSNotification *)notification
+{
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+}
+
 
 - (void)switchPreferencesPane:(id)sender
 {

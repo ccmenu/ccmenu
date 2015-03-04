@@ -41,6 +41,9 @@
                     </customView>
                 </subviews>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="VbJ-Z3-T6Q"/>
+            </connections>
         </window>
         <customView id="406" userLabel="Projects">
             <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
