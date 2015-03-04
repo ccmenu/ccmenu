@@ -2,7 +2,11 @@ CCMenu Release Notes
 
 CCMenu 1.10 (not released yet)
 
-* Can select for which build results notifications are sent.
+* It is now possible to select for which build results user notifications
+  are displayed. Sounds can be chosen independently.
+* The app icon is shown in the dock and application switcher when the 
+  preferences window is open. This can help with switching in and out of CCMenu
+  when copying feed URLs.
 
 
 CCMenu 1.9
