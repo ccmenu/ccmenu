@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CCMPreferencesController">
@@ -553,92 +553,109 @@
             <point key="canvasLocation" x="536" y="267"/>
         </customView>
         <customView id="421" userLabel="Advanced">
-            <rect key="frame" x="0.0" y="-1" width="350" height="231"/>
+            <rect key="frame" x="0.0" y="1" width="350" height="348"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <box title="Title" boxType="oldStyle" borderType="none" titlePosition="noTitle" id="422">
-                    <rect key="frame" x="0.0" y="-63" width="350" height="294"/>
+                <textField verticalHuggingPriority="750" id="431">
+                    <rect key="frame" x="21" y="311" width="173" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="294"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" id="431">
-                                <rect key="frame" x="18" y="261" width="173" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Project status poll interval:" id="577">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton verticalHuggingPriority="750" id="424">
-                                <rect key="frame" x="221" y="254" width="116" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="10 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="10" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="429" id="576">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" title="OtherViews" id="425">
-                                        <items>
-                                            <menuItem title="5 seconds" tag="5" id="427"/>
-                                            <menuItem title="10 seconds" state="on" tag="10" id="429"/>
-                                            <menuItem title="30 seconds" tag="30" id="428"/>
-                                            <menuItem title="1 minute" tag="60" id="430"/>
-                                            <menuItem title="5 minutes" tag="300" id="426"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="preferencesChanged:" target="-2" id="440"/>
-                                    <binding destination="381" name="selectedTag" keyPath="values.PollInterval" id="433"/>
-                                </connections>
-                            </popUpButton>
-                            <textField verticalHuggingPriority="750" id="494">
-                                <rect key="frame" x="18" y="207" width="305" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="581">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <string key="title">How often CCMenu retrieves status information from the servers. If many people monitor a server, using small intervals can affect server performance.</string>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="jee-wW-sSv">
-                                <rect key="frame" x="12" y="190" width="326" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <font key="titleFont" metaFont="system"/>
-                            </box>
-                            <button id="cIT-lj-3Qm">
-                                <rect key="frame" x="18" y="160" width="288" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Show app icon when preferences are open" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BM6-aI-mz9">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="activationPolicyChanged:" target="-2" id="3TN-VX-lzd"/>
-                                    <binding destination="381" name="value" keyPath="values.ShowAppIconWhenInPrefs" id="TVa-24-iIn"/>
-                                </connections>
-                            </button>
-                            <textField verticalHuggingPriority="750" id="MR3-zf-TXe">
-                                <rect key="frame" x="18" y="98" width="305" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="P8n-FN-BRo">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <string key="title">Whether CCMenu should show an application icon when the preferences window is open. This can help with switching in and out of CCMenu to copy feed URLs.</string>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Project status poll interval:" id="577">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="424">
+                    <rect key="frame" x="224" y="304" width="116" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="10 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="10" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="429" id="576">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="425">
+                            <items>
+                                <menuItem title="5 seconds" tag="5" id="427"/>
+                                <menuItem title="10 seconds" state="on" tag="10" id="429"/>
+                                <menuItem title="30 seconds" tag="30" id="428"/>
+                                <menuItem title="1 minute" tag="60" id="430"/>
+                                <menuItem title="5 minutes" tag="300" id="426"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="preferencesChanged:" target="-2" id="440"/>
+                        <binding destination="381" name="selectedTag" keyPath="values.PollInterval" id="433"/>
+                    </connections>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" id="494">
+                    <rect key="frame" x="21" y="257" width="305" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="581">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">How often CCMenu retrieves status information from the servers. If many people monitor a server, using small intervals can affect server performance.</string>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="jee-wW-sSv">
+                    <rect key="frame" x="12" y="125" width="326" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
                 </box>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="0Vs-fB-sD4">
+                    <rect key="frame" x="12" y="239" width="326" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <button id="cIT-lj-3Qm">
+                    <rect key="frame" x="22" y="203" width="288" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show app icon when preferences are open" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BM6-aI-mz9">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="activationPolicyChanged:" target="-2" id="3TN-VX-lzd"/>
+                        <binding destination="381" name="value" keyPath="values.ShowAppIconWhenInPrefs" id="TVa-24-iIn"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" id="MR3-zf-TXe">
+                    <rect key="frame" x="22" y="141" width="305" height="56"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="P8n-FN-BRo">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">Whether CCMenu should show an application icon when the preferences window is open. This can help with switching in and out of CCMenu to copy feed URLs. Turn it off if you find the appearence of the icon confusing.</string>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button id="FfQ-CN-wIH">
+                    <rect key="frame" x="21" y="94" width="241" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Ask when certificate is unverifiable" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wml-x5-xNd">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="activationPolicyChanged:" target="-2" id="IIJ-HQ-md9"/>
+                        <binding destination="381" name="value" keyPath="values.AskWhenCertIsUnverifiable" id="LcE-wK-YMf"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" id="6ih-BT-kAo">
+                    <rect key="frame" x="21" y="32" width="305" height="56"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="Zib-Cw-waj">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">Whether CCMenu should pop up a dialog when it receives a certificate on an HTTPS connection that it cannot verify. Turn this off if you often use public WiFi networks that redirect requests to login pages.</string>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="27" y="483.5"/>
+            <point key="canvasLocation" x="27" y="-15"/>
         </customView>
         <arrayController editable="NO" avoidsEmptySelection="NO" id="378" userLabel="All Projects View Controller" customClass="CCMReorderableArrayController">
             <declaredKeys>

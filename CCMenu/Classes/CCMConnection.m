@@ -139,6 +139,9 @@
         case kSecTrustResultConfirm:
         case kSecTrustResultRecoverableTrustFailure:
         {
+            if([[NSUserDefaults standardUserDefaults] boolForKey:@"AskWhenCertIsUnverifiable"] == NO)
+                return NO;
+            
             SFCertificateTrustPanel *panel = [SFCertificateTrustPanel sharedCertificateTrustPanel];
             NSString *msg = [NSString stringWithFormat:@"CCMenu can't verify the identity of the server %@.", [feedURL host]];
             [panel setInformativeText:@"The certificate for this server is invalid. Do you want to continue anyway?"];
