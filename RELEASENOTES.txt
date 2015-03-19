@@ -7,6 +7,8 @@ CCMenu 1.10 (not released yet)
 * The app icon is shown in the dock and application switcher when the 
   preferences window is open. This can help with switching in and out of CCMenu
   when copying feed URLs.
+* A new advanced preference makes it possible to reject all certificates that
+  cannot be verified automatically. Normally CCMenu asks the user how to proceed.
 
 
 CCMenu 1.9
