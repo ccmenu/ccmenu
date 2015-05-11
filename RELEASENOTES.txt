@@ -1,6 +1,6 @@
 CCMenu Release Notes
 
-CCMenu 1.10 (not released yet)
+CCMenu 1.10
 
 * It is now possible to select for which build results user notifications
   are displayed. Sounds can be chosen independently.
