@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CCMenu</title>
+	<link rel="stylesheet" type="text/css" href="opensans.css">
+	<link rel="stylesheet" type="text/css" href="standard.css">
+	<script src="jquery-1.9.1.min.js"></script>
+	<script src="smoothscroll.js"></script>
+</head>
+
+<body id="main">
+	
+		<header>
+			<div class="content">
+				
+				<img id="icon" class="floatleft" src="images/ccmenu.png" alt="CCMenu logo" width="96" height="96">
+				<h1>CCMenu</h1>
+			
+			</div>
+
+			<a href="https://github.com/erikdoe/ccmenu"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme_right_gray_6d6d6d.png"></a>
+
+		</header>
+
+
+		<section class="intro">
+			<div class="content">
+				
+				<p class="introtext">CCMenu displays the build status of projects on a continuous integration server as an item in the Mac's menu bar. Or in other words, CCMenu is to OS X what CCTray is to Windows.
+	
+				<p class="nobottom">CCMenu allows you to:
+				<ul>
+					<img class="floatright screenshot" width="210" height="270" src="images/screenshot_menu.png" alt="Screenshot: CCMenu">
+					<li>Monitor selected projects on multiple continuous integration servers</li>
+					<li>Identify the overall build status with a glance to menu bar</li>
+					<li>See the status of individual project builds in the status menu</li>
+					<li>Access the build web sites of the projects using the status menu</li>
+					<li>See detailed build status information in the projects window</li>
+					<li>Receive notification of completed builds via Notification Center</li>
+				</ul>
+				    
+				<p>CCMenu works with CruiseControl, and with CircleCI, GreenhouseCI, Jenkins, Snap CI, TeamCity, ThoughtWorks Go, and Travis CI. It should also work with any continuous integration server that can provide status in the &ldquo;cctray&rdquo; XML format.
+          
+        <p class="lastpara"><span id="todownload-button"><a class="smoothScroll" href="#download">Go to download</a></span> <span id="other-button"><a href="https://github.com/erikdoe/ccmenu/issues">Report an issue</a></span>
+      
+			</div>
+    </section>
+
+
+    <section class="features">
+			<div class="content">
+				
+				<div class="box50 floatleft">
+					<h3>The menu</h3>
+									
+					<p>The summary icon in the menu bar and the icons for the individual projects in the menu convey information about the project status: 
+			
+					<p class="iconlist">
+					<img src="images/icon-success.png"> The most recent build was successful<br>
+					<img src="images/icon-failure.png"> The most recent build failed<br>
+					<img src="images/icon-success-building.png"> The project is building, previous build was successful<br>
+					<img src="images/icon-failure-building.png"> The project is building, previous build was broken<br>
+					<img src="images/icon-pause.png"> The project is disabled or waiting for a build agent<br>
+					<img src="images/icon-inactive.png"> The server or project status are unavailable<br>
+	
+					<p class="nobottom">Clicking on a project in the menu opens the project's web page in the default web browser. Depending on the continuous integration server this can be a project overview page, or a page with details about the last build. 
+				</div>
+	
+				<div class="box50 floatleft">
+					<h3>Notifications</h3>
+
+					<!-- <p><img width="461" height="115" src="images/screenshot_notification.png" alt="Screenshot: CCMenu notification"> -->
+
+					<p class="nobottom">CCMenu sends notifications when a build has completed. Depending on the previous build status and the result of the current build, it will send one of the following notifications: 
+					<ul>
+						<li>Build successful</li>
+						<li>Build broken (previous build successful, current failed)</li>
+						<li>Build still broken (previous and current build failed)</li>
+						<li>Build fixed (previous build failed, current build successful)</li>
+					</ul>
+
+					<p class="nobottom">Older versions of CCMenu, for OS X Lion and earlier, use <a href="http://growl.info">Growl</a> to send notifications.
+					</div>
+
+					<div class="clear">
+				</div>
+
+
+				<h3>Project window</h3>
+
+				<p>The project window shows more detailed information about each of the projects, including last build time and build label. Note that you can rearrange the columns and sort the view by clicking on the column. These setting and the window size and position are persisted accross sessions.
+
+
+				<h3>Configuration</h3>
+
+				<p><img class="floatright screenshot" width="300" height="450" src="images/screenshot_config.png" alt="Screenshot: CCMenu configuration">
+
+				To add a new project, click on the plus icon below the project list in the preferences panel. In the sheet that opens type the URL of the server into the text field or select an existing server from the drop down list. 
+			
+				<p>You can enter just the hostname or parts of the URL and CCMenu will then try various common locations for the CCTray feed. If your server has a custom configuration you may have to enter the full URL for the feed.
+				<p>If you are using Travis CI please enter a URL of this form:<br>
+				<code>https://api.travis-ci.org/repositories/{user}/{repo}/cc.xml</code>
+			
+				<p>You can drag the projects in the list to arrange the order in which they are displayed. Alternatively you can choose to have the projects sorted alphabetically or by last build time. Note, that the preference to sort the projects only affects the menu, not the project list in preferences.
+			
+				<p>The preferences window is resizable when the project list is shown.
+				<p>&nbsp;
+		</section>
+
+		<section class="download">
+			<div class="content">
+				<h3>Download</h3>
+
+				<p>CCMenu is available on the Mac App Store. 
+					
+				<p><a href="https://itunes.apple.com/us/app/ccmenu/id603117688?mt=12&uo=4" target="itunes_store" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/htmlResources/assets/en_us//images/web/linkmaker/badge_macappstore-lrg.png) no-repeat;width:165px;height:40px;@media only screen{background-image:url(https://linkmaker.itunes.apple.com/htmlResources/assets/en_us//images/web/linkmaker/badge_macappstore-lrg.svg);}"></a>
+					
+				<p>	Old versions of CCMenu (CCMenu 1.8 and older) can be downloaded from the <a href="https://sourceforge.net/projects/ccmenu/files/CCMenu/">file archive</a> on SourceForge, where the project was hosted until 2014. Newer versions and pre-releases are available on the <a href="https://github.com/erikdoe/ccmenu/releases">Github releases</a> page. These versions do not update automatically and you will not be notified when new versions become available. Unless you have a specific reason please install CCMenu from the App Store.
+
+				<p class="nobottom">&nbsp;
+			</div>
+    </section>
+
+
+    <section class="more">
+			<div class="content">
+
+				<div class="box33 floatleft">
+					<h4><span id="download">Source code</h4>
+					<p>View the source on <a href="https://github.com/erikdoe/ccmenu">Github</a>.
+					<p>Send bug fixes and changes as pull requests on Github. You can also <a href="https://github.com/erikdoe/ccmenu/issues">suggest enhancements</a>.
+				</div>
+
+
+				<div class="box33 floatleft">
+					<h4>Credits</h4>
+					<p>Development: <a href="http://erik.doernenburg.com">Erik D&ouml;rnenburg</a>
+					<p>Contributions: Luke Barrett, Marcus M&uuml;ller, David Pattinson
+				</div>
+
+
+				<div class="box33 floatleft">
+					<h4>Background</h4>					
+					<p>Read Martin Fowler's article on <a href="http://www.martinfowler.com/articles/continuousIntegration.html">Continuous Integration</a>.
+					<p>Find out more at the <a href="http://www.thoughtworks.com/insights/continuous-delivery">ThoughtWorks Continuous Delivery insights channel</a>.
+				</div>
+
+
+				<div class="clear">
+
+			</div>
+		</section>
+		
+		
+		<footer>
+			<div class="content">
+				<p>Copyright &copy; 2007-2015 ThoughtWorks Inc. CCMenu is open source software. See <a href="https://github.com/erikdoe/ccmenu/blob/master/LICENSE">LICENSE</a> for details.
+			</div>
+		</footer>
+	
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=9692569; 
+var sc_invisible=1; 
+var sc_security="9ebb2d8d"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hits counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/9692569/0/9ebb2d8d/1/"
+alt="hits counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+	
+</body> 
+</html>

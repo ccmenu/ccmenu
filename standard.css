@@ -1,0 +1,167 @@
+/* layout */
+
+body, section, header, footer {
+	margin: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.content {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 0 1em;
+}
+
+.floatleft {
+	float: left;
+}
+
+.floatright {
+	float: right;
+}
+
+@media screen and (min-width: 860px) {
+.box50 {
+		width: 50%;
+		min-width: 400px;
+	}
+}
+
+.box33 {
+	width: 33%;
+	min-width: 220px;
+}
+
+
+/* sections */
+
+header {
+	border-top: 5px solid #16ADC7;
+	background-color: #80C9D2;
+	min-height: 64px;
+	padding: 32px 0;
+}
+
+section.intro, section.download {
+	background-color: #FFF;
+}
+
+section.features {
+	background-color: #EEE;
+}
+
+section.more {
+	background-color: #BBB;
+}
+
+footer {
+	background-color: #999;
+}
+
+
+/* fonts and paragraph styles */
+
+body {
+	font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6em;
+	color: #333;
+}
+
+h1 {
+	font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+	color: #222;
+	margin: 18px 0 0 0;
+	padding-left: 112px; /* to push right of icon, which floats left */
+}
+
+h2, h3, h4 {
+	margin: 1.2em 0 0 0;
+	font-weight: 400;
+}
+
+h3 {
+	font-size: 150%;
+}
+
+h4 + p {
+	margin-top: 0.5em;
+}
+
+code {
+	font-size: 80%;
+}
+
+img {
+	border: 0;
+}
+
+img.screenshot {
+	padding-left: 20px;
+}
+
+.nobottom {
+	margin-bottom: 0;
+}
+
+.lastpara {
+  margin-bottom: 3em;
+}
+
+ul {
+	margin-top: 0.5em;
+	padding-left: 1.1em;
+}
+
+.content p {
+	padding-right: 1em;
+}
+
+.iconlist {
+	margin-left: 0.3em;
+}
+
+.introtext {
+	font-size: 125%;
+	font-weight: 400;
+  letter-spacing: -0.04em;
+	color: #444;
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+
+footer p {
+	font-size: 80%;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#icon {
+	margin-top: -33px;
+}
+
+#todownload-button {
+  background-clip: padding-box;
+  background-color: #16ADC7;
+  border-radius: 5px;
+  padding: 0.25em 1em;
+}
+
+#other-button {
+  background-clip: padding-box;
+  background-color: #8E8E8E;
+  border-radius: 5px;
+  padding: 0.25em 1em;
+	margin-left: 10px;
+}
+
+#todownload-button a, #other-button a {
+  color: #EEE;  
+  text-decoration: none;
+}
+
