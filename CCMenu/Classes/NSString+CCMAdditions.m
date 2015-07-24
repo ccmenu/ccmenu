@@ -28,12 +28,11 @@ static void initialize()
     NSString *result = [self stringByAddingSchemeIfNecessary];
     NSRange credRange;
     NSString *userFromURL = [result user];
-    NSString *hostFromURL = [result host];
-    if((userFromURL != nil) && (hostFromURL != nil))
+    if(userFromURL != nil)
     {
-        NSRange userRange = [result rangeOfString:userFromURL];
-        NSRange hostRange = [result rangeOfString:hostFromURL];
-        credRange = NSMakeRange(userRange.location, hostRange.location - userRange.location);
+        NSRange resSpecStartRange = [result rangeOfString:@"//"];
+        NSRange userMarkerRange = [result rangeOfString:@"@"];
+        credRange = NSMakeRange(NSMaxRange(resSpecStartRange), NSMaxRange(userMarkerRange) - NSMaxRange(resSpecStartRange));
     }
     else
     {

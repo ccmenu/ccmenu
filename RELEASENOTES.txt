@@ -1,5 +1,12 @@
 CCMenu Release Notes
 
+
+CCMenu 1.10.1 (unreleased)
+
+* Fixed a bug that could occur when adding projects from a server that
+  requires authentication.
+  
+  
 CCMenu 1.10
 
 * It is now possible to select for which build results user notifications

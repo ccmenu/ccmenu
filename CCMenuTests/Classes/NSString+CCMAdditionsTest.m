@@ -171,4 +171,11 @@
     XCTAssertEqualObjects(@"http://hostname/path", result, @"Should have stayed with no credentials.");
 }
 
+- (void)testCanReplaceCredentialsWhenExistingUserNameIsPrefixOfExistingScheme
+{
+    NSString *result = [@"http://ht@hostname/path" stringByReplacingCredentials:@"hto"];
+
+    XCTAssertEqualObjects(@"http://hto@hostname/path", result, @"Should have replaced credentials.");
+}
+
 @end
