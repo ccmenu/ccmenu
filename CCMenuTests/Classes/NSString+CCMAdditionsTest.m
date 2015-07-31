@@ -178,4 +178,22 @@
     XCTAssertEqualObjects(@"http://hto@hostname/path", result, @"Should have replaced credentials.");
 }
 
+- (void)testEscapesCharactersForURL
+{
+    NSString *result = [@"http://foobar@hostname/path" stringByReplacingCredentials:@"%3"];
+
+    XCTAssertEqualObjects(@"http://%253@hostname/path", result, @"Should have replaced credentials.");
+}
+
+- (void)testCanReplaceCredentialsWithMalformedPercentEscapes
+{
+    NSString *result = [@"http://foo%3@hostname/path" stringByReplacingCredentials:@"bar"];
+
+    XCTAssertEqualObjects(@"http://bar@hostname/path", result, @"Should have replaced credentials.");
+}
+
+
+
+
+
 @end

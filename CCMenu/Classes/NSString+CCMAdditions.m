@@ -26,20 +26,27 @@ static void initialize()
 - (NSString *)stringByReplacingCredentials:(NSString *)credentials
 {
     NSString *result = [self stringByAddingSchemeIfNecessary];
-    NSRange credRange;
-    NSString *userFromURL = [result user];
-    if(userFromURL != nil)
+    credentials = [credentials stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    NSRange resSpecStartRange = [result rangeOfString:@"//"];
+    NSRange userMarkerRange = [result rangeOfString:@"@"];
+    NSRange credRange; // will include the marker character
+    if(userMarkerRange.location != NSNotFound)
     {
-        NSRange resSpecStartRange = [result rangeOfString:@"//"];
-        NSRange userMarkerRange = [result rangeOfString:@"@"];
+        if(userMarkerRange.location < resSpecStartRange.location)
+            return self; // shouldn't happen, we just give up
         credRange = NSMakeRange(NSMaxRange(resSpecStartRange), NSMaxRange(userMarkerRange) - NSMaxRange(resSpecStartRange));
     }
     else
     {
-        credRange = NSMakeRange(NSMaxRange([result rangeOfString:@"//"]), 0);
+        credRange = NSMakeRange(NSMaxRange(resSpecStartRange), 0);
     }
+
     if(![credentials isEmpty])
+    {
         credentials = [credentials stringByAppendingString:@"@"];
+    }
+
     result = [result stringByReplacingCharactersInRange:credRange withString:credentials];
     return result;
 }
