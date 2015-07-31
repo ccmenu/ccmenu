@@ -192,7 +192,19 @@
     XCTAssertEqualObjects(@"http://bar@hostname/path", result, @"Should have replaced credentials.");
 }
 
+- (void)testReplacesMultipleUserMarkers
+{
+    NSString *result = [@"http://foo@@hostname" stringByReplacingCredentials:@"bar"];
 
+    XCTAssertEqualObjects(@"http://bar@hostname", result, @"Should have replaced credentials.");
+}
+
+- (void)testReplacesMultipleUserMarkersInsideHostPortionOfUrl
+{
+    NSString *result = [@"http://foo@@hostname/path@4" stringByReplacingCredentials:@"bar"];
+
+    XCTAssertEqualObjects(@"http://bar@hostname/path@4", result, @"Should have replaced credentials.");
+}
 
 
 

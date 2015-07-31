@@ -28,18 +28,23 @@ static void initialize()
     NSString *result = [self stringByAddingSchemeIfNecessary];
     credentials = [credentials stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-    NSRange resSpecStartRange = [result rangeOfString:@"//"];
-    NSRange userMarkerRange = [result rangeOfString:@"@"];
-    NSRange credRange; // will include the marker character
-    if(userMarkerRange.location != NSNotFound)
+    NSRange resSpecStart = [result rangeOfString:@"//"];
+    NSRange pathStart = [result rangeOfString:@"/" options:0 range:NSMakeRange(NSMaxRange(resSpecStart), [result length] - NSMaxRange(resSpecStart))];
+    if(pathStart.location == NSNotFound)
     {
-        if(userMarkerRange.location < resSpecStartRange.location)
+        pathStart = NSMakeRange([result length], 0);
+    }
+    NSRange userMarker = [result rangeOfString:@"@" options:NSBackwardsSearch range:NSMakeRange(NSMaxRange(resSpecStart), pathStart.location - NSMaxRange(resSpecStart))];
+    NSRange credRange; // will include the marker character
+    if(userMarker.location != NSNotFound)
+    {
+        if(userMarker.location < resSpecStart.location)
             return self; // shouldn't happen, we just give up
-        credRange = NSMakeRange(NSMaxRange(resSpecStartRange), NSMaxRange(userMarkerRange) - NSMaxRange(resSpecStartRange));
+        credRange = NSMakeRange(NSMaxRange(resSpecStart), NSMaxRange(userMarker) - NSMaxRange(resSpecStart));
     }
     else
     {
-        credRange = NSMakeRange(NSMaxRange(resSpecStartRange), 0);
+        credRange = NSMakeRange(NSMaxRange(resSpecStart), 0);
     }
 
     if(![credentials isEmpty])
