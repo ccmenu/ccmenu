@@ -36,7 +36,7 @@ static void initialize()
         credLength = NSMaxRange(userMarker) - NSMaxRange(resSpecStart);
     NSRange credRange = NSMakeRange(NSMaxRange(resSpecStart), credLength);
 
-    credentials = CFURLCreateStringByAddingPercentEscapes(NULL, credentials, NULL, @"@:", kCFStringEncodingUTF8);
+    credentials = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)credentials, NULL, (CFStringRef)@"@:", kCFStringEncodingUTF8);
     if(![credentials isEmpty])
         credentials = [credentials stringByAppendingString:@"@"];
 
