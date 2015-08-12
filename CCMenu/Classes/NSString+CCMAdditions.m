@@ -25,35 +25,22 @@ static void initialize()
 
 - (NSString *)stringByReplacingCredentials:(NSString *)credentials
 {
-    NSString *result = [self stringByAddingSchemeIfNecessary];
-    credentials = [credentials stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-    NSRange resSpecStart = [result rangeOfString:@"//"];
-    NSRange pathStart = [result rangeOfString:@"/" options:0 range:NSMakeRange(NSMaxRange(resSpecStart), [result length] - NSMaxRange(resSpecStart))];
+    NSString *newUrl = [self stringByAddingSchemeIfNecessary];
+    NSRange resSpecStart = [newUrl rangeOfString:@"//"];
+    NSRange pathStart = [newUrl rangeOfString:@"/" options:0 range:NSMakeRange(NSMaxRange(resSpecStart), [newUrl length] - NSMaxRange(resSpecStart))];
     if(pathStart.location == NSNotFound)
-    {
-        pathStart = NSMakeRange([result length], 0);
-    }
-    NSRange userMarker = [result rangeOfString:@"@" options:NSBackwardsSearch range:NSMakeRange(NSMaxRange(resSpecStart), pathStart.location - NSMaxRange(resSpecStart))];
-    NSRange credRange; // will include the marker character
+        pathStart = NSMakeRange([newUrl length], 0);
+    NSRange userMarker = [newUrl rangeOfString:@"@" options:NSBackwardsSearch range:NSMakeRange(NSMaxRange(resSpecStart), pathStart.location - NSMaxRange(resSpecStart))];
+    NSUInteger credLength = 0;
     if(userMarker.location != NSNotFound)
-    {
-        if(userMarker.location < resSpecStart.location)
-            return self; // shouldn't happen, we just give up
-        credRange = NSMakeRange(NSMaxRange(resSpecStart), NSMaxRange(userMarker) - NSMaxRange(resSpecStart));
-    }
-    else
-    {
-        credRange = NSMakeRange(NSMaxRange(resSpecStart), 0);
-    }
+        credLength = NSMaxRange(userMarker) - NSMaxRange(resSpecStart);
+    NSRange credRange = NSMakeRange(NSMaxRange(resSpecStart), credLength);
 
+    credentials = CFURLCreateStringByAddingPercentEscapes(NULL, credentials, NULL, @"@:", kCFStringEncodingUTF8);
     if(![credentials isEmpty])
-    {
         credentials = [credentials stringByAppendingString:@"@"];
-    }
 
-    result = [result stringByReplacingCharactersInRange:credRange withString:credentials];
-    return result;
+    return [newUrl stringByReplacingCharactersInRange:credRange withString:credentials];
 }
 
 - (NSString *)user
