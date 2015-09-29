@@ -61,7 +61,7 @@
       
         NSUserNotification *userNotification = [[aNotification userInfo] objectForKey:@"NSApplicationLaunchUserNotificationKey"];
         if(userNotification != nil)
-            [userNotificationHandler userNotificationCenter:nil didActivateNotification:userNotification];
+            [userNotificationHandler openURLForNotification:userNotification];
     }
 	@catch(NSException *e)
 	{

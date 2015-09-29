@@ -9,4 +9,6 @@
 
 - (void)start;
 
+- (void)openURLForNotification:(NSUserNotification *)notification;
+
 @end

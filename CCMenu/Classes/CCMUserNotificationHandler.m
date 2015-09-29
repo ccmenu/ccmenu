@@ -67,6 +67,11 @@
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
 {
+    [self openURLForNotification:notification];
+}
+
+- (void)openURLForNotification:(NSUserNotification *)notification
+{
     NSString *webUrl = [notification.userInfo objectForKey:@"webUrl"];
     if(webUrl != nil)
     {
@@ -74,5 +79,6 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:webUrl]];
     }
 }
+
 
 @end

@@ -95,7 +95,7 @@
             *errorPtr = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
         return nil;
     }
-    return [attributes objectForKey:kSecAttrAccount];
+    return [attributes objectForKey:(NSString *)kSecAttrAccount];
 }
 
 

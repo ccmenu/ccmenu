@@ -12,7 +12,8 @@
 
 - (NSURLConnection *)setUpDummyNSURLConnection:(id)requestArgConstraint
 {
-    NSURLConnection *dummyNSURLConnection = [NSURLConnection connectionWithRequest:nil delegate:nil];
+    NSURLRequest *dummyRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"file://tmp/dummy"]];
+    NSURLConnection *dummyNSURLConnection = [NSURLConnection connectionWithRequest:dummyRequest delegate:nil];
     id mockForClassMethod = OCMClassMock([NSURLConnection class]);
     OCMStub([mockForClassMethod connectionWithRequest:requestArgConstraint delegate:[OCMArg any]]).andReturn(dummyNSURLConnection);
     return dummyNSURLConnection;
