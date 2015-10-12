@@ -1,6 +1,12 @@
 CCMenu Release Notes
 
 
+CCMenu 1.10.2 (unreleased)
+
+* Built with App Transport Security disabled for El Capitan so that servers
+  that aren't offering HTTPS or use self-signed certificates can be used, too.
+
+
 CCMenu 1.10.1
 
 * Fixed a bug that could occur when adding projects from a server that
