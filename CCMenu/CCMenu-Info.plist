@@ -5,7 +5,7 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<string>YES</string>
+		<true/>
 	</dict>
 	<key>CCMSourceVersion</key>
 	<string>#gitsha#</string>
@@ -28,7 +28,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1102.1</string>
+	<string>1102.2</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
