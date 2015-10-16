@@ -12,17 +12,11 @@
 	if(image == nil)
 	{
 		// This is a hack to make the unit tests work when run from otool, in which case imageNamed: doesn't work
-		NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu/Images/%@.tiff", name]];
-		image = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
-        if(image == nil)
-        {
-            // Hack to make it work in AppCode...
-            NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"CCMenu.app/Contents/Resources/%@.tiff", name]];
-            image = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
-        }
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        image = [[[NSImage alloc] initWithContentsOfFile:[bundle pathForImageResource:name]] autorelease];
 		[image setName:name];
 	}
-	return image;	
+	return image;
 }
 
 - (NSImage *)imageForStatus:(CCMProjectStatus *)status

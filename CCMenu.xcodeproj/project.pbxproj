@@ -98,14 +98,6 @@
 		038ABE2B134F11090053F0D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038ABE2A134F11090053F0D1 /* main.m */; };
 		03B79F77164D8DE100532065 /* CCMUserNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B79F76164D8DE100532065 /* CCMUserNotificationHandler.m */; };
 		03BDCABF1456A00F000C3D32 /* CCMProjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDCABE1456A00F000C3D32 /* CCMProjectBuilder.m */; };
-		03BE59411A2A671200884086 /* icon-building-failed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE59391A2A671200884086 /* icon-building-failed.tiff */; };
-		03BE59421A2A671200884086 /* icon-failure-building.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE593A1A2A671200884086 /* icon-failure-building.tiff */; };
-		03BE59431A2A671200884086 /* icon-failure.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE593B1A2A671200884086 /* icon-failure.tiff */; };
-		03BE59441A2A671200884086 /* icon-inactive.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE593C1A2A671200884086 /* icon-inactive.tiff */; };
-		03BE59451A2A671200884086 /* icon-pause.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE593D1A2A671200884086 /* icon-pause.tiff */; };
-		03BE59461A2A671200884086 /* icon-queued.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE593E1A2A671200884086 /* icon-queued.tiff */; };
-		03BE59471A2A671200884086 /* icon-success-building.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE593F1A2A671200884086 /* icon-success-building.tiff */; };
-		03BE59481A2A671200884086 /* icon-success.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BE59401A2A671200884086 /* icon-success.tiff */; };
 		03C0626717773F7600FEFAB7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0384D33C17620E1400749956 /* Security.framework */; };
 		03C0829D134F97940039E3BD /* CCMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08276134F97940039E3BD /* CCMAppController.m */; };
 		03C0829E134F97940039E3BD /* CCMBuildNotificationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C08278134F97940039E3BD /* CCMBuildNotificationFactory.m */; };
@@ -139,6 +131,8 @@
 		03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03F5734216CC011D0007E109 /* CCMenu.iconset */; };
 		2FA28116E3881CFF868D552A /* NSWorkspace+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28D75944EE1784EAF22BC /* NSWorkspace+CCMAdditionsTest.m */; };
 		2FA28274240C0EA402FD6396 /* NSWorkspace+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2865935ADB98EFA4CC622 /* NSWorkspace+CCMAdditions.m */; };
+		1F37E9F21BD0F38D002959BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F37E9F11BD0F38D002959BE /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		1F37E9F31BD0F38D002959BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F37E9F11BD0F38D002959BE /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		2FA282A13914012ABCA00F2D /* CCMConnectionTestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28DB5E98740E57952DE6D /* CCMConnectionTestBase.m */; };
 		2FA284478BD048F17C048417 /* CCMIsOneValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28D98711E290BB04D0ED6 /* CCMIsOneValueTransformer.m */; };
 		2FA2845134B0148D30A41CD5 /* CCMIsOneValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28D98711E290BB04D0ED6 /* CCMIsOneValueTransformer.m */; };
@@ -233,14 +227,6 @@
 		03B79F76164D8DE100532065 /* CCMUserNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMUserNotificationHandler.m; sourceTree = "<group>"; };
 		03BDCABD1456A00F000C3D32 /* CCMProjectBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMProjectBuilder.h; sourceTree = "<group>"; };
 		03BDCABE1456A00F000C3D32 /* CCMProjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectBuilder.m; sourceTree = "<group>"; };
-		03BE59391A2A671200884086 /* icon-building-failed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-building-failed.tiff"; sourceTree = "<group>"; };
-		03BE593A1A2A671200884086 /* icon-failure-building.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-failure-building.tiff"; sourceTree = "<group>"; };
-		03BE593B1A2A671200884086 /* icon-failure.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-failure.tiff"; sourceTree = "<group>"; };
-		03BE593C1A2A671200884086 /* icon-inactive.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-inactive.tiff"; sourceTree = "<group>"; };
-		03BE593D1A2A671200884086 /* icon-pause.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-pause.tiff"; sourceTree = "<group>"; };
-		03BE593E1A2A671200884086 /* icon-queued.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-queued.tiff"; sourceTree = "<group>"; };
-		03BE593F1A2A671200884086 /* icon-success-building.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-success-building.tiff"; sourceTree = "<group>"; };
-		03BE59401A2A671200884086 /* icon-success.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "icon-success.tiff"; sourceTree = "<group>"; };
 		03C08275134F97940039E3BD /* CCMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMAppController.h; sourceTree = "<group>"; };
 		03C08276134F97940039E3BD /* CCMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMAppController.m; sourceTree = "<group>"; };
 		03C08277134F97940039E3BD /* CCMBuildNotificationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMBuildNotificationFactory.h; sourceTree = "<group>"; };
@@ -293,6 +279,7 @@
 		03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CCMAdditions.m"; sourceTree = "<group>"; };
 		03E744591766222000DCFF0F /* CCMProjectSheetControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMProjectSheetControllerTest.m; sourceTree = "<group>"; };
 		03F5734216CC011D0007E109 /* CCMenu.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = CCMenu.iconset; sourceTree = "<group>"; };
+		1F37E9F11BD0F38D002959BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2FA282A416260DF796951CFD /* NSAlert+CCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+CCMAdditions.m"; sourceTree = "<group>"; };
 		2FA285221A513A9D2AE197A2 /* CCMIsOneValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMIsOneValueTransformer.h; sourceTree = "<group>"; };
 		2FA285CF469D5230A32A31AB /* CCMConnectionTestBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMConnectionTestBase.h; sourceTree = "<group>"; };
@@ -464,14 +451,6 @@
 			isa = PBXGroup;
 			children = (
 				03F5734216CC011D0007E109 /* CCMenu.iconset */,
-				03BE59391A2A671200884086 /* icon-building-failed.tiff */,
-				03BE593A1A2A671200884086 /* icon-failure-building.tiff */,
-				03BE593B1A2A671200884086 /* icon-failure.tiff */,
-				03BE593C1A2A671200884086 /* icon-inactive.tiff */,
-				03BE593D1A2A671200884086 /* icon-pause.tiff */,
-				03BE593E1A2A671200884086 /* icon-queued.tiff */,
-				03BE593F1A2A671200884086 /* icon-success-building.tiff */,
-				03BE59401A2A671200884086 /* icon-success.tiff */,
 				0349BC5A134F9EE600D2F269 /* btn-force-build.png */,
 				0349BC63134F9EE600D2F269 /* minus.png */,
 				0349BC64134F9EE600D2F269 /* Placeholder.tiff */,
@@ -480,6 +459,7 @@
 				0336510618BD4162000291C8 /* pref-menu.tiff */,
 				0349BC67134F9EE600D2F269 /* pref-notifications.tiff */,
 				0349BC68134F9EE600D2F269 /* pref-projects.png */,
+				1F37E9F11BD0F38D002959BE /* Images.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -744,6 +724,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F37E9F31BD0F38D002959BE /* Images.xcassets in Resources */,
 				034BF7DD1757CE940025F9A0 /* CCMenu.iconset in Resources */,
 				034BF7DE1757CE940025F9A0 /* btn-force-build.png in Resources */,
 				034BF7E61757CE940025F9A0 /* minus.png in Resources */,
@@ -760,32 +741,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				0378A022180436BD00A7D65F /* RELEASENOTES.txt in Resources */,
+				1F37E9F21BD0F38D002959BE /* Images.xcassets in Resources */,
 				038ABE28134F11090053F0D1 /* InfoPlist.strings in Resources */,
-				03BE59451A2A671200884086 /* icon-pause.tiff in Resources */,
 				03C082E2134F9D250039E3BD /* Localizable.strings in Resources */,
 				03C082E5134F9D250039E3BD /* Preferences.toolbar in Resources */,
-				03BE59461A2A671200884086 /* icon-queued.tiff in Resources */,
 				03C082E7134F9D250039E3BD /* ProjectWindow.toolbar in Resources */,
 				0349BC57134F9E1C00D2F269 /* FactoryDefaults.plist in Resources */,
 				0349BC69134F9EE700D2F269 /* btn-force-build.png in Resources */,
 				0349BC72134F9EE700D2F269 /* minus.png in Resources */,
 				0349BC73134F9EE700D2F269 /* Placeholder.tiff in Resources */,
 				0336510718BD4162000291C8 /* pref-menu.tiff in Resources */,
-				03BE59411A2A671200884086 /* icon-building-failed.tiff in Resources */,
-				03BE59471A2A671200884086 /* icon-success-building.tiff in Resources */,
 				0349BC74134F9EE700D2F269 /* plus.png in Resources */,
-				03BE59431A2A671200884086 /* icon-failure.tiff in Resources */,
 				0349BC75134F9EE700D2F269 /* pref-advanced.tiff in Resources */,
 				0349BC76134F9EE700D2F269 /* pref-notifications.tiff in Resources */,
-				03BE59481A2A671200884086 /* icon-success.tiff in Resources */,
 				0349BC77134F9EE700D2F269 /* pref-projects.png in Resources */,
 				0300E7591408021800E59AFD /* MainMenu.xib in Resources */,
 				0300E75A1408021800E59AFD /* Preferences.xib in Resources */,
 				0300E75B1408021800E59AFD /* ProjectWindow.xib in Resources */,
 				03E0575C18BA4F5700E77756 /* About.xib in Resources */,
 				03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */,
-				03BE59441A2A671200884086 /* icon-inactive.tiff in Resources */,
-				03BE59421A2A671200884086 /* icon-failure-building.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
