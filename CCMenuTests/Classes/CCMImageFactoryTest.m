@@ -85,14 +85,4 @@
 }
 
 
-- (void)testCachesMenuImages
-{
-	NSImage *original = [[[NSImage alloc] init] autorelease];
-	XCTAssertTrue([original setName:@"testCachesMenuImages"], @"Should have been able to set image name.");
-	NSImage *menu1 = [factory convertForMenuUse:original];
-	XCTAssertTrue(![[menu1 name] isEqualToString:[original name]], @"Should have used different name.");
-	NSImage *menu2 = [factory convertForMenuUse:original];
-	XCTAssertTrue(menu1 == menu2, @"Should have reused same image object.");
-}
-
 @end
