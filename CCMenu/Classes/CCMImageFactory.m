@@ -16,6 +16,11 @@
         image = [[[NSImage alloc] initWithContentsOfFile:[bundle pathForImageResource:name]] autorelease];
 		[image setName:name];
 	}
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"UseColorInMenuBar"] == NO) {
+        image.template = YES;
+    } else {
+        image.template = NO;
+    }
 	return image;
 }
 
