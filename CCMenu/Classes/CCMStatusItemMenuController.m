@@ -201,9 +201,14 @@
     CCMProject *project = [sender representedObject];
 	if([[project status] webUrl] != nil)
     {
-        NSString* urlString = [[project status] webUrl];
-        urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+        NSString* webUrl = [[project status] webUrl];
+        
+        NSString *decodedUrl = [webUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        if([webUrl isEqualToString:decodedUrl])
+            webUrl = [webUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:webUrl]];
     }
     else
 	{
