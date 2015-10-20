@@ -6,6 +6,7 @@
 #import "CCMImageFactory.h"
 #import "CCMServerMonitor.h"
 #import "CCMProject.h"
+#import "NSWorkspace+CCMAdditions.h"
 
 @interface NSStatusItem(MyTitleFormatting)
 
@@ -201,14 +202,7 @@
     CCMProject *project = [sender representedObject];
 	if([[project status] webUrl] != nil)
     {
-        NSString* webUrl = [[project status] webUrl];
-        
-        NSString *decodedUrl = [webUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        if([webUrl isEqualToString:decodedUrl])
-            webUrl = [webUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:webUrl]];
+        [[NSWorkspace sharedWorkspace] openURLString:[[project status] webUrl]];
     }
     else
 	{

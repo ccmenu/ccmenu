@@ -1,6 +1,7 @@
 
 #import "CCMServerMonitor.h"
 #import "CCMUserNotificationHandler.h"
+#import "NSWorkspace+CCMAdditions.h"
 
 
 @implementation CCMUserNotificationHandler
@@ -75,13 +76,7 @@
     NSString *webUrl = [notification.userInfo objectForKey:@"webUrl"];
     if(webUrl != nil)
     {
-        NSString *decodedUrl = [webUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        if([webUrl isEqualToString:decodedUrl])
-            webUrl = [webUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:webUrl]];
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:webUrl]];
+        [[NSWorkspace sharedWorkspace] openURLString:webUrl];
     }
 }
 
