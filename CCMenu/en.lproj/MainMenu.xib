@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -12,14 +12,58 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="206" userLabel="CCMAppController" customClass="CCMAppController">
-            <connections>
-                <outlet property="imageFactory" destination="249" id="251"/>
-                <outlet property="preferencesController" destination="256" id="258"/>
-                <outlet property="serverMonitor" destination="264" id="267"/>
-                <outlet property="userNotificationHandler" destination="281" id="282"/>
-            </connections>
-        </customObject>
+        <menu title="Main Menu" systemMenu="main" id="b5r-pI-cZR">
+            <items>
+                <menuItem title="CCMenu" id="YLS-HA-13t">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="CCMenu" systemMenu="apple" id="rhS-32-fBp">
+                        <items>
+                            <menuItem title="About CCMenu" id="xua-2M-uJZ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showWindow:" target="RRF-xr-xGr" id="xtu-J6-aGt"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="xpC-8R-aWo"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="aa6-T0-Y7z">
+                                <connections>
+                                    <action selector="showWindow:" target="256" id="9Nn-V1-xnR"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="GLs-yK-oah"/>
+                            <menuItem title="Services" id="etm-ju-Id4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Services" systemMenu="services" id="Ru8-VP-hrR"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="dEp-E4-V28"/>
+                            <menuItem title="Hide CCMenu" keyEquivalent="h" id="VUB-Ti-RVA">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="Jc9-RU-6aY"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="KZS-gF-ZLB">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="91u-o5-laP"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="uIp-YX-4HN">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="aCj-cj-x82"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="ObB-Kb-eva"/>
+                            <menuItem title="Quit CCMenu" keyEquivalent="q" id="CgV-95-H2c">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="57i-uP-Ce3"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+        </menu>
         <menu title="Menu" id="208" userLabel="Status Bar Menu">
             <items>
                 <menuItem isSeparatorItem="YES" id="218">
@@ -35,7 +79,7 @@
                 </menuItem>
                 <menuItem title="About CCMenu" id="273">
                     <connections>
-                        <action selector="showWindow:" target="RRF-xr-xGr" id="X8I-5u-tvh"/>
+                        <action selector="showWindow:" target="RRF-xr-xGr" id="4KM-b0-2no"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Preferences..." id="253">
@@ -53,6 +97,14 @@
                 </menuItem>
             </items>
         </menu>
+        <customObject id="206" userLabel="CCMAppController" customClass="CCMAppController">
+            <connections>
+                <outlet property="imageFactory" destination="249" id="251"/>
+                <outlet property="preferencesController" destination="256" id="258"/>
+                <outlet property="serverMonitor" destination="264" id="267"/>
+                <outlet property="userNotificationHandler" destination="281" id="282"/>
+            </connections>
+        </customObject>
         <customObject id="249" userLabel="CCMImageFactory" customClass="CCMImageFactory"/>
         <customObject id="256" userLabel="CCMPreferencesController" customClass="CCMPreferencesController">
             <connections>
