@@ -5,8 +5,10 @@ CCMenu 1.10.2
 
 * Built with App Transport Security disabled for El Capitan so that servers
   that aren't offering HTTPS or use self-signed certificates can be used, too.
-* Fixed a bug that could prevent CCMenu from opening project URLs that contained
+* Fixed a bug that could prevent CCMenu from opening project URLs that contain
   spaces or other special characters.
+* Fixed display of application menu that is shown when the preferences panel
+  is open and CCMenu displays the application icon in the dock.
 
 
 CCMenu 1.10.1
