@@ -13,14 +13,26 @@ static NSDictionary *bindings;
 
 - (void)sendEvent:(NSEvent *)event
 {
+    if(([NSApp mainMenu] != nil) && ([[NSApp mainMenu] performKeyEquivalent:event] == YES))
+    {
+        return;
+    }
+    
 	if(([event type] == NSKeyDown) && (![event isARepeat]) && ([event modifierFlags] & NSCommandKeyMask))
 	{
-		NSString *action = [bindings objectForKey:[event characters]];
+        [[NSApp mainMenu] performKeyEquivalent:event];
+        return;
+        
+        NSString *action = [bindings objectForKey:[event characters]];
 		if(action != nil)
+        {
 			[[[self keyWindow] firstResponder] doCommandBySelector:NSSelectorFromString(action)];
+        }
+        
 		return;
 	}
-	[super sendEvent:event];
+
+    [super sendEvent:event];
 }
 
 @end
