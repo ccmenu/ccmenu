@@ -20,9 +20,6 @@ static NSDictionary *bindings;
     
 	if(([event type] == NSKeyDown) && (![event isARepeat]) && ([event modifierFlags] & NSCommandKeyMask))
 	{
-        [[NSApp mainMenu] performKeyEquivalent:event];
-        return;
-        
         NSString *action = [bindings objectForKey:[event characters]];
 		if(action != nil)
         {
