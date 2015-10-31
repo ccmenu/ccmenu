@@ -1,6 +1,12 @@
 CCMenu Release Notes
 
 
+CCMenu 1.10.3
+
+* Fixes a recently introduced bug that made the keyboard shortcuts for cut,
+  copy, paste inactive.
+
+
 CCMenu 1.10.2
 
 * Built with App Transport Security disabled for El Capitan so that servers
