@@ -45,6 +45,11 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return [userDefaults boolForKey:@"ShowLastBuildLabel"];
 }
 
+- (BOOL)shouldUseColorInMenuBar
+{
+    return [userDefaults boolForKey:@"UseColorInMenuBar"];
+}
+
 - (NSUInteger)projectOrder
 {
     return (NSUInteger)[userDefaults integerForKey:@"ProjectOrder"];

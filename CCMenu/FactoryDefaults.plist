@@ -8,6 +8,8 @@
 	<true/>
 	<key>AskWhenCertIsUnverifiable</key>
 	<true/>
+	<key>UseColorInMenuBar</key>
+	<string>YES</string>
 	<key>PollInterval</key>
 	<string>5</string>
 </dict>

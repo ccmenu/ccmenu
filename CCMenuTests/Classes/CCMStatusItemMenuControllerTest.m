@@ -211,8 +211,6 @@
     CCMProject *p1 = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
     OCMStub([serverMonitorMock projects]).andReturn(@[p1]);
     OCMStub([imageFactoryMock imageForUnavailableServer]).andReturn(dummyImage);
-    OCMStub([imageFactoryMock convertForItemUse:dummyImage]).andReturn(dummyImage);
-
 	[controller displayProjects:nil];
 	
     OCMVerify([statusItemMock setImage:dummyImage]);
@@ -226,8 +224,6 @@
     NSArray *const projects = @[p1, p2];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
     OCMStub([imageFactoryMock imageForStatus:[p2 status]]).andReturn(dummyImage);
-    OCMStub([imageFactoryMock convertForItemUse:dummyImage]).andReturn(dummyImage);
-	
 	[controller displayProjects:nil];
 	
     OCMVerify([statusItemMock setImage:dummyImage]);
@@ -243,8 +239,6 @@
     OCMStub([serverMonitorMock projects]).andReturn(projects);
     OCMStub([imageFactoryMock imageForStatus:[p2 status]]).andReturn(dummyImage);
     OCMStub([imageFactoryMock imageForStatus:[p3 status]]).andReturn(dummyImage);
-    OCMStub([imageFactoryMock convertForItemUse:dummyImage]).andReturn(dummyImage);
-
 	[controller displayProjects:nil];
 	
     OCMVerify([statusItemMock setImage:dummyImage]);
@@ -259,8 +253,6 @@
     NSArray *const projects = @[p1, p2, p3];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
     OCMStub([imageFactoryMock imageForStatus:[p1 status]]).andReturn(dummyImage);
-    OCMStub([imageFactoryMock convertForItemUse:dummyImage]).andReturn(dummyImage);
-
 	[controller displayProjects:nil];
 
     OCMVerify([statusItemMock setImage:dummyImage]);
@@ -275,8 +267,6 @@
     NSArray *const projects = @[p1, p2, p3];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
     OCMStub([imageFactoryMock imageForStatus:[p3 status]]).andReturn(dummyImage);
-    OCMStub([imageFactoryMock convertForItemUse:dummyImage]).andReturn(dummyImage);
-
 	[controller displayProjects:nil];
 	
     OCMVerify([statusItemMock setImage:dummyImage]);
