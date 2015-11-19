@@ -58,25 +58,13 @@
 
 - (NSImage *)convertForMenuUse:(NSImage *)originalImage
 {
-    return [self convertInternal:originalImage targetY:0 suffix:@"-menu"];
-}
-
-- (NSImage *)convertForItemUse:(NSImage *)originalImage
-{
-    // This is not ideal but I don't think it would be possible to use different images in a multi-screen scenario anyway
-    if([[NSScreen mainScreen] backingScaleFactor] == 1)
-        return originalImage;
-    return [self convertInternal:originalImage targetY:0.5 suffix:@"-item"];
-}
-
-- (NSImage *)convertInternal:(NSImage *)originalImage targetY:(CGFloat)targetY suffix:(NSString *)suffix
-{
-    NSString *name = [NSString stringWithFormat:@"%@%@", [originalImage name], suffix];
+    NSString *name = [NSString stringWithFormat:@"%@%@", [originalImage name], @"-menu"];
     NSImage *newImage = [NSImage imageNamed:name];
     if(newImage == nil)
     {
-        newImage = [NSImage imageWithSize:NSMakeSize(15, 17) flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
-            [originalImage drawAtPoint:NSMakePoint(0, targetY) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+        NSSize size = NSMakeSize([originalImage size].width, [originalImage size].height + 2);
+        newImage = [NSImage imageWithSize:size flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
+            [originalImage drawAtPoint:NSMakePoint(0, 0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
             return YES;
         }];
         [newImage setName:name];
