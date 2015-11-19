@@ -32,7 +32,7 @@
 - (void)awakeFromNib
 {
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];	
-    [statusItem setImage:[imageFactory imageForUnavailableServer]];
+    [statusItem setImage:[imageFactory convertForItemUse:[imageFactory imageForUnavailableServer]]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
     
@@ -84,12 +84,12 @@
 {
     if((project == nil) || ([project status] ==nil))
     {
-        [item setImage:[imageFactory imageForUnavailableServer]];
+        [item setImage:[imageFactory convertForItemUse:[imageFactory imageForUnavailableServer]]];
 		[item setTitle:@""];
     } 
     else if([[project status] isBuilding] == NO)
     {
-        [item setImage:[imageFactory imageForStatus:[project status]]];
+        [item setImage:[imageFactory convertForItemUse:[imageFactory imageForStatus:[project status]]]];
         NSString *text = @"";
         if([[project status] buildDidFail])
         {
@@ -104,7 +104,7 @@
     }
     else
     {
-        [item setImage:[imageFactory imageForStatus:[project status]]];
+        [item setImage:[imageFactory convertForItemUse:[imageFactory imageForStatus:[project status]]]];
         NSString *text = @"";
         if([defaultsManager shouldShowTimerInMenu])
         {
@@ -170,7 +170,7 @@
             [menuItem setTitle:[NSString stringWithFormat:@"%@ \u2014 %@", [project name], [infoTexts componentsJoinedByString:@", "]]];
         }
 		NSImage *image = [imageFactory imageForStatus:[project status]];
-		[menuItem setImage:image];
+		[menuItem setImage:[imageFactory convertForMenuUse:image]];
         index += 1;
     }
     while([[[menu itemArray] objectAtIndex:index] isSeparatorItem] == NO)
