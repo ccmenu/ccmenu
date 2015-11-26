@@ -74,6 +74,11 @@
                         <action selector="showWindow:" target="277" id="278"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Refresh Projects" id="RKw-8p-rJA">
+                    <connections>
+                        <action selector="manualPollServers:" target="264" id="ggW-fH-fDY"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="272">
                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                 </menuItem>

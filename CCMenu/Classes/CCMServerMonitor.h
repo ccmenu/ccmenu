@@ -32,6 +32,8 @@
 
 - (void)pollServers:(id)sender;
 
+- (IBAction)manualPollServers:(id)sender;
+
 @end
 
 extern NSString *CCMProjectStatusUpdateNotification;
