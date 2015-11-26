@@ -1,5 +1,12 @@
 CCMenu Release Notes
 
+(unreleased)
+
+* New icons based on Ionicons, providing more contrast and symbols in addition
+  to colour.
+* Black and white mode for status menu item.
+* Menu entry to retrieve status from servers.
+
 
 CCMenu 1.10.3
 
