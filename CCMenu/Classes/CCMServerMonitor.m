@@ -109,11 +109,6 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 	[[[self connections] each] requestServerStatus];
 }
 
-- (IBAction)manualPollServers:(id)sender
-{
-    [self pollServers:sender];
-}
-
 - (void)connection:(CCMConnection *)connection didReceiveServerStatus:(NSArray *)projectInfoList
 {
     NSMutableDictionary *projectsByName = [self projectsByNameForConnection:connection];

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -69,14 +69,14 @@
                 <menuItem isSeparatorItem="YES" id="218">
                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                 </menuItem>
-                <menuItem title="Project Window" id="211">
+                <menuItem title="Retrieve Status from Servers" id="RKw-8p-rJA">
                     <connections>
-                        <action selector="showWindow:" target="277" id="278"/>
+                        <action selector="pollServers:" target="264" id="8xY-50-t8a"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Refresh Projects" id="RKw-8p-rJA">
+                <menuItem title="Open Project Window" id="211">
                     <connections>
-                        <action selector="manualPollServers:" target="264" id="ggW-fH-fDY"/>
+                        <action selector="showWindow:" target="277" id="278"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="272">
