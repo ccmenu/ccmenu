@@ -30,7 +30,7 @@
 - (void)start;
 - (void)stop;
 
-- (void)pollServers:(id)sender;
+- (IBAction)pollServers:(id)sender;
 
 @end
 
