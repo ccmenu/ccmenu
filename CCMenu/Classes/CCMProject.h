@@ -37,7 +37,7 @@
 
 - (NSCalendarDate *)estimatedBuildCompleteTime;
 
-- (BOOL)hasStatus;
+- (BOOL)hasStatus __unused;
 
 @end
 

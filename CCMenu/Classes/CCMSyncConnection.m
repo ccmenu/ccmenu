@@ -1,6 +1,5 @@
 
 #import "CCMSyncConnection.h"
-#import "CCMServerStatusReader.h"
 
 @implementation CCMSyncConnection
 

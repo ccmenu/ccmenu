@@ -27,8 +27,9 @@
 {
 	if([array count] == 0)
 	{
-		// this is not correct, but we don't really care, we just need something that return an object
-		return [super methodSignatureForSelector:@selector(init)]; 
+		// this may not be correct, the array is empty anyway
+		NSString *types = [NSString stringWithFormat:@"%s%s%s", @encode(id), @encode(id), @encode(SEL)];
+		return [NSMethodSignature signatureWithObjCTypes:[types UTF8String]];
 	}
 	return [[array objectAtIndex:0] methodSignatureForSelector:aSelector];
 }

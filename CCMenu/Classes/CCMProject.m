@@ -1,19 +1,8 @@
 
 #import "CCMProject.h"
-#import "CCMProjectStatus.h"
-#import "NSCalendarDate+CCMAdditions.h"
-
-
-static NSSet *infoKeys;
 
 
 @implementation CCMProject
-
-+ (void)initialize
-{
-	infoKeys = [[NSSet setWithObjects:@"activity", @"lastBuildStatus", @"lastBuildLabel", @"lastBuildTime", 
-                 @"webUrl", @"errorString", nil] retain];
-}
 
 - (id)initWithName:(NSString *)aName
 {
@@ -114,7 +103,7 @@ static NSSet *infoKeys;
     buildStartTime = [aTime retain];
 }
 
-- (NSDate *)buildStartTime
+- (NSCalendarDate *)buildStartTime
 {
     return buildStartTime;
 }
@@ -126,7 +115,7 @@ static NSSet *infoKeys;
     return [buildStartTime dateByAddingTimeInterval:[buildDuration doubleValue]];
 }
 
-- (BOOL)hasStatus
+- (BOOL)hasStatus __unused // actually used via an NSSortDescriptor
 {
     return status != nil;
 }

@@ -1,8 +1,5 @@
 
 #import "CCMServerMonitor.h"
-#import "CCMUserDefaultsManager.h"
-#import "CCMProject.h"
-#import "CCMConnection.h"
 #import "CCMPreferencesController.h"
 #import "NSArray+CCMAdditions.h"
 

@@ -3,7 +3,7 @@
 #import "EDApplication.h"
 
 
-@interface CCMStatusItemApplication : EDApplication 
+@interface CCMStatusItemApplication : EDApplication // actually used via NSPrincipalClass in CCMenu-Info.plist
 {
 
 }

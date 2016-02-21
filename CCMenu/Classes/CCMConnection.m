@@ -136,7 +136,6 @@
         case kSecTrustResultProceed:
             return YES;
 
-        case kSecTrustResultConfirm:
         case kSecTrustResultRecoverableTrustFailure:
         {
             if([[NSUserDefaults standardUserDefaults] boolForKey:@"AskWhenCertIsUnverifiable"] == NO)

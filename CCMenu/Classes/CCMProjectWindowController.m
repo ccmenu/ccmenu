@@ -1,6 +1,5 @@
 
 #import "CCMProjectWindowController.h"
-#import "CCMServerMonitor.h"
 
 
 @implementation CCMProjectWindowController

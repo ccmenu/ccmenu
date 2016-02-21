@@ -1,7 +1,6 @@
 
 #import "CCMImageFactory.h"
 #import "CCMProject.h"
-#import "CCMProjectStatus.h"
 
 
 @implementation CCMImageFactory
@@ -12,8 +11,7 @@
 	if(image == nil)
 	{
 		// This is a hack to make the unit tests work when run from otool, in which case imageNamed: doesn't work
-        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-        image = [[[NSImage alloc] initWithContentsOfFile:[bundle pathForImageResource:name]] autorelease];
+        image = [[NSBundle bundleForClass:[self class]] imageForResource:name];
 		[image setName:name];
 	}
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"UseColorInMenuBar"] == NO) {
@@ -29,7 +27,7 @@
     if(status == nil)
         return [self imageForUnavailableServer];
 
-    NSString *name = @"";
+    NSString *name;
     if([[status activity] isEqualToString:@"Building"])
     {
         if([status buildDidFail])

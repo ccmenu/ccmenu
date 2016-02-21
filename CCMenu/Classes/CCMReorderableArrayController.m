@@ -33,11 +33,10 @@ NSString *CCMDraggedRowType = @"net.sourceforge.cruisecontrol.CCMenu.DraggedRowT
     return NSDragOperationMove;
 }
 
-- (BOOL)tableView:(NSTableView *)tv acceptDrop:(id <NSDraggingInfo>)info row:(int)row dropOperation:(NSTableViewDropOperation)op
+- (BOOL)tableView:(NSTableView *)tv acceptDrop:(id <NSDraggingInfo>)info row:(NSInteger)rowArg dropOperation:(NSTableViewDropOperation)op
 {
-	if(row < 0)
-        row = 0;
-    
+    NSUInteger row = (rowArg < 0) ? (NSUInteger)0 : rowArg;
+
     if([info draggingSource] != tableView)
         return NO;
     
@@ -46,7 +45,7 @@ NSString *CCMDraggedRowType = @"net.sourceforge.cruisecontrol.CCMenu.DraggedRowT
     
     [self moveObjectsInArrangedObjectsFromIndexes:indexSet toIndex:row];
     
-    int rowsAbove = [self rowsAboveRow:row inIndexSet:indexSet];
+    NSUInteger rowsAbove = [self rowsAboveRow:row inIndexSet:indexSet];
     NSRange range = NSMakeRange(row - rowsAbove, [indexSet count]);
     indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
     [self setSelectionIndexes:indexSet];
@@ -57,7 +56,7 @@ NSString *CCMDraggedRowType = @"net.sourceforge.cruisecontrol.CCMenu.DraggedRowT
     return YES;
 }
 
-- (void)moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet *)indexSet toIndex:(unsigned int)insertIndex
+- (void)moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet *)indexSet toIndex:(NSUInteger)insertIndex
 {
     NSArray *objects = [self arrangedObjects];
     NSUInteger index = [indexSet lastIndex];
@@ -92,15 +91,15 @@ NSString *CCMDraggedRowType = @"net.sourceforge.cruisecontrol.CCMenu.DraggedRowT
     NSEnumerator *rowEnumerator = [rows objectEnumerator];
     NSNumber *idx;
     while((idx = [rowEnumerator nextObject]))
-        [indexSet addIndex:[idx intValue]];
+        [indexSet addIndex:[idx unsignedIntValue]];
     return indexSet;
 }
 
 
-- (int)rowsAboveRow:(int)row inIndexSet:(NSIndexSet *)indexSet
+- (NSUInteger)rowsAboveRow:(NSUInteger)row inIndexSet:(NSIndexSet *)indexSet
 {
     NSUInteger currentIndex = [indexSet firstIndex];
-    int i = 0;
+    NSUInteger i = 0;
     while(currentIndex != NSNotFound) {
         if(currentIndex < row)
             i++;

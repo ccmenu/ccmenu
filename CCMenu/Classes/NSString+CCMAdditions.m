@@ -76,7 +76,7 @@ static void initialize()
     if(qmarkRange.location != NSNotFound)
         filename = [filename substringToIndex:qmarkRange.location];
     NSUInteger index = [filenames indexOfObject:filename];
-    return (index == NSNotFound) ? CCMUnknownServer : (int)index;
+    return (index == NSNotFound) ? CCMUnknownServer : (CCMServerType)index;
 }
 
 

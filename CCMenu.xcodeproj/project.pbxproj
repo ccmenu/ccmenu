@@ -129,10 +129,10 @@
 		03E288C3144F045E0026DAC4 /* NSObject+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E288C2144F045E0026DAC4 /* NSObject+CCMAdditions.m */; };
 		03E7445A1766222000DCFF0F /* CCMProjectSheetControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E744591766222000DCFF0F /* CCMProjectSheetControllerTest.m */; };
 		03F5734316CC011D0007E109 /* CCMenu.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03F5734216CC011D0007E109 /* CCMenu.iconset */; };
+		1F37E9F21BD0F38D002959BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F37E9F11BD0F38D002959BE /* Images.xcassets */; };
+		1F37E9F31BD0F38D002959BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F37E9F11BD0F38D002959BE /* Images.xcassets */; };
 		2FA28116E3881CFF868D552A /* NSWorkspace+CCMAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28D75944EE1784EAF22BC /* NSWorkspace+CCMAdditionsTest.m */; };
 		2FA28274240C0EA402FD6396 /* NSWorkspace+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2865935ADB98EFA4CC622 /* NSWorkspace+CCMAdditions.m */; };
-		1F37E9F21BD0F38D002959BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F37E9F11BD0F38D002959BE /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
-		1F37E9F31BD0F38D002959BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F37E9F11BD0F38D002959BE /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		2FA282A13914012ABCA00F2D /* CCMConnectionTestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28DB5E98740E57952DE6D /* CCMConnectionTestBase.m */; };
 		2FA284478BD048F17C048417 /* CCMIsOneValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28D98711E290BB04D0ED6 /* CCMIsOneValueTransformer.m */; };
 		2FA2845134B0148D30A41CD5 /* CCMIsOneValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28D98711E290BB04D0ED6 /* CCMIsOneValueTransformer.m */; };

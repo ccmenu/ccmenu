@@ -3,9 +3,6 @@
 #import "NSObject+CCMAdditions.h"
 #import "NSCalendarDate+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"
-#import "CCMImageFactory.h"
-#import "CCMServerMonitor.h"
-#import "CCMProject.h"
 #import "NSWorkspace+CCMAdditions.h"
 
 @interface NSStatusItem(MyTitleFormatting)
@@ -120,7 +117,7 @@
 
 - (void)setupMenu:(NSMenu *)menu forProjects:(NSArray *)projectList
 {	
-	int index = 0;
+	NSUInteger index = 0;
     switch ([defaultsManager projectOrder])
     {
         case CCMProjectOrderAlphabetic:
