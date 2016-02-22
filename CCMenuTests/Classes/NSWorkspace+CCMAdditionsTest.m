@@ -56,4 +56,28 @@
     OCMVerify([mock openURL:[NSURL URLWithString:@"http://localhost/broken%252"]]);
 }
 
+
+- (void)testDoesNotEncodeHashInURLsThatDoNotHaveEncodedCharacters
+{
+    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+    id mock = OCMPartialMock(workspace);
+    OCMStub([mock openURL:[OCMArg any]]);
+
+    [workspace openURLString:@"http://localhost/path#foo"];
+
+    OCMVerify([mock openURL:[NSURL URLWithString:@"http://localhost/path#foo"]]);
+}
+
+
+- (void)testDoesNotEncodeHashInEncodedURLs
+{
+    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+    id mock = OCMPartialMock(workspace);
+    OCMStub([mock openURL:[OCMArg any]]);
+
+    [workspace openURLString:@"http://localhost/with%20space#foo"];
+
+    OCMVerify([mock openURL:[NSURL URLWithString:@"http://localhost/with%20space#foo"]]);
+}
+
 @end
