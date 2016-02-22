@@ -6,6 +6,7 @@ CCMenu Release Notes
   to colour.
 * Black and white mode for status menu item.
 * Menu entry to retrieve status from servers.
+* Fixes an issue with project URLs containing a fragment.
 
 
 CCMenu 1.10.3
