@@ -2,6 +2,11 @@ CCMenu Release Notes
 
 (unreleased)
 
+* Added special handling of authentication to make CCMenu work with Cloudbees. 
+
+
+CCMenu 11.0
+
 * New icons based on Ionicons, providing more contrast and symbols in addition
   to colour.
 * Black and white mode for status menu item.
