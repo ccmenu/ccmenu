@@ -10,6 +10,8 @@
 	<true/>
 	<key>UseColorInMenuBar</key>
 	<string>YES</string>
+	<key>UseSymbolInMenuBar</key>
+	<string>NO</string>
 	<key>PollInterval</key>
 	<string>5</string>
 </dict>

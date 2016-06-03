@@ -19,6 +19,7 @@ enum {
 - (BOOL)shouldShowLastBuildTimes;
 - (BOOL)shouldShowLastBuildLabel;
 - (BOOL)shouldUseColorInMenuBar;
+- (BOOL)shouldUseSymbolInMenuBar;
 - (NSUInteger)projectOrder;
 
 - (BOOL)shouldSendUserNotificationForBuildResult:(NSString *)result;

@@ -23,6 +23,7 @@
 
 	IBOutlet NSView					*advancedPrefsView;
     
+	IBOutlet NSButton				*symbolInMenuBarButton;
 }
 
 - (IBAction)showWindow:(id)sender;

@@ -24,6 +24,11 @@
 
 - (NSImage *)imageForStatus:(CCMProjectStatus *)status
 {
+    return [self imageForStatus:status supportsSymbol:NO];
+}
+
+- (NSImage *)imageForStatus:(CCMProjectStatus *)status supportsSymbol:(BOOL)symbol
+{
     if(status == nil)
         return [self imageForUnavailableServer];
 
@@ -38,13 +43,35 @@
     else
     {
         if([status buildWasSuccessful])
-            name = @"icon-success";
+        {
+            if(symbol && [[NSUserDefaults standardUserDefaults] boolForKey:@"UseSymbolInMenuBar"])
+            {
+                name = @"icon-success-symbol";
+            }
+            else
+            {
+                name = @"icon-success";
+            }
+        }
         else if([status buildDidFail])
-            name = @"icon-failure";
+        {
+            if(symbol && [[NSUserDefaults standardUserDefaults] boolForKey:@"UseSymbolInMenuBar"])
+            {
+                name = @"icon-failure-symbol";
+            }
+            else
+            {
+                name = @"icon-failure";
+            }
+        }
         else if([[status lastBuildStatus] isEqualToString:@"Unknown"])
+        {
             name = @"icon-pause";
+        }
         else
+        {
             name = @"icon-inactive";
+        }
     }
     return [self imageNamed:name];
 }

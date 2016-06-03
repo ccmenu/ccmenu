@@ -31,6 +31,8 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
     [NSApp activateIgnoringOtherApps:YES];
 	[preferencesWindow makeKeyAndOrderFront:self];
+
+    symbolInMenuBarButton.enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"UseColorInMenuBar"];
 }
 
 - (void)windowWillClose:(NSNotification *)notification
@@ -119,6 +121,17 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (void)preferencesChanged:(id)sender
 {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"UseColorInMenuBar"])
+    {
+        symbolInMenuBarButton.enabled = YES;
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"UseSymbolInMenuBar"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        symbolInMenuBarButton.enabled = NO;
+    }
+
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
 }
 
