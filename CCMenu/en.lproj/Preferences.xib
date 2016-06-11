@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1808" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CCMPreferencesController">
@@ -22,7 +22,6 @@
                 <outlet property="projectsView" destination="406" id="435"/>
                 <outlet property="sheetTabView" destination="328" id="347"/>
                 <outlet property="soundNamesViewController" destination="744" id="745"/>
-                <outlet property="symbolInMenuBarButton" destination="j54-h4-mrk" id="8s2-qM-bCz"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -176,11 +175,11 @@
             </subviews>
         </customView>
         <customView id="vUh-BQ-iKb" userLabel="Appearance">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="348"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="409"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="fmK-Y3-Tee">
-                    <rect key="frame" x="18" y="250" width="305" height="56"/>
+                    <rect key="frame" x="18" y="311" width="305" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="zQf-kZ-25o">
                         <font key="font" metaFont="smallSystem"/>
@@ -190,7 +189,7 @@
                     </textFieldCell>
                 </textField>
                 <button id="Hhj-t5-ub3">
-                    <rect key="frame" x="18" y="312" width="217" height="18"/>
+                    <rect key="frame" x="18" y="373" width="217" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show build timing in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kpw-t8-xiS">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -202,7 +201,7 @@
                     </connections>
                 </button>
                 <button id="cEM-HF-CT3">
-                    <rect key="frame" x="18" y="216" width="217" height="18"/>
+                    <rect key="frame" x="18" y="262" width="217" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Use color in menu bar icons" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="lYT-2b-rXK">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -214,14 +213,21 @@
                     </connections>
                 </button>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="XhC-4c-yK4">
-                    <rect key="frame" x="12" y="173" width="326" height="5"/>
+                    <rect key="frame" x="12" y="174" width="326" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="jMQ-su-Tmu">
+                    <rect key="frame" x="12" y="294" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="6sv-7r-0Uv">
-                    <rect key="frame" x="20" y="78" width="301" height="58"/>
+                    <rect key="frame" x="20" y="79" width="301" height="58"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     <size key="cellSize" width="185" height="18"/>
@@ -252,7 +258,7 @@
                     </connections>
                 </matrix>
                 <textField verticalHuggingPriority="750" id="rih-hn-RzP">
-                    <rect key="frame" x="18" y="144" width="173" height="17"/>
+                    <rect key="frame" x="18" y="145" width="173" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Display projects in menu:" id="PVJ-ad-wwe">
                         <font key="font" metaFont="system"/>
@@ -261,7 +267,7 @@
                     </textFieldCell>
                 </textField>
                 <button id="lII-Ee-TzR">
-                    <rect key="frame" x="20" y="49" width="143" height="18"/>
+                    <rect key="frame" x="20" y="50" width="143" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="with last build time" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pma-Tm-imj">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -273,7 +279,7 @@
                     </connections>
                 </button>
                 <button id="HRc-nd-4f8">
-                    <rect key="frame" x="20" y="28" width="157" height="18"/>
+                    <rect key="frame" x="20" y="29" width="157" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="with last build label" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Jg5-YH-RqX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -285,19 +291,30 @@
                     </connections>
                 </button>
                 <button id="j54-h4-mrk">
-                    <rect key="frame" x="18" y="192" width="217" height="18"/>
+                    <rect key="frame" x="18" y="238" width="217" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Use symbol in menu bar icons" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vbg-U2-aTI">
+                    <buttonCell key="cell" type="check" title="Use symbols for all states" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vbg-U2-aTI">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="preferencesChanged:" target="-2" id="Pkg-3w-usM"/>
-                        <binding destination="381" name="value" keyPath="values.UseSymbolInMenuBar" id="Mlf-Md-Imd"/>
+                        <binding destination="381" name="enabled" keyPath="values.UseColorInMenuBar" id="9rr-Sy-Jhx"/>
+                        <binding destination="381" name="value" keyPath="values.UseSymbolsForAllStatesInMenuBar" id="jgb-6J-ZvD"/>
                     </connections>
                 </button>
+                <textField verticalHuggingPriority="750" id="HdO-gS-LS2">
+                    <rect key="frame" x="18" y="190" width="305" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="2mZ-2t-sFf">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">Whether to show icons with color or b/w icons. When using color, symbols can be shown for all states or only when server is active.</string>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="148" y="-164.5"/>
+            <point key="canvasLocation" x="148" y="-134.5"/>
         </customView>
         <customView id="419" userLabel="Notifications">
             <rect key="frame" x="0.0" y="0.0" width="350" height="504"/>
