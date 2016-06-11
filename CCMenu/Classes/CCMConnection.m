@@ -73,7 +73,7 @@
 - (NSURLRequest *)createRequest
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    if((useHudsonJenkinsAuthWorkaround) && ((credential != nil) || [self setUpCredential]))
+    if((useHudsonJenkinsAuthWorkaround || [[feedURL host] containsString: @"cloudbees.com"]) && ((credential != nil) || [self setUpCredential]))
         [self addBasicAuthToRequest:request];
     return request;
 }
