@@ -1,7 +1,7 @@
 
 #import "CCMImageFactory.h"
 #import "CCMProject.h"
-
+#import "CCMUserDefaultsManager.h"
 
 @implementation CCMImageFactory
 
@@ -14,20 +14,12 @@
         image = [[NSBundle bundleForClass:[self class]] imageForResource:name];
 		[image setName:name];
 	}
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"UseColorInMenuBar"] == NO) {
-        image.template = YES;
-    } else {
-        image.template = NO;
-    }
+    [image setTemplate:![defaultsManager shouldUseColorInMenuBar]];
+
 	return image;
 }
 
 - (NSImage *)imageForStatus:(CCMProjectStatus *)status
-{
-    return [self imageForStatus:status supportsSymbol:NO];
-}
-
-- (NSImage *)imageForStatus:(CCMProjectStatus *)status supportsSymbol:(BOOL)symbol
 {
     if(status == nil)
         return [self imageForUnavailableServer];
@@ -44,25 +36,11 @@
     {
         if([status buildWasSuccessful])
         {
-            if(symbol && [[NSUserDefaults standardUserDefaults] boolForKey:@"UseSymbolInMenuBar"])
-            {
-                name = @"icon-success-symbol";
-            }
-            else
-            {
-                name = @"icon-success";
-            }
+            name = [defaultsManager shouldUseSymbolsForAllStatesInMenuBar] ? @"icon-success-symbol" : @"icon-success";
         }
         else if([status buildDidFail])
         {
-            if(symbol && [[NSUserDefaults standardUserDefaults] boolForKey:@"UseSymbolInMenuBar"])
-            {
-                name = @"icon-failure-symbol";
-            }
-            else
-            {
-                name = @"icon-failure";
-            }
+            name = [defaultsManager shouldUseSymbolsForAllStatesInMenuBar] ? @"icon-failure-symbol" : @"icon-failure";
         }
         else if([[status lastBuildStatus] isEqualToString:@"Unknown"])
         {

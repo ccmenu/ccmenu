@@ -86,7 +86,7 @@
     } 
     else if([[project status] isBuilding] == NO)
     {
-        [item setImage:[imageFactory imageForStatus:[project status] supportsSymbol:YES]];
+        [item setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
         if([[project status] buildDidFail])
         {
@@ -101,7 +101,7 @@
     }
     else
     {
-        [item setImage:[imageFactory imageForStatus:[project status] supportsSymbol:YES]];
+        [item setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
         if([defaultsManager shouldShowTimerInMenu])
         {

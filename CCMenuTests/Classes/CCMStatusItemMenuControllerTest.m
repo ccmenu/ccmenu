@@ -224,7 +224,7 @@
     CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
     NSArray *const projects = @[p1, p2];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
-    OCMStub([imageFactoryMock imageForStatus:[p2 status] supportsSymbol:YES]).andReturn(dummyImage);
+    OCMStub([imageFactoryMock imageForStatus:[p2 status]]).andReturn(dummyImage);
 	
 	[controller displayProjects:nil];
 	
@@ -239,8 +239,8 @@
     CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
     NSArray *const projects = @[p1, p2, p3];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
-    OCMStub([imageFactoryMock imageForStatus:[p2 status] supportsSymbol:YES]).andReturn(dummyImage);
-    OCMStub([imageFactoryMock imageForStatus:[p3 status] supportsSymbol:YES]).andReturn(dummyImage);
+    OCMStub([imageFactoryMock imageForStatus:[p2 status]]).andReturn(dummyImage);
+    OCMStub([imageFactoryMock imageForStatus:[p3 status]]).andReturn(dummyImage);
 
 	[controller displayProjects:nil];
 	
@@ -255,7 +255,7 @@
     CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
     NSArray *const projects = @[p1, p2, p3];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
-    OCMStub([imageFactoryMock imageForStatus:[p1 status] supportsSymbol:YES]).andReturn(dummyImage);
+    OCMStub([imageFactoryMock imageForStatus:[p1 status]]).andReturn(dummyImage);
 
 	[controller displayProjects:nil];
 
@@ -270,7 +270,7 @@
     CCMProject *p3 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
     NSArray *const projects = @[p1, p2, p3];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
-    OCMStub([imageFactoryMock imageForStatus:[p3 status] supportsSymbol:YES]).andReturn(dummyImage);
+    OCMStub([imageFactoryMock imageForStatus:[p3 status]]).andReturn(dummyImage);
 
 	[controller displayProjects:nil];
 	
