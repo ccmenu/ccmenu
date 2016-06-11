@@ -6,6 +6,7 @@ CCMenu Release Notes
   which the server is idle is now optional. This makes it possible to
   revert to the display style used before the introduction of the new icons.
 * The authentication code can now work with Cloudbees servers.
+* Failed build count is shown with the correct font for the menu bar.
 
 
 CCMenu 11.0

@@ -16,7 +16,7 @@
 - (void)setFormattedTitle:(NSString *)aTitle
 {
     NSMutableDictionary *attr = [NSMutableDictionary dictionary];
-    [attr setObject:[NSFont fontWithName:@"Lucida Grande" size:12] forKey:NSFontAttributeName];
+    [attr setObject:[NSFont menuBarFontOfSize:0] forKey:NSFontAttributeName];
     NSAttributedString *strg = [[[NSAttributedString alloc] initWithString:aTitle attributes:attr] autorelease];
     [self setAttributedTitle:strg];
 }
