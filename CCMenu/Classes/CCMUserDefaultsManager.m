@@ -50,6 +50,16 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return [userDefaults boolForKey:@"UseColorInMenuBar"];
 }
 
+- (void)setShouldUseSymbolsForAllStatesInMenuBar:(BOOL)flag
+{
+    [userDefaults setBool:flag forKey:@"UseSymbolsForAllStatesInMenuBar"];
+}
+
+- (BOOL)shouldUseSymbolsForAllStatesInMenuBar
+{
+    return [userDefaults boolForKey:@"UseSymbolsForAllStatesInMenuBar"];
+}
+
 - (NSUInteger)projectOrder
 {
     return (NSUInteger)[userDefaults integerForKey:@"ProjectOrder"];

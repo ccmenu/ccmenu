@@ -1,8 +1,11 @@
 CCMenu Release Notes
 
-CCMenu 11.0
+(unreleased)
 
-* Added special handling of authentication to make CCMenu work with Cloudbees. 
+* When not displaying black and white icons, the use of symbols for states in
+  which the server is idle is now optional. This makes it possible to
+  revert to the display style used before the introduction of the new icons.
+* The authentication code can now work with Cloudbees servers.
 
 
 CCMenu 11.0

@@ -2,10 +2,12 @@
 #import <Cocoa/Cocoa.h>
 
 @class CCMProjectStatus;
+@class CCMUserDefaultsManager;
 
 
 @interface CCMImageFactory : NSObject 
 {
+    IBOutlet CCMUserDefaultsManager *defaultsManager;
 }
 
 - (NSImage *)imageForStatus:(CCMProjectStatus *)status;

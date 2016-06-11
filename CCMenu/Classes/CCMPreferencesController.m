@@ -119,6 +119,9 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 
 - (void)preferencesChanged:(id)sender
 {
+    if([defaultsManager shouldUseColorInMenuBar] == NO)
+        [defaultsManager setShouldUseSymbolsForAllStatesInMenuBar:YES];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:sender];
 }
 

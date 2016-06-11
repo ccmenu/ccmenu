@@ -1,7 +1,7 @@
 
 #import "CCMImageFactory.h"
 #import "CCMProject.h"
-
+#import "CCMUserDefaultsManager.h"
 
 @implementation CCMImageFactory
 
@@ -14,11 +14,8 @@
         image = [[NSBundle bundleForClass:[self class]] imageForResource:name];
 		[image setName:name];
 	}
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"UseColorInMenuBar"] == NO) {
-        image.template = YES;
-    } else {
-        image.template = NO;
-    }
+    [image setTemplate:![defaultsManager shouldUseColorInMenuBar]];
+
 	return image;
 }
 
@@ -38,13 +35,21 @@
     else
     {
         if([status buildWasSuccessful])
-            name = @"icon-success";
+        {
+            name = [defaultsManager shouldUseSymbolsForAllStatesInMenuBar] ? @"icon-success-symbol" : @"icon-success";
+        }
         else if([status buildDidFail])
-            name = @"icon-failure";
+        {
+            name = [defaultsManager shouldUseSymbolsForAllStatesInMenuBar] ? @"icon-failure-symbol" : @"icon-failure";
+        }
         else if([[status lastBuildStatus] isEqualToString:@"Unknown"])
+        {
             name = @"icon-pause";
+        }
         else
+        {
             name = @"icon-inactive";
+        }
     }
     return [self imageNamed:name];
 }

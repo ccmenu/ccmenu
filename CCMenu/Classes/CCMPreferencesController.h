@@ -22,7 +22,6 @@
 	IBOutlet NSArrayController		*soundNamesViewController;
 
 	IBOutlet NSView					*advancedPrefsView;
-    
 }
 
 - (IBAction)showWindow:(id)sender;
