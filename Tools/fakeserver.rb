@@ -112,7 +112,7 @@ __END__
 @@ cctray
 !!! XML
 %Projects
-  %Project{:name => 'other project', :webUrl => 'http://localhost:4567/dashboard/build/detail/other-project',
+  %Project{:name => 'Other Project', :webUrl => 'http://localhost:4567/dashboard/build/detail/other-project',
     :activity => :Sleeping, :lastBuildStatus => :Success,
     :lastBuildLabel => "build.1234", :lastBuildTime => "2007-07-18T18:44:48"}
   %Project{:name => 'connectfour', :webUrl => 'http://localhost:4567/dashboard/build/detail/connectfour',

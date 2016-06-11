@@ -81,16 +81,18 @@
     OCMStub([defaultsMock projectOrder]).andReturn(CCMProjectOrderAlphabetic) ;
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
-    NSMutableArray *projects = [@[[[[CCMProject alloc] initWithName:@"xyz"] autorelease]] mutableCopy];
+    NSMutableArray *projects = [@[[[[CCMProject alloc] initWithName:@"XYZ"] autorelease]] mutableCopy];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
 	[controller displayProjects:nil];
     [projects addObject:[[[CCMProject alloc] initWithName:@"abc"] autorelease]];
+    [projects addObject:[[[CCMProject alloc] initWithName:@"def"] autorelease]];
     [controller displayProjects:nil];
 
 	NSArray *items = [[[controller statusItem] menu] itemArray];
 	XCTAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have ordered projects alphabetically.");
-	XCTAssertEqualObjects(@"xyz", [[items objectAtIndex:1] title], @"Should have ordered projects alphabetically.");
-	XCTAssertEqual(3ul, [items count], @"Menu should have correct number of items.");
+    XCTAssertEqualObjects(@"def", [[items objectAtIndex:1] title], @"Should have ordered projects alphabetically.");
+    XCTAssertEqualObjects(@"XYZ", [[items objectAtIndex:2] title], @"Should have ordered projects alphabetically.");
+	XCTAssertEqual(4ul, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testSortsMenuItemsByBuildTime

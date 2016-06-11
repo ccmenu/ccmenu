@@ -121,7 +121,7 @@
     switch ([defaultsManager projectOrder])
     {
         case CCMProjectOrderAlphabetic:
-            projectList = [projectList sortedArrayByComparingAttribute:@"name"];
+            projectList = [projectList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]]];
             break;
         case CCMProjectOrderByBuildTime:
             projectList = [projectList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"status.lastBuildTime" ascending:NO]]];
