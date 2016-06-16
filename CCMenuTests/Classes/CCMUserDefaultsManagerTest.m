@@ -47,7 +47,7 @@
     OCMStub([defaultsMock boolForKey:@"PlaySound Successful"]).andReturn(NO);
     OCMStub([defaultsMock stringForKey:@"Sound Successful"]).andReturn(@"Sosumi");
 
-    NSString *sound = [manager soundForBuildResult:CCMSuccessfulBuild];
+    NSString *sound = [manager soundForEvent:CCMSuccessfulBuild];
 
     XCTAssertNil(sound, @"Should have returned nil when playSound flag is off");
 }
@@ -57,7 +57,7 @@
     OCMStub([defaultsMock boolForKey:@"PlaySound Successful"]).andReturn(YES);
     OCMStub([defaultsMock stringForKey:@"Sound Successful"]).andReturn(@"Sosumi");
 
-    NSString *sound = [manager soundForBuildResult:CCMSuccessfulBuild];
+    NSString *sound = [manager soundForEvent:CCMSuccessfulBuild];
 
     XCTAssertEqualObjects(@"Sosumi", sound, @"Should have returned sound name when playSound flag is on");
 }

@@ -60,23 +60,28 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return [userDefaults boolForKey:@"UseSymbolsForAllStatesInMenuBar"];
 }
 
+- (BOOL)shouldHideSuccessfulBuilds
+{
+    return [userDefaults boolForKey:@"HideSuccessfulBuilds"];
+}
+
 - (NSUInteger)projectOrder
 {
     return (NSUInteger)[userDefaults integerForKey:@"ProjectOrder"];
 }
 
-- (BOOL)shouldSendUserNotificationForBuildResult:(NSString *)buildResult
+- (BOOL)shouldSendUserNotificationForEvent:(NSString *)event
 {
-    NSString *sendNotificationKey = [NSString stringWithFormat:@"SendNotification %@", buildResult];
+    NSString *sendNotificationKey = [NSString stringWithFormat:@"SendNotification %@", event];
     return [userDefaults boolForKey:sendNotificationKey];
 }
 
-- (NSString *)soundForBuildResult:(NSString *)buildResult
+- (NSString *)soundForEvent:(NSString *)event
 {
-    NSString *playSoundKey = [NSString stringWithFormat:@"PlaySound %@", buildResult];
+    NSString *playSoundKey = [NSString stringWithFormat:@"PlaySound %@", event];
     if([userDefaults boolForKey:playSoundKey])
     {
-        NSString *soundKey = [NSString stringWithFormat:@"Sound %@", buildResult]; // slightly naughty
+        NSString *soundKey = [NSString stringWithFormat:@"Sound %@", event]; // slightly naughty
         return [userDefaults stringForKey:soundKey];
     }
     return nil;

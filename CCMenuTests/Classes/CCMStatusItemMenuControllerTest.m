@@ -64,8 +64,8 @@
 - (void)testCreatesMenuItem
 {
     NSArray *projects = @[[self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"]];
-    [[[serverMonitorMock stub] andReturn:projects] projects];
-	
+    OCMStub([serverMonitorMock projects]).andReturn(projects);
+
 	[controller displayProjects:nil];
 	
 	NSArray *items = [[[controller statusItem] menu] itemArray];
@@ -135,6 +135,47 @@
 	XCTAssertEqualObjects(@"xyz", [[items objectAtIndex:0] title], @"Should have ordered projects as added.");
 	XCTAssertEqualObjects(@"abc", [[items objectAtIndex:1] title], @"Should have ordered projects as added.");
 	XCTAssertEqual(3ul, [items count], @"Menu should have correct number of items.");
+}
+
+- (void)testShowsOnlyBrokenProjectsAndDisplaysHintForOthers
+{
+    id defaultsMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([defaultsMock projectOrder]).andReturn(CCMProjectOrderAlphabetic) ;
+    OCMStub([defaultsMock shouldHideSuccessfulBuilds]).andReturn(YES);
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+
+    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"abc"] autorelease];
+    [p1 updateWithInfo:@{@"lastBuildStatus": @"Failure"}];
+    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"def"] autorelease];
+    CCMProject *p3 = [[[CCMProject alloc] initWithName:@"xyz"] autorelease];
+    [p3 updateWithInfo:@{@"lastBuildStatus": @"Success"}];
+    NSArray *const projects = @[p1, p2, p3];
+    OCMStub([serverMonitorMock projects]).andReturn(projects);
+
+    [controller displayProjects:nil];
+
+    NSArray *items = [[[controller statusItem] menu] itemArray];
+    XCTAssertEqualObjects(@"abc", [[items objectAtIndex:0] title], @"Should have displayed broken project.");
+    XCTAssertEqualObjects(@"def", [[items objectAtIndex:1] title], @"Should have displayed project without status.");
+    XCTAssertEqualObjects(@"(1 project not shown)", [[items objectAtIndex:2] title], @"Should have displayed hint.");
+    XCTAssertEqual(4ul, [items count], @"Menu should have correct number of items.");
+}
+
+- (void)testDoesNotDisplayHintWhenAllProjectsAreBroken
+{
+    id defaultsMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([defaultsMock shouldHideSuccessfulBuilds]).andReturn(YES);
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+
+    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"abc"] autorelease];
+    [p1 updateWithInfo:@{@"lastBuildStatus": @"Failure"}];
+    NSArray *const projects = @[p1];
+    OCMStub([serverMonitorMock projects]).andReturn(projects);
+
+    [controller displayProjects:nil];
+
+    NSArray *items = [[[controller statusItem] menu] itemArray];
+    XCTAssertEqual(2ul, [items count], @"Menu should have correct number of items.");
 }
 
 - (void)testRemovesMenuItem

@@ -54,8 +54,8 @@
     if(details == nil)
         return;
 
-    NSString *soundName = [defaultsManager soundForBuildResult:buildResult];
-    if([defaultsManager shouldSendUserNotificationForBuildResult:buildResult])
+    NSString *soundName = [defaultsManager soundForEvent:buildResult];
+    if([defaultsManager shouldSendUserNotificationForEvent:buildResult])
     {
         NSUserNotification *userNotification = [[[NSUserNotification alloc] init] autorelease];
         userNotification.title = [NSString stringWithFormat:@"%@: %@", projectName, [details objectForKey:@"title"]];

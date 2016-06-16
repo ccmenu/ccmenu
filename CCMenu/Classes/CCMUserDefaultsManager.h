@@ -21,10 +21,11 @@ enum {
 - (BOOL)shouldUseColorInMenuBar;
 - (void)setShouldUseSymbolsForAllStatesInMenuBar:(BOOL)flag;
 - (BOOL)shouldUseSymbolsForAllStatesInMenuBar;
+- (BOOL)shouldHideSuccessfulBuilds;
 - (NSUInteger)projectOrder;
 
-- (BOOL)shouldSendUserNotificationForBuildResult:(NSString *)result;
-- (NSString *)soundForBuildResult:(NSString *)result;
+- (BOOL)shouldSendUserNotificationForEvent:(NSString *)event;
+- (NSString *)soundForEvent:(NSString *)event;
 
 - (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;

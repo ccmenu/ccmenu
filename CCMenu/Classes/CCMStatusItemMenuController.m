@@ -115,10 +115,33 @@
     }
 }
 
-- (void)setupMenu:(NSMenu *)menu forProjects:(NSArray *)projectList
-{	
-	NSUInteger index = 0;
-    switch ([defaultsManager projectOrder])
+- (void)setupMenu:(NSMenu *)menu forProjects:(NSArray *)fullProjectList
+{
+    NSArray *projectList = [self filterAndSortProjectList:fullProjectList];
+
+    NSUInteger index = 0;
+    for(CCMProject *project in projectList)
+    {
+        [self addProject:project toMenu:menu atIndex:index++];
+    }
+    while([[[menu itemArray] objectAtIndex:index] isSeparatorItem] == NO)
+    {
+        [menu removeItemAtIndex:index];
+    }
+    NSUInteger hiddenCount = [fullProjectList count] - [projectList count];
+    if(hiddenCount > 0)
+    {
+        [self addHiddenProjectsHintWithCount:hiddenCount toMenu:menu atIndex:index];
+    }
+}
+
+- (NSArray *)filterAndSortProjectList:(NSArray *)projectList
+{
+    if([defaultsManager shouldHideSuccessfulBuilds])
+    {
+        projectList = [projectList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"status == %@ OR status.buildWasSuccessful == %@", nil, @NO]];
+    }
+    switch([defaultsManager projectOrder])
     {
         case CCMProjectOrderAlphabetic:
             projectList = [projectList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]]];
@@ -129,23 +152,25 @@
         default:
             break;
     }
-    
-    for(CCMProject *project in projectList)
-    {
-        NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
-        while(([menuItem isSeparatorItem] == NO) && ([[project name] compare:[menuItem title]] == NSOrderedDescending))
+    return projectList;
+}
+
+- (void)addProject:(CCMProject *)project toMenu:(NSMenu *)menu atIndex:(NSUInteger)index
+{
+    NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
+    while(([menuItem isSeparatorItem] == NO) && ([[project name] compare:[menuItem title]] == NSOrderedDescending))
         {
             [menu removeItemAtIndex:index];
             menuItem = [[menu itemArray] objectAtIndex:index];
         }
-        if([menuItem representedObject] != project)
+    if([menuItem representedObject] != project)
         {
             menuItem = [menu insertItemWithTitle:[project name] action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
             [menuItem setTarget:self];
             [menuItem setRepresentedObject:project];
         }
-        NSMutableArray *infoTexts = [NSMutableArray array];
-        if([defaultsManager shouldShowLastBuildLabel])
+    NSMutableArray *infoTexts = [NSMutableArray array];
+    if([defaultsManager shouldShowLastBuildLabel])
         {
             NSString *lbl = [[project status] lastBuildLabel];
             if(lbl != nil)
@@ -153,7 +178,7 @@
                 [infoTexts addObject:lbl];
             }
         }
-        if([defaultsManager shouldShowLastBuildTimes])
+    if([defaultsManager shouldShowLastBuildTimes])
         {
             NSDate *lbt = [[project status] lastBuildTime];
             if(lbt != nil)
@@ -162,18 +187,20 @@
                 [infoTexts addObject:[[NSCalendarDate date] relativeDescriptionOfPastDate:(NSCalendarDate *)lbt]];
             }
         }
-        if([infoTexts count] > 0)
+    if([infoTexts count] > 0)
         {
             [menuItem setTitle:[NSString stringWithFormat:@"%@ \u2014 %@", [project name], [infoTexts componentsJoinedByString:@", "]]];
         }
-		NSImage *image = [imageFactory imageForStatus:[project status]];
-		[menuItem setImage:[imageFactory convertForMenuUse:image]];
-        index += 1;
-    }
-    while([[[menu itemArray] objectAtIndex:index] isSeparatorItem] == NO)
-    {
-        [menu removeItemAtIndex:index];
-    }
+    NSImage *image = [imageFactory imageForStatus:[project status]];
+    [menuItem setImage:[imageFactory convertForMenuUse:image]];
+}
+
+
+- (void)addHiddenProjectsHintWithCount:(NSUInteger)hiddenCount toMenu:(NSMenu *)menu atIndex:(NSUInteger)index
+{
+    NSString *title = [NSString stringWithFormat:@"(%lu %@ not shown)", hiddenCount, (hiddenCount == 1) ? @"project" : @"projects"];
+    id menuItem = [menu insertItemWithTitle:title action:NULL keyEquivalent:@"" atIndex:index];
+    [menuItem setEnabled:NO];
 }
 
 
