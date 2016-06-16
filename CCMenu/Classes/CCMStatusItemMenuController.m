@@ -159,38 +159,38 @@
 {
     NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
     while(([menuItem isSeparatorItem] == NO) && ([[project name] compare:[menuItem title]] == NSOrderedDescending))
-        {
-            [menu removeItemAtIndex:index];
-            menuItem = [[menu itemArray] objectAtIndex:index];
-        }
+    {
+        [menu removeItemAtIndex:index];
+        menuItem = [[menu itemArray] objectAtIndex:index];
+    }
     if([menuItem representedObject] != project)
-        {
-            menuItem = [menu insertItemWithTitle:[project name] action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
-            [menuItem setTarget:self];
-            [menuItem setRepresentedObject:project];
-        }
+    {
+        menuItem = [menu insertItemWithTitle:[project name] action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
+        [menuItem setTarget:self];
+        [menuItem setRepresentedObject:project];
+    }
     NSMutableArray *infoTexts = [NSMutableArray array];
     if([defaultsManager shouldShowLastBuildLabel])
+    {
+        NSString *lbl = [[project status] lastBuildLabel];
+        if(lbl != nil)
         {
-            NSString *lbl = [[project status] lastBuildLabel];
-            if(lbl != nil)
-            {
-                [infoTexts addObject:lbl];
-            }
+            [infoTexts addObject:lbl];
         }
+    }
     if([defaultsManager shouldShowLastBuildTimes])
+    {
+        NSDate *lbt = [[project status] lastBuildTime];
+        if(lbt != nil)
         {
-            NSDate *lbt = [[project status] lastBuildTime];
-            if(lbt != nil)
-            {
-                // the lastBuildTime date object is not a calendar date but it implements enough to be passed as one here
-                [infoTexts addObject:[[NSCalendarDate date] relativeDescriptionOfPastDate:(NSCalendarDate *)lbt]];
-            }
+            // the lastBuildTime date object is not a calendar date but it implements enough to be passed as one here
+            [infoTexts addObject:[[NSCalendarDate date] relativeDescriptionOfPastDate:(NSCalendarDate *)lbt]];
         }
+    }
     if([infoTexts count] > 0)
-        {
-            [menuItem setTitle:[NSString stringWithFormat:@"%@ \u2014 %@", [project name], [infoTexts componentsJoinedByString:@", "]]];
-        }
+    {
+        [menuItem setTitle:[NSString stringWithFormat:@"%@ \u2014 %@", [project name], [infoTexts componentsJoinedByString:@", "]]];
+    }
     NSImage *image = [imageFactory imageForStatus:[project status]];
     [menuItem setImage:[imageFactory convertForMenuUse:image]];
 }
