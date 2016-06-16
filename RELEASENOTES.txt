@@ -6,6 +6,7 @@ CCMenu Release Notes
   which the server is idle is now optional. This makes it possible to
   revert to the display style used before the introduction of the new icons.
 * Notifications can be sent when a build is starting on the server.
+* Projects with a successful last build can be hidden from the menu.
 * When sorting projects alphabetically case is now ignored.
 * The authentication code can now work with Cloudbees servers.
 * Failed build count is shown with the correct font for the menu bar.
