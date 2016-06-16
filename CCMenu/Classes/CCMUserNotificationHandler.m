@@ -24,6 +24,10 @@
         CCMFixedBuild: @{
             @"title": NSLocalizedString(@"Fixed", "Notification for just fixed build"),
             @"text": NSLocalizedString(@"Recent checkins have fixed the build.", "For notificiation")
+        },
+        @"Starting" : @{
+            @"title": NSLocalizedString(@"Starting", "Notification for build starting"),
+            @"text": NSLocalizedString(@"A build has started on the server.", "For notificiation")
         }
     };
     return [allDetails objectForKey:buildResult];
@@ -31,16 +35,19 @@
 
 - (void)start
 {
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(buildComplete:) name:CCMBuildStartNotification object:nil];
 	[[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(buildComplete:) name:CCMBuildCompleteNotification object:nil];
     [[NSUserNotificationCenter defaultUserNotificationCenter]
      setDelegate:self];
 }
 
+
 - (void)buildComplete:(NSNotification *)buildNotification
 {
 	NSString *projectName = [[buildNotification object] name];
-	NSString *buildResult = [[buildNotification userInfo] objectForKey:@"buildResult"];
+    NSString *buildResult = [[buildNotification userInfo] objectForKey:@"buildResult"] ?: @"Starting";
 	NSString *webUrl = [[buildNotification userInfo] objectForKey:@"webUrl"];
 
     NSDictionary *details = [[self class] detailsForBuildResult:buildResult];

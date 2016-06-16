@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1808" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CCMPreferencesController">
@@ -317,11 +317,11 @@
             <point key="canvasLocation" x="148" y="-134.5"/>
         </customView>
         <customView id="419" userLabel="Notifications">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="504"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="nS8-hr-sen">
-                    <rect key="frame" x="18" y="431" width="316" height="28"/>
+                    <rect key="frame" x="18" y="527" width="316" height="28"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Previous build was successful and current build finished sucessfully, too." id="MKi-Lh-dqt">
                         <font key="font" metaFont="smallSystem"/>
@@ -330,16 +330,16 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="643">
-                    <rect key="frame" x="18" y="467" width="185" height="17"/>
+                    <rect key="frame" x="18" y="563" width="185" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build successful" id="644">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build finished: successful" id="644">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="655">
-                    <rect key="frame" x="112" y="399" width="221" height="26"/>
+                    <rect key="frame" x="112" y="496" width="221" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="658" id="656">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -362,7 +362,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="704">
-                    <rect key="frame" x="112" y="39" width="221" height="26"/>
+                    <rect key="frame" x="112" y="149" width="221" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="707" id="705">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -385,14 +385,14 @@
                     </connections>
                 </popUpButton>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="802">
-                    <rect key="frame" x="13" y="363" width="326" height="5"/>
+                    <rect key="frame" x="13" y="462" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <button id="hZs-rE-gDa">
-                    <rect key="frame" x="18" y="378" width="221" height="18"/>
+                    <rect key="frame" x="18" y="477" width="221" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Notify using system notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Th1-Qx-CK5">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -403,7 +403,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="hFo-np-vF1">
-                    <rect key="frame" x="17" y="304" width="316" height="28"/>
+                    <rect key="frame" x="17" y="403" width="316" height="28"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Previous build was successful but current build failed." id="TBJ-k6-qoR">
                         <font key="font" metaFont="smallSystem"/>
@@ -412,23 +412,23 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="YBW-Ci-zGR">
-                    <rect key="frame" x="17" y="339" width="185" height="18"/>
+                    <rect key="frame" x="17" y="438" width="185" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build broken" id="zpe-4Z-AZS">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build finished: broken" id="zpe-4Z-AZS">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="2Gm-LW-m1p">
-                    <rect key="frame" x="12" y="245" width="326" height="5"/>
+                    <rect key="frame" x="12" y="349" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField verticalHuggingPriority="750" id="wog-lS-rj8">
-                    <rect key="frame" x="17" y="186" width="316" height="28"/>
+                    <rect key="frame" x="17" y="290" width="316" height="28"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Previous build was broken and current build failed, too." id="xlx-0i-RkF">
                         <font key="font" metaFont="smallSystem"/>
@@ -437,16 +437,16 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="245-qx-RVB">
-                    <rect key="frame" x="17" y="221" width="185" height="18"/>
+                    <rect key="frame" x="17" y="325" width="185" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build still broken" id="XeA-PG-pIc">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build finished: still broken" id="XeA-PG-pIc">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="699">
-                    <rect key="frame" x="112" y="166" width="221" height="26"/>
+                    <rect key="frame" x="112" y="272" width="221" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="702" id="700">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -469,14 +469,14 @@
                     </connections>
                 </popUpButton>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Q6x-bf-fJk">
-                    <rect key="frame" x="12" y="130" width="326" height="5"/>
+                    <rect key="frame" x="12" y="238" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField verticalHuggingPriority="750" id="Mce-g3-SqF">
-                    <rect key="frame" x="17" y="71" width="316" height="28"/>
+                    <rect key="frame" x="17" y="179" width="316" height="28"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Previous build was broken, current build finished successfully." id="cNc-2t-oam">
                         <font key="font" metaFont="smallSystem"/>
@@ -485,16 +485,16 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="4eF-e8-T8f">
-                    <rect key="frame" x="17" y="106" width="185" height="18"/>
+                    <rect key="frame" x="17" y="214" width="185" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build fixed" id="xli-xN-iJc">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build finished: fixed" id="xli-xN-iJc">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button id="bWA-LK-ce5">
-                    <rect key="frame" x="18" y="404" width="90" height="18"/>
+                    <rect key="frame" x="18" y="501" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Play sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="er3-NK-WRY">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -505,7 +505,7 @@
                     </connections>
                 </button>
                 <button id="hzA-Yr-8zL">
-                    <rect key="frame" x="18" y="263" width="221" height="18"/>
+                    <rect key="frame" x="18" y="367" width="221" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Notify using system notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Jcn-fv-42i">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -516,7 +516,7 @@
                     </connections>
                 </button>
                 <button id="iIk-tS-HWU">
-                    <rect key="frame" x="18" y="289" width="90" height="18"/>
+                    <rect key="frame" x="18" y="391" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Play sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nvd-Er-CRb">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -527,7 +527,7 @@
                     </connections>
                 </button>
                 <button id="dns-xx-jgb">
-                    <rect key="frame" x="18" y="145" width="221" height="18"/>
+                    <rect key="frame" x="18" y="253" width="221" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Notify using system notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Qxi-Xl-hkI">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -538,7 +538,7 @@
                     </connections>
                 </button>
                 <button id="zQY-Bq-azh">
-                    <rect key="frame" x="18" y="171" width="90" height="18"/>
+                    <rect key="frame" x="18" y="277" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Play sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ALV-NN-Dsk">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -549,7 +549,7 @@
                     </connections>
                 </button>
                 <button id="lVi-gF-Rjv">
-                    <rect key="frame" x="18" y="18" width="221" height="18"/>
+                    <rect key="frame" x="18" y="130" width="221" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Notify using system notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OQd-wp-TnC">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -560,7 +560,7 @@
                     </connections>
                 </button>
                 <button id="4Wt-MF-8lR">
-                    <rect key="frame" x="18" y="44" width="90" height="18"/>
+                    <rect key="frame" x="18" y="154" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Play sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="z5A-Ax-3Il">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -570,8 +570,33 @@
                         <binding destination="381" name="value" keyPath="values.PlaySound Fixed" id="U4q-hK-kaz"/>
                     </connections>
                 </button>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="x2d-Jg-Vbt">
+                    <rect key="frame" x="12" y="114" width="326" height="5"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <textField verticalHuggingPriority="750" id="xgm-vp-6XP">
+                    <rect key="frame" x="17" y="55" width="316" height="28"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="A new build is starting on the server." id="GPi-AM-Ehu">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="e2i-Np-IXs">
+                    <rect key="frame" x="17" y="90" width="185" height="18"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Build starting" id="sI0-hV-EwL">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <popUpButton verticalHuggingPriority="750" id="694">
-                    <rect key="frame" x="112" y="284" width="221" height="26"/>
+                    <rect key="frame" x="112" y="386" width="221" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="698" id="695">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -593,8 +618,53 @@
                         </binding>
                     </connections>
                 </popUpButton>
+                <popUpButton verticalHuggingPriority="750" id="R9E-nC-HP3">
+                    <rect key="frame" x="112" y="37" width="221" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="D2A-HU-2Eg" id="aDl-vf-fNA">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="JZM-G3-ak0">
+                            <items>
+                                <menuItem title="none" state="on" id="D2A-HU-2Eg"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="soundSelected:" target="-2" id="NWT-lW-3Dl"/>
+                        <binding destination="744" name="contentValues" keyPath="arrangedObjects" id="Q6G-dZ-cdg"/>
+                        <binding destination="381" name="enabled" keyPath="values.PlaySound Fixed" id="I6W-s4-gns"/>
+                        <binding destination="381" name="selectedValue" keyPath="values.Sound Starting" previousBinding="Q6G-dZ-cdg" id="Xw8-HE-9cd">
+                            <dictionary key="options">
+                                <string key="NSNullPlaceholder">Sosumi</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </popUpButton>
+                <button id="DDX-pA-RF4">
+                    <rect key="frame" x="18" y="18" width="221" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Notify using system notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gL9-QB-T8O">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="381" name="value" keyPath="values.SendNotification Starting" id="qA0-5t-agh"/>
+                    </connections>
+                </button>
+                <button id="1fn-ZH-1ve">
+                    <rect key="frame" x="18" y="42" width="90" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Play sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="huH-EQ-8eV">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="381" name="value" keyPath="values.PlaySound Starting" id="INw-Mr-7Je"/>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="536" y="267"/>
+            <point key="canvasLocation" x="-294" y="244"/>
         </customView>
         <customView id="421" userLabel="Advanced">
             <rect key="frame" x="0.0" y="0.0" width="350" height="348"/>

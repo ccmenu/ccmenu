@@ -41,7 +41,10 @@ NSString *CCMStillFailingBuild = @"StillFailing";
 
 - (NSNotification *)buildStartNotificationForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus
 {
-    return [NSNotification notificationWithName:CCMBuildStartNotification object:project userInfo:nil];
+    NSMutableDictionary *notificationInfo = [NSMutableDictionary dictionary];
+    if([[project status] webUrl] != nil)
+        [notificationInfo setObject:[[project status] webUrl] forKey:@"webUrl"];
+    return [NSNotification notificationWithName:CCMBuildStartNotification object:project userInfo:notificationInfo];
 }
 
 - (NSNotification *)notificationForProject:(CCMProject *)project withOldStatus:(CCMProjectStatus *)oldStatus
