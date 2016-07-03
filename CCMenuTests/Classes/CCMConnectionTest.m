@@ -4,6 +4,11 @@
 #import "CCMConnectionTestBase.h"
 
 
+@interface CCMConnection(PrivateMethodsForTest)
+- (void)addBasicAuthToRequest:(NSMutableURLRequest *)request;
+@end
+
+
 @interface CCMConnectionTest : CCMConnectionTestBase
 
 @end
@@ -80,6 +85,16 @@
     XCTAssertEqualObjects([recordedNSURLRequest valueForHTTPHeaderField:@"Authorization"], @"Basic Ym9iOjEyMzQ1Ng==", @"Should have added an auth header now");
 }
 
+- (void)testUsesUnpromptedBasicAuthForURLsInTheCloudbeesDomain
+{
+    CCMConnection *connection = [[[CCMConnection alloc] initWithFeedURL:[NSURL URLWithString:@"https://cloudbees.com/some-project"]] autorelease];
+    [connection setCredential:[NSURLCredential credentialWithUser:@"test" password:@"123456" persistence:NSURLCredentialPersistenceForSession]];
+    id connectionMock = OCMPartialMock(connection);
+
+    [connection createRequest];
+
+    OCMVerify([connectionMock addBasicAuthToRequest:[OCMArg any]]);
+}
 
 - (void)testLazilyCreatesCredentialWhenNeededForAuthChallenge
 {
@@ -87,7 +102,7 @@
     NSURLConnection *dummyNSURLConnection = [self setUpDummyNSURLConnection];
 
     id keychainHelperMock = OCMClassMock([CCMKeychainHelper class]);
-    [[[keychainHelperMock stub] andReturn:@"testpassword"] passwordForURL:[OCMArg any] error:[OCMArg anyPointer]];
+    OCMStub([keychainHelperMock passwordForURL:[OCMArg any] error:[OCMArg anyPointer]]).andReturn(@"testpassword");
 
     id challengeMock = OCMClassMock([NSURLAuthenticationChallenge class]);
     id protectionSpaceMock = OCMClassMock([NSURLProtectionSpace class]);

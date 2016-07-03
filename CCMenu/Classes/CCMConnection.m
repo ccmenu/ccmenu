@@ -61,7 +61,6 @@
 	nsurlConnection = nil;
 }
 
-
 - (void)requestServerStatus
 {
     if(nsurlConnection != nil)
@@ -73,7 +72,8 @@
 - (NSURLRequest *)createRequest
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
-    if((useHudsonJenkinsAuthWorkaround || [[feedURL host] containsString: @"cloudbees.com"]) && ((credential != nil) || [self setUpCredential]))
+    BOOL isInCloudbeesDomain = ([feedURL host] != nil) && ([[feedURL host] rangeOfString:@"cloudbees.com"].location != NSNotFound);
+    if((useHudsonJenkinsAuthWorkaround || isInCloudbeesDomain) && ((credential != nil) || [self setUpCredential]))
         [self addBasicAuthToRequest:request];
     return request;
 }
