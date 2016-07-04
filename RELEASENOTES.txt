@@ -1,8 +1,10 @@
 CCMenu Release Notes
 
-(unreleased)
 
-* Fix for a bug that made CCMenu 12.0 incompatible with OS X 10.8/10.9.
+CCMenu 12.1
+
+* Fix for incompatibility with OS X 10.8/10.9 that was introduced in
+  CCMenu 12.0.
 
 
 CCMenu 12.0
