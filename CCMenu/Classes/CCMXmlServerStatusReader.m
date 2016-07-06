@@ -1,5 +1,5 @@
 
-#import "CCMServerStatusReader.h"
+#import "CCMXmlServerStatusReader.h"
 
 
 @implementation CCMServerStatusReader
@@ -59,6 +59,10 @@
 		urlString = copy;
 	}
 	return urlString;
+}
+
+-(BOOL)isXml {
+    return [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] hasPrefix:@"<"];
 }
 
 - (NSArray *)readProjectInfos:(NSError **)errorPtr

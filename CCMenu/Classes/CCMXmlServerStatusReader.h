@@ -11,4 +11,6 @@
 
 - (NSArray *)readProjectInfos:(NSError **)errorPtr;
 
+-(BOOL)isXml;
+
 @end
