@@ -29,21 +29,21 @@
 }
 
 -(NSArray*)readProjectInfos:(NSError**)errorPtr {
-    
-    NSMutableArray* integrations = [[NSMutableArray new] autorelease];
-    NSDictionary* parsedJson = [[NSJSONSerialization JSONObjectWithData:_responseData options:0 error:errorPtr] autorelease];
+//    return @[];
+    NSMutableArray* integrations = [NSMutableArray new];
+    NSDictionary* parsedJson = [NSJSONSerialization JSONObjectWithData:_responseData options:0 error:errorPtr];
 
     for (NSDictionary* result in parsedJson[@"results"]) {
-        NSMutableDictionary* integration = [NSMutableDictionary new];
+        NSMutableDictionary* integration = [[NSMutableDictionary new] retain];
         
         integration[@"name"] = result[@"name"];
-        integration[@"lastBuildLabel"] = [NSString stringWithFormat:@"%d", ((NSNumber*)result[@"integration_counter"]).intValue];
+        integration[@"lastBuildLabel"] = ((NSNumber*)result[@"integration_counter"]).stringValue;
         integration[@"webUrl"] = [NSString stringWithFormat:@"%@/bots/latest/%@/", [self webUrlFromBaseXcodeURL:_baseURL], result[@"tinyID"]];
         
         NSString* integrationURL = [NSString stringWithFormat:@"%@/%@/integrations?last=1", _baseURL, result[@"_id"]];
         NSError* error = nil;
         NSData* integrationData = [NSData dataWithContentsOfURL:[NSURL URLWithString:integrationURL]];
-        NSDictionary* integrationJSON = [[NSJSONSerialization JSONObjectWithData:integrationData options:0 error:&error] autorelease];
+        NSDictionary* integrationJSON = [NSJSONSerialization JSONObjectWithData:integrationData options:0 error:&error];
         NSDictionary* integrationResult = ((NSArray*)integrationJSON[@"results"]).firstObject;
         
         if (!error) {
@@ -63,15 +63,16 @@
 }
 
 -(NSString*)webUrlFromBaseXcodeURL:(NSString*)baseURL {
-    NSURL* oldURL = [[NSURL URLWithString:baseURL] autorelease];
+    NSURL* oldURL = [NSURL URLWithString:baseURL];
     return [NSString stringWithFormat:@"%@://%@/xcode", oldURL.scheme, oldURL.host];
 }
 
 -(NSString*)activityFromJson:(NSDictionary*)dictionary {
     NSString* activity = dictionary[@"currentStep"];
     NSString* resultString = dictionary[@"result"];
+    NSLog(@"activity %@, result %@", activity, resultString);
     if ([activity isEqualToString:@"completed"]) {
-        if ([resultString isEqualToString:@"trigger-error"]) {
+        if (resultString == nil || [resultString isEqualToString:@"trigger-error"] || [resultString isEqualToString:@"canceled"]) {
             return @"Failure";
         }
         else {
