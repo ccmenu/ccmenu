@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface CCMServerStatusReader : NSObject 
+@interface CCMXmlServerStatusReader : NSObject 
 {
 	NSData *responseData;
 }

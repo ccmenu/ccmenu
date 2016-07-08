@@ -143,6 +143,7 @@
 		2FA28F4431D6C7178FFA5C84 /* NSAlert+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA282A416260DF796951CFD /* NSAlert+CCMAdditions.m */; };
 		2FA28F7C4769563BBEFD39BD /* CCMHistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */; };
 		98E5DB451D2D8F17001F1D6E /* CCMBotsServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E5DB441D2D8F17001F1D6E /* CCMBotsServerStatusReader.m */; };
+		98F975031D301A830080D3B3 /* CCMBotsServerStatusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E5DB441D2D8F17001F1D6E /* CCMBotsServerStatusReader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -857,6 +858,7 @@
 				2FA28EEE1E2F08289D958C3B /* CCMHistoryDataSourceTest.m in Sources */,
 				036FA725176236D900371BE9 /* CCMKeychainHelper.m in Sources */,
 				2FA28F4431D6C7178FFA5C84 /* NSAlert+CCMAdditions.m in Sources */,
+				98F975031D301A830080D3B3 /* CCMBotsServerStatusReader.m in Sources */,
 				030050C51766199F007C3DEE /* CCMProjectSheetController.m in Sources */,
 				03E7445A1766222000DCFF0F /* CCMProjectSheetControllerTest.m in Sources */,
 				2FA2845134B0148D30A41CD5 /* CCMIsOneValueTransformer.m in Sources */,

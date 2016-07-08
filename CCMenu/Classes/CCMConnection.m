@@ -182,7 +182,7 @@
         [delegate connection:self hadTemporaryError:[self errorStringForResponse:receivedResponse]];
         return;
     }
-    CCMServerStatusReader *reader = [[[CCMServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
+    CCMXmlServerStatusReader *reader = [[[CCMXmlServerStatusReader alloc] initWithServerResponse:receivedData] autorelease];
     if (reader.isXml) {
         [self cleanUpAfterRequest];
         NSError *error = nil;

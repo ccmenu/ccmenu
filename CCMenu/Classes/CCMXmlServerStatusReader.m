@@ -2,7 +2,7 @@
 #import "CCMXmlServerStatusReader.h"
 
 
-@implementation CCMServerStatusReader
+@implementation CCMXmlServerStatusReader
 
 - (id)initWithServerResponse:(NSData *)data
 {
