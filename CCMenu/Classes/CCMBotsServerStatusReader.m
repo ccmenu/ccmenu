@@ -38,13 +38,13 @@
         
         integration[@"name"] = result[@"name"];
         integration[@"lastBuildLabel"] = ((NSNumber*)result[@"integration_counter"]).stringValue;
-        integration[@"webUrl"] = [NSString stringWithFormat:@"%@/bots/latest/%@/", [self webUrlFromBaseXcodeURL:_baseURL], result[@"tinyID"]];
         
         NSString* integrationURL = [NSString stringWithFormat:@"%@/%@/integrations?last=1", _baseURL, result[@"_id"]];
         NSError* error = nil;
         NSData* integrationData = [NSData dataWithContentsOfURL:[NSURL URLWithString:integrationURL]];
         NSDictionary* integrationJSON = [NSJSONSerialization JSONObjectWithData:integrationData options:0 error:&error];
         NSDictionary* integrationResult = ((NSArray*)integrationJSON[@"results"]).firstObject;
+        integration[@"webUrl"] = [NSString stringWithFormat:@"xcbot://%@/botID/%@/integrationID/%@/", [NSURL URLWithString:_baseURL].host, result[@"_id"], integrationResult[@"_id"]];
         
         if (!error) {
             integration[@"lastBuildTime"] = integrationResult[@"endedTime"];
@@ -62,9 +62,10 @@
     return integrations;
 }
 
--(NSString*)webUrlFromBaseXcodeURL:(NSString*)baseURL {
+-(NSString*)xcodeUrlFromBaseXcodeURL:(NSString*)baseURL {
     NSURL* oldURL = [NSURL URLWithString:baseURL];
-    return [NSString stringWithFormat:@"%@://%@/xcode", oldURL.scheme, oldURL.host];
+    NSString* host = oldURL.host;
+    return [NSString stringWithFormat:@"xcbot://%@/", host];
 }
 
 -(NSString*)activityFromJson:(NSDictionary*)dictionary {
