@@ -29,7 +29,9 @@
 }
 
 -(NSArray*)readProjectInfos:(NSError**)errorPtr {
-//    return @[];
+    if (_responseData == nil)
+        return @[];
+    
     NSMutableArray* integrations = [NSMutableArray new];
     NSDictionary* parsedJson = [NSJSONSerialization JSONObjectWithData:_responseData options:0 error:errorPtr];
 
@@ -42,6 +44,9 @@
         NSString* integrationURL = [NSString stringWithFormat:@"%@/%@/integrations?last=1", _baseURL, result[@"_id"]];
         NSError* error = nil;
         NSData* integrationData = [NSData dataWithContentsOfURL:[NSURL URLWithString:integrationURL]];
+        if (integrationData == nil)
+            continue;
+        
         NSDictionary* integrationJSON = [NSJSONSerialization JSONObjectWithData:integrationData options:0 error:&error];
         NSDictionary* integrationResult = ((NSArray*)integrationJSON[@"results"]).firstObject;
         integration[@"webUrl"] = [NSString stringWithFormat:@"xcbot://%@/botID/%@/integrationID/%@/", [NSURL URLWithString:_baseURL].host, result[@"_id"], integrationResult[@"_id"]];
