@@ -73,7 +73,7 @@
     NSString* resultString = dictionary[@"result"];
     NSLog(@"activity %@, result %@", activity, resultString);
     if ([activity isEqualToString:@"completed"]) {
-        if (resultString == nil || [resultString isEqualToString:@"trigger-error"] || [resultString isEqualToString:@"canceled"] || [resultString isEqualToString:@"build-errors"] || [resultString isEqualToString:@"internal-build-error"]) {
+        if (resultString == nil || [resultString isEqualToString:@"trigger-error"] || [resultString isEqualToString:@"canceled"] || [resultString isEqualToString:@"build-errors"] || [resultString isEqualToString:@"internal-build-error"] || [resultString isEqualToString:@"test-failures"]) {
             return @"Failure";
         }
         else {
