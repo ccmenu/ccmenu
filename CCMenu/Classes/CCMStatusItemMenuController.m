@@ -84,31 +84,32 @@
         [item setImage:[imageFactory imageForUnavailableServer]];
 		[item setTitle:@""];
     } 
-    else if([[project status] isBuilding] == NO)
-    {
-        [item setImage:[imageFactory imageForStatus:[project status]]];
-        NSString *text = @"";
-        if([[project status] buildDidFail])
-        {
-            __block int failCount = 0;
-            [projectList enumerateObjectsUsingBlock:^(CCMProject *project, NSUInteger idx, BOOL *stop) {
-                if([[project status] buildDidFail])
-                    failCount += 1;
-            }];
-            text = [NSString stringWithFormat:@"%u", failCount];
-        }
-        [item setFormattedTitle:text];
-    }
     else
     {
         [item setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
-        if([defaultsManager shouldShowTimerInMenu])
+            __block int failCount = 0;
+            [projectList enumerateObjectsUsingBlock:^(CCMProject *project, NSUInteger idx, BOOL *stop) {
+                if([[project status] buildDidFail]) {
+                    failCount += 1;
+                    // A failed build should take prescident for image status on menu bar.
+                    [item setImage:[imageFactory imageForStatus:[project status]]];
+                }
+            }];
+        if(failCount > 0) {
+            text = [NSString stringWithFormat:@"%u", failCount];
+        }
+        if(([[project status] isBuilding] == YES) && [defaultsManager shouldShowTimerInMenu])
         {
             NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
             if(estimatedComplete != nil)
             {
-                text = [[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
+                NSString *intervalSinceDateString = [[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
+                if ([text length] > 0) {
+                    text = [NSString stringWithFormat: @"%@ %@", text, intervalSinceDateString];
+                } else {
+                    text = intervalSinceDateString;
+                }
             }
         }
         [item setFormattedTitle:text];
