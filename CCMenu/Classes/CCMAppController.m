@@ -10,6 +10,12 @@
 
 @implementation CCMAppController
 
+- (void)registerURLScheme
+{
+    [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                                                     forEventClass:kInternetEventClass andEventID:kAEGetURL];
+}
+
 - (void)setupRequestCache
 {
 	NSURLCache *cache = [NSURLCache sharedURLCache];
@@ -48,6 +54,11 @@
     [userNotificationHandler start];
 }
 
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
+{
+    [self registerURLScheme];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	@try
@@ -68,5 +79,14 @@
 		// ignore; if we don't the run-loop might not get set up properly
 	}
 }
+
+
+- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+{
+	NSString *url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
+	url = [url stringByReplacingOccurrencesOfString:@"ccmenu+" withString:@"" options:NSAnchoredSearch range:NSMakeRange(0, [url length])];
+	[preferencesController addProjectsForURL:url];
+}
+
 
 @end

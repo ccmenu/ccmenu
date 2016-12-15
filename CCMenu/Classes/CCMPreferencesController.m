@@ -91,6 +91,21 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
     [addProjectsController beginEditSheetWithProject:[self selectedProject] forWindow:preferencesWindow];
 }
 
+- (void)addProjectsForURL:(NSString *)url
+{
+    [NSThread sleepForTimeInterval:0.2];
+
+    [self showWindow:self];
+
+    [[preferencesWindow toolbar] setSelectedItemIdentifier:@"Projects"];
+    [self switchPreferencesPane:self];
+
+    // slightly naughty but we want to split the XIB files eventually
+    [addProjectsController setValue:defaultsManager forKey:@"defaultsManager"];
+    [addProjectsController beginAddSheetWithURL:url forWindow:preferencesWindow];
+}
+
+
 - (void)removeProjects:(id)sender
 {
 	[allProjectsViewController remove:sender];

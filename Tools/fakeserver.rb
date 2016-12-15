@@ -107,7 +107,8 @@ __END__
     %input{:type => "submit", :value => "Success", :disabled => !is_building() }
   %form{:name => "input", :action => "control/failure", :method => "post"}
     %input{:type => "submit", :value => "Failure", :disabled => !is_building() }
-
+  %p
+  %a{:href => "ccmenu+http://localhost:4567/cctray.xml"} Add a project to CCMenu
 
 @@ cctray
 !!! XML

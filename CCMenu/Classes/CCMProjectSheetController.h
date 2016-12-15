@@ -26,6 +26,7 @@
 
 
 - (void)beginAddSheetForWindow:(NSWindow *)aWindow;
+- (void)beginAddSheetWithURL:(NSString *)url forWindow:(NSWindow *)aWindow;
 - (void)beginEditSheetWithProject:(NSDictionary *)aProject forWindow:(NSWindow *)aWindow;
 - (void)beginSheetForWindow:(NSWindow *)aWindow contextInfo:(void *)contextInfo;
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;

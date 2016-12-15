@@ -1,6 +1,13 @@
 CCMenu Release Notes
 
 
+CCMenu 13.0 (not released yet)
+
+* CCMenu now registers its own URL schemes. This makes it possible to create
+  links on webpages that, when clicked, will open CCMenu and show a prefilled
+  list of projects to add.
+  
+
 CCMenu 12.1
 
 * Fix for incompatibility with OS X 10.8/10.9 that was introduced in

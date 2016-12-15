@@ -27,6 +27,16 @@ enum CCMButtonTag
     [self beginSheetForWindow:aWindow contextInfo:NULL];
 }
 
+- (void)beginAddSheetWithURL:(NSString *)url forWindow:(NSWindow *)aWindow
+{
+    [urlComboBox setStringValue:url];
+    [serverTypeMatrix selectCellWithTag:CCMUseGivenURL];
+    [continueButton setTag:CCMButtonContinue];
+    [continueButton setTitle:SHEET_CONTINUE_BUTTON];
+    [self beginSheetForWindow:aWindow contextInfo:NULL];
+    [continueButton performClick:self];
+}
+
 - (void)beginEditSheetWithProject:(NSDictionary *)aProject forWindow:(NSWindow *)aWindow
 {
     [urlComboBox setStringValue:[aProject objectForKey:@"serverUrl"]];

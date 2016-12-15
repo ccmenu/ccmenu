@@ -38,6 +38,7 @@
 - (IBAction)preferencesChanged:(id)sender;
 - (IBAction)activationPolicyChanged:(id)sender;
 
+- (void)addProjectsForURL:(NSString *)url;
 
 @end
 
