@@ -2,6 +2,7 @@
 #import "CCMWindowController.h"
 #import "CCMUserDefaultsManager.h"
 #import "CCMProjectSheetController.h"
+#import "CCMProjectNameSheetController.h"
 
 
 @interface CCMPreferencesController : CCMWindowController <NSWindowDelegate>
@@ -13,6 +14,7 @@
 
 	IBOutlet NSArrayController		*allProjectsViewController;
     IBOutlet CCMProjectSheetController *addProjectsController;
+    IBOutlet CCMProjectNameSheetController *projectNameController;
 
     IBOutlet NSView					*projectsView;
 
@@ -31,6 +33,7 @@
 - (IBAction)addProjects:(id)sender;
 - (IBAction)removeProjects:(id)sender;
 - (IBAction)editProject:(id)sender;
+- (IBAction)editProjectDisplayName:(id)sender;
 
 - (IBAction)soundSelected:(id)sender;
 - (NSArray *)availableSounds;
