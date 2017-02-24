@@ -4,6 +4,7 @@
 #import "CCMConnection.h"
 #import "CCMServerStatusReader.h"
 #import "CCMKeychainHelper.h"
+#import "NSString+CCMAdditions.h"
 #import "NSString+EDExtensions.h"
 
 @implementation CCMConnection
@@ -71,7 +72,8 @@
 
 - (NSURLRequest *)createRequest
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+    NSURL *feedURLWithoutCredentials = [NSURL URLWithString:[[feedURL absoluteString] stringByReplacingCredentials:@""]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:feedURLWithoutCredentials cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     BOOL isInCloudbeesDomain = ([feedURL host] != nil) && ([[feedURL host] rangeOfString:@"cloudbees.com"].location != NSNotFound);
     if((useHudsonJenkinsAuthWorkaround || isInCloudbeesDomain) && ((credential != nil) || [self setUpCredential]))
         [self addBasicAuthToRequest:request];

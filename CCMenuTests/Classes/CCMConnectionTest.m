@@ -59,6 +59,16 @@
     XCTAssertNotNil(recordedError, @"Should have called delegate with error.");
 }
 
+- (void)testRemovesCredentialsFromURLWhenCreatingRequest
+{
+    // for the reason why this is necessary see https://github.com/erikdoe/ccmenu/issues/77
+    NSURL *url = [NSURL URLWithString:@"https://dev:rosebud@localhost:4567/cctray.xml"];
+    CCMConnection *connection = [[[CCMConnection alloc] initWithFeedURL:url] autorelease];
+    NSURLRequest *request = [connection createRequest];
+
+    XCTAssertEqualObjects(@"https://localhost:4567/cctray.xml", [[request URL] absoluteString]);
+}
+
 - (void)testRetriesWithUnpromptedBasicAuthAfterResponseWithForbiddenStatusFromJenkinsOrHudson
 {
     CCMConnection *connection = [[[CCMConnection alloc] init] autorelease];
