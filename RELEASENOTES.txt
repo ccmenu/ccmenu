@@ -6,7 +6,10 @@ CCMenu 13.0 (not released yet)
 * CCMenu now registers its own URL schemes. This makes it possible to create
   links on webpages that, when clicked, will open CCMenu and show a prefilled
   list of projects to add.
-  
+* It is now possible to use a proxy when accessing CI servers that require
+  authentication. Attempting this before triggered a bug in Apple's libraries,
+  and this version of CCMenu adds a workaround for that bug.
+
 
 CCMenu 12.1
 
