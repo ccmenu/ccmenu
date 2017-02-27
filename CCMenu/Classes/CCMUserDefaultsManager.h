@@ -1,6 +1,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class CCMProject;
+
 enum {
     CCMProjectOrderNatural = 0,
     CCMProjectOrderAlphabetic = 1,
@@ -27,7 +29,7 @@ enum {
 - (BOOL)shouldSendUserNotificationForEvent:(NSString *)event;
 - (NSString *)soundForEvent:(NSString *)event;
 
-- (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
+- (void)addProject:(CCMProject *)project;
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
 - (NSArray *)projectList;
 
@@ -44,5 +46,6 @@ extern NSString *CCMDefaultsPollIntervalKey;
 extern NSString *CCMDefaultsProjectListKey;
 extern NSString *CCMDefaultsProjectEntryNameKey;
 extern NSString *CCMDefaultsProjectEntryServerUrlKey;
+extern NSString *CCMDefaultsProjectEntryDisplayNameKey;
 
 extern NSString *CCMDefaultsServerUrlHistoryKey;

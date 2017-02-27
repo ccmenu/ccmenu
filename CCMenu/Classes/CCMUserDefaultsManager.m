@@ -1,11 +1,13 @@
 
 #import "CCMUserDefaultsManager.h"
+#import "CCMProject.h"
 #import "NSArray+CCMAdditions.h"
 #import "CCMBuildNotificationFactory.h"
 
 NSString *CCMDefaultsProjectListKey = @"Projects";
 NSString *CCMDefaultsProjectEntryNameKey = @"projectName";
 NSString *CCMDefaultsProjectEntryServerUrlKey = @"serverUrl";
+NSString *CCMDefaultsProjectEntryDisplayNameKey = @"displayName";
 NSString *CCMDefaultsPollIntervalKey = @"PollInterval";
 NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 
@@ -87,31 +89,47 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return nil;
 }
 
-- (NSDictionary *)createEntryWithProject:(NSString *)projectName andURL:(NSString *)serverUrl
+- (void)addProject:(CCMProject *)project
 {
-	return @{CCMDefaultsProjectEntryNameKey : projectName, CCMDefaultsProjectEntryServerUrlKey : serverUrl};
-}
+    if([self projectListContainsProject:[project name] onServerWithURL:[[project serverURL] absoluteString]])
+        return;
+    NSMutableArray *mutableList = [NSMutableArray arrayWithArray:[userDefaults arrayForKey:CCMDefaultsProjectListKey]];
+    NSMutableDictionary *entry = [NSMutableDictionary dictionary];
+    [entry setObject:[project name] forKey:CCMDefaultsProjectEntryNameKey];
+    [entry setObject:[[project serverURL] absoluteString] forKey:CCMDefaultsProjectEntryServerUrlKey];
+    if([project displayName] != nil)
+        [entry setObject:[project displayName] forKey:CCMDefaultsProjectEntryDisplayNameKey];
+    [mutableList addObject:entry];
+    [userDefaults setObject:mutableList forKey:CCMDefaultsProjectListKey];
 
-- (void)addProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
-{
-	if([self projectListContainsProject:projectName onServerWithURL:serverUrl])
-		return;
-	NSMutableArray *mutableList = [[[self projectList] mutableCopy] autorelease];
-	[mutableList addObject:[self createEntryWithProject:projectName andURL:serverUrl]];
-	[userDefaults setObject:mutableList forKey:CCMDefaultsProjectListKey];
 }
 
 - (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
 {
-	return [[self projectList] containsObject:[self createEntryWithProject:projectName andURL:serverUrl]];
+    for(NSDictionary *entry in [userDefaults arrayForKey:CCMDefaultsProjectListKey])
+    {
+        if([[entry objectForKey:CCMDefaultsProjectEntryNameKey] isEqualToString:projectName]
+           && [[entry objectForKey:CCMDefaultsProjectEntryServerUrlKey] isEqualToString:serverUrl])
+            return YES;
+    }
+    return NO;
 }
 
 - (NSArray *)projectList
 {
-    NSArray *list = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
-    if(list != nil)
-        return list;
-    return [NSArray array];
+    NSArray *defaultsEntryList = [userDefaults arrayForKey:CCMDefaultsProjectListKey];
+    if(defaultsEntryList == nil)
+        return [NSArray array];
+
+    NSMutableArray *projectList = [NSMutableArray arrayWithCapacity:[defaultsEntryList count]];
+    for(NSDictionary *entry in defaultsEntryList)
+    {
+        CCMProject *p = [[[CCMProject alloc] initWithName:[entry valueForKey:CCMDefaultsProjectEntryNameKey]] autorelease];
+        [p setServerURL:[entry valueForKey:CCMDefaultsProjectEntryServerUrlKey]];
+        [p setDisplayName:[entry valueForKey:CCMDefaultsProjectEntryDisplayNameKey]];
+        [projectList addObject:p];
+    }
+    return projectList;
 }
 
 - (void)addServerURLToHistory:(NSString *)serverUrl

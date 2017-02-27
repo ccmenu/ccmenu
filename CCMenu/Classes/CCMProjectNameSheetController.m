@@ -1,6 +1,7 @@
 
 #import "CCMPreferencesController.h"
 #import "CCMProjectNameSheetController.h"
+#import "CCMProject.h"
 
 enum CCMButtonTag
 {
@@ -33,6 +34,14 @@ enum CCMButtonTag
         return;
 
     NSString *projectName = [(NSDictionary *)contextInfo objectForKey:@"projectName"];
+    NSString *serverUrl = [(NSDictionary *)contextInfo objectForKey:@"projectName"];
+
+    CCMProject *old = [[[CCMProject alloc] initWithName:projectName andServerURL:serverUrl] autorelease];
+    CCMProject *new = [[[CCMProject alloc] initWithName:projectName andServerURL:serverUrl] autorelease];
+    [new setDisplayName:[displayNameField stringValue]];
+
+    [defaultsManager replaceProject:old withProject:new];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
 }
 

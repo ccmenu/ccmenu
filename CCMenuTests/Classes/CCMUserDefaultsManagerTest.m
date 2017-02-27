@@ -2,6 +2,7 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "CCMUserDefaultsManager.h"
+#import "CCMProject.h"
 #import "CCMBuildNotificationFactory.h"
 
 
@@ -64,15 +65,16 @@
 
 - (void)testRetrievesProjectListFromDefaults
 {
-	NSArray *list = [@"({ projectName = new; serverUrl = 'http://test/cctray.xml'; })" propertyList];
+	NSArray *list = [@"({ projectName = nameOnServer; serverUrl = 'http://test/cctray.xml'; displayName = nameToDisplay; })" propertyList];
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(list);
 
-	NSArray *entries = [manager projectList];
+	NSArray *projectList = [manager projectList];
 	
-	XCTAssertEqual(1ul, [entries count], @"Should have returned one project.");
-	NSDictionary *projectListEntry = [entries objectAtIndex:0];
-	XCTAssertEqualObjects(@"new", [projectListEntry objectForKey:@"projectName"], @"Should have set right project name.");
-	XCTAssertEqualObjects(@"http://test/cctray.xml", [projectListEntry objectForKey:@"serverUrl"], @"Should have set right URL.");
+	XCTAssertEqual(1ul, [projectList count], @"Should have returned one project.");
+	CCMProject *project = [projectList objectAtIndex:0];
+	XCTAssertEqualObjects(@"nameOnServer", [project name], @"Should have set right project name.");
+	XCTAssertEqualObjects(@"http://test/cctray.xml", [project serverURL], @"Should have set right URL.");
+	XCTAssertEqualObjects(@"nameToDisplay", [project displayName], @"Should have set right display name.");
 }
 
 - (void)testCanCheckWhichProjectsAreInList
@@ -94,9 +96,21 @@
 {
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(nil);
 
-	[manager addProject:@"new" onServerWithURL:@"http://localhost/cctray.xml"];
+	[manager addProject:[[[CCMProject alloc] initWithName:@"new" andServerURL:@"http://localhost/cctray.xml"] autorelease]];
 
     NSArray *pl = @[@{CCMDefaultsProjectEntryNameKey : @"new", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml"}];
+    OCMVerify([defaultsMock setObject:pl forKey:CCMDefaultsProjectListKey]);
+}
+
+- (void)testStoresDisplayNameWhenSet
+{
+    OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(nil);
+
+    CCMProject *project = [[[CCMProject alloc] initWithName:@"new" andServerURL:@"http://localhost/cctray.xml"] autorelease];
+    [project setDisplayName:@"NEW"];
+    [manager addProject:project];
+
+    NSArray *pl = @[@{CCMDefaultsProjectEntryNameKey : @"new", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml", CCMDefaultsProjectEntryDisplayNameKey : @"NEW"}];
     OCMVerify([defaultsMock setObject:pl forKey:CCMDefaultsProjectListKey]);
 }
 
@@ -106,7 +120,7 @@
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(pl);
     [[defaultsMock reject] setObject:[OCMArg any] forKey:CCMDefaultsProjectListKey];
 
-	[manager addProject:@"project1" onServerWithURL:@"http://localhost/cctray.xml"];
+    [manager addProject:[[[CCMProject alloc] initWithName:@"project1" andServerURL:@"http://localhost/cctray.xml"] autorelease]];
 }
 
 - (void)testConvertsDataBasedListIfArrayIsNotAvailable

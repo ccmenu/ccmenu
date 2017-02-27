@@ -3,6 +3,7 @@
 #import <OCMock/OCMock.h>
 #import "CCMProjectSheetController.h"
 #import "NSString+CCMAdditions.h"
+#import "CCMProject.h"
 
 
 @interface CCMProjectSheetControllerTest : XCTestCase
@@ -102,7 +103,8 @@
 
 	[controller sheetDidEnd:nil returnCode:1 contextInfo:0];
 
-    OCMVerify([defaultsManagerMock addProject:@"new" onServerWithURL:@"http://test/cctray.xml"]);
+    CCMProject *p = [[[CCMProject alloc] initWithName:@"new" andServerURL:@"http://test/cctray.xml"] autorelease];
+    OCMVerify([defaultsManagerMock addProject:p]);
     OCMVerify([defaultsManagerMock addServerURLToHistory:@"http://test/cctray.xml"]);
 }
 

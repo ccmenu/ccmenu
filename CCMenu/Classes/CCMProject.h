@@ -7,6 +7,7 @@
 {
 	NSString            *name;
     NSURL               *serverURL;
+    NSString            *displayName;
 	CCMProjectStatus	*status;
     NSString            *statusError;
     NSNumber            *buildDuration;
@@ -14,11 +15,15 @@
 }
 
 - (id)initWithName:(NSString *)aName;
+- (id)initWithName:(NSString *)aName andServerURL:(NSString *)urlString;
 
 - (NSString *)name;
 
 - (void)setServerURL:(NSURL *)aURL;
 - (NSURL *)serverURL;
+
+- (void)setDisplayName:(NSString *)aName;
+- (NSString *)displayName;
 
 - (void)updateWithInfo:(NSDictionary *)dictionary;
 - (NSDictionary *)info;

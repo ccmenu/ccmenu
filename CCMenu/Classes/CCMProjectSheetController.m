@@ -7,6 +7,7 @@
 #import "CCMKeychainHelper.h"
 #import "CCMPreferencesController.h"
 #import "strings.h"
+#import "CCMProject.h"
 
 enum CCMButtonTag
 {
@@ -262,9 +263,8 @@ enum CCMButtonTag
     {
         for(NSDictionary *entry in [chooseProjectsViewController selectedObjects])
         {
-            NSString *serverUrl = [entry objectForKey:@"server"];
-            [defaultsManager addProject:[entry objectForKey:@"name"] onServerWithURL:serverUrl];
-            [defaultsManager addServerURLToHistory:serverUrl];
+            [defaultsManager addProject:[[[CCMProject alloc] initWithName:[entry objectForKey:@"name"] andServerURL:[entry objectForKey:@"server"]] autorelease]];
+            [defaultsManager addServerURLToHistory:[entry objectForKey:@"server"]];
         }
     }
     else
@@ -273,7 +273,7 @@ enum CCMButtonTag
         NSString *serverUrl = [urlComboBox stringValue];
         // Maybe we shouldn't use the allProjectsViewController here. But it makes it so much easier.
         [allProjectsViewController remove:self];
-        [defaultsManager addProject:projectName onServerWithURL:serverUrl];
+        [defaultsManager addProject:[[[CCMProject alloc] initWithName:projectName andServerURL:serverUrl] autorelease]];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
 }
