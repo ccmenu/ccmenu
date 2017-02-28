@@ -70,6 +70,8 @@
 
 - (NSString *)displayName
 {
+    if(displayName == nil)
+        return name;
     return displayName;
 }
 

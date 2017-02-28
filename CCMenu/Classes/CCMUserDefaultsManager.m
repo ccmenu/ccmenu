@@ -97,7 +97,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     NSMutableDictionary *entry = [NSMutableDictionary dictionary];
     [entry setObject:[project name] forKey:CCMDefaultsProjectEntryNameKey];
     [entry setObject:[[project serverURL] absoluteString] forKey:CCMDefaultsProjectEntryServerUrlKey];
-    if([project displayName] != nil)
+    if([project displayName] != [project name])
         [entry setObject:[project displayName] forKey:CCMDefaultsProjectEntryDisplayNameKey];
     [mutableList addObject:entry];
     [userDefaults setObject:mutableList forKey:CCMDefaultsProjectListKey];

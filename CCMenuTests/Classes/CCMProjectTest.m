@@ -4,13 +4,18 @@
 
 
 @interface CCMProjectTest : XCTestCase
-{
-}
 
 @end
 
 
 @implementation CCMProjectTest
+
+- (void)testDefaultsToProjectNameForDisplayName
+{
+    CCMProject *project = [[[CCMProject alloc] initWithName:@"connectfour"] autorelease];
+    
+    XCTAssertEqualObjects(@"connectfour", [project displayName], @"Should have used name.");
+}
 
 - (void)testTakesStatusFromInfo
 {
