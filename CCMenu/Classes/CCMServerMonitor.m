@@ -57,14 +57,16 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 {
     [[connections each] cancelRequest];
 	[connections release];
-	[projects release];
-    
+	NSArray *previousProjects = [projects autorelease];
+
 	connections = [[NSMutableArray alloc] init];
     projects = [[NSMutableArray alloc] init];
     
     NSMutableSet *urlSet = [NSMutableSet set];
     for(CCMProject *p in [defaultsManager projectList])
     {
+		if((previousProjects != nil) && ([previousProjects containsObject:p]))
+			p = [previousProjects objectAtIndex:[previousProjects indexOfObject:p]];
         [projects addObject:p];
         [urlSet addObject:[[p serverURL] absoluteString]];
     }

@@ -39,7 +39,6 @@
 
     [monitor setupFromUserDefaults];
     
-    // This also asserts that the projects are in the same order as the defaults; we rely on this in other tests...
     XCTAssertEqual(3ul, [[monitor projects] count], @"Should have created right number of projects.");
     XCTAssertEqualObjects(@"connectfour", [[[monitor projects] objectAtIndex:0] name], @"Should have created project with correct name.");
     XCTAssertEqualObjects(@"cozmoz", [[[monitor projects] objectAtIndex:1] name], @"Should have created project with correct name.");
@@ -49,6 +48,27 @@
     NSArray *urls = (id) [[[monitor connections] collect] feedURL];
     XCTAssertTrue([urls indexOfObject:[NSURL URLWithString:@"http://test/cctray.xml"]] != NSNotFound, @"Should have created connection for first URL.");
     XCTAssertTrue([urls indexOfObject:[NSURL URLWithString:@"file:cctray.xml"]] != NSNotFound, @"Should have created connection for second URL.");
+}
+
+
+- (void)testKeepsExistingProjectInstancesWhenSettingUpFromDefaults
+{
+    NSArray *firstDefaults = @[ [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"],
+                                [CCMProject projectWithName:@"cozmoz" inFeed:@"file:cctray.xml"] ];
+    OCMExpect([defaultsManagerMock projectList]).andReturn(firstDefaults);
+    [monitor setupFromUserDefaults];
+    [[[monitor projects] objectAtIndex:0] setBuildDuration:@120];
+    
+    NSArray *nextDefaults = @[ [CCMProject projectWithName:@"protest" inFeed:@"file:cctray.xml"],
+                               [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"] ];
+    OCMExpect([defaultsManagerMock projectList]).andReturn(nextDefaults);
+    [monitor setupFromUserDefaults];
+
+    NSArray *const projects = [monitor projects];
+    XCTAssertEqual(2ul, [projects count], @"Should have created right number of projects.");
+    XCTAssertEqualObjects(@"protest", [[projects objectAtIndex:0] name], @"Should have created project with correct name.");
+    XCTAssertEqualObjects(@"connectfour", [[projects objectAtIndex:1] name], @"Should have created project with correct name.");
+    XCTAssertEqualObjects(@120, [[projects objectAtIndex:1] buildDuration], @"Should have kept info from existing instance.");
 }
 
 
