@@ -63,13 +63,10 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
     projects = [[NSMutableArray alloc] init];
     
     NSMutableSet *urlSet = [NSMutableSet set];
-    for(NSDictionary *defaultsEntry in [defaultsManager projectList])
+    for(CCMProject *p in [defaultsManager projectList])
     {
-        // TODO: this is still expecting dictionaries, not projects!
-        CCMProject *p = [[[CCMProject alloc] initWithName:[defaultsEntry objectForKey:CCMDefaultsProjectEntryNameKey]] autorelease];
-        [p setServerURL:[NSURL URLWithString:[defaultsEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey]]];
         [projects addObject:p];
-        [urlSet addObject:[defaultsEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey]];
+        [urlSet addObject:[[p serverURL] absoluteString]];
     }
     for(NSString *url in urlSet)
     {

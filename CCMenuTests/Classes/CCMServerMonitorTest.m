@@ -32,9 +32,9 @@
 
 - (void)testSetsUpProjectsAndConnectionsFromDefaults
 {
-	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; },"
-                              " { projectName = cozmoz; serverUrl = 'file:cctray.xml'; },"
-                              " { projectName = protest; serverUrl = 'file:cctray.xml'; })" propertyList];
+    NSArray *defaultsList = @[ [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"],
+                               [CCMProject projectWithName:@"cozmoz" inFeed:@"file:cctray.xml"],
+                               [CCMProject projectWithName:@"protest" inFeed:@"file:cctray.xml"] ];
     OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
 
     [monitor setupFromUserDefaults];
@@ -65,7 +65,7 @@
 
 - (void)testUpdatesProjectWithStatusAndPostsNotifications
 {
-	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; })" propertyList];
+    NSArray *defaultsList = @[ [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"] ];
     OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
     [monitor setupFromUserDefaults];
     NSArray *statusList = [@"({ name = 'connectfour'; lastBuildLabel = 'test1234'; })" propertyList];
@@ -81,7 +81,7 @@
 
 - (void)testUpdatesProjectWhenStatusWasNotIncludedInItsConnectionResponse
 {
-	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; })" propertyList];
+    NSArray *defaultsList = @[ [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"] ];
     OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
     [monitor setupFromUserDefaults];
     NSArray *statusList = [@"({ name = 'SomeProjectNotConnectfour'; })" propertyList];
@@ -97,9 +97,9 @@
 
 - (void)testUpdatesProjectsWithErrorAndPostsNotifications
 {
-	NSArray *defaultsList = [@"({ projectName = connectfour; serverUrl = 'http://test/cctray.xml'; },"
-                              " { projectName = cozmoz; serverUrl = 'file:cctray.xml'; },"
-                              " { projectName = protest; serverUrl = 'file:cctray.xml'; })" propertyList];
+    NSArray *defaultsList = @[ [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"],
+                               [CCMProject projectWithName:@"cozmoz" inFeed:@"file:cctray.xml"],
+                               [CCMProject projectWithName:@"protest" inFeed:@"file:cctray.xml"] ];
     OCMStub([defaultsManagerMock projectList]).andReturn(defaultsList);
     [monitor setupFromUserDefaults];
     __block CCMConnection *connection = nil;
