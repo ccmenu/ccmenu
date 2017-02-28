@@ -11,6 +11,8 @@ $KCODE = 'u' if RUBY_VERSION < '1.9'
 
 
 #set :port, 80
+set :bind, '0.0.0.0'
+
 
 helpers do
   def protected!
