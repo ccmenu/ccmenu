@@ -77,21 +77,6 @@
 	XCTAssertEqualObjects(@"nameToDisplay", [project displayName], @"Should have set right display name.");
 }
 
-- (void)testCanCheckWhichProjectsAreInList
-{
-	NSArray *pl = [@"({ projectName = project1; serverUrl = 'http://test/cctray.xml'; })" propertyList];
-    OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(pl);
-
-	BOOL isInList = [manager projectListContainsProject:@"project1" onServerWithURL:@"http://test/cctray.xml"];
-	XCTAssertTrue(isInList, @"Should have returned true for matching project.");
-
-	isInList = [manager projectListContainsProject:@"otherProject" onServerWithURL:@"http://test/cctray.xml"];
-	XCTAssertFalse(isInList, @"Should have returned false for not matching project name.");
-	
-	isInList = [manager projectListContainsProject:@"project1" onServerWithURL:@"http://otherserver/cctray.xml"];
-	XCTAssertFalse(isInList, @"Should have returned false for not matching url.");
-}
-
 - (void)testAddsProjects
 {
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(nil);
@@ -121,6 +106,21 @@
     [[defaultsMock reject] setObject:[OCMArg any] forKey:CCMDefaultsProjectListKey];
 
     [manager addProject:[[[CCMProject alloc] initWithName:@"project1" andServerURL:@"http://localhost/cctray.xml"] autorelease]];
+}
+
+- (void)testRemovesProject
+{
+    NSArray *listBefore = @[@{CCMDefaultsProjectEntryNameKey : @"foo", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml"},
+                            @{CCMDefaultsProjectEntryNameKey : @"foo", CCMDefaultsProjectEntryServerUrlKey : @"http://differenthost/cctray.xml"},
+                            @{CCMDefaultsProjectEntryNameKey : @"bar", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml"}];
+    OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(listBefore);
+   
+    [manager removeProject:[[[CCMProject alloc] initWithName:@"foo" andServerURL:@"http://localhost/cctray.xml"] autorelease]];
+    
+    NSArray *expectedListAfter = @[@{CCMDefaultsProjectEntryNameKey : @"foo", CCMDefaultsProjectEntryServerUrlKey : @"http://differenthost/cctray.xml"},
+                                   @{CCMDefaultsProjectEntryNameKey : @"bar", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml"}];
+    OCMVerify([defaultsMock setObject:expectedListAfter forKey:CCMDefaultsProjectListKey]);
+    
 }
 
 - (void)testConvertsDataBasedListIfArrayIsNotAvailable

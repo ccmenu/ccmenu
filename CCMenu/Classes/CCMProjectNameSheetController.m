@@ -34,13 +34,14 @@ enum CCMButtonTag
         return;
 
     NSString *projectName = [(NSDictionary *)contextInfo objectForKey:@"projectName"];
-    NSString *serverUrl = [(NSDictionary *)contextInfo objectForKey:@"projectName"];
+    NSString *serverUrl = [(NSDictionary *)contextInfo objectForKey:@"serverUrl"];
 
     CCMProject *old = [[[CCMProject alloc] initWithName:projectName andServerURL:serverUrl] autorelease];
+    [defaultsManager removeProject:old];
+
     CCMProject *new = [[[CCMProject alloc] initWithName:projectName andServerURL:serverUrl] autorelease];
     [new setDisplayName:[displayNameField stringValue]];
-
-    [defaultsManager replaceProject:old withProject:new];
+    [defaultsManager addProject:new];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
 }

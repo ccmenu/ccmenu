@@ -91,9 +91,9 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 
 - (void)addProject:(CCMProject *)project
 {
-    if([self projectListContainsProject:[project name] onServerWithURL:[[project serverURL] absoluteString]])
-        return;
     NSMutableArray *mutableList = [NSMutableArray arrayWithArray:[userDefaults arrayForKey:CCMDefaultsProjectListKey]];
+    if([self indexOfProjectWithName:[project name] onServerWithURL:[[project serverURL] absoluteString] inList:mutableList] != NSNotFound)
+        return;
     NSMutableDictionary *entry = [NSMutableDictionary dictionary];
     [entry setObject:[project name] forKey:CCMDefaultsProjectEntryNameKey];
     [entry setObject:[[project serverURL] absoluteString] forKey:CCMDefaultsProjectEntryServerUrlKey];
@@ -104,15 +104,26 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
 
 }
 
-- (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl
+- (void)removeProject:(CCMProject *)project
 {
-    for(NSDictionary *entry in [userDefaults arrayForKey:CCMDefaultsProjectListKey])
+    NSMutableArray *mutableList = [NSMutableArray arrayWithArray:[userDefaults arrayForKey:CCMDefaultsProjectListKey]];
+    NSInteger idx = [self indexOfProjectWithName:[project name] onServerWithURL:[[project serverURL] absoluteString] inList:mutableList];
+    if(idx == NSNotFound)
+        return;
+    [mutableList removeObjectAtIndex:idx];
+    [userDefaults setObject:mutableList forKey:CCMDefaultsProjectListKey];
+}
+               
+- (NSInteger)indexOfProjectWithName:(NSString *)name onServerWithURL:(NSString *)url inList:(NSArray *)list
+{
+    for(NSInteger i = 0; i < [list count]; i++)
     {
-        if([[entry objectForKey:CCMDefaultsProjectEntryNameKey] isEqualToString:projectName]
-           && [[entry objectForKey:CCMDefaultsProjectEntryServerUrlKey] isEqualToString:serverUrl])
-            return YES;
+        NSDictionary *entry = [list objectAtIndex:i];
+        if([[entry objectForKey:CCMDefaultsProjectEntryNameKey] isEqualToString:name]
+           && [[entry objectForKey:CCMDefaultsProjectEntryServerUrlKey] isEqualToString:url])
+            return i;
     }
-    return NO;
+    return NSNotFound;
 }
 
 - (NSArray *)projectList

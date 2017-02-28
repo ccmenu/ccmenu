@@ -30,7 +30,7 @@ enum {
 - (NSString *)soundForEvent:(NSString *)event;
 
 - (void)addProject:(CCMProject *)project;
-- (BOOL)projectListContainsProject:(NSString *)projectName onServerWithURL:(NSString *)serverUrl;
+- (void)removeProject:(CCMProject *)project;
 - (NSArray *)projectList;
 
 - (void)addServerURLToHistory:(NSString *)serverUrl;
