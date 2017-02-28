@@ -14,6 +14,8 @@
     NSCalendarDate      *buildStartTime;
 }
 
++ (CCMProject *)projectWithName:(NSString *)aName inFeed:(NSString *)aFeedURL;
+
 - (id)initWithName:(NSString *)aName;
 - (id)initWithName:(NSString *)aName andServerURL:(NSString *)urlString;
 

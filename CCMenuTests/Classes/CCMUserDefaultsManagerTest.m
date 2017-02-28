@@ -81,7 +81,7 @@
 {
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(nil);
 
-	[manager addProject:[[[CCMProject alloc] initWithName:@"new" andServerURL:@"http://localhost/cctray.xml"] autorelease]];
+	[manager addProject:[CCMProject projectWithName:@"new" inFeed:@"http://localhost/cctray.xml"]];
 
     NSArray *pl = @[@{CCMDefaultsProjectEntryNameKey : @"new", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml"}];
     OCMVerify([defaultsMock setObject:pl forKey:CCMDefaultsProjectListKey]);
@@ -91,7 +91,7 @@
 {
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(nil);
 
-    CCMProject *project = [[[CCMProject alloc] initWithName:@"new" andServerURL:@"http://localhost/cctray.xml"] autorelease];
+    CCMProject *project = [CCMProject projectWithName:@"new" inFeed:@"http://localhost/cctray.xml"];
     [project setDisplayName:@"NEW"];
     [manager addProject:project];
 
@@ -105,7 +105,7 @@
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(pl);
     [[defaultsMock reject] setObject:[OCMArg any] forKey:CCMDefaultsProjectListKey];
 
-    [manager addProject:[[[CCMProject alloc] initWithName:@"project1" andServerURL:@"http://localhost/cctray.xml"] autorelease]];
+    [manager addProject:[CCMProject projectWithName:@"project1" inFeed:@"http://localhost/cctray.xml"]];
 }
 
 - (void)testRemovesProject
@@ -115,7 +115,7 @@
                             @{CCMDefaultsProjectEntryNameKey : @"bar", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml"}];
     OCMStub([defaultsMock arrayForKey:CCMDefaultsProjectListKey]).andReturn(listBefore);
    
-    [manager removeProject:[[[CCMProject alloc] initWithName:@"foo" andServerURL:@"http://localhost/cctray.xml"] autorelease]];
+    [manager removeProject:[CCMProject projectWithName:@"foo" inFeed:@"http://localhost/cctray.xml"]];
     
     NSArray *expectedListAfter = @[@{CCMDefaultsProjectEntryNameKey : @"foo", CCMDefaultsProjectEntryServerUrlKey : @"http://differenthost/cctray.xml"},
                                    @{CCMDefaultsProjectEntryNameKey : @"bar", CCMDefaultsProjectEntryServerUrlKey : @"http://localhost/cctray.xml"}];

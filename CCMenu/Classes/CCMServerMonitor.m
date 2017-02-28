@@ -65,6 +65,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
     NSMutableSet *urlSet = [NSMutableSet set];
     for(NSDictionary *defaultsEntry in [defaultsManager projectList])
     {
+        // TODO: this is still expecting dictionaries, not projects!
         CCMProject *p = [[[CCMProject alloc] initWithName:[defaultsEntry objectForKey:CCMDefaultsProjectEntryNameKey]] autorelease];
         [p setServerURL:[NSURL URLWithString:[defaultsEntry objectForKey:CCMDefaultsProjectEntryServerUrlKey]]];
         [projects addObject:p];

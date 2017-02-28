@@ -263,7 +263,7 @@ enum CCMButtonTag
     {
         for(NSDictionary *entry in [chooseProjectsViewController selectedObjects])
         {
-            [defaultsManager addProject:[[[CCMProject alloc] initWithName:[entry objectForKey:@"name"] andServerURL:[entry objectForKey:@"server"]] autorelease]];
+            [defaultsManager addProject:[CCMProject projectWithName:[entry objectForKey:@"name"] inFeed:[entry objectForKey:@"server"]]];
             [defaultsManager addServerURLToHistory:[entry objectForKey:@"server"]];
         }
     }
@@ -273,7 +273,7 @@ enum CCMButtonTag
         NSString *serverUrl = [urlComboBox stringValue];
         // Maybe we shouldn't use the allProjectsViewController here. But it makes it so much easier.
         [allProjectsViewController remove:self];
-        [defaultsManager addProject:[[[CCMProject alloc] initWithName:projectName andServerURL:serverUrl] autorelease]];
+        [defaultsManager addProject:[CCMProject projectWithName:projectName inFeed:serverUrl]];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
 }

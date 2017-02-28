@@ -103,7 +103,7 @@
 
 	[controller sheetDidEnd:nil returnCode:1 contextInfo:0];
 
-    CCMProject *p = [[[CCMProject alloc] initWithName:@"new" andServerURL:@"http://test/cctray.xml"] autorelease];
+    CCMProject *p = [CCMProject projectWithName:@"new" inFeed:@"http://test/cctray.xml"];
     OCMVerify([defaultsManagerMock addProject:p]);
     OCMVerify([defaultsManagerMock addServerURLToHistory:@"http://test/cctray.xml"]);
 }

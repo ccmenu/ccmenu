@@ -4,6 +4,13 @@
 
 @implementation CCMProject
 
++ (CCMProject *)projectWithName:(NSString *)aName inFeed:(NSString *)aFeedURL
+{
+    CCMProject *project = [[[CCMProject alloc] initWithName:aName] autorelease];
+    [project setServerURL:[NSURL URLWithString:aFeedURL]];
+    return project;
+}
+
 - (id)initWithName:(NSString *)aName
 {
 	self = [super init];
