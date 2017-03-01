@@ -56,27 +56,45 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 - (void)setupFromUserDefaults
 {
     [[connections each] cancelRequest];
-	[connections release];
-	NSArray *previousProjects = [projects autorelease];
 
-	connections = [[NSMutableArray alloc] init];
-    projects = [[NSMutableArray alloc] init];
-    
-    NSMutableSet *urlSet = [NSMutableSet set];
-    for(CCMProject *p in [defaultsManager projectList])
-    {
+	[self setupProjectsFromUserDefaults];
+	[self setupConnections];
+}
+
+- (void)setupProjectsFromUserDefaults
+{
+	NSArray *previousProjects = [projects autorelease];
+	projects = [[NSMutableArray alloc] init];
+	for(CCMProject *p in [defaultsManager projectList])
+	{
 		if((previousProjects != nil) && ([previousProjects containsObject:p]))
-			p = [previousProjects objectAtIndex:[previousProjects indexOfObject:p]];
-        [projects addObject:p];
-        [urlSet addObject:[[p serverURL] absoluteString]];
-    }
-    for(NSString *url in urlSet)
+		{
+			CCMProject *existing = [previousProjects objectAtIndex:[previousProjects indexOfObject:p]];
+			if(![[p displayName] isEqualToString:[p name]])
+				[existing setDisplayName:[p displayName]];
+			[projects addObject:existing];
+		}
+		else
+		{
+			[projects addObject:p];
+		}
+	}
+}
+
+- (void)setupConnections
+{
+	[connections release];
+	connections = [[NSMutableArray alloc] init];
+
+    NSSet *urlSet = [NSSet setWithArray:(id)[[projects collect] serverURL]];
+	for(NSURL *url in urlSet)
     {
-		CCMConnection *c = [[[CCMConnection alloc] initWithFeedURL:[NSURL URLWithString:url]] autorelease];
+		CCMConnection *c = [[[CCMConnection alloc] initWithFeedURL:url] autorelease];
 		[c setDelegate:self];
         [connections addObject:c];
     }
 }
+
 
 - (void)start
 {
