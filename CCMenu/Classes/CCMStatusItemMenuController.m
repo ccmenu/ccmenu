@@ -144,7 +144,7 @@
     switch([defaultsManager projectOrder])
     {
         case CCMProjectOrderAlphabetic:
-            projectList = [projectList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]]];
+            projectList = [projectList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES selector:@selector(caseInsensitiveCompare:)]]];
             break;
         case CCMProjectOrderByBuildTime:
             projectList = [projectList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"status.lastBuildTime" ascending:NO]]];
@@ -158,14 +158,14 @@
 - (void)addProject:(CCMProject *)project toMenu:(NSMenu *)menu atIndex:(NSUInteger)index
 {
     NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
-    while(([menuItem isSeparatorItem] == NO) && ([[project name] compare:[menuItem title]] == NSOrderedDescending))
+    while(([menuItem isSeparatorItem] == NO) && ([[project displayName] compare:[menuItem title]] == NSOrderedDescending))
     {
         [menu removeItemAtIndex:index];
         menuItem = [[menu itemArray] objectAtIndex:index];
     }
     if([menuItem representedObject] != project)
     {
-        menuItem = [menu insertItemWithTitle:[project name] action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
+        menuItem = [menu insertItemWithTitle:[project displayName] action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
         [menuItem setTarget:self];
         [menuItem setRepresentedObject:project];
     }

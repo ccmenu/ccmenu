@@ -230,7 +230,7 @@ enum CCMButtonTag
         NSString *projectName = [projectInfo objectForKey:@"name"];
         [entry setObject:projectName forKey:@"name"];
         [entry setObject:serverUrl forKey:@"server"];
-        if([defaultsManager projectListContainsProject:projectName onServerWithURL:serverUrl]) {
+        if([[defaultsManager projectList] containsObject:[CCMProject projectWithName:projectName inFeed:serverUrl]]) {
             [entry setObject:[NSColor disabledControlTextColor] forKey:@"textColor"];
         }
         [list addObject:entry];

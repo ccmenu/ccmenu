@@ -22,6 +22,9 @@ NSString *CCMProjectDefaultValueTransformerName = @"CCMProjectDefaultValueTransf
         return nil;
     
     NSString *name = [value objectForKey:@"projectName"];
+    NSString *displayName = [value objectForKey:@"displayName"];
+    if(displayName != nil)
+        name = [NSString stringWithFormat:@"%@ (%@)", name, displayName];
     NSDictionary *nameAttrs = @{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont systemFontSizeForControlSize:NSRegularControlSize]]};
     NSString *url = [value objectForKey:@"serverUrl"];
     NSDictionary *urlAttrs = @{ NSFontAttributeName: [NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSSmallControlSize]],
