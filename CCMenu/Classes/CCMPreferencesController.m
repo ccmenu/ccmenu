@@ -94,7 +94,7 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
 - (IBAction)editProjectDisplayName:(id)sender
 {
     // slightly naughty but we want to split the XIB files eventually
-    [addProjectsController setValue:defaultsManager forKey:@"defaultsManager"];
+    [projectNameController setValue:defaultsManager forKey:@"defaultsManager"];
     [projectNameController beginSheetWithProject:[self selectedProject] forWindow:preferencesWindow];
 }
 

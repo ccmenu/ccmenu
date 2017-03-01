@@ -136,7 +136,7 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     for(NSDictionary *entry in defaultsEntryList)
     {
         CCMProject *p = [[[CCMProject alloc] initWithName:[entry valueForKey:CCMDefaultsProjectEntryNameKey]] autorelease];
-        [p setServerURL:[entry valueForKey:CCMDefaultsProjectEntryServerUrlKey]];
+        [p setServerURL:[NSURL URLWithString:[entry valueForKey:CCMDefaultsProjectEntryServerUrlKey]]];
         [p setDisplayName:[entry valueForKey:CCMDefaultsProjectEntryDisplayNameKey]];
         [projectList addObject:p];
     }

@@ -73,7 +73,7 @@
 	XCTAssertEqual(1ul, [projectList count], @"Should have returned one project.");
 	CCMProject *project = [projectList objectAtIndex:0];
 	XCTAssertEqualObjects(@"nameOnServer", [project name], @"Should have set right project name.");
-	XCTAssertEqualObjects(@"http://test/cctray.xml", [project serverURL], @"Should have set right URL.");
+	XCTAssertEqualObjects(@"http://test/cctray.xml", [[project serverURL] absoluteString], @"Should have set right URL.");
 	XCTAssertEqualObjects(@"nameToDisplay", [project displayName], @"Should have set right display name.");
 }
 
