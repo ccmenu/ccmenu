@@ -158,7 +158,7 @@
 - (void)addProject:(CCMProject *)project toMenu:(NSMenu *)menu atIndex:(NSUInteger)index
 {
     NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
-    while(([menuItem isSeparatorItem] == NO) && ([[project displayName] compare:[menuItem title]] == NSOrderedDescending))
+    while(([menuItem isSeparatorItem] == NO) && ([[project displayName] compare:[menuItem title]] != NSOrderedSame))
     {
         [menu removeItemAtIndex:index];
         menuItem = [[menu itemArray] objectAtIndex:index];
