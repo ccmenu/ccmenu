@@ -16,4 +16,7 @@
 
 - (IBAction)closeSheet:(id)sender;
 
+- (IBAction)resetDisplayName:(id)sender;
+
+
 @end

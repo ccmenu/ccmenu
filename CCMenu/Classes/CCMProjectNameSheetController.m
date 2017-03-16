@@ -15,17 +15,16 @@ enum CCMButtonTag
 - (void)beginSheetWithProject:(NSDictionary *)aProject forWindow:(NSWindow *)aWindow
 {
     [originalNameField setStringValue:[aProject valueForKey:@"projectName"]];
-    [displayNameField setStringValue:[aProject valueForKey:@"projectName"]];
+    NSString *displayName = [aProject valueForKey:@"displayName"];
+    [displayNameField setStringValue:displayName != nil ? displayName : [aProject valueForKey:@"projectName"]];
     [NSApp beginSheet:projectNameSheet modalForWindow:aWindow modalDelegate:self
        didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:aProject];
 }
-
 
 - (void)closeSheet:(id)sender
 {
     [NSApp endSheet:projectNameSheet returnCode:[sender tag]];
 }
-
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
@@ -40,10 +39,16 @@ enum CCMButtonTag
     [defaultsManager removeProject:old];
 
     CCMProject *new = [CCMProject projectWithName:projectName inFeed:serverUrl];
-    [new setDisplayName:[displayNameField stringValue]];
+    if(![[displayNameField stringValue] isEqualToString:[originalNameField stringValue]])
+        [new setDisplayName:[displayNameField stringValue]];
     [defaultsManager addProject:new];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:CCMPreferencesChangedNotification object:self];
+}
+
+- (void)resetDisplayName:(id)sender
+{
+    [displayNameField setStringValue:[originalNameField stringValue]];
 }
 
 @end

@@ -72,6 +72,8 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 			CCMProject *existing = [previousProjects objectAtIndex:[previousProjects indexOfObject:p]];
 			if(![[p displayName] isEqualToString:[p name]])
 				[existing setDisplayName:[p displayName]];
+            else
+                [existing setDisplayName:nil];
 			[projects addObject:existing];
 		}
 		else

@@ -1175,6 +1175,9 @@ DQ
                         <buttonCell key="cell" type="push" title="Set" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p0n-md-mYI">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                         <connections>
                             <action selector="closeSheet:" target="soZ-aK-Jdx" id="o8R-vX-hDh"/>
@@ -1187,6 +1190,9 @@ DQ
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="resetDisplayName:" target="soZ-aK-Jdx" id="a6v-Mj-YQD"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="vRz-AT-iS8">
                         <rect key="frame" x="18" y="96" width="109" height="17"/>

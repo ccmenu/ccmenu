@@ -86,6 +86,20 @@
     XCTAssertEqualObjects(@"Test Project", [[[monitor projects] objectAtIndex:0] displayName], @"Should have updated display name.");
 }
 
+- (void)testResetsDisplayNameOnExistingInstanceWhenSettingUpFromDefaults
+{
+    NSArray *firstDefaults = @[ [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"] ];
+    [[firstDefaults objectAtIndex:0] setDisplayName:@"Test Project"];
+    OCMExpect([defaultsManagerMock projectList]).andReturn(firstDefaults);
+    [monitor setupFromUserDefaults];
+
+    NSArray *nextDefaults = @[ [CCMProject projectWithName:@"connectfour" inFeed:@"http://test/cctray.xml"] ];
+    OCMExpect([defaultsManagerMock projectList]).andReturn(nextDefaults);
+    [monitor setupFromUserDefaults];
+
+    XCTAssertEqualObjects(@"connectfour", [[[monitor projects] objectAtIndex:0] displayName], @"Should have reset display name.");
+}
+
 
 - (void)testPostsStatusChangeNotificationWhenNoServersDefined
 {
