@@ -180,9 +180,8 @@
 
 - (void)testRemovesMenuItem
 {
-    NSMutableArray *projects = [@[[[[CCMProject alloc] initWithName:@"xyz"] autorelease],
-                                  [[[CCMProject alloc] initWithName:@"abc"] autorelease]]
-                                mutableCopy];
+    NSMutableArray *projects = [[@[[[[CCMProject alloc] initWithName:@"xyz"] autorelease],
+                                   [[[CCMProject alloc] initWithName:@"abc"] autorelease]] mutableCopy] autorelease];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
 	[controller displayProjects:nil];
     [projects removeObjectAtIndex:0];
@@ -194,14 +193,51 @@
 	XCTAssertEqual(2ul, [items count], @"Menu should have correct number of items.");
 }
 
+- (void)testReusesExistingMenuItemsWhenProjectListIsUnchanged
+{
+    CCMProject *p1 = [CCMProject projectWithName:@"project1" inFeed:@"http://server1"];
+    CCMProject *p2 = [CCMProject projectWithName:@"project2" inFeed:@"http://server1"];
+    CCMProject *p3 = [CCMProject projectWithName:@"project3" inFeed:@"http://server1"];
+
+    NSArray *projects = @[p1, p2, p3];
+    OCMStub([serverMonitorMock projects]).andReturn(projects);
+
+	[controller displayProjects:nil];
+    NSArray *itemsBefore = [[[[[controller statusItem] menu] itemArray] copy] autorelease];
+
+    [controller displayProjects:nil];
+    NSArray *itemsAfter = [[[[[controller statusItem] menu] itemArray] copy] autorelease];
+
+	XCTAssertEqual([itemsBefore objectAtIndex:0], [itemsAfter objectAtIndex:0], @"Should have reused item for project 1.");
+	XCTAssertEqual([itemsBefore objectAtIndex:1], [itemsAfter objectAtIndex:1], @"Should have reused item for project 2.");
+	XCTAssertEqual([itemsBefore objectAtIndex:2], [itemsAfter objectAtIndex:2], @"Should have reused item for project 3.");
+}
+
+- (void)testUpdatesMenuItemWhenDisplayNameChanged
+{
+    CCMProject *p1 = [CCMProject projectWithName:@"connectfour" inFeed:@"http://server1"];
+    CCMProject *p2 = [CCMProject projectWithName:@"erikdoe/ccmenu" inFeed:@"http://server1"];
+
+    NSArray *projects = @[p1, p2];
+    OCMStub([serverMonitorMock projects]).andReturn(projects);
+
+    [p2 setDisplayName:@"ccmenu"];
+	[controller displayProjects:nil];
+
+    [p2 setDisplayName:nil];
+    [controller displayProjects:nil];
+
+    NSArray *items = [[[controller statusItem] menu] itemArray];
+	XCTAssertEqualObjects(@"erikdoe/ccmenu", [[items objectAtIndex:1] title], @"Should have reused item for project 1.");
+    XCTAssertEqual(3ul, [items count], @"Menu should have correct number of items.");
+}
+
 - (void)testUpdatesMenuItemsForProjectsWithSameNameOnDifferentServers
 {
-    CCMProject *p1 = [[[CCMProject alloc] initWithName:@"bar"] autorelease];
-    [p1 setServerURL:[NSURL URLWithString:@"http://server1"]];
-    CCMProject *p2 = [[[CCMProject alloc] initWithName:@"bar"] autorelease];
-    [p1 setServerURL:[NSURL URLWithString:@"http://server2"]];
-    CCMProject *p3 = [[[CCMProject alloc] initWithName:@"foo"] autorelease];
-    
+    CCMProject *p1 = [CCMProject projectWithName:@"bar" inFeed:@"http://server1"];
+    CCMProject *p2 = [CCMProject projectWithName:@"bar" inFeed:@"http://server2"];
+    CCMProject *p3 = [CCMProject projectWithName:@"foo" inFeed:nil];
+
     NSMutableArray *projects = [NSMutableArray array];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
 
