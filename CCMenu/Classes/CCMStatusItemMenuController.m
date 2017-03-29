@@ -158,17 +158,14 @@
 - (void)addProject:(CCMProject *)project toMenu:(NSMenu *)menu atIndex:(NSUInteger)index
 {
     NSMenuItem *menuItem = [[menu itemArray] objectAtIndex:index];
-    while(([menuItem isSeparatorItem] == NO) && ([[project displayName] compare:[menuItem title]] != NSOrderedSame))
-    {
-        [menu removeItemAtIndex:index];
-        menuItem = [[menu itemArray] objectAtIndex:index];
-    }
     if([menuItem representedObject] != project)
     {
-        menuItem = [menu insertItemWithTitle:[project displayName] action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
+        menuItem = [menu insertItemWithTitle:@"[new item]" action:@selector(openProject:) keyEquivalent:@"" atIndex:index];
         [menuItem setTarget:self];
         [menuItem setRepresentedObject:project];
     }
+
+    NSString *title = [project displayName];
     NSMutableArray *infoTexts = [NSMutableArray array];
     if([defaultsManager shouldShowLastBuildLabel])
     {
@@ -189,8 +186,10 @@
     }
     if([infoTexts count] > 0)
     {
-        [menuItem setTitle:[NSString stringWithFormat:@"%@ \u2014 %@", [project name], [infoTexts componentsJoinedByString:@", "]]];
+        title = [title stringByAppendingFormat:@" \u2014 %@", [infoTexts componentsJoinedByString:@", "]];
     }
+    [menuItem setTitle:title];
+
     NSImage *image = [imageFactory imageForStatus:[project status]];
     [menuItem setImage:[imageFactory convertForMenuUse:image]];
 }

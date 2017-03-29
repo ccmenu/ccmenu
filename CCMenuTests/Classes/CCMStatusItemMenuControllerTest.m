@@ -215,22 +215,27 @@
 
 - (void)testUpdatesMenuItemWhenDisplayNameChanged
 {
+    id defaultsMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([defaultsMock projectOrder]).andReturn(CCMProjectOrderNatural) ;
+    [controller setValue:defaultsMock forKey:@"defaultsManager"];
+
     CCMProject *p1 = [CCMProject projectWithName:@"connectfour" inFeed:@"http://server1"];
     CCMProject *p2 = [CCMProject projectWithName:@"erikdoe/ccmenu" inFeed:@"http://server1"];
 
     NSArray *projects = @[p1, p2];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
 
-    [p2 setDisplayName:@"ccmenu"];
-	[controller displayProjects:nil];
+    [p2 setDisplayName:@"foo/erikdoe/ccmenu"];
+    [controller displayProjects:nil];
 
     [p2 setDisplayName:nil];
     [controller displayProjects:nil];
 
     NSArray *items = [[[controller statusItem] menu] itemArray];
-	XCTAssertEqualObjects(@"erikdoe/ccmenu", [[items objectAtIndex:1] title], @"Should have reused item for project 1.");
+	XCTAssertEqualObjects(@"erikdoe/ccmenu", [[items objectAtIndex:1] title], @"Should have displayed correct title.");
     XCTAssertEqual(3ul, [items count], @"Menu should have correct number of items.");
 }
+
 
 - (void)testUpdatesMenuItemsForProjectsWithSameNameOnDifferentServers
 {
