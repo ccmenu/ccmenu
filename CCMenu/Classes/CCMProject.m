@@ -20,7 +20,7 @@
 
 - (id)initWithName:(NSString *)aName andServerURL:(NSString *)urlString
 {
-    [self initWithName:aName];
+    self = [self initWithName:aName];
     [self setServerURL:[NSURL URLWithString:urlString]];
     return self;
 }
