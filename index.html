@@ -105,7 +105,38 @@
 				<p>You can drag the projects in the list to arrange the order in which they are displayed. Alternatively you can choose to have the projects sorted alphabetically or by last build time. Note, that the preference to sort the projects only affects the menu, not the project list in preferences.
 			
 				<p>The preferences window is resizable when the project list is shown.
+
+				<h4>URL schemes (available with CCMenu 13.0 or higher)</h4>
+
+				<p>CCMenu registers two custom URL schemes. This makes it possible to create links on webpages that, when clicked, will open CCMenu and show a prefilled list of projects to add.
+
+				<p>To create a CCMenu link, simply add "ccmenu+" to the beginning of the feed URL. For example, a link to the feed for CCMenu's own CI build would look like this:<br>
+				<code><a href="ccmenu+https://api.travis-ci.org/repositories/erikdoe/ccmenu/cc.xml">ccmenu+https://api.travis-ci.org/repositories/erikdoe/ccmenu/cc.xml</a></code>
+
+				<p>It is not possible (yet) to create links that add a project directly.
+
+				<h4>Command line configuration</h4>
+
+				<p>CCMenu stores its configuration using the macOS defaults system, which can be accessed using the <code>defaults</code> command. It is possible to load an initial configuration with a command like the following. CCMenu should not be running when the command is issued.
+
+				<p><pre><code>  defaults write net.sourceforge.cruisecontrol.CCMenu Projects '
+  (
+    {
+      projectName = connectfour;
+      serverUrl = "http://localhost:4567/cctray.xml";
+    }
+  )'</code></pre>
+
+  				<p>With more command line processing it is obviously also possible to read the existing list, add a new project, and then write the updated list.
+
+				<p>Last but not least, the <code>open</code> command can be used to trigger the addition of projects from the command line, e.g.
+
+				<p><code>open ccmenu+http://localhost:4567/cctray.xml</code>
+
+				<p>As mentioned above, it is not (yet) possible to create links that silently add a single project.
+
 				<p>&nbsp;
+
 		</section>
 
 		<section class="download">

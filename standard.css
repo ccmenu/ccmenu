@@ -71,6 +71,14 @@ body {
 	color: #333;
 }
 
+code a {
+	color: #333;
+}
+
+body pre {
+	line-height: 1.0em;
+}
+
 h1 {
 	font-size: 48px;
   font-weight: 800;
@@ -89,12 +97,16 @@ h3 {
 	font-size: 150%;
 }
 
+h4 {
+	font-size: 110%;
+}
+
 h4 + p {
 	margin-top: 0.5em;
 }
 
 code {
-	font-size: 80%;
+	font-size: 90%;
 }
 
 img {
