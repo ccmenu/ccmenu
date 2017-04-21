@@ -645,7 +645,7 @@
                     <connections>
                         <action selector="soundSelected:" target="-2" id="NWT-lW-3Dl"/>
                         <binding destination="744" name="contentValues" keyPath="arrangedObjects" id="Q6G-dZ-cdg"/>
-                        <binding destination="381" name="enabled" keyPath="values.PlaySound Fixed" id="I6W-s4-gns"/>
+                        <binding destination="381" name="enabled" keyPath="values.PlaySound Starting" id="ufF-L3-VMa"/>
                         <binding destination="381" name="selectedValue" keyPath="values.Sound Starting" previousBinding="Q6G-dZ-cdg" id="Xw8-HE-9cd">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">Sosumi</string>
