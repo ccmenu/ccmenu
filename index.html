@@ -64,7 +64,9 @@
 					<img src="images/icon-pause@2x.png" width="16" height="16"> The project is disabled or waiting for a build agent<br>
 					<img src="images/icon-inactive@2x.png" width="16" height="16"> The server or project status are unavailable<br>
 	
-					<p class="nobottom">Clicking on a project in the menu opens the project's web page in the default web browser. Depending on the continuous integration server this can be a project overview page, or a page with details about the last build. 
+					<p>Clicking on a project in the menu opens the project's web page in the default web browser. Depending on the continuous integration server this can be a project overview page, or a page with details about the last build. 
+
+					<p class="nobottom"><b>Please note:</b> CCMenu will simply open the link given to it by the server. Problems like the &ldquo;wrong&rdquo; page opening, port missing, or incorrect URL scheme, all must be fixed on the server.  
 				</div>
 	
 				<div class="box50 floatleft">
@@ -72,12 +74,17 @@
 
 					<!-- <p><img width="461" height="115" src="images/screenshot_notification.png" alt="Screenshot: CCMenu notification"> -->
 
-					<p class="nobottom">CCMenu sends notifications when a build has completed. Depending on the previous build status and the result of the current build, it will send one of the following notifications: 
+					<p class="nobottom">CCMenu can send notifications when a build starts or finishes. The following notifications can be configured:
 					<ul>
-						<li>Build successful</li>
-						<li>Build broken (previous build successful, current failed)</li>
-						<li>Build still broken (previous and current build failed)</li>
-						<li>Build fixed (previous build failed, current build successful)</li>
+						<li><b>Build finished: successful</b><br>
+						Previous build was successful and current build finished sucessfully, too.</li>
+						<li><b>Build finshed: broken</b><br>
+						Previous build was successful but current build failed.</li>
+						<li><b>Build finished: still broken</b><br>
+						Previous build was broken and current build failed, too.</li>
+						<li><b>Build finished: fixed</b><br>
+						Previous build was broken, current build finished successfully.</li>
+						<li><b>Build starting</b><br>A new build is starting on the server.</li>
 					</ul>
 
 					<p class="nobottom">Older versions of CCMenu, for OS X Lion and earlier, use <a href="http://growl.info">Growl</a> to send notifications.
