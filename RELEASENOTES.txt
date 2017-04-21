@@ -1,9 +1,9 @@
 CCMenu Release Notes
 
 
-CCMenu 13.0 (not released yet)
+CCMenu 13.0
 
-* Projects can now be given as display name that is shown instead of the name
+* Projects can now be given a display name that is shown instead of the name
   the project has on the Continuous Integration server.
 * CCMenu now registers its own URL schemes. This makes it possible to create
   links on webpages that, when clicked, will open CCMenu and show a prefilled
