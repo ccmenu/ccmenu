@@ -1,5 +1,6 @@
 language: objective-c
 osx_image: xcode8.2
 before_install:
-    - gem install xcpretty -N --quiet
+    - curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+    - rvm get stable
 script: make
