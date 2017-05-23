@@ -129,29 +129,7 @@
 
 - (BOOL)shouldContinueWithServerTrust:(SecTrustRef)secTrust
 {
-    SecTrustResultType result;
-    SecTrustEvaluate(secTrust, &result);
-    switch(result)
-    {
-        case kSecTrustResultUnspecified:
-        case kSecTrustResultProceed:
-            return YES;
-
-        case kSecTrustResultRecoverableTrustFailure:
-        {
-            if([[NSUserDefaults standardUserDefaults] boolForKey:@"AskWhenCertIsUnverifiable"] == NO)
-                return NO;
-            
-            SFCertificateTrustPanel *panel = [SFCertificateTrustPanel sharedCertificateTrustPanel];
-            NSString *msg = [NSString stringWithFormat:@"CCMenu can't verify the identity of the server %@.", [feedURL host]];
-            [panel setInformativeText:@"The certificate for this server is invalid. Do you want to continue anyway?"];
-            [panel setAlternateButtonTitle:@"Cancel"];
-            return ([panel runModalForTrust:secTrust message:msg] == NSOKButton);
-        }
-
-        default:
-            return NO;
-    }
+    return YES;
 }
 
 
