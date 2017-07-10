@@ -335,8 +335,8 @@
 - (void)testDisplaysBuildingWhenAtLeastOneProjectIsBuilding
 {
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
-    CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
-    CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
+    CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
+    CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
     NSArray *const projects = @[p1, p2, p3];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
     OCMStub([imageFactoryMock imageForStatus:[p1 status]]).andReturn(dummyImage);
@@ -347,7 +347,22 @@
     OCMVerify([statusItemMock setFormattedTitle:@""]);
 }
 
-- (void)testDisplaysFixingWhenAtLeastOneProjectWithLastStatusFailedIsBuilding
+- (void)testDisplaysFailedWhenAtLeastOneProjectIsBuildingAndAnotherFailed
+{
+    CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
+    CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
+    CCMProject *p3 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Success"];
+    NSArray *const projects = @[p1, p2, p3];
+    OCMStub([serverMonitorMock projects]).andReturn(projects);
+    OCMStub([imageFactoryMock imageForStatus:[p1 status]]).andReturn(dummyImage);
+    
+    [controller displayProjects:nil];
+    
+    OCMVerify([statusItemMock setImage:dummyImage]);
+    OCMVerify([statusItemMock setFormattedTitle:@"1"]);
+}
+
+- (void)testDisplaysFailureWhenAtLeastOneProjectWithLastStatusFailedIsBuilding
 {
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     CCMProject *p2 = [self createProjectWithActivity:@"Sleeping" lastBuildStatus:@"Failure"];
@@ -359,7 +374,7 @@
 	[controller displayProjects:nil];
 	
     OCMVerify([statusItemMock setImage:dummyImage]);
-    OCMVerify([statusItemMock setFormattedTitle:@""]);
+    OCMVerify([statusItemMock setFormattedTitle:@"2"]);
 }
 
 - (void)testDoesNotDisplayBuildingTimerWhenDefaultIsOff
@@ -416,7 +431,7 @@
 
 	[controller displayProjects:nil];
 	
-    OCMVerify([statusItemMock setFormattedTitle:startsWith(@"-1:")]);
+    OCMVerify([statusItemMock setFormattedTitle:startsWith(@"1 -1:")]);
 }
 
 @end
