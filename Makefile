@@ -15,3 +15,9 @@ clean:
 test:
 	@echo "Running OS X tests..."
 	$(XCODEBUILD) $(MACOSX) test | xcpretty -c
+
+run: test
+	open build/Debug/CCMenu.app
+
+
+
