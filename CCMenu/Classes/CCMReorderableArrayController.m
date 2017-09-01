@@ -1,6 +1,7 @@
 
 #import "CCMReorderableArrayController.h"
 #import "CCMPreferencesController.h"
+#import "CCMProjectDefaultValueTransformer.h"
 
 /* Implementation based on mmalc's DNDArrayController, which was originally available at
    http://homepage.mac.com/mmalc/CocoaExamples/controllers.html
@@ -8,6 +9,24 @@
 
 
 NSString *CCMDraggedRowType = @"net.sourceforge.cruisecontrol.CCMenu.DraggedRowType";
+
+
+@interface CCMTableCellView : NSTableCellView
+@end
+
+@implementation CCMTableCellView
+
+- (void)drawRect:(NSRect)dirtyRect {
+	BOOL isSelected = [(NSTableRowView *)[self superview] isSelected];
+
+	CCMProjectDefaultValueTransformer *transformer = (CCMProjectDefaultValueTransformer *)[CCMProjectDefaultValueTransformer valueTransformerForName:CCMProjectDefaultValueTransformerName];
+	NSAttributedString *s = [transformer transformedValue:self.objectValue isSelected:isSelected];
+	[[self textField] setAttributedStringValue:s];
+
+	[super drawRect:dirtyRect];
+}
+
+@end
 
 
 @implementation CCMReorderableArrayController

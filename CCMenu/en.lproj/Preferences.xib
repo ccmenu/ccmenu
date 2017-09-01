@@ -75,7 +75,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="eKa-3E-1Fc">
+                                            <tableCellView id="eKa-3E-1Fc" customClass="CCMTableCellView">
                                                 <rect key="frame" x="1" y="1" width="305" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
