@@ -8,6 +8,8 @@
 	<true/>
 	<key>AskWhenCertIsUnverifiable</key>
 	<true/>
+	<key>StartWhenYouLogIn</key>
+	<false/>
 	<key>UseColorInMenuBar</key>
 	<string>YES</string>
 	<key>UseSymbolsForAllStatesInMenuBar</key>

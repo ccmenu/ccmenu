@@ -32,6 +32,11 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return [userDefaults boolForKey:@"ShowAppIconWhenInPrefs"];
 }
 
+- (BOOL)shouldStartWhenYouLogIn
+{
+    return [userDefaults boolForKey:@"StartWhenYouLogIn"];
+}
+
 - (BOOL)shouldShowTimerInMenu
 {
     return [userDefaults boolForKey:@"ShowTimerInMenu"];

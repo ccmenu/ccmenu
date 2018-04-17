@@ -159,6 +159,35 @@ NSString *CCMPreferencesChangedNotification = @"CCMPreferencesChangedNotificatio
         // unfortunately this also deactivates our app, hiding the window in the process. so...
         [self performSelector:@selector(reactivate:) withObject:self afterDelay:0];
     }
+    
+    NSURL *bundleURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    LSSharedFileListRef loginItemsListRef = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if([defaultsManager shouldStartWhenYouLogIn])
+    {
+        NSDictionary *properties;
+        properties = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"com.apple.loginitem.HideOnLaunch"];
+        LSSharedFileListItemRef itemRef = LSSharedFileListInsertItemURL(loginItemsListRef, kLSSharedFileListItemLast, NULL, NULL, (CFURLRef)bundleURL, (CFDictionaryRef)properties,NULL);
+        if (itemRef) {
+            CFRelease(itemRef);
+        }
+    }
+    else
+    {
+        LSSharedFileListRef loginItemsListRef = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+        CFArrayRef snapshotRef = LSSharedFileListCopySnapshot(loginItemsListRef, NULL);
+        NSArray* loginItems = [NSMakeCollectable(snapshotRef) autorelease];
+        
+        for (id item in loginItems) {
+            LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
+            CFURLRef itemURLRef;
+            if (LSSharedFileListItemResolve(itemRef, 0, &itemURLRef, NULL) == noErr) {
+                NSURL *itemURL = (NSURL *)[NSMakeCollectable(itemURLRef) autorelease];
+                if ([itemURL isEqual:bundleURL]) {
+                    LSSharedFileListItemRemove(loginItemsListRef, itemRef);
+                }
+            }
+        }
+    }
 }
 
 - (void)reactivate:(id)sender
