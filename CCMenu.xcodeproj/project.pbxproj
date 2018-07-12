@@ -789,7 +789,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SHA=`git rev-parse --short HEAD | tr '[a-z]' '[A-Z]'`\nsed -i \"\" \"s/#gitsha#/$SHA/\" \"${BUILT_PRODUCTS_DIR}\"/CCMenu.app/Contents/Info.plist";
+			shellScript = "sed -i\\\"\\\" \"s/#gitsha#/`git rev-parse --short HEAD | tr '[a-z]' '[A-Z]'`/\" \"${BUILT_PRODUCTS_DIR}/CCMenu.app/Contents/Info.plist\"";
 		};
 		03C082B9134F997B0039E3BD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
