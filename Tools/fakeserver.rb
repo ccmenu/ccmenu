@@ -121,7 +121,7 @@ __END__
   %Project{:name => 'connectfour', :webUrl => 'http://localhost:4567/dashboard/build/detail/connectfour',
     :activity => @@ACTIVITY, :lastBuildStatus => @@STATUS,
     :lastBuildLabel => "build.#{@@BUILD_NUM}", :lastBuildTime => @@BUILD_TIME}
-  %Project{:name => 'dummy', :webUrl => 'http://localhost:4567/dashboard/build/detail/dummy',
+  %Project{:name => 'Some pipeline with a long name :: Project with a really long name', :webUrl => 'http://localhost:4567/dashboard/build/detail/dummy',
     :activity => :Sleeping, :lastBuildStatus => :Unknown,
     :lastBuildLabel => "build.99", :lastBuildTime => "2007-07-18T18:44:48"}
 
