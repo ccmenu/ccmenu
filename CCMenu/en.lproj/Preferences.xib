@@ -678,12 +678,12 @@
             </subviews>
             <point key="canvasLocation" x="-294" y="244"/>
         </customView>
-        <customView id="421" userLabel="Advanced">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="348"/>
+        <customView misplaced="YES" id="421" userLabel="Advanced">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="380"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="431">
-                    <rect key="frame" x="21" y="311" width="173" height="17"/>
+                    <rect key="frame" x="21" y="343" width="173" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Project status poll interval:" id="577">
                         <font key="font" metaFont="system"/>
@@ -692,7 +692,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="424">
-                    <rect key="frame" x="224" y="304" width="116" height="26"/>
+                    <rect key="frame" x="224" y="336" width="116" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="10 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="10" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="429" id="576">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -712,8 +712,8 @@
                         <binding destination="381" name="selectedTag" keyPath="values.PollInterval" id="433"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="494">
-                    <rect key="frame" x="21" y="257" width="305" height="42"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="494">
+                    <rect key="frame" x="21" y="293" width="305" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="581">
                         <font key="font" metaFont="smallSystem"/>
@@ -722,16 +722,20 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" boxType="separator" id="jee-wW-sSv">
-                    <rect key="frame" x="12" y="125" width="326" height="5"/>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="0Vs-fB-sD4">
+                    <rect key="frame" x="12" y="203" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <box verticalHuggingPriority="750" boxType="separator" id="0Vs-fB-sD4">
-                    <rect key="frame" x="12" y="239" width="326" height="5"/>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="iJg-G0-P5G">
+                    <rect key="frame" x="12" y="278" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <button id="cIT-lj-3Qm">
-                    <rect key="frame" x="22" y="203" width="288" height="18"/>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="jee-wW-sSv">
+                    <rect key="frame" x="12" y="104" width="326" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <button misplaced="YES" id="cIT-lj-3Qm">
+                    <rect key="frame" x="22" y="181" width="288" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show app icon when preferences are open" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BM6-aI-mz9">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -742,8 +746,8 @@
                         <binding destination="381" name="value" keyPath="values.ShowAppIconWhenInPrefs" id="TVa-24-iIn"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="MR3-zf-TXe">
-                    <rect key="frame" x="22" y="141" width="305" height="56"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="MR3-zf-TXe">
+                    <rect key="frame" x="21" y="119" width="305" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="P8n-FN-BRo">
                         <font key="font" metaFont="smallSystem"/>
@@ -752,8 +756,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="FfQ-CN-wIH">
-                    <rect key="frame" x="21" y="94" width="241" height="18"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="xk5-Xb-rlH">
+                    <rect key="frame" x="18" y="222" width="305" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Whether CCMenu should open automatically when you log in." id="bmr-rB-HPp">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button misplaced="YES" id="FfQ-CN-wIH">
+                    <rect key="frame" x="21" y="82" width="241" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Ask when certificate is unverifiable" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wml-x5-xNd">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -764,8 +777,8 @@
                         <binding destination="381" name="value" keyPath="values.AskWhenCertIsUnverifiable" id="LcE-wK-YMf"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="6ih-BT-kAo">
-                    <rect key="frame" x="21" y="32" width="305" height="56"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="6ih-BT-kAo">
+                    <rect key="frame" x="21" y="20" width="305" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="Zib-Cw-waj">
                         <font key="font" metaFont="smallSystem"/>
@@ -774,8 +787,19 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button misplaced="YES" id="rGY-Xr-2hs">
+                    <rect key="frame" x="21" y="256" width="288" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Open on login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ey0-R3-Od3">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="cKD-6m-K3z" name="value" keyPath="inLoginItemsList" id="U65-vD-hKW"/>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="167" y="381"/>
+            <point key="canvasLocation" x="167" y="397"/>
         </customView>
         <arrayController editable="NO" avoidsEmptySelection="NO" id="378" userLabel="All Projects View Controller" customClass="CCMReorderableArrayController">
             <declaredKeys>
@@ -1028,7 +1052,7 @@ DQ
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="8Qz-vc-FJQ">
                                                 <rect key="frame" x="1" y="1" width="322" height="245"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" id="340">
                                                         <rect key="frame" x="0.0" y="0.0" width="322" height="245"/>
@@ -1116,6 +1140,7 @@ DQ
             </connections>
         </customObject>
         <customObject id="908" customClass="CCMHistoryDataSource"/>
+        <customObject id="cKD-6m-K3z" customClass="CCMLoginItemsManager"/>
         <arrayController id="295" userLabel="Choose Projects View Controller">
             <declaredKeys>
                 <string>name</string>
