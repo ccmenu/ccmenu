@@ -146,6 +146,7 @@
 		2FA28EEE1E2F08289D958C3B /* CCMHistoryDataSourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2888750C52351CE35929B /* CCMHistoryDataSourceTest.m */; };
 		2FA28F4431D6C7178FFA5C84 /* NSAlert+CCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA282A416260DF796951CFD /* NSAlert+CCMAdditions.m */; };
 		2FA28F7C4769563BBEFD39BD /* CCMHistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */; };
+		3C502BC021066CA900211511 /* CCMLoginItemsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C502BBF21066CA900211511 /* CCMLoginItemsManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,8 @@
 		2FA28DDF250DAF8DD83AE044 /* CCMHistoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMHistoryDataSource.h; sourceTree = "<group>"; };
 		2FA28E7615CE832C25635C2D /* CCMHistoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMHistoryDataSource.m; sourceTree = "<group>"; };
 		2FA28FE120BA229F01F0F4AE /* NSAlert+CCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+CCMAdditions.h"; sourceTree = "<group>"; };
+		3C502BBE21066CA900211511 /* CCMLoginItemsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMLoginItemsManager.h; sourceTree = "<group>"; };
+		3C502BBF21066CA900211511 /* CCMLoginItemsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCMLoginItemsManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +449,8 @@
 				03C08294134F97940039E3BD /* CCMUserDefaultsManager.m */,
 				036FA722176236D900371BE9 /* CCMKeychainHelper.h */,
 				036FA723176236D900371BE9 /* CCMKeychainHelper.m */,
+				3C502BBE21066CA900211511 /* CCMLoginItemsManager.h */,
+				3C502BBF21066CA900211511 /* CCMLoginItemsManager.m */,
 			);
 			name = "Resource Managers";
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 				03C0829E134F97940039E3BD /* CCMBuildNotificationFactory.m in Sources */,
 				03C0829F134F97940039E3BD /* CCMBuildStatusTransformer.m in Sources */,
 				03C082A0134F97940039E3BD /* CCMConnection.m in Sources */,
+				3C502BC021066CA900211511 /* CCMLoginItemsManager.m in Sources */,
 				03C082A2134F97940039E3BD /* CCMImageFactory.m in Sources */,
 				03C082A3134F97940039E3BD /* CCMPreferencesController.m in Sources */,
 				03C082A4134F97940039E3BD /* CCMProject.m in Sources */,

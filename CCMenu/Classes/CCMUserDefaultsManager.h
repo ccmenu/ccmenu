@@ -17,7 +17,6 @@ enum {
 
 - (NSInteger)pollInterval;
 - (BOOL)shouldShowAppIconWhenInPrefs;
-- (BOOL)shouldStartWhenYouLogIn;
 - (BOOL)shouldShowTimerInMenu;
 - (BOOL)shouldShowLastBuildTimes;
 - (BOOL)shouldShowLastBuildLabel;
