@@ -14,8 +14,6 @@ High-priority Stories
 Low-priority Stories
 ====================
 
-#30 Auto start: As a developer I would like to set CCMenu to start at login in the CCMenu preference so that I don't have to go to the system preferences, or know about them. http://stackoverflow.com/questions/815063/how-do-you-make-your-app-open-at-login [Can be done from Dock and in System Preferences.]
-
 #21 Force build: As a developer I want to e able to force a build from the project window so that I do not have to go to the dashboard for this operation. [Few servers support this.] 
 
 #22 Selectable columns: As a developer I want to configure which columns are visible in the project window so that I can see the information that is most relevant to me. [Project window not used much?]

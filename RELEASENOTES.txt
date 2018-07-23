@@ -1,5 +1,13 @@
 CCMenu Release Notes
 
+CCMenu 14.0 (unreleased)
+
+* Advanced preferences now have a check box to set whether CCMenu should
+  open automatically when logging in. This is functionally the same as adding
+  CCMenu to the login items in System Preferences.
+* The sheet to add new projects is now resizable so that large list and long
+  project names can be managed.
+
 
 CCMenu 13.0
 
