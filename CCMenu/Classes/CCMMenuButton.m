@@ -6,7 +6,8 @@
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    [NSMenu popUpContextMenu:popUpMenu withEvent:theEvent forView:self];
+    if([self isEnabled])
+        [NSMenu popUpContextMenu:popUpMenu withEvent:theEvent forView:self];
 }
 
 @end
