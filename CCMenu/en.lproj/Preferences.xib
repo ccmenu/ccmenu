@@ -52,7 +52,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="TMP-GN-F5b">
                         <rect key="frame" x="1" y="1" width="308" height="282"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" autosaveColumns="NO" rowHeight="34" rowSizeStyle="automatic" viewBased="YES" id="1Z0-Rm-xIc">
                                 <rect key="frame" x="0.0" y="0.0" width="308" height="282"/>
@@ -722,16 +722,32 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" boxType="separator" id="jee-wW-sSv">
-                    <rect key="frame" x="12" y="125" width="326" height="5"/>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="0Vs-fB-sD4">
+                    <rect key="frame" x="12" y="218" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <box verticalHuggingPriority="750" boxType="separator" id="0Vs-fB-sD4">
-                    <rect key="frame" x="12" y="239" width="326" height="5"/>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="iJg-G0-P5G">
+                    <rect key="frame" x="12" y="246" width="326" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <button id="cIT-lj-3Qm">
-                    <rect key="frame" x="22" y="203" width="288" height="18"/>
+                <button misplaced="YES" id="rGY-Xr-2hs">
+                    <rect key="frame" x="22" y="227" width="288" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Start CCMenu when you log in" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ey0-R3-Od3">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="activationPolicyChanged:" target="-2" id="wCJ-Ad-Zn1"/>
+                        <binding destination="381" name="value" keyPath="values.StartWhenYouLogIn" id="0C0-ZD-yGx"/>
+                    </connections>
+                </button>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="jee-wW-sSv">
+                    <rect key="frame" x="12" y="118" width="326" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <button misplaced="YES" id="cIT-lj-3Qm">
+                    <rect key="frame" x="22" y="196" width="288" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show app icon when preferences are open" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BM6-aI-mz9">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -752,8 +768,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="FfQ-CN-wIH">
-                    <rect key="frame" x="21" y="94" width="241" height="18"/>
+                <button misplaced="YES" id="FfQ-CN-wIH">
+                    <rect key="frame" x="21" y="87" width="241" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Ask when certificate is unverifiable" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wml-x5-xNd">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
