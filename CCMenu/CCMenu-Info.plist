@@ -4,22 +4,10 @@
 <dict>
 	<key>CCMSourceVersion</key>
 	<string>#gitsha#</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>org.ccmenu</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>ccmenu+http</string>
-				<string>ccmenu+https</string>
-			</array>
-		</dict>
-	</array>
-	<key>CFBundleDisplayName</key>
-	<string>CCMenu</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>CCMenu</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
@@ -33,11 +21,23 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>13.0</string>
+	<string>14.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>org.ccmenu</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ccmenu+http</string>
+				<string>ccmenu+https</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>1130.3</string>
+	<string>1140.1</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>

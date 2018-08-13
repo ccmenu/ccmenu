@@ -1,6 +1,6 @@
 CCMenu Release Notes
 
-CCMenu 14.0 (unreleased)
+CCMenu 14.0
 
 * Advanced preferences now have a check box to set whether CCMenu should
   open automatically when logging in. This is functionally the same as adding
