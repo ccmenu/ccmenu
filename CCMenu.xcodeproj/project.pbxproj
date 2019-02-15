@@ -1172,9 +1172,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = CCMenu/CCMenu.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = LL62P32G5C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${BUILT_PRODUCTS_DIR}/Frameworks\"",
@@ -1185,6 +1187,8 @@
 				INFOPLIST_FILE = "CCMenu/CCMenu-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.sourceforge.cruisecontrol.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
