@@ -1,6 +1,8 @@
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "CCMImageFactory.h"
+#import "CCMUserDefaultsManager.h"
 #import "CCMProject.h"
 
 
@@ -82,6 +84,28 @@
     NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
 	// note: different to old behaviour
     XCTAssertEqualObjects(@"icon-inactive", [image name], @"Should have loaded correct image.");
+}
+
+
+- (void)testLastBuildSuccessfulSleepingImageNoColorWhenNoColorRequested
+{
+    id defaultsMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([defaultsMock shouldUseColorInMenuBar]).andReturn(NO);
+    [factory setValue:defaultsMock forKey:@"defaultsManager"];
+    NSDictionary *d = @{ @"activity": @"Sleeping", @"lastBuildStatus": @"Success" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+    XCTAssertTrue([image isTemplate]);
+}
+
+- (void)testLastBuildSuccessfulSleepingImageNoColorWhenNoColorForNonFailedRequested
+{
+    id defaultsMock = OCMClassMock([CCMUserDefaultsManager class]);
+    OCMStub([defaultsMock shouldUseColorInMenuBar]).andReturn(YES);
+    OCMStub([defaultsMock shouldUseColorOnlyForFailedStateInMenuBar]).andReturn(YES);
+    [factory setValue:defaultsMock forKey:@"defaultsManager"];
+    NSDictionary *d = @{ @"activity": @"Sleeping", @"lastBuildStatus": @"Success" };
+    NSImage *image = [factory imageForStatus:[CCMProjectStatus statusWithDictionary:d]];
+    XCTAssertTrue([image isTemplate]);
 }
 
 

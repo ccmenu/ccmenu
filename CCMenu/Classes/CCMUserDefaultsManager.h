@@ -21,6 +21,7 @@ enum {
 - (BOOL)shouldShowLastBuildTimes;
 - (BOOL)shouldShowLastBuildLabel;
 - (BOOL)shouldUseColorInMenuBar;
+- (BOOL)shouldUseColorOnlyForFailedStateInMenuBar;
 - (void)setShouldUseSymbolsForAllStatesInMenuBar:(BOOL)flag;
 - (BOOL)shouldUseSymbolsForAllStatesInMenuBar;
 - (BOOL)shouldHideSuccessfulBuilds;

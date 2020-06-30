@@ -52,6 +52,11 @@ NSString *CCMDefaultsServerUrlHistoryKey = @"ServerHistory";
     return [userDefaults boolForKey:@"UseColorInMenuBar"];
 }
 
+- (BOOL)shouldUseColorOnlyForFailedStateInMenuBar;
+{
+    return [userDefaults boolForKey:@"UseColorOnlyForFailedStateInMenuBar"];
+}
+
 - (void)setShouldUseSymbolsForAllStatesInMenuBar:(BOOL)flag
 {
     [userDefaults setBool:flag forKey:@"UseSymbolsForAllStatesInMenuBar"];

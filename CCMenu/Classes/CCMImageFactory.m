@@ -14,8 +14,6 @@
         image = [[NSBundle bundleForClass:[self class]] imageForResource:name];
 		[image setName:name];
 	}
-    [image setTemplate:![defaultsManager shouldUseColorInMenuBar]];
-
 	return image;
 }
 
@@ -51,7 +49,24 @@
             name = @"icon-inactive";
         }
     }
-    return [self imageNamed:name];
+    
+    NSImage *image = [self imageNamed:name];
+    [image setTemplate:NO];
+    if([defaultsManager shouldUseColorInMenuBar])
+    {
+        if([defaultsManager shouldUseColorOnlyForFailedStateInMenuBar])
+            [image setTemplate:![status buildDidFail]];
+        else
+            [image setTemplate:NO];
+    }
+    else
+    {
+        [image setTemplate:YES];
+    }
+    
+    
+    return image;
+    
 }
 
 - (NSImage *)imageForUnavailableServer
