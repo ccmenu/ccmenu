@@ -27,8 +27,7 @@ NSString *CCMProjectDefaultValueTransformerName = @"CCMProjectDefaultValueTransf
         name = [NSString stringWithFormat:@"%@ (%@)", name, displayName];
     NSDictionary *nameAttrs = @{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont systemFontSizeForControlSize:NSRegularControlSize]]};
     NSString *url = [value objectForKey:@"serverUrl"];
-    NSDictionary *urlAttrs = @{ NSFontAttributeName: [NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSSmallControlSize]],
-                                NSForegroundColorAttributeName: [NSColor disabledControlTextColor]};
+    NSDictionary *urlAttrs = @{ NSFontAttributeName: [NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSSmallControlSize]]};
 
     NSMutableAttributedString *result = [[[NSMutableAttributedString alloc] init] autorelease];
     [result appendAttributedString:[[[NSAttributedString alloc] initWithString:name attributes:nameAttrs] autorelease]];
