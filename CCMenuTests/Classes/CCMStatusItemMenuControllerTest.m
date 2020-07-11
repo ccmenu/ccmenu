@@ -23,6 +23,7 @@
     id                          serverMonitorMock;
     id                          imageFactoryMock;
     id                          statusItemMock;
+    id                          statusItemButtonMock;
 }
 
 @end
@@ -47,6 +48,9 @@
 	[menu addItem:[NSMenuItem separatorItem]];
 	[controller setValue:menu forKey:@"statusMenu"];
     OCMStub([statusItemMock menu]).andReturn(menu);
+    
+    statusItemButtonMock = OCMClassMock([NSButton class]);
+    OCMStub([statusItemMock button]).andReturn(statusItemButtonMock);
 
 	dummyImage = [[[NSImage alloc] init] autorelease];
 }
@@ -298,8 +302,8 @@
 
 	[controller displayProjects:nil];
 	
-    OCMVerify([statusItemMock setImage:dummyImage]);
-    OCMVerify([statusItemMock setTitle:@""]);
+    OCMVerify([statusItemButtonMock setImage:dummyImage]);
+    OCMVerify([statusItemButtonMock setTitle:@""]);
 }
 
 - (void)testDisplaysSuccessAndNoTextWhenAllProjectsWithStatusAreSleepingAndSuccessful
@@ -312,7 +316,7 @@
 	
 	[controller displayProjects:nil];
 	
-    OCMVerify([statusItemMock setImage:dummyImage]);
+    OCMVerify([statusItemButtonMock setImage:dummyImage]);
     OCMVerify([statusItemMock setFormattedTitle:@""]);
 }
 
@@ -328,7 +332,7 @@
 
 	[controller displayProjects:nil];
 	
-    OCMVerify([statusItemMock setImage:dummyImage]);
+    OCMVerify([statusItemButtonMock setImage:dummyImage]);
     OCMVerify([statusItemMock setFormattedTitle:@"2"]);
 }
 
@@ -343,7 +347,7 @@
 
 	[controller displayProjects:nil];
 
-    OCMVerify([statusItemMock setImage:dummyImage]);
+    OCMVerify([statusItemButtonMock setImage:dummyImage]);
     OCMVerify([statusItemMock setFormattedTitle:@""]);
 }
 
@@ -358,7 +362,7 @@
 
 	[controller displayProjects:nil];
 	
-    OCMVerify([statusItemMock setImage:dummyImage]);
+    OCMVerify([statusItemButtonMock setImage:dummyImage]);
     OCMVerify([statusItemMock setFormattedTitle:@""]);
 }
 
