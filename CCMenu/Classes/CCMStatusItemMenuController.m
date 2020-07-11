@@ -1,5 +1,4 @@
 
-#import "NSArray+EDExtensions.h"
 #import "NSObject+CCMAdditions.h"
 #import "NSDate+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"
@@ -18,7 +17,7 @@
     NSMutableDictionary *attr = [NSMutableDictionary dictionary];
     [attr setObject:[NSFont menuBarFontOfSize:0] forKey:NSFontAttributeName];
     NSAttributedString *strg = [[[NSAttributedString alloc] initWithString:aTitle attributes:attr] autorelease];
-    [self setAttributedTitle:strg];
+    [[self button] setAttributedTitle:strg];
 }
 
 @end
@@ -29,8 +28,7 @@
 - (void)awakeFromNib
 {
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];	
-    [statusItem setImage:[imageFactory imageForUnavailableServer]];
-	[statusItem setHighlightMode:YES];
+    [[statusItem button] setImage:[imageFactory imageForUnavailableServer]];
 	[statusItem setMenu:statusMenu];
     
     [[NSNotificationCenter defaultCenter] 
@@ -81,12 +79,12 @@
 {
     if((project == nil) || ([project status] ==nil))
     {
-        [item setImage:[imageFactory imageForUnavailableServer]];
-		[item setTitle:@""];
+        [[item button] setImage:[imageFactory imageForUnavailableServer]];
+		[[item button] setTitle:@""];
     } 
     else if([[project status] isBuilding] == NO)
     {
-        [item setImage:[imageFactory imageForStatus:[project status]]];
+        [[item button] setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
         if([[project status] buildDidFail])
         {
@@ -101,7 +99,7 @@
     }
     else
     {
-        [item setImage:[imageFactory imageForStatus:[project status]]];
+        [[item button] setImage:[imageFactory imageForStatus:[project status]]];
         NSString *text = @"";
         if([defaultsManager shouldShowTimerInMenu])
         {
@@ -229,7 +227,7 @@
 		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		if([project statusError] != nil) 
 		{
-			[alert setMessageText:NSLocalizedString(@"An error occured when retrieving the project status", "Alert message when an error occured talking to the server.")];
+			[alert setMessageText:NSLocalizedString(@"An error occurred when retrieving the project status", "Alert message when an error occured talking to the server.")];
 			[alert setInformativeText:[project statusError]];
 		}
 		else

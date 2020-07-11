@@ -147,7 +147,7 @@
             NSString *msg = [NSString stringWithFormat:@"CCMenu can't verify the identity of the server %@.", [feedURL host]];
             [panel setInformativeText:@"The certificate for this server is invalid. Do you want to continue anyway?"];
             [panel setAlternateButtonTitle:@"Cancel"];
-            return ([panel runModalForTrust:secTrust message:msg] == NSOKButton);
+            return ([panel runModalForTrust:secTrust message:msg] == NSModalResponseOK);
         }
 
         default:

@@ -67,7 +67,10 @@ Setting of the factory defaults uses the #registerFactoryDefaults method and hap
 + (void)reportException:(NSException *)theException
 {
     NSLog(@"%@: %@", [theException name], [theException reason]);
-    NSRunAlertPanel(nil, @"An unexpected error has occured which may cause %@ to malfunction. You may want to save copies of your open documents and quit %@.\n\n%@: %@", @"Such is life", nil, nil, [[NSProcessInfo processInfo] processName], [[NSProcessInfo processInfo] processName], [theException name], [theException reason]);
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert setMessageText:[NSString stringWithFormat: @"An unexpected error has occured which may cause %@ to malfunction. You may want to save copies of your open documents and quit %@.", [[NSProcessInfo processInfo] processName], [[NSProcessInfo processInfo] processName]]];
+    [alert setInformativeText:[NSString stringWithFormat:@"%@: %@",  [theException name], [theException reason]]];
+    [alert runModal];
 }
 
 
