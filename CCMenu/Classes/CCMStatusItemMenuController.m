@@ -29,6 +29,7 @@
 {
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];	
     [[statusItem button] setImage:[imageFactory imageForUnavailableServer]];
+    [[[statusItem button] cell] setImagePosition:NSImageLeft];
 	[statusItem setMenu:statusMenu];
     
     [[NSNotificationCenter defaultCenter] 
