@@ -10,6 +10,4 @@
 
 + (NSString *)descriptionOfInterval:(NSTimeInterval)interval withSign:(BOOL)withSign;
 
-- (NSString *)timeAsString;
-
 @end
