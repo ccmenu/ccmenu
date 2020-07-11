@@ -1,36 +1,36 @@
 
 #import "NSString+EDExtensions.h"
-#import "NSCalendarDate+CCMAdditions.h"
+#import "NSDate+CCMAdditions.h"
 
+@implementation NSDate(CCMAdditions)
 
-@implementation NSCalendarDate(CCMAdditions)
-
-- (NSString *)relativeDescriptionOfPastDate:(NSCalendarDate *)other
+- (NSString *)descriptionRelativeToNow
 {
-	NSInteger days, hours, mins;
-	[self years:NULL months:NULL days:&days hours:&hours minutes:&mins seconds:NULL sinceDate:other];
-	
-	if(days > 1)
-		return [NSString stringWithFormat:@"%ld days ago", days];
-	if(days == 1)
-		return @"1 day ago";
-	if(hours > 1)
-		return [NSString stringWithFormat:@"%ld hours ago", hours];
-	if(hours == 1)
-		return @"an hour ago";
-	if(mins > 1)
-		return [NSString stringWithFormat:@"%ld minutes ago", mins];
-	if(mins == 1)
-		return @"a minute ago";
-	return @"less than a minute ago";
+    NSCalendar *calender = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *now = [NSDate date];
+    NSTimeInterval interval = [now timeIntervalSinceDate:self];
+
+    if(interval < 60)
+        return @"less than a minute ago";
+    if(interval < 120)
+        return @"a minute ago";
+    if(interval < 3600)
+        return [NSString stringWithFormat:@"%ld minutes ago", (long)(interval / 60)];
+    if(interval < 2 * 3600)
+        return @"an hour ago";
+    if(interval < 24 * 3600)
+        return [NSString stringWithFormat:@"%ld hours ago", (long)(interval / 3600)];
+    if([calender isDateInYesterday:self])
+        return @"yesterday";
+    return [NSString stringWithFormat:@"%ld days ago", MAX(2, (long)(interval / (24 * 3600)))];
 }
 
-- (NSString *)descriptionOfIntervalWithDate:(NSCalendarDate *)other
-{  
+- (NSString *)descriptionOfIntervalWithDate:(NSDate *)other
+{
     return [self descriptionOfIntervalSinceDate:other withSign:NO];
 }
 
-- (NSString *)descriptionOfIntervalSinceDate:(NSCalendarDate *)other withSign:(BOOL)withSign
+- (NSString *)descriptionOfIntervalSinceDate:(NSDate *)other withSign:(BOOL)withSign
 {
     return [[self class] descriptionOfInterval:[self timeIntervalSinceDate:other] withSign:withSign];
 }
@@ -49,11 +49,6 @@
         return [NSString stringWithFormat:@"%@%ds", sign, interval];
     return @"";
 }
-
-
-@end
-
-@implementation NSDate(CCMAdditions)
 
 - (NSString *)timeAsString
 {

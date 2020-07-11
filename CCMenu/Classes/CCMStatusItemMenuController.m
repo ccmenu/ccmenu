@@ -1,7 +1,7 @@
 
 #import "NSArray+EDExtensions.h"
 #import "NSObject+CCMAdditions.h"
-#import "NSCalendarDate+CCMAdditions.h"
+#import "NSDate+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"
 #import "NSWorkspace+CCMAdditions.h"
 
@@ -105,10 +105,10 @@
         NSString *text = @"";
         if([defaultsManager shouldShowTimerInMenu])
         {
-            NSCalendarDate *estimatedComplete = [project estimatedBuildCompleteTime];
+            NSDate *estimatedComplete = [project estimatedBuildCompleteTime];
             if(estimatedComplete != nil)
             {
-                text = [[NSCalendarDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
+                text = [[NSDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
             }
         }
         [item setFormattedTitle:text];
@@ -179,10 +179,7 @@
     {
         NSDate *lbt = [[project status] lastBuildTime];
         if(lbt != nil)
-        {
-            // the lastBuildTime date object is not a calendar date but it implements enough to be passed as one here
-            [infoTexts addObject:[[NSCalendarDate date] relativeDescriptionOfPastDate:(NSCalendarDate *)lbt]];
-        }
+            [infoTexts addObject:[lbt descriptionRelativeToNow]];
     }
     if([infoTexts count] > 0)
     {

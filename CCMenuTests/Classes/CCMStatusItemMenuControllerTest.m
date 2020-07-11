@@ -5,6 +5,7 @@
 
 #import "NSArray+CCMAdditions.h"
 #import "CCMStatusItemMenuController.h"
+#import "NSDate+CCMAdditions.h"
 
 
 @interface NSStatusItem(MyTitleFormatting)
@@ -56,7 +57,7 @@
 	NSMutableDictionary *info = [NSMutableDictionary dictionary];
 	[info setObject:activity forKey:@"activity"];
 	[info setObject:status forKey:@"lastBuildStatus"];
-	[info setObject:[NSCalendarDate calendarDate] forKey:@"lastBuildDate"];
+	[info setObject:[NSDate date] forKey:@"lastBuildDate"];
     [project setStatus:[[[CCMProjectStatus alloc] initWithDictionary:info] autorelease]];
 	return project;
 }
@@ -102,9 +103,9 @@
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
     CCMProject *p1 = [[[CCMProject alloc] initWithName:@"abc"] autorelease];
-    [p1 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-90]}];
+    [p1 updateWithInfo:@{@"lastBuildTime": [[NSDate date] dateByAddingTimeInterval:-90]}];
     CCMProject *p2 = [[[CCMProject alloc] initWithName:@"xyz"] autorelease];
-    [p2 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-10]}];
+    [p2 updateWithInfo:@{@"lastBuildTime": [[NSDate date] dateByAddingTimeInterval:-10]}];
     NSArray *const projects = @[p1, p2];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
                  
@@ -123,9 +124,9 @@
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
     CCMProject *p1 = [[[CCMProject alloc] initWithName:@"xyz"] autorelease];
-    [p1 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-90]}];
+    [p1 updateWithInfo:@{@"lastBuildTime": [[NSDate date] dateByAddingTimeInterval:-90]}];
     CCMProject *p2 = [[[CCMProject alloc] initWithName:@"abc"] autorelease];
-    [p2 updateWithInfo:@{@"lastBuildTime": [[NSCalendarDate calendarDate] dateByAddingTimeInterval:-10]}];
+    [p2 updateWithInfo:@{@"lastBuildTime": [[NSDate date] dateByAddingTimeInterval:-10]}];
     NSArray *const projects = @[p1, p2];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
 
@@ -266,9 +267,8 @@
     OCMStub([defaultsMock shouldShowLastBuildLabel]).andReturn(YES);
     [controller setValue:defaultsMock forKey:@"defaultsManager"];
 
-    id dateMock = OCMClassMock([NSCalendarDate class]);
-    NSTimeInterval interval = [[NSCalendarDate date] timeIntervalSinceReferenceDate] - 61;
-    OCMStub([dateMock timeIntervalSinceReferenceDate]).andReturn(interval);
+    id dateMock = OCMClassMock([NSDate class]);
+    OCMStub([dateMock descriptionRelativeToNow]).andReturn(@"just now");
     
     CCMProject *p1 = [[[CCMProject alloc] initWithName:@"project1"] autorelease];
     CCMProject *p2 = [[[CCMProject alloc] initWithName:@"project2"] autorelease];
@@ -284,9 +284,9 @@
     
 	NSArray *items = [[[controller statusItem] menu] itemArray];
 	XCTAssertEqualObjects(@"project1", [[items objectAtIndex:0] title], @"Should have shown just name when nothing else is known.");
-    XCTAssertEqualObjects(@"project2 \u2014 a minute ago", [[items objectAtIndex:1] title], @"Should have included last build time where known.");
+    XCTAssertEqualObjects(@"project2 \u2014 just now", [[items objectAtIndex:1] title], @"Should have included last build time where known.");
     XCTAssertEqualObjects(@"project3 \u2014 123", [[items objectAtIndex:2] title], @"Should have included last build label where known.");
-    XCTAssertEqualObjects(@"project4 \u2014 123, a minute ago", [[items objectAtIndex:3] title], @"Should have included last build time and label where known.");
+    XCTAssertEqualObjects(@"project4 \u2014 123, just now", [[items objectAtIndex:3] title], @"Should have included last build time and label where known.");
 }
 
 
@@ -370,7 +370,7 @@
     
     CCMProject *p1 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p1 setBuildDuration:@90];
-    [p1 setBuildStartTime:[NSCalendarDate date]];
+    [p1 setBuildStartTime:[NSDate date]];
     OCMStub([serverMonitorMock projects]).andReturn(@[p1]);
 
 	[controller displayProjects:nil];
@@ -392,7 +392,7 @@
     CCMProject *p4 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Success"];
     [p4 setBuildDuration:@70];
     NSArray *const projects = @[p1, p2, p3, p4];
-    [[projects each] setBuildStartTime:[NSCalendarDate date]];
+    [[projects each] setBuildStartTime:[NSDate date]];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
 
 	[controller displayProjects:nil];
@@ -411,7 +411,7 @@
     CCMProject *p2 = [self createProjectWithActivity:@"Building" lastBuildStatus:@"Failure"];
     [p2 setBuildDuration:@90];
     NSArray *projects = @[p1, p2];
-    [[projects each] setBuildStartTime:[NSCalendarDate date]];
+    [[projects each] setBuildStartTime:[NSDate date]];
     OCMStub([serverMonitorMock projects]).andReturn(projects);
 
 	[controller displayProjects:nil];

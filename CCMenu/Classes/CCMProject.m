@@ -129,18 +129,18 @@
     return buildDuration;
 }
 
-- (void)setBuildStartTime:(NSCalendarDate *)aTime
+- (void)setBuildStartTime:(NSDate *)aTime
 {
     [buildStartTime autorelease];
     buildStartTime = [aTime retain];
 }
 
-- (NSCalendarDate *)buildStartTime
+- (NSDate *)buildStartTime
 {
     return buildStartTime;
 }
 
-- (NSCalendarDate *)estimatedBuildCompleteTime
+- (NSDate *)estimatedBuildCompleteTime
 {
     if(buildDuration == nil)
         return nil;

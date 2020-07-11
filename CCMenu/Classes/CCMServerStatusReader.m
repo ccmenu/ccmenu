@@ -19,33 +19,23 @@
 
 - (NSDate *)convertDateString:(NSString *)dateString
 {
-    // see http://stackoverflow.com/questions/2201216/is-there-a-simple-way-of-converting-an-iso8601-timestamp-to-a-formatted-nsdate
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     if([dateString length] <= 19)
     {
         // assume old-style CruiseControl timestamp without timezone, assume local time
+        NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
         [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
         [formatter setTimeZone:[NSTimeZone localTimeZone]];
-    }
-    else if([[dateString substringFromIndex:[dateString length] - 1] isEqualToString:@"Z"])
-    {
-        // ISO8601 with Zulu/GMT time marker, used by Jenkins for example
-        [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
-        [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+        return [formatter dateFromString:dateString];
     }
     else
     {
-        // anything else, if there's a numerical timzone we try to help the formatter by inserting a blank and "GMT"
-        [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss ZZZZ"];
-        NSCharacterSet *tzIndicator = [NSCharacterSet characterSetWithCharactersInString:@"+-"];
-        NSRange r = [dateString rangeOfCharacterFromSet:tzIndicator options:NSBackwardsSearch];
-        if(r.location == [dateString length] - 5 || r.location == [dateString length] - 6)
-        {
-            NSRange rr = NSMakeRange(19, r.location - 19);
-            dateString = [dateString stringByReplacingCharactersInRange:rr withString:@" "];
-        }
+        // assume some kind of ISO8601 date format
+        NSISO8601DateFormatter *formatter = [[[NSISO8601DateFormatter alloc] init] autorelease];
+        // Apple's parser doesn't seem to like fractional components; so we remove them
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[.,][0-9]+" options:0 error:NULL];
+        dateString = [regex stringByReplacingMatchesInString:dateString options:0 range:NSMakeRange(0, [dateString length]) withTemplate:@""];
+        return [formatter dateFromString:dateString];
     }
-    return [formatter dateFromString:dateString];
 }
 
 - (NSString *)fixUrlStringIfNecessary:(NSString *)urlString

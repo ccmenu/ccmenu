@@ -1,6 +1,6 @@
 
 #import "CCMRelativeDateTransformer.h"
-#import "NSCalendarDate+CCMAdditions.h"
+#import "NSDate+CCMAdditions.h"
 
 NSString *CCMRelativeDateTransformerName = @"CCMRelativeDateTransformer";
 
@@ -9,7 +9,7 @@ NSString *CCMRelativeDateTransformerName = @"CCMRelativeDateTransformer";
 
 + (Class)transformedValueClass 
 { 
-	return [NSCalendarDate class]; 
+	return [NSDate class]; 
 }
 
 + (BOOL)allowsReverseTransformation 
@@ -21,7 +21,7 @@ NSString *CCMRelativeDateTransformerName = @"CCMRelativeDateTransformer";
 {
 	if(value == nil)
 		return nil;
-	return [[NSCalendarDate calendarDate] relativeDescriptionOfPastDate:value];
+	return [value descriptionRelativeToNow];
 }
 
 @end

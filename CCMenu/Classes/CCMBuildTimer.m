@@ -19,7 +19,7 @@
     CCMProject *project = [notification object];
     if([project buildStartTime] != nil)
         [self buildComplete:notification];
-    [project setBuildStartTime:[NSCalendarDate date]];
+    [project setBuildStartTime:[NSDate date]];
 }
 
 - (void)buildComplete:(NSNotification *)notification

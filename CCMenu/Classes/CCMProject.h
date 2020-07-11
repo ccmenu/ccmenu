@@ -11,7 +11,7 @@
 	CCMProjectStatus	*status;
     NSString            *statusError;
     NSNumber            *buildDuration;
-    NSCalendarDate      *buildStartTime;
+    NSDate              *buildStartTime;
 }
 
 + (CCMProject *)projectWithName:(NSString *)aName inFeed:(NSString *)aFeedURL;
@@ -39,10 +39,10 @@
 - (void)setBuildDuration:(NSNumber *)duration;
 - (NSNumber *)buildDuration;
 
-- (void)setBuildStartTime:(NSCalendarDate *)aTime;
-- (NSCalendarDate *)buildStartTime;
+- (void)setBuildStartTime:(NSDate *)aTime;
+- (NSDate *)buildStartTime;
 
-- (NSCalendarDate *)estimatedBuildCompleteTime;
+- (NSDate *)estimatedBuildCompleteTime;
 
 - (BOOL)hasStatus __unused;
 

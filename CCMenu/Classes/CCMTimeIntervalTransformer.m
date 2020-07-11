@@ -1,6 +1,6 @@
 
 #import "CCMTimeIntervalTransformer.h"
-#import "NSCalendarDate+CCMAdditions.h"
+#import "NSDate+CCMAdditions.h"
 
 NSString *CCMTimeIntervalTransformerName = @"CCMTimeIntervalTransformer";
 
@@ -21,7 +21,7 @@ NSString *CCMTimeIntervalTransformerName = @"CCMTimeIntervalTransformer";
 {
 	if(value == nil)
 		return nil;
-	return [NSCalendarDate descriptionOfInterval:[value doubleValue] withSign:NO];
+	return [NSDate descriptionOfInterval:[value doubleValue] withSign:NO];
 }
 
 @end
