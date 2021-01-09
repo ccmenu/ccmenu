@@ -1,9 +1,11 @@
 CCMenu Release Notes
 
-CCMenu 15.0 (unreleased)
+CCMenu 15.0
 
 * New mode for menu bar icon. In this mode, the icon uses colour when at
   least one build is failing. Otherwise it uses the black and white variant.
+* Slightly darkened the green icons to increase contrast in tinted menus.
+* Fix for redirect requests when authentication must be pushed.
 * Fix for problems with non-Georgian calendars.
 
 
