@@ -74,10 +74,15 @@
 {
     NSURL *feedURLWithoutCredentials = [NSURL URLWithString:[[feedURL absoluteString] stringByReplacingCredentials:@""]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:feedURLWithoutCredentials cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
+	[self addBasicAuthToRequestIfNecessary:request];
+    return request;
+}
+
+- (void)addBasicAuthToRequestIfNecessary:(NSMutableURLRequest *)request
+{
     BOOL isInCloudbeesDomain = ([feedURL host] != nil) && ([[feedURL host] rangeOfString:@"cloudbees.com"].location != NSNotFound);
     if((useHudsonJenkinsAuthWorkaround || isInCloudbeesDomain) && ((credential != nil) || [self setUpCredential]))
         [self addBasicAuthToRequest:request];
-    return request;
 }
 
 - (void)addBasicAuthToRequest:(NSMutableURLRequest *)request
@@ -155,6 +160,17 @@
     }
 }
 
+
+- (nullable NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(nullable NSURLResponse *)redirectResponse
+{
+	if(!redirectResponse)
+		return request;
+
+	NSMutableURLRequest *newRequest = [request mutableCopy];
+	[newRequest setURL:[request URL]];
+	[self addBasicAuthToRequestIfNecessary:newRequest];
+	return newRequest;
+}
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
