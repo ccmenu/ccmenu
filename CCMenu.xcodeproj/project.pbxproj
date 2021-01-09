@@ -709,7 +709,6 @@
 				ORGANIZATIONNAME = ThoughtWorks;
 				TargetAttributes = {
 					038ABE18134F11080053F0D1 = {
-						DevelopmentTeam = LL62P32G5C;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1153,6 +1152,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCMenu/CCMenu.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${TARGET_BUILD_DIR}/Frameworks\"",
@@ -1174,11 +1174,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = CCMenu/CCMenu.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = LL62P32G5C;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${BUILT_PRODUCTS_DIR}/Frameworks\"",
