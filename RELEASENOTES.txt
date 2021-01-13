@@ -8,7 +8,7 @@ CCMenu 15.0
 * Slightly darkened the green icons to increase contrast in tinted menus.
 * Built with hardened runtime settings.
 * Fix for redirect requests when authentication must be pushed.
-* Fix for problems with non-Georgian calendars.
+* Fix for problems with non-Gregorian calendars.
 
 
 CCMenu 14.0
