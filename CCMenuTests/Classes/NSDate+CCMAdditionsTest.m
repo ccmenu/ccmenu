@@ -120,9 +120,16 @@
 	XCTAssertEqualObjects([date descriptionOfIntervalSinceDate:now withSign:YES], @"-59:09", @"Should have returned time with one minus sign in front.");
 }
 
+- (void)testDescribesCloseToZeroLengthIntervalWithSign
+{
+    [comps setNanosecond:-100];
+    NSDate *date = [calendar dateByAddingComponents:comps toDate:now options:0];
+    XCTAssertEqualObjects([date descriptionOfIntervalSinceDate:now withSign:YES], @"-00s", @"Should have returned zero seconds with correct sign.");
+}
+
 - (void)testDescribesZeroLengthIntervalWithEmptyString
 {
-	XCTAssertEqualObjects([now descriptionOfIntervalSinceDate:now withSign:YES], @"", @"Should have returned empty string.");
+	XCTAssertEqualObjects([now descriptionOfIntervalSinceDate:now withSign:NO], @"", @"Should have returned empty string.");
 }
 
 @end

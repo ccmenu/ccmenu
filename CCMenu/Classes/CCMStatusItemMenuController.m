@@ -15,7 +15,9 @@
 - (void)setFormattedTitle:(NSString *)aTitle
 {
     NSMutableDictionary *attr = [NSMutableDictionary dictionary];
-    [attr setObject:[NSFont menuBarFontOfSize:0] forKey:NSFontAttributeName];
+    CGFloat size = [[NSFont menuBarFontOfSize:0] pointSize];
+    NSFont *font = [NSFont monospacedDigitSystemFontOfSize:size weight:NSFontWeightRegular];
+    [attr setObject:font forKey:NSFontAttributeName];
     NSAttributedString *strg = [[[NSAttributedString alloc] initWithString:aTitle attributes:attr] autorelease];
     [[self button] setAttributedTitle:strg];
 }
@@ -81,8 +83,8 @@
     if((project == nil) || ([project status] ==nil))
     {
         [[item button] setImage:[imageFactory imageForUnavailableServer]];
-		[[item button] setTitle:@""];
-    } 
+        [[item button] setTitle:@""];
+    }
     else if([[project status] isBuilding] == NO)
     {
         [[item button] setImage:[imageFactory imageForStatus:[project status]]];
@@ -108,6 +110,8 @@
             if(estimatedComplete != nil)
             {
                 text = [[NSDate date] descriptionOfIntervalSinceDate:estimatedComplete withSign:YES];
+                if([text length] == 3)
+                    text = [text stringByAppendingString:@"  "];
             }
         }
         [item setFormattedTitle:text];

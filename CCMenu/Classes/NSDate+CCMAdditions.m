@@ -37,16 +37,17 @@
 
 + (NSString *)descriptionOfInterval:(NSTimeInterval)timeInterval withSign:(BOOL)withSign
 {
-    int interval = (int)timeInterval;
-    NSString *sign = withSign ? ((interval < 0) ? @"-" : @"+") : @"";
-    interval = abs(interval);
+    NSString *sign = withSign ? ((timeInterval < 0) ? @"-" : @"+") : @"";
+    int interval = abs((int)timeInterval);
 
     if(interval > 3600)
         return [NSString stringWithFormat:@"%@%d:%02d:%02d", sign, interval / 3600, (interval / 60) % 60, interval % 60];
     if(interval > 60)
         return [NSString stringWithFormat:@"%@%d:%02d", sign, interval / 60, interval % 60];
     if(interval > 0)
-        return [NSString stringWithFormat:@"%@%ds", sign, interval];
+        return [NSString stringWithFormat:@"%@%02ds", sign, interval];
+    if(timeInterval != 0)
+        return [NSString stringWithFormat:@"%@00s", sign];
     return @"";
 }
 

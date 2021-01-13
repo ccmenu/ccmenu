@@ -1,5 +1,10 @@
 CCMenu Release Notes
 
+CCMenu 16.0 (unreleased)
+
+* Using fixed width digits to display time in menu bar.
+
+
 CCMenu 15.0
 
 * Native support for Apple Silicon Macs.
