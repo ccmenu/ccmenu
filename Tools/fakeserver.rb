@@ -88,18 +88,18 @@ __END__
   %h1 Fake CI Server
   %table
     %tr
-      %td Activitiy:	
+      %td Activitiy:
       %td= @@ACTIVITY
     %tr
       %td Status:
       %td= @@STATUS
     %tr
-      %td Build number:	
+      %td Build number:
       %td= @@BUILD_NUM
     %tr
-      %td Build time:	
+      %td Build time:
       %td= @@BUILD_TIME
-  %p 
+  %p
   %form{:name => "input", :action => "control/build", :method => "post"}
     %input{:type => "submit", :value => "Start build", :disabled => is_building() }
   %form{:name => "input", :action => "control/success", :method => "post"}
