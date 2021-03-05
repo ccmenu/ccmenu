@@ -141,7 +141,7 @@ NSString *CCMProjectStatusUpdateNotification = @"CCMProjectStatusUpdateNotificat
 		if(notification != nil)
 			[notificationCenter postNotification:notification];
 	}
- 	NSDictionary *projectErrorInfo = [NSDictionary dictionaryWithObject:@"No project information provided by server." forKey:@"errorString"];
+ 	NSDictionary *projectErrorInfo = [NSDictionary dictionaryWithObject:@"The server did not provide information for this project. If the project has been renamed on the server you have to remove this project and add it with the new name." forKey:@"errorString"];
 	[[[projectsByName allValues] each] updateWithInfo:projectErrorInfo];
     
 	[notificationCenter postNotificationName:CCMProjectStatusUpdateNotification object:self];
