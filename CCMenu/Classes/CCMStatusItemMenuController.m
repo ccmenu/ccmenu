@@ -229,6 +229,7 @@
     }
     else
 	{
+        [NSApp activateIgnoringOtherApps:YES];
 		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		if([project statusError] != nil) 
 		{
