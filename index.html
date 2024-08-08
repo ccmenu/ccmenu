@@ -6,22 +6,21 @@
 	<meta name="twitter:title" content="CCMenu for macOS" />
 	<meta name="twitter:description" content="Display the build status of projects on a continuous integration server as an item in the Mac's menu bar." />
 	<meta name="twitter:image" content="http://ccmenu.org/images/ccmenu-combined.png" />
-	
+
 	<title>CCMenu</title>
 	<link rel="stylesheet" type="text/css" href="opensans.css">
 	<link rel="stylesheet" type="text/css" href="standard.css">
 	<script src="jquery-1.9.1.min.js"></script>
-	<script src="smoothscroll.js"></script>
 </head>
 
 <body id="main">
-	
+
 		<header>
 			<div class="content">
-				
+
 				<img id="icon" class="floatleft" src="images/ccmenu.png" alt="CCMenu logo" width="96" height="96">
 				<h1>CCMenu</h1>
-			
+
 			</div>
 
 			<a href="https://github.com/erikdoe/ccmenu"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme_right_gray_6d6d6d.png"></a>
@@ -30,10 +29,15 @@
 
 
 		<section class="intro">
+
 			<div class="content">
-				
+				<p class="note">This version of CCMenu has been retired. Please visit <a href="https://ccmenu.org">ccmenu.org</a> for the new version.
+			</div>
+
+			<div class="content">
+
 				<p class="introtext">CCMenu displays the build status of projects on a continuous integration server as an item in the Mac's menu bar. It started as part of the <a href="https://en.wikipedia.org/wiki/CruiseControl">CruiseControl</a> project that built the first continuous integration server.
-	
+
 				<p class="nobottom">CCMenu allows you to:
 				<ul>
 					<img class="floatright screenshot" width="210" height="270" src="images/screenshot_menu.png" alt="Screenshot: CCMenu">
@@ -44,23 +48,23 @@
 					<li>See detailed build status information in the projects window</li>
 					<li>Receive notification of completed builds via Notification Center</li>
 				</ul>
-				    
+
 				<p>CCMenu works with all servers that can provide a feed in the &ldquo;cctray&rdquo; XML format. This includes CruiseControl, CircleCI, GreenhouseCI, Jenkins, Snap CI, TeamCity, gocd, and Travis CI. A updated list is available <a href="https://github.com/erikdoe/ccmenu/wiki/Supported-Servers">here</a>.
 
-		        <p class="lastpara"><span id="todownload-button"><a class="smoothScroll" href="#download">Go to download</a></span> <span id="other-button"><a href="https://github.com/erikdoe/ccmenu/issues">Report an issue</a></span>
-      
+		        <p class="lastpara"><span id="todownload-button"><a href="https://github.com/ccmenu/ccmenu/releases">Download</a></span> <span id="other-button"><a href="https://github.com/ccmenu/ccmenu/issues">Report issue</a></span>
+
 			</div>
     </section>
 
 
     <section class="features">
 			<div class="content">
-				
+
 				<div class="box50 floatleft">
 					<h3>The menu</h3>
-									
-					<p>The summary icon in the menu bar and the icons for the individual projects in the menu convey information about the project status: 
-			
+
+					<p>The summary icon in the menu bar and the icons for the individual projects in the menu convey information about the project status:
+
 					<p class="iconlist">
 					<img src="images/icon-success@2x.png" width="16" height="16"> The most recent build was successful<br>
 					<img src="images/icon-failure@2x.png" width="16" height="16"> The most recent build failed<br>
@@ -68,12 +72,12 @@
 					<img src="images/icon-failure-building@2x.png" width="16" height="16"> The project is building, previous build was broken<br>
 					<img src="images/icon-pause@2x.png" width="16" height="16"> The project is disabled or waiting for a build agent<br>
 					<img src="images/icon-inactive@2x.png" width="16" height="16"> The server or project status are unavailable<br>
-	
-					<p>Clicking on a project in the menu opens the project's web page in the default web browser. Depending on the continuous integration server this can be a project overview page, or a page with details about the last build. 
 
-					<p class="nobottom"><b>Please note:</b> CCMenu will simply open the link given to it by the server. Problems like the &ldquo;wrong&rdquo; page opening, port missing, or incorrect URL scheme, all must be fixed on the server.  
+					<p>Clicking on a project in the menu opens the project's web page in the default web browser. Depending on the continuous integration server this can be a project overview page, or a page with details about the last build.
+
+					<p class="nobottom"><b>Please note:</b> CCMenu will simply open the link given to it by the server. Problems like the &ldquo;wrong&rdquo; page opening, port missing, or incorrect URL scheme, all must be fixed on the server.
 				</div>
-	
+
 				<div class="box50 floatleft">
 					<h3>Notifications</h3>
 
@@ -108,14 +112,14 @@
 
 				<p><img class="floatright screenshot" width="300" height="450" src="images/screenshot_config.png" alt="Screenshot: CCMenu configuration">
 
-				To add a new project, click on the plus icon below the project list in the preferences panel. In the sheet that opens type the URL of the server into the text field or select an existing server from the drop down list. 
-			
+				To add a new project, click on the plus icon below the project list in the preferences panel. In the sheet that opens type the URL of the server into the text field or select an existing server from the drop down list.
+
 				<p>You can enter just the hostname or parts of the URL and CCMenu will then try various common locations for the CCTray feed. If your server has a custom configuration you may have to enter the full URL for the feed.
 				<p>If you are using Travis CI please enter a URL of this form:<br>
 				<code>https://api.travis-ci.org/repositories/{user}/{repo}/cc.xml</code>
-			
+
 				<p>You can drag the projects in the list to arrange the order in which they are displayed. Alternatively you can choose to have the projects sorted alphabetically or by last build time. Note, that the preference to sort the projects only affects the menu, not the project list in preferences.
-			
+
 				<p>The preferences window is resizable when the project list is shown.
 
 				<h4>URL schemes (available with CCMenu 13.0 or higher)</h4>
@@ -155,11 +159,9 @@
 			<div class="content">
 				<h3>Download</h3>
 
-				<p>CCMenu is available on the Mac App Store. 
-					
-				<p><a href="https://geo.itunes.apple.com/us/app/ccmenu/id603117688?mt=12" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/macappstore-lrg.svg) no-repeat;width:165px;height:40px;background-size:contain;"></a>
-					
-				<p>	Old versions of CCMenu (CCMenu 1.8 and older) can be downloaded from the <a href="https://sourceforge.net/projects/ccmenu/files/CCMenu/">file archive</a> on SourceForge, where the project was hosted until 2014. Newer versions and pre-releases are available on the <a href="https://github.com/erikdoe/ccmenu/releases">Github releases</a> page. These versions do not update automatically and you will not be notified when new versions become available. Unless you have a specific reason please install CCMenu from the App Store.
+				<p>	Old versions of CCMenu (CCMenu 1.8 and older) can be downloaded from the <a href="https://sourceforge.net/projects/ccmenu/files/CCMenu/">file archive</a> on SourceForge, where the project was hosted until 2014. Newer versions and pre-releases are available on the <a href="https://github.com/erikdoe/ccmenu/releases">GitHub releases</a> page. These versions do not update automatically and you will not be notified when new versions become available.
+
+				<p><b>Unless you have a specific reason please install the <a href="https://geo.itunes.apple.com/app/ccmenu/id603117688?mt=12">current version of CCMenu</a> from the App Store.</b>
 
 				<p class="nobottom">&nbsp;
 			</div>
@@ -171,8 +173,8 @@
 
 				<div class="box33 floatleft">
 					<h4><span id="download">Source code</h4>
-					<p>View the source on <a href="https://github.com/erikdoe/ccmenu">Github</a>.
-					<p>Send bug fixes and changes as pull requests on Github. You can also <a href="https://github.com/erikdoe/ccmenu/issues">suggest enhancements</a>.
+					<p>View the source on <a href="https://github.com/ccmenu/ccmenu">Github</a>.
+					<p>Send bug fixes and changes as pull requests on Github. You can also <a href="https://github.com/ccmenu/ccmenu/issues">suggest enhancements</a>.
 				</div>
 
 
@@ -184,7 +186,7 @@
 
 
 				<div class="box33 floatleft">
-					<h4>Background</h4>					
+					<h4>Background</h4>
 					<p>Read Martin Fowler's article on <a href="http://www.martinfowler.com/articles/continuousIntegration.html">Continuous Integration</a>.
 					<p>Find out more at the <a href="http://www.thoughtworks.com/insights/continuous-delivery">ThoughtWorks Continuous Delivery insights channel</a>.
 				</div>
@@ -194,19 +196,19 @@
 
 			</div>
 		</section>
-		
-		
+
+
 		<footer>
 			<div class="content">
-				<p>Copyright &copy; 2007-2017 ThoughtWorks Inc. CCMenu is open source software. See <a href="https://github.com/erikdoe/ccmenu/blob/master/LICENSE">LICENSE</a> for details.
+				<p>Copyright &copy; 2007-2021 ThoughtWorks Inc. CCMenu is open source software. See <a href="https://github.com/erikdoe/ccmenu/blob/master/LICENSE">LICENSE</a> for details.
 			</div>
 		</footer>
-	
+
 <!-- Start of StatCounter Code for Default Guide -->
 <script type="text/javascript">
-var sc_project=9692569; 
-var sc_invisible=1; 
-var sc_security="9ebb2d8d"; 
+var sc_project=9692569;
+var sc_invisible=1;
+var sc_security="9ebb2d8d";
 var scJsHost = (("https:" == document.location.protocol) ?
 "https://secure." : "http://www.");
 document.write("<sc"+"ript type='text/javascript' src='" +
@@ -219,6 +221,6 @@ class="statcounter"
 src="http://c.statcounter.com/9692569/0/9ebb2d8d/1/"
 alt="hits counter"></a></div></noscript>
 <!-- End of StatCounter Code for Default Guide -->
-	
-</body> 
+
+</body>
 </html>

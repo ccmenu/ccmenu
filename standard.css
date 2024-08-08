@@ -138,12 +138,21 @@ ul {
 	margin-left: 0.3em;
 }
 
+.note {
+	font-weight: 400;
+	background-color: #BBB;
+	text-align: center;
+	border: 1px solid #444;
+	padding: 1em;
+	margin: 2em 0;
+}
+
 .introtext {
 	font-size: 125%;
 	font-weight: 400;
-  letter-spacing: -0.04em;
+	letter-spacing: -0.04em;
 	color: #444;
-	margin-top: 2em;
+	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
@@ -173,7 +182,7 @@ footer p {
 }
 
 #todownload-button a, #other-button a {
-  color: #EEE;  
+  color: #EEE;
   text-decoration: none;
 }
 
